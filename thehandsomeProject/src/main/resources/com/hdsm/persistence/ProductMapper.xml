@@ -5,10 +5,36 @@
 
 <mapper namespace="com.hdsm.persistence.ProductMapper">
 
-	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO">
      <![CDATA[
         select * from product where rownum < 3
       ]]>
-	</select>
+	</select> -->
 
+<!-- 	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+     <![CDATA[
+        SELECT * 
+        FROM Product
+	    WHERE clarge LIKE '여성'
+	        AND cmedium LIKE '아우터'
+	        AND csmall LIKE '재킷'
+      ]]>
+	</select> -->
+	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+	SELECT
+	* 
+	FROM Product
+	<trim prefix="WHERE" prefixOverrides="AND |OR">
+		<if test="clarge != null and clarge !='' " >
+			AND Clarge LIKE '%' || #{clarge} || '%'
+		</if>
+		<if test="cmedium != null and cmedium !='' " >
+			AND Cmedium LIKE '%' || #{cmedium } || '%'
+		</if>
+		<if test="csmall != null and csmall !='' " >
+			AND Csmall LIKE '%' || #{csmall } || '%'
+		</if>
+	</trim>
+</select>
+	
 </mapper> 
