@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ThumbnailVO {
-	private String bName;
-	private String pName;
-	private int pPrice;
+	private String bname;
+	private String pname;
+	private int pprice;
 	private String[] thumbNail;
 	
 }
