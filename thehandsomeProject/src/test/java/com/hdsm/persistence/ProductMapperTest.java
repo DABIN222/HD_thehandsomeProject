@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.hdsm.domain.ProductVO;
+
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,7 +20,11 @@ public class ProductMapperTest {
 	
 	@Test
 	public void testGetList() {
-		mapper.getList().forEach(board -> log.info(board));		
+		ProductVO product=new ProductVO();
+		product.setClarge("여성");
+		product.setCmedium("아우터");
+		/* product.setCsmall("재킷"); */
+		mapper.getList(product).forEach(board -> log.info(board));		
 	}//end void
 
 
