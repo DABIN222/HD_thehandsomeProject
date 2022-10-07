@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.hdsm.domain.Criteria;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.persistence.ProductMapper;
 
@@ -12,7 +13,12 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper mapper;
 	
-	public List<ProductVO> getList(){
-		return mapper.getList();
+	public List<ProductVO> getList(ProductVO product){
+		return mapper.getList(product);
 	}
+	
+	/*
+	 * public List<ProductVO> getListWithPaging(Criteria cri){ return
+	 * mapper.getListWithPaging(cri); }
+	 */
 }

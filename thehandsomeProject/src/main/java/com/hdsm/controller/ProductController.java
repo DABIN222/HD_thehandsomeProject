@@ -23,7 +23,7 @@ public class ProductController {
 	@GetMapping("/list")
 	public void productList(Criteria cri,Model model) {
 		//추가
-		model.addAttribute("prodList", service.getList());
+		/* model.addAttribute("prodList", service.getList()); */
 	}
 	
 	//카테고리별 상품 정렬
