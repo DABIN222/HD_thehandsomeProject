@@ -7,12 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="shortcut icon" href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
     <link rel="stylesheet" href="/resources/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/css/layout.css" media="all">
     <link rel="stylesheet" href="/resources/css/product.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/css/brand.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/resources/css/contents.css" media="all">
   </head>
   <body>
     <!-- 상품 순서 -->
