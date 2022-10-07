@@ -18,12 +18,21 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	
 	//전체 상품 목록 이동
 	@GetMapping("/list")
 	public void productList(Criteria cri,Model model) {
 		//추가
 		/* model.addAttribute("prodList", service.getList()); */
+	}
+	
+	//페이징 없는 테스트용 상품목록
+	@GetMapping("/list")
+	public void productList(Model model) {
+		ProductVO product = new ProductVO();
+		product.setClarge("여성");
+		product.setCmedium("아우터");
+		//추가
+		model.addAttribute("prodList", service.getList(product));
 	}
 	
 	//카테고리별 상품 정렬

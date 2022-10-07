@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.ProductVO;
 
+
 public interface ProductMapper {
 
 	public List<ProductVO> getList(ProductVO product);
