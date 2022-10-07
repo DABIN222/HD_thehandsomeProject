@@ -32,16 +32,19 @@ public class ProductController {
 //	}
 	
 	
-//	@RequestParam(required = false, value = "clarge") String clarge,
-//	@RequestParam(required = false, value = "cmedium") String cmedium,
-//	@RequestParam(required = false, value = "csmall") String csmall,
+
 	//페이징 없는 테스트용 상품목록
 	@GetMapping("/list")
-	public void productList(Model model) {
+	public void productList(Model model,
+			@RequestParam(required = false, value = "clarge") String clarge,
+			@RequestParam(required = false, value = "cmedium") String cmedium,
+			@RequestParam(required = false, value = "csmall") String csmall
+			) {
 		ProductVO product = new ProductVO();
 		
-		product.setClarge("여성");
-		product.setCmedium("아우터");
+		product.setClarge(clarge);
+		product.setCmedium(cmedium);
+		product.setCsmall(csmall);
 		
 		model.addAttribute("prodList", service.getList(product));
 	}

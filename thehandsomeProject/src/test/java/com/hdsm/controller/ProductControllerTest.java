@@ -45,8 +45,11 @@ public class ProductControllerTest {
 	public void testList() throws Exception {
 		log.info(
 				mockMvc.perform(
-				MockMvcRequestBuilders.get("/product/list"))
-				.andReturn()
+				MockMvcRequestBuilders.get("/product/list")
+				.param("clarge", "여성")
+				.param("cmedium", "아우터")
+				.param("csmall", "코트")
+				).andReturn()
 				.getModelAndView()
 				.getModelMap()
 				);
