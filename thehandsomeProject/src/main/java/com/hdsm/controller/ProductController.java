@@ -6,40 +6,50 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.service.ProductService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 @RequestMapping("/product/*")
+@AllArgsConstructor
 public class ProductController {
 
 	@Autowired
 	private ProductService service;
 	
 	//전체 상품 목록 이동
-	@GetMapping("/list")
-	public void productList(Criteria cri,Model model) {
-		//추가
-		/* model.addAttribute("prodList", service.getList()); */
-	}
+//	@GetMapping("/list")
+//	public void productList(Criteria cri,Model model) {
+//		//추가
+//		/* model.addAttribute("prodList", service.getList()); */
+//	}
 	
+	
+//	@RequestParam(required = false, value = "clarge") String clarge,
+//	@RequestParam(required = false, value = "cmedium") String cmedium,
+//	@RequestParam(required = false, value = "csmall") String csmall,
 	//페이징 없는 테스트용 상품목록
 	@GetMapping("/list")
 	public void productList(Model model) {
 		ProductVO product = new ProductVO();
+		
 		product.setClarge("여성");
 		product.setCmedium("아우터");
-		//추가
+		
 		model.addAttribute("prodList", service.getList(product));
 	}
 	
 	//카테고리별 상품 정렬
-	@GetMapping("/list/{type}")
-	public void CategoryList(Criteria cri, Model model) {
-		
-	}
+//	@GetMapping("/list")
+//	public void CategoryList(Criteria cri, Model model) {
+//	}
 	
 	//상품 상세 정보 보기
 	@GetMapping("/prodinfo")
