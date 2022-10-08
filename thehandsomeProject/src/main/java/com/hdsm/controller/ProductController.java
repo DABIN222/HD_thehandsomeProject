@@ -60,10 +60,16 @@ public class ProductController {
 			) {
 		ProductVO product = new ProductVO();
 		
-		
 		product.setClarge(clarge);
 		product.setCmedium(cmedium);
 		product.setCsmall(csmall);
+		
+		//일단 임시로 파람을 못주니까 임의로 줘보자
+		cri = new Criteria();
+		product.setClarge("여성");
+		product.setCmedium("아우터");
+		product.setCsmall("재킷");
+		
 		
 		model.addAttribute(
 				"productList", 

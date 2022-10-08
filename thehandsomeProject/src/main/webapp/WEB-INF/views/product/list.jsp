@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,8 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="shortcut icon" href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
     <link rel="stylesheet" href="/resources/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/layout.css" media="all">
     <link rel="stylesheet" href="/resources/css/product.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/brand.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/resources/css/contents.css" media="all">
   </head>
   <body>
     <!-- 상품 순서 -->
@@ -721,16 +728,17 @@
     <!-- 여기서 부터가 상품 진열 -->
     <div class="items_list cate_item4" id="listContent" style="display: block">
       <ul class="clearfix" id="listBody">
+      	<c:forEach items="${productList}" var="product">
         <li>
           <div class="item_box">
             <a
-              href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
+              href="#"
               class="item_info1"
               onclick="setEcommerceData('0', 'CATEGORY');"
             >
               <span class="item_img">
                 <img
-                  src="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T01.jpg"
+                  src="${product.colorList.get(0).c_thumbnail1}"
                   id="T01_IMG_0"
                   alt="캐시미어 블렌드 하이넥 점퍼"
                   targetcode="TM2CAWOT761W_BK"
@@ -738,7 +746,7 @@
                   onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'"
                 />
                 <img
-                  src="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T02.jpg"
+                  src="${product.colorList.get(0).c_thumbnail2}"
                   id="T02_IMG_0"
                   alt="캐시미어 블렌드 하이넥 점퍼"
                   targetcode="TM2CAWOT761W_BK"
@@ -780,36 +788,30 @@
               class="item_info2"
               onclick="setEcommerceData('0', 'CATEGORY');"
             >
-              <span class="brand">TIME</span>
-              <span class="title">캐시미어 블렌드 하이넥 점퍼</span>
+              <span class="brand">${product.bname}</span>
+              <span class="title">${product.pname}</span>
               <span class="price"
                 ><span id="price_TM2CAWOT761W_BK"
-                  ><span>￦845,000</span></span
+                  ><span>${product.pprice}</span></span
                 ></span
               >
-              <span class="flag">
+              <!-- 테그는 일단생략하자 -->
+<!--               <span class="flag">
                 <span class="product">NEW</span>
-              </span>
+              </span> -->
             </a>
             <div class="color_more_wrap">
-              <a
-                href="javascript:chgColorChip(0, 'TM2CAWOT761W_BK')"
-                class="cl wt"
-                style="
-                  background: #000000
-                    url('http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_C01.jpg/dims/resize/13x14');
-                "
-                onclick="GA_Event('카테고리_리스트','컬러칩','BK')"
-              ></a>
-              <a
-                href="javascript:chgColorChip(0, 'TM2CAWOT761W_IV')"
-                class="cl wt"
-                style="
-                  background: #fbfaea
-                    url('http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_IV_C01.jpg/dims/resize/13x14');
-                "
-                onclick="GA_Event('카테고리_리스트','컬러칩','IV')"
-              ></a>
+				<c:forEach items="${product.colorList}" var="color">
+	              <a
+	                href="javascript:chgColorChip(0, 'TM2CAWOT761W_BK')"
+	                class="cl wt"
+	                style="
+	                  background: #000000
+	                    url('${color.ccolorimage}');
+	                "
+	                onclick="GA_Event('카테고리_리스트','컬러칩','BK')"
+	              ></a>
+              	</c:forEach>
             </div>
             <a
               href="javascript:addWishListClick('TM2CAWOT761W');"
@@ -821,6 +823,7 @@
             >
           </div>
         </li>
+      	</c:forEach>
       </ul>
     </div>
     <!-- 상품진열 끝 -->

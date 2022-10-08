@@ -59,6 +59,8 @@ public class ProductServiceImpl implements ProductService {
 			}//end for
 		}//end for
 	
+		log.info(Productlist);
+		
 		return Productlist;
 	}
 
