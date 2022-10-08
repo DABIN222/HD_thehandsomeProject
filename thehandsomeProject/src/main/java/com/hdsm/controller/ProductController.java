@@ -33,26 +33,44 @@ public class ProductController {
 	
 	
 
-	//페이징 없는 테스트용 상품목록
+//	//페이징 없는 테스트용 상품목록
+//	@GetMapping("/list")
+//	public void productList(Model model,
+//			@RequestParam(required = false, value = "clarge") String clarge,
+//			@RequestParam(required = false, value = "cmedium") String cmedium,
+//			@RequestParam(required = false, value = "csmall") String csmall
+//			) {
+//		ProductVO product = new ProductVO();
+//		
+//		product.setClarge(clarge);
+//		product.setCmedium(cmedium);
+//		product.setCsmall(csmall);
+//		
+//		model.addAttribute("prodList", service.getList(product));
+//	}
+	
+	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
 	@GetMapping("/list")
-	public void productList(Model model,
+	public void productList(
+			Criteria cri,
+			Model model,
 			@RequestParam(required = false, value = "clarge") String clarge,
 			@RequestParam(required = false, value = "cmedium") String cmedium,
 			@RequestParam(required = false, value = "csmall") String csmall
 			) {
 		ProductVO product = new ProductVO();
 		
+		
 		product.setClarge(clarge);
 		product.setCmedium(cmedium);
 		product.setCsmall(csmall);
 		
-		model.addAttribute("prodList", service.getList(product));
+		model.addAttribute(
+				"productList", 
+				service.getProductThumbnailListWithPaging(product, cri)
+				);
+		
 	}
-	
-	//카테고리별 상품 정렬
-//	@GetMapping("/list")
-//	public void CategoryList(Criteria cri, Model model) {
-//	}
 	
 	//상품 상세 정보 보기
 	@GetMapping("/prodinfo")

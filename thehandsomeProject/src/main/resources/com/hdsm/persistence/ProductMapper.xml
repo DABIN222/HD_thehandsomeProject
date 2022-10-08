@@ -5,36 +5,58 @@
 
 <mapper namespace="com.hdsm.persistence.ProductMapper">
 
-	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO">
-     <![CDATA[
-        select * from product where rownum < 3
-      ]]>
-	</select> -->
+	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO"> <![CDATA[ 
+		select * from product where rownum < 3 ]]> </select> -->
 
-<!-- 	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+	<select id="getListWithPaging" resultType="com.hdsm.domain.ThumbnailVO">
      <![CDATA[
-        SELECT * 
-        FROM Product
-	    WHERE clarge LIKE '여성'
-	        AND cmedium LIKE '아우터'
-	        AND csmall LIKE '재킷'
-      ]]>
-	</select> -->
-	<select id="getList" resultType="com.hdsm.domain.ProductVO">
-	SELECT
-	* 
-	FROM Product
-	<trim prefix="WHERE" prefixOverrides="AND |OR">
-		<if test="clarge != null and clarge !='' " >
-			AND Clarge LIKE '%' || #{clarge} || '%'
-		</if>
-		<if test="cmedium != null and cmedium !='' " >
-			AND Cmedium LIKE '%' || #{cmedium } || '%'
-		</if>
-		<if test="csmall != null and csmall !='' " >
-			AND Csmall LIKE '%' || #{csmall } || '%'
-		</if>
-	</trim>
-</select>
+        select 
+        	pid, bname, pname, pprice
+		from 
+			(
+		    select 
+		    	rownum rn, pid, bname, pname, pprice
+		    from 
+		    	product
+		    where 
+		    	rownum <= #{cri.pageNum} * #{cri.amount}
+			)
+		where rn >  (#{cri.pageNum} - 1) * #{cri.amount}
+      ]]> 
+	</select>
+
+	<select id="getColorList" resultType="com.hdsm.domain.ThumbnailColorVO">
+        select 
+        	product_pid, ccolorimage, c_thumbnail1, c_thumbnail2
+		from 
+			color
+		where 
+			product_pid in 
+				<foreach 
+					collection="list" item="productID" index="index" 
+					open="(" separator="," close=")">
+					#{productID}
+				</foreach>
+			
+
+	</select>
 	
+	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+		SELECT
+		*
+		FROM Product
+		<trim prefix="WHERE" prefixOverrides="AND |OR">
+			<if test="clarge != null and clarge !='' ">
+				AND Clarge LIKE '%' || #{clarge} || '%'
+			</if>
+			<if test="cmedium != null and cmedium !='' ">
+				AND Cmedium LIKE '%' || #{cmedium } || '%'
+			</if>
+			<if test="csmall != null and csmall !='' ">
+				AND Csmall LIKE '%' || #{csmall } || '%'
+			</if>
+		</trim>
+		
+	</select>
+
 </mapper> 
