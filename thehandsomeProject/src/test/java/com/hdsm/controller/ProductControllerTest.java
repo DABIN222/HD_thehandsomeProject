@@ -41,11 +41,28 @@ public class ProductControllerTest {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();		
 	}//end setup
 	
+//	@Test
+//	public void testList() throws Exception {
+//		log.info(
+//				mockMvc.perform(
+//				MockMvcRequestBuilders.get("/product/list")
+//				.param("clarge", "여성")
+//				.param("cmedium", "아우터")
+//				.param("csmall", "코트")
+//				).andReturn()
+//				.getModelAndView()
+//				.getModelMap()
+//				);
+//		
+//	}//end testList
+	
 	@Test
 	public void testList() throws Exception {
 		log.info(
 				mockMvc.perform(
 				MockMvcRequestBuilders.get("/product/list")
+				.param("pageNum", "2")
+				.param("amount", "10")
 				.param("clarge", "여성")
 				.param("cmedium", "아우터")
 				.param("csmall", "코트")
@@ -55,6 +72,4 @@ public class ProductControllerTest {
 				);
 		
 	}//end testList
-	
-
 }

@@ -27,4 +27,9 @@ public class ProductServiceTests {
 		/* product.setCsmall("재킷"); */
 		service.getList(product).forEach(board -> log.info(board));		
 	}//end void
+	
+	@Test
+	public void testGetThumbnailListWithPaging() {
+		
+	}
 }
