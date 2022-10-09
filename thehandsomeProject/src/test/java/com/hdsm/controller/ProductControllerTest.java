@@ -1,10 +1,18 @@
 package com.hdsm.controller;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.PageDTO;
@@ -13,15 +21,55 @@ import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
 
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({
+	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
+	"file:src/main/webapp/WEB-INF/spring/root-context.xml"
+	
+	})
 @Log4j
 public class ProductControllerTest {
-	private ProductService service;
 	
-	/*
-	 * @Test public void list() { Criteria cri = new Criteria(12, ); log.info("list"
-	 * + cri); service.getList(cri); //PageDTD 구성하기 위해 전체데이터 수 필요해서 임의의값 123 지정 new
-	 * PageDTO(cri, 123); }//end list
-	 */
+	@Autowired
+	private WebApplicationContext ctx;
+		
+	private MockMvc mockMvc;
+	
+	@Before
+	public void setup() {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();		
+	}//end setup
+	
+//	@Test
+//	public void testList() throws Exception {
+//		log.info(
+//				mockMvc.perform(
+//				MockMvcRequestBuilders.get("/product/list")
+//				.param("clarge", "여성")
+//				.param("cmedium", "아우터")
+//				.param("csmall", "코트")
+//				).andReturn()
+//				.getModelAndView()
+//				.getModelMap()
+//				);
+//		
+//	}//end testList
+	
+	@Test
+	public void testList() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.get("/product/list")
+				.param("pageNum", "2")
+				.param("amount", "10")
+				.param("clarge", "여성")
+				.param("cmedium", "아우터")
+				.param("csmall", "코트")
+				).andReturn()
+				.getModelAndView()
+				.getModelMap()
+				);
+		
+	}//end testList
 }

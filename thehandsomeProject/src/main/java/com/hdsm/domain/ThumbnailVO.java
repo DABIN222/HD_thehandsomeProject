@@ -1,12 +1,15 @@
 package com.hdsm.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class ThumbnailVO {
-	private String bName;
-	private String pName;
-	private int pPrice;
-	private String[] thumbNail;
+	private String pid;
+	private String bname;
+	private String pname;
+	private int pprice;
+	private List<ThumbnailColorVO> colorList;
 	
 }
