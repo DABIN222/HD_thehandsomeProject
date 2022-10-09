@@ -20,19 +20,36 @@
 	media="all">
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/contents.css" media="all">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!-- 제이쿼리 룰루~ -->
 </head>
 <body oncontextmenu="return false">
 	<div id="bodyWrap" class="products">
 		<!-- 대, 중, 소 카테고리 표시 -->
 		<h3 class="cnts_title ou1804">
-			<span> <!-- 정상 브랜드 카테고리 목록 --> <a href="/ko/c/WE/"
-				onclick="GA_Event('카테고리_리스트','카테고리','여성')"> 여성</a> <img
+			<span> <!-- 정상 브랜드 카테고리 목록 --> 
+				<c:if test = "${not empty ctgName[0]}">
+					<a href="javascript:void(0);" >${ctgName[0]}</a>
+				</c:if>
+				<c:if test = "${not empty ctgName[1]}">
+					<img
+						src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
+						alt="location arr" />
+					<a href="javascript:void(0);" >${ctgName[1]}</a>
+				</c:if>
+				<c:if test = "${not empty ctgName[2]}">
+					<img
+						src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
+						alt="location arr" />
+					<a href="javascript:void(0);" >${ctgName[2]}</a>
+				</c:if>
+<!-- 			<a href="/ko/c/WE/" onclick="GA_Event('카테고리_리스트','카테고리','여성')"> 여성</a> <img
 				src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 				alt="location arr" /> <a href="/ko/c/WE05/"
 				onclick="GA_Event('카테고리_리스트','카테고리','아우터')"> 아우터</a> <img
 				src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 				alt="location arr" /> <a href="javascript:void(0);"
-				onclick="GA_Event('카테고리_리스트','카테고리','점퍼')"> 점퍼</a>
+				onclick="GA_Event('카테고리_리스트','카테고리','점퍼')"> 점퍼</a> -->
 			</span>
 		</h3>
 		<!-- 카테고리 표시 끝 -->
@@ -396,42 +413,50 @@
 				</ul>
 			</div>
 			<!-- 상품진열 끝 -->
+			
 			<!-- paging -->
 			<div class="paging" style="display: block;">
+			
 				<a class="prev2" href="javascript:void(0);">처음 페이지로 이동</a>
-				<!-- <a href="javascript:void(0);" class="prev">이전 페이지로 이동</a> -->
-				<c:if test="${pageMaker.prev}"> <!-- 이전 버튼 -->
-	              	<a href="#" class = "prev">이전 페이지로 이동</a>
-	            </c:if>
+				<!-- 이전 버튼 -->
+				<a class="prev" href="javascript:void(0);">이전 페이지로 이동</a>
+
+				<span class="num"> 
+					<!-- 1~10 버튼 --> 
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<a href="javascript:void(0);" class="pageBtn " pagenum="${num}">${num}</a>
+					</c:forEach> <!--공홈 참고용 <a href="javascript:void(0);" class="pageBtn  on  " pagenum="1">1</a>-->
+				</span>
 				
-				<span class="num">
+				<!-- 다음 버튼 -->
+				<a class="next" href="javascript:void(0);" >다음 페이지로 이동</a>
+				<a class="next2" href="javascript:void(0);" >마지막 페이지로 이동</a>
 				
-				<!-- 1~10 버튼 -->
-	            <c:forEach var="num" begin="${pageMaker.startPage}" 
-	            	end="${pageMaker.endPage}">
-	              	<a href="#" class="pageBtn" pagenum="${num}">${num}</a>
-	            </c:forEach>
-				
-				<!-- <a href="javascript:void(0);" class="pageBtn  on  " pagenum="1">1</a>
-				<a href="javascript:void(0);" class="pageBtn  " pagenum="2">2</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="3">3</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="4">4</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="5">5</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="6">6</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="7">7</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="8">8</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="9">9</a><a
-					href="javascript:void(0);" class="pageBtn  " pagenum="10">10</a> -->
-					
-					</span>
-					<c:if test="${pageMaker.next}"> <!-- 다음 버튼 -->
-		              	<a href="#" class="next">페이지로</a>
-		            </c:if>
-					
-					<!-- <a
-					href="javascript:void(0);" class="next">다음 페이지로 이동</a> -->
-					<a href="javascript:void(0);" class="next2">마지막 페이지로 이동</a>
 			</div>
+			<form id='actionForm' action="/product/list" method='get'>
+				<input type='hidden' name='ctg' value='${ctg}'>
+				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+			</form>
+			<!-- 페이징처리 자바스크립트 나중에 맨 아래로 내리자 -->
+			<script type="text/javascript">
+				$(document).ready(
+						function() {
+							
+							//페이징 버튼 처리
+							var actionForm = $("#actionForm"); //폼등록
+							$(".pageBtn").on("click", function(e) {
+										e.preventDefault(); //<a> 작동 중지
+										console.log('click');
+										actionForm
+												.find("input[name='pageNum']")
+												.val($(this).attr("pagenum"));
+										actionForm.submit(); //form submit
+									});//end click
+							//현재 페이지 버튼의 class에 "on" 추가하기
+							$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").addClass("on");
+						});
+			</script>
 			<!-- //paging -->
 		</div>
 	</div>

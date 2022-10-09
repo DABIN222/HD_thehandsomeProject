@@ -29,8 +29,10 @@ public class ProductMapperTest {
 		Criteria cri = new Criteria();
 		
 		ProductVO vo = new ProductVO();
-		vo.setClarge("여성");
-		vo.setCmedium("아우터");
+		String[] asd = new String[3];
+		asd[0] = "남성";
+		vo.setClarge(asd[0]);
+		vo.setCmedium(asd[1]);
 		List<ThumbnailVO> Productlist = mapper.getListWithPaging(vo, cri);
 		
 		List<String> productIDs = new ArrayList<String>();
