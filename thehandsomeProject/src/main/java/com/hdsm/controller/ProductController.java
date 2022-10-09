@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hdsm.domain.Criteria;
+import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.service.ProductService;
 
@@ -74,6 +75,11 @@ public class ProductController {
 		model.addAttribute(
 				"productList", 
 				service.getProductThumbnailListWithPaging(product, cri)
+				);
+
+		model.addAttribute(
+				"pageMaker",
+				new PageDTO(cri,50)
 				);
 		
 	}
