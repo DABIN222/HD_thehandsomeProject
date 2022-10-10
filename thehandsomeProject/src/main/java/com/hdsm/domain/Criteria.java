@@ -9,7 +9,7 @@ public class Criteria {
 	private int pageNum;
 	
 	public Criteria() {
-		this(1,10);
+		this(1,12);
 	}
 	
 	public Criteria(int pageNum, int amount) {
@@ -17,5 +17,8 @@ public class Criteria {
 		this.amount = amount;
 	}//
 
-	
+	public Criteria(int pageNum) {
+		this.pageNum = pageNum;
+		this.amount = 12;
+	}//
 }
