@@ -17,5 +17,8 @@ public class Criteria {
 		this.amount = amount;
 	}//
 
-	
+	public Criteria(int pageNum) {
+		this.pageNum = pageNum;
+		this.amount = 12;
+	}//
 }

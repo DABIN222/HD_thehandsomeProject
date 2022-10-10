@@ -9,7 +9,7 @@
 		select * from product where rownum < 3 ]]> </select> -->
 
 	<select id="getListWithPaging" resultType="com.hdsm.domain.ThumbnailVO">
-     <![CDATA[
+
         select 
         	pid, bname, pname, pprice
 		from 
@@ -19,10 +19,24 @@
 		    from 
 		    	product
 		    where 
-		    	rownum <= #{cri.pageNum} * #{cri.amount}
+		    	<![CDATA[1 < 2]]> 
+
+					<if test="vo.clarge != null and vo.clarge !='' ">
+						AND Clarge LIKE '%' || #{vo.clarge} || '%'
+					</if>
+					<if test="vo.cmedium != null and vo.cmedium !='' ">
+						AND Cmedium LIKE '%' || #{vo.cmedium } || '%'
+					</if>
+					<if test="vo.csmall != null and vo.csmall !='' ">
+						AND Csmall LIKE '%' || #{vo.csmall } || '%'
+					</if>
+		    	AND
+		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
+		    	
 			)
-		where rn >  (#{cri.pageNum} - 1) * #{cri.amount}
-      ]]> 
+		where 
+			<![CDATA[rn >  (#{cri.pageNum} - 1) * #{cri.amount}]]>
+
 	</select>
 
 	<select id="getColorList" resultType="com.hdsm.domain.ThumbnailColorVO">
