@@ -478,6 +478,9 @@
 							
 							//페이징 버튼 처리
 							var actionForm = $("#actionForm"); //폼등록
+							
+							var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
+							
 							$(".pageBtn").on("click", function(e) {
 										e.preventDefault(); //<a> 작동 중지
 										/* actionForm
@@ -486,8 +489,42 @@
 										actionForm.submit(); //form submit */
 										location.href="/product/list/${ctg}/"+$(this).attr("pagenum");
 									});//end click
+							
+							//이전 < 버튼을 누를 경우 실행
+							$(".prev").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1);
+							});
+							
+							//다음 > 버튼을 누를 경우 실행
+							$(".next").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1);
+							});
+							
+							//맨 끝 >> 버튼을 누를 경우 실행
+							$(".next2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}";
+							});
+							
+							//맨 처음 << 버튼을 누를 경우 실행
+							$(".prev2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/1";
+							});
+							
+							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
+							$(".item_img").on("click",function(e){
+								console.log('click');
+								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum");
+							});
 							//현재 페이지 버튼의 class에 "on" 추가하기
-							$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").addClass("on");
+							curPageNum.addClass("on");
 						});
 			</script>
 			<!-- //paging -->

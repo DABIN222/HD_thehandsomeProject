@@ -1,5 +1,7 @@
 package com.hdsm.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,13 +54,22 @@ public class ProductController {
 //		model.addAttribute("prodList", service.getList(product));
 //	}
 	
-	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
-	@GetMapping("/list/{ctg}/{pagenum}")
+	//전체 리스트를 볼 경우 실행
+	@GetMapping("/list")
+	public String productList() {
+		return "redirect:/product/list/123/1";
+	}
+	
+	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
+	//ctg만 있을 경우 겁색한 카테고리의 1페이지로 이동
+	@GetMapping({"/list/{ctg}/{pagenum}","/list/{ctg}"})
 	public String productList(
-			@PathVariable("pagenum") String pagenum,
-			@PathVariable("ctg") String ctg,
+			@PathVariable(required= false) String pagenum,
+			@PathVariable(required=false) String ctg,
 			Model model
 			) {
+		
+		if(pagenum==null) pagenum="1";
 		
 		Criteria cri= new Criteria();
 		cri.setPageNum(Integer.parseInt(pagenum));
@@ -66,7 +77,6 @@ public class ProductController {
 		ProductVO product = new ProductVO();
 		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
 		
-		System.out.println(ctgName.toString());
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
@@ -100,7 +110,7 @@ public class ProductController {
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		model.addAttribute(
 				"pageMaker",
-				new PageDTO(cri,150)
+				new PageDTO(cri,service.productCount(product))
 				);
 		
 		return "product/list";

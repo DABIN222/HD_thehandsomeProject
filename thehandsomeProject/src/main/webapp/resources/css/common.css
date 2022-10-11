@@ -617,7 +617,7 @@ table td .receive_choice > span label{padding-right:25px;display:inline-block;}
  Paging
 ****************************************************/
 .paging{margin-top:40px;text-align: center}
-.paging > a{display:inline-block;width:15px;margin:0 5px;height:13px;background: url("/_ui/desktop/common/images/common/ico_paging.png") 0 0 no-repeat;text-indent: -999em; cursor:pointer;}/*200702 수정*/
+.paging > a{display:inline-block;width:15px;margin:0 5px;height:13px;background: url("/resources/image/ico_paging.png") 0 0 no-repeat;text-indent: -999em; cursor:pointer;}/*200702 수정*/
 .paging .prev{background-position: -25px -4px;}
 .paging .next{background-position: -62px -4px;}
 .paging .prev2{background-position: 0 -4px;}
