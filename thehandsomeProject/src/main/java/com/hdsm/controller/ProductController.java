@@ -54,15 +54,23 @@ public class ProductController {
 //		model.addAttribute("prodList", service.getList(product));
 //	}
 	
-	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
-	@GetMapping({"/list/{ctg}/{pagenum}","/list"})
+	//전체 리스트를 볼 경우 실행
+	@GetMapping("/list")
+	public String productList() {
+		return "redirect:/product/list/123/1";
+	}
+	
+	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
+	//ctg만 있을 경우 겁색한 카테고리의 1페이지로 이동
+	@GetMapping({"/list/{ctg}/{pagenum}","/list/{ctg}"})
 	public String productList(
 			@PathVariable(required= false) String pagenum,
 			@PathVariable(required=false) String ctg,
 			Model model
 			) {
 		
-				
+		if(pagenum==null) pagenum="1";
+		
 		Criteria cri= new Criteria();
 		cri.setPageNum(Integer.parseInt(pagenum));
 		
