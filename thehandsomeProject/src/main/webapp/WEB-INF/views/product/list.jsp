@@ -297,14 +297,14 @@
 										onclick="GA_Event('카테고리_리스트','정렬','상품평순');">평점순</a></li>
 								</ul>
 							</div></li>
-						<li class="prd_list_filter1810 sale_filter">
+<!-- 						<li class="prd_list_filter1810 sale_filter">
 							<div class="input_wrap">
 								<input type="checkbox" id="checkSale" name="checkSale"
 									onclick="setCheckSaleCode();GA_Event('카테고리_리스트','정렬','SALE');"
 									style="margin: 3px 10px 0 0" /><label for="checkSale"
 									id="checkSale" style="color: #ff0000">SALE</label>
 							</div>
-						</li>
+						</li> -->
 						<li class="prd_list_filter1810 delivery" style="display: none">
 							<!-- 딜리버리 190219 -->
 							<div class="input_wrap">
@@ -326,7 +326,7 @@
 							onclick="GA_Event('카테고리_리스트','정렬','적용');">적용</a></li>
 					</ul>
 					<div class="items_count float_right">
-						<span class="num">142</span> <span>전체</span>
+						<span class="num">${productCount}</span> <span>전체</span>
 					</div>
 				</div>
 				<!-- 필터 끝 -->

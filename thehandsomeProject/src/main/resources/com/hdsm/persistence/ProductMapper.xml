@@ -51,23 +51,22 @@
 					open="(" separator="," close=")">
 					#{productID}
 				</foreach>
-			
-
 	</select>
 	
-	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+	<!-- 물건 갯수  -->
+	<select id="productCount" resultType="_int">
 		SELECT
-		*
+		count(*)
 		FROM Product
 		<trim prefix="WHERE" prefixOverrides="AND |OR">
-			<if test="clarge != null and clarge !='' ">
-				AND Clarge LIKE '%' || #{clarge} || '%'
+			<if test="vo.clarge != null and vo.clarge !='' ">
+				AND Clarge LIKE '%' || #{vo.clarge} || '%'
 			</if>
-			<if test="cmedium != null and cmedium !='' ">
-				AND Cmedium LIKE '%' || #{cmedium } || '%'
+			<if test="vo.cmedium != null and vo.cmedium !='' ">
+				AND Cmedium LIKE '%' || #{vo.cmedium } || '%'
 			</if>
-			<if test="csmall != null and csmall !='' ">
-				AND Csmall LIKE '%' || #{csmall } || '%'
+			<if test="vo.csmall != null and vo.csmall !='' ">
+				AND Csmall LIKE '%' || #{vo.csmall } || '%'
 			</if>
 		</trim>
 		

@@ -82,6 +82,12 @@ public class ProductController {
 				ctgName
 				);
 		
+		//전체 개수!
+		model.addAttribute(
+				"productCount",
+				service.productCount(product)
+				);
+		
 		model.addAttribute(
 				"productList", 
 				service.getProductThumbnailListWithPaging(product, cri)
