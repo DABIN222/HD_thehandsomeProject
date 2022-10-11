@@ -20,6 +20,9 @@ public interface ProductMapper {
 	//여기서 Param은 xml로 인자를 2개이상 줄때는 class 속성값 이름만 줘서는 못 알아 먹어서 cri.amount 이런식으로 쓰기위해 @Param을 씀
 	public List<ThumbnailVO> getListWithPaging(@Param("vo") ProductVO vo,@Param("cri") Criteria cri);
 	
+	//물건 갯수
+	public int productCount(@Param("vo") ProductVO vo);
+	
 	//물건들의 이미지, 이미지썸네일 2개를 객체로 가져오기 위함
 	public List<ThumbnailColorVO> getColorList(List<String> productIDs);
 }
