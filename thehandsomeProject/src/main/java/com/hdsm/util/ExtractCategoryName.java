@@ -68,6 +68,9 @@ public class ExtractCategoryName {
 		else if( ctg.equals("me041")) { categoryNames[0]="남성"; categoryNames[1]="수트";categoryNames[2]="드레스셔츠";}
 		else if( ctg.equals("me042")) { categoryNames[0]="남성"; categoryNames[1]="수트";categoryNames[2]="수트재킷";}
 		else if( ctg.equals("me043")) { categoryNames[0]="남성"; categoryNames[1]="수트";categoryNames[2]="수트팬츠";}
+		
+		//잡화
+		else if (ctg.equals("as")) { categoryNames[0] = "잡화";}
 	      // 잡화 > 여성슈즈
 		else if (ctg.equals("as01")) { categoryNames[0] = "잡화"; categoryNames[1] = "여성슈즈"; } 
 		else if (ctg.equals("as011")) { categoryNames[0] = "잡화"; categoryNames[1] = "여성슈즈"; categoryNames[2] = "부츠"; }

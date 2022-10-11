@@ -363,14 +363,14 @@
 									onclick="setEcommerceData('0', 'CATEGORY');"> <span
 									class="item_img"> <img
 										src="${product.colorList.get(0).c_thumbnail1}" id="T01_IMG_0"
-										alt="캐시미어 블렌드 하이넥 점퍼" targetcode="TM2CAWOT761W_BK"
+										alt="${product.pname}" targetcode="TM2CAWOT761W_BK"
 										class="respon_image"
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'" />
 										<img src="${product.colorList.get(0).c_thumbnail2}"
-										id="T02_IMG_0" alt="캐시미어 블렌드 하이넥 점퍼"
+										id="T02_IMG_0" alt="${product.pname}"
 										targetcode="TM2CAWOT761W_BK" class="respon_image on"
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'"
-										style="display: none; opacity: 1" /> <input type="hidden"
+										style= "transition: 1s; display: none; opacity: 1; " /> <input type="hidden"
 										id="newImage1_0"
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T01.jpg" />
 										<input type="hidden" id="newImage2_0"
@@ -443,6 +443,19 @@
 				$(document).ready(
 						function() {
 							
+							//이미지 hover처리
+							$(".item_info1").hover(
+									function(){
+										$(this).find("img:eq(1)").css('display', 'block');
+										$(this).find("img:eq(1)").css('opacity', 1);
+										
+									},
+									function(){
+										$(this).find("img:eq(1)").css('opacity', 0);
+										$(this).find("img:eq(1)").css('display', 'none');
+										
+									}
+									);
 							//페이징 버튼 처리
 							var actionForm = $("#actionForm"); //폼등록
 							$(".pageBtn").on("click", function(e) {
