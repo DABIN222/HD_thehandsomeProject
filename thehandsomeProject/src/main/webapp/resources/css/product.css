@@ -37,7 +37,7 @@
 .filterWrap li.sortby .list{width:105px;}
 
 /* item list */
-.items_list li{float:left;width:24.5%;margin-right:0.6%;}
+.items_list li{float:left;width:24.3%;margin-right:0.6%;}
 .items_list li:first-child{margin: 0 8px 0 0!important;}
 .items_list li .item_box{position: relative;padding-bottom:40px;}
 .items_list li .item_box a{display: block;position: relative;font-size:11px;}
