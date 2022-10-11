@@ -53,24 +53,20 @@ public class ProductController {
 //	}
 	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
-	@GetMapping("/list/{ctg}/{pagenum}")
-	public String productList(
-			@PathVariable("pagenum") String pagenum,
-			@PathVariable("ctg") String ctg,
+	@GetMapping("/list")
+	public void productList(
+			Criteria cri,
+			@RequestParam(value = "ctg") String ctg,
 			Model model
 			) {
-		
-		Criteria cri= new Criteria();
-		cri.setPageNum(Integer.parseInt(pagenum));
-		
 		ProductVO product = new ProductVO();
-		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
 		
-		System.out.println(ctgName.toString());
+		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
+				
 		
 		product.setClarge(ctgName[0]);
-		//product.setCmedium(ctgName[1]);
-		//product.setCsmall(ctgName[2]);
+		product.setCmedium(ctgName[1]);
+		product.setCsmall(ctgName[2]);
 		
 		//일단 임시로 파람을 못주니까 임의로 줘보자
 		//cri = new Criteria();
@@ -102,8 +98,6 @@ public class ProductController {
 				"pageMaker",
 				new PageDTO(cri,150)
 				);
-		
-		return "product/list";
 		
 	}
 	

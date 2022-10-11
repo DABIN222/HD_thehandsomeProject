@@ -448,11 +448,10 @@
 							$(".pageBtn").on("click", function(e) {
 										e.preventDefault(); //<a> 작동 중지
 										console.log('click');
-										/* actionForm
+										actionForm
 												.find("input[name='pageNum']")
 												.val($(this).attr("pagenum"));
-										actionForm.submit(); //form submit */
-										location.href="/product/list/${ctg}/"+$(this).attr("pagenum");
+										actionForm.submit(); //form submit
 									});//end click
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").addClass("on");
