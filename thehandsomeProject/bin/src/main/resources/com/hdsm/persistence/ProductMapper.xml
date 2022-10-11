@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hdsm.persistence.ProductMapper">
+
+	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO"> <![CDATA[ 
+		select * from product where rownum < 3 ]]> </select> -->
+
+	<select id="getListWithPaging" resultType="com.hdsm.domain.ThumbnailVO">
+
+        select 
+        	pid, bname, pname, pprice
+		from 
+			(
+		    select 
+		    	rownum rn, pid, bname, pname, pprice
+		    from 
+		    	product
+		    where 
+		    	<![CDATA[1 < 2]]> 
+
+					<if test="vo.clarge != null and vo.clarge !='' ">
+						AND Clarge LIKE '%' || #{vo.clarge} || '%'
+					</if>
+					<if test="vo.cmedium != null and vo.cmedium !='' ">
+						AND Cmedium LIKE '%' || #{vo.cmedium } || '%'
+					</if>
+					<if test="vo.csmall != null and vo.csmall !='' ">
+						AND Csmall LIKE '%' || #{vo.csmall } || '%'
+					</if>
+		    	AND
+		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
+		    	
+			)
+		where 
+			<![CDATA[rn >  (#{cri.pageNum} - 1) * #{cri.amount}]]>
+
+	</select>
+
+	<select id="getColorList" resultType="com.hdsm.domain.ThumbnailColorVO">
+        select 
+        	product_pid, ccolorimage, c_thumbnail1, c_thumbnail2
+		from 
+			color
+		where 
+			product_pid in 
+				<foreach 
+					collection="list" item="productID" index="index" 
+					open="(" separator="," close=")">
+					#{productID}
+				</foreach>
+			
+
+	</select>
+	
+	<select id="getList" resultType="com.hdsm.domain.ProductVO">
+		SELECT
+		*
+		FROM Product
+		<trim prefix="WHERE" prefixOverrides="AND |OR">
+			<if test="clarge != null and clarge !='' ">
+				AND Clarge LIKE '%' || #{clarge} || '%'
+			</if>
+			<if test="cmedium != null and cmedium !='' ">
+				AND Cmedium LIKE '%' || #{cmedium } || '%'
+			</if>
+			<if test="csmall != null and csmall !='' ">
+				AND Csmall LIKE '%' || #{csmall } || '%'
+			</if>
+		</trim>
+		
+	</select>
+
+</mapper> 
