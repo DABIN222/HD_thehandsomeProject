@@ -64,10 +64,4 @@ public class ProductServiceImpl implements ProductService {
 		return Productlist;
 	}
 
-	@Override
-	public int productCount(ProductVO vo) {
-		return mapper.productCount(vo);
-	}
-
-	
 }
