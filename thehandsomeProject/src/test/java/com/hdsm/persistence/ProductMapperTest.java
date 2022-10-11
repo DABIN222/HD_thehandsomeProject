@@ -58,16 +58,18 @@ public class ProductMapperTest {
 		for ( ThumbnailVO i : Productlist){
 			log.info(i);
 		}//end for
-		
-		
-		
-//		list.forEach(board -> log.info(board));
-//		for ( ThumbnailVO i : list){
-//			log.info(i);
-//		}//end for
-
-		
 	}//end testP
 
+	@Test
+	public void testProductCount() {
+		ProductVO vo = new ProductVO();
+		String[] asd = new String[3];
+		asd[0] = "남성";
+		vo.setClarge(asd[0]);
+		vo.setCmedium(asd[1]);
+		
+		
+		log.info(mapper.productCount(vo));
+	}
 
 }

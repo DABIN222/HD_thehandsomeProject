@@ -17,6 +17,6 @@ public interface ProductService {
 	//여기서 Param은 xml로 인자를 2개이상 줄때는 class 속성값 이름만 줘서는 못 알아 먹어서 cri.amount 이런식으로 쓰기위해 @Param을 씀
 	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri);
 	
-
+	public int productCount(ProductVO vo);
 	
 }
