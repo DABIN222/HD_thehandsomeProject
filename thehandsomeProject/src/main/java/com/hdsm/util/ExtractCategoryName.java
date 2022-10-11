@@ -123,7 +123,6 @@ public class ExtractCategoryName {
 		  else if (ctg.equals("as077")) { categoryNames[0] = "잡화"; categoryNames[1] = "기타 ACC"; categoryNames[2] = "테크ACC"; }
 		  else if (ctg.equals("as078")) { categoryNames[0] = "잡화"; categoryNames[1] = "기타 ACC"; categoryNames[2] = "기타소품"; }
 
-		
 		return categoryNames;
 	}
 }
