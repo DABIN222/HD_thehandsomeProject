@@ -69,8 +69,8 @@ public class ProductController {
 		System.out.println(ctgName.toString());
 		
 		product.setClarge(ctgName[0]);
-		//product.setCmedium(ctgName[1]);
-		//product.setCsmall(ctgName[2]);
+		product.setCmedium(ctgName[1]);
+		product.setCsmall(ctgName[2]);
 		
 		//일단 임시로 파람을 못주니까 임의로 줘보자
 		//cri = new Criteria();
