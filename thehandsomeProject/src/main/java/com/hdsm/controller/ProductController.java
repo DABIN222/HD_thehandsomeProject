@@ -1,5 +1,7 @@
 package com.hdsm.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,20 +55,20 @@ public class ProductController {
 //	}
 	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
-	@GetMapping("/list/{ctg}/{pagenum}")
+	@GetMapping({"/list/{ctg}/{pagenum}","/list"})
 	public String productList(
-			@PathVariable("pagenum") String pagenum,
-			@PathVariable("ctg") String ctg,
+			@PathVariable(required= false) String pagenum,
+			@PathVariable(required=false) String ctg,
 			Model model
 			) {
 		
+				
 		Criteria cri= new Criteria();
 		cri.setPageNum(Integer.parseInt(pagenum));
 		
 		ProductVO product = new ProductVO();
 		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
 		
-		System.out.println(ctgName.toString());
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
@@ -100,7 +102,7 @@ public class ProductController {
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		model.addAttribute(
 				"pageMaker",
-				new PageDTO(cri,150)
+				new PageDTO(cri,service.productCount(product))
 				);
 		
 		return "product/list";

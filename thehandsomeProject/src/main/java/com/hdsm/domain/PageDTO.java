@@ -14,6 +14,8 @@ public class PageDTO {
 	private int total;
 	private Criteria cri;
 	
+	private int realEnd;
+	
 	public PageDTO(Criteria cri,int total) {
 		
 		this.total = total;
@@ -23,7 +25,7 @@ public class PageDTO {
 		
 		this.startPage = this.endPage - 9;
 		
-		int realEnd = (int)  Math.ceil( (total * 1.0) / cri.getAmount() ) ;
+		realEnd = (int)  Math.ceil( (total * 1.0) / cri.getAmount() ) ;
 		
 		//total(전체 데이터수) / amount 를 한 숫자(진짜 끝 수)가 endpage보다 크면 당연히 업데이트 해줘야지
 		if ( realEnd < this.endPage) {

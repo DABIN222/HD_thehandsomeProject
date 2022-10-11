@@ -474,6 +474,33 @@
 										actionForm.submit(); //form submit */
 										location.href="/product/list/${ctg}/"+$(this).attr("pagenum");
 									});//end click
+							
+							//이전 < 버튼을 누를 경우 실행
+							$(".prev").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt($(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").attr("pagenum"))-1);
+							});
+							
+							//다음 > 버튼을 누를 경우 실행
+							$(".next").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt($(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").attr("pagenum"))+1);
+							});
+							
+							$(".next2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}";
+							});
+							
+							$(".prev2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/1";
+							});
+							
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").addClass("on");
 						});
