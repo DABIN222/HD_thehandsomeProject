@@ -362,11 +362,11 @@
 								<a href="#" class="item_info1"
 									onclick="setEcommerceData('0', 'CATEGORY');"> <span
 									class="item_img"> <img
-										src="${product.colorList.get(0).c_thumbnail1}" id="T01_IMG_0"
+										src="" id="T01_IMG_0"
 										alt="${product.pname}" targetcode="TM2CAWOT761W_BK"
 										class="respon_image"
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'" />
-										<img src="${product.colorList.get(0).c_thumbnail2}"
+										<img src=""
 										id="T02_IMG_0" alt="${product.pname}"
 										targetcode="TM2CAWOT761W_BK" class="respon_image on"
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'"
@@ -375,7 +375,8 @@
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T01.jpg" />
 										<input type="hidden" id="newImage2_0"
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T02.jpg" />
-								</span> <span class="item_size" id="itemsize_0"
+								</span> 
+								<!-- <span class="item_size" id="itemsize_0"
 									style="display: none; height: 20px; padding-top: 15px; margin-top: 0px; padding-bottom: 15px; margin-bottom: 0px;">
 										<div id="TM2CAWOT761W_BK">
 											<span>82</span>
@@ -383,7 +384,7 @@
 										<div id="TM2CAWOT761W_IV" style="display: none">
 											<span>82</span>
 										</div>
-								</span>
+								</span> -->
 								</a> <a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
 									class="item_info2" onclick="setEcommerceData('0', 'CATEGORY');">
 									<span class="brand">${product.bname}</span> <span class="title">${product.pname}</span>
@@ -441,6 +442,17 @@
 			<script type="text/javascript">
 				$(document).ready(
 						function() {
+							//로드될때 이미지들 색깔에 맞게 띄우기
+							const products = document.querySelectorAll(".item_box")
+							for(i=0; i< products.length ; i++){
+							    const img1 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage1");
+							    const img2 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage2");
+							    products[i].getElementsByClassName("respon_image")[0].setAttribute("src", img1);
+							    products[i].getElementsByClassName("respon_image")[1].setAttribute("src", img2);
+							    
+							}
+							/* $(".item_box").find("img:eq(0)").attr("src",$(this).find(".cl").attr("thumbnailimage1"));
+							$(".item_box").find("img:eq(1)").attr("src",$(this).find(".cl").attr("thumbnailimage2")); */
 							
 							//이미지 hover처리
 							$(".item_info1").hover(
