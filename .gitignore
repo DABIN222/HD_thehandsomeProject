@@ -1,2 +1,4 @@
 /.metadata/
-
+.classpath
+MANIFEST.MF
+pom.properties
