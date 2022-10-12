@@ -8,14 +8,14 @@
 	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO"> <![CDATA[ 
 		select * from product where rownum < 3 ]]> </select> -->
 
-	<select id="getListWithPaging" resultType="com.hdsm.domain.ThumbnailVO">
+	<select id="getListWithPaging" resultType="com.hdsm.domain.ProductVO">
 
         select 
-        	pid, bname, pname, pprice
+        	pid, bname, pname, pprice, p_size
 		from 
 			(
 		    select 
-		    	rownum rn, pid, bname, pname, pprice
+		    	rownum rn, pid, bname, pname, pprice, p_size
 		    from 
 		    	product
 		    where 
