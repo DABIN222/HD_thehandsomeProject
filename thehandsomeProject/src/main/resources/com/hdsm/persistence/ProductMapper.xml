@@ -32,8 +32,16 @@
 					</if>
 					
 					<if test="vo.bname!=null and vo.bname!=''">
-						AND BNAME=#{vo.bname}
+						AND BNAME = #{vo.bname} 
 					</if>
+					
+					<if test="vo.p_color != null and vo.p_color!=''">
+						AND P_COLOR LIKE '%' || #{vo.p_color } || '%'
+					</if>
+					
+					<!-- <if test="vo.p_size != 'FR'">
+					
+					</if> -->
 		    	AND
 		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
 		    	
