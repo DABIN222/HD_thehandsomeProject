@@ -17,7 +17,15 @@
 		    select 
 		    	rownum rn, pid, bname, pname, pprice, p_size
 		    from 
-		    	product
+					<!-- (select * from product order by pprice) -->
+ 		    	<choose>
+		    		<when test="fd.orderBy !=''">
+		    			(select * from product order by ${fd.orderBy})
+		    		</when>
+		    		<otherwise>
+		    			product
+		    		</otherwise>
+		    	</choose>
 		    where 
 		    	<![CDATA[1 < 2]]> 
 
@@ -30,21 +38,30 @@
 					<if test="vo.csmall != null and vo.csmall !='' ">
 						AND Csmall LIKE '%' || #{vo.csmall } || '%'
 					</if>
-					
-					<if test="vo.bname!=null and vo.bname!=''">
-						AND BNAME = #{vo.bname} 
+					<if test="fd.bnames != null">
+						AND bname in
+							<foreach 
+							collection="fd.bnames"
+							item="brandName"
+							open="(" separator="," close=")">
+							#{brandName}
+							</foreach>
+					</if>
+					<if test="fd.color != null">
+							AND p_color LIKE '%' || #{fd.color} || '%'
+					</if>
+					<if test="fd.sizes != null">
+						<foreach collection="fd.sizes" item="productSize">
+						AND p_size LIKE '%' || #{productSize} || '%'
+						</foreach>
+					</if>
+					<if test="fd.price1 != null and fd.price2 != null">
+							AND 
+							#{fd.price1} <![CDATA[< pprice AND pprice <=]]>  #{fd.price2}
 					</if>
 					
-					<if test="vo.p_color != null and vo.p_color!=''">
-						AND P_COLOR LIKE '%' || #{vo.p_color } || '%'
-					</if>
-					
-					<!-- <if test="vo.p_size != 'FR'">
-					
-					</if> -->
 		    	AND
 		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
-		    	
 			)
 		where 
 			<![CDATA[rn >  (#{cri.pageNum} - 1) * #{cri.amount}]]>

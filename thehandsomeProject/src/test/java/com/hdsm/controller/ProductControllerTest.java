@@ -60,7 +60,7 @@ public class ProductControllerTest {
 	public void testList() throws Exception {
 		log.info(
 				mockMvc.perform(
-				MockMvcRequestBuilders.get("/product/list/we01/1")
+				MockMvcRequestBuilders.get("/product/list/we01/1_1136_1%2E2_0_0_0_0")
 //				.param("pageNum", "2")
 //				.param("ctg", "we000")
 //				.param("amount", "10")
