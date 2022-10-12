@@ -82,8 +82,12 @@ public class ProductController {
 			) {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
+
+				
+
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
+
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
@@ -108,6 +112,7 @@ public class ProductController {
 		//cri = new Criteria();
 		log.info(ctg);
 		
+
 		model.addAttribute(
 				"ctg",
 				ctg
