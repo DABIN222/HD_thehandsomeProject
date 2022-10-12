@@ -71,22 +71,22 @@ public class ProductController {
 			) {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
-<<<<<<< HEAD
+
 		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
 				
-=======
+
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
 		
->>>>>>> 724e59da103bde3d99fa9dcf1e5f80c5fe7abe9e
+
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
 		String[] page_amount_info= page_amount.split("_");
 
 		
-<<<<<<< HEAD
+
 		String pagenum=page_amount_info[0];
 		cri.setPageNum(Integer.parseInt(pagenum));
 		//브랜드 검색(아직 진행중)
@@ -100,8 +100,7 @@ public class ProductController {
 		//cri = new Criteria();
 		log.info(ctg);
 		
-=======
->>>>>>> 724e59da103bde3d99fa9dcf1e5f80c5fe7abe9e
+
 		model.addAttribute(
 				"ctg",
 				ctg

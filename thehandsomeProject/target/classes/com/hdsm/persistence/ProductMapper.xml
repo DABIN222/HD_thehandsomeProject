@@ -32,7 +32,7 @@
 					</if>
 					
 					<if test="vo.bname!=null and vo.bname!=''">
-						AND BNAME=#{vo.bname}
+						AND BNAME LIKE '%' ||  #{vo.bname} || '%'
 					</if>
 		    	AND
 		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
