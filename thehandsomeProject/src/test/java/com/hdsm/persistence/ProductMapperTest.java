@@ -33,11 +33,12 @@ public class ProductMapperTest {
 		
 		ProductVO vo = new ProductVO();
 		String[] asd = new String[3];
-		asd[0] = "남성";
-		vo.setClarge(asd[0]);
-		vo.setCmedium(asd[1]);
+		//asd[0] = "여성";
+		vo.setClarge("여성");
+		vo.setCmedium("아우터");
+		vo.setCsmall("재킷");
 		
-		String str = "1_123_1.5_1_100000.300000_3";
+		String str = "1_1136_0_1_0_0_4";
 		String[] filterArr = str.split("_");
 		
 		List<String> fbnames = ProductUtil.builder().build().getBnameFilter(filterArr[2]);
@@ -45,13 +46,21 @@ public class ProductMapperTest {
 		List<String> fsizes= ProductUtil.builder().build().getSizeFilter(filterArr[4]);
 		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(filterArr[5]);
 		String forderBy = ProductUtil.builder().build().getOrderbyFilter(filterArr[6]);
+	
 		
 		FilterDTO fd = new FilterDTO();
 		fd.setBnames(fbnames);
 		fd.setColor(fcolor);
 		fd.setSizes(fsizes);
-		fd.setPrice(fprice);
+		fd.setPrice1(fprice.get(0));
+		fd.setPrice2(fprice.get(1));
 		fd.setOrderBy(forderBy);
+		
+//		log.info("---------------------"+fbnames.get(0)+""+fbnames.get(1));
+//		log.info("---------------------"+fcolor);
+//		log.info("---------------------"+fsizes.get(0)+" "+fsizes.get(1));
+//		log.info("---------------------"+fprice.get(0)+""+fprice.get(1));
+		log.info("---------------------"+forderBy);
 		
 		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri, fd);
 		List<String> productIDs = new ArrayList<String>();
@@ -73,18 +82,24 @@ public class ProductMapperTest {
 					ProductUtil.builder().build().getSizeList(product.getP_size()));
 			tn.setP_size(psizes);
 			tn.setColorList(new ArrayList<ThumbnailColorVO>());
+			Thumbnails.add(tn);
 		});
-		List<ThumbnailColorVO> colorlist = mapper.getColorList(productIDs);
 		
-		//너무 찝찝한데 이중포문... Mapper에서 Map으로 return받으면 골치아파진다는데 일단 for문으로 할까 ..	
-		for ( ThumbnailColorVO cvo : colorlist){
-			for ( ThumbnailVO pvo : Thumbnails){
-				if( pvo.getPid().equals(cvo.getProduct_pid())) {
-					pvo.getColorList().add(cvo);
-				}
+		
+		//카테고리, 필터에대한 제품 리스트가 없는경우에는 컬러 탐색을 안해야지
+		if(Productlist.size()>0) {
+			List<ThumbnailColorVO> colorlist = mapper.getColorList(productIDs);
+			//너무 찝찝한데 이중포문... Mapper에서 Map으로 return받으면 골치아파진다는데 일단 for문으로 할까 ..	
+			for ( ThumbnailColorVO cvo : colorlist){
+				for ( ThumbnailVO pvo : Thumbnails){
+					if( pvo.getPid().equals(cvo.getProduct_pid())) {
+						pvo.getColorList().add(cvo);
+					}
+				}//end for
 			}//end for
-		}//end for
-	
+		}
+		
+		log.info("-----------------------------"+Thumbnails.size());
 		for ( ThumbnailVO i : Thumbnails){
 			log.info(i);
 		}//end for

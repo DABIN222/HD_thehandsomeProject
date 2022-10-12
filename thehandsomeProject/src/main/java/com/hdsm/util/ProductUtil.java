@@ -1,13 +1,23 @@
 package com.hdsm.util;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import lombok.Builder;
+import lombok.extern.log4j.Log4j;
 
 @Builder
+@Log4j
 public class ProductUtil {
+	public String getURLDecode(String url) throws UnsupportedEncodingException {
+	    if (url == null) {
+	        return null;
+	    }
+	    return URLDecoder.decode(url, "UTF-8");
+	}
 	public String[] getCategoryName(String ctg) {
 		String[] categoryNames = new String[3];
 		
@@ -141,83 +151,83 @@ public class ProductUtil {
 	
 	//------------- 필터관련 부분~~~~~~~~~~~~~~
 	public List<String> getBnameFilter(String bf){
-		//0일경우 null 넣어야하나
-		List<String> filterList = new ArrayList<String>();
-		
-		String[] wantBrand = bf.split(".");
-		
-		for(int i = 0; i < wantBrand.length ; i++) {
-			switch(wantBrand[i]) {
-				case "1":
-					filterList.add("FOURM THE STORE");
-					break;
-				case "2":
-					filterList.add("O'2nd");
-					break;
-				case "3":
-					filterList.add("the CASHMERE");
-					break;
-				case "4":
-					filterList.add("MUE");
-					break;
-				case "5":
-					filterList.add("TIME");
-					break;
-				case "6":
-					filterList.add("MINE");
-					break;
-				case "7":
-					filterList.add("LANVIN COLLECTION");
-					break;
-				case "8":
-					filterList.add("TOM GREYHOUND");
-					break;
-				case "9":
-					filterList.add("SJSJ");
-					break;
-				case "10":
-					filterList.add("CLUB MONACO");
-					break;
-				case "11":
-					filterList.add("OBZEE");
-					break;
-				case "12":
-					filterList.add("SYSTEM");
-					break;
-				case "13":
-					filterList.add("FOURM STUDIO");
-					break;
-				case "14":
-					filterList.add("3.1 Phillip Lim");
-					break;
-				case "15":
-					filterList.add("LANVIN PARIS");
-					break;
-				case "16":
-					filterList.add("ROCHAS");
-					break;
-				case "17":
-					filterList.add("H : SCENE");
-					break;
-				case "18":
-					filterList.add("TIME HOMME");
-					break;
-				case "19":
-					filterList.add("SYSTEM HOMME");
-					break;
-				case "20":
-					filterList.add("FOURM MEN'S LOUNGE");
-					break;
-				case "21":
-					filterList.add("BALLY");
-					break;
+		//0일경우 null 미리 넣기
+		List<String> filterList = null;
+
+		if(!bf.equals("0")){
+			filterList = new ArrayList<String>();
+			String[] wantBrand = bf.split("[.]");
+			
+			for(int i = 0; i < wantBrand.length ; i++) {
+				switch(wantBrand[i]) {
+					case "1":
+						filterList.add("FOURM THE STORE");
+						break;
+					case "2":
+						filterList.add("O'2nd");
+						break;
+					case "3":
+						filterList.add("the CASHMERE");
+						break;
+					case "4":
+						filterList.add("MUE");
+						break;
+					case "5":
+						filterList.add("TIME");
+						break;
+					case "6":
+						filterList.add("MINE");
+						break;
+					case "7":
+						filterList.add("LANVIN COLLECTION");
+						break;
+					case "8":
+						filterList.add("TOM GREYHOUND");
+						break;
+					case "9":
+						filterList.add("SJSJ");
+						break;
+					case "10":
+						filterList.add("CLUB MONACO");
+						break;
+					case "11":
+						filterList.add("OBZEE");
+						break;
+					case "12":
+						filterList.add("SYSTEM");
+						break;
+					case "13":
+						filterList.add("FOURM STUDIO");
+						break;
+					case "14":
+						filterList.add("3.1 Phillip Lim");
+						break;
+					case "15":
+						filterList.add("LANVIN PARIS");
+						break;
+					case "16":
+						filterList.add("ROCHAS");
+						break;
+					case "17":
+						filterList.add("H : SCENE");
+						break;
+					case "18":
+						filterList.add("TIME HOMME");
+						break;
+					case "19":
+						filterList.add("SYSTEM HOMME");
+						break;
+					case "20":
+						filterList.add("FOURM MEN'S LOUNGE");
+						break;
+					case "21":
+						filterList.add("BALLY");
+						break;
+				}
 			}
 		}
 		
-		//인자로 0이 들어왔으면 xml에서 걸러지기위해 null을 넣자
-		if (filterList.size() == 0) {
-			filterList = null;
-		}
+
 		return filterList;
 	}
 
@@ -303,8 +313,6 @@ public class ProductUtil {
 			case "26":
 				colorFilter = "YELLOW";
 				break;
-				
-				
 		}
 		
 		return colorFilter;
@@ -328,20 +336,36 @@ public class ProductUtil {
 
 	public List<Integer> getPriceFilter(String pf){
 		List<Integer> filterList = new ArrayList<Integer>();
-		String[] priceRange = pf.split(".");
 		
-		if(priceRange.length > 0) {
-			filterList.add(Integer.parseInt(priceRange[0]));
-			filterList.add(Integer.parseInt(priceRange[1]));
-		}else {
-			filterList = null;
+		switch(pf) {
+			case "0" :
+				filterList.add(null);
+				filterList.add(null);
+				break;
+			case "1" :
+				filterList.add(0);
+				filterList.add(100000);
+				break;
+			case "2" :
+				filterList.add(100000);
+				filterList.add(300000);
+				break;
+			case "3" :
+				filterList.add(300000);
+				filterList.add(500000);
+				break;
+			case "4" :
+				filterList.add(500000);
+				filterList.add(9000000);
+				break;
+		
 		}
 		
 		return filterList;
 	}
 
 	public String getOrderbyFilter(String of) {
-		String orderByFilter = null;
+		String orderByFilter = "";
 		
 		switch(of) {
 			case "1":
@@ -360,5 +384,6 @@ public class ProductUtil {
 		
 		return orderByFilter;
 	}
+
 }
 
