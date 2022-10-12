@@ -41,7 +41,7 @@
 .items_list li:first-child{margin: 0 8px 0 0!important;}
 .items_list li .item_box{position: relative;padding-bottom:40px;}
 .items_list li .item_box a{display: block;position: relative;font-size:11px;}
-.items_list li .item_box .item_info1 .item_size{display:inline-block;position: absolute;left:0;bottom:0;width:100%;padding:15px 0;background:url("/_ui/desktop/common/images/products/item_size_bg.png");text-align: center}
+.items_list li .item_box .item_info1 .item_size{display:inline-block;position: absolute;left:0;bottom:0;width:100%;padding:15px 0;background:url("/resources/image/item_size_bg.png");text-align: center}
 .items_list li .item_box .item_info1{margin-bottom:8px;letter-spacing: 1px}
 .items_list li .item_box .item_info1 .item_img{position: relative;display:block;}
 .items_list li .item_box .item_info1 .item_img img{width:100%;max-width:294px;}

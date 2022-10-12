@@ -376,15 +376,20 @@
 										<input type="hidden" id="newImage2_0"
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T02.jpg" />
 								</span> 
-								<!-- <span class="item_size" id="itemsize_0"
+								<span class="item_size" id="itemsize_0"
 									style="display: none; height: 20px; padding-top: 15px; margin-top: 0px; padding-bottom: 15px; margin-bottom: 0px;">
-										<div id="TM2CAWOT761W_BK">
+										<div>
+											<c:forEach items="${product.p_size}" var="size">
+												<span>${size}</span>
+											</c:forEach>
+										</div>
+<!-- 										<div id="TM2CAWOT761W_BK">
 											<span>82</span>
 										</div>
 										<div id="TM2CAWOT761W_IV" style="display: none">
 											<span>82</span>
-										</div>
-								</span> -->
+										</div> -->
+								</span>
 								</a> <a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
 									class="item_info2" onclick="setEcommerceData('0', 'CATEGORY');">
 									<span class="brand">${product.bname}</span> <span class="title">${product.pname}</span>
@@ -459,12 +464,15 @@
 									function(){
 										$(this).find("img:eq(1)").css('display', 'block');
 										$(this).find("img:eq(1)").css('opacity', 1);
+										//사이즈 보여지게 처리
+										$(this).find(".item_size").css('display', 'block');
 										
 									},
 									function(){
 										$(this).find("img:eq(1)").css('opacity', 0);
 										$(this).find("img:eq(1)").css('display', 'none');
-										
+										//사이즈 안보이게 처리
+										$(this).find(".item_size").css('display', 'none');
 									}
 									);
 							
@@ -478,6 +486,9 @@
 							
 							//페이징 버튼 처리
 							var actionForm = $("#actionForm"); //폼등록
+							
+							var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
+							
 							$(".pageBtn").on("click", function(e) {
 										e.preventDefault(); //<a> 작동 중지
 										/* actionForm
@@ -486,8 +497,42 @@
 										actionForm.submit(); //form submit */
 										location.href="/product/list/${ctg}/"+$(this).attr("pagenum");
 									});//end click
+							
+							//이전 < 버튼을 누를 경우 실행
+							$(".prev").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1);
+							});
+							
+							//다음 > 버튼을 누를 경우 실행
+							$(".next").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1);
+							});
+							
+							//맨 끝 >> 버튼을 누를 경우 실행
+							$(".next2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}";
+							});
+							
+							//맨 처음 << 버튼을 누를 경우 실행
+							$(".prev2").on("click",function(e){
+								e.preventDefault(); //<a> 작동 중지
+								console.log('click');
+								location.href="/product/list/${ctg}/1";
+							});
+							
+							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
+							$(".item_img").on("click",function(e){
+								console.log('click');
+								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum");
+							});
 							//현재 페이지 버튼의 class에 "on" 추가하기
-							$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']").addClass("on");
+							curPageNum.addClass("on");
 						});
 			</script>
 			<!-- //paging -->

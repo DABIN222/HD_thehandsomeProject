@@ -1,5 +1,7 @@
 package com.hdsm.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductVO;
+import com.hdsm.domain.ThumbnailVO;
 import com.hdsm.service.ProductService;
-import com.hdsm.util.ExtractCategoryName;
+import com.hdsm.util.ProductUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,7 +29,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
-	
+
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {
@@ -52,29 +55,34 @@ public class ProductController {
 //		model.addAttribute("prodList", service.getList(product));
 //	}
 	
-	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기
-	@GetMapping("/list/{ctg}/{pagenum}")
+	//전체 리스트를 볼 경우 실행
+	@GetMapping("/list")
+	public String productList() {
+		return "redirect:/product/list/123/1";
+	}
+	
+	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
+	//ctg만 있을 경우 겁색한 카테고리의 1페이지로 이동
+	@GetMapping({"/list/{ctg}/{pagenum}","/list/{ctg}"})
 	public String productList(
-			@PathVariable("pagenum") String pagenum,
-			@PathVariable("ctg") String ctg,
+			@PathVariable(required= false) String pagenum,
+			@PathVariable(required=false) String ctg,
 			Model model
 			) {
+		
+		if(pagenum==null) pagenum="1";
 		
 		Criteria cri= new Criteria();
 		cri.setPageNum(Integer.parseInt(pagenum));
 		
 		ProductVO product = new ProductVO();
-		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
+		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
+		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
-		System.out.println(ctgName.toString());
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);
-		
-		//일단 임시로 파람을 못주니까 임의로 줘보자
-		//cri = new Criteria();
-		log.info(ctg);
 		
 		model.addAttribute(
 				"ctg",
@@ -100,7 +108,7 @@ public class ProductController {
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		model.addAttribute(
 				"pageMaker",
-				new PageDTO(cri,150)
+				new PageDTO(cri,service.productCount(product))
 				);
 		
 		return "product/list";
