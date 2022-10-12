@@ -28,6 +28,9 @@
 		<!-- 대, 중, 소 카테고리 표시 -->
 		<h3 class="cnts_title ou1804">
 			<span> <!-- 정상 브랜드 카테고리 목록 --> 
+				<c:if test = "${not empty bname}">
+					<a href="javascript:void(0);" >${bname}</a>
+				</c:if>
 				<c:if test = "${not empty ctgName[0]}">
 					<a href="javascript:void(0);" >${ctgName[0]}</a>
 				</c:if>
@@ -487,35 +490,51 @@
 												.find("input[name='pageNum']")
 												.val($(this).attr("pagenum"));
 										actionForm.submit(); //form submit */
-										location.href="/product/list/${ctg}/"+$(this).attr("pagenum");
+										location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+"_${productCount}";
 									});//end click
 							
 							//이전 < 버튼을 누를 경우 실행
 							$(".prev").on("click",function(e){
+								if(parseInt(curPageNum.attr("pagenum"))===1){
+									alert("처음페이지입니다.");
+								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1);
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}";
+								}
 							});
 							
 							//다음 > 버튼을 누를 경우 실행
 							$(".next").on("click",function(e){
+								if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
+									alert("마지막페이지입니다.");
+								} else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1);
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}";
+								}
 							});
 							
 							//맨 끝 >> 버튼을 누를 경우 실행
 							$(".next2").on("click",function(e){
+								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
+									alert("마지막페이지입니다.");
+								} else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/${pageMaker.realEnd}";
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}_${productCount}";
+								}
 							});
 							
 							//맨 처음 << 버튼을 누를 경우 실행
 							$(".prev2").on("click",function(e){
+								if(parseInt(curPageNum.attr("pagenum"))===1){
+									alert("처음페이지입니다.");
+								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/1";
+								location.href="/product/list/${ctg}/1_${productCount}";
+								}
 							});
 							
 							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
