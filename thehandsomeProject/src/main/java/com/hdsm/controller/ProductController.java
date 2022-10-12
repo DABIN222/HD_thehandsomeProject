@@ -55,15 +55,26 @@ public class ProductController {
 //		model.addAttribute("prodList", service.getList(product));
 //	}
 	
-	//전체 리스트를 볼 경우 실행
-	@GetMapping("/list")
-	public String productList() {
-		return "redirect:/product/list/123/1";
+	//처음 카테고리 목록 할때 상품 개수를 세고 뒤에 pageNum_productCount_필터들 이런식으로 만들어서 redirect (1page부터 시작)
+	@GetMapping("/list/{ctg}")
+	public String productList(
+			@PathVariable(required=false) String ctg
+			) {
+		Criteria cri= new Criteria();
+		ProductVO product = new ProductVO();
+		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
+		
+		product.setClarge(ctgName[0]);
+		product.setCmedium(ctgName[1]);
+		product.setCsmall(ctgName[2]);	
+		
+		int ctgProductCount = service.productCount(product);
+		
+		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount;
 	}
 	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
-	//ctg만 있을 경우 겁색한 카테고리의 1페이지로 이동
-	@GetMapping({"/list/{ctg}/{page_amount}","/list/{ctg}"})
+	@GetMapping({ "/list/{ctg}/{page_amount}"/* ,"/list/{ctg}" */})
 	public String productList(
 			@PathVariable(required= false) String page_amount,
 			@PathVariable(required=false) String ctg,
@@ -71,22 +82,19 @@ public class ProductController {
 			) {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
-<<<<<<< HEAD
-		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
-				
-=======
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
-		
->>>>>>> 724e59da103bde3d99fa9dcf1e5f80c5fe7abe9e
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
+		
+		if (page_amount==null) {
+			page_amount = "1";
+		}
 		String[] page_amount_info= page_amount.split("_");
 
 		
-<<<<<<< HEAD
 		String pagenum=page_amount_info[0];
 		cri.setPageNum(Integer.parseInt(pagenum));
 		//브랜드 검색(아직 진행중)
@@ -100,8 +108,6 @@ public class ProductController {
 		//cri = new Criteria();
 		log.info(ctg);
 		
-=======
->>>>>>> 724e59da103bde3d99fa9dcf1e5f80c5fe7abe9e
 		model.addAttribute(
 				"ctg",
 				ctg
@@ -136,7 +142,6 @@ public class ProductController {
 				);
 		}
 		return "product/list";
-		
 	}
 	
 	//상품 상세 정보 보기
