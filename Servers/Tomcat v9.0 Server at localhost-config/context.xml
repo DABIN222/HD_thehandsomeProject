@@ -21,11 +21,8 @@
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
     <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
-<<<<<<< HEAD
 	    <ResourceLink global="dbcp_myoracle" name="dbcp_myoracle" type="javax.sql.DataSource"/>
 
-=======
->>>>>>> 96a6bd71595bbe33dbfc35d0f0594f5e31fdcca8
 
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
