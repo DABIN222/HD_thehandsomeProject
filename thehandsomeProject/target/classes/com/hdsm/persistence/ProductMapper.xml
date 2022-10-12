@@ -30,6 +30,10 @@
 					<if test="vo.csmall != null and vo.csmall !='' ">
 						AND Csmall LIKE '%' || #{vo.csmall } || '%'
 					</if>
+					
+					<if test="vo.bname!=null and vo.bname!=''">
+						AND BNAME=#{vo.bname}
+					</if>
 		    	AND
 		    	<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
 		    	
