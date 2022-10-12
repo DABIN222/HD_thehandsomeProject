@@ -60,9 +60,9 @@ public class ProductControllerTest {
 	public void testList() throws Exception {
 		log.info(
 				mockMvc.perform(
-				MockMvcRequestBuilders.get("/product/list")
-				.param("pageNum", "2")
-				.param("ctg", "we000")
+				MockMvcRequestBuilders.get("/product/list/we01/1")
+//				.param("pageNum", "2")
+//				.param("ctg", "we000")
 //				.param("amount", "10")
 //				.param("clarge", "남성")
 //				.param("cmedium", "아우터")

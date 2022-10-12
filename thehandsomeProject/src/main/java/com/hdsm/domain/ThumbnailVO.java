@@ -10,6 +10,7 @@ public class ThumbnailVO {
 	private String bname;
 	private String pname;
 	private int pprice;
+	private List<String> p_size;
 	private List<ThumbnailColorVO> colorList;
 	
 }

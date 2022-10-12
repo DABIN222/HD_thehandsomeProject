@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductVO;
+import com.hdsm.domain.ThumbnailVO;
 import com.hdsm.service.ProductService;
-import com.hdsm.util.ExtractCategoryName;
+import com.hdsm.util.ProductUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -28,7 +29,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
-	
+
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {
@@ -75,16 +76,13 @@ public class ProductController {
 		cri.setPageNum(Integer.parseInt(pagenum));
 		
 		ProductVO product = new ProductVO();
-		String[] ctgName = ExtractCategoryName.getCategoryName(ctg); 
+		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
+		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);
-		
-		//일단 임시로 파람을 못주니까 임의로 줘보자
-		//cri = new Criteria();
-		log.info(ctg);
 		
 		model.addAttribute(
 				"ctg",
