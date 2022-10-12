@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\Administrator\Desktop\project2\HD_thehandsomeProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1579094274.index
-\thehandsomeProject\src\main\java
-C:\Users\Administrator\Desktop\project2\HD_thehandsomeProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2439636716.index
-\thehandsomeProject\src\main\java
