@@ -2,8 +2,11 @@ package com.hdsm.util;
 
 import java.util.HashMap;
 
-public class ExtractCategoryName {
-	public static String[] getCategoryName(String ctg) {
+import lombok.Builder;
+
+@Builder
+public class ProductUtil {
+	public String[] getCategoryName(String ctg) {
 		String[] categoryNames = new String[3];
 		
 		//여성
@@ -127,5 +130,9 @@ public class ExtractCategoryName {
 		  else if (ctg.equals("as078")) { categoryNames[0] = "잡화"; categoryNames[1] = "기타 ACC"; categoryNames[2] = "기타소품"; }
 
 		return categoryNames;
+	}
+
+	public String[] getSizeList(String sizes) {
+		return sizes.split(",");
 	}
 }

@@ -373,21 +373,26 @@
 										id="T02_IMG_0" alt="${product.pname}"
 										targetcode="TM2CAWOT761W_BK" class="respon_image on"
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img3.jpg'"
-										style= "display: none; opacity: 1; " /> <input type="hidden"
+										style= "/* display: none; */opacity: 0;" /> <input type="hidden"
 										id="newImage1_0"
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T01.jpg" />
 										<input type="hidden" id="newImage2_0"
 										value="http://newmedia.thehandsome.com/TM/2C/FW/TM2CAWOT761W_BK_T02.jpg" />
 								</span> 
-								<!-- <span class="item_size" id="itemsize_0"
+								<span class="item_size" id="itemsize_0"
 									style="display: none; height: 20px; padding-top: 15px; margin-top: 0px; padding-bottom: 15px; margin-bottom: 0px;">
-										<div id="TM2CAWOT761W_BK">
+										<div>
+											<c:forEach items="${product.p_size}" var="size">
+												<span>${size}</span>
+											</c:forEach>
+										</div>
+<!-- 										<div id="TM2CAWOT761W_BK">
 											<span>82</span>
 										</div>
 										<div id="TM2CAWOT761W_IV" style="display: none">
 											<span>82</span>
-										</div>
-								</span> -->
+										</div> -->
+								</span>
 								</a> <a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
 									class="item_info2" onclick="setEcommerceData('0', 'CATEGORY');">
 									<span class="brand">${product.bname}</span> <span class="title">${product.pname}</span>
@@ -460,14 +465,19 @@
 							//이미지 hover처리
 							$(".item_info1").hover(
 									function(){
-										$(this).find("img:eq(1)").css('display', 'block');
+										//$(this).find("img:eq(1)").css('display', 'block');
+										$(this).find("img:eq(1)").css('visibility', 'visible');
 										$(this).find("img:eq(1)").css('opacity', 1);
+										//사이즈 보여지게 처리
+										$(this).find(".item_size").css('display', 'block');
 										
 									},
 									function(){
 										$(this).find("img:eq(1)").css('opacity', 0);
-										$(this).find("img:eq(1)").css('display', 'none');
-										
+										$(this).find("img:eq(1)").css('visibility', 'hidden');
+										//$(this).find("img:eq(1)").css('display', 'none');
+										//사이즈 안보이게 처리
+										$(this).find(".item_size").css('display', 'none');
 									}
 									);
 							
