@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hdsm.domain.Criteria;
+import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.domain.ThumbnailVO;
@@ -35,7 +36,24 @@ public class ProductMapperTest {
 		asd[0] = "남성";
 		vo.setClarge(asd[0]);
 		vo.setCmedium(asd[1]);
-		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri);
+		
+		String str = "1_123_1.5_1_100000.300000_3";
+		String[] filterArr = str.split("_");
+		
+		List<String> fbnames = ProductUtil.builder().build().getBnameFilter(filterArr[2]);
+		String fcolor = ProductUtil.builder().build().getColorFilter(filterArr[3]);
+		List<String> fsizes= ProductUtil.builder().build().getSizeFilter(filterArr[4]);
+		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(filterArr[5]);
+		String forderBy = ProductUtil.builder().build().getOrderbyFilter(filterArr[6]);
+		
+		FilterDTO fd = new FilterDTO();
+		fd.setBnames(fbnames);
+		fd.setColor(fcolor);
+		fd.setSizes(fsizes);
+		fd.setPrice(fprice);
+		fd.setOrderBy(forderBy);
+		
+		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri, fd);
 		List<String> productIDs = new ArrayList<String>();
 		
 		//실제로 담을 List
