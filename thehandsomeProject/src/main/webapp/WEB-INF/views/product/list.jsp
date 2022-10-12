@@ -518,7 +518,7 @@
 							$(".next").on("click",function(e){
 								if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
 									alert("마지막페이지입니다.");
-								} else{
+								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
 								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}";
@@ -529,7 +529,7 @@
 							$(".next2").on("click",function(e){
 								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
 									alert("마지막페이지입니다.");
-								} else{
+								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
 								location.href="/product/list/${ctg}/${pageMaker.realEnd}_${productCount}";
