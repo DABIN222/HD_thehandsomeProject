@@ -2,28 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<link rel="shortcut icon"
-	href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
-<link rel="stylesheet" href="/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/layout.css"
-	media="all">
-<link rel="stylesheet" href="/resources/css/product.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/brand.css"
-	media="all">
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/contents.css" media="all">
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!-- 제이쿼리 룰루~ -->
-</head>
-<body oncontextmenu="return false">
+<%@include file ="/WEB-INF/views/common/header.jspf" %>
 	<div id="bodyWrap" class="products">
 		<!-- 대, 중, 소 카테고리 표시 -->
 		<h3 class="cnts_title ou1804">
@@ -413,6 +392,7 @@
 							curPageNum.addClass("on");
 						});
 				
+<<<<<<< HEAD
 				function FilterBtn()
 				
 				$("input:checkbox[name=brand]:checked").each(function(){
@@ -421,6 +401,8 @@
 				});
 				
 
+=======
+>>>>>>> 0b41b16f4de4540c2560d18b33e536df73fd5525
 				$("#brand_li_btn").click(function(){
 				    $("#brand_list_li").slideToggle(),
 				    $("#sortby_list_li").slideUp(),
@@ -491,15 +473,8 @@
 				       
 				        $("#chang_filter_categoriy").html($("#star").text());
 				    }
-
-
-				
-				
-				
-				
 			</script>
 			<!-- //paging -->
 		</div>
 	</div>
-</body>
-</html>
+<%@include file ="/WEB-INF/views/common/footer.jspf" %>

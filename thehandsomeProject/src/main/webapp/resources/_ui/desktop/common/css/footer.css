@@ -1,6 +1,3 @@
-@charset "UTF-8";
-/* footer.css */
-#footer_style{position: fixed;bottom: 0;width: 100%;}
 /*201708 footer start*/
 #topBtn{position:fixed;right:50%;margin-right:-660px;top:79%;z-index:999;display:none;}
 #footerWrap{border-top:1px solid #e3e3e3;margin-bottom:0;margin-top:53px;clear:both;}
@@ -56,7 +53,7 @@
 #noticeWrap .list .tlt{font-size:11px;}
 /*201708 footer end*/
 /*201711 delivery service*/
-#footerWrap .footer .footer_cnts1 .cnts1_right ul{float:left;width:125px;}/* 200407 수정 */
+#footerWrap .footer .footer_cnts1 .cnts1_right ul{float:left;width:105px;}/* 200407 수정 */
 #footerWrap .footer .footer_cnts1 .cnts1_right ul li{float:none;margin-bottom:15px;}
 #footerWrap .footer .footer_cnts1 .cnts1_right .cnts1_right_inner{margin-top:17px;height:auto;float:right;}
 #footerWrap .footer .footer_cnts1 .footer_menu{width:73%;}/* 200407 수정 */
