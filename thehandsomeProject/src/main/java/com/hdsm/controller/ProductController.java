@@ -96,6 +96,11 @@ public class ProductController {
 		
 		String[] page_amount_info= info.split("_");
 		
+		String page_info_ex ="";
+		
+		for(int i=1; i<7;i++) {
+			page_info_ex+=("_"+page_amount_info[i]);
+		}
 		String pagenum=page_amount_info[0];
 		cri.setPageNum(Integer.parseInt(pagenum));
 
@@ -119,7 +124,13 @@ public class ProductController {
 				"productList", 
 				service.getProductThumbnailListWithPaging(product, cri, info)
 				);
-
+		
+		model.addAttribute(
+				"page_info_ex",
+				page_info_ex
+				
+				);
+			
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		if(page_amount_info.length<2) {
 			model.addAttribute(
