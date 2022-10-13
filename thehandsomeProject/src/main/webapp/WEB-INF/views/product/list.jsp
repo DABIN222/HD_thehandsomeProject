@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
+	
+	
 	<div id="bodyWrap" class="products">
 		<!-- 대, 중, 소 카테고리 표시 -->
 		<h3 class="cnts_title ou1804">
@@ -24,7 +27,7 @@
 						src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 						alt="location arr" />
 					<a href="javascript:void(0);" >${ctgName[2]}</a>
-				</c:if>
+				</c:if>	
 <!-- 			<a href="/ko/c/WE/" onclick="GA_Event('카테고리_리스트','카테고리','여성')"> 여성</a> <img
 				src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 				alt="location arr" /> <a href="/ko/c/WE05/"
@@ -391,32 +394,56 @@
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							curPageNum.addClass("on");
 						});
-				
+
 				$("#brand_li_btn").click(function(){
-				    $("#brand_list_li").slideToggle();
-				 
+				    $("#brand_list_li").slideToggle(),
+				    $("#sortby_list_li").slideUp(),
+				    $("#size_list_li").slideUp(),
+				    $("#price_list_li").slideUp(),
+				    $("#color_list_li").slideUp();
 				}),
 
 				$("#color_li_btn").click(function(){
-				    $("#color_list_li").slideToggle();
+				    $("#color_list_li").slideToggle(),
+				    $("#sortby_list_li").slideUp(),
+				    $("#size_list_li").slideUp(),
+				    $("#price_list_li").slideUp(),
+				    $("#brand_list_li").slideUp();
+				   
 				 
 				}),
 
 				$("#size_li_btn").click(function(){
-				    $("#size_list_li").slideToggle();
+
+				    $("#size_list_li").slideToggle(),
+				    $("#sortby_list_li").slideUp(),
+				    $("#price_list_li").slideUp(),
+				    $("#brand_list_li").slideUp(),
+				    $("#color_list_li").slideUp();
+				   
 				 
 				}),
 
 				$("#price_li_btn").click(function(){
-				    $("#price_list_li").slideToggle();
+				   
+				    $("#price_list_li").slideToggle(),
+				    $("#sortby_list_li").slideUp(),
+				    $("#size_list_li").slideUp(),
+				    $("#brand_list_li").slideUp(),
+				    $("#color_list_li").slideUp();
 				 
 				}),
 
 				$("#sortby_li_btn").click(function(){
-				    $("#sortby_list_li").slideToggle();
+				    
+				    $("#sortby_list_li").slideToggle(),
+				    $("#size_list_li").slideUp(),
+				    $("#brand_list_li").slideUp(),
+				    $("#color_list_li").slideUp(),
+				    $("#price_list_li").slideUp();
+
 				 
 				});
-			
 				 function change1(){
 				     
 				        $("#chang_filter_categoriy").html($("#new").text());
