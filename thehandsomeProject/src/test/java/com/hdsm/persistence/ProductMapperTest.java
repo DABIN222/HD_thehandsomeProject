@@ -105,7 +105,7 @@ public class ProductMapperTest {
 		}//end for
 	}//end testP
 
-	//@Test
+	@Test
 	public void testProductCount() {
 		ProductVO vo = new ProductVO();
 		String[] asd = new String[3];
@@ -113,8 +113,25 @@ public class ProductMapperTest {
 		vo.setClarge(asd[0]);
 		vo.setCmedium(asd[1]);
 		
+		String str = "1_1136_0_1_0_0_4";
+		String[] filterArr = str.split("_");
 		
-		log.info(mapper.productCount(vo));
+		List<String> fbnames = ProductUtil.builder().build().getBnameFilter(filterArr[2]);
+		String fcolor = ProductUtil.builder().build().getColorFilter(filterArr[3]);
+		List<String> fsizes= ProductUtil.builder().build().getSizeFilter(filterArr[4]);
+		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(filterArr[5]);
+		String forderBy = ProductUtil.builder().build().getOrderbyFilter(filterArr[6]);
+	
+		
+		FilterDTO fd = new FilterDTO();
+		fd.setBnames(fbnames);
+		fd.setColor(fcolor);
+		fd.setSizes(fsizes);
+		fd.setPrice1(fprice.get(0));
+		fd.setPrice2(fprice.get(1));
+		fd.setOrderBy(forderBy);
+		
+		log.info("---------------"+mapper.productFiltedCount(vo, fd));
 	}
 	
 //	//브랜드에 따라 필터 설정

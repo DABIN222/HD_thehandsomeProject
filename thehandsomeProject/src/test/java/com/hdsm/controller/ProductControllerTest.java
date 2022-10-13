@@ -55,7 +55,7 @@ public class ProductControllerTest {
 //				);
 //		
 //	}//end testList
-	
+	//1_1136_1%2E2_0_0_0_0
 	@Test
 	public void testList() throws Exception {
 		log.info(
@@ -71,6 +71,18 @@ public class ProductControllerTest {
 				.getModelAndView()
 				.getModelMap()
 				);
-		
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.get("/product/list/we01/1_1136_1%2E2_0_0_0_1")
+//				.param("pageNum", "2")
+//				.param("ctg", "we000")
+//				.param("amount", "10")
+//				.param("clarge", "남성")
+//				.param("cmedium", "아우터")
+//				.param("csmall", "코트")
+				).andReturn()
+				.getModelAndView()
+				.getModelMap()
+				);
 	}//end testList
 }

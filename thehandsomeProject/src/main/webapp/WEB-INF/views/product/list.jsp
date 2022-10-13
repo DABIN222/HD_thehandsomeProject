@@ -510,7 +510,7 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}";
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"+"_1_0_0_0_0";
 								}
 							});
 							
@@ -521,7 +521,7 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}";
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0";
 								}
 							});
 							

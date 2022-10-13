@@ -1,7 +1,10 @@
 package com.hdsm.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hdsm.domain.Criteria;
+import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailVO;
@@ -57,7 +61,7 @@ public class ProductController {
 //	}
 	
 	//처음 카테고리 목록 할때 상품 개수를 세고 뒤에 pageNum_productCount_필터들 이런식으로 만들어서 redirect (1page부터 시작)
-	@GetMapping("/list/{ctg}")
+	@GetMapping("/list/{ctg}/")
 	public String productList(
 			@PathVariable(required=false) String ctg
 			) {
@@ -79,26 +83,70 @@ public class ProductController {
 	public String productList(
 			@PathVariable(required=false) String ctg,
 			@PathVariable(required=false) String info,
+			HttpServletRequest request,// 이전 url에서 info가 다르면 처리하기위해 이전 url 가져올수 있는 request를 받아옴
 			Model model
 			) throws UnsupportedEncodingException {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
 
 		info = ProductUtil.builder().build().getURLDecode(info);
-		log.info("--------------"+info);
+		
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
-
 		
+		//filter 부분(브랜드, 컬러, 사이즈, 가격, (정렬순은 크기가 달라지지 않으니 생략))이 다른지 확인 후
+		// 다르면 1page 부터 다시 적용되는 페이지를 return
+		String prevInfo = request.getHeader("Referer");
+		
+		
+		//현 필터값 적용을 위한 FilterDTO 객체 만들어주기
+		String[] pageInfo= info.split("_");		
+		int pagenum = Integer.parseInt(pageInfo[0]);
+		int productTotal = Integer.parseInt(pageInfo[1]);
+		
+		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(pageInfo[5]);
+	
+		FilterDTO fd = new FilterDTO();
+		fd.setBnames(ProductUtil.builder().build().getBnameFilter(pageInfo[2]));
+		fd.setColor(ProductUtil.builder().build().getColorFilter(pageInfo[3]));
+		fd.setSizes(ProductUtil.builder().build().getSizeFilter(pageInfo[4]));
+		fd.setPrice1(fprice.get(0));
+		fd.setPrice2(fprice.get(1));
+		fd.setOrderBy(ProductUtil.builder().build().getOrderbyFilter(pageInfo[6]));
+		
+		//공통부분
+		cri.setPageNum(pagenum);
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
 		
-		String[] page_amount_info= info.split("_");
+		//맨처음 로드될때는 이전info값이 없어서 null이 반환됨 그래서 아래같이 임시 info를 넣어줌
+		if(prevInfo == null) {
+			prevInfo = "0_0_0_0_0_0_0";
+		}
+		String[] prevInfos = prevInfo.split("_");
 		
-		String pagenum=page_amount_info[0];
-		cri.setPageNum(Integer.parseInt(pagenum));
+		boolean isFilterChange = false;//filter부분이 바뀌었는지 체크
+		
+		//브랜드, 컬러, 사이즈, 컬러 다른지 확인
+		for(int i = 2; i< prevInfos.length-1 ; i++) {
+			if(!prevInfos[i].equals(pageInfo[i])) {
+				isFilterChange = true;//만약 필터가 바뀌었다면 true로 바꿔줌!
+			}
+		}
+		// 필터가 바뀌었으면  pageNum을 1로 바꿔주고  Total 개수를 다시 세고 물건을 가져오기 위해 fd를 바뀐 필터대로 바꿔줘야해
+		if(isFilterChange) {
+			
+			log.info("필터가 바꼈어 !!!!!!!!!");
+			log.info(info);
+			log.info(prevInfo);
+			
+			pagenum = 1;
+			productTotal = service.productFiltedCount(product, fd);
+		}
+		
 
+		
 		model.addAttribute(
 				"ctg",
 				ctg
@@ -117,21 +165,15 @@ public class ProductController {
 		
 		model.addAttribute(
 				"productList", 
-				service.getProductThumbnailListWithPaging(product, cri, info)
+				service.getProductThumbnailListWithPaging(product, cri, fd)
 				);
 
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
-		if(page_amount_info.length<2) {
-			model.addAttribute(
-					"pageMaker",
-					new PageDTO(cri,service.productCount(product))
-					);
-		}else {
 		model.addAttribute(
 				"pageMaker",
-				new PageDTO(cri,Integer.parseInt(page_amount_info[1]))
+				new PageDTO(cri,productTotal)
 				);
-		}
+		
 		return "product/list";
 	}
 	
