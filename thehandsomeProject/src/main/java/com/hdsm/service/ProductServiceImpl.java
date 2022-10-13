@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hdsm.domain.Criteria;
+import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.domain.ThumbnailVO;
@@ -35,13 +36,32 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri) {
-		//ProductVO 는 controller에서 인자로 받을꺼임 (일단은 RequestParam 나중에 경로로 하든 뭐든 바꾸보자)
-		//cri는 Getmapping에서 param으로 넘겨받아 옴
+	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri, String fstr) {
+
+		String[] filterArr = fstr.split("_");
 		
+		List<String> fbnames = ProductUtil.builder().build().getBnameFilter(filterArr[2]);
+		String fcolor = ProductUtil.builder().build().getColorFilter(filterArr[3]);
+		List<String> fsizes= ProductUtil.builder().build().getSizeFilter(filterArr[4]);
+		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(filterArr[5]);
+		String forderBy = ProductUtil.builder().build().getOrderbyFilter(filterArr[6]);
+	
 		
-		//첫번째 mapper사용은 카테고리별, 페이징 별 product정보를 담아옴 => ThumbnailVO(pid, bname, pname, pprice, colorList{이놈은 아래서 가져옴})
-		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri);
+		FilterDTO fd = new FilterDTO();
+		fd.setBnames(fbnames);
+		fd.setColor(fcolor);
+		fd.setSizes(fsizes);
+		fd.setPrice1(fprice.get(0));
+		fd.setPrice2(fprice.get(1));
+		fd.setOrderBy(forderBy);
+		
+//		log.info("---------------------"+fbnames.get(0)+""+fbnames.get(1));
+//		log.info("---------------------"+fcolor);
+//		log.info("---------------------"+fsizes.get(0)+" "+fsizes.get(1));
+//		log.info("---------------------"+fprice.get(0)+""+fprice.get(1));
+		log.info("---------------------"+forderBy);
+		
+		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri, fd);
 		List<String> productIDs = new ArrayList<String>();
 		
 		//실제로 담을 List
@@ -63,17 +83,25 @@ public class ProductServiceImpl implements ProductService {
 			tn.setColorList(new ArrayList<ThumbnailColorVO>());
 			Thumbnails.add(tn);
 		});
-		List<ThumbnailColorVO> colorlist = mapper.getColorList(productIDs);
 		
-		//너무 찝찝한데 이중포문... Mapper에서 Map으로 return받으면 골치아파진다는데 일단 for문으로 할까 ..	
-		for ( ThumbnailColorVO cvo : colorlist){
-			for ( ThumbnailVO thumb : Thumbnails){
-				if(thumb.getPid().equals(cvo.getProduct_pid())) {
-					thumb.getColorList().add(cvo);	
-				}
+		
+		//카테고리, 필터에대한 제품 리스트가 없는경우에는 컬러 탐색을 안해야지
+		if(Productlist.size()>0) {
+			List<ThumbnailColorVO> colorlist = mapper.getColorList(productIDs);
+			//너무 찝찝한데 이중포문... Mapper에서 Map으로 return받으면 골치아파진다는데 일단 for문으로 할까 ..	
+			for ( ThumbnailColorVO cvo : colorlist){
+				for ( ThumbnailVO pvo : Thumbnails){
+					if( pvo.getPid().equals(cvo.getProduct_pid())) {
+						pvo.getColorList().add(cvo);
+					}
+				}//end for
 			}//end for
-		}//end for
+		}
 
+		for ( ThumbnailVO i : Thumbnails){
+			log.info(i);
+		}//end for
+		
 		return Thumbnails;
 	}
 
