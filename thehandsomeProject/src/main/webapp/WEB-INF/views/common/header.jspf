@@ -50,7 +50,7 @@
 				
 					<div class="util_menu" style="display:block;">
 						<ul class="clearfix">
-							<li><a href="#">로그인<!-- 로그인 --></a></li>
+							<li><a href="/member/login/">로그인<!-- 로그인 --></a></li>
 							<li class="header_dropmemu mypage">
 									
 								<a href="#" class="btn">마이페이지</a>
