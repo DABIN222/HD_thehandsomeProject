@@ -94,13 +94,12 @@ public class ProductController {
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
-
-		
 		
 		//현 필터값 적용을 위한 FilterDTO 객체 만들어주기
 		String[] pageInfo= info.split("_");		
 		int pagenum = Integer.parseInt(pageInfo[0]);
 		int productTotal = Integer.parseInt(pageInfo[1]);
+		String page_info_ex = "_"+pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6];
 		
 		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(pageInfo[5]);
 	
@@ -146,7 +145,7 @@ public class ProductController {
 
 			 cri.setPageNum(1); 
 			 productTotal = service.productFiltedCount(product, fd);
-			 String filterStr = pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6]; 
+			 String filterStr = pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6];
 			 //return "/product/list/"+ctg+"/1_"+productTotal+"_"+filterStr; 
 		}
 		 
@@ -174,11 +173,11 @@ public class ProductController {
 				service.getProductThumbnailListWithPaging(product, cri, fd)
 				);
 		
-//		model.addAttribute(
-//				"page_info_ex",
-//				page_info_ex
-//				
-//				);
+		model.addAttribute(
+				"page_info_ex",
+				page_info_ex
+				
+				);
 			
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		model.addAttribute(

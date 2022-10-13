@@ -92,7 +92,7 @@
                         </ul>
                     </div>
                  </li>
-                 <li class="color"  id="color_li_btn"><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','색상');">색상<span class="ico_arr">arrow</span></a>
+                 <li class="color"  id="color_li_btn"><a href="javascript:void(0);" class="select">색상<span class="ico_arr">arrow</span></a>
                     <div class="list list_item4" id="color_list_li" style="display: none;">
                         <ul class="color_chip clearfix" id="category_color_chip">
                         	<li><a href="javascript:void(0);" style="background:#fae7c4;" value="1" name="color_a">BEIGE</a></li>
@@ -124,7 +124,7 @@
                             </ul>
                     </div>
                 </li>
-                <li class="size" id="size_li_btn"><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','사이즈')">사이즈<span class="ico_arr">arrow</span></a>
+                <li class="size" id="size_li_btn"><a href="javascript:void(0);" class="select">사이즈<span class="ico_arr">arrow</span></a>
                     <div class="list list_item3" id="size_list_li" style="display: none;">
                         <ul class="size_chip clearfix" id="category_size_chip">
                         <!-- <li><a href="javascript:setRepSizeEnumCode('XXXS')" onclick="GA_Event('카테고리_리스트','정렬','XXXS');">XXXS</a></li>
@@ -142,7 +142,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="price" id="price_li_btn" ><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','가격');">가격<span class="ico_arr">arrow</span></a>
+                <li class="price" id="price_li_btn" ><a href="javascript:void(0);" class="select" >가격<span class="ico_arr">arrow</span></a>
                     <div class="list" id="price_list_li" style="display: none;">
                         <ul>
                             <li><input type="checkbox" id="price_ck" value="1"> <label for="price_ck1" id="lable_ck1"> ￦100,000 이하</label></li>
@@ -157,7 +157,7 @@
 
                 
                 <li class="sortby"  id="sortby_li_btn" >
-                	<a href="#" class="select" >정렬순<span class="current" id="chang_filter_categoriy"></span><span class="ico_arr">arrow</span>
+                	<a href="javascript:void(0);" class="select" >정렬순<span class="current" id="chang_filter_categoriy"></span><span class="ico_arr">arrow</span>
                 	</a>
                     <div class="list" id="sortby_list_li"  style="display: none;">
                         <ul >
@@ -357,6 +357,9 @@
 								
 								const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
 								console.log(filter_values);
+								
+								//console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+								$(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
 							});
 							//로드될때 이미지들 색깔에 맞게 띄우기
 							const products = document.querySelectorAll(".item_box")
@@ -408,7 +411,7 @@
 										.find("input[name='pageNum']")
 										.val($(this).attr("pagenum"));
 								actionForm.submit(); //form submit */
-								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+"${page_info_ex}";
+								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
 							});//end click
 							
 							//이전 < 버튼을 누를 경우 실행
@@ -419,10 +422,8 @@
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
 
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"+"_1_0_0_0_0";
-
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"${page_info_ex}"; */
-
+								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
@@ -433,8 +434,8 @@
 								} else {
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0";
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"${page_info_ex}"; */
+								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
 
 								}
 							});
@@ -446,7 +447,7 @@
 								} else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"${page_info_ex}";
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
@@ -457,14 +458,14 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/1"+"${page_info_ex}";
+								location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
 							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
 							$(".item_img").on("click",function(e){
 								console.log('click');
-								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum")+"${page_info_ex}";
+								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
 							});
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							curPageNum.addClass("on");
