@@ -11,16 +11,16 @@
 <title>더한섬닷컴 | THE HANDSOME.COM</title>
 <link rel="shortcut icon"
 	href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
-<link rel="stylesheet" href="/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/footer.css"
-	media="all">
-<link rel="stylesheet" type="text/css" href="/resources/css/layout.css"
-	media="all">
-<link rel="stylesheet" href="/resources/css/product.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/brand.css"
-	media="all">
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/contents.css" media="all">
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/product.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/brand.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/contents.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/popup.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+
 <!-- 제이쿼리 cdn -->	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/_ui/desktop/common/js/handsome/ui.js?20211105"></script>
@@ -44,7 +44,7 @@
 					<div class="brand_menu brandMenu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 없음 -->
-							<li><span class="on"><a href="#">HOME</a></span></li>
+							<li><span class="on"><a href="/">HOME</a></span></li>
 						</ul> <!-- clearfix end -->
 					</div> <!-- brand_menu end -->
 				
@@ -102,7 +102,7 @@
 			
 			<div class="gnbwarp com clearfix">
 				<h1 class="logo logo1903">
-					<a href="#">thehandsome.com</a>
+					<a href="/">thehandsome.com</a>
 				</h1>
 				<div class="gnb_nav gnb_nav1903 hscene1906 hscene1910">
 					<h2 class="invisible">주메뉴</h2>
