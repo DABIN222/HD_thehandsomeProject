@@ -22,9 +22,13 @@ public interface ProductMapper {
 	public List<ProductVO> getListWithPaging(@Param("vo") ProductVO vo, @Param("cri") Criteria cri,
 			@Param("fd") FilterDTO fd);
 
-	// 물건 갯수
-	public int productCount(@Param("vo") ProductVO vo);
-
 	// 물건들의 이미지, 이미지썸네일 2개를 객체로 가져오기 위함
 	public List<ThumbnailColorVO> getColorList(List<String> productIDs);
+	
+	// 물건 갯수
+	public int productCount(@Param("vo") ProductVO vo);
+	
+	// 필터된 물건 갯수
+	public int productFiltedCount(@Param("vo") ProductVO vo, @Param("fd") FilterDTO fd);
+
 }

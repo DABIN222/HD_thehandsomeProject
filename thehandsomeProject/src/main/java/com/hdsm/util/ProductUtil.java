@@ -356,6 +356,10 @@ public class ProductUtil {
 				break;
 			case "4" :
 				filterList.add(500000);
+				filterList.add(1000000);
+				break;
+			case "5" :
+				filterList.add(1000000);
 				filterList.add(9000000);
 				break;
 		

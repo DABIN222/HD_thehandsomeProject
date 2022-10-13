@@ -36,30 +36,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri, String fstr) {
+	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri, FilterDTO fd) {
 
-		String[] filterArr = fstr.split("_");
-		
-		List<String> fbnames = ProductUtil.builder().build().getBnameFilter(filterArr[2]);
-		String fcolor = ProductUtil.builder().build().getColorFilter(filterArr[3]);
-		List<String> fsizes= ProductUtil.builder().build().getSizeFilter(filterArr[4]);
-		List<Integer> fprice= ProductUtil.builder().build().getPriceFilter(filterArr[5]);
-		String forderBy = ProductUtil.builder().build().getOrderbyFilter(filterArr[6]);
-	
-		
-		FilterDTO fd = new FilterDTO();
-		fd.setBnames(fbnames);
-		fd.setColor(fcolor);
-		fd.setSizes(fsizes);
-		fd.setPrice1(fprice.get(0));
-		fd.setPrice2(fprice.get(1));
-		fd.setOrderBy(forderBy);
-		
+
 //		log.info("---------------------"+fbnames.get(0)+""+fbnames.get(1));
 //		log.info("---------------------"+fcolor);
 //		log.info("---------------------"+fsizes.get(0)+" "+fsizes.get(1));
 //		log.info("---------------------"+fprice.get(0)+""+fprice.get(1));
-		log.info("---------------------"+forderBy);
+//		log.info("---------------------"+forderBy);
 		
 		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri, fd);
 		List<String> productIDs = new ArrayList<String>();
@@ -108,6 +92,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int productCount(ProductVO vo) {
 		return mapper.productCount(vo);
+	}
+
+	@Override
+	public int productFiltedCount(ProductVO vo, FilterDTO fd) {
+		return mapper.productFiltedCount(vo, fd);
 	}
 
 	
