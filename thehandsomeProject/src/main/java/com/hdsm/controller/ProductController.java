@@ -1,5 +1,6 @@
 package com.hdsm.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,44 +71,34 @@ public class ProductController {
 		
 		int ctgProductCount = service.productCount(product);
 		
-		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount;
+		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
-	@GetMapping({ "/list/{ctg}/{page_amount}"/* ,"/list/{ctg}" */})
+	@GetMapping({ "/list/{ctg}/{info}"/* ,"/list/{ctg}" */})
 	public String productList(
-			@PathVariable(required= false) String page_amount,
 			@PathVariable(required=false) String ctg,
+			@PathVariable(required=false) String info,
 			Model model
-			) {
+			) throws UnsupportedEncodingException {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
+
+		info = ProductUtil.builder().build().getURLDecode(info);
+		log.info("--------------"+info);
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
+
 		
 		product.setClarge(ctgName[0]);
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
 		
-		if (page_amount==null) {
-			page_amount = "1";
-		}
-		String[] page_amount_info= page_amount.split("_");
-
+		String[] page_amount_info= info.split("_");
 		
 		String pagenum=page_amount_info[0];
 		cri.setPageNum(Integer.parseInt(pagenum));
-		//브랜드 검색(아직 진행중)
-		if(page_amount_info.length==3) {
-			product.setBname("TIME");
-			model.addAttribute("bname","TIME");
-		}
 
-				
-		//일단 임시로 파람을 못주니까 임의로 줘보자
-		//cri = new Criteria();
-		log.info(ctg);
-		
 		model.addAttribute(
 				"ctg",
 				ctg
@@ -126,7 +117,7 @@ public class ProductController {
 		
 		model.addAttribute(
 				"productList", 
-				service.getProductThumbnailListWithPaging(product, cri)
+				service.getProductThumbnailListWithPaging(product, cri, info)
 				);
 
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
