@@ -94,9 +94,7 @@ public class ProductController {
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
 		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
 		
-		//filter 부분(브랜드, 컬러, 사이즈, 가격, (정렬순은 크기가 달라지지 않으니 생략))이 다른지 확인 후
-		// 다르면 1page 부터 다시 적용되는 페이지를 return
-		String prevInfo = request.getHeader("Referer");
+
 		
 		
 		//현 필터값 적용을 위한 FilterDTO 객체 만들어주기
@@ -120,32 +118,39 @@ public class ProductController {
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
 		
-		//맨처음 로드될때는 이전info값이 없어서 null이 반환됨 그래서 아래같이 임시 info를 넣어줌
-		if(prevInfo == null) {
-			prevInfo = "0_0_0_0_0_0_0";
-		}
-		String[] prevInfos = prevInfo.split("_");
+		//filter 부분(브랜드, 컬러, 사이즈, 가격, (정렬순은 크기가 달라지지 않으니 생략))이 다른지 확인 후
+		// 다르면 1page 부터 다시 적용되는 페이지를 return
+		String prevInfo = request.getHeader("Referer");
 		
-		boolean isFilterChange = false;//filter부분이 바뀌었는지 체크
 		
-		//브랜드, 컬러, 사이즈, 컬러 다른지 확인
-		for(int i = 2; i< prevInfos.length-1 ; i++) {
-			if(!prevInfos[i].equals(pageInfo[i])) {
-				isFilterChange = true;//만약 필터가 바뀌었다면 true로 바꿔줌!
-			}
-		}
-		// 필터가 바뀌었으면  pageNum을 1로 바꿔주고  Total 개수를 다시 세고 물건을 가져오기 위해 fd를 바뀐 필터대로 바꿔줘야해
+		 //맨처음 로드될때는 이전info값이 없어서 null이 반환됨 그래서 아래같이 임시 info를 넣어줌
+		  if(prevInfo == null){ 
+			  prevInfo = "0_0_0_0_0_0_0"; 
+		  } 
+		  
+		  String[] prevInfos = prevInfo.split("_");
+		 
+		 boolean isFilterChange = false;//filter부분이 바뀌었는지 체크
+		 
+		 //브랜드, 컬러, 사이즈, 컬러 다른지 확인 
+		 for(int i = 2; i< prevInfos.length-1 ; i++) {
+			 if(!prevInfos[i].equals(pageInfo[i])) { 
+				 isFilterChange = true;//만약 필터가 바뀌었다면 true로 바꿔줌!
+			 } 
+		 } // 필터가 바뀌었으면 pageNum을 1로 바꿔주고 Total 개수를 다시 세고 물건을 가져오기 위해 fd를
+			 
 		if(isFilterChange) {
-			
-			log.info("필터가 바꼈어 !!!!!!!!!");
-			log.info(info);
+			log.info("필터가 바꼈어 !!!!!!!!!"); 
+			log.info(info); 
 			log.info(prevInfo);
-			
-			pagenum = 1;
-			productTotal = service.productFiltedCount(product, fd);
-		}
-		
 
+			 cri.setPageNum(1); 
+			 productTotal = service.productFiltedCount(product, fd);
+			 String filterStr = pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6]; 
+			 //return "/product/list/"+ctg+"/1_"+productTotal+"_"+filterStr; 
+		}
+		 
+		
 		
 		model.addAttribute(
 				"ctg",
@@ -157,17 +162,24 @@ public class ProductController {
 				ctgName
 				);
 		
-		//전체 개수!
+		//카테고리, 필터 적용한 전체 개수!
 		model.addAttribute(
 				"productCount",
-				service.productCount(product)
+				productTotal
+				//service.productCount(product)
 				);
 		
 		model.addAttribute(
 				"productList", 
 				service.getProductThumbnailListWithPaging(product, cri, fd)
 				);
-
+		
+//		model.addAttribute(
+//				"page_info_ex",
+//				page_info_ex
+//				
+//				);
+			
 		//페이지 버튼 그려주고 페이징최대최소 같은거 이것저것 해주는거 룰루~
 		model.addAttribute(
 				"pageMaker",
