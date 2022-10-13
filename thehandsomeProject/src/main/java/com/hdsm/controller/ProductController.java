@@ -71,7 +71,7 @@ public class ProductController {
 		
 		int ctgProductCount = service.productCount(product);
 		
-		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0_0";
+		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
@@ -98,7 +98,7 @@ public class ProductController {
 		
 		String page_info_ex ="";
 		
-		for(int i=1; i<8;i++) {
+		for(int i=1; i<7;i++) {
 			page_info_ex+=("_"+page_amount_info[i]);
 		}
 		String pagenum=page_amount_info[0];

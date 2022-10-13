@@ -357,7 +357,7 @@
 										.find("input[name='pageNum']")
 										.val($(this).attr("pagenum"));
 								actionForm.submit(); //form submit */
-								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+"${info_ex_page}";
+								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+"${page_info_ex}";
 							});//end click
 							
 							//이전 < 버튼을 누를 경우 실행
@@ -367,7 +367,7 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"${info_ex_page}";
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"${page_info_ex}";
 								}
 							});
 							
