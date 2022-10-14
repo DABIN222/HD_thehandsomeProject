@@ -147,10 +147,7 @@ public class ProductController {
 			 productTotal = service.productFiltedCount(product, fd);
 			 String filterStr = pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6];
 			 //return "/product/list/"+ctg+"/1_"+productTotal+"_"+filterStr; 
-		}
-		 
-		
-		
+		}		
 		model.addAttribute(
 				"ctg",
 				ctg
@@ -190,8 +187,8 @@ public class ProductController {
 	
 	//상품 상세 정보 보기
 	@GetMapping("/prodinfo")
-	public void prodInfo(String product_id) {
-		
+	public String prodInfo(String product_id) {
+		return "/product/prodinfo";
 	}
 	
 	//상품 바로 주문
