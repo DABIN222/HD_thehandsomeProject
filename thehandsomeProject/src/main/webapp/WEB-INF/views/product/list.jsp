@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
+<!-- <link rel="stylesheet" type="text/css" href="/resources/css/product.css"> -->
 
 	
 	
@@ -67,7 +68,7 @@
             
                 <li class="brand" id="brand_li_btn" >
                 <a href="javascript:void(0);" class="select" >브랜드
-                    <span class="current" id="brandCurrent" > <span class="ico_arr">arrow</span>   </span>                    
+                    <span class="current" id="brandCurrent" > <span class="ico_arr">arrow</span> </span>                   
 					
                     </a>
                     <div class="list" id="brand_list_li" style="display: none;">
