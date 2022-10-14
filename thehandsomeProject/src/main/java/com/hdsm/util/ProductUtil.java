@@ -337,29 +337,18 @@ public class ProductUtil {
 	public List<Integer> getPriceFilter(String pf){
 		List<Integer> filterList = new ArrayList<Integer>();
 		
-		switch(pf) {
-			case "0" :
-				filterList.add(null);
-				filterList.add(null);
-				break;
-			case "1" :
-				filterList.add(0);
-				filterList.add(100000);
-				break;
-			case "2" :
-				filterList.add(100000);
-				filterList.add(300000);
-				break;
-			case "3" :
-				filterList.add(300000);
-				filterList.add(500000);
-				break;
-			case "4" :
-				filterList.add(500000);
-				filterList.add(9000000);
-				break;
+	    String[] arr = pf.split("[.]");
+	    
+	    //구분자로 나눈 배열에서 처음과 끝만 가져옴
+	    int s = Integer.parseInt(arr[0]);
+	    int e = Integer.parseInt(arr[arr.length-1]);
 		
-		}
+		Integer[] start = {null, 0, 100000, 300000, 500000, 1000000,}; //시작금액 배열(null은 0 일경우 mapper.xml에서 필터링 안하기위함)
+		Integer[] end = {null, 100000, 300000, 500000, 1000000, 9000000};// 끝금액 배열(null은 0 일경우 mapper.xml에서 필터링 안하기위함)
+		
+		//n, n.n+1, n.n+1.n+2  (0<= n <= 5)인자가 들어와도 처음과 끝만 가지고 가서 배열에 맞게 매핑하기 때문에 손쉽게 가능
+		filterList.add(start[s]);
+		filterList.add(end[e]);
 		
 		return filterList;
 	}

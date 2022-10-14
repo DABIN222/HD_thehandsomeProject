@@ -65,77 +65,73 @@
             <ul class="clearfix float_left">
             <!-- 정상용 브랜드 검색 -->
             
-                <li class="brand" id="brand_li_btn" ><a href="javascript:void(0);" class="select" onclick="GA_Event('카테고리_리스트','정렬','브랜드');">브랜드
-                    <span class="current" id="brandCurrent" >    </span>
-                    
-                    <span class="" id="brand_text"></span></a>
+                <li class="brand" id="brand_li_btn" >
+                <a href="javascript:void(0);" class="select" >브랜드
+                    <span class="current" id="brandCurrent" > <span class="ico_arr">arrow</span>   </span>                    
+					
+                    </a>
                     <div class="list" id="brand_list_li" style="display: none;">
                         <ul id="category_brand_chip">
-                            <li><input type="checkbox" id="brand_ck1" onclick="GA_Event('카테고리_리스트','정렬','TIME');setOnlineShopBrand(this, 'BR01');"><label for="brand_ck1" id="BR01">TIME</label></li>
-                                <li><input type="checkbox" id="brand_ck2" onclick="GA_Event('카테고리_리스트','정렬','MINE');setOnlineShopBrand(this, 'BR02');"><label for="brand_ck2" id="BR02">MINE</label></li>
-                                <li><input type="checkbox" id="brand_ck3" onclick="GA_Event('카테고리_리스트','정렬','LANVIN COLLECTION');setOnlineShopBrand(this, 'BR19');"><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
-                                <li><input type="checkbox" id="brand_ck4" onclick="GA_Event('카테고리_리스트','정렬','LANVIN BLANC');setOnlineShopBrand(this, 'BR63');"><label for="brand_ck4" id="BR63">LANVIN BLANC</label></li>
-                                <li><input type="checkbox" id="brand_ck5" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM');setOnlineShopBrand(this, 'BR03');"><label for="brand_ck5" id="BR03">SYSTEM</label></li>
-                                <li><input type="checkbox" id="brand_ck6" onclick="GA_Event('카테고리_리스트','정렬','SJSJ');setOnlineShopBrand(this, 'BR04');"><label for="brand_ck6" id="BR04">SJSJ</label></li>
-                                <li><input type="checkbox" id="brand_ck7" onclick="GA_Event('카테고리_리스트','정렬','TIME HOMME');setOnlineShopBrand(this, 'BR06');"><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
-                                <li><input type="checkbox" id="brand_ck8" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM HOMME');setOnlineShopBrand(this, 'BR07');"><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
-                                <li><input type="checkbox" id="brand_ck9" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
-                                <li><input type="checkbox" id="brand_ck10" onclick="GA_Event('카테고리_리스트','정렬','LÄTT');setOnlineShopBrand(this, 'BR31');"><label for="brand_ck10" id="BR31">LÄTT</label></li>
-                                <li><input type="checkbox" id="brand_ck11" onclick="GA_Event('카테고리_리스트','정렬','OBZEE');setOnlineShopBrand(this, 'BR43');"><label for="brand_ck11" id="BR43">OBZEE</label></li>
-                                <li><input type="checkbox" id="brand_ck12" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
-                                <li><input type="checkbox" id="brand_ck13" onclick="GA_Event('카테고리_리스트','정렬','CLUB MONACO');setOnlineShopBrand(this, 'BR44');"><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
-                                <li><input type="checkbox" id="brand_ck14" onclick="GA_Event('카테고리_리스트','정렬','oera');setOnlineShopBrand(this, 'BR61');"><label for="brand_ck14" id="BR61">oera</label></li>
-                                <li><input type="checkbox" id="brand_ck15" onclick="GA_Event('카테고리_리스트','정렬','OUR LEGACY');setOnlineShopBrand(this, 'BR64');"><label for="brand_ck15" id="BR64">OUR LEGACY</label></li>
-                                <li><input type="checkbox" id="brand_ck16" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
-                                <li><input type="checkbox" id="brand_ck17" onclick="GA_Event('카테고리_리스트','정렬','LANVIN PARIS');setOnlineShopBrand(this, 'BR20');"><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
-                                <li><input type="checkbox" id="brand_ck18" onclick="GA_Event('카테고리_리스트','정렬','3.1 Phillip Lim');setOnlineShopBrand(this, 'BR41');"><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
-                                <li><input type="checkbox" id="brand_ck19" onclick="GA_Event('카테고리_리스트','정렬','ROCHAS');setOnlineShopBrand(this, 'BR37');"><label for="brand_ck19" id="BR37">ROCHAS</label></li>
-                                <li><input type="checkbox" id="brand_ck20" onclick="GA_Event('카테고리_리스트','정렬','TOM GREYHOUND');setOnlineShopBrand(this, 'BR15');"><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
-                                <li><input type="checkbox" id="brand_ck21" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
-                                <li><input type="checkbox" id="brand_ck22" onclick="GA_Event('카테고리_리스트','정렬','FOURM STUDIO');setOnlineShopBrand(this, 'BR30');"><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
-                                <li><input type="checkbox" id="brand_ck23" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
-                                <li><input type="checkbox" id="brand_ck24" onclick="GA_Event('카테고리_리스트','정렬','MUE');setOnlineShopBrand(this, 'BR16');"><label for="brand_ck24" id="BR16">MUE</label></li>
-                                <li><input type="checkbox" id="brand_ck25" onclick="GA_Event('카테고리_리스트','정렬','H : SCENE');setOnlineShopBrand(this, 'BR47');"><label for="brand_ck25" id="BR47">H : SCENE</label></li>
-                                <li><input type="checkbox" id="brand_ck26" onclick="GA_Event('카테고리_리스트','정렬','Liquides Perfume Bar');setOnlineShopBrand(this, 'BR62');"><label for="brand_ck26" id="BR62">Liquides Perfume Bar</label></li>
+                        	<li><input type="checkbox" id="brand_ck21" name="brand" value="1" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
+                            <li><input type="checkbox" id="brand_ck12" name="brand" value="2" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
+                             <li><input type="checkbox" id="brand_ck9" name="brand" value="3" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
+							 <li><input type="checkbox" id="brand_ck24" name="brand" value="4" onclick="GA_Event('카테고리_리스트','정렬','MUE');setOnlineShopBrand(this, 'BR16');"><label for="brand_ck24" id="BR16">MUE</label></li>
+                             <li><input type="checkbox" id="brand_ck1" name="brand" value="5" onclick="GA_Event('카테고리_리스트','정렬','TIME');setOnlineShopBrand(this, 'BR01');"><label for="brand_ck1" id="BR01">TIME</label></li>
+                            <li><input type="checkbox" id="brand_ck2" name="brand" value="6" onclick="GA_Event('카테고리_리스트','정렬','MINE');setOnlineShopBrand(this, 'BR02');"><label for="brand_ck2" id="BR02">MINE</label></li>
+                            <li><input type="checkbox" id="brand_ck3" name="brand" value="7" onclick="GA_Event('카테고리_리스트','정렬','LANVIN COLLECTION');setOnlineShopBrand(this, 'BR19');"><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
+                            <li><input type="checkbox" id="brand_ck20" name="brand" value="8" onclick="GA_Event('카테고리_리스트','정렬','TOM GREYHOUND');setOnlineShopBrand(this, 'BR15');"><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
+                            <li><input type="checkbox" id="brand_ck6" name="brand" value="9" onclick="GA_Event('카테고리_리스트','정렬','SJSJ');setOnlineShopBrand(this, 'BR04');"><label for="brand_ck6" id="BR04">SJSJ</label></li>
+                             <li><input type="checkbox" id="brand_ck13" name="brand" value="10" onclick="GA_Event('카테고리_리스트','정렬','CLUB MONACO');setOnlineShopBrand(this, 'BR44');"><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
+                             <li><input type="checkbox" id="brand_ck11" name="brand" value="11" onclick="GA_Event('카테고리_리스트','정렬','OBZEE');setOnlineShopBrand(this, 'BR43');"><label for="brand_ck11" id="BR43">OBZEE</label></li>
+                             <li><input type="checkbox" id="brand_ck5" name="brand" value="12" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM');setOnlineShopBrand(this, 'BR03');"><label for="brand_ck5" id="BR03">SYSTEM</label></li>
+                              <li><input type="checkbox" id="brand_ck22" name="brand" value="13" onclick="GA_Event('카테고리_리스트','정렬','FOURM STUDIO');setOnlineShopBrand(this, 'BR30');"><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
+                               <li><input type="checkbox" id="brand_ck18" name="brand" value="14" onclick="GA_Event('카테고리_리스트','정렬','3.1 Phillip Lim');setOnlineShopBrand(this, 'BR41');"><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
+                             <li><input type="checkbox" id="brand_ck17" name="brand" value="15" onclick="GA_Event('카테고리_리스트','정렬','LANVIN PARIS');setOnlineShopBrand(this, 'BR20');"><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
+                              <li><input type="checkbox" id="brand_ck19" name="brand" value="16" onclick="GA_Event('카테고리_리스트','정렬','ROCHAS');setOnlineShopBrand(this, 'BR37');"><label for="brand_ck19" id="BR37">ROCHAS</label></li>
+                                <li><input type="checkbox" id="brand_ck25" name="brand" value="17" onclick="GA_Event('카테고리_리스트','정렬','H : SCENE');setOnlineShopBrand(this, 'BR47');"><label for="brand_ck25" id="BR47">H : SCENE</label></li>
+                                <li><input type="checkbox" id="brand_ck7" name="brand" value="18" onclick="GA_Event('카테고리_리스트','정렬','TIME HOMME');setOnlineShopBrand(this, 'BR06');"><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck8" name="brand" value="19" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM HOMME');setOnlineShopBrand(this, 'BR07');"><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck23" name="brand" value="20" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
+                            	   <li><input type="checkbox" id="brand_ck16" name="brand" value="21" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
                                 </ul>
                     </div>
                  </li>
-                 <li class="color"  id="color_li_btn"><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','색상');">색상<span class="ico_arr">arrow</span></a>
+                 <li class="color"  id="color_li_btn"><a href="javascript:void(0);" class="select">색상<span class="ico_arr">arrow</span></a>
                     <div class="list list_item4" id="color_list_li" style="display: none;">
                         <ul class="color_chip clearfix" id="category_color_chip">
-                        <li><a href="javascript:setRepProdColorCode('BEIGE')" style="background:#fae7c4;" onclick="GA_Event('카테고리_리스트','정렬','BEIGE');">BEIGE</a></li>
-                            <li><a href="javascript:setRepProdColorCode('BLACK')" style="background:#000000;" onclick="GA_Event('카테고리_리스트','정렬','BLACK');">BLACK</a></li>
-                            <li><a href="javascript:setRepProdColorCode('BLUE')" style="background:#0f45bc;" onclick="GA_Event('카테고리_리스트','정렬','BLUE');">BLUE</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('BROWN')" style="background:#673915;" onclick="GA_Event('카테고리_리스트','정렬','BROWN');">BROWN</a></li>
-                            <li><a href="javascript:setRepProdColorCode('BURGUNDY')" style="background:#741313;" onclick="GA_Event('카테고리_리스트','정렬','BURGUNDY');">BURGUNDY</a></li>
-                            <li><a href="javascript:setRepProdColorCode('CAMEL')" style="background:#876c41;" onclick="GA_Event('카테고리_리스트','정렬','CAMEL');">CAMEL</a></li>
-                            <li><a href="javascript:setRepProdColorCode('GOLD')" style="background:#ffc733;" onclick="GA_Event('카테고리_리스트','정렬','GOLD');">GOLD</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('GREEN')" style="background:#0f6f0e;" onclick="GA_Event('카테고리_리스트','정렬','GREEN');">GREEN</a></li>
-                            <li><a href="javascript:setRepProdColorCode('GREY')" style="background:#444445;" onclick="GA_Event('카테고리_리스트','정렬','GREY');">GREY</a></li>
-                            <li><a href="javascript:setRepProdColorCode('IVORY')" style="background:#fff8d9;" onclick="GA_Event('카테고리_리스트','정렬','IVORY');">IVORY</a></li>
-                            <li><a href="javascript:setRepProdColorCode('KHAKI')" style="background:#465626;" onclick="GA_Event('카테고리_리스트','정렬','KHAKI');">KHAKI</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('LAVENDER')" style="background:#9c81bb;" onclick="GA_Event('카테고리_리스트','정렬','LAVENDER');">LAVENDER</a></li>
-                            <li><a href="javascript:setRepProdColorCode('METAL')" style="background:#9d9fa2;" onclick="GA_Event('카테고리_리스트','정렬','METAL');">METAL</a></li>
-                            <li><a href="javascript:setRepProdColorCode('MINT')" style="background:#95d0ab;" onclick="GA_Event('카테고리_리스트','정렬','MINT');">MINT</a></li>
-                            <li><a href="javascript:setRepProdColorCode('MULTI')" style="background:#534741;" onclick="GA_Event('카테고리_리스트','정렬','MULTI');">MULTI</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('NAVY')" style="background:#061836;" onclick="GA_Event('카테고리_리스트','정렬','NAVY');">NAVY</a></li>
-                            <li><a href="javascript:setRepProdColorCode('OLIVE')" style="background:#5d682d;" onclick="GA_Event('카테고리_리스트','정렬','OLIVE');">OLIVE</a></li>
-                            <li><a href="javascript:setRepProdColorCode('ORANGE')" style="background:#ee6423;" onclick="GA_Event('카테고리_리스트','정렬','ORANGE');">ORANGE</a></li>
-                            <li><a href="javascript:setRepProdColorCode('PINK')" style="background:#ea589b;" onclick="GA_Event('카테고리_리스트','정렬','PINK');">PINK</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('PURPLE')" style="background:#833b95;" onclick="GA_Event('카테고리_리스트','정렬','PURPLE');">PURPLE</a></li>
-                            <li><a href="javascript:setRepProdColorCode('RED')" style="background:#ec1e24;" onclick="GA_Event('카테고리_리스트','정렬','RED');">RED</a></li>
-                            <li><a href="javascript:setRepProdColorCode('SILVER')" style="background:#c0c0c0;" onclick="GA_Event('카테고리_리스트','정렬','SILVER');">SILVER</a></li>
-                            <li><a href="javascript:setRepProdColorCode('SKY')" style="background:#a2d6f3;" onclick="GA_Event('카테고리_리스트','정렬','SKY');">SKY</a></li>
-                            <li class="mr0"><a href="javascript:setRepProdColorCode('VIOLET')" style="background:#4c2b7b;" onclick="GA_Event('카테고리_리스트','정렬','VIOLET');">VIOLET</a></li>
-                            <li><a href="javascript:setRepProdColorCode('WHITE')" class="wt" style="background:#ffffff;" onclick="GA_Event('카테고리_리스트','정렬','WHITE');">WHITE</a></li>
-                            <li><a href="javascript:setRepProdColorCode('YELLOW')" style="background:#ffea0a;" onclick="GA_Event('카테고리_리스트','정렬','YELLOW');">YELLOW</a></li>
+                        	<li><a href="javascript:void(0);" style="background:#fae7c4;" value="1" name="color_a">BEIGE</a></li>
+                            <li><a href="javascript:void(0);" style="background:#000000;" value="2" name="color_a">BLACK</a></li>
+                            <li><a href="javascript:void(0);" style="background:#0f45bc;" value="3" name="color_a">BLUE</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#673915;" value="4" name="color_a">BROWN</a></li>
+                            <li><a href="javascript:void(0);" style="background:#741313;" value="5" name="color_a">BURGUNDY</a></li>
+                            <li><a href="javascript:void(0);" style="background:#876c41;" value="6" name="color_a">CAMEL</a></li>
+                            <li><a href="javascript:void(0);" style="background:#ffc733;" value="7" name="color_a">GOLD</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#0f6f0e;" value="8" name="color_a">GREEN</a></li>
+                            <li><a href="javascript:void(0);" style="background:#444445;" value="9" name="color_a">GREY</a></li>
+                            <li><a href="javascript:void(0);" style="background:#fff8d9;" value="10" name="color_a">IVORY</a></li>
+                            <li><a href="javascript:void(0);" style="background:#465626;" value="11" name="color_a">KHAKI</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#9c81bb;" value="12" name="color_a">LAVENDER</a></li>
+                            <li><a href="javascript:void(0);" style="background:#9d9fa2;" value="13" name="color_a">METAL</a></li>
+                            <li><a href="javascript:void(0);" style="background:#95d0ab;" value="14" name="color_a">MINT</a></li>
+                            <li><a href="javascript:void(0);" style="background:#534741;" value="15" name="color_a">MULTI</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#061836;" value="16" name="color_a">NAVY</a></li>
+                            <li><a href="javascript:void(0);" style="background:#5d682d;" value="17" name="color_a">OLIVE</a></li>
+                            <li><a href="javascript:void(0);" style="background:#ee6423;" value="18" name="color_a">ORANGE</a></li>
+                            <li><a href="javascript:void(0);" style="background:#ea589b;" value="19" name="color_a">PINK</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#833b95;" value="20" name="color_a">PURPLE</a></li>
+                            <li><a href="javascript:void(0);" style="background:#ec1e24;" value="21" name="color_a">RED</a></li>
+                            <li><a href="javascript:void(0);" style="background:#c0c0c0;" value="22" name="color_a">SILVER</a></li>
+                            <li><a href="javascript:void(0);" style="background:#a2d6f3;" value="23" name="color_a">SKY</a></li>
+                            <li class="mr0"><a href="javascript:void(0);" style="background:#4c2b7b;" value="24" name="color_a">VIOLET</a></li>
+                            <li><a href="javascript:void(0);" class="wt" style="background:#ffffff;" value="25" name="color_a">WHITE</a></li>
+                            <li><a href="javascript:void(0);" style="background:#ffea0a;" value="26" name="color_a">YELLOW</a></li>
                             </ul>
                     </div>
                 </li>
-                <li class="size" id="size_li_btn"><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','사이즈')">사이즈<span class="ico_arr">arrow</span></a>
+                <li class="size" id="size_li_btn"><a href="javascript:void(0);" class="select">사이즈<span class="ico_arr">arrow</span></a>
                     <div class="list list_item3" id="size_list_li" style="display: none;">
                         <ul class="size_chip clearfix" id="category_size_chip">
-                        <li><a href="javascript:setRepSizeEnumCode('XXXS')" onclick="GA_Event('카테고리_리스트','정렬','XXXS');">XXXS</a></li>
+                        <!-- <li><a href="javascript:setRepSizeEnumCode('XXXS')" onclick="GA_Event('카테고리_리스트','정렬','XXXS');">XXXS</a></li>
                         <li><a href="javascript:setRepSizeEnumCode('XXS')" onclick="GA_Event('카테고리_리스트','정렬','XXS');">XXS</a></li>
                         <li class="mr0"><a href="javascript:setRepSizeEnumCode('XS')" onclick="GA_Event('카테고리_리스트','정렬','XS');">XS</a></li>
                         <li><a href="javascript:setRepSizeEnumCode('S')" onclick="GA_Event('카테고리_리스트','정렬','S');">S</a></li>
@@ -144,55 +140,61 @@
                         <li><a href="javascript:setRepSizeEnumCode('XL')" onclick="GA_Event('카테고리_리스트','정렬','XL');">XL</a></li>
                         <li><a href="javascript:setRepSizeEnumCode('XXL')" onclick="GA_Event('카테고리_리스트','정렬','XXL');">XXL</a></li>
                         <li class="mr0"><a href="javascript:setRepSizeEnumCode('XXXL')" onclick="GA_Event('카테고리_리스트','정렬','XXXL');">XXXL</a></li>
-                        <li><a href="javascript:setRepSizeEnumCode('XXXXL')" onclick="GA_Event('카테고리_리스트','정렬','XXXXL');">XXXXL</a></li>
-                        <li><a href="javascript:setRepSizeEnumCode('FREE')" onclick="GA_Event('카테고리_리스트','정렬','FREE');">FREE</a></li>
-                        <li class="mr0"><a href="javascript:setRepSizeEnumCode('ETC')" onclick="GA_Event('카테고리_리스트','정렬','ETC');">ETC</a></li>
+                        <li><a href="javascript:setRepSizeEnumCode('XXXXL')" onclick="GA_Event('카테고리_리스트','정렬','XXXXL');">XXXXL</a></li> -->
+                        <li><a href="javascript:void(0);" value='1' name="size_a">FREE</a></li>
+                        <!-- <li class="mr0"><a href="javascript:setRepSizeEnumCode('ETC')" onclick="GA_Event('카테고리_리스트','정렬','ETC');">ETC</a></li> -->
                         </ul>
                     </div>
                 </li>
-                <li class="price" id="price_li_btn" ><a href="#" class="select" onclick="GA_Event('카테고리_리스트','정렬','가격');">가격<span class="ico_arr">arrow</span></a>
+                <li class="price" id="price_li_btn" ><a href="javascript:void(0);" class="select" >가격<span class="ico_arr">arrow</span></a>
                     <div class="list" id="price_list_li" style="display: none;">
                         <ul>
-                            <li><input type="checkbox" id="price_ck1" onclick="GA_Event('카테고리_리스트','정렬','￦100,000 이하');setPriceOrderCode(this, '1')"> <label for="price_ck1" id="lable_ck1"> ￦100,000 이하</label></li>
-                            <li><input type="checkbox" id="price_ck2" onclick="GA_Event('카테고리_리스트','정렬','￦100,000 ~ ￦300,000');setPriceOrderCode(this, '2')"> <label for="price_ck2" id="lable_ck2">￦100,000 ~ ￦300,000</label></li>
-                            <li><input type="checkbox" id="price_ck3" onclick="GA_Event('카테고리_리스트','정렬','￦300,000 ~ ￦500,000');setPriceOrderCode(this, '3')"> <label for="price_ck3" id="lable_ck3">￦300,000 ~ ￦500,000</label></li>
-                            <li><input type="checkbox" id="price_ck4" onclick="GA_Event('카테고리_리스트','정렬','￦500,000 ~ ￦1,000,000');setPriceOrderCode(this, '4')"> <label for="price_ck4" id="lable_ck4">￦500,000 ~ ￦1,000,000</label></li>
-                            <li><input type="checkbox" id="price_ck5" onclick="GA_Event('카테고리_리스트','정렬','￦1,000,000 이상');setPriceOrderCode(this, '5')"> <label for="price_ck5" id="lable_ck5">￦1,000,000 이상</label></li>
+                            <li><input type="checkbox" id="price_ck" value="1"> <label for="price_ck1" id="lable_ck1"> ￦100,000 이하</label></li>
+                            <li><input type="checkbox" id="price_ck" value="2"> <label for="price_ck2" id="lable_ck2">￦100,000 ~ ￦300,000</label></li>
+                            <li><input type="checkbox" id="price_ck" value="3"> <label for="price_ck3" id="lable_ck3">￦300,000 ~ ￦500,000</label></li>
+                            <li><input type="checkbox" id="price_ck" value="4"> <label for="price_ck4" id="lable_ck4">￦500,000 ~ ￦1,000,000</label></li>
+                            <li><input type="checkbox" id="price_ck" value="5"> <label for="price_ck5" id="lable_ck5">￦1,000,000 이상</label></li>
                         </ul>
                     </div>
                 </li>
                             
 
                 
-                <li class="sortby"  id="sortby_li_btn" ><a href="#" class="select" >정렬순<span class="current" id="chang_filter_categoriy">신상품</span><span class="ico_arr">arrow</span></a>
+                <li class="sortby"  id="sortby_li_btn" >
+                	<a href="javascript:void(0);" class="select" >정렬순<span class="current" id="chang_filter_categoriy"></span><span class="ico_arr">arrow</span>
+                	</a>
                     <div class="list" id="sortby_list_li"  style="display: none;">
                         <ul >
-                            <li id="new"><a href="javascript:setProductOrderCode('NEW', '신상품');" onclick="change1()">신상품</a></li>
-                            <li id="most"><a href="javascript:setProductOrderCode('SALES', '판매순');" onclick="change2()">판매순</a></li>
-                            <li id="max"><a href="javascript:setProductOrderCode('HIGH', '고가순');" onclick="change3()">고가순</a></li>
-                            <li id="min"><a href="javascript:setProductOrderCode('LOW', '저가순');" onclick="change4()">저가순</a></li>
-                            <li id="star"><a href="javascript:setProductOrderCode('REVIEW', '평점순');" onclick="change5()">평점순</a></li>
+                            <li id="new"><a href="javascript:void(0);" value="1" name="order_a">신상품</a></li>
+                            <li id="most"><a href="javascript:void(0);" value="2" name="order_a">판매순</a></li>
+                            <li id="max"><a href="javascript:void(0);" value="3" name="order_a">고가순</a></li>
+                            <li id="min"><a href="javascript:void(0);" value="4" name="order_a">저가순</a></li>
                             </ul>
                     </div>
                 </li>
                  <li class="prd_list_filter1810 sale_filter">
                     <div class="input_wrap">
-                        <input type="checkbox" id="checkSale" name="checkSale" onclick="setCheckSaleCode();GA_Event('카테고리_리스트','정렬','SALE');" style="margin: 3px 10px 0 0;"><label for="checkSale" id="checkSale" style="color: #ff0000;">SALE</label>
+                        <!-- <input type="checkbox" id="checkSale" name="checkSale" onclick="setCheckSaleCode();GA_Event('카테고리_리스트','정렬','SALE');" style="margin: 3px 10px 0 0;"><label for="checkSale" id="checkSale" style="color: #ff0000;">SALE</label> -->
                     </div>
                 </li>
                 <li class="prd_list_filter1810 delivery" style=""><!-- 딜리버리 190219 -->
-                    <div class="input_wrap">
-                        <input type="checkbox" id="checkDelivery" name="checkDelivery" onclick="sethsDeliveryCode();GA_Event('카테고리_리스트','정렬','한섬딜리버리');"><label for="checkDelivery" id="hsDelivery">한섬딜리버리</label>
+                   <!-- <div class="input_wrap">
+                        <input type="checkbox" id="checkDelivery" name="checkDelivery" onclick="sethsDeliveryCode();GA_Event('카테고리_리스트','정렬','한섬딜리버리');"><label for="checkDelivery" id="hsDelivery">한섬딜리버리</label> 
                     </div>
                     <img src="http://cdn.thehandsome.com/_ui/desktop/common/images/common/ico_quest.png" alt="한섬딜리버리란?" class="tlt" onmouseover="onMouseOverRecommend();" onmouseout="onMouseOutRecommend();">
                     <div class="rmd_pb_popup" style="display: none;">
                     <p>4PM, 퀵배송이 가능합니다.</p> 
                     <span class="box_arr"></span>
-                 </div>
+                 </div> -->
                 </li>
-                <li class="btn"><a href="javascript:reset();" onclick="GA_Event('카테고리_리스트','정렬','초기화');">초기화</a><a href="javascript:gubunSearch(1);" onclick="GA_Event('카테고리_리스트','정렬','적용');">적용</a></li>
+               
+
+                <li class="btn"><a  id="resetapp" href="javascript:void(0);" >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
+
             </ul>
-         
+         	<div class="items_count float_right">
+                        <span class="num">${productCount}</span> <span>전체</span>
+            </div>
         </div>
         </form>
 			<!-- 여기서 부터가 상품 진열 -->
@@ -243,7 +245,7 @@
 								</a>
 								<div class="color_more_wrap">
 									<c:forEach items="${product.colorList}" var="color">
-										<a href="javascript:void(0);"
+										<a href="/product/list/${color.ccolorcode };"
 											class="cl wt"
 											colorcode = "${color.ccolorcode}"
 											thumbnailimage1="${color.c_thumbnail1}"
@@ -288,8 +290,111 @@
 			</form>
 			<!-- 페이징처리 자바스크립트 나중에 맨 아래로 내리자 -->
 			<script type="text/javascript">
+
+				
+			 	/* function change1(){
+			        $("#chang_filter_categoriy").html($("#new").text());
+			        order_filter = $("#new").attr('value');
+			    }
+			    function change2(){
+			        $("#chang_filter_categoriy").html($("#most").text());
+			        order_filter = $("#most").attr('value');
+			    }
+			    function change3(){
+			        $("#chang_filter_categoriy").html($("#max").text());
+			        order_filter = $("#max").attr('value');
+			    }
+			    function change4(){
+			        $("#chang_filter_categoriy").html($("#min").text());
+			        order_filter = $("#min").attr('value');
+			    } */
 				$(document).ready(
 						function() {
+							let color_filter = "";
+							let size_filter = "";
+							let order_filter = "";
+							
+							//color버튼 누르면
+							$("a[name='color_a']").click(function(){
+								color_filter = $(this).attr('value');
+							});
+							//size버튼 누르면
+							$("a[name='size_a']").click(function(){
+								size_filter = $(this).attr('value');
+							});
+							//order버튼 누르면
+							$("a[name='order_a']").click(function(){
+								order_filter = $(this).attr('value');
+							});
+							
+							//초기화 버튼을 누르면 실행
+							 $("#resetapp").click(function(){
+								 console.log('resetapp click');
+								
+								//size 태그의 style를 제거
+								$("a[name='size_a']").removeClass('on');
+								//color 태그의 style를 제거
+								$("a[name='color_a']").removeClass('on');
+								
+								//color_filter,size_filter,order_filter 초기화
+								color_filter="";
+								size_filter="";
+								order_filter="";
+								
+								//checkbox type으로 되어있는 태그들을 해제.
+								$("input:checkbox[id='brand_ck']:checked").each(function(){
+									
+									 $("input:checkbox[id='brand_ck']").prop("checked",false);
+								})
+								
+								$("input:checkbox[id='price_ck']:checked").each(function(){
+									$("input:checkbox[id='price_ck']").prop("checked",false);
+								})
+							}); 
+							
+							//적용버튼 누르면 필터 선택된 값들 다 가져오기
+							$("#filterapp").click(function(){
+								// 아래는 체크박스라서 안에다가 만듬
+								let brand_filter = "";
+								let price_filter = "";
+								//brand가져오기
+								$("input:checkbox[id='brand_ck']:checked").each(function(){
+									brand_filter += $(this).val()+'.'
+								})
+								brand_filter = brand_filter.slice(0,-1);
+								//price 가져로기
+								$("input:checkbox[id='price_ck']:checked").each(function(){
+									price_filter += $(this).val()+'.'
+								})
+								price_filter = price_filter.slice(0,-1);
+								
+								//핕터 속성들이 전부 "" 이 아니라면  filter 버튼 실행(필터 속성 값에 아무것도 안들어가 있는데 초기화버튼 누르는 것을 방지)
+								if(color_filter=="" && size_filter=="" && order_filter=="" && brand_filter==""&&price_filter==""){
+									alert("필터를 등록해주세요");
+								}else{
+								if(brand_filter === ""){
+									brand_filter = "0"
+								}
+								if(color_filter === ""){
+									color_filter = "0"
+								}
+								if(size_filter === ""){
+									size_filter = "0"
+								}
+								if(price_filter === ""){
+									price_filter = "0"
+								}
+								if(order_filter === ""){
+									order_filter = "0"
+								}
+								
+								const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
+								console.log(filter_values);
+								
+								//console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+								$(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+								}
+							});
 							//로드될때 이미지들 색깔에 맞게 띄우기
 							const products = document.querySelectorAll(".item_box")
 							for(i=0; i< products.length ; i++){
@@ -340,7 +445,7 @@
 										.find("input[name='pageNum']")
 										.val($(this).attr("pagenum"));
 								actionForm.submit(); //form submit */
-								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+"${page_info_ex}";
+								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
 							});//end click
 							
 							//이전 < 버튼을 누를 경우 실행
@@ -350,7 +455,9 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"${page_info_ex}";
+
+								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
@@ -358,10 +465,12 @@
 							$(".next").on("click",function(e){
 								if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
 									alert("마지막페이지입니다.");
-								} else {
+								}else {
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"${page_info_ex}";
+								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
+								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
+
 								}
 							});
 							
@@ -369,10 +478,10 @@
 							$(".next2").on("click",function(e){
 								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
 									alert("마지막페이지입니다.");
-								} else{
+								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"${page_info_ex}";
+								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
@@ -383,20 +492,20 @@
 								}else{
 								e.preventDefault(); //<a> 작동 중지
 								console.log('click');
-								location.href="/product/list/${ctg}/1"+"${page_info_ex}";
+								location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
 								}
 							});
 							
 							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
 							$(".item_img").on("click",function(e){
 								console.log('click');
-								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum")+"${page_info_ex}";
-							});
+								location.href="/product/product_detail/"+$(this).attr("alt");
+								//${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
+							}); 
+
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							curPageNum.addClass("on");
-						});
-
-				$("#brand_li_btn").click(function(){
+			/* 	$("#brand_li_btn").click(function(){
 				    $("#brand_list_li").slideToggle(),
 				    $("#sortby_list_li").slideUp(),
 				    $("#size_list_li").slideUp(),
@@ -442,9 +551,8 @@
 				    $("#brand_list_li").slideUp(),
 				    $("#color_list_li").slideUp(),
 				    $("#price_list_li").slideUp();
-
-				 
-				});
+					*/
+				}); 
 				 function change1(){
 				     
 				        $("#chang_filter_categoriy").html($("#new").text());
@@ -465,6 +573,14 @@
 				       
 				        $("#chang_filter_categoriy").html($("#star").text());
 				    }
+			
+
+				$("#chang_filter_categoriy").on("click",
+						function(){
+							console.log("click됨");
+				});
+
+
 			</script>
 			<!-- //paging -->
 		</div>

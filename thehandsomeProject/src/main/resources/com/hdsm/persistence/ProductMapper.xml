@@ -82,6 +82,18 @@
 				</foreach>
 	</select>
 	
+	<select id="getProduct" resultType="com.hdsm.domain.ProductVO">
+	select *
+	from product
+	where pid LIKE #{pid} 
+	
+	</select>
+	
+	<select id="getProductColor" resultType="com.hdsm.domain.ProductColorVO">
+	select *
+	from color
+	where product_pid LIKE #{pid} 
+	</select>
 	
 	<!-- 물건 갯수  -->
 	<select id="productCount" resultType="_int">
@@ -101,5 +113,45 @@
 		</trim>
 		
 	</select>
+	<select id="productFiltedCount" resultType="_int">
+	    select 
+	    	count(*)
+	    from 
+	    	product
 
+	    where 
+	    	<![CDATA[1 < 2]]> 
+			<if test="vo.clarge != null and vo.clarge !='' ">
+				AND Clarge LIKE '%' || #{vo.clarge} || '%'
+			</if>
+			<if test="vo.cmedium != null and vo.cmedium !='' ">
+				AND Cmedium LIKE '%' || #{vo.cmedium } || '%'
+			</if>
+			<if test="vo.csmall != null and vo.csmall !='' ">
+				AND Csmall LIKE '%' || #{vo.csmall } || '%'
+			</if>
+			<if test="fd.bnames != null">
+				AND bname in
+					<foreach 
+					collection="fd.bnames"
+					item="brandName"
+					open="(" separator="," close=")">
+					#{brandName}
+					</foreach>
+			</if>
+			<if test="fd.color != null">
+					AND p_color LIKE '%' || #{fd.color} || '%'
+			</if>
+			<if test="fd.sizes != null">
+				<foreach collection="fd.sizes" item="productSize">
+				AND p_size LIKE '%' || #{productSize} || '%'
+				</foreach>
+			</if>
+			<if test="fd.price1 != null and fd.price2 != null">
+					AND 
+					#{fd.price1} <![CDATA[< pprice AND pprice <=]]>  #{fd.price2}
+			</if>
+
+	</select>
+	<!-- 필터링된 물건 갯수 -->
 </mapper> 
