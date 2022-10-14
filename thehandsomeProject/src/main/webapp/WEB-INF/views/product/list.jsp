@@ -505,7 +505,8 @@
 
 							//현재 페이지 버튼의 class에 "on" 추가하기
 							curPageNum.addClass("on");
-			/* 	$("#brand_li_btn").click(function(){
+					});
+				$("#brand_li_btn").click(function(){
 				    $("#brand_list_li").slideToggle(),
 				    $("#sortby_list_li").slideUp(),
 				    $("#size_list_li").slideUp(),
@@ -551,7 +552,7 @@
 				    $("#brand_list_li").slideUp(),
 				    $("#color_list_li").slideUp(),
 				    $("#price_list_li").slideUp();
-					*/
+					
 				}); 
 				 function change1(){
 				     

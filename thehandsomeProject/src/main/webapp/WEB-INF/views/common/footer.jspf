@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+    
+    <link href="/resources/css/common.css" rel="stylesheet">
+    <link href="/resources/css/footer.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
     <div id="footerWrap">
         <div id="topBtn" style="display: block;">
             <a href="javascript:void(0);" class="viewTopArea"><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/common/top_btn.png" alt="맨 위로" ></a>
@@ -13,22 +18,22 @@
                     <div class="footer_logo"><a href="/" ><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/common/footer_logo_renew.png" alt="HANDSOME"></a></div>
                     <div class="footer_link">
                         <ul class="clearfix">
-                            <li><a href="/ko/svcenter/theClubInfo">온라인 멤버십</a></li>
-                            <li><a href="/ko/svcenter/memberbenefitguide" >한섬 VVIP 혜택</a></li>
-                            <li><a href="/ko/svcenter/pointguide" >한섬마일리지 혜택</a></li>
-                            <li><a href="/ko/svcenter/couponguide">쿠폰</a></li>
-                            <li><a href="/ko/svcenter/asguide" >반품&amp;환불안내</a></li>
+                            <li><a href="#">온라인 멤버십</a></li>
+                            <li><a href="#" >한섬 VVIP 혜택</a></li>
+                            <li><a href="#" >한섬마일리지 혜택</a></li>
+                            <li><a href="#">쿠폰</a></li>
+                            <li><a href="#" >반품&amp;환불안내</a></li>
                                 </ul>
                         <ul class="clearfix">
-                            <li><a href="/ko/svcenter/submain" >고객센터</a></li>
-                            <li><a href="/ko/svcenter/faq" >FAQ</a></li>
-                            <li><a href="/ko/svcenter/mending" >수선진행조회</a></li>
+                            <li><a href="#" >고객센터</a></li>
+                            <li><a href="#" >FAQ</a></li>
+                            <li><a href="#" >수선진행조회</a></li>
                             </ul>
                         <ul class="clearfix">
-                           <li><a href="/ko/member/login" >로그인</a></li>
-                           <li><a href="/ko/mypage/order/myorders">주문배송조회</a></li>
-                            <li><a href="/ko/mypage/order/myorders" >취소/반품</a></li>
-                            <li><a href="/ko/mypage/myWish" >위시리스트</a></li>
+                           <li><a href="#" >로그인</a></li>
+                           <li><a href="#">주문배송조회</a></li>
+                            <li><a href="#" >취소/반품</a></li>
+                            <li><a href="#" >위시리스트</a></li>
                         </ul>
                         <ul class="clearfix">
                             <li><a href="http://www.handsome.co.kr/ko/company/aboutHandsome.do" target="_blank" >회사소개<!-- 회사소개 --></a></li>
@@ -39,30 +44,6 @@
                             </ul>
                     </div>
                 </div>
-                <!-- //footer_menu-->
-                <!-- //footer_menu-->
-			<div class="footer_apps cnts1_right">
-				<ul>
-					<li class="loca"><a href="/ko/b/storeInformation" onclick="GA_Event('공통','푸터','매장안내');">매장안내</a></li>
-					<li class="look"><a href="/ko/magazine/lookbook" onclick="GA_Event('공통','푸터','룩북');">룩북</a></li>
-					<li class="ico_youtube"><a href="/ko/magazine/youtubeList" onclick="GA_Event('공통','푸터_SNS','YOUTUBE');">비디오</a></li><!-- 200330 추가 -->
-					<li class="ico_insta" id="f_insta" style="display:none;"><a href="https://www.instagram.com/thehandsome_official/" target="_blank" onclick="GA_Event('공통','푸터_SNS','INSTAGRAM');">인스타그램</a></li><!-- 200330 추가 -->
-				</ul>
-				<!--download_app , athome-->
-				<div class="cnts1_right_inner">
-				    <a href="/ko/appDownloadSMS/sendSMSPage" onclick="GA_Event('공통','푸터','APP다운로드');">
-<img src="http://cdn.thehandsome.com/_ui/desktop/common/images/common/footer_ico_apps.png" alt="APP 다운로드" style="width:52px;height:71px;">
-<!-- 				        <img src="/_ui/desktop/common/images/common/ico_apps_new.png" alt="APP 다운로드" style="width:54px;height:70px;"> -->
-<p>APP 다운로드 &gt;</p>
-			        </a>
-				    <a href="/ko/svcenter/footerAthomeInfo" style="margin-right:0;" onclick="GA_Event('공통','푸터','딜리버리서비스');">
-<img src="http://cdn.thehandsome.com/pc/footer/footer_athome_car.png" alt="딜리버리 서비스" style="width:85px;">
-<!-- 				        <img src="http://cdn.thehandsome.com/pc/footer_athome_car.jpg" alt="딜리버리 서비스" style="width:95px;"> -->
-<p>딜리버리 서비스 &#62;</p>
-			        </a>
-			    </div>
-				<!--//download_app , athome-->
-			</div>
             </div>
             <!--//footer_cnts1 -->
         </div>
@@ -70,8 +51,8 @@
         <div class="footer_cnts2 clearfix">
             <div class="footer">
                 <div class="cnts2_left">
-                    <a href="/ko/footer/footerTermBusiness" >서비스이용약관</a>
-                    <a href="/ko/footer/footerPrivacy" onclick="GA_Event('공통','푸터_CNT','개인정보처리방침');"><strong>개인정보처리방침<!-- 개인정보처리방침 --></strong></a>
+                    <a href="#" >서비스이용약관</a>
+                    <a href="#" onclick="GA_Event('공통','푸터_CNT','개인정보처리방침');"><strong>개인정보처리방침<!-- 개인정보처리방침 --></strong></a>
                     <a href="javascript:void(0);" class="box" >통신판매사업자정보확인</a>
                     <a href="https://mark.inicis.com/mark/escrow_popup.php?mid=handsomep1" class="box" >에스크로서비스 가입 확인</a>
                     <p class="top_p"><span>(주)한섬</span><span>대표이사 : 김민덕</span><span>서울시 강남구 도산대로 523 한섬빌딩</span><span>TEL 1800-5700 (유료)</span><span class="bgnone">FAX 02-6078-2856</span></p>
@@ -117,12 +98,9 @@
         </div>
         <!--//footer_cnts2 -->
         </div>
-    
-    <script>
+        <script>
         // family site 목록 토글
         function familyToggle(){
            $("#familysite_li").slideToggle();
         }
     </script>
-</body>
-</html>
