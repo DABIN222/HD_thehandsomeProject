@@ -85,4 +85,16 @@ public class ProductControllerTest {
 				.getModelMap()
 				);
 	}//end testList
+	
+	
+	@Test
+	public void testProdinfo()throws Exception{
+		log.info(
+				mockMvc.perform(
+						MockMvcRequestBuilders.get("/product/product_detail/CM2C9ASZ756WS")
+						).andReturn()
+						.getModelAndView()
+						.getModelMap()
+						);		
+	}
 }

@@ -68,28 +68,28 @@
                     </a>
                     <div class="list" id="brand_list_li" style="display: none;">
                         <ul id="category_brand_chip">
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="1" ><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="2" ><label for="brand_ck12" id="BR45">O'2nd</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="3" ><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="4" ><label for="brand_ck24" id="BR16">MUE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="5" ><label for="brand_ck1" id="BR01">TIME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="6" ><label for="brand_ck2" id="BR02">MINE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="7" ><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="8" ><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="9" ><label for="brand_ck6" id="BR04">SJSJ</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="10" ><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="11" ><label for="brand_ck11" id="BR43">OBZEE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="12" ><label for="brand_ck5" id="BR03">SYSTEM</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="13" ><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="14" ><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="15" ><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="16" ><label for="brand_ck19" id="BR37">ROCHAS</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="17" ><label for="brand_ck25" id="BR47">H : SCENE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="18" ><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="19" ><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="20" ><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="21" ><label for="brand_ck16" id="BR21">BALLY</label></li>
-                        </ul>
+                        	<li><input type="checkbox" id="brand_ck21" name="brand" value="1" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
+                            <li><input type="checkbox" id="brand_ck12" name="brand" value="2" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
+                             <li><input type="checkbox" id="brand_ck9" name="brand" value="3" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
+							 <li><input type="checkbox" id="brand_ck24" name="brand" value="4" onclick="GA_Event('카테고리_리스트','정렬','MUE');setOnlineShopBrand(this, 'BR16');"><label for="brand_ck24" id="BR16">MUE</label></li>
+                             <li><input type="checkbox" id="brand_ck1" name="brand" value="5" onclick="GA_Event('카테고리_리스트','정렬','TIME');setOnlineShopBrand(this, 'BR01');"><label for="brand_ck1" id="BR01">TIME</label></li>
+                            <li><input type="checkbox" id="brand_ck2" name="brand" value="6" onclick="GA_Event('카테고리_리스트','정렬','MINE');setOnlineShopBrand(this, 'BR02');"><label for="brand_ck2" id="BR02">MINE</label></li>
+                            <li><input type="checkbox" id="brand_ck3" name="brand" value="7" onclick="GA_Event('카테고리_리스트','정렬','LANVIN COLLECTION');setOnlineShopBrand(this, 'BR19');"><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
+                            <li><input type="checkbox" id="brand_ck20" name="brand" value="8" onclick="GA_Event('카테고리_리스트','정렬','TOM GREYHOUND');setOnlineShopBrand(this, 'BR15');"><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
+                            <li><input type="checkbox" id="brand_ck6" name="brand" value="9" onclick="GA_Event('카테고리_리스트','정렬','SJSJ');setOnlineShopBrand(this, 'BR04');"><label for="brand_ck6" id="BR04">SJSJ</label></li>
+                             <li><input type="checkbox" id="brand_ck13" name="brand" value="10" onclick="GA_Event('카테고리_리스트','정렬','CLUB MONACO');setOnlineShopBrand(this, 'BR44');"><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
+                             <li><input type="checkbox" id="brand_ck11" name="brand" value="11" onclick="GA_Event('카테고리_리스트','정렬','OBZEE');setOnlineShopBrand(this, 'BR43');"><label for="brand_ck11" id="BR43">OBZEE</label></li>
+                             <li><input type="checkbox" id="brand_ck5" name="brand" value="12" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM');setOnlineShopBrand(this, 'BR03');"><label for="brand_ck5" id="BR03">SYSTEM</label></li>
+                              <li><input type="checkbox" id="brand_ck22" name="brand" value="13" onclick="GA_Event('카테고리_리스트','정렬','FOURM STUDIO');setOnlineShopBrand(this, 'BR30');"><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
+                               <li><input type="checkbox" id="brand_ck18" name="brand" value="14" onclick="GA_Event('카테고리_리스트','정렬','3.1 Phillip Lim');setOnlineShopBrand(this, 'BR41');"><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
+                             <li><input type="checkbox" id="brand_ck17" name="brand" value="15" onclick="GA_Event('카테고리_리스트','정렬','LANVIN PARIS');setOnlineShopBrand(this, 'BR20');"><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
+                              <li><input type="checkbox" id="brand_ck19" name="brand" value="16" onclick="GA_Event('카테고리_리스트','정렬','ROCHAS');setOnlineShopBrand(this, 'BR37');"><label for="brand_ck19" id="BR37">ROCHAS</label></li>
+                                <li><input type="checkbox" id="brand_ck25" name="brand" value="17" onclick="GA_Event('카테고리_리스트','정렬','H : SCENE');setOnlineShopBrand(this, 'BR47');"><label for="brand_ck25" id="BR47">H : SCENE</label></li>
+                                <li><input type="checkbox" id="brand_ck7" name="brand" value="18" onclick="GA_Event('카테고리_리스트','정렬','TIME HOMME');setOnlineShopBrand(this, 'BR06');"><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck8" name="brand" value="19" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM HOMME');setOnlineShopBrand(this, 'BR07');"><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck23" name="brand" value="20" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
+                            	   <li><input type="checkbox" id="brand_ck16" name="brand" value="21" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
+                                </ul>
                     </div>
                  </li>
                  <li class="color"  id="color_li_btn"><a href="javascript:void(0);" class="select">색상<span class="ico_arr">arrow</span></a>
@@ -183,7 +183,10 @@
                     <span class="box_arr"></span>
                  </div> -->
                 </li>
-                <li class="btn" style="padding-left:300px"><a href="javascript:void(0);" >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
+               
+
+                <li class="btn"><a  id="resetapp" href="javascript:void(0);" >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
+
             </ul>
          	<div class="items_count float_right">
                         <span class="num">${productCount}</span> <span>전체</span>
@@ -197,7 +200,7 @@
 					<c:forEach items="${productList}" var="product">
 						<li>
 							<div class="item_box">
-								<a href="#" class="item_info1"
+								<a href="" class="item_info1"
 									onclick="setEcommerceData('0', 'CATEGORY');"> <span
 									class="item_img"> <img
 										src="" id="T01_IMG_0"
@@ -228,7 +231,8 @@
 											<span>82</span>
 										</div> -->
 								</span>
-								</a> <a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
+								</a> 
+								<a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
 									class="item_info2" onclick="setEcommerceData('0', 'CATEGORY');">
 									<span class="brand">${product.bname}</span> <span class="title">${product.pname}</span>
 									<span class="price"><span id="price_TM2CAWOT761W_BK"><span>${product.pprice}</span></span></span>
@@ -240,6 +244,7 @@
 									<c:forEach items="${product.colorList}" var="color">
 										<a href="javascript:void(0);"
 											class="cl wt"
+											productid = "${product.pid}"
 											colorcode = "${color.ccolorcode}"
 											thumbnailimage1="${color.c_thumbnail1}"
 											thumbnailimage2="${color.c_thumbnail2}"
@@ -301,205 +306,309 @@
 			        $("#chang_filter_categoriy").html($("#min").text());
 			        order_filter = $("#min").attr('value');
 			    } */
-				$(document).ready(
-						function() {
-							let color_filter = "";
-							let size_filter = "";
-							let order_filter = "";
-							
-							//color버튼 누르면
-							$("a[name='color_a']").click(function(){
-								color_filter = $(this).attr('value');
-							});
-							//size버튼 누르면
-							$("a[name='size_a']").click(function(){
-								size_filter = $(this).attr('value');
-							});
-							//order버튼 누르면
-							$("a[name='order_a']").click(function(){
-								order_filter = $(this).attr('value');
-							});
-							
-							
-							//적용버튼 누르면 필터 선택된 값들 다 가져오기
-							$("#filterapp").click(function(){
-								// 아래는 체크박스라서 안에다가 만듬
-								let brand_filter = "";
-								let price_filter = "";
-								
-								
-								//brand가져오기
-								$("input:checkbox[id='brand_ck']:checked").each(function(){
-									brand_filter += $(this).val()+'.'
-								})
-								brand_filter = brand_filter.slice(0,-1);
-								//price 가져로기
-								$("input:checkbox[id='price_ck']:checked").each(function(){
-									price_filter += $(this).val()+'.'
-								})
-								price_filter = price_filter.slice(0,-1);
-								
-								if(brand_filter === ""){
-									brand_filter = "0"
-								}
-								if(color_filter === ""){
-									color_filter = "0"
-								}
-								if(size_filter === ""){
-									size_filter = "0"
-								}
-								if(price_filter === ""){
-									price_filter = "0"
-								}
-								if(order_filter === ""){
-									order_filter = "0"
-								}
-								
-								const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
-								console.log(filter_values);
-								
-								//console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
-								$(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
-							});
-							//로드될때 이미지들 색깔에 맞게 띄우기
-							const products = document.querySelectorAll(".item_box")
-							for(i=0; i< products.length ; i++){
-							    const img1 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage1");
-							    const img2 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage2");
-							    products[i].getElementsByClassName("respon_image")[0].setAttribute("src", img1);
-							    products[i].getElementsByClassName("respon_image")[1].setAttribute("src", img2);
-							    
-							}
-							/* $(".item_box").find("img:eq(0)").attr("src",$(this).find(".cl").attr("thumbnailimage1"));
-							$(".item_box").find("img:eq(1)").attr("src",$(this).find(".cl").attr("thumbnailimage2")); */
-							
-							//이미지 hover처리
-							$(".item_info1").hover(
-									function(){
-										//$(this).find("img:eq(1)").css('display', 'block');
-										$(this).find("img:eq(1)").css('visibility', 'visible');
-										$(this).find("img:eq(1)").css('opacity', 1);
-										//사이즈 보여지게 처리
-										$(this).find(".item_size").css('display', 'block');
-										
-									},
-									function(){
-										$(this).find("img:eq(1)").css('opacity', 0);
-										$(this).find("img:eq(1)").css('visibility', 'hidden');
-										//$(this).find("img:eq(1)").css('display', 'none');
-										//사이즈 안보이게 처리
-										$(this).find(".item_size").css('display', 'none');
-									}
-									);
-							
-							//색깔 이미지 클릭시
-							$(".cl").on("click", function(e){
-								e.preventDefault(); //<a> 작동 중지
-								$(this).closest("li").find("img:eq(0)").attr("src", $(this).attr("thumbnailimage1"));
-								$(this).closest("li").find("img:eq(1)").attr("src", $(this).attr("thumbnailimage2"));
-								
-							})
-							
-							//페이징 버튼 처리
-							var actionForm = $("#actionForm"); //폼등록
-							
-							var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
-							
-							$(".pageBtn").on("click", function(e) {
-								e.preventDefault(); //<a> 작동 중지
-								/* actionForm
-										.find("input[name='pageNum']")
-										.val($(this).attr("pagenum"));
-								actionForm.submit(); //form submit */
-								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
-							});//end click
-							
-							//이전 < 버튼을 누를 경우 실행
-							$(".prev").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===1){
-									alert("처음페이지입니다.");
-								}else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
+			    $(document).ready(
+			    	    function() {
+			    	        let color_filter = "";
+			    	        let size_filter = "";
+			    	        let order_filter = "";
+			    	        
+			    	        //color버튼 누르면
+			    	        $("a[name='color_a']").click(function(){
+			    	            color_filter = $(this).attr('value');
+			    	        });
+			    	        //size버튼 누르면
+			    	        $("a[name='size_a']").click(function(){
+			    	            size_filter = $(this).attr('value');
+			    	        });
+			    	        //order버튼 누르면
+			    	        $("a[name='order_a']").click(function(){
+			    	            order_filter = $(this).attr('value');
+			    	        });
+			    	        
+			    	        //초기화 버튼을 누르면 실행
+			    	         $("#resetapp").click(function(){
+			    	             console.log('resetapp click');
+			    	            
+			    	            //size 태그의 style를 제거
+			    	            $("a[name='size_a']").removeClass('on');
+			    	            //color 태그의 style를 제거
+			    	            $("a[name='color_a']").removeClass('on');
+			    	            
+			    	            //color_filter,size_filter,order_filter 초기화
+			    	            color_filter="";
+			    	            size_filter="";
+			    	            order_filter="";
+			    	            
+			    	            //checkbox type으로 되어있는 태그들을 해제.
+			    	            $("input:checkbox[id='brand_ck']:checked").each(function(){
+			    	                
+			    	                 $("input:checkbox[id='brand_ck']").prop("checked",false);
+			    	            })
+			    	            
+			    	            $("input:checkbox[id='price_ck']:checked").each(function(){
+			    	                $("input:checkbox[id='price_ck']").prop("checked",false);
+			    	            })
+			    	        }); 
+			    	        
+			    	        //적용버튼 누르면 필터 선택된 값들 다 가져오기
+			    	        $("#filterapp").click(function(){
+			    	            // 아래는 체크박스라서 안에다가 만듬
+			    	            let brand_filter = "";
+			    	            let price_filter = "";
+			    	            //brand가져오기
+			    	            $("input:checkbox[id='brand_ck']:checked").each(function(){
+			    	                brand_filter += $(this).val()+'.'
+			    	            })
+			    	            brand_filter = brand_filter.slice(0,-1);
+			    	            //price 가져로기
+			    	            $("input:checkbox[id='price_ck']:checked").each(function(){
+			    	                price_filter += $(this).val()+'.'
+			    	            })
+			    	            price_filter = price_filter.slice(0,-1);
+			    	            
+			    	            //핕터 속성들이 전부 "" 이 아니라면  filter 버튼 실행(필터 속성 값에 아무것도 안들어가 있는데 초기화버튼 누르는 것을 방지)
+			    	            if(color_filter=="" && size_filter=="" && order_filter=="" && brand_filter==""&&price_filter==""){
+			    	                alert("필터를 등록해주세요");
+			    	            }else{
+			    	            if(brand_filter === ""){
+			    	                brand_filter = "0"
+			    	            }
+			    	            if(color_filter === ""){
+			    	                color_filter = "0"
+			    	            }
+			    	            if(size_filter === ""){
+			    	                size_filter = "0"
+			    	            }
+			    	            if(price_filter === ""){
+			    	                price_filter = "0"
+			    	            }
+			    	            if(order_filter === ""){
+			    	                order_filter = "0"
+			    	            }
+			    	            
+			    	            const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
+			    	            console.log(filter_values);
+			    	            
+			    	            //console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+			    	            $(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+			    	            }
+			    	        });
+			    	        //로드될때 이미지들 색깔에 맞게 띄우기
+			    	        const products = document.querySelectorAll(".item_box")
+			    	        for(i=0; i< products.length ; i++){
+			    	            const img1 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage1");
+			    	            const img2 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage2");
+			    	            
+			    	            const pid = products[i].getElementsByClassName("cl")[0].getAttribute("productid");
+			    	            const ccode = products[i].getElementsByClassName("cl")[0].getAttribute("colorcode");
+			    	            
+			    	            products[i].getElementsByClassName("respon_image")[0].setAttribute("src", img1);
+			    	            products[i].getElementsByClassName("respon_image")[1].setAttribute("src", img2);
+			    	            
+			    	            //products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	            //products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	        }
 
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//다음 > 버튼을 누를 경우 실행
-							$(".next").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
-									alert("마지막페이지입니다.");
-								} else {
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
+			    	        
+			    	        /* $(".item_box").find("img:eq(0)").attr("src",$(this).find(".cl").attr("thumbnailimage1"));
+			    	        $(".item_box").find("img:eq(1)").attr("src",$(this).find(".cl").attr("thumbnailimage2")); */
+			    	        
+			    	        //이미지 hover처리
+			    	        $(".item_info1").hover(
+			    	                function(){
+			    	                    //$(this).find("img:eq(1)").css('display', 'block');
+			    	                    $(this).find("img:eq(1)").css('visibility', 'visible');
+			    	                    $(this).find("img:eq(1)").css('opacity', 1);
+			    	                    //사이즈 보여지게 처리
+			    	                    $(this).find(".item_size").css('display', 'block');
+			    	                    
+			    	                },
+			    	                function(){
+			    	                    $(this).find("img:eq(1)").css('opacity', 0);
+			    	                    $(this).find("img:eq(1)").css('visibility', 'hidden');
+			    	                    //$(this).find("img:eq(1)").css('display', 'none');
+			    	                    //사이즈 안보이게 처리
+			    	                    $(this).find(".item_size").css('display', 'none');
+			    	                }
+			    	                );
+			    	        
+			    	        //색깔 이미지 클릭시
+			    	        $(".cl").on("click", function(e){
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            $(this).closest("li").find("img:eq(0)").attr("src", $(this).attr("thumbnailimage1"));
+			    	            $(this).closest("li").find("img:eq(1)").attr("src", $(this).attr("thumbnailimage2"));
+			    	            
+			    	            $(this).closest("li").find("a:eq(0)").attr("href", "product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            $(this).closest("li").find("a:eq(1)").attr("href","product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            
+			    	        })
+			    	        
+			    	        //페이징 버튼 처리
+			    	        var actionForm = $("#actionForm"); //폼등록
+			    	        
+			    	        var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
+			    	        
+			    	        $(".pageBtn").on("click", function(e) {
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            /* actionForm
+			    	                    .find("input[name='pageNum']")
+			    	                    .val($(this).attr("pagenum"));
+			    	            actionForm.submit(); //form submit */
+			    	            location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
+			    	        });//end click
+			    	        
+			    	        //이전 < 버튼을 누를 경우 실행
+			    	        $(".prev").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
+			    	                alert("처음페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
 
-								}
-							});
-							
-							//맨 끝 >> 버튼을 누를 경우 실행
-							$(".next2").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
-									alert("마지막페이지입니다.");
-								} else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//맨 처음 << 버튼을 누를 경우 실행
-							$(".prev2").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===1){
-									alert("처음페이지입니다.");
-								}else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
-							$(".item_img").on("click",function(e){
-								console.log('click');
-								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
-							});
-							//현재 페이지 버튼의 class에 "on" 추가하기
-							curPageNum.addClass("on");
-						});
-				
-/* 				$("#brand_li_btn").click(function(){
-				    $("#brand_list_li").slideToggle();
-				 
-				}),
+			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
+			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //다음 > 버튼을 누를 경우 실행
+			    	        $(".next").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
+			    	                alert("마지막페이지입니다.");
+			    	            }else {
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
+			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
 
-				$("#color_li_btn").click(function(){
-				    $("#color_list_li").slideToggle();
-				 
-				}),
+			    	            }
+			    	        });
+			    	        
+			    	        //맨 끝 >> 버튼을 누를 경우 실행
+			    	        $(".next2").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
+			    	                alert("마지막페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //맨 처음 << 버튼을 누를 경우 실행
+			    	        $(".prev2").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
+			    	                alert("처음페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
+			    	        $(".item_img").on("click",function(e){
+			    	            console.log('click');
+			    	            location.href="/product/product_detail/"+$(this).attr("alt");
+			    	            //${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
+			    	        }); 
+			    	        
 
-				$("#size_li_btn").click(function(){
-				    $("#size_list_li").slideToggle();
-				 
-				}),
+			    	        
+			    	        
+			    	    
+			    	        
+			    	        //현재 페이지 버튼의 class에 "on" 추가하기
+			    	        curPageNum.addClass("on");
+			    	    
 
-				$("#price_li_btn").click(function(){
-				    $("#price_list_li").slideToggle();
-				 
-				}),
 
-				$("#sortby_li_btn").click(function(){
-				    $("#sortby_list_li").slideToggle();
-				 
-				}); */
-			
-				$("#chang_filter_categoriy").on("click",
-						function(){
-							console.log("click됨");
-				});
+
+
+
+
+
+			    	/* 	$("#brand_li_btn").click(function(){
+			    	$("#brand_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+			    	$("#brand_li_btn").click(function(){
+			    	$("#brand_list_li").slideToggle();
+
+			    	}),
+
+			    	$("#color_li_btn").click(function(){
+			    	$("#color_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp();
+
+
+			    	}),
+
+			    	$("#size_li_btn").click(function(){
+
+			    	$("#size_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+
+
+			    	}),
+
+			    	$("#price_li_btn").click(function(){
+
+			    	$("#price_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+
+			    	}),
+
+			    	$("#sortby_li_btn").click(function(){
+
+			    	$("#sortby_list_li").slideToggle(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp(),
+			    	$("#price_list_li").slideUp();
+			    	*/
+
+			    	}); 
+
+			    	function change1(){
+			    	 
+			    	    $("#chang_filter_categoriy").html($("#new").text());
+			    	}
+			    	function change2(){
+			    	  
+			    	    $("#chang_filter_categoriy").html($("#most").text());
+			    	}
+			    	function change3(){
+			    	   
+			    	    $("#chang_filter_categoriy").html($("#max").text());
+			    	}
+			    	function change4(){
+			    	  
+			    	    $("#chang_filter_categoriy").html($("#min").text());
+			    	}
+			    	function change5(){
+			    	   
+			    	    $("#chang_filter_categoriy").html($("#star").text());
+			    	}
+
+
+			    	$("#chang_filter_categoriy").on("click",
+			    	    function(){
+			    	        console.log("click됨");
+			    	});
+
 
 			</script>
 			<!-- //paging -->
