@@ -85,14 +85,14 @@
 	<select id="getProduct" resultType="com.hdsm.domain.ProductVO">
 	select *
 	from product
-	where pid LIKE #{pid} 
+	where pid = #{pid} 
 	
 	</select>
 	
 	<select id="getProductColor" resultType="com.hdsm.domain.ProductColorVO">
 	select *
 	from color
-	where product_pid LIKE #{pid} 
+	where product_pid = #{pid} 
 	</select>
 	
 	<!-- 물건 갯수  -->

@@ -91,7 +91,7 @@ public class ProductControllerTest {
 	public void testProdinfo()throws Exception{
 		log.info(
 				mockMvc.perform(
-						MockMvcRequestBuilders.get("/product/product_detail/CM2C9ASZ756WS")
+						MockMvcRequestBuilders.get("/product/product_detail?pid=CM2C9ASZ756WS&colorcode=CM2C9ASZ756WS_BK")
 						).andReturn()
 						.getModelAndView()
 						.getModelMap()
