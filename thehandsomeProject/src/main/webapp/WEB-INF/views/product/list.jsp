@@ -205,7 +205,7 @@
 					<c:forEach items="${productList}" var="product">
 						<li>
 							<div class="item_box">
-								<a href="#" class="item_info1"
+								<a href="" class="item_info1"
 									onclick="setEcommerceData('0', 'CATEGORY');"> <span
 									class="item_img"> <img
 										src="" id="T01_IMG_0"
@@ -236,7 +236,8 @@
 											<span>82</span>
 										</div> -->
 								</span>
-								</a> <a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
+								</a> 
+								<a href="/ko/p/TM2CAWOT761W_BK?categoryCode=we052"
 									class="item_info2" onclick="setEcommerceData('0', 'CATEGORY');">
 									<span class="brand">${product.bname}</span> <span class="title">${product.pname}</span>
 									<span class="price"><span id="price_TM2CAWOT761W_BK"><span>${product.pprice}</span></span></span>
@@ -246,8 +247,9 @@
 								</a>
 								<div class="color_more_wrap">
 									<c:forEach items="${product.colorList}" var="color">
-										<a href="/product/list/${color.ccolorcode };"
+										<a href="javascript:void(0);"
 											class="cl wt"
+											productid = "${product.pid}"
 											colorcode = "${color.ccolorcode}"
 											thumbnailimage1="${color.c_thumbnail1}"
 											thumbnailimage2="${color.c_thumbnail2}"
@@ -309,244 +311,234 @@
 			        $("#chang_filter_categoriy").html($("#min").text());
 			        order_filter = $("#min").attr('value');
 			    } */
-				$(document).ready(
-						function() {
-							let color_filter = "";
-							let size_filter = "";
-							let order_filter = "";
-							
-							//color버튼 누르면
-							$("a[name='color_a']").click(function(){
-								color_filter = $(this).attr('value');
-							});
-							//size버튼 누르면
-							$("a[name='size_a']").click(function(){
-								size_filter = $(this).attr('value');
-							});
-							//order버튼 누르면
-							$("a[name='order_a']").click(function(){
-								order_filter = $(this).attr('value');
-							});
-							
-							//초기화 버튼을 누르면 실행
-							 $("#resetapp").click(function(){
-								 console.log('resetapp click');
-								
-								//size 태그의 style를 제거
-								$("a[name='size_a']").removeClass('on');
-								//color 태그의 style를 제거
-								$("a[name='color_a']").removeClass('on');
-								
-								//color_filter,size_filter,order_filter 초기화
-								color_filter="";
-								size_filter="";
-								order_filter="";
-								
-								//checkbox type으로 되어있는 태그들을 해제.
-								$("input:checkbox[id='brand_ck']:checked").each(function(){
-									
-									 $("input:checkbox[id='brand_ck']").prop("checked",false);
-								})
-								
-								$("input:checkbox[id='price_ck']:checked").each(function(){
-									$("input:checkbox[id='price_ck']").prop("checked",false);
-								})
-							}); 
-							
-							//적용버튼 누르면 필터 선택된 값들 다 가져오기
-							$("#filterapp").click(function(){
-								// 아래는 체크박스라서 안에다가 만듬
-								let brand_filter = "";
-								let price_filter = "";
-								//brand가져오기
-								$("input:checkbox[id='brand_ck']:checked").each(function(){
-									brand_filter += $(this).val()+'.'
-								})
-								brand_filter = brand_filter.slice(0,-1);
-								//price 가져로기
-								$("input:checkbox[id='price_ck']:checked").each(function(){
-									price_filter += $(this).val()+'.'
-								})
-								price_filter = price_filter.slice(0,-1);
-								
-								//핕터 속성들이 전부 "" 이 아니라면  filter 버튼 실행(필터 속성 값에 아무것도 안들어가 있는데 초기화버튼 누르는 것을 방지)
-								if(color_filter === "" && size_filter === "" && order_filter === "" && brand_filter===""&& price_filter===""){
-									alert("필터를 등록해주세요");
-									console.log("brand_filter:"+brand_filter);
-								}else{
-								if(brand_filter === ""){
-									brand_filter = "0"
-								}
-								if(color_filter === ""){
-									color_filter = "0"
-								}
-								if(size_filter === ""){
-									size_filter = "0"
-								}
-								if(price_filter === ""){
-									price_filter = "0"
-								}
-								if(order_filter === ""){
-									order_filter = "0"
-								}
-								
-								const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
-								console.log(filter_values);
-								
-								//console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
-								$(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
-								}
-							});
-							//로드될때 이미지들 색깔에 맞게 띄우기
-							const products = document.querySelectorAll(".item_box")
-							for(i=0; i< products.length ; i++){
-							    const img1 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage1");
-							    const img2 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage2");
-							    products[i].getElementsByClassName("respon_image")[0].setAttribute("src", img1);
-							    products[i].getElementsByClassName("respon_image")[1].setAttribute("src", img2);
-							    
-							}
-							/* $(".item_box").find("img:eq(0)").attr("src",$(this).find(".cl").attr("thumbnailimage1"));
-							$(".item_box").find("img:eq(1)").attr("src",$(this).find(".cl").attr("thumbnailimage2")); */
-							
-							//이미지 hover처리
-							$(".item_info1").hover(
-									function(){
-										//$(this).find("img:eq(1)").css('display', 'block');
-										$(this).find("img:eq(1)").css('visibility', 'visible');
-										$(this).find("img:eq(1)").css('opacity', 1);
-										//사이즈 보여지게 처리
-										$(this).find(".item_size").css('display', 'block');
-										
-									},
-									function(){
-										$(this).find("img:eq(1)").css('opacity', 0);
-										$(this).find("img:eq(1)").css('visibility', 'hidden');
-										//$(this).find("img:eq(1)").css('display', 'none');
-										//사이즈 안보이게 처리
-										$(this).find(".item_size").css('display', 'none');
-									}
-									);
-							
-							//색깔 이미지 클릭시
-							$(".cl").on("click", function(e){
-								e.preventDefault(); //<a> 작동 중지
-								$(this).closest("li").find("img:eq(0)").attr("src", $(this).attr("thumbnailimage1"));
-								$(this).closest("li").find("img:eq(1)").attr("src", $(this).attr("thumbnailimage2"));
-								
-							})
-							
-							//페이징 버튼 처리
-							var actionForm = $("#actionForm"); //폼등록
-							
-							var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
-							
-							$(".pageBtn").on("click", function(e) {
-								e.preventDefault(); //<a> 작동 중지
-								/* actionForm
-										.find("input[name='pageNum']")
-										.val($(this).attr("pagenum"));
-								actionForm.submit(); //form submit */
-								location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
-							});//end click
-							
-							//이전 < 버튼을 누를 경우 실행
-							$(".prev").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===1){
-									alert("처음페이지입니다.");
-								}else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
 
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//다음 > 버튼을 누를 경우 실행
-							$(".next").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
-									alert("마지막페이지입니다.");
-								}else {
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								/* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
-								location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
+			    $(document).ready(
+			    	    function() {
+			    	        let color_filter = "";
+			    	        let size_filter = "";
+			    	        let order_filter = "";
+			    	        
+			    	        //color버튼 누르면
+			    	        $("a[name='color_a']").click(function(){
+			    	            color_filter = $(this).attr('value');
+			    	        });
+			    	        //size버튼 누르면
+			    	        $("a[name='size_a']").click(function(){
+			    	            size_filter = $(this).attr('value');
+			    	        });
+			    	        //order버튼 누르면
+			    	        $("a[name='order_a']").click(function(){
+			    	            order_filter = $(this).attr('value');
+			    	        });
+			    	        
+			    	        //초기화 버튼을 누르면 실행
+			    	         $("#resetapp").click(function(){
+			    	             console.log('resetapp click');
+			    	            
+			    	            //size 태그의 style를 제거
+			    	            $("a[name='size_a']").removeClass('on');
+			    	            //color 태그의 style를 제거
+			    	            $("a[name='color_a']").removeClass('on');
+			    	            
+			    	            //color_filter,size_filter,order_filter 초기화
+			    	            color_filter="";
+			    	            size_filter="";
+			    	            order_filter="";
+			    	            
+			    	            //checkbox type으로 되어있는 태그들을 해제.
+			    	            $("input:checkbox[id='brand_ck']:checked").each(function(){
+			    	                
+			    	                 $("input:checkbox[id='brand_ck']").prop("checked",false);
+			    	            })
+			    	            
+			    	            $("input:checkbox[id='price_ck']:checked").each(function(){
+			    	                $("input:checkbox[id='price_ck']").prop("checked",false);
+			    	            })
+			    	        }); 
+			    	        
+			    	        //적용버튼 누르면 필터 선택된 값들 다 가져오기
+			    	        $("#filterapp").click(function(){
+			    	            // 아래는 체크박스라서 안에다가 만듬
+			    	            let brand_filter = "";
+			    	            let price_filter = "";
+			    	            //brand가져오기
+			    	            $("input:checkbox[id='brand_ck']:checked").each(function(){
+			    	                brand_filter += $(this).val()+'.'
+			    	            })
+			    	            brand_filter = brand_filter.slice(0,-1);
+			    	            //price 가져로기
+			    	            $("input:checkbox[id='price_ck']:checked").each(function(){
+			    	                price_filter += $(this).val()+'.'
+			    	            })
+			    	            price_filter = price_filter.slice(0,-1);
+			    	            
+			    	            //핕터 속성들이 전부 "" 이 아니라면  filter 버튼 실행(필터 속성 값에 아무것도 안들어가 있는데 초기화버튼 누르는 것을 방지)
+			    	            if(color_filter=="" && size_filter=="" && order_filter=="" && brand_filter==""&&price_filter==""){
+			    	                alert("필터를 등록해주세요");
+			    	            }else{
+			    	            if(brand_filter === ""){
+			    	                brand_filter = "0"
+			    	            }
+			    	            if(color_filter === ""){
+			    	                color_filter = "0"
+			    	            }
+			    	            if(size_filter === ""){
+			    	                size_filter = "0"
+			    	            }
+			    	            if(price_filter === ""){
+			    	                price_filter = "0"
+			    	            }
+			    	            if(order_filter === ""){
+			    	                order_filter = "0"
+			    	            }
+			    	            
+			    	            const filter_values = brand_filter+"_"+color_filter+"_"+size_filter+"_"+price_filter+"_"+order_filter ; 
+			    	            console.log(filter_values);
+			    	            
+			    	            //console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+			    	            $(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+			    	            }
+			    	        });
+			    	        //로드될때 이미지들 색깔에 맞게 띄우기
+			    	        const products = document.querySelectorAll(".item_box")
+			    	        for(i=0; i< products.length ; i++){
+			    	            const img1 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage1");
+			    	            const img2 = products[i].getElementsByClassName("cl")[0].getAttribute("thumbnailimage2");
+			    	            
+			    	            const pid = products[i].getElementsByClassName("cl")[0].getAttribute("productid");
+			    	            const ccode = products[i].getElementsByClassName("cl")[0].getAttribute("colorcode");
+			    	            
+			    	            products[i].getElementsByClassName("respon_image")[0].setAttribute("src", img1);
+			    	            products[i].getElementsByClassName("respon_image")[1].setAttribute("src", img2);
+			    	            
+			    	            //products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	            //products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "/product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "/product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	        }
 
-								}
-							});
-							
-							//맨 끝 >> 버튼을 누를 경우 실행
-							$(".next2").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
-									alert("마지막페이지입니다.");
-								}else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//맨 처음 << 버튼을 누를 경우 실행
-							$(".prev2").on("click",function(e){
-								if(parseInt(curPageNum.attr("pagenum"))===1){
-									alert("처음페이지입니다.");
-								}else{
-								e.preventDefault(); //<a> 작동 중지
-								console.log('click');
-								location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
-								}
-							});
-							
-							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
-							$(".item_img").on("click",function(e){
-								console.log('click');
-								location.href="/product/product_detail/"+$(this).attr("alt");
-								//${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
-							}); 
+			    	        
+			    	        /* $(".item_box").find("img:eq(0)").attr("src",$(this).find(".cl").attr("thumbnailimage1"));
+			    	        $(".item_box").find("img:eq(1)").attr("src",$(this).find(".cl").attr("thumbnailimage2")); */
+			    	        
+			    	        //이미지 hover처리
+			    	        $(".item_info1").hover(
+			    	                function(){
+			    	                    //$(this).find("img:eq(1)").css('display', 'block');
+			    	                    $(this).find("img:eq(1)").css('visibility', 'visible');
+			    	                    $(this).find("img:eq(1)").css('opacity', 1);
+			    	                    //사이즈 보여지게 처리
+			    	                    $(this).find(".item_size").css('display', 'block');
+			    	                    
+			    	                },
+			    	                function(){
+			    	                    $(this).find("img:eq(1)").css('opacity', 0);
+			    	                    $(this).find("img:eq(1)").css('visibility', 'hidden');
+			    	                    //$(this).find("img:eq(1)").css('display', 'none');
+			    	                    //사이즈 안보이게 처리
+			    	                    $(this).find(".item_size").css('display', 'none');
+			    	                }
+			    	                );
+			    	        
+			    	        //색깔 이미지 클릭시
+			    	        $(".cl").on("click", function(e){
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            $(this).closest("li").find("img:eq(0)").attr("src", $(this).attr("thumbnailimage1"));
+			    	            $(this).closest("li").find("img:eq(1)").attr("src", $(this).attr("thumbnailimage2"));
+			    	            
+			    	            $(this).closest("li").find("a:eq(0)").attr("href", "/product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            $(this).closest("li").find("a:eq(1)").attr("href","/product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            
+			    	        })
+			    	        
+			    	        //페이징 버튼 처리
+			    	        var actionForm = $("#actionForm"); //폼등록
+			    	        
+			    	        var curPageNum =$(".pageBtn[pagenum='${pageMaker.cri.pageNum}']");
+			    	        
+			    	        $(".pageBtn").on("click", function(e) {
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            /* actionForm
+			    	                    .find("input[name='pageNum']")
+			    	                    .val($(this).attr("pagenum"));
+			    	            actionForm.submit(); //form submit */
+			    	            location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
+			    	        });//end click
+			    	        
+			    	        //이전 < 버튼을 누를 경우 실행
+			    	        $(".prev").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
+			    	                alert("처음페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
 
-							//현재 페이지 버튼의 class에 "on" 추가하기
-							curPageNum.addClass("on");
-					});
-				$("#brand_li_btn").click(function(){
-				    $("#brand_list_li").slideToggle(),
-				    $("#sortby_list_li").slideUp(),
-				    $("#size_list_li").slideUp(),
-				    $("#price_list_li").slideUp(),
-				    $("#color_list_li").slideUp();
-				}),
+			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
+			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //다음 > 버튼을 누를 경우 실행
+			    	        $(".next").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
+			    	                alert("마지막페이지입니다.");
+			    	            }else {
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
+			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
 
-				$("#color_li_btn").click(function(){
-				    $("#color_list_li").slideToggle(),
-				    $("#sortby_list_li").slideUp(),
-				    $("#size_list_li").slideUp(),
-				    $("#price_list_li").slideUp(),
-				    $("#brand_list_li").slideUp();
-				   
-				 
-				}),
+			    	            }
+			    	        });
+			    	        
+			    	        //맨 끝 >> 버튼을 누를 경우 실행
+			    	        $(".next2").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
+			    	                alert("마지막페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //맨 처음 << 버튼을 누를 경우 실행
+			    	        $(".prev2").on("click",function(e){
+			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
+			    	                alert("처음페이지입니다.");
+			    	            }else{
+			    	            e.preventDefault(); //<a> 작동 중지
+			    	            console.log('click');
+			    	            location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
+			    	            }
+			    	        });
+			    	        
+			    	        //해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
+			    	        $(".item_img").on("click",function(e){
+			    	            console.log('click');
+			    	            location.href="/product/product_detail/"+$(this).attr("alt");
+			    	            //${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
+			    	        }); 
+			    	        
 
-				$("#size_li_btn").click(function(){
+			    	        
+			    	        
+			    	    
+			    	        
+			    	        //현재 페이지 버튼의 class에 "on" 추가하기
+			    	        curPageNum.addClass("on");
+			    	    
 
-				    $("#size_list_li").slideToggle(),
-				    $("#sortby_list_li").slideUp(),
-				    $("#price_list_li").slideUp(),
-				    $("#brand_list_li").slideUp(),
-				    $("#color_list_li").slideUp();
-				   
-				 
-				}),
 
-				$("#price_li_btn").click(function(){
-				   
-				    $("#price_list_li").slideToggle(),
-				    $("#sortby_list_li").slideUp(),
-				    $("#size_list_li").slideUp(),
-				    $("#brand_list_li").slideUp(),
-				    $("#color_list_li").slideUp();
-				 
-				}),
-
+			    	/* 	$("#brand_li_btn").click(function(){
+			    	$("#brand_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+			    	$("#brand_li_btn").click(function(){
+			    	$("#brand_list_li").slideToggle();
+=======
 				$("#sortby_li_btn").click(function(){
 				    
 				    $("#sortby_list_li").slideToggle(),
@@ -577,11 +569,78 @@
 				        $("#chang_filter_categoriy").html($("#star").text());
 				    }
 			
+>>>>>>> ade38258aeb58cadfb8774e693c0c904f17ea7b8
 
-				$("#chang_filter_categoriy").on("click",
-						function(){
-							console.log("click됨");
-				});
+			    	}),
+
+			    	$("#color_li_btn").click(function(){
+			    	$("#color_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp();
+
+
+			    	}),
+
+			    	$("#size_li_btn").click(function(){
+
+			    	$("#size_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#price_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+
+
+			    	}),
+
+			    	$("#price_li_btn").click(function(){
+
+			    	$("#price_list_li").slideToggle(),
+			    	$("#sortby_list_li").slideUp(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp();
+
+			    	}),
+
+			    	$("#sortby_li_btn").click(function(){
+
+			    	$("#sortby_list_li").slideToggle(),
+			    	$("#size_list_li").slideUp(),
+			    	$("#brand_list_li").slideUp(),
+			    	$("#color_list_li").slideUp(),
+			    	$("#price_list_li").slideUp();
+			    	*/
+
+			    	}); 
+
+			    	function change1(){
+			    	 
+			    	    $("#chang_filter_categoriy").html($("#new").text());
+			    	}
+			    	function change2(){
+			    	  
+			    	    $("#chang_filter_categoriy").html($("#most").text());
+			    	}
+			    	function change3(){
+			    	   
+			    	    $("#chang_filter_categoriy").html($("#max").text());
+			    	}
+			    	function change4(){
+			    	  
+			    	    $("#chang_filter_categoriy").html($("#min").text());
+			    	}
+			    	function change5(){
+			    	   
+			    	    $("#chang_filter_categoriy").html($("#star").text());
+			    	}
+
+
+			    	$("#chang_filter_categoriy").on("click",
+			    	    function(){
+			    	        console.log("click됨");
+			    	});
 
 
 			</script>

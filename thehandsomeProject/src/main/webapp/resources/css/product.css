@@ -774,6 +774,7 @@
 /*상품상세 - 툴팁박스*/
 .item_detail .adaptive_wrap>.clearfix.prd_detail1905{overflow:visible;}
 .item_detail .adaptive_wrap>.clearfix.prd_detail1905 .item_visual{height:calc(100% - 20px);}
+.item_detail .adaptive_wrap>.clearfix.prd_detail1905 .item_visual::-webkit-scrollbar{display : none}
 /*상품상세 - 사이즈칩 간격(재입고알림버튼)*/
 .size_chip190527 .size_chip li{margin:0 12px 10px 0;}
 /*상품상세 - 상품평 활성화 1905*/

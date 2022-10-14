@@ -164,10 +164,7 @@ public class ProductController {
 			 productTotal = service.productFiltedCount(product, fd);
 			 String filterStr = pageInfo[2]+"_"+ pageInfo[3] +"_"+ pageInfo[4] +"_"+ pageInfo[5] +"_"+ pageInfo[6];
 			 //return "/product/list/"+ctg+"/1_"+productTotal+"_"+filterStr; 
-		}
-		 
-		
-		
+		}		
 		model.addAttribute(
 				"ctg",
 				ctg
@@ -217,6 +214,7 @@ public class ProductController {
 		model.addAttribute("sizelist",sizelist);
 		model.addAttribute("productVO", service.getProduct(pid));
 		model.addAttribute("colorVOList", service.getProductColor(pid));
+		model.addAttribute("curColorCode",colorcode);
 		return "/product/product_detail";
 	}
 	
