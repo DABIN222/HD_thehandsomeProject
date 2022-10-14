@@ -33,7 +33,7 @@
 
 /* layerArea dimmed */
 .layerArea {position:absolute; top:0; left:0; width:100%; height:100%;  z-index:100}
-.layerArea .layerBg {position:fixed; width:100%; height:100%; background:rgba(0,0,0,0.5);background-image: url("/_ui/desktop/common/images/common/dim_bg.png"); z-index:101}
+.layerArea .layerBg {position:fixed; width:100%; height:100%; background:rgba(0,0,0,0.5);background-image: url("/resources/images/dim_bg.png"); z-index:101}
 .layerArea .layerBg.white {position:fixed; width:100%; height:100%; background:rgba(0,0,0,0); z-index:101}
 
 /* popup title */
@@ -177,7 +177,7 @@
 .evaluation_write .item_box .item_info .item_title span:first-child{font-size: 12px;}
 .evaluation_write .guide_txt{padding-top:10px;line-height: 20px;font-size: 11px;border-top: 1px solid #ebebeb}
 
-.answer_wrap{padding:20px 35px 20px 60px;border-top:1px solid #ebebeb;;background: url("/_ui/desktop/common/images/common/bul_answer.png") 20px 15px no-repeat;color:#999999;line-height: 20px}
+.answer_wrap{padding:20px 35px 20px 60px;border-top:1px solid #ebebeb;;background: url("/resources/images/bul_answer.png") 20px 15px no-repeat;color:#999999;line-height: 20px}
 
 /****************************************************
  Search
