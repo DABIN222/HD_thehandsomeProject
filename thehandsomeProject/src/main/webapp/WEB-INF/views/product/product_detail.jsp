@@ -21,56 +21,56 @@
 					onclick="GA_Event('상품_상세','크게보기','클릭')">크게보기</a>
 				<!-- 버튼 클릭시 item_visual 에 zoom 클래스 추가 -->
 				<!-- 2021.08.18 동영상 재생 수정, 상품 imageDivisionCode에 VOD가 있는 경우 동영상 url 세팅 -->
-				<c:forEach items="${colorVOList.ProductColorVO}" var="colorVO">
-					<div class="image_view_${status.cname}" id="image_view_${status.cname}" style="display: none">
+				<c:forEach items="${colorVOList}" var="colorVO">
+					<div class="image_view_${colorVO.ccolorcode}" id="image_view_${colorVO.ccolorcode}" style="display: none">
 						<div class="item_visual" id="imageDiv" style="margin-top: 20px;">
 							<ul>
 								<c:if test="${not empty colorVO.cimage1}">
 								<li>
 									<img
-									src="colorVO.cimage1"
+									src="${colorVO.cimage1}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage2}">
 								<li>
 									<img
-									src="colorVO.cimage2"
+									src="${colorVO.cimage2}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage3}">
 								<li>
 									<img
-									src="colorVO.cimage3"
+									src="${colorVO.cimage3}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage4}">
 								<li>
 									<img
-									src="colorVO.cimage4"
+									src="${colorVO.cimage4}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage5}">
 								<li>
 									<img
-									src="colorVO.cimage5"
+									src="${colorVO.cimage5}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage6}">
 								<li>
 									<img
-									src="colorVO.cimage6"
+									src="${colorVO.cimage6}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
 								</c:if> <c:if test="${not empty colorVO.cimage7}">
 								<li>
 									<img
-									src="colorVO.cimage7"
+									src="${colorVO.cimage7}"
 									class="respon_image" alt=""
 									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 								</li>
@@ -109,14 +109,14 @@
 						<div class="flag"></div>
 
 						<p class="price">
-							<span>${productVO.pprice}</span> <input type="hidden" id="productPrice"
+							<span>₩${productVO.pprice}</span> <input type="hidden" id="productPrice"
 								value="${productVO.pprice}">
 						</p>
 						<!-- 상품추가설명 -->
 						<p class="selling_point"></p>
 						<!-- 20200914이후 추가 상품설명 (신) -->
 						<div class="prod-detail-con-box">
-							<strong class="number-code">상품품번 : <span><!-- 처음 로드될때 jqery로  --></span></strong>
+							<strong class="number-code">상품품번 : <span>${productVO.pid}<!-- 처음 로드될때 jqery로  --></span></strong>
 							<div class="round-style">
 								<p>${productVO.pdetail}</p>
 							</div>
@@ -399,12 +399,13 @@
 							<li><span class="title">색상</span>
 								<div class="txt">
 									<ul class="color_chip clearfix">
-										<c:forEach items="${colorVOList.ProductColorVO}" var="colorVO">
+										<c:forEach items="${colorVOList}" var="colorVO">
 										<input type="hidden" id="colorName" value="${colorVO.cname}">
 										<li id="${colorVO.ccolorcode}">
 											<input type="hidden" class="colorNameVal" value="${colorVO.cname}">
 											 	<a href="javascript:void(0);"
-													class="beige on"
+													class="colorBtn"
+													colorcode="${colorVO.ccolorcode}"
 													style="background: #000000 url('${colorVO.ccolorimage})"
 													onmouseover="setColorName('${colorVO.cname}');"
 													onmouseout="setColorName('');">
@@ -968,12 +969,12 @@
 											src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 											alt="닫기"></a>
 									</div>
-									<ul class="size_chip clearfix sizeChipKo1901">
-										<c:foreach items="${sizeList}" var="size">
+									<%-- <ul class="size_chip clearfix sizeChipKo1901">
+										<c:forEach items="${sizelist}" var="size">
 											<li id=""><a
 												href="javascript:void(0);">${size}</a></li>
-										</c:foreach>
-									</ul>
+										</c:forEach>
+									</ul> --%>
 							</span> <!-- 2021.08.10 화장품 상품인 경우 사이즈조견표 영역 미노출 --> <a
 								href="javascript:fn_popupSizeQuickReference();" class="etc_info"
 								onclick="GA_Event('상품_상세','사이즈_조건표','클릭')">사이즈 조견표</a> <!-- 재입고알림 툴팁 -->
@@ -3338,7 +3339,16 @@
 <!-- footerWrap -->
 <script>
 	$(document).ready(function(){
+		//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지도록
+		let prev_colorcode = "${curColorCode}";
+		$(".image_view_"+prev_colorcode).css('display', 'block');
 		
+		$(".colorBtn").on("click", function(e){
+			$(".image_view_"+prev_colorcode).css('display', 'none');
+			$(".image_view_"+$(this).attr("colorcode")).css('display', 'block');
+			prev_colorcode = $(this).attr("colorcode");
+			
+		});
 	});
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
+<!-- <link rel="stylesheet" type="text/css" href="/resources/css/product.css"> -->
+
+	
+	
 	<div id="bodyWrap" class="products">
 		<!-- 대, 중, 소 카테고리 표시 -->
 		<h3 class="cnts_title ou1804">
@@ -24,7 +29,7 @@
 						src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 						alt="location arr" />
 					<a href="javascript:void(0);" >${ctgName[2]}</a>
-				</c:if>
+				</c:if>	
 <!-- 			<a href="/ko/c/WE/" onclick="GA_Event('카테고리_리스트','카테고리','여성')"> 여성</a> <img
 				src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/ou_location_arr.png"
 				alt="location arr" /> <a href="/ko/c/WE05/"
@@ -63,32 +68,32 @@
             
                 <li class="brand" id="brand_li_btn" >
                 <a href="javascript:void(0);" class="select" >브랜드
-                    <span class="current" id="brandCurrent" > <span class="ico_arr">arrow</span>   </span>                    
+                    <span class="current" id="brandCurrent" > <span class="ico_arr">arrow</span> </span>                   
 					
                     </a>
                     <div class="list" id="brand_list_li" style="display: none;">
                         <ul id="category_brand_chip">
-                        	<li><input type="checkbox" id="brand_ck21" name="brand" value="1" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
-                            <li><input type="checkbox" id="brand_ck12" name="brand" value="2" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
-                             <li><input type="checkbox" id="brand_ck9" name="brand" value="3" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
-							 <li><input type="checkbox" id="brand_ck24" name="brand" value="4" onclick="GA_Event('카테고리_리스트','정렬','MUE');setOnlineShopBrand(this, 'BR16');"><label for="brand_ck24" id="BR16">MUE</label></li>
-                             <li><input type="checkbox" id="brand_ck1" name="brand" value="5" onclick="GA_Event('카테고리_리스트','정렬','TIME');setOnlineShopBrand(this, 'BR01');"><label for="brand_ck1" id="BR01">TIME</label></li>
-                            <li><input type="checkbox" id="brand_ck2" name="brand" value="6" onclick="GA_Event('카테고리_리스트','정렬','MINE');setOnlineShopBrand(this, 'BR02');"><label for="brand_ck2" id="BR02">MINE</label></li>
-                            <li><input type="checkbox" id="brand_ck3" name="brand" value="7" onclick="GA_Event('카테고리_리스트','정렬','LANVIN COLLECTION');setOnlineShopBrand(this, 'BR19');"><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
-                            <li><input type="checkbox" id="brand_ck20" name="brand" value="8" onclick="GA_Event('카테고리_리스트','정렬','TOM GREYHOUND');setOnlineShopBrand(this, 'BR15');"><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
-                            <li><input type="checkbox" id="brand_ck6" name="brand" value="9" onclick="GA_Event('카테고리_리스트','정렬','SJSJ');setOnlineShopBrand(this, 'BR04');"><label for="brand_ck6" id="BR04">SJSJ</label></li>
-                             <li><input type="checkbox" id="brand_ck13" name="brand" value="10" onclick="GA_Event('카테고리_리스트','정렬','CLUB MONACO');setOnlineShopBrand(this, 'BR44');"><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
-                             <li><input type="checkbox" id="brand_ck11" name="brand" value="11" onclick="GA_Event('카테고리_리스트','정렬','OBZEE');setOnlineShopBrand(this, 'BR43');"><label for="brand_ck11" id="BR43">OBZEE</label></li>
-                             <li><input type="checkbox" id="brand_ck5" name="brand" value="12" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM');setOnlineShopBrand(this, 'BR03');"><label for="brand_ck5" id="BR03">SYSTEM</label></li>
-                              <li><input type="checkbox" id="brand_ck22" name="brand" value="13" onclick="GA_Event('카테고리_리스트','정렬','FOURM STUDIO');setOnlineShopBrand(this, 'BR30');"><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
-                               <li><input type="checkbox" id="brand_ck18" name="brand" value="14" onclick="GA_Event('카테고리_리스트','정렬','3.1 Phillip Lim');setOnlineShopBrand(this, 'BR41');"><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
-                             <li><input type="checkbox" id="brand_ck17" name="brand" value="15" onclick="GA_Event('카테고리_리스트','정렬','LANVIN PARIS');setOnlineShopBrand(this, 'BR20');"><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
-                              <li><input type="checkbox" id="brand_ck19" name="brand" value="16" onclick="GA_Event('카테고리_리스트','정렬','ROCHAS');setOnlineShopBrand(this, 'BR37');"><label for="brand_ck19" id="BR37">ROCHAS</label></li>
-                                <li><input type="checkbox" id="brand_ck25" name="brand" value="17" onclick="GA_Event('카테고리_리스트','정렬','H : SCENE');setOnlineShopBrand(this, 'BR47');"><label for="brand_ck25" id="BR47">H : SCENE</label></li>
-                                <li><input type="checkbox" id="brand_ck7" name="brand" value="18" onclick="GA_Event('카테고리_리스트','정렬','TIME HOMME');setOnlineShopBrand(this, 'BR06');"><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
-                                  <li><input type="checkbox" id="brand_ck8" name="brand" value="19" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM HOMME');setOnlineShopBrand(this, 'BR07');"><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
-                                  <li><input type="checkbox" id="brand_ck23" name="brand" value="20" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
-                            	   <li><input type="checkbox" id="brand_ck16" name="brand" value="21" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
+                        	<li><input type="checkbox" id="brand_ck" name="brand" value="1" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
+                            <li><input type="checkbox" id="brand_ck" name="brand" value="2" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="3" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
+							 <li><input type="checkbox" id="brand_ck" name="brand" value="4" onclick="GA_Event('카테고리_리스트','정렬','MUE');setOnlineShopBrand(this, 'BR16');"><label for="brand_ck24" id="BR16">MUE</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="5" onclick="GA_Event('카테고리_리스트','정렬','TIME');setOnlineShopBrand(this, 'BR01');"><label for="brand_ck1" id="BR01">TIME</label></li>
+                            <li><input type="checkbox" id="brand_ck" name="brand" value="6" onclick="GA_Event('카테고리_리스트','정렬','MINE');setOnlineShopBrand(this, 'BR02');"><label for="brand_ck2" id="BR02">MINE</label></li>
+                            <li><input type="checkbox" id="brand_ck" name="brand" value="7" onclick="GA_Event('카테고리_리스트','정렬','LANVIN COLLECTION');setOnlineShopBrand(this, 'BR19');"><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
+                            <li><input type="checkbox" id="brand_ck" name="brand" value="8" onclick="GA_Event('카테고리_리스트','정렬','TOM GREYHOUND');setOnlineShopBrand(this, 'BR15');"><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
+                            <li><input type="checkbox" id="brand_ck" name="brand" value="9" onclick="GA_Event('카테고리_리스트','정렬','SJSJ');setOnlineShopBrand(this, 'BR04');"><label for="brand_ck6" id="BR04">SJSJ</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="10" onclick="GA_Event('카테고리_리스트','정렬','CLUB MONACO');setOnlineShopBrand(this, 'BR44');"><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="11" onclick="GA_Event('카테고리_리스트','정렬','OBZEE');setOnlineShopBrand(this, 'BR43');"><label for="brand_ck11" id="BR43">OBZEE</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="12" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM');setOnlineShopBrand(this, 'BR03');"><label for="brand_ck5" id="BR03">SYSTEM</label></li>
+                              <li><input type="checkbox" id="brand_ck" name="brand" value="13" onclick="GA_Event('카테고리_리스트','정렬','FOURM STUDIO');setOnlineShopBrand(this, 'BR30');"><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
+                               <li><input type="checkbox" id="brand_ck" name="brand" value="14" onclick="GA_Event('카테고리_리스트','정렬','3.1 Phillip Lim');setOnlineShopBrand(this, 'BR41');"><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
+                             <li><input type="checkbox" id="brand_ck" name="brand" value="15" onclick="GA_Event('카테고리_리스트','정렬','LANVIN PARIS');setOnlineShopBrand(this, 'BR20');"><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
+                              <li><input type="checkbox" id="brand_ck" name="brand" value="16" onclick="GA_Event('카테고리_리스트','정렬','ROCHAS');setOnlineShopBrand(this, 'BR37');"><label for="brand_ck19" id="BR37">ROCHAS</label></li>
+                                <li><input type="checkbox" id="brand_ck" name="brand" value="17" onclick="GA_Event('카테고리_리스트','정렬','H : SCENE');setOnlineShopBrand(this, 'BR47');"><label for="brand_ck25" id="BR47">H : SCENE</label></li>
+                                <li><input type="checkbox" id="brand_ck" name="brand" value="18" onclick="GA_Event('카테고리_리스트','정렬','TIME HOMME');setOnlineShopBrand(this, 'BR06');"><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck" name="brand" value="19" onclick="GA_Event('카테고리_리스트','정렬','SYSTEM HOMME');setOnlineShopBrand(this, 'BR07');"><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
+                                  <li><input type="checkbox" id="brand_ck" name="brand" value="20" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
+                            	   <li><input type="checkbox" id="brand_ck" name="brand" value="21" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
                                 </ul>
                     </div>
                  </li>
@@ -306,6 +311,7 @@
 			        $("#chang_filter_categoriy").html($("#min").text());
 			        order_filter = $("#min").attr('value');
 			    } */
+
 			    $(document).ready(
 			    	    function() {
 			    	        let color_filter = "";
@@ -407,8 +413,8 @@
 			    	            
 			    	            //products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
 			    	            //products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
-			    	             products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
-			    	             products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info1")[0].setAttribute("href", "/product/product_detail?pid="+pid+"&colorcode="+ccode);
+			    	             products[i].getElementsByClassName("item_info2")[0].setAttribute("href", "/product/product_detail?pid="+pid+"&colorcode="+ccode);
 			    	        }
 
 			    	        
@@ -440,8 +446,8 @@
 			    	            $(this).closest("li").find("img:eq(0)").attr("src", $(this).attr("thumbnailimage1"));
 			    	            $(this).closest("li").find("img:eq(1)").attr("src", $(this).attr("thumbnailimage2"));
 			    	            
-			    	            $(this).closest("li").find("a:eq(0)").attr("href", "product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
-			    	            $(this).closest("li").find("a:eq(1)").attr("href","product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            $(this).closest("li").find("a:eq(0)").attr("href", "/product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
+			    	            $(this).closest("li").find("a:eq(1)").attr("href","/product/product_detail?pid="+$(this).attr("productid")+"&colorcode="+$(this).attr("colorcode"));
 			    	            
 			    	        })
 			    	        
@@ -524,11 +530,6 @@
 			    	    
 
 
-
-
-
-
-
 			    	/* 	$("#brand_li_btn").click(function(){
 			    	$("#brand_list_li").slideToggle(),
 			    	$("#sortby_list_li").slideUp(),
@@ -537,6 +538,38 @@
 			    	$("#color_list_li").slideUp();
 			    	$("#brand_li_btn").click(function(){
 			    	$("#brand_list_li").slideToggle();
+=======
+				$("#sortby_li_btn").click(function(){
+				    
+				    $("#sortby_list_li").slideToggle(),
+				    $("#size_list_li").slideUp(),
+				    $("#brand_list_li").slideUp(),
+				    $("#color_list_li").slideUp(),
+				    $("#price_list_li").slideUp();
+					
+				}); 
+				 function change1(){
+				     
+				        $("#chang_filter_categoriy").html($("#new").text());
+				    }
+				    function change2(){
+				      
+				        $("#chang_filter_categoriy").html($("#most").text());
+				    }
+				    function change3(){
+				       
+				        $("#chang_filter_categoriy").html($("#max").text());
+				    }
+				    function change4(){
+				      
+				        $("#chang_filter_categoriy").html($("#min").text());
+				    }
+				    function change5(){
+				       
+				        $("#chang_filter_categoriy").html($("#star").text());
+				    }
+			
+>>>>>>> ade38258aeb58cadfb8774e693c0c904f17ea7b8
 
 			    	}),
 
