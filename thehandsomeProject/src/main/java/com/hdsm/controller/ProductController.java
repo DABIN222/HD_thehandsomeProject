@@ -78,6 +78,23 @@ public class ProductController {
 		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
+	@PostMapping("/list/{ctg}")
+	public String productListFilter(
+			@PathVariable(required=false) String ctg
+			) {
+		Criteria cri= new Criteria();
+		ProductVO product = new ProductVO();
+		String[] ctgName = ProductUtil.builder().build().getCategoryName(ctg);
+		
+		product.setClarge(ctgName[0]);
+		product.setCmedium(ctgName[1]);
+		product.setCsmall(ctgName[2]);	
+		
+		int ctgProductCount = service.productCount(product);
+		
+		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
+	}
+	
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
 	@GetMapping({ "/list/{ctg}/{info}"/* ,"/list/{ctg}" */})
 	public String productList(
