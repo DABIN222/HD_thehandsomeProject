@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.domain.ThumbnailVO;
@@ -98,6 +99,20 @@ public class ProductServiceImpl implements ProductService {
 	public int productFiltedCount(ProductVO vo, FilterDTO fd) {
 		return mapper.productFiltedCount(vo, fd);
 	}
+
+	@Override
+	public ProductVO getProduct(String pid) {
+		
+		return mapper.getProduct(pid);
+	}
+
+	@Override
+	public List<ProductColorVO>  getProductColor(String pid) {
+		
+		return mapper.getProductColor(pid);
+	}
+	
+	
 
 	
 }

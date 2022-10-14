@@ -206,9 +206,15 @@ public class ProductController {
 	}
 	
 	//상품 상세 정보 보기
-	@GetMapping("/prodinfo")
-	public void prodInfo(String product_id) {
-		
+	@GetMapping("/product_detail/{pid}")
+	public String product_detail(
+			@PathVariable("pid") String pid,Model model) {
+		ProductVO product=service.getProduct(pid);
+		String[] sizelist=product.getP_size().split(",");
+		model.addAttribute("sizelist",sizelist);
+		model.addAttribute("productVO", service.getProduct(pid));
+		model.addAttribute("colorVOList", service.getProductColor(pid));
+		return "/product/product_detail";
 	}
 	
 	//상품 바로 주문
