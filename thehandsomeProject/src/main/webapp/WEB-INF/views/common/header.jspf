@@ -14,8 +14,6 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/footer.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/layout.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/product.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/brand.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/contents.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/popup.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
@@ -24,20 +22,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- ui 공통 스크립트 -->
 <script type="text/javascript" src="/resources/js/ui.js"></script>
+
 </head>
 <body oncontextmenu="return false">
 	<div id="headerWrap">
 		<div class="header header_fixed header_main1903">
-		<script>
-			$(document).ready(function() {
-		    
-		    $('.gnb_nav.hscene1906 .cate_m .hscene').mouseover(function(){ // 툴팁
-		        $('.gnb_nav.hscene1906 .cate_m li .delch_box').addClass('on');
-		    });
-		    $('.gnb_nav.hscene1906 .cate_m .hscene').mouseout(function(){
-		        $('.gnb_nav.hscene1906 .cate_m li .delch_box').removeClass('on');
-		    });
-		</script>
 			<div class="top_nav topnav1903">
 				<div class="top_nav_wrap clearfix">
 				<!-- before -->
@@ -50,7 +39,7 @@
 				
 					<div class="util_menu" style="display:block;">
 						<ul class="clearfix">
-							<li><a href="#">로그인<!-- 로그인 --></a></li>
+							<li><a href="/member/login/">로그인<!-- 로그인 --></a></li>
 							<li class="header_dropmemu mypage">
 									
 								<a href="#" class="btn">마이페이지</a>
@@ -81,7 +70,7 @@
 								</div>
 							</li>
 							
-							<li>
+							<!-- <li>
 								<div class="header_dropmemu lang_switch lang_1911">
 								    <a href="#" class="btn" onclick="#">LANGUAGE</a>
 									<div class="list" style="height: 87px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; display: none;">
@@ -91,8 +80,8 @@
 											<li><a href="#">中文</a></li>
 										</ul>
 									</div>
-								</div><!-- header_dropmemu end -->
-							</li>
+								</div>header_dropmemu end
+							</li> -->
 							
 						</ul><!-- clearfix end -->
 					</div>	<!-- util_menu end -->

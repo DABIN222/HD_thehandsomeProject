@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
+
 	
 	
 	<div id="bodyWrap" class="products">

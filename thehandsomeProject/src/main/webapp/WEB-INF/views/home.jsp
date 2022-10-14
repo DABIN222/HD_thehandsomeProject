@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
             <!-- bodyWrap -->
         <div id="bodyWrap" style="padding-bottom:0;">
                 <!-- layer pop-->
@@ -3409,4 +3409,4 @@
             </form>
             
         <!-- footerWrap -->
- <%@include file ="/WEB-INF/views/common/footer.jspf" %>
+ <%@include file ="/WEB-INF/views/common/footer.jsp" %>

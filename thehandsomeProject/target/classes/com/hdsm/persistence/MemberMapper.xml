@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- parameterType="com.hdsm.domain.MemberVO" -->
+<mapper namespace="com.hdsm.persistence.MemberMapper">
+	<insert id="insertMember">
+		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
+		maddress1, maddress2, mgrade, mdate, mpoint, menabled)
+		VALUES (#{mid, jdbcType=VARCHAR}, #{mpassword, jdbcType=VARCHAR}, #{mname, jdbcType=VARCHAR}, #{memail, jdbcType=VARCHAR}, #{mtel, jdbcType=VARCHAR}, 0, 
+		#{maddress1, jdbcType=VARCHAR}, #{maddress2, jdbcType=VARCHAR}, 'silver', sysdate, 0, 0)
+	</insert>
+</mapper> 
