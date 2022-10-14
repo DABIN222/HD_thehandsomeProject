@@ -11,7 +11,6 @@ $(document).ready(function(){
             $('#bodyWrap').css('margin-top','0px');
 		}
 	});
-
 });
 */
 
@@ -437,7 +436,6 @@ $(document).ready(function(){
 		$item_box.find('.item_img .on').stop().fadeOut('fast');
 	}
 });
-
  main product list 
 $(document).ready(function(){
 	var $item_boxs = $(".product_list .items_list li");
@@ -456,7 +454,6 @@ $(document).ready(function(){
 		$item_box.find('.respon_image.on').stop().fadeOut('fast');
 	}
 });
-
  item main - item_box over 
 $(document).ready(function(){
 	var $item_mboxs = $(".item_main .item_box");
