@@ -183,7 +183,7 @@
                     <span class="box_arr"></span>
                  </div> -->
                 </li>
-                <li class="btn" style="padding-left:300px"><a href="javascript:void(0);" >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
+                <li class="btn" style="padding-left:300px"><a  id="resetapp" href="javascript:void(0);"  >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
             </ul>
          	<div class="items_count float_right">
                         <span class="num">${productCount}</span> <span>전체</span>
@@ -320,14 +320,36 @@
 								order_filter = $(this).attr('value');
 							});
 							
+							//초기화 버튼을 누르면 실행
+							 $("#resetapp").click(function(){
+								 console.log('resetapp click');
+								
+								//size 태그의 style를 제거
+								$("a[name='size_a']").removeClass('on');
+								//color 태그의 style를 제거
+								$("a[name='color_a']").removeClass('on');
+								
+								//color_filter,size_filter,order_filter 초기화
+								color_filter="";
+								size_filter="";
+								order_filter="";
+								
+								//checkbox type으로 되어있는 태그들을 해제.
+								$("input:checkbox[id='brand_ck']:checked").each(function(){
+									
+									 $("input:checkbox[id='brand_ck']").prop("checked",false);
+								})
+								
+								$("input:checkbox[id='price_ck']:checked").each(function(){
+									$("input:checkbox[id='price_ck']").prop("checked",false);
+								})
+							}); 
 							
 							//적용버튼 누르면 필터 선택된 값들 다 가져오기
 							$("#filterapp").click(function(){
 								// 아래는 체크박스라서 안에다가 만듬
 								let brand_filter = "";
 								let price_filter = "";
-								
-								
 								//brand가져오기
 								$("input:checkbox[id='brand_ck']:checked").each(function(){
 									brand_filter += $(this).val()+'.'
@@ -339,6 +361,10 @@
 								})
 								price_filter = price_filter.slice(0,-1);
 								
+								//핕터 속성들이 전부 "" 이 아니라면  filter 버튼 실행(필터 속성 값에 아무것도 안들어가 있는데 초기화버튼 누르는 것을 방지)
+								if(color_filter=="" && size_filter=="" && order_filter=="" && brand_filter==""&&price_filter==""){
+									alert("필터를 등록해주세요");
+								}else{
 								if(brand_filter === ""){
 									brand_filter = "0"
 								}
@@ -360,6 +386,7 @@
 								
 								//console.log('/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
 								$(location).attr('href', '/product/list/${ctg}/1_'+"${productCount}_"+filter_values);
+								}
 							});
 							//로드될때 이미지들 색깔에 맞게 띄우기
 							const products = document.querySelectorAll(".item_box")
