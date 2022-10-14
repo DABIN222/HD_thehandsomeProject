@@ -68,7 +68,6 @@
                     </a>
                     <div class="list" id="brand_list_li" style="display: none;">
                         <ul id="category_brand_chip">
-<<<<<<< HEAD
                         	<li><input type="checkbox" id="brand_ck21" name="brand" value="1" onclick="GA_Event('카테고리_리스트','정렬','FOURM THE STORE');setOnlineShopBrand(this, 'BR35');"><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
                             <li><input type="checkbox" id="brand_ck12" name="brand" value="2" onclick="GA_Event('카테고리_리스트','정렬','O&amp;#039;2nd');setOnlineShopBrand(this, 'BR45');"><label for="brand_ck12" id="BR45">O'2nd</label></li>
                              <li><input type="checkbox" id="brand_ck9" name="brand" value="3" onclick="GA_Event('카테고리_리스트','정렬','the CASHMERE');setOnlineShopBrand(this, 'BR08');"><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
@@ -91,30 +90,6 @@
                                   <li><input type="checkbox" id="brand_ck23" name="brand" value="20" onclick="GA_Event('카테고리_리스트','정렬','FOURM MEN&amp;#039;S LOUNGE');setOnlineShopBrand(this, 'BR32');"><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
                             	   <li><input type="checkbox" id="brand_ck16" name="brand" value="21" onclick="GA_Event('카테고리_리스트','정렬','BALLY');setOnlineShopBrand(this, 'BR21');"><label for="brand_ck16" id="BR21">BALLY</label></li>
                                 </ul>
-=======
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="1" ><label for="brand_ck21" id="BR35">FOURM THE STORE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="2" ><label for="brand_ck12" id="BR45">O'2nd</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="3" ><label for="brand_ck9" id="BR08">the CASHMERE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="4" ><label for="brand_ck24" id="BR16">MUE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="5" ><label for="brand_ck1" id="BR01">TIME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="6" ><label for="brand_ck2" id="BR02">MINE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="7" ><label for="brand_ck3" id="BR19">LANVIN COLLECTION</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="8" ><label for="brand_ck20" id="BR15">TOM GREYHOUND</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="9" ><label for="brand_ck6" id="BR04">SJSJ</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="10" ><label for="brand_ck13" id="BR44">CLUB MONACO</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="11" ><label for="brand_ck11" id="BR43">OBZEE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="12" ><label for="brand_ck5" id="BR03">SYSTEM</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="13" ><label for="brand_ck22" id="BR30">FOURM STUDIO</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="14" ><label for="brand_ck18" id="BR41">3.1 Phillip Lim</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="15" ><label for="brand_ck17" id="BR20">LANVIN PARIS</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="16" ><label for="brand_ck19" id="BR37">ROCHAS</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="17" ><label for="brand_ck25" id="BR47">H : SCENE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="18" ><label for="brand_ck7" id="BR06">TIME HOMME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="19" ><label for="brand_ck8" id="BR07">SYSTEM HOMME</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="20" ><label for="brand_ck23" id="BR32">FOURM MEN'S LOUNGE</label></li>
-							<li><input type="checkbox" id="brand_ck" name="brand_ck" value="21" ><label for="brand_ck16" id="BR21">BALLY</label></li>
-                        </ul>
->>>>>>> 410e921610179f5f5cfacd57ad4ef619aa6549c7
                     </div>
                  </li>
                  <li class="color"  id="color_li_btn"><a href="javascript:void(0);" class="select">색상<span class="ico_arr">arrow</span></a>
@@ -208,11 +183,10 @@
                     <span class="box_arr"></span>
                  </div> -->
                 </li>
-<<<<<<< HEAD
-                <li class="btn"><a href="javascript:void(0);" id="ResetBtn" onclick="">초기화</a><a id="FilterBtn" href="javascript:gubunSearch(1);" onclick="FilterBtn();">적용</a></li>
-=======
-                <li class="btn" style="padding-left:300px"><a  id="resetapp" href="javascript:void(0);"  >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
->>>>>>> 410e921610179f5f5cfacd57ad4ef619aa6549c7
+               
+
+                <li class="btn"><a  id="resetapp" href="javascript:void(0);" >초기화</a><a id="filterapp" href="javascript:void(0);">적용</a></li>
+
             </ul>
          	<div class="items_count float_right">
                         <span class="num">${productCount}</span> <span>전체</span>
@@ -267,7 +241,7 @@
 								</a>
 								<div class="color_more_wrap">
 									<c:forEach items="${product.colorList}" var="color">
-										<a href="javascript:void(0);"
+										<a href="/product/list/${color.ccolorcode };"
 											class="cl wt"
 											colorcode = "${color.ccolorcode}"
 											thumbnailimage1="${color.c_thumbnail1}"
@@ -521,8 +495,9 @@
 							//해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
 							$(".item_img").on("click",function(e){
 								console.log('click');
-								location.href="/product/prodinfo/${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
-							});
+								location.href="/product/product_detail/"+$(this).attr("alt");
+								//${ctg}/"+curPageNum.attr("pagenum")+"_${productCount}" +"${page_info_ex}";
+							}); 
 							
 
 							
@@ -533,7 +508,7 @@
 							curPageNum.addClass("on");
 						
 				
-<<<<<<< HEAD
+
 				
 				
 			
@@ -592,9 +567,8 @@
 				    $("#price_list_li").slideUp();
 					*/
 				 
-				}); */
-			
-<<<<<<< HEAD
+				}); 
+
 				 function change1(){
 				     
 				        $("#chang_filter_categoriy").html($("#new").text());
@@ -616,13 +590,13 @@
 				        $("#chang_filter_categoriy").html($("#star").text());
 				    }
 			
-=======
+
 				$("#chang_filter_categoriy").on("click",
 						function(){
 							console.log("click됨");
 				});
 
->>>>>>> 410e921610179f5f5cfacd57ad4ef619aa6549c7
+
 			</script>
 			<!-- //paging -->
 		</div>

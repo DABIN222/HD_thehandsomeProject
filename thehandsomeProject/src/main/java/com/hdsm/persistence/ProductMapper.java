@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.domain.ThumbnailVO;
@@ -30,5 +31,9 @@ public interface ProductMapper {
 	
 	// 필터된 물건 갯수
 	public int productFiltedCount(@Param("vo") ProductVO vo, @Param("fd") FilterDTO fd);
+	
+	public ProductVO getProduct(String pid);
+	
+	public List<ProductColorVO> getProductColor(String pid);
 
 }
