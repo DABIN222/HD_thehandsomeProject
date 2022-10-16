@@ -7,7 +7,7 @@
 /* common */
 .scroll-y{ overflow-y:scroll;width:100%;height:200px;}
 .popwrap{position:relative;padding:30px;background: #fff;margin:auto;z-index:999;}
-.popwrap .btn_close{position: absolute;top:20px;right:20px;width:20px;height:20px;background:url("/_ui/desktop/common/images/popup/ico_close.png") center center no-repeat;}
+.popwrap .btn_close{position: absolute;top:20px;right:20px;width:20px;height:20px;background:url("/resources/images/ico_close.png") center center no-repeat;}
 .popwrap .pop_cnt{position: relative;}
 .popwrap .pop_cnt .pop_tlt{padding-top:25px;min-height:40px;color:#222;font-size:16px;line-height:22px;text-align:center;}
 .popwrap .pop_cnt .pop_tlt.copy{padding:50px 0 30px 0;min-height:40px;}
