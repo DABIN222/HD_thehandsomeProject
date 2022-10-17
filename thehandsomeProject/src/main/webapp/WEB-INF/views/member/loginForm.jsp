@@ -40,7 +40,7 @@
 					<div class="brand_menu brand_menu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 없음 -->
-							<li><span class="on"><a href="/ko/main" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
+							<li><span class="on"><a href="/" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
 							
 							<!-- 로그인 상태 -->
 							<!-- 비로그인 상태 -->
@@ -227,7 +227,7 @@
 				
 				<div class="gnbwarp new201608 clearfix">
 					<h1 class="logo logo1903">
-						<a href="/ko/main" onclick="GA_Event('공통', '로고', '상단');">thehandsome.com</a>
+						<a href="/" onclick="GA_Event('공통', '로고', '상단');">thehandsome.com</a>
 					</h1>
 					
 					<!-- 첫번째 c:if -->
