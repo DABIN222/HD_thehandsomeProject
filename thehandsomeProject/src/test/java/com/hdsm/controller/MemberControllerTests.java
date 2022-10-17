@@ -55,4 +55,13 @@ public class MemberControllerTests {
 		
 	}
 	
+	@Test
+	public void login() throws Exception{
+		MemberVO member = new MemberVO();
+		member.setMid("admin");
+		member.setMpassword("1234");
+		
+		membermapper.login(member);
+	}
+	
 }
