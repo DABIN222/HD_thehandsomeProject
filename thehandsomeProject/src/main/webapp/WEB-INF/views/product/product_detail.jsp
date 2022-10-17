@@ -109,14 +109,14 @@
 						<div class="flag"></div>
 
 						<p class="price">
-							<span>₩${productVO.pprice}</span> <input type="hidden" id="productPrice"
+							<span id="pricespan">₩${productVO.pprice}</span> <input type="hidden" id="productPrice"
 								value="${productVO.pprice}">
 						</p>
 						<!-- 상품추가설명 -->
 						<p class="selling_point"></p>
 						<!-- 20200914이후 추가 상품설명 (신) -->
 						<div class="prod-detail-con-box">
-							<strong class="number-code">상품품번 : <span>${productVO.pid}<!-- 처음 로드될때 jqery로  --></span></strong>
+							<strong class="number-code">상품품번 : <span id="pcscode">${curColorCode}<!-- 처음 로드될때 jqery로  --></span></strong>
 							<div class="round-style">
 								<p>${productVO.pdetail}</p>
 							</div>
@@ -130,230 +130,13 @@
 					<!-- //20200904 더보기 -->
 					<div class="info_sect">
 						<ul class="point_delivery">
-							<li><span class="title">한섬마일리지</span> <span class="txt">24,750&nbsp;M&nbsp;(5%)</span>
+							<li><span class="title">한섬마일리지</span> <span class="txt" id="hsm"></span>
 							</li>
 
-							<li><span class="title">H.Point</span> <span class="txt">495&nbsp;P&nbsp;(0.1%)</span>
-								<a href="javascript:fn_cardBenefit();" id="cardbenef"
-								class="etc_info" onclick="GA_Event('상품_상세','카드사_혜택안내','클릭');">카드사
-									혜택안내</a>
+							<li><span class="title">H.Point</span> <span class="txt" id="hspoint"></span>
 
-
-								<div class="popwrap w_type_2" id="cardBenefit"
-									style="display: none;">
-									<div class="pop_tltwrap2">
-										<h3>카드혜택안내</h3>
-									</div>
-									<div class="pop_cnt">
-										<div class="card_benefits scroll-y">
-											<div class="box">
-												<div class="title clearfix">
-													<p class="float_left">무이자 할부 행사</p>
-													<!-- 
-                                <p class="float_left">무이자 할부 행사</p>
-                                <p class="float_right">행사기간 : 2015.08.01 ~ 2015.12.31</p>
-                                -->
-												</div>
-												<table class="cnt_type1" id="noInterestTable">
-													<caption>무이자 할부 행사</caption>
-													<colgroup>
-														<col style="width: 155px">
-														<col>
-													</colgroup>
-													<tbody>
-														<tr>
-															<th scope="row" name="신한카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hde/h2b/8814181515294.jpg"
-																	orgurl="/medias/shinhan.jpg?context=bWFzdGVyfHJvb3R8MjY1N3xpbWFnZS9qcGVnfGhkZS9oMmIvODgxNDE4MTUxNTI5NC5qcGd8NTAwMDYxM2ZmZmRlZGFhZDQ0ODNmODJjZTg2OTE3MGI3OWQ2ZmE3YzI0ZjA3MDY3NzIxYWVhNmY3NDQyYWUzMA"
-																	alt="신한카드"></span></th>
-															<td><b>신한카드 5만원이상 결제시 2~6개월 무이자 할부</b><br> 대상:
-																신한카드 전 회원<br> (신한BC 제외/ 법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="삼성카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h3d/h4d/8814181613598.jpg"
-																	orgurl="/medias/SAMSUNG.jpg?context=bWFzdGVyfHJvb3R8MzIxOXxpbWFnZS9qcGVnfGgzZC9oNGQvODgxNDE4MTYxMzU5OC5qcGd8ZGY1NDJiM2U1YWNmNGE5MTJkOTA0MTAxMDliMDc4ZjRlNTJmZjJlOTkxOTQzZTEwMDcxZWU2NGU2MjJmMWE2Mw"
-																	alt="삼성카드"></span></th>
-															<td><b>삼성카드 5만원이상 결제시 2~6개월 무이자 할부</b><br> 대상:
-																삼성카드 전 회원<br> (법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="비씨카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hf2/h0d/8814181220382.jpg"
-																	orgurl="/medias/BC.jpg?context=bWFzdGVyfHJvb3R8MjQ1OHxpbWFnZS9qcGVnfGhmMi9oMGQvODgxNDE4MTIyMDM4Mi5qcGd8MjZlZGU2ZGQyNDBkYzU5YmY2NWY0MDU3NDc1OTA0YWI5NmM4NDJjMDFiYjBiYjBjY2FhZjhmMzg3ZmE5NGU5Yw"
-																	alt="비씨카드"></span></th>
-															<td><b>비씨카드 5만원이상 결제시 2~7개월 무이자 할부</b><br> 대상:
-																비씨카드 전 회원<br>(법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="현대카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h5d/h7c/8814181711902.jpg"
-																	orgurl="/medias/HYUNDAI.jpg?context=bWFzdGVyfHJvb3R8MjYxMHxpbWFnZS9qcGVnfGg1ZC9oN2MvODgxNDE4MTcxMTkwMi5qcGd8YmM5ZWY0ZjlhODlkMzdmMjYyNmY4NjQ4OWU5NWVjOWFlMGY4ODIwYzZlNjA0MjBlNDkwNWI0ZDllYThjMWE5Mw"
-																	alt="현대카드"></span></th>
-															<td><b>현대카드 5만원이상 결제시 2~7개월 무이자 할부</b><br> 대상:
-																현대카드 전 회원<br> (법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="국민카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h2e/h34/8814181023774.jpg"
-																	orgurl="/medias/kucmin.jpg?context=bWFzdGVyfHJvb3R8MzMwM3xpbWFnZS9qcGVnfGgyZS9oMzQvODgxNDE4MTAyMzc3NC5qcGd8MjM1YjEyN2I4OTljMGIxYzY3MjhjNDhkZWMyOTE5ODZjYmRiYWExNDdhOWZmNDQ3ZWNhNGIxZjYwYzk2MDA4Zg"
-																	alt="국민카드"></span></th>
-															<td><b>KB국민카드 5만원이상 결제시 2~7개월 무이자 할부</b><br>
-																대상: KB국민카드 전 회원<br> (NH농협, 국민BC 제외/ 법인,기프트,체크,선불카드
-																제외)<br> 2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="하나카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h60/hfb/8814054965278.gif"
-																	orgurl="/medias/hanacard.gif?context=bWFzdGVyfHJvb3R8MTkzNXxpbWFnZS9naWZ8aDYwL2hmYi84ODE0MDU0OTY1Mjc4LmdpZnxhMGM5OWY0MDdhNDhjYzkwOTdiMzhkM2VmMDQ2YTI0NTAyNDBjZTljNTdiYzk4YWRhZmI0NjBhOWRhNzRiMGYw"
-																	alt="하나카드"></span></th>
-															<td><b>하나카드 5만원이상 결제시 2~8개월 무이자 할부</b><br> 대상:
-																하나카드 전 회원 (구 하나SK, 구 외환)<br> (하나BC카드
-																포함/법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="NH카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h8e/h36/8814181908510.jpg"
-																	orgurl="/medias/NH.jpg?context=bWFzdGVyfHJvb3R8Mzk3OXxpbWFnZS9qcGVnfGg4ZS9oMzYvODgxNDE4MTkwODUxMC5qcGd8ZWVlNmY1OWM0NDdmMjg2M2Y4NGZkNDZjYThmOTVkMWNmY2QwYWNkOWI1ODc5YTdiMTc5MjY4MThiZTkzYzNmMw"
-																	alt="NH카드"></span></th>
-															<td><b>NH농협카드 5만원이상 결제시 2~8개월 무이자 할부</b><br>
-																대상: NH농협카드 전 회원<br> (NH농협BC카드 포함/ 법인,기프트,체크,선불카드
-																제외) <br> 2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="롯데카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hb3/h47/8814181810206.jpg"
-																	orgurl="/medias/LOTTE.jpg?context=bWFzdGVyfHJvb3R8MzI3MXxpbWFnZS9qcGVnfGhiMy9oNDcvODgxNDE4MTgxMDIwNi5qcGd8MDliOThkNzA1ZDc2ZDE4MzZhYmUzYjI2MDMxZDk0NGU3OTVjYzBhYTA1MmMzMjAyZmE0Y2U4OTZlNTU3NDU2Zg"
-																	alt="롯데카드"></span></th>
-															<td><b>롯데카드 5만원이상 결제시 2~4개월 무이자 할부</b><br>
-																대상:롯데카드 전 회원<br> (법인,기프트,체크,선불카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="box">
-												<div class="title clearfix">
-													<p class="float_left">부분 무이자 할부 행사</p>
-
-												</div>
-												<table class="cnt_type1" id="partNoInterestTable">
-													<caption>부분 무이자 할부 행사</caption>
-													<colgroup>
-														<col style="width: 155px">
-														<col>
-													</colgroup>
-													<tbody>
-														<tr>
-															<th scope="row" name="신한카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hde/h2b/8814181515294.jpg"
-																	orgurl="/medias/shinhan.jpg?context=bWFzdGVyfHJvb3R8MjY1N3xpbWFnZS9qcGVnfGhkZS9oMmIvODgxNDE4MTUxNTI5NC5qcGd8NTAwMDYxM2ZmZmRlZGFhZDQ0ODNmODJjZTg2OTE3MGI3OWQ2ZmE3YzI0ZjA3MDY3NzIxYWVhNmY3NDQyYWUzMA"
-																	alt="신한카드"></span></th>
-															<td><b>10개월 부분무이자</b><br> (5만원이상 결제시/1,2,3,4회차
-																고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="삼성카드" rowspan="2"><span
-																class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h3d/h4d/8814181613598.jpg"
-																	orgurl="/medias/SAMSUNG.jpg?context=bWFzdGVyfHJvb3R8MzIxOXxpbWFnZS9qcGVnfGgzZC9oNGQvODgxNDE4MTYxMzU5OC5qcGd8ZGY1NDJiM2U1YWNmNGE5MTJkOTA0MTAxMDliMDc4ZjRlNTJmZjJlOTkxOTQzZTEwMDcxZWU2NGU2MjJmMWE2Mw"
-																	alt="삼성카드"></span></th>
-															<td><b>10개월 부분무이자</b><br> (5만원이상 결제시/1,2,3,4회차
-																고객 부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-
-															<td><b>12개월 부분무이자</b><br> (5만원이상
-																결제시/1,2,3,4,5회차 고객 부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외) <br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="비씨카드" rowspan="2"><span
-																class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hf2/h0d/8814181220382.jpg"
-																	orgurl="/medias/BC.jpg?context=bWFzdGVyfHJvb3R8MjQ1OHxpbWFnZS9qcGVnfGhmMi9oMGQvODgxNDE4MTIyMDM4Mi5qcGd8MjZlZGU2ZGQyNDBkYzU5YmY2NWY0MDU3NDc1OTA0YWI5NmM4NDJjMDFiYjBiYjBjY2FhZjhmMzg3ZmE5NGU5Yw"
-																	alt="비씨카드"></span></th>
-															<td><b> 우리BC 10개월 부분무이자</b><br> (5만원이상
-																결제시/1,2,3회차 고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외) <br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-
-															<td><b>우리BC 12개월 부분무이자</b><br> (5만원이상
-																결제시/1,2,3,4회차 고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외) <br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="국민카드" rowspan="2"><span
-																class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h2e/h34/8814181023774.jpg"
-																	orgurl="/medias/kucmin.jpg?context=bWFzdGVyfHJvb3R8MzMwM3xpbWFnZS9qcGVnfGgyZS9oMzQvODgxNDE4MTAyMzc3NC5qcGd8MjM1YjEyN2I4OTljMGIxYzY3MjhjNDhkZWMyOTE5ODZjYmRiYWExNDdhOWZmNDQ3ZWNhNGIxZjYwYzk2MDA4Zg"
-																	alt="국민카드"></span></th>
-															<td><b>10개월 부분무이자</b><br> (5만원이상 결제시/1,2,3,4 회차
-																고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-
-															<td><b>12개월 부분무이자</b><br> (5만원이상 결제시/1,2,3,4,5
-																회차 고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="하나카드" rowspan="2"><span
-																class="card"><img
-																	src="http://image.thehandsome.com/sys_master/h60/hfb/8814054965278.gif"
-																	orgurl="/medias/hanacard.gif?context=bWFzdGVyfHJvb3R8MTkzNXxpbWFnZS9naWZ8aDYwL2hmYi84ODE0MDU0OTY1Mjc4LmdpZnxhMGM5OWY0MDdhNDhjYzkwOTdiMzhkM2VmMDQ2YTI0NTAyNDBjZTljNTdiYzk4YWRhZmI0NjBhOWRhNzRiMGYw"
-																	alt="하나카드"></span></th>
-															<td><b>10개월 부분무이자</b><br> (5만원이상 결제시/1,2,3회차
-																고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-
-															<td><b>12개월 부분무이자</b><br> (5만원이상 결제시/1,2,3,4회차
-																고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-														<tr>
-															<th scope="row" name="신한카드"><span class="card"><img
-																	src="http://image.thehandsome.com/sys_master/hde/h2b/8814181515294.jpg"
-																	orgurl="/medias/shinhan.jpg?context=bWFzdGVyfHJvb3R8MjY1N3xpbWFnZS9qcGVnfGhkZS9oMmIvODgxNDE4MTUxNTI5NC5qcGd8NTAwMDYxM2ZmZmRlZGFhZDQ0ODNmODJjZTg2OTE3MGI3OWQ2ZmE3YzI0ZjA3MDY3NzIxYWVhNmY3NDQyYWUzMA"
-																	alt="신한카드"></span></th>
-															<td><b>12개월 부분무이자</b><br> (5만원이상
-																결제시/1,2,3,4,5회차 고객부담, 잔여할부 수수료 면제/법인,체크,기프트카드 제외)<br>
-																2022.10.01&nbsp;~&nbsp;2022.10.31</td>
-														</tr>
-													</tbody>
-												</table>
-												<ul class="bul_sty01_li mt10">
-													<li>무이자 할부 결제 시 카드사 포인트는 적립되지 않습니다.</li>
-													<li>ARS 무이자 할부는 해당 카드사 ARS 번호로 사전 신청을 하신 경우에 한하여<br>무이자
-														혜택이 적용됩니다.(ARS 부문 무이자 할부 포함)
-													</li>
-													<li>상기 부분 무이자 할부는 5만원 이상 결제 시 자동 적용되며, 결제창에는 무이자 표시가
-														되지 않을 수 있습니다.</li>
-													<li>법인 / 체크 / 선불 / 기프트 / 은행 계열 카드는 제외됩니다.</li>
-													<li>고객 부담 수수료는 해당 카드사로 문의 바랍니다.</li>
-													<li>본 행사는 카드사 사정에 따라 일부 내용이 변경 또는 중단될 수 있습니다.</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<a href="javascript:void(0);" class="btn_close"><img
-										src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
-										alt="닫기"></a>
-								</div></li>
-
-							<li><span class="title">배송비</span> <span class="txt">전 상품 무료배송</span> <a href="javascript:void(0);"
-								class="etc_info" onclick="GA_Event('상품_상세','배송안내','클릭');">배송안내</a>
+							<li><span class="title">배송비</span> <span class="txt">전 상품 무료배송</span> <a href="javascript:fn_popupDelivery();"
+								class="etc_info" >배송안내</a><!-- onclick="GA_Event('상품_상세','배송안내','클릭');" -->
 								<div class="popwrap w_type_2" id="popupDelivery"
 									style="display: none;">
 									<div class="pop_tltwrap2">
@@ -387,7 +170,7 @@
 											</tbody>
 										</table>
 									</div>
-									<a href="javascript:void(0);" class="btn_close"><img
+									<a href="javascript:fn_popdownDelivery();" class="btn_close"><img
 										src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 										alt="닫기"></a>
 								</div></li>
@@ -417,8 +200,6 @@
 								</div> <span class="cl_name" id="colorNameContent"></span></li>
 							<li><span class="title">사이즈<!-- 사이즈 --></span> <span
 								class="txt">
-
-
 									<div class="popwrap w_type_2" id="sizeQuickReferenceLayer"
 										style="display: none;">
 										<div class="pop_tltwrap2">
@@ -428,22 +209,22 @@
 											<div class="size_chart">
 												<div class="tab_a m6" id="size_tab">
 													<ul>
-														<li><a href="#;" class="active">WOMEN<br>TOP
+														<li><a href="javascript:void(0);" class="active">WOMEN<br>TOP
 														</a></li>
-														<li><a href="#;">WOMEN<br>BOTTOMS
+														<li><a href="javascript:void(0);">WOMEN<br>BOTTOMS
 														</a></li>
-														<li><a href="#;">WOMEN<br>SHOES
+														<li><a href="javascript:void(0);">WOMEN<br>SHOES
 														</a></li>
-														<li><a href="#;">MEN<br>TOP
+														<li><a href="javascript:void(0);">MEN<br>TOP
 														</a></li>
-														<li><a href="#;">MEN<br>BOTTOMS
+														<li><a href="javascript:void(0);">MEN<br>BOTTOMS
 														</a></li>
-														<li><a href="#;">MEN<br>SHOES
+														<li><a href="javascript:void(0);">MEN<br>SHOES
 														</a></li>
 													</ul>
 												</div>
 												<div class="size_tab_container">
-													<div>
+													<div id="0th_table">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -544,7 +325,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="1th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -634,7 +415,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="2th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -714,7 +495,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="3th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -804,7 +585,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="4th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -904,7 +685,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="5th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -965,19 +746,18 @@
 												</div>
 											</div>
 										</div>
-										<a href="javascript:void(0);" class="btn_close"><img
+										<a href="javascript:fn_popdownSizeQuickReference();" class="btn_close"><img
 											src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 											alt="닫기"></a>
 									</div>
-									<%-- <ul class="size_chip clearfix sizeChipKo1901">
+									<ul class="size_chip clearfix sizeChipKo1901">
 										<c:forEach items="${sizelist}" var="size">
-											<li id=""><a
-												href="javascript:void(0);">${size}</a></li>
+											<li value="${size}"><a
+												href="javascript:void(0);" class="sizeBtn">${size}</a></li>
 										</c:forEach>
-									</ul> --%>
+									</ul>
 							</span> <!-- 2021.08.10 화장품 상품인 경우 사이즈조견표 영역 미노출 --> <a
-								href="javascript:fn_popupSizeQuickReference();" class="etc_info"
-								onclick="GA_Event('상품_상세','사이즈_조건표','클릭')">사이즈 조견표</a> <!-- 재입고알림 툴팁 -->
+								href="javascript:fn_popupSizeQuickReference();" class="etc_info">사이즈 조견표</a> <!-- 재입고알림 툴팁 -->
 								<!-- //재입고알림 툴팁 -->
 								<div id="vs-placeholder-cart">
 									<div id="vs-inpage" class="handsome" style="display: none;"></div>
@@ -986,7 +766,7 @@
 									<span class="qty_sel num"> <a
 										href="javascript:fn_qtySubtraction();" class="left">이전 버튼</a>
 										<input type="text" id="txtqty" title="수량" value="1"
-										class="mr0" readonly="readonly"> <a
+										class="mr0" readonly="readonly" style="text-indent:0;"> <a
 										href="javascript:fn_qtyAdd();" class="right">다음 버튼</a>
 								</span>
 							</span> <span class="txt" id="popularProudct" style="display: none">
@@ -1002,12 +782,12 @@
 					<div class="total_price clearfix">
 						<div class="title float_left" style="width: auto;">총 합계</div>
 						<div class="pirce float_right">
-							<span id="sumPrice">${productVO.pprice}</span>
+							<span id="sumPrice">₩${productVO.pprice}</span>
 						</div>
 					</div>
 					<!-- //st_store_wrap -->
 					<div class="btnwrap clearfix"
-						style="position: absolute; width: 473px; margin-top: -153.979px; margin-bottom: 153.979px;">
+						style="position: absolute; width: 473px; /* margin-top: -153.979px; */ margin-bottom: 153.979px;">
 						<input type="button" value=""
 							class="btn wishlist1803 float_left ml0  "
 							onclick="addWishListClick();GA_Event('상품_상세','하단 고정 버튼','좋아요');">
@@ -1149,21 +929,16 @@
 						</dt>
 						<!-- 실측사이즈 -->
 						<dd>
-							<div class="ko realsize_img SZ11"></div>
-							<p class="tit">팬츠</p>
-							<dl class="info_tbl">
-								<img src="/resouces/image/actualsize/${productVO.pid}.png">
-							</dl>
-							<!-- info_tbl -->
-
-							<!-- //info_tbl -->
-							<!-- numlist -->
-							<p class="info2">실측 사이즈 (82) 기준</p>
+							<!-- <dl class="info_tbl">
+								
+							</dl> -->
+							<img src="/resources/image/actualsize/${productVO.pid}.png">
+							<!-- <p class="info2">실측 사이즈 (82) 기준</p>
 							<br>
-							<!-- //numlist -->
+							//numlist
 							<font color="red"> <strong> 원단, 측정방법에 따라 약간의 오차
 									가능성이 있습니다.</strong>
-							</font>
+							</font> -->
 
 							<div class="timehomme_pants_fit" style="display: none"></div>
 						</dd>
@@ -3338,17 +3113,201 @@
 
 <!-- footerWrap -->
 <script>
+	//가격에 3자리마다 컴마
+	function priceComma(price){
+		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+
+	//배송안내버튼 클릭시 보여지게
+	function fn_popupDelivery(){
+	    //fn_parentLayer();
+	    $("#popupDelivery").show();
+	}
+	//배송안내버튼 클릭시 안보여지게
+	function fn_popdownDelivery(){
+		$("#popupDelivery").hide();
+	}
+	// 사이즈 조견표클릭시 보여지게
+	function fn_popupSizeQuickReference(){
+	    $("#sizeQuickReferenceLayer").show();
+	}
+	// 사이즈 조견표클릭시 보여지게
+	function fn_popdownSizeQuickReference(){
+	    $("#sizeQuickReferenceLayer").hide();
+	}
+	//컬러버튼 이미지 올릴때 오른쪽에 컬러이름 띄워지게하기
+	function setColorName(colorName){
+		$("#colorNameContent").text(colorName);
+	}
+	
+	//수량버튼 내렸을때! 무조건 1개 이상이여야겠지?
+	function fn_qtySubtraction(){
+		let qty = parseInt($("#txtqty").val());
+		if(qty-1 > 0){
+			qty--;
+			$("#txtqty").val(qty+"");
+			const sumprice = parseInt($("#productPrice").val()) * qty;
+			$("#sumPrice").text("₩"+priceComma(sumprice));
+			
+			//마일리지, 포인트 알맞게 값 넣기
+			let hsm = parseInt("${productVO.pprice}")*5/100 * qty;
+			let hspoint = parseInt("${productVO.pprice}")*0.1/100 * qty;
+			$("#hsm").text(priceComma(hsm)+" M (%5)")
+			$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
+		}
+	}
+	//수량버튼 올렸을때! 3개면 안된다고 경고!
+	function fn_qtyAdd(){
+		let qty = parseInt($("#txtqty").val());
+		if(qty + 1 > 2){
+			alert("2개까지만 가능해요 ^^");
+		}else{
+			qty++;
+			$("#txtqty").val(qty+"");
+			const sumprice = parseInt($("#productPrice").val()) * qty;
+			$("#sumPrice").text("₩"+priceComma(sumprice));
+			
+			//마일리지, 포인트 알맞게 값 넣기
+			let hsm = parseInt("${productVO.pprice}")*5/100 * qty;
+			let hspoint = parseInt("${productVO.pprice}")*0.1/100 * qty;
+			$("#hsm").text(priceComma(hsm)+" M (%5)")
+			$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
+		}
+	}
 	$(document).ready(function(){
-		//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지도록
+		//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지고 
 		let prev_colorcode = "${curColorCode}";
 		$(".image_view_"+prev_colorcode).css('display', 'block');
+		// 선택된 컬러버튼 클릭된 상태로 만들기
+		$('a[colorcode=${curColorCode}]').addClass('on');
 		
+		//마일리지, 포인트 알맞게 값 넣기
+		let hsm = parseInt("${productVO.pprice}")*5/100
+		let hspoint = parseInt("${productVO.pprice}")*0.1/100
+		$("#hsm").text(priceComma(hsm)+" M (%5)")
+		$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
+		
+		
+		//사이즈 조견표 상단 누르면 알맞게 보여지기
+		$("#size_tab").find("a").on("click", function(e){
+			$("#size_tab").find("a").removeClass("active");
+			$(this).addClass("active");
+			//눌린 버튼의 index를 따와서
+			const index = $("#size_tab").find("a").index(this);
+			//그에맞게 size_tab_container 아래있는 div를 활성화 시키자
+			const table_id = index+"th_table";
+			//그전에 나머지 다 none으로 해줘야징
+			$(".size_tab_container>div").css('display', 'none');
+			$("#"+table_id).css('display', 'block');
+		});
+		
+		//COLOR 버튼 눌리면 왼쪽 이미지들 바뀌고 제품코드고 바뀜
 		$(".colorBtn").on("click", function(e){
 			$(".image_view_"+prev_colorcode).css('display', 'none');
 			$(".image_view_"+$(this).attr("colorcode")).css('display', 'block');
 			prev_colorcode = $(this).attr("colorcode");
+			$("#pcscode").text($(this).attr("colorcode"));
 			
+			//일단 모든 버튼 on 지우고
+			$(".colorBtn").removeClass('on');
+			//또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			$(this).addClass('on');
+		});
+		
+		//사이즈버튼 눌리면 사이즈 공백 제거후 상품코드 변경
+		$(".sizeBtn").on("click", function(e){
+			const sizeText = $.trim($(this).text());
+			$("#pcscode").text(prev_colorcode+"_"+sizeText);
+			
+			//일단 모든 버튼 on 지우고
+			$(".sizeBtn").removeClass('on');
+			//또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			$(this).addClass('on');
+		});
+		
+		//처음 로드될때 가격에 3자리마다 콤마찍음
+		const num = $("#productPrice").val().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
+		$("#pricespan").text("₩"+num);
+		$("#sumPrice").text("₩"+num);
+
+		//상품상세 같은 dt눌렀을때를 공홈꺼 그대로 가져옴
+		$('.toggle_type1>dt').click(function() {
+			
+		    $(this).addClass('on');
+		    $(this).siblings('dt').removeClass('on');
+		    
+		    var beforeHeight = $(".toggle_type1").height();
+		    var afterHeight = 0;
+		    var scrolltop = $(window).scrollTop();
+		    
+		    var checkElement = $(this).next();
+		    
+		    if((checkElement.is('dd')) && (checkElement.is(':visible'))) {
+		        $(this).removeClass('on');
+		         checkElement.slideUp('fast', 
+		                 function(){
+		                     afterHeight = $(".toggle_type1").height();
+//		 	 					bodyScroll();
+		                 });
+		         
+		    }
+		    var fitGuide = false;
+		    if((checkElement.is('dd')) && (!checkElement.is(':visible'))) {
+		        var v_label = "";
+		        var v_type = $(this).children().attr("id");
+		        //21.11.03 상품상세 정보 영역 변경 관련 GA이벤트태깅 추가 및 변경
+		        if(v_type == "NEW_DETAIL_INFO_EVT"){
+		            v_label = "상품상세정보";
+		        }else if(v_type == "DETAIL_INFO_EVT"){
+		            if ('ko' == 'ko') {
+		                v_label = "상품정보제공고시";
+		            }else{
+		                v_label = "상품상세정보";
+		            }
+		        }else if(v_type == "REAL_SIZE_EVT"){
+		            v_label = "실측사이즈";
+		        }else if(v_type == "DELI_RETURN_EVT"){
+		            v_label = "배송 및 반품";
+		        }else if(v_type == "FIT_GUIDE_EVT"){
+		            fitGuide = true;
+		        }
+		        
+		        if(!fitGuide) {
+		            //GA_Event('상품_상세','정보',v_label);
+		            console.log("뭐고 이거");
+		        }
+		        
+		        $('.toggle_type1>dd:visible').slideUp('fast');
+		        
+		        checkElement.slideDown('fast', 
+		                 function(){
+		                afterHeight = $(".toggle_type1").height();
+//		 					bodyScroll();
+		            });
+		    }
+		    
+		    if(fitGuide) {
+		        fitGuide_Swiper_Slide(1);
+		    }
+		    
+		    var bodyScroll = function(){
+		        
+		        $('body,html').animate({scrollTop:parseFloat(scrolltop + (beforeHeight - afterHeight))}, 
+		                function(){
+		                    bodyReSize();
+		                }
+		        );
+		    }
+		    
+		    if($(this).next('dd').length == 0) {
+		        return true;
+		    } else {
+		        return false; 
+		    }      
 		});
 	});
+
+	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
