@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resources/css/common.css" />
 <link rel="stylesheet" href="/resources/css/layout.css" />
 <link rel="stylesheet" href="/resources/css/content.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
@@ -21,7 +22,7 @@
 	</div>
 	<!-- //Loading -->
         
-	<form id="CSRFForm" action="/ko/member/login" method="post">
+	<form id="CSRFForm" action="/ko/member/loginForm" method="post">
 		<div>
 			<input type="hidden" name="CSRFToken" value="a9879b57-eec1-4402-9460-0a3f9e2b0681">
 		</div>
@@ -181,7 +182,7 @@
 						</div>
 						<!--// 201705 search_box_wrap -->
 						
-						<div class="util_menu" style="display:block;">
+						<div class="util_menu" style="display:block;  ">
 							<ul class="clearfix">
 								<li><a href="/ko/member/login" onclick="GA_Event('공통','헤더_메뉴','로그인')">로그인<!-- 로그인 --></a></li>
 								<li class="header_dropmemu mypage">
@@ -279,6 +280,7 @@
 		<input type="hidden" name="loginLayer" id="loginLayer" value="E">
 		<div id="bodyWrap" class="login">
 			<h3 class="cnts_title"><span>로그인</span></h3>
+		
 			<div class="sub_container">
 				<div id="handsomeCust" class="login_wrap box_type_1 renewal1904">
 					<div class="border_box1"><!-- 추가 190417 -->
@@ -287,7 +289,7 @@
 								<h4>회원</h4>
 							</div>
 							<div id="hpIPLogin">
-								<form id="loginForm" name="loginForm" action="/ko/j_spring_security_check" method="post">
+								<form id="loginForm" name="loginForm" method="post">
 									<input type="hidden" name="inputId" id="inputId" value="">
 									<fieldset>
 										<legend>로그인 입력항목</legend>
@@ -295,13 +297,13 @@
 											<p class="login_err_txt" id="hpErrMsg" style="margin-left:0px;"> </p>
 											<div>
 												<div>
-													<input type="text" id="j_username" name="j_username" placeholder="아이디 입력하세요." title="아이디" value="">
+													<input type="text" id="j_username" name="mid" placeholder="아이디 입력하세요." title="아이디" value="">
 												</div>
 												<div>
-													<input type="password" id="j_password" name="j_password" placeholder="비밀번호를 입력하세요." title="비밀번호">
+													<input type="password" id="j_password" name="mpassword" placeholder="비밀번호를 입력하세요." title="비밀번호">
 												</div>
 											</div>
-											<a href="javascript:void(0);" class="btn_login" id="login_btn" onclick="id_check()">로그인</a>
+											<a href="javascript:void(0);" class="btn_login" id="login_btn" onclick="btn_click();">로그인</a>
 											<div class="id_save">
 												<input type="checkbox" id="id_save" name="id_save" value="Y"><label for="id_save">아이디 저장</label>
 											</div>
@@ -330,7 +332,7 @@
 								<p class="txt">현대백화점 그룹의 모든 서비스를 모두 이용할 수 있는 ID를 만듭니다.</p>
 								<p class="join_txt2 mt10">한섬 온라인/오프라인 매장에서 모두 사용하실 수 있으며, 구매 시 <br>한섬마일리지가 적립됩니다.<br>한섬 온라인 멤버십 ‘THE 클럽’의 혜택을 받으실 수 있습니다</p>
 							</div>   
-							<a href="/member/join/" id="hpoinJoinBtn" class="btn add_ss join" style="margin-bottom:40px">통합회원 가입</a>
+							<a href="/member/joinForm/" id="hpoinJoinBtn" class="btn add_ss join" style="margin-bottom:40px">통합회원 가입</a>
 						</div>
 					</div>
 				</div>
@@ -339,5 +341,13 @@
 			<!--//sub_container-->
 		</div>
 	</div>
+	'<script>
+	function btn_click(){
+		  $("#loginForm").attr("action","/member/login");
+			$("#loginForm").submit();
+	}
+		
+		
+	</script>
 </body>
 </html>

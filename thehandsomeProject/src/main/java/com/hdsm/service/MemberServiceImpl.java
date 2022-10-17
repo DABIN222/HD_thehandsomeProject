@@ -22,10 +22,27 @@ public class MemberServiceImpl implements MemberService {
 	public void insertMember(MemberVO member) {
 		mapper.insertMember(member);
 	}
-	
-//	public List<MemberVO> getList(MemberVO member) {
-//		return mapper.getList(member);
-//	}
 
+	// 아이디 중복 확인
+	@Override
+	public int idCheck(String memberId) {
+		int cnt = mapper.idCheck(memberId);
+		System.out.println("cnt : "+cnt);
+		return cnt;
+	}
+	
+	// 연락처 중복 확인
+	@Override
+	public int telCheck(String memberTel) {
+		int cnt = mapper.telCheck(memberTel);
+		System.out.println("cnt : "+cnt);
+		return cnt;
+	}
+
+	// 로그인 
+	@Override
+	public MemberVO login(MemberVO member) {
+		return mapper.login(member);
+	}
 
 }
