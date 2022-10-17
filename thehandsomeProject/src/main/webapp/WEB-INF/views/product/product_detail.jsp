@@ -209,22 +209,22 @@
 											<div class="size_chart">
 												<div class="tab_a m6" id="size_tab">
 													<ul>
-														<li><a href="#;" class="active">WOMEN<br>TOP
+														<li><a href="javascript:void(0);" class="active">WOMEN<br>TOP
 														</a></li>
-														<li><a href="#;">WOMEN<br>BOTTOMS
+														<li><a href="javascript:void(0);">WOMEN<br>BOTTOMS
 														</a></li>
-														<li><a href="#;">WOMEN<br>SHOES
+														<li><a href="javascript:void(0);">WOMEN<br>SHOES
 														</a></li>
-														<li><a href="#;">MEN<br>TOP
+														<li><a href="javascript:void(0);">MEN<br>TOP
 														</a></li>
-														<li><a href="#;">MEN<br>BOTTOMS
+														<li><a href="javascript:void(0);">MEN<br>BOTTOMS
 														</a></li>
-														<li><a href="#;">MEN<br>SHOES
+														<li><a href="javascript:void(0);">MEN<br>SHOES
 														</a></li>
 													</ul>
 												</div>
 												<div class="size_tab_container">
-													<div>
+													<div id="0th_table">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -325,7 +325,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="1th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -415,7 +415,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="2th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -495,7 +495,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="3th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -585,7 +585,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="4th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -685,7 +685,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div style="display: none;">
+													<div id="5th_table" style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -3187,6 +3187,19 @@
 		$("#hsm").text(priceComma(hsm)+" M (%5)")
 		$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
 		
+		
+		//사이즈 조견표 상단 누르면 알맞게 보여지기
+		$("#size_tab").find("a").on("click", function(e){
+			$("#size_tab").find("a").removeClass("active");
+			$(this).addClass("active");
+			//눌린 버튼의 index를 따와서
+			const index = $("#size_tab").find("a").index(this);
+			//그에맞게 size_tab_container 아래있는 div를 활성화 시키자
+			const table_id = index+"th_table";
+			//그전에 나머지 다 none으로 해줘야징
+			$(".size_tab_container>div").css('display', 'none');
+			$("#"+table_id).css('display', 'block');
+		});
 		
 		//COLOR 버튼 눌리면 왼쪽 이미지들 바뀌고 제품코드고 바뀜
 		$(".colorBtn").on("click", function(e){
