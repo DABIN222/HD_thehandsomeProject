@@ -1045,8 +1045,8 @@
 
 				<div class="clearfix mt30">
 					<div class="btnwrap float_left">
-						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0"
-							onclick="GA_Event('상품_상세','Q&amp;A','클릭');">Q&amp;A(<span
+						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r
+							>Q&amp;A(<span
 							class="data" id="productQnACnt">0</span>)
 						</a>
 					</div>
@@ -1555,7 +1555,7 @@
 			<h3>Q&amp;A</h3>
 		</div>
 		<div class="pop_cnt evaluation_list">
-			<a href="#;" class="btn_evaluation" id="productQnAWrite">상품문의하기</a>
+			<a href="javascript:fn_popuProductQnAWrite();" class="btn_evaluation" id="productQnAWrite">상품문의하기</a>
 			<div class="clearfix">
 				<table class="pop_tbl_ltype1">
 					<caption>Q&amp;A</caption>
@@ -1574,7 +1574,7 @@
 			<div class="paging mt30" id="qnAPagingDiv"></div>
 			<!-- //paging -->
 		</div>
-		<a href="javascript:void(0);" class="btn_close"><img
+		<a href="javascript:fn_closeProductQnA();" id="qnAcloseBtn" class="btn_close"><img
 			src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 			alt="닫기"></a>
 	</div>
@@ -1733,7 +1733,7 @@
 				</div>
 			</form>
 		</div>
-		<a href="javascript:void(0);" class="btn_close"><img
+		<a href="javascript:fn_closeProductQnAWrite();" class="btn_close"><img
 			src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 			alt="닫기"></a>
 	</div>
@@ -3138,6 +3138,67 @@
 	//컬러버튼 이미지 올릴때 오른쪽에 컬러이름 띄워지게하기
 	function setColorName(colorName){
 		$("#colorNameContent").text(colorName);
+	}
+	
+	//QnA 버튼 클릭시 QnA 리스트 띄워지게 하기
+	function fn_popupProductQnA(){
+		viewPopup("#productQnADiv");
+	}
+	
+	//x 버튼을 누르면 QnA 리스트 닫기
+	function fn_closeProductQnA(){
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		 $(".btn_close").trigger("click");
+	}
+	
+	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
+	$(".btn_close").on("click",function(){
+			$('#productLayer').hide();
+	     	$(".popwrap").hide();
+	});
+	
+	//QnA 작성란 띄우기
+	function fn_popuProductQnAWrite(){
+		$("#productQnADiv").hide();
+		viewPopup("#productQnAWriteDiv");
+	}
+	
+	//x 버튼을 누르면 QnA 작성창 닫기
+	function fn_closeProductQnAWrite(){
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		 $(".btn_close").trigger("click");
+		 viewPopup("#productQnADiv");
+	}
+	
+	//QnA 작성 취소하기
+    $("#qnaCancle").on('click', function(){
+       
+    	//취소를 원하면 QnA 작성란을 숨기고 상품 QnA 리스트를 보여줌
+       if(confirm("취소하시겠습니까?")){
+    	   $("#productQnAWriteDiv").hide();
+    	   viewPopup("#productQnADiv");
+        }
+        
+    });
+	
+	//팝업 창을 띄우는 함수(공홈을 참고함)
+	function viewPopup(v, n){
+
+	        var obj=$("#"+v.split("#")[1]);
+	        var lp=($(window).width()-obj.outerWidth())/2;
+	        var tp=($(window).height()-obj.outerHeight())/2+$(window).scrollTop();
+	        var scrollTop = $(window).scrollTop();
+	        if(lp < 0) lp=0;
+	        if(tp < 0) tp=0;
+	        $('#productLayer').show();
+	        if($(window).height() < obj.outerHeight()){
+	        obj.css("top", scrollTop).css("position", "absolute").css("z-index", 101);
+	        }else{
+	        obj.css("top", tp).css("position", "absolute").css("z-index", 101);
+	        }
+	        obj.show();
+	        return false;
 	}
 	
 	//수량버튼 내렸을때! 무조건 1개 이상이여야겠지?
