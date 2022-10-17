@@ -39,10 +39,33 @@
 				
 					<div class="util_menu" style="display:block;">
 						<ul class="clearfix">
-							<li><a href="/member/login/">로그인<!-- 로그인 --></a></li>
-							<li class="header_dropmemu mypage">
-									
-								<a href="#" class="btn">마이페이지</a>
+
+							<%
+								if (session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+							%>
+							<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
+							<%
+								} else {
+							%>
+							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
+							<li style="margin-top: 9px;"><%=session.getAttribute("member")%> 님 환영합니다</li>
+
+							<!-- 버튼을 클릭했을때 함수호출 -->
+							<li id="logout_btn"><a href="/" onclick="delete_session()"> 로그아웃 </a></li>
+							
+							<!-- 세션 초기화 -->
+							<script>
+								function delete_session() {
+									<%session.invalidate();%>
+								}
+							</script>
+
+							<%
+								}
+							%>
+
+							<li class="header_dropmemu mypage">				
+								<a href="#" class="btn">마이페이지</a>								
 								<div class="list" style="display: none; height: 164px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 									<ul>
 										<li><!-- 주문조회 -->

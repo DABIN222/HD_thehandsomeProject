@@ -1011,6 +1011,7 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach items="${shoppingbagList}" var="shoppingbag">
 							<tr name="entryProductInfo" data-pk="10950401196076"
 								data-deliverykind="" data-outofstock="false"
 								data-category="ME031">
@@ -1026,7 +1027,7 @@
 											href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
 											onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
 											<img
-											src="http://newmedia.thehandsome.com/SH/2C/FW/SH2C9WJC201M_KG_S01.jpg"
+											src="${shoppingbag.thumbnail}"
 											alt="" />
 										</a>
 										<div class="tlt_wrap">
@@ -1034,14 +1035,14 @@
 												href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
 												class="basket_tlt"
 												onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
-												<span class="tlt">SYSTEM HOMME</span> <span class="sb_tlt">
-													캐시미어 블렌드 헤링본 재킷</span>
+												<span class="tlt">${shoppingbag.bname}</span> <span class="sb_tlt">
+													${shoppingbag.pname}</span>
 											</a>
 
 											<p class="color_op">
 
-												color : CHARCOAL GREY<span class="and_line">/</span> size :
-												100
+												color : ${shoppingbag.scolor}<span class="and_line">/</span> size :
+												${shoppingbag.ssize}
 											</p>
 
 
@@ -1129,7 +1130,7 @@
 							<tr>
 								<td colspan="6" class="basket_wrap"></td>
 							</tr>
-
+							
 
 							<!-- AceCounter eCommerce (Product_Detail) v7.5 Start -->
 							<!-- Data Allocation (Product_Detail) -->
@@ -1144,6 +1145,7 @@
 							<!-- AceCounter eCommerce (Cart_InOut) v7.5 End -->
 							<!-- //Info wrap -->
 						</tbody>
+						</c:forEach>
 					</table>
 				</div>
 				<!--// shoppingback table-->

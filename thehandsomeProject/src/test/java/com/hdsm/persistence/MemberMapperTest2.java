@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j;
 public class MemberMapperTest2 {
 	
 	@Autowired
-	private MemberMapper2 mapper;
+	private MemberMapper mapper;
 	
 	@Test
 	public void testGetSb() {
