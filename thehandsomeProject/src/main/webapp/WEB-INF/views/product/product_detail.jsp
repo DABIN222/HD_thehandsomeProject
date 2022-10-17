@@ -22,65 +22,58 @@
 				<!-- 버튼 클릭시 item_visual 에 zoom 클래스 추가 -->
 				<!-- 2021.08.18 동영상 재생 수정, 상품 imageDivisionCode에 VOD가 있는 경우 동영상 url 세팅 -->
 				<c:forEach items="${colorVOList}" var="colorVO">
-					<div class="image_view_${colorVO.ccolorcode}" id="image_view_${colorVO.ccolorcode}" style="display: none">
+					<div class="image_view_${colorVO.ccolorcode}"
+						id="image_view_${colorVO.ccolorcode}" style="display: none">
 						<div class="item_visual" id="imageDiv" style="margin-top: 20px;">
 							<ul>
 								<c:if test="${not empty colorVO.cimage1}">
-								<li>
-									<img
-									src="${colorVO.cimage1}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage2}">
-								<li>
-									<img
-									src="${colorVO.cimage2}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage3}">
-								<li>
-									<img
-									src="${colorVO.cimage3}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage4}">
-								<li>
-									<img
-									src="${colorVO.cimage4}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage5}">
-								<li>
-									<img
-									src="${colorVO.cimage5}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage6}">
-								<li>
-									<img
-									src="${colorVO.cimage6}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
-								</c:if> <c:if test="${not empty colorVO.cimage7}">
-								<li>
-									<img
-									src="${colorVO.cimage7}"
-									class="respon_image" alt=""
-									onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
-								</li>
+									<li><img src="${colorVO.cimage1}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage2}">
+									<li><img src="${colorVO.cimage2}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage3}">
+									<li><img src="${colorVO.cimage3}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage4}">
+									<li><img src="${colorVO.cimage4}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage5}">
+									<li><img src="${colorVO.cimage5}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage6}">
+									<li><img src="${colorVO.cimage6}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
+								</c:if>
+								<c:if test="${not empty colorVO.cimage7}">
+									<li><img src="${colorVO.cimage7}" class="respon_image"
+										alt=""
+										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+									</li>
 								</c:if>
 							</ul>
 						</div>
 					</div>
 				</c:forEach>
 
-<!-- 				<div class="item_visual" id="imageDivW" style="display: none">
+				<!-- 				<div class="item_visual" id="imageDivW" style="display: none">
 					<ul>
 						<li><img
 							src="http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_W01.jpg"
@@ -97,20 +90,20 @@
 					<div class="info_sect">
 						<h4 class="item_name">
 							<div class="brand-name">
-								<a href="javascript:void(0);" >${productVO.bname}</a>
+								<a href="javascript:void(0);">${productVO.bname}</a>
 							</div>
 							<span class="name ko_fir_spel">${productVO.pname}<input
-								type="hidden" id="brandName" value="${productVO.bname}"> <input
-								type="hidden" id="productName" value="${productVO.pname}"> <input
-								type="hidden" id="productCode" value=""><!-- 이거는 jquery로 처리하자 -->
+								type="hidden" id="brandName" value="${productVO.bname}">
+								<input type="hidden" id="productName" value="${productVO.pname}">
+								<input type="hidden" id="productCode" value=""> <!-- 이거는 jquery로 처리하자 -->
 							</span>
 						</h4>
 
 						<div class="flag"></div>
 
 						<p class="price">
-							<span id="pricespan">₩${productVO.pprice}</span> <input type="hidden" id="productPrice"
-								value="${productVO.pprice}">
+							<span id="pricespan">₩${productVO.pprice}</span> <input
+								type="hidden" id="productPrice" value="${productVO.pprice}">
 						</p>
 						<!-- 상품추가설명 -->
 						<p class="selling_point"></p>
@@ -130,13 +123,14 @@
 					<!-- //20200904 더보기 -->
 					<div class="info_sect">
 						<ul class="point_delivery">
-							<li><span class="title">한섬마일리지</span> <span class="txt" id="hsm"></span>
-							</li>
+							<li><span class="title">한섬마일리지</span> <span class="txt"
+								id="hsm"></span></li>
 
-							<li><span class="title">H.Point</span> <span class="txt" id="hspoint"></span>
-
-							<li><span class="title">배송비</span> <span class="txt">전 상품 무료배송</span> <a href="javascript:fn_popupDelivery();"
-								class="etc_info" >배송안내</a><!-- onclick="GA_Event('상품_상세','배송안내','클릭');" -->
+							<li><span class="title">H.Point</span> <span class="txt"
+								id="hspoint"></span>
+							<li><span class="title">배송비</span> <span class="txt">전
+									상품 무료배송</span> <a href="javascript:fn_popupDelivery();"
+								class="etc_info">배송안내</a> <!-- onclick="GA_Event('상품_상세','배송안내','클릭');" -->
 								<div class="popwrap w_type_2" id="popupDelivery"
 									style="display: none;">
 									<div class="pop_tltwrap2">
@@ -183,18 +177,15 @@
 								<div class="txt">
 									<ul class="color_chip clearfix">
 										<c:forEach items="${colorVOList}" var="colorVO">
-										<input type="hidden" id="colorName" value="${colorVO.cname}">
-										<li id="${colorVO.ccolorcode}">
-											<input type="hidden" class="colorNameVal" value="${colorVO.cname}">
-											 	<a href="javascript:void(0);"
-													class="colorBtn"
-													colorcode="${colorVO.ccolorcode}"
-													style="background: #000000 url('${colorVO.ccolorimage})"
-													onmouseover="setColorName('${colorVO.cname}');"
-													onmouseout="setColorName('');">
-												</a>
-												<!-- secColroName이라는 js 함수 만들어줘야할듯 -->
-										</li>
+											<input type="hidden" id="colorName" value="${colorVO.cname}">
+											<li id="${colorVO.ccolorcode}"><input type="hidden"
+												class="colorNameVal" value="${colorVO.cname}"> <a
+												href="javascript:void(0);" class="colorBtn"
+												colorcode="${colorVO.ccolorcode}"
+												style="background: #000000 url('${colorVO.ccolorimage})"
+												onmouseover="setColorName('${colorVO.cname}');"
+												onmouseout="setColorName('');"> </a> <!-- secColroName이라는 js 함수 만들어줘야할듯 -->
+											</li>
 										</c:forEach>
 									</ul>
 								</div> <span class="cl_name" id="colorNameContent"></span></li>
@@ -209,22 +200,22 @@
 											<div class="size_chart">
 												<div class="tab_a m6" id="size_tab">
 													<ul>
-														<li><a href="javascript:void(0);" class="active">WOMEN<br>TOP
+														<li><a href="#;" class="active">WOMEN<br>TOP
 														</a></li>
-														<li><a href="javascript:void(0);">WOMEN<br>BOTTOMS
+														<li><a href="#;">WOMEN<br>BOTTOMS
 														</a></li>
-														<li><a href="javascript:void(0);">WOMEN<br>SHOES
+														<li><a href="#;">WOMEN<br>SHOES
 														</a></li>
-														<li><a href="javascript:void(0);">MEN<br>TOP
+														<li><a href="#;">MEN<br>TOP
 														</a></li>
-														<li><a href="javascript:void(0);">MEN<br>BOTTOMS
+														<li><a href="#;">MEN<br>BOTTOMS
 														</a></li>
-														<li><a href="javascript:void(0);">MEN<br>SHOES
+														<li><a href="#;">MEN<br>SHOES
 														</a></li>
 													</ul>
 												</div>
 												<div class="size_tab_container">
-													<div id="0th_table">
+													<div>
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -325,7 +316,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div id="1th_table" style="display: none;">
+													<div style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -415,7 +406,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div id="2th_table" style="display: none;">
+													<div style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -495,7 +486,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div id="3th_table" style="display: none;">
+													<div style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -585,7 +576,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div id="4th_table" style="display: none;">
+													<div style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -685,7 +676,7 @@
 															</tbody>
 														</table>
 													</div>
-													<div id="5th_table" style="display: none;">
+													<div style="display: none;">
 														<table class="cnt_type2">
 															<caption>사이즈조견표</caption>
 															<colgroup>
@@ -746,19 +737,20 @@
 												</div>
 											</div>
 										</div>
-										<a href="javascript:fn_popdownSizeQuickReference();" class="btn_close"><img
+										<a href="javascript:fn_popdownSizeQuickReference();"
+											class="btn_close"><img
 											src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 											alt="닫기"></a>
 									</div>
 									<ul class="size_chip clearfix sizeChipKo1901">
 										<c:forEach items="${sizelist}" var="size">
-											<li value="${size}"><a
-												href="javascript:void(0);" class="sizeBtn">${size}</a></li>
+											<li value="${size}"><a href="javascript:void(0);"
+												class="sizeBtn">${size}</a></li>
 										</c:forEach>
 									</ul>
 							</span> <!-- 2021.08.10 화장품 상품인 경우 사이즈조견표 영역 미노출 --> <a
-								href="javascript:fn_popupSizeQuickReference();" class="etc_info">사이즈 조견표</a> <!-- 재입고알림 툴팁 -->
-								<!-- //재입고알림 툴팁 -->
+								href="javascript:fn_popupSizeQuickReference();" class="etc_info">사이즈
+									조견표</a> <!-- 재입고알림 툴팁 --> <!-- //재입고알림 툴팁 -->
 								<div id="vs-placeholder-cart">
 									<div id="vs-inpage" class="handsome" style="display: none;"></div>
 								</div> <!-- 버츄사이즈 --></li>
@@ -766,8 +758,8 @@
 									<span class="qty_sel num"> <a
 										href="javascript:fn_qtySubtraction();" class="left">이전 버튼</a>
 										<input type="text" id="txtqty" title="수량" value="1"
-										class="mr0" readonly="readonly" style="text-indent:0;"> <a
-										href="javascript:fn_qtyAdd();" class="right">다음 버튼</a>
+										class="mr0" readonly="readonly" style="text-indent: 0;">
+										<a href="javascript:fn_qtyAdd();" class="right">다음 버튼</a>
 								</span>
 							</span> <span class="txt" id="popularProudct" style="display: none">
 									<span class="deliveryPlanDate"> 해당 상품은 전국 매장을 통해 수급하여 배송
@@ -808,36 +800,35 @@
 						<!--//190508 추가 -->
 
 						<form id="addToCartForm" name="addToCartForm"
-							action="/ko/HANDSOME/MEN/PANTS/%EC%A1%B0%EA%B1%B0-%ED%8A%B8%EB%9E%99/%5BSET%5D-%EC%9A%B8-%EC%A1%B0%EA%B1%B0-%ED%8C%AC%EC%B8%A0/p/TH2CBKPC033M_BK"
+							action="/쇼핑백 등록 url"
 							method="post">
-							<input type="hidden" maxlength="3" size="1" name="qty"
-								class="qty"> <input type="hidden" name="productCodePost"
-								value="TH2CBKPC033M_BK"> <input type="hidden"
-								id="productCodeType" name="productCodeType"
-								value="ApparelStyleVariantProduct"> <input type="hidden"
-								id="stockCnt" value="0"> <input type="hidden"
-								name="storeId" id="storeId" value=""> <input
-								type="hidden" name="storePickupDate" id="storePickupDate"
-								value=""> <input type="hidden" name="workOrder"
-								id="workOrder" value=""> <input type="hidden"
-								name="recommendProduct" id="recommendProduct" value="">
-							<input type="hidden" name="deliveryKind" id="deliveryKind"
-								value=""> <input type="hidden" name="streetname"
-								id="streetname" value=""> <input type="hidden"
-								name="streetnumber" id="streetnumber" value=""> <input
-								type="hidden" name="postalcode" id="postalcode" value="">
-							<input type="hidden" name="quickStreetname" id="quickStreetname"
-								value=""> <input type="hidden" name="quickStreetnumber"
-								id="quickStreetnumber" value=""> <input type="hidden"
-								name="quickPostalcode" id="quickPostalcode" value=""> <input
-								type="hidden" name="fourpmList" id="fourpmList"> <input
-								type="hidden" name="athomeList" id="athomeList"> <input
-								type="hidden" name="pickupList" id="pickupList"> <input
-								type="hidden" name="quickList" id="quickList"> <input
-								type="hidden" name="buyNowYn" id="buyNowYn" value="false">
-							<input type="button" value="쇼핑백 담기"
-								class="btn cart1803 float_left ml0" id="addToCartButton"
-								onclick="addToCart();GA_Event('상품_상세','하단 고정 버튼','쇼핑백담기');">
+							<input type="hidden" name="cart_prev_colorcode" id="cart_prev_colorcode"value="${curcolorcode}"/>
+							<input type="hidden" name="cart_size" id="cart_size" value=""/>
+							<input type="hidden" name="cart_sumprice" id="cart_sumprice" value=""/>
+							<input type="hidden" name="hsm" id="hsm" value=""/>
+							<input type="hidden" name="hspoint" id="hspoint" value=""/> 
+							<!-- <input type="hidden" maxlength="3" size="1" name="qty" class="qty">
+							<input type="hidden" name="productCodePost" value="TH2CBKPC033M_BK"> 
+							<input type="hidden" id="productCodeType" name="productCodeType" value="ApparelStyleVariantProduct">
+							<input type="hidden" id="stockCnt" value="0"> 
+							<input type="hidden" name="storeId" id="storeId" value=""> 
+							<input type="hidden" name="storePickupDate" id="storePickupDate" value=""> 
+							<input type="hidden" name="workOrder" id="workOrder" value=""> 
+							<input type="hidden" name="recommendProduct" id="recommendProduct" value="">
+							<input type="hidden" name="deliveryKind" id="deliveryKind" value=""> 
+							<input type="hidden" name="streetname" id="streetname" value=""> 
+							<input type="hidden" name="streetnumber" id="streetnumber" value="">
+							<input type="hidden" name="postalcode" id="postalcode" value="">
+							<input type="hidden" name="quickStreetname" id="quickStreetname" value=""> 
+							<input type="hidden" name="quickStreetnumber" id="quickStreetnumber" value=""> 
+							<input type="hidden" name="quickPostalcode" id="quickPostalcode" value=""> 
+							<input type="hidden" name="fourpmList" id="fourpmList">
+							<input type="hidden" name="athomeList" id="athomeList">
+							<input type="hidden" name="pickupList" id="pickupList">
+							<input type="hidden" name="quickList" id="quickList"> 
+							<input type="hidden" name="buyNowYn" id="buyNowYn" value="false"> -->
+							<input type="button" value="쇼핑백 담기" class="btn cart1803 float_left ml0" id="addToCartButton">
+							<!-- onclick="addToCart();GA_Event('상품_상세','하단 고정 버튼','쇼핑백담기');" -->
 							<div>
 								<input type="hidden" name="CSRFToken"
 									value="7399b544-9191-4d49-af3a-9a782a52adc4">
@@ -857,12 +848,14 @@
 						<!-- 상품정보제공고시 -->
 						<dd style="display: none;">
 							<strong>상품품번 :</strong> ${productVO.pid}<br> <strong>품목
-								:</strong> ${productVO.p_item}<br> <strong>소재 :</strong> ${productVO.p_material}<br>
-							<strong>색상 :</strong> ${productVO.pprice}<br> <strong>사이즈
-								:</strong> ${productVO.p_size}<br> <strong>제조국 :</strong> ${productVO.p_country}<br> <strong>제조사
-								:</strong> ${productVO.p_manufacturer}<br> <strong>제조연월 :</strong> ${productVO.p_madedate}<br> 
-								<strong>세탁방법
-								및 취급 시 주의사항</strong>
+								:</strong> ${productVO.p_item}<br> <strong>소재 :</strong>
+							${productVO.p_material}<br> <strong>색상 :</strong>
+							${productVO.pprice}<br> <strong>사이즈 :</strong>
+							${productVO.p_size}<br> <strong>제조국 :</strong>
+							${productVO.p_country}<br> <strong>제조사 :</strong>
+							${productVO.p_manufacturer}<br> <strong>제조연월 :</strong>
+							${productVO.p_madedate}<br> <strong>세탁방법 및 취급 시
+								주의사항</strong>
 							<div class="howToWash renew1907" id="newHowToWash">
 								<ul>
 									<li><img
@@ -898,8 +891,7 @@
 								</ul>
 								본 제품은 반드시 드라이크리닝 하십시오. 세탁 시 이염, 변색, 탈색될 수 있으니 유의하시기 바랍니다. 단추나
 								악세서리는 세탁 시 손상될 수 있으므로 은박지로 싸거나 분리하여 주십시오. 특성상 마찰에 의해 올 뜯김 등 원단
-								손상이 발생할 수 있으니 취급 시 주의하시기 바랍니다.<br>
-								<br>
+								손상이 발생할 수 있으니 취급 시 주의하시기 바랍니다.<br> <br>
 							</div>
 							<br> <strong>품질보증기준</strong><br> 1. 본 제품은 정부 고시 소비자
 							분쟁해결 기준에 의거 고객의 정당한 피해를 보상해드립니다. <br> - 원단 불량, 부자재 불량, 봉제
@@ -910,8 +902,7 @@
 							벌(세트/일착)로 처리함. 단, 소재 및 디자인이 다른 경우에는 해당 의류만 교환 가능. <br>2. 소비자
 							부주의에 의한 제품 훼손, 세탁 잘못으로 인한 변형 및 품질 보증기간(1년)이 경과한 제품에 대해서는 보상의 책임을
 							지지 않으며, 수선 가능시에는 실비로 수선해드립니다. <br>3. 제품에 이상이 있는 경우 바로 본사로
-							연락주시면 수선/교환/환불이 가능하나, 타업체(일반 수선실 등)에서 수선했을 경우는 불가능합니다.<br>
-							<br>
+							연락주시면 수선/교환/환불이 가능하나, 타업체(일반 수선실 등)에서 수선했을 경우는 불가능합니다.<br> <br>
 							<div style="margin-bottom: 20px;">
 								<p style="float: left;">
 									<strong>AS 책임자와 연락처</strong><br> ㈜한섬/1800-5700
@@ -920,8 +911,7 @@
 								<div class="sft_ksdt"></div>
 								<!-- // 20200218 마크 추가 -->
 							</div>
-							<br>
-							<br> 위 내용은 상품정보제공 고시에 따라 작성되었습니다.
+							<br> <br> 위 내용은 상품정보제공 고시에 따라 작성되었습니다.
 						</dd>
 						<!-- 2021.08.10 화장품 상품인 경우 실측사이즈 영역 미노출 -->
 						<dt>
@@ -1045,8 +1035,7 @@
 
 				<div class="clearfix mt30">
 					<div class="btnwrap float_left">
-						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r
-							>Q&amp;A(<span
+						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r>Q&amp;A(<span
 							class="data" id="productQnACnt">0</span>)
 						</a>
 					</div>
@@ -1090,20 +1079,16 @@
 				</div>
 
 				<input type="hidden" id="viewExhibitionPageCode" value=""> <input
-					type="hidden" id="viewExhibitionPageName" value="">
-
-
-				<input type="hidden" id="vs-product-id" value="TH2CBKPC033M_BK">
-				<input type="hidden" id="vs-product-version" value="1"> <input
+					type="hidden" id="viewExhibitionPageName" value=""> <input
+					type="hidden" id="vs-product-id" value="TH2CBKPC033M_BK"> <input
+					type="hidden" id="vs-product-version" value="1"> <input
 					type="hidden" id="vs-product-image-url"
 					value="http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_T01.jpg">
 			</div>
 
 		</div>
 		<div class="product-detail-img"></div>
-		<div class="matches_items" id="productDetailEtc">
-
-		</div>
+		<div class="matches_items" id="productDetailEtc"></div>
 	</div>
 
 	<!--상품평 리스트 팝업-->
@@ -1131,8 +1116,7 @@
 						<li>
 							<div class="ico_mileage1906">포토상품평</div>
 							<p>
-								<strong>포토상품평</strong><br>(상품별 최초)<br>
-								<b>2,000마일리지</b>
+								<strong>포토상품평</strong><br>(상품별 최초)<br> <b>2,000마일리지</b>
 							</p>
 						</li>
 					</ul>
@@ -1555,7 +1539,8 @@
 			<h3>Q&amp;A</h3>
 		</div>
 		<div class="pop_cnt evaluation_list">
-			<a href="javascript:fn_popuProductQnAWrite();" class="btn_evaluation" id="productQnAWrite">상품문의하기</a>
+			<a href="javascript:fn_popuProductQnAWrite();" class="btn_evaluation"
+				id="productQnAWrite">상품문의하기</a>
 			<div class="clearfix">
 				<table class="pop_tbl_ltype1">
 					<caption>Q&amp;A</caption>
@@ -1574,7 +1559,8 @@
 			<div class="paging mt30" id="qnAPagingDiv"></div>
 			<!-- //paging -->
 		</div>
-		<a href="javascript:fn_closeProductQnA();" id="qnAcloseBtn" class="btn_close"><img
+		<a href="javascript:fn_closeProductQnA();" id="qnAcloseBtn"
+			class="btn_close"><img
 			src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 			alt="닫기"></a>
 	</div>
@@ -3099,6 +3085,22 @@
 <div id="criteo-tags-div" style="display: none;"></div>
 <div class="layerArea" id="productLayer" style="display: none;">
 	<div class="layerBg"></div>
+	<div class="popwrap w_type_1" id="putCart"
+		style="z-index: 150; margin-top: 853px; display: none;" tabindex="-1">
+		<div class="pop_cnt">
+			<h3 class="pop_tlt copy">
+				쇼핑백에 담겼습니다.<br>확인하시겠습니까?
+			</h3>
+			<div class="btnwrap">
+				<input type="button" id="clsBtn" class="btn wt_s mr5"
+					value="계속 쇼핑하기">
+					<input type="button" id="cfBtn"
+					class="btn gray_s mr0" value="쇼핑백 바로가기">
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="btn_close"><img
+			src="/resources/images/ico_close.png" alt="닫기"></a>
+	</div>
 </div>
 
 <form id="productOneCLickDeliveryForm"
@@ -3114,260 +3116,329 @@
 <!-- footerWrap -->
 <script>
 	//가격에 3자리마다 컴마
-	function priceComma(price){
+	function priceComma(price) {
 		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
 	//배송안내버튼 클릭시 보여지게
-	function fn_popupDelivery(){
-	    //fn_parentLayer();
-	    $("#popupDelivery").show();
+	function fn_popupDelivery() {
+		//fn_parentLayer();
+		$("#popupDelivery").show();
 	}
 	//배송안내버튼 클릭시 안보여지게
-	function fn_popdownDelivery(){
+	function fn_popdownDelivery() {
 		$("#popupDelivery").hide();
 	}
 	// 사이즈 조견표클릭시 보여지게
-	function fn_popupSizeQuickReference(){
-	    $("#sizeQuickReferenceLayer").show();
+	function fn_popupSizeQuickReference() {
+		$("#sizeQuickReferenceLayer").show();
 	}
 	// 사이즈 조견표클릭시 보여지게
-	function fn_popdownSizeQuickReference(){
-	    $("#sizeQuickReferenceLayer").hide();
+	function fn_popdownSizeQuickReference() {
+		$("#sizeQuickReferenceLayer").hide();
 	}
 	//컬러버튼 이미지 올릴때 오른쪽에 컬러이름 띄워지게하기
-	function setColorName(colorName){
+	function setColorName(colorName) {
 		$("#colorNameContent").text(colorName);
 	}
-	
+
 	//QnA 버튼 클릭시 QnA 리스트 띄워지게 하기
-	function fn_popupProductQnA(){
+	function fn_popupProductQnA() {
 		viewPopup("#productQnADiv");
 	}
-	
+
 	//x 버튼을 누르면 QnA 리스트 닫기
-	function fn_closeProductQnA(){
+	function fn_closeProductQnA() {
 		console.log("fn");
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
-		 $(".btn_close").trigger("click");
+		$(".btn_close").trigger("click");
 	}
 	
-	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
-	$(".btn_close").on("click",function(){
-			$('#productLayer').hide();
-	     	$(".popwrap").hide();
-	});
 	
+
+	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
+	$(".btn_close").on("click", function() {
+		$('#productLayer').hide();
+		$(".popwrap").hide();
+	});
+
 	//QnA 작성란 띄우기
-	function fn_popuProductQnAWrite(){
+	function fn_popuProductQnAWrite() {
 		$("#productQnADiv").hide();
 		viewPopup("#productQnAWriteDiv");
 	}
-	
-	//x 버튼을 누르면 QnA 작성창 닫기
-	function fn_closeProductQnAWrite(){
-		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
-		 $(".btn_close").trigger("click");
-		 viewPopup("#productQnADiv");
-	}
-	
-	//QnA 작성 취소하기
-    $("#qnaCancle").on('click', function(){
-       
-    	//취소를 원하면 QnA 작성란을 숨기고 상품 QnA 리스트를 보여줌
-       if(confirm("취소하시겠습니까?")){
-    	   $("#productQnAWriteDiv").hide();
-    	   viewPopup("#productQnADiv");
-        }
-        
-    });
-	
-	//팝업 창을 띄우는 함수(공홈을 참고함)
-	function viewPopup(v, n){
 
-	        var obj=$("#"+v.split("#")[1]);
-	        var lp=($(window).width()-obj.outerWidth())/2;
-	        var tp=($(window).height()-obj.outerHeight())/2+$(window).scrollTop();
-	        var scrollTop = $(window).scrollTop();
-	        if(lp < 0) lp=0;
-	        if(tp < 0) tp=0;
-	        $('#productLayer').show();
-	        if($(window).height() < obj.outerHeight()){
-	        obj.css("top", scrollTop).css("position", "absolute").css("z-index", 101);
-	        }else{
-	        obj.css("top", tp).css("position", "absolute").css("z-index", 101);
-	        }
-	        obj.show();
-	        return false;
+	//x 버튼을 누르면 QnA 작성창 닫기
+	function fn_closeProductQnAWrite() {
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+		viewPopup("#productQnADiv");
 	}
-	
+
+	//QnA 작성 취소하기
+	$("#qnaCancle").on('click', function() {
+
+		//취소를 원하면 QnA 작성란을 숨기고 상품 QnA 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			$("#productQnAWriteDiv").hide();
+			viewPopup("#productQnADiv");
+		}
+
+	});
+
+	//팝업 창을 띄우는 함수(공홈을 참고함)
+	function viewPopup(v, n) {
+
+		var obj = $("#" + v.split("#")[1]);
+		var lp = ($(window).width() - obj.outerWidth()) / 2;
+		var tp = ($(window).height() - obj.outerHeight()) / 2
+				+ $(window).scrollTop();
+		var scrollTop = $(window).scrollTop();
+		if (lp < 0)
+			lp = 0;
+		if (tp < 0)
+			tp = 0;
+		$('#productLayer').show();
+		if ($(window).height() < obj.outerHeight()) {
+			obj.css("top", scrollTop).css("position", "absolute").css(
+					"z-index", 101);
+		} else {
+			obj.css("top", tp).css("position", "absolute").css("z-index", 101);
+		}
+		obj.show();
+		return false;
+	}
+
 	//수량버튼 내렸을때! 무조건 1개 이상이여야겠지?
-	function fn_qtySubtraction(){
+	function fn_qtySubtraction() {
 		let qty = parseInt($("#txtqty").val());
-		if(qty-1 > 0){
+		if (qty - 1 > 0) {
 			qty--;
-			$("#txtqty").val(qty+"");
+			$("#txtqty").val(qty + "");
 			const sumprice = parseInt($("#productPrice").val()) * qty;
-			$("#sumPrice").text("₩"+priceComma(sumprice));
-			
+			$("#sumPrice").text("₩" + priceComma(sumprice));
+
 			//마일리지, 포인트 알맞게 값 넣기
-			let hsm = parseInt("${productVO.pprice}")*5/100 * qty;
-			let hspoint = parseInt("${productVO.pprice}")*0.1/100 * qty;
-			$("#hsm").text(priceComma(hsm)+" M (%5)")
-			$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
+			let hsm = parseInt("${productVO.pprice}") * 5 / 100 * qty;
+			let hspoint = parseInt("${productVO.pprice}") * 0.1 / 100 * qty;
+			$("#hsm").text(priceComma(hsm) + " M (%5)")
+			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
 	//수량버튼 올렸을때! 3개면 안된다고 경고!
-	function fn_qtyAdd(){
+	function fn_qtyAdd() {
 		let qty = parseInt($("#txtqty").val());
-		if(qty + 1 > 2){
+		if (qty + 1 > 2) {
 			alert("2개까지만 가능해요 ^^");
-		}else{
+		} else {
 			qty++;
-			$("#txtqty").val(qty+"");
+			$("#txtqty").val(qty + "");
 			const sumprice = parseInt($("#productPrice").val()) * qty;
-			$("#sumPrice").text("₩"+priceComma(sumprice));
-			
+			$("#sumPrice").text("₩" + priceComma(sumprice));
+
 			//마일리지, 포인트 알맞게 값 넣기
-			let hsm = parseInt("${productVO.pprice}")*5/100 * qty;
-			let hspoint = parseInt("${productVO.pprice}")*0.1/100 * qty;
-			$("#hsm").text(priceComma(hsm)+" M (%5)")
-			$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
+			let hsm = parseInt("${productVO.pprice}") * 5 / 100 * qty;
+			let hspoint = parseInt("${productVO.pprice}") * 0.1 / 100 * qty;
+			$("#hsm").text(priceComma(hsm) + " M (%5)")
+			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
-	$(document).ready(function(){
-		//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지고 
-		let prev_colorcode = "${curColorCode}";
-		$(".image_view_"+prev_colorcode).css('display', 'block');
-		// 선택된 컬러버튼 클릭된 상태로 만들기
-		$('a[colorcode=${curColorCode}]').addClass('on');
-		
-		//마일리지, 포인트 알맞게 값 넣기
-		let hsm = parseInt("${productVO.pprice}")*5/100
-		let hspoint = parseInt("${productVO.pprice}")*0.1/100
-		$("#hsm").text(priceComma(hsm)+" M (%5)")
-		$("#hspoint").text(priceComma(hspoint)+" P (%0.1)")
-		
-		
-		//사이즈 조견표 상단 누르면 알맞게 보여지기
-		$("#size_tab").find("a").on("click", function(e){
-			$("#size_tab").find("a").removeClass("active");
-			$(this).addClass("active");
-			//눌린 버튼의 index를 따와서
-			const index = $("#size_tab").find("a").index(this);
-			//그에맞게 size_tab_container 아래있는 div를 활성화 시키자
-			const table_id = index+"th_table";
-			//그전에 나머지 다 none으로 해줘야징
-			$(".size_tab_container>div").css('display', 'none');
-			$("#"+table_id).css('display', 'block');
-		});
-		
-		//COLOR 버튼 눌리면 왼쪽 이미지들 바뀌고 제품코드고 바뀜
-		$(".colorBtn").on("click", function(e){
-			$(".image_view_"+prev_colorcode).css('display', 'none');
-			$(".image_view_"+$(this).attr("colorcode")).css('display', 'block');
-			prev_colorcode = $(this).attr("colorcode");
-			$("#pcscode").text($(this).attr("colorcode"));
-			
-			//일단 모든 버튼 on 지우고
-			$(".colorBtn").removeClass('on');
-			//또한 누르면 그버튼이 계속 눌렸다는걸 표시
-			$(this).addClass('on');
-		});
-		
-		//사이즈버튼 눌리면 사이즈 공백 제거후 상품코드 변경
-		$(".sizeBtn").on("click", function(e){
-			const sizeText = $.trim($(this).text());
-			$("#pcscode").text(prev_colorcode+"_"+sizeText);
-			
-			//일단 모든 버튼 on 지우고
-			$(".sizeBtn").removeClass('on');
-			//또한 누르면 그버튼이 계속 눌렸다는걸 표시
-			$(this).addClass('on');
-		});
-		
-		//처음 로드될때 가격에 3자리마다 콤마찍음
-		const num = $("#productPrice").val().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
-		$("#pricespan").text("₩"+num);
-		$("#sumPrice").text("₩"+num);
 
-		//상품상세 같은 dt눌렀을때를 공홈꺼 그대로 가져옴
-		$('.toggle_type1>dt').click(function() {
-			
-		    $(this).addClass('on');
-		    $(this).siblings('dt').removeClass('on');
-		    
-		    var beforeHeight = $(".toggle_type1").height();
-		    var afterHeight = 0;
-		    var scrolltop = $(window).scrollTop();
-		    
-		    var checkElement = $(this).next();
-		    
-		    if((checkElement.is('dd')) && (checkElement.is(':visible'))) {
-		        $(this).removeClass('on');
-		         checkElement.slideUp('fast', 
-		                 function(){
-		                     afterHeight = $(".toggle_type1").height();
-//		 	 					bodyScroll();
-		                 });
-		         
-		    }
-		    var fitGuide = false;
-		    if((checkElement.is('dd')) && (!checkElement.is(':visible'))) {
-		        var v_label = "";
-		        var v_type = $(this).children().attr("id");
-		        //21.11.03 상품상세 정보 영역 변경 관련 GA이벤트태깅 추가 및 변경
-		        if(v_type == "NEW_DETAIL_INFO_EVT"){
-		            v_label = "상품상세정보";
-		        }else if(v_type == "DETAIL_INFO_EVT"){
-		            if ('ko' == 'ko') {
-		                v_label = "상품정보제공고시";
-		            }else{
-		                v_label = "상품상세정보";
-		            }
-		        }else if(v_type == "REAL_SIZE_EVT"){
-		            v_label = "실측사이즈";
-		        }else if(v_type == "DELI_RETURN_EVT"){
-		            v_label = "배송 및 반품";
-		        }else if(v_type == "FIT_GUIDE_EVT"){
-		            fitGuide = true;
-		        }
-		        
-		        if(!fitGuide) {
-		            //GA_Event('상품_상세','정보',v_label);
-		            console.log("뭐고 이거");
-		        }
-		        
-		        $('.toggle_type1>dd:visible').slideUp('fast');
-		        
-		        checkElement.slideDown('fast', 
-		                 function(){
-		                afterHeight = $(".toggle_type1").height();
-//		 					bodyScroll();
-		            });
-		    }
-		    
-		    if(fitGuide) {
-		        fitGuide_Swiper_Slide(1);
-		    }
-		    
-		    var bodyScroll = function(){
-		        
-		        $('body,html').animate({scrollTop:parseFloat(scrolltop + (beforeHeight - afterHeight))}, 
-		                function(){
-		                    bodyReSize();
-		                }
-		        );
-		    }
-		    
-		    if($(this).next('dd').length == 0) {
-		        return true;
-		    } else {
-		        return false; 
-		    }      
-		});
-	});
+
+	$(document)
+			.ready(
+					function() {
+						//쇼핑백에 담을 변수 선언
+						let cart_size="";
+						let cart_sumprice="";
+						//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지고 
+						let prev_colorcode = "${curColorCode}";
+						$(".image_view_" + prev_colorcode).css('display',
+								'block');
+						// 선택된 컬러버튼 클릭된 상태로 만들기
+						$('a[colorcode=${curColorCode}]').addClass('on');
+
+						//마일리지, 포인트 알맞게 값 넣기
+						let hsm = parseInt("${productVO.pprice}") * 5 / 100
+						let hspoint = parseInt("${productVO.pprice}") * 0.1 / 100
+						$("#hsm").text(priceComma(hsm) + " M (%5)")
+						$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
+
+						//COLOR 버튼 눌리면 왼쪽 이미지들 바뀌고 제품코드고 바뀜
+						$(".colorBtn")
+								.on(
+										"click",
+										function(e) {
+											$(".image_view_" + prev_colorcode)
+													.css('display', 'none');
+											$(
+													".image_view_"
+															+ $(this)
+																	.attr(
+																			"colorcode"))
+													.css('display', 'block');
+											prev_colorcode = $(this).attr(
+													"colorcode");
+											$("#pcscode").text(
+													$(this).attr("colorcode"));
+
+											//일단 모든 버튼 on 지우고
+											$(".colorBtn").removeClass('on');
+											//또한 누르면 그버튼이 계속 눌렸다는걸 표시
+											$(this).addClass('on');
+										});
+
+						//사이즈버튼 눌리면 사이즈 공백 제거후 상품코드 변경
+						$(".sizeBtn").on(
+								"click",
+								function(e) {
+									const sizeText = $.trim($(this).text());
+									$("#pcscode").text(
+											prev_colorcode + "_" + sizeText);
+
+									//일단 모든 버튼 on 지우고
+									$(".sizeBtn").removeClass('on');
+									//또한 누르면 그버튼이 계속 눌렸다는걸 표시
+									$(this).addClass('on');
+									//쇼핑백에 size에 담음
+									cart_size=sizeText;
+								});
+
+						//처음 로드될때 가격에 3자리마다 콤마찍음
+						const num = $("#productPrice").val().replace(
+								/\B(?=(\d{3})+(?!\d))/g, ',');
+						//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
+						$("#pricespan").text("₩" + num);
+						$("#sumPrice").text("₩" + num);
+						
+						//상품상세 같은 dt눌렀을때를 공홈꺼 그대로 가져옴
+						$('.toggle_type1>dt')
+								.click(
+										function() {
+
+											$(this).addClass('on');
+											$(this).siblings('dt').removeClass(
+													'on');
+
+											var beforeHeight = $(
+													".toggle_type1").height();
+											var afterHeight = 0;
+											var scrolltop = $(window)
+													.scrollTop();
+
+											var checkElement = $(this).next();
+
+											if ((checkElement.is('dd'))
+													&& (checkElement
+															.is(':visible'))) {
+												$(this).removeClass('on');
+												checkElement
+														.slideUp(
+																'fast',
+																function() {
+																	afterHeight = $(
+																			".toggle_type1")
+																			.height();
+																	//		 	 					bodyScroll();
+																});
+
+											}
+											var fitGuide = false;
+											if ((checkElement.is('dd'))
+													&& (!checkElement
+															.is(':visible'))) {
+												var v_label = "";
+												var v_type = $(this).children()
+														.attr("id");
+												//21.11.03 상품상세 정보 영역 변경 관련 GA이벤트태깅 추가 및 변경
+												if (v_type == "NEW_DETAIL_INFO_EVT") {
+													v_label = "상품상세정보";
+												} else if (v_type == "DETAIL_INFO_EVT") {
+													if ('ko' == 'ko') {
+														v_label = "상품정보제공고시";
+													} else {
+														v_label = "상품상세정보";
+													}
+												} else if (v_type == "REAL_SIZE_EVT") {
+													v_label = "실측사이즈";
+												} else if (v_type == "DELI_RETURN_EVT") {
+													v_label = "배송 및 반품";
+												} else if (v_type == "FIT_GUIDE_EVT") {
+													fitGuide = true;
+												}
+
+												if (!fitGuide) {
+													//GA_Event('상품_상세','정보',v_label);
+													console.log("뭐고 이거");
+												}
+
+												$('.toggle_type1>dd:visible')
+														.slideUp('fast');
+
+												checkElement
+														.slideDown(
+																'fast',
+																function() {
+																	afterHeight = $(
+																			".toggle_type1")
+																			.height();
+																	//		 					bodyScroll();
+																});
+											}
+
+											if (fitGuide) {
+												fitGuide_Swiper_Slide(1);
+											}
+
+											var bodyScroll = function() {
+
+												$('body,html')
+														.animate(
+																{
+																	scrollTop : parseFloat(scrolltop
+																			+ (beforeHeight - afterHeight))
+																},
+																function() {
+																	bodyReSize();
+																});
+											}
+
+											if ($(this).next('dd').length == 0) {
+												return true;
+											} else {
+												return false;
+											}
+										});
+						//쇼핑백 담기 버튼을 눌렀을 경우
+						$("#addToCartButton").on("click",function(){
+							//밖에 있는 layerArea 태그를 보이게 한다.
+							$(".layerArea").show();
+							//그중 Cart 모달을 나타내는 태그를 보이게 한다.
+							$("#putCart").show();
+							/* let cart_Sumprice=$("#productPrice").val()*parseInt($("#txtqty").val());
+							$('#cart_prev_colorcode').val($("#pcscode").text());
+							$('#cart_size').val(cart_size);
+							$('#cart_sumprice').val(cart_Sumprice);
+							$('#hsm').val(hsm);
+							$('#hspoint').val(hspoint); */
+						});
+						
+						//계속 쇼핑하기 버튼을 눌렀을 경우
+						$("#clsBtn").on("click",function(){
+							//밖에 있는 layerArea 태그를 숨긴다.
+							$(".layerArea").hide();
+							//그중 Cart 모달을 나타내는 태그를 숨긴다
+							$("#putCart").hide();
+						});
+						
+						//쇼핑백으로 바로가기를 눌렀을 경우
+						$("#cfBtn").on("click",function(){
+							
+							location.href="회원쇼핑백 태그 url";
+						});
+						
+					
+					});
 
 	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.
 </script>
