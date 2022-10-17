@@ -2,6 +2,9 @@ package com.hdsm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
@@ -131,4 +135,18 @@ public class MemberController {
 			return "member/loginForm";
 		}
 	}
+	
+	// 유저 쇼핑백 페이지 로드
+	// 회원가입 페이지 진입
+	@GetMapping("/shoppingbag")
+	public String userShoppingBag(
+				@RequestParam("mid") String mid,
+				Model model
+			) {
+		
+		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
+		model.addAttribute("shoppingbagList",list);
+		return "member/shoppingbag";
+	}
+	
 }
