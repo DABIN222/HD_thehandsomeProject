@@ -50,15 +50,7 @@
 							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
 							<li style="margin-top: 9px;"><%=session.getAttribute("member")%> 님 환영합니다</li>
 
-							<!-- 버튼을 클릭했을때 함수호출 -->
-							<li id="logout_btn"><a href="/" onclick="delete_session()"> 로그아웃 </a></li>
-							
-							<!-- 세션 초기화 -->
-							<%-- <script>
-								function delete_session() {
-									<%session.invalidate();%>
-								}
-							</script> --%>
+							<!-- 버튼을 클릭했을때 함수호출 --
 
 							<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>
 

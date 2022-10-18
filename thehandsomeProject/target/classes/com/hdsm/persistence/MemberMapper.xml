@@ -63,4 +63,9 @@
 	<select id="getMember" resultType="com.hdsm.domain.MemberVO">
 		select * from member where mid=#{memberId}
 	</select>
+	
+	<insert id="insertShoppingBags">
+		INSERT INTO mycart (mid, pid, psize, pcolor, pamount)
+		VALUES (#{mid}, #{pid}, #{psize}, #{pcolor}, #{pamount})
+	</insert>
 </mapper> 
