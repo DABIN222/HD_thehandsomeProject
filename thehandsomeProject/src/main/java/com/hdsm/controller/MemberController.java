@@ -162,16 +162,16 @@ public class MemberController {
 	@GetMapping("/shoppingbag")
 	public String userShoppingBag(
 				@RequestParam("mid") String mid,
-				Model model
-			) {
-		
+				Model model ) {
 		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
 		model.addAttribute("shoppingbagList",list);
+
 		return "member/shoppingbag";
 	}
 	
 	// 장바구니 담기
 	@PostMapping("/insertShoppingbag")
+	@ResponseBody// 이거 안하면 return값을 jsp 찾으라는걸로 인식함
 	public String insertShoppingbag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 담기 진입!");
 		
@@ -185,8 +185,9 @@ public class MemberController {
 		// 장바구니 담기 실시
 		memberservice.insertShoppingBags(msVO);
 		log.info("당바구니 담기 성공!");
-		
-		return "member/shoppingbag";
+
+		return "good";
+
 	}
 
 	/*
