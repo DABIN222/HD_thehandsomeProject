@@ -66,15 +66,25 @@ public class MemberServiceImpl implements MemberService {
 			String pid = i.getPid();
 			ProductVO pvo = mapper.getShoppingBagsProduct(pid);
 			List<ThumbnailColorVO> cvo = mapper.getProductsColor(pid);
+			List<String> slist = new ArrayList<String>();
+			
+			for(String size : i.getPsize().split(",")) {
+				slist.add(size.trim());
+			}
 			
 			MemberSbagDTOForJsp insertdto = new MemberSbagDTOForJsp();
 			
 			String thumbnailImg = "";
+			String colorcode = "";
 			for ( ThumbnailColorVO j : cvo){
 				if(j.getCname().equals(i.getPcolor())) {
 					thumbnailImg = j.getC_thumbnail1();
+					colorcode = j.getCcolorcode();
+					break;
 				}
 			}
+			insertdto.setPid(pid);
+			insertdto.setColorcode(colorcode);
 			insertdto.setThumbnail(thumbnailImg);
 			insertdto.setBname(pvo.getBname());
 			insertdto.setPname(pvo.getPname());
@@ -83,7 +93,7 @@ public class MemberServiceImpl implements MemberService {
 			insertdto.setAmount(i.getPamount());
 			insertdto.setPprice(pvo.getPprice());
 			insertdto.setColorlist(cvo);
-			
+			insertdto.setSizeList(slist);
 			list.add(insertdto);
 		}
 		return list;
