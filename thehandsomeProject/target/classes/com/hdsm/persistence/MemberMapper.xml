@@ -8,9 +8,9 @@
 	<!-- 회원가입 -->
 	<insert id="insertMember">
 		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
-		maddress1, maddress2, mgrade, mdate, mpoint, menabled)
+		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
 		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, 0, 
-		#{maddress1}, #{maddress2}, 'silver', sysdate, 0, 0)
+		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0)
 	</insert>
 	
 	<!-- 아이디 중복체크 -->
@@ -25,7 +25,7 @@
 
 	<!-- 로그인 -->
 	<select id="login" resultType="com.hdsm.domain.MemberVO">
-		select mid,mpassword from member where mid=#{mid} and mpassword = #{mpassword}
+		select mid, mpassword from member where mid=#{mid} and mpassword = #{mpassword}
 	</select>
 	
 	<!-- 유저의 장바구니목록들 가져오기 -->

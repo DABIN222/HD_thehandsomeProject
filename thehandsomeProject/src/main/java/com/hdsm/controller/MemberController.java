@@ -149,4 +149,10 @@ public class MemberController {
 		return "member/shoppingbag";
 	}
 	
+	// 마이 페이지 진입
+	@GetMapping("/mypage")
+	public String mypageForm() {
+		log.info("로그인 페이지 왔다");
+		return "member/mypage";
+	}
 }
