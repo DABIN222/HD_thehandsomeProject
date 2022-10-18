@@ -51,11 +51,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public MemberVO getMember(String memberId) {
 		
-		return mapper.getMember(memberId);
-=======
+	return mapper.getMember(memberId);
+	}
+	
+	@Override
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
 		
 		List<MemberSbagDTO> dto = mapper.getMembersShoppingBag("asd");
@@ -86,7 +87,6 @@ public class MemberServiceImpl implements MemberService {
 			list.add(insertdto);
 		}
 		return list;
->>>>>>> 2a1f567fee01828ad18dd57b4df565879a1f2c62
 	}
 
 }

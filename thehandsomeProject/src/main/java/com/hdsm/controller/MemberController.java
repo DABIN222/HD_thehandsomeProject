@@ -2,10 +2,8 @@ package com.hdsm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
->>>>>>> 2a1f567fee01828ad18dd57b4df565879a1f2c62
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

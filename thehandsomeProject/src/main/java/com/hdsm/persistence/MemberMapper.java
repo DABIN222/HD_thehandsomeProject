@@ -23,10 +23,8 @@ public interface MemberMapper {
 	// 로그인
 	public MemberVO login(MemberVO member);
 	
-<<<<<<< HEAD
 	public MemberVO getMember(String memberId);
 	
-=======
 	//회원 장바구니 목록
 	public List<MemberSbagDTO> getMembersShoppingBag(@Param("mid") String mid);
 	
@@ -35,5 +33,4 @@ public interface MemberMapper {
 	
 	//그물건들의 각각 colorVO 값들 
 	public List<ThumbnailColorVO> getProductsColor(@Param("pid") String pid);
->>>>>>> 2a1f567fee01828ad18dd57b4df565879a1f2c62
 }
