@@ -136,6 +136,19 @@ public class MemberController {
 		}
 	}
 	
+	/* 메인페이지 로그아웃 */
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+   public String logoutMainGET(HttpServletRequest request) throws Exception{
+       
+       log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
+       
+       HttpSession session = request.getSession(); //세션을 가져와서
+       
+       session.invalidate(); //다 없애 버림    세션을 지우는 방법은 두가지 invalidate()", "removeAttribute() 가있는데 앞에있는거는 다지우는거 뒤에있는거는 특정 세션 타게팅삭제
+       
+       return "home";  
+	}
+	
 	// 유저 쇼핑백 페이지 로드
 	// 회원가입 페이지 진입
 	@GetMapping("/shoppingbag")
