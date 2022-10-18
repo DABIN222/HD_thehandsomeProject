@@ -179,8 +179,9 @@
 										<c:forEach items="${colorVOList}" var="colorVO">
 											<input type="hidden" id="colorName" value="${colorVO.cname}">
 											<li id="${colorVO.ccolorcode}"><input type="hidden"
-												class="colorNameVal" value="${colorVO.cname}"> <a
+												class="colorNameVal" > <a
 												href="javascript:void(0);" class="colorBtn"
+												value="${colorVO.cname}"
 												colorcode="${colorVO.ccolorcode}"
 												style="background: #000000 url('${colorVO.ccolorimage})"
 												onmouseover="setColorName('${colorVO.cname}');"
@@ -799,44 +800,34 @@
 						</div>
 						<!--//190508 추가 -->
 
-						<form id="addToCartForm" name="addToCartForm"
-							action="/쇼핑백 등록 url"
+						<form id="addToCartForm" name="addToCartForm" action="/쇼핑백 등록 url"
 							method="post">
-							<input type="hidden" name="cart_prev_colorcode" id="cart_prev_colorcode"value="${curcolorcode}"/>
-							<input type="hidden" name="cart_size" id="cart_size" value=""/>
-							<input type="hidden" name="cart_sumprice" id="cart_sumprice" value=""/>
-							<input type="hidden" name="hsm" id="hsm" value=""/>
-							<input type="hidden" name="hspoint" id="hspoint" value=""/> 
-							<!-- <input type="hidden" maxlength="3" size="1" name="qty" class="qty">
-							<input type="hidden" name="productCodePost" value="TH2CBKPC033M_BK"> 
-							<input type="hidden" id="productCodeType" name="productCodeType" value="ApparelStyleVariantProduct">
-							<input type="hidden" id="stockCnt" value="0"> 
-							<input type="hidden" name="storeId" id="storeId" value=""> 
-							<input type="hidden" name="storePickupDate" id="storePickupDate" value=""> 
-							<input type="hidden" name="workOrder" id="workOrder" value=""> 
-							<input type="hidden" name="recommendProduct" id="recommendProduct" value="">
-							<input type="hidden" name="deliveryKind" id="deliveryKind" value=""> 
-							<input type="hidden" name="streetname" id="streetname" value=""> 
-							<input type="hidden" name="streetnumber" id="streetnumber" value="">
-							<input type="hidden" name="postalcode" id="postalcode" value="">
-							<input type="hidden" name="quickStreetname" id="quickStreetname" value=""> 
-							<input type="hidden" name="quickStreetnumber" id="quickStreetnumber" value=""> 
-							<input type="hidden" name="quickPostalcode" id="quickPostalcode" value=""> 
-							<input type="hidden" name="fourpmList" id="fourpmList">
-							<input type="hidden" name="athomeList" id="athomeList">
-							<input type="hidden" name="pickupList" id="pickupList">
-							<input type="hidden" name="quickList" id="quickList"> 
-							<input type="hidden" name="buyNowYn" id="buyNowYn" value="false"> -->
-							<input type="button" value="쇼핑백 담기" class="btn cart1803 float_left ml0" id="addToCartButton">
+							<input type="hidden" name="cart_prev_colorcode"
+								id="cart_prev_colorcode" value="${curcolorcode}" /> <input
+								type="hidden" name="cart_size" id="cart_size" value="" /> <input
+								type="hidden" name="cart_sumprice" id="cart_sumprice" value="" />
+							<input type="hidden" name="hsm" id="hsm" value="" /> <input
+								type="hidden" name="hspoint" id="hspoint" value="" />
+							<input type="button" value="쇼핑백 담기"
+								class="btn cart1803 float_left ml0" id="addToCartButton">
 							<!-- onclick="addToCart();GA_Event('상품_상세','하단 고정 버튼','쇼핑백담기');" -->
 							<div>
 								<input type="hidden" name="CSRFToken"
 									value="7399b544-9191-4d49-af3a-9a782a52adc4">
 							</div>
 						</form>
-						<input type="button" value="바로주문"
-							class="btn order float_right mr0" id="addToCartBuyNowButton"
-							onclick="GA_Event('상품_상세','하단 고정 버튼','바로주문');addToCart(true);">
+						<form id="addToCartBuynowForm" name="addToCartBuynowForm"
+							action="/product/order_page" method="post">
+							<input type="hidden" name="order_colorcode" id="order_colorcode"
+								value="${curcolorcode}" /> <input type="hidden"
+								name="order_size" id="order_size" value="" /> <input
+								type="hidden" name="order_sumprice" id="order_sumprice" value="" />
+							<input type="hidden" name="order_hsm" id="order_hsm" value="" />
+							<input type="hidden" name="order_hspoint" id="order_hspoint"
+								value="" /> <input type="hidden" name="order_count"
+								id="order_count" value="" /> <input type="button" value="바로주문"
+								class="btn order float_right mr0" id="addToCartBuyNowButton">
+						</form>
 					</div>
 
 					<dl class="toggle_type1" style="margin-top: 80px;">
@@ -1539,7 +1530,7 @@
 			<h3>Q&amp;A</h3>
 		</div>
 		<div class="pop_cnt evaluation_list">
-			<a href="javascript:fn_popuProductQnAWrite();" class="btn_evaluation"
+			<a href="javascript:fn_popupProductQnAWrite();" class="btn_evaluation"
 				id="productQnAWrite">상품문의하기</a>
 			<div class="clearfix">
 				<table class="pop_tbl_ltype1">
@@ -3083,6 +3074,8 @@
 	<!-- // 211101 체험단 리뷰 추가 E -->
 </div>
 <div id="criteo-tags-div" style="display: none;"></div>
+
+<!-- 장바구니 담겼을때 계속 쇼핑할지 말지  -->
 <div class="layerArea" id="productLayer" style="display: none;">
 	<div class="layerBg"></div>
 	<div class="popwrap w_type_1" id="putCart"
@@ -3093,14 +3086,46 @@
 			</h3>
 			<div class="btnwrap">
 				<input type="button" id="clsBtn" class="btn wt_s mr5"
-					value="계속 쇼핑하기">
-					<input type="button" id="cfBtn"
+					value="계속 쇼핑하기"> <input type="button" id="cfBtn"
 					class="btn gray_s mr0" value="쇼핑백 바로가기">
 			</div>
 		</div>
 		<a href="javascript:void(0);" class="btn_close"><img
 			src="/resources/images/ico_close.png" alt="닫기"></a>
 	</div>
+	<div class="popwrap w_type_1 " id="Order_confirm" style="z-index: 150; margin-top: 753px; display:none;"
+		tabindex="-1">
+		<div class="pop_cnt">
+			<h3 class="pop_tlt copy">사이즈를 선택해 주세요.</h3>
+			<div class="btnwrap">
+				<input type="button" class="btn gray_s mr0" onclick="sizeConfirm();" value="확인">
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="btn_close"> <img
+			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
+	</div>
+	<!-- 로그인 물어보는 창 -->
+	<div
+		id = "AskLogin"
+	    class="popwrap w_type_1"
+	    style="z-index: 150; display:none; margin-top: 337.5px"
+	    tabindex="-1"
+	    >
+	    <div class="pop_cnt">
+	      <h3 class="pop_tlt copy">로그인 하시겠습니까?</h3>
+	      <div class="btnwrap">
+	        <input
+	          type="button"
+	          id="clsBtn"
+	          class="btn wt_s mr5"
+	          value="취소"
+	        /><input type="button" id="cfBtn" class="btn gray_s mr0" value="확인" onclick="location.href='/member/loginForm'" />
+	      </div>
+	    </div>
+	    <a href="javascript:void(0);" class="btn_close"
+	      ><img src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"
+	    /></a>
+  </div>
 </div>
 
 <form id="productOneCLickDeliveryForm"
@@ -3154,24 +3179,34 @@
 		$(".btn_close").trigger("click");
 	}
 	
+	//사이즈 확인 모달 창 버튼의 class에 스타일이 적용되있으ㅓㅅ
+	/* function fn_Order_confirm() {
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+	} */
 	
-
 	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
 	$(".btn_close").on("click", function() {
 		$('#productLayer').hide();
 		$(".popwrap").hide();
 	});
-
+	
 	//QnA 작성란 띄우기
-	function fn_popuProductQnAWrite() {
+	function fn_popupProductQnAWrite() {
+		
+		//QnA 리스트를 숨긴다.
 		$("#productQnADiv").hide();
+		//작성란을 띄운다.
 		viewPopup("#productQnAWriteDiv");
 	}
-
+	
+	
 	//x 버튼을 누르면 QnA 작성창 닫기
 	function fn_closeProductQnAWrite() {
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
 		$(".btn_close").trigger("click");
+		//QnA 작성 리스트를 띄운다.
 		viewPopup("#productQnADiv");
 	}
 
@@ -3185,8 +3220,14 @@
 		}
 
 	});
-
-	//팝업 창을 띄우는 함수(공홈을 참고함)
+	
+	//사이즈 체크 확인 창이 뜨고 확인버튼을 누르면 확인 모달창에 사라짐
+	function sizeConfirm(){
+		$('#productLayer').hide();
+		$("#Order_confirm").hide();
+	}
+	
+	//QnA 팝업 창의 크기를 조절하고 띄우는 함수(공홈을 참고함)
 	function viewPopup(v, n) {
 
 		var obj = $("#" + v.split("#")[1]);
@@ -3243,21 +3284,22 @@
 			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
-
-
-	$(document)
-			.ready(
+	
+	$(document).ready(
 					function() {
 						//쇼핑백에 담을 변수 선언
-						let cart_size="";
-						let cart_sumprice="";
+						let CartorOrder_size = "";
+						let CartorOrder_sumprice = "";
+						let selectColor = "";
+						let selectSize = "";
 						//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지고 
 						let prev_colorcode = "${curColorCode}";
 						$(".image_view_" + prev_colorcode).css('display',
 								'block');
 						// 선택된 컬러버튼 클릭된 상태로 만들기
 						$('a[colorcode=${curColorCode}]').addClass('on');
-
+						selectColor = $('a[colorcode='+prev_colorcode+']').attr('value');
+						
 						//마일리지, 포인트 알맞게 값 넣기
 						let hsm = parseInt("${productVO.pprice}") * 5 / 100
 						let hspoint = parseInt("${productVO.pprice}") * 0.1 / 100
@@ -3265,34 +3307,25 @@
 						$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 
 						//COLOR 버튼 눌리면 왼쪽 이미지들 바뀌고 제품코드고 바뀜
-						$(".colorBtn")
-								.on(
-										"click",
-										function(e) {
-											$(".image_view_" + prev_colorcode)
-													.css('display', 'none');
-											$(
-													".image_view_"
-															+ $(this)
-																	.attr(
-																			"colorcode"))
-													.css('display', 'block');
-											prev_colorcode = $(this).attr(
-													"colorcode");
-											$("#pcscode").text(
-													$(this).attr("colorcode"));
-
-											//일단 모든 버튼 on 지우고
-											$(".colorBtn").removeClass('on');
-											//또한 누르면 그버튼이 계속 눌렸다는걸 표시
-											$(this).addClass('on');
-										});
+						$(".colorBtn").on("click",
+							function(e) {
+								$(".image_view_" + prev_colorcode).css('display', 'none');
+								$(".image_view_" + $(this).attr("colorcode")).css('display', 'block');
+								prev_colorcode = $(this).attr("colorcode");
+								$("#pcscode").text($(this).attr("colorcode"));
+								//일단 모든 버튼 on 지우고
+								$(".colorBtn").removeClass('on');
+								//또한 누르면 그버튼이 계속 눌렸다는걸 표시
+								$(this).addClass('on');
+								selectColor = $(this).attr("value");
+							});
 
 						//사이즈버튼 눌리면 사이즈 공백 제거후 상품코드 변경
 						$(".sizeBtn").on(
 								"click",
 								function(e) {
 									const sizeText = $.trim($(this).text());
+									selectSize = sizeText;
 									$("#pcscode").text(
 											prev_colorcode + "_" + sizeText);
 
@@ -3301,7 +3334,7 @@
 									//또한 누르면 그버튼이 계속 눌렸다는걸 표시
 									$(this).addClass('on');
 									//쇼핑백에 size에 담음
-									cart_size=sizeText;
+									CartorOrder_size = sizeText;
 								});
 
 						//처음 로드될때 가격에 3자리마다 콤마찍음
@@ -3311,6 +3344,10 @@
 						$("#pricespan").text("₩" + num);
 						$("#sumPrice").text("₩" + num);
 						
+/* 						//로그인 확인버튼 누르면 로그인 페이지로
+						$("#cfBtn").on("click", function(){
+							location.href="member/loginForm";
+						}); */
 						//상품상세 같은 dt눌렀을때를 공홈꺼 그대로 가져옴
 						$('.toggle_type1>dt')
 								.click(
@@ -3409,35 +3446,89 @@
 												return false;
 											}
 										});
-						//쇼핑백 담기 버튼을 눌렀을 경우
-						$("#addToCartButton").on("click",function(){
-							//밖에 있는 layerArea 태그를 보이게 한다.
-							$(".layerArea").show();
-							//그중 Cart 모달을 나타내는 태그를 보이게 한다.
-							$("#putCart").show();
-							/* let cart_Sumprice=$("#productPrice").val()*parseInt($("#txtqty").val());
-							$('#cart_prev_colorcode').val($("#pcscode").text());
-							$('#cart_size').val(cart_size);
-							$('#cart_sumprice').val(cart_Sumprice);
-							$('#hsm').val(hsm);
-							$('#hspoint').val(hspoint); */
+
+
+						//장바구니버튼 눌렀을때
+						$("#addToCartButton").on("click", function(e){
+							//우선 싸이즈 선택 했는지 물어봐
+							if(selectSize === ""){
+								$(".layerArea").show();
+								$("#Order_confirm").show();
+							}
+							else{
+								//로그인 안했으면 로그인 했는지 물어보고
+								<%
+									if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+								%>
+									$(".layerArea").show();
+									$("#AskLogin").show();
+								<%
+									} else {
+								%>
+
+									const params = {
+											mid: "${member}",
+											pid: "${productVO.pid}",
+											psize: selectSize,
+											pcolor: selectColor,
+											pamount: $("#txtqty").val()
+									}
+									//ajax 호출!
+									$.ajax({
+							                type : "POST",            // HTTP method type(GET, POST) 형식이다.
+							                url : "/memeber/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소이다.
+							                data : params,            // Json 형식의 데이터이다.
+							                success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+							                    // 응답코드 > 0000
+												$(".layerArea").show();
+												$("#putCart").show();
+							                },
+							                error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+							                    alert("통신 실패.");
+							                }
+							            });
+								<%
+									}
+								%>
 						});
-						
 						//계속 쇼핑하기 버튼을 눌렀을 경우
-						$("#clsBtn").on("click",function(){
+						$("#clsBtn").on("click", function() {
 							//밖에 있는 layerArea 태그를 숨긴다.
 							$(".layerArea").hide();
 							//그중 Cart 모달을 나타내는 태그를 숨긴다
 							$("#putCart").hide();
 						});
-						
+
 						//쇼핑백으로 바로가기를 눌렀을 경우
-						$("#cfBtn").on("click",function(){
-							
-							location.href="회원쇼핑백 태그 url";
+						$("#cfBtn").on("click", function() {
+							location.href = "/member/shoppingbag";
 						});
-						
-					
+
+						$("#addToCartBuyNowButton").on(
+								"click",
+								function() {
+									console.log("addToCartBuyNowButton");
+									$('#order_colorcode').val($('#pcscode').text());
+									if (CartorOrder_size == "") {
+										$(".layerArea").show();
+										$("#Order_confirm").show();
+										return;
+									} else {
+										$('#order_size').val(CartorOrder_size);
+									}
+									
+									
+									let cart_Sumprice = $("#productPrice")
+											.val()
+											* parseInt($("#txtqty").val());
+									$('#order_sumprice').val(cart_Sumprice);
+									$('#order_hsm').val(hsm);
+									$('#order_hspoint').val(hspoint);
+									$('#order_count').val($('#txtqty').val());
+
+									$('#addToCartBuynowForm').submit();
+								});
+
 					});
 
 	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.

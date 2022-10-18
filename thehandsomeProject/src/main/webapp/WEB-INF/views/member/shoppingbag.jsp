@@ -60,7 +60,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${shoppingbagList}" var="shoppingbag">
+							<c:forEach items="${shoppingbagList}" var="shoppingbag" varStatus="status">
 							<tr name="entryProductInfo" data-pk="10950401196076"
 								data-deliverykind="" data-outofstock="false"
 								data-category="ME031">
@@ -94,7 +94,6 @@
 												${shoppingbag.ssize}
 											</p>
 
-
 											<div class="option_wrap">
 												<a href="#none" class="btn_option"
 													id="optOpenLayer^0^SH2C9WJC201M_KG"
@@ -104,7 +103,8 @@
 									</div> <!-- //pt_list_all-->
 								</td>
 								<td class="al_middle">
-									<form id="updateCartForm0"
+									<form 
+										id="updateCartForm${status.index}"
 										data-cart="{&quot;cartCode&quot; : &quot;425633218&quot;,&quot;productPostPrice&quot;:&quot;590000.0&quot;,&quot;productName&quot;:&quot;캐시미어 블렌드 헤링본 재킷&quot;}"
 										action="/ko/shoppingbag/update" method="post">
 										<input type="hidden" name="entryNumber" value="0" /> <input
@@ -117,13 +117,13 @@
 											type="hidden" name="deliveryKind" value="" /> <input
 											type="hidden" name="cartDivision" value="" />
 										<!-- qty_sel -->
-										<span class="qty_sel num"> <a href="#none"
-											onMouseDown="javascript:AEC_F_D('SH2C9WJC201M_KG_100','o',1);"
-											class="left" onclick="GA_Event('쇼핑백', '수량', '-');">이전 버튼</a>
+										<span class="qty_sel num"> 
+										<a href="javascript:void(0);"
+											class="left" >이전 버튼</a>
 											<input id="quantity0" name="quantity" type="text" class="mr0"
-											value="${shoppingbag.amount}" size="1" maxlength="3" /><a href="#none"
-											onMouseDown="javascript:AEC_F_D('SH2C9WJC201M_KG_100','i',1);"
-											class="right" onclick="GA_Event('쇼핑백', '수량', '+');">다음 버튼</a>
+											value="${shoppingbag.amount}" size="1" maxlength="3" style="text-indent: 0;" />
+											<a href="javascript:void(0);"
+											class="right" >다음 버튼</a>
 										</span>
 										<!-- //qty_sel -->
 										<a href="#none" id="QuantityProduct_0"
@@ -137,8 +137,8 @@
 								<td class="al_middle">
 									<!-- Price -->
 									<div class="price_wrap">
-										<span>${shoppingbag.pprice }</span> <input type="hidden"
-											name="checkZeroPrice" value="590000.0" />
+										<span>${shoppingbag.pprice}</span> <input type="hidden"
+											name="checkZeroPrice" value="${shoppingbag.pprice}" />
 									</div> <!-- //Price -->
 								</td>
 								<td class="al_middle"><span class="earn">5% (한섬마일리지)</span>
@@ -396,7 +396,14 @@
 <script>
 	$(document).ready(
 		function() {
-			
+			$(".left").on("click", function(){
+				const volumn = $(this).closest("span").find("input[name='quantity']").val();
+				console.log(volumn);
+			});
+			$(".right").on("click", function(){
+				const volumn = $(this).closest("span").find("input[name='quantity']").val();
+				console.log(volumn);
+			});
 		});
 		
 </script>

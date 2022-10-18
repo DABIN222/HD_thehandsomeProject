@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.PageDTO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailVO;
+import com.hdsm.service.MemberService;
 import com.hdsm.service.ProductService;
 import com.hdsm.util.ProductUtil;
 
@@ -34,7 +38,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
-
+	
+	@Autowired
+	private MemberService mservice;
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {
@@ -229,5 +235,46 @@ public class ProductController {
 	public String putShoppingbag(ProductVO product) {
 		
 		return "/product/list";
+	}
+	
+	@PostMapping("/order_page")
+	public void order_page(
+			@RequestParam("order_colorcode") String order_colorcode,
+			@RequestParam("order_size") String order_size,
+			@RequestParam("order_sumprice") String order_sumprice,
+			@RequestParam("order_hsm") String order_hsm,
+			@RequestParam("order_hspoint") String order_hspoint,
+			@RequestParam("order_count") String order_count,
+			Model model,
+			HttpServletRequest request
+			) {
+			System.out.println(order_colorcode);
+			System.out.println(order_size);
+			System.out.println(order_sumprice);
+			System.out.println(order_hsm);
+			System.out.println(order_hspoint);
+			System.out.println(order_count);
+			String[]pscode = order_colorcode.split("_");
+			String colorcode=pscode[0]+"_"+pscode[1];
+			ProductColorVO colorVO=new ProductColorVO();
+			List<ProductColorVO> productColorVO= service.getProductColor(pscode[0]);
+			for(int i=0;i<productColorVO.size();i++) {
+				if(productColorVO.get(i).getCcolorcode().equals(colorcode)) {
+					colorVO=productColorVO.get(i);
+					break;
+				}
+			}
+			ProductVO productVO= service.getProduct(colorVO.getProduct_pid());
+			HttpSession session=request.getSession(); 
+			String memberId=(String)session.getAttribute("member");
+			model.addAttribute("member", mservice.getMember(memberId));
+			model.addAttribute("productVO", productVO);
+			model.addAttribute("colorVO", colorVO);
+			model.addAttribute("order_size", order_size);
+			model.addAttribute("order_sumprice", Integer.parseInt(order_sumprice));
+			model.addAttribute("order_hsm", Integer.parseInt(order_hsm));
+			model.addAttribute("hspoint", Integer.parseInt(order_hspoint));
+			model.addAttribute("order_count", Integer.parseInt(order_count));
+			
 	}
 }

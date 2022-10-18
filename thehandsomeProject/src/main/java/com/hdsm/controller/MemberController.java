@@ -2,6 +2,7 @@ package com.hdsm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -35,6 +38,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberservice;
+	
+	@Autowired
+	ProductService productservice;
 	
 	// 로그인 페이지 진입
 	@GetMapping("/loginForm")
@@ -136,6 +142,7 @@ public class MemberController {
 		}
 	}
 	
+
 	/* 메인페이지 로그아웃 */
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
    public String logoutMainGET(HttpServletRequest request) throws Exception{
@@ -154,8 +161,7 @@ public class MemberController {
 	@GetMapping("/shoppingbag")
 	public String userShoppingBag(
 				@RequestParam("mid") String mid,
-				Model model
-			) {
+				Model model ) {
 		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
 		model.addAttribute("shoppingbagList",list);
 
