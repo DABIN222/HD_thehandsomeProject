@@ -59,22 +59,33 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
 		
-		List<MemberSbagDTO> dto = mapper.getMembersShoppingBag("asd");
+		List<MemberSbagDTO> dto = mapper.getMembersShoppingBag(mid);
 		List<MemberSbagDTOForJsp> list = new ArrayList<MemberSbagDTOForJsp>();
 		
 		for ( MemberSbagDTO i : dto){
 			String pid = i.getPid();
 			ProductVO pvo = mapper.getShoppingBagsProduct(pid);
 			List<ThumbnailColorVO> cvo = mapper.getProductsColor(pid);
+			List<String> slist = new ArrayList<String>();
+			
+			for(String size : pvo.getP_size().split(",")) {
+				System.out.println(size);
+				slist.add(size.trim());
+			}
 			
 			MemberSbagDTOForJsp insertdto = new MemberSbagDTOForJsp();
 			
 			String thumbnailImg = "";
+			String colorcode = "";
 			for ( ThumbnailColorVO j : cvo){
 				if(j.getCname().equals(i.getPcolor())) {
 					thumbnailImg = j.getC_thumbnail1();
+					colorcode = j.getCcolorcode();
+					break;
 				}
 			}
+			insertdto.setPid(pid);
+			insertdto.setColorcode(colorcode);
 			insertdto.setThumbnail(thumbnailImg);
 			insertdto.setBname(pvo.getBname());
 			insertdto.setPname(pvo.getPname());
@@ -83,10 +94,15 @@ public class MemberServiceImpl implements MemberService {
 			insertdto.setAmount(i.getPamount());
 			insertdto.setPprice(pvo.getPprice());
 			insertdto.setColorlist(cvo);
-			
+			insertdto.setSizeList(slist);
 			list.add(insertdto);
 		}
 		return list;
+	}
+	
+	@Override
+	public void insertShoppingBags(MemberSbagDTO msVO) {
+		mapper.insertShoppingBags(msVO);
 	}
 
 }
