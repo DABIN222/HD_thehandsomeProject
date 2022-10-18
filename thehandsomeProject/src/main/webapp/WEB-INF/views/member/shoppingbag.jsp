@@ -1072,7 +1072,7 @@
 											onMouseDown="javascript:AEC_F_D('SH2C9WJC201M_KG_100','o',1);"
 											class="left" onclick="GA_Event('쇼핑백', '수량', '-');">이전 버튼</a>
 											<input id="quantity0" name="quantity" type="text" class="mr0"
-											value="1" size="1" maxlength="3" /><a href="#none"
+											value="${shoppingbag.amount}" size="1" maxlength="3" /><a href="#none"
 											onMouseDown="javascript:AEC_F_D('SH2C9WJC201M_KG_100','i',1);"
 											class="right" onclick="GA_Event('쇼핑백', '수량', '+');">다음 버튼</a>
 										</span>
@@ -1088,7 +1088,7 @@
 								<td class="al_middle">
 									<!-- Price -->
 									<div class="price_wrap">
-										<span>₩590,000</span> <input type="hidden"
+										<span>${shoppingbag.pprice }</span> <input type="hidden"
 											name="checkZeroPrice" value="590000.0" />
 									</div> <!-- //Price -->
 								</td>
