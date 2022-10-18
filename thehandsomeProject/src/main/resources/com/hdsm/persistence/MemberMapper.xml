@@ -8,9 +8,9 @@
 	<!-- 회원가입 -->
 	<insert id="insertMember">
 		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
-		maddress1, maddress2, mgrade, mdate, mpoint, menabled)
+		maddress1, maddress2, buysum, mgrade, mdate, mpoint, menabled)
 		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, 0, 
-		#{maddress1}, #{maddress2}, 'silver', sysdate, 0, 0)
+		#{maddress1}, #{maddress2},0, 'silver', sysdate, 0, 0)
 	</insert>
 	
 	<!-- 아이디 중복체크 -->
@@ -28,4 +28,7 @@
 		select mid,mpassword from member where mid=#{mid} and mpassword = #{mpassword}
 	</select>
 	
+	<select id="getMember" resultType="com.hdsm.domain.MemberVO">
+		select * from member where mid=#{memberId}
+	</select>
 </mapper> 

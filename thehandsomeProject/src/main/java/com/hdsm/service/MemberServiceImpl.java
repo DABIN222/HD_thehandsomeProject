@@ -45,4 +45,10 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.login(member);
 	}
 
+	@Override
+	public MemberVO getMember(String memberId) {
+		
+		return mapper.getMember(memberId);
+	}
+
 }

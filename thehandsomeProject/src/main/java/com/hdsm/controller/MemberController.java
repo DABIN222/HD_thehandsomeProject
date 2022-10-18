@@ -2,6 +2,8 @@ package com.hdsm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -31,6 +35,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberservice;
+	
+	@Autowired
+	ProductService productservice;
 	
 	// 로그인 페이지 진입
 	@GetMapping("/loginForm")
@@ -131,4 +138,6 @@ public class MemberController {
 			return "member/loginForm";
 		}
 	}
+	
+
 }

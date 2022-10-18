@@ -54,11 +54,11 @@
 							<li id="logout_btn"><a href="/" onclick="delete_session()"> 로그아웃 </a></li>
 							
 							<!-- 세션 초기화 -->
-							<script>
+							<%-- <script>
 								function delete_session() {
 									<%session.invalidate();%>
 								}
-							</script>
+							</script> --%>
 
 							<%
 								}
