@@ -41,7 +41,7 @@
 						<ul class="clearfix">
 
 							<%
-								if (session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
 							%>
 							<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
 							<%
