@@ -163,7 +163,7 @@
                                         <div class="info">
                                             <!-- Products -->
                                             <div class="pt_list" id="pt_list_0"><a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
-												<img src="${shoppingbag.thumbnail}" alt="">
+												<img src="${shoppingbag.thumbnail}" style = "object-fit : cover" alt="">
 													</a>
 													<div class="tlt_wrap">
 														<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}" class="basket_tlt">
@@ -177,7 +177,7 @@
 															<dd>
 																<div class="cl_select">
 																<a href="javascript:void(0);" 
-																	class="beige on" 
+																	class="beige <c:if test="${shoppingbag.scolor eq coloritem.cname}" >on</c:if>"
 																	style="background:#7e3f42 url('${coloritem.ccolorimage}')">BURGUNDY</a>
 																	<span class="cs_sel1807">${coloritem.cname}</span>
 																</div>
@@ -514,7 +514,10 @@
 			});
 			//옵션변경 버튼누를때!
 			$(".btn.wt_ss.qty_w.mr0").click(function(){
-				console.log("누렸어용");
+				//$(this).closest("")
+				let checkElement = $(this).closest('tr').next();
+				console.log(checkElement);
+				checkElement.find(".basket_info").css('display', 'block');
 			});
 		});
 		
