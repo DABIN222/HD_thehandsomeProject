@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.ProductColorVO;
@@ -169,10 +170,52 @@ public class MemberController {
 		return "member/shoppingbag";
 	}
 	
+	// 장바구니 담기
+	@PostMapping("/insertShoppingbag")
+	public String insertShoppingbag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+		log.info("장바구니 담기 진입!");
+		
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid(request.getParameter("mid"));
+		msVO.setPid(request.getParameter("pid"));
+		msVO.setPsize(request.getParameter("psize"));
+		msVO.setPcolor(request.getParameter("pcolor"));
+		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));		
+		
+		// 장바구니 담기 실시
+		memberservice.insertShoppingBags(msVO);
+		log.info("당바구니 담기 성공!");
+		
+		return "member/shoppingbag";
+	}
+
+	/*
+	 * // 장바구니 담기
+	 * 
+	 * @PostMapping("/insertShoppingbag") public String
+	 * insertShoppingbag(@Param("mid") String mid, @Param("pid") String pid,
+	 * 
+	 * @Param("psize") String psize, @Param("pcolor") String pcolor,
+	 * 
+	 * @Param("pamount") int pamount, MemberSbagDTO msVO) throws Exception {
+	 * 
+	 * log.info("장바구니 담기 진입!");
+	 * 
+	 * // jsp에서 name에 입력된 값 vo에 저장 msVO.setMid(mid); msVO.setPid(pid);
+	 * msVO.setPsize(psize); msVO.setPcolor(pcolor); msVO.setPamount(pamount);
+	 * 
+	 * // 장바구니 담기 실시 memberservice.insertShoppingBags(msVO);
+	 * log.info("당바구니 담기 성공!");
+	 * 
+	 * return "member/shoppingbag"; }
+	 */
+	
 	// 마이 페이지 진입
 	@GetMapping("/mypage")
 	public String mypageForm() {
 		log.info("로그인 페이지 왔다");
 		return "member/mypage";
 	}
+	
+	
 }

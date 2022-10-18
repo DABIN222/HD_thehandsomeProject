@@ -88,5 +88,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return list;
 	}
+	
+	@Override
+	public void insertShoppingBags(MemberSbagDTO msVO) {
+		mapper.insertShoppingBags(msVO);
+	}
 
 }
