@@ -273,7 +273,7 @@ public class ProductController {
 			model.addAttribute("order_size", order_size);
 			model.addAttribute("order_sumprice", Integer.parseInt(order_sumprice));
 			model.addAttribute("order_hsm", Integer.parseInt(order_hsm));
-			model.addAttribute("hspoint", Integer.parseInt(order_hspoint));
+			model.addAttribute("order_hspoint", Integer.parseInt(order_hspoint));
 			model.addAttribute("order_count", Integer.parseInt(order_count));
 			
 	}
