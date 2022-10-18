@@ -52,8 +52,9 @@
 
 							<!-- 버튼을 클릭했을때 함수호출 -->
 
-							<li id="logout_btn"><a href="/" onclick="delete_session()"> 로그아웃 </a></li>
-							
+							<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>
+
+
 							<%
 								}
 							%>
