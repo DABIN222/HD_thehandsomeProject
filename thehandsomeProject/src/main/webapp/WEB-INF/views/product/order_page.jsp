@@ -876,7 +876,7 @@
 							<p>(제품 수령 완료 후 10일 후 적립)</p>
 							<p class="txt" id="txtAccumulationPoint">한섬마일리지 ${order_hsm}
 							</p>
-							<p class="txt" id="txtAccumulationHPoint">H.Point
+							<p class="txt" id="txtAccumulationHPoint">H.Point 
 								${order_hspoint }</p>
 							<!-- 간편회원이 아닐 때  e -->
 							<input type="hidden" name="accumulationPoint"
@@ -1130,7 +1130,7 @@
 				
 				//마일리지랑  point부분을  ₩ 마일리지 가격이랑  ₩ point 가격으로 바꾼다. 
 				$("#txtAccumulationPoint").text("한섬마일리지  ₩" + milege_price);
-				$("#txtAccumulationHPoints").text("H.Point ₩" + Hpoint_price);
+				$("#txtAccumulationHPoint").text("H.Point ₩" + Hpoint_price);
 			});
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
