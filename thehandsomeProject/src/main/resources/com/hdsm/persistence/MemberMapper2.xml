@@ -34,4 +34,14 @@
 			product_pid = #{pid}
 
 	</select>
+	
+	<update id="updateShoppingBag">
+		UPDATE mycart
+		SET
+			psize = #{psize},
+			pcolor = #{pcolor},
+			pamount = #{pamount}
+		WHERE
+			mid = #{mid} and pid = #{pid}
+	</update>
 </mapper> 

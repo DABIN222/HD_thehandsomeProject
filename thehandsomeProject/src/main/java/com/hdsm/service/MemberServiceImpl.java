@@ -12,6 +12,7 @@ import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.persistence.MemberMapper;
+import com.hdsm.persistence.MemberMapper2;
 
 import lombok.AllArgsConstructor;
 
@@ -21,6 +22,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	private MemberMapper2 mapper2;
 
 	// 회원 가입
 	@Override
@@ -92,6 +96,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void insertShoppingBags(MemberSbagDTO msVO) {
 		mapper.insertShoppingBags(msVO);
+	}
+
+	@Override
+	public int updateShoppingBag(MemberSbagDTO msVO) {
+		int cnt = mapper2.updateShoppingBag(msVO);
+		
+		return cnt;
 	}
 
 }

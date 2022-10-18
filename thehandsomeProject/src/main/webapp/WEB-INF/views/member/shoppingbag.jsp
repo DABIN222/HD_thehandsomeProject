@@ -1000,8 +1000,8 @@
 						<thead>
 							<tr>
 								<th scope="col">
-									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> <input
-									type="checkbox" id="entryCheckAll" value="cartlist">
+									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> 
+									<input type="checkbox" id="entryCheckAll" value="cartlist">
 								</th>
 								<th scope="col">상품정보</th>
 								<th scope="col">수량</th>
@@ -1010,6 +1010,17 @@
 								<th scope="col">선택</th>
 							</tr>
 						</thead>
+						<script>
+							<!-- 체크 박스 전체 선택, 해제 -->
+							$("#entryCheckAll").on('click', function() {
+								<!-- 전체 선택 눌렀을 때 -->
+								if($("#entryCheckAll").prop("checked")){
+									$("th[scope=col]").prop("checked",true);
+								}else {
+									$("th[scope=col]").prop("checked",false);
+								}
+							})
+						</script>
 						<tbody>
 							<c:forEach items="${shoppingbagList}" var="shoppingbag">
 							<tr name="entryProductInfo" data-pk="10950401196076"

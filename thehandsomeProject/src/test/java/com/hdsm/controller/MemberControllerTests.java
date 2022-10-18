@@ -16,6 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.persistence.MemberMapper;
+import com.hdsm.persistence.MemberMapper2;
 
 import lombok.extern.log4j.Log4j;
 
@@ -29,6 +30,9 @@ public class MemberControllerTests {
 
 	@Autowired
 	private MemberMapper membermapper;	//MemberMapper.java 인터페이스 의존성 주입
+	
+	@Autowired
+	private MemberMapper2 membermapper2;	//MemberMapper.java 인터페이스 의존성 주입
 	
 	//회원가입 쿼리 테스트 메서드
 	@Test
@@ -83,5 +87,22 @@ public class MemberControllerTests {
 		log.info("당바구니 담기 성공!");
 		
 	}
+	
+	// 장바구니 변경
+	@Test
+	public void updateShoppingbag() throws Exception {
+		log.info("장바구니 변경 진입");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid("admin");
+		msVO.setPid("CM2CAWOT470B");
+		msVO.setPsize("01234");
+		msVO.setPcolor("OT(OTMEAL)");
+		msVO.setPamount(1);	
+		
+		membermapper2.updateShoppingBag(msVO);
+		log.info("당바구니 변경 성공!");
+	} 
 	
 }

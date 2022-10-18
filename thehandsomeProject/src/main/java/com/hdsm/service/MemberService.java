@@ -27,4 +27,7 @@ public interface MemberService {
 	
 	// 장바구니 담기
 	public void insertShoppingBags(MemberSbagDTO msVO);
+	
+	// 장바구니 변경
+	public int updateShoppingBag(MemberSbagDTO msVO);
 }
