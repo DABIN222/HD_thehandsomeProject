@@ -1,62 +1,35 @@
-package com.hdsm.service;
+package com.hdsm.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
-import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
-import com.hdsm.persistence.MemberMapper;
+import com.hdsm.domain.ThumbnailVO;
+import com.hdsm.util.ProductUtil;
 
-import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
-@Service
-@AllArgsConstructor
-public class MemberServiceImpl implements MemberService {
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@Log4j
+public class MemberMapperTest2 {
+	
 	@Autowired
 	private MemberMapper mapper;
-
-	// 회원 가입
-	@Override
-	public void insertMember(MemberVO member) {
-		mapper.insertMember(member);
-	}
-
-	// 아이디 중복 확인
-	@Override
-	public int idCheck(String memberId) {
-		int cnt = mapper.idCheck(memberId);
-		System.out.println("cnt : "+cnt);
-		return cnt;
-	}
 	
-	// 연락처 중복 확인
-	@Override
-	public int telCheck(String memberTel) {
-		int cnt = mapper.telCheck(memberTel);
-		System.out.println("cnt : "+cnt);
-		return cnt;
-	}
-
-	// 로그인 
-	@Override
-	public MemberVO login(MemberVO member) {
-		return mapper.login(member);
-	}
-
-	@Override
-<<<<<<< HEAD
-	public MemberVO getMember(String memberId) {
-		
-		return mapper.getMember(memberId);
-=======
-	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
+	@Test
+	public void testGetSb() {
 		
 		List<MemberSbagDTO> dto = mapper.getMembersShoppingBag("asd");
 		List<MemberSbagDTOForJsp> list = new ArrayList<MemberSbagDTOForJsp>();
@@ -85,8 +58,9 @@ public class MemberServiceImpl implements MemberService {
 			
 			list.add(insertdto);
 		}
-		return list;
->>>>>>> 2a1f567fee01828ad18dd57b4df565879a1f2c62
+		
+		for( MemberSbagDTOForJsp i : list) {
+			log.info(i);
+		}
 	}
-
 }

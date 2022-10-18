@@ -8,9 +8,10 @@
 	<!-- 회원가입 -->
 	<insert id="insertMember">
 		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
-		maddress1, maddress2, buysum, mgrade, mdate, mpoint, menabled)
+		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
 		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, 0, 
-		#{maddress1}, #{maddress2},0, 'silver', sysdate, 0, 0)
+		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0)
+
 	</insert>
 	
 	<!-- 아이디 중복체크 -->
@@ -25,7 +26,38 @@
 
 	<!-- 로그인 -->
 	<select id="login" resultType="com.hdsm.domain.MemberVO">
-		select mid,mpassword from member where mid=#{mid} and mpassword = #{mpassword}
+		select mid, mpassword from member where mid=#{mid} and mpassword = #{mpassword}
+	</select>
+	
+	<!-- 유저의 장바구니목록들 가져오기 -->
+	<select id="getMembersShoppingBag" resultType="com.hdsm.domain.MemberSbagDTO">
+		SELECT
+			*
+		FROM mycart
+		<trim prefix="WHERE" prefixOverrides="AND |OR">
+			<if test="mid != null and mid !='' ">
+				mid = #{mid}
+			</if>
+		</trim>
+
+	</select>
+	<!-- 그목록들에 있는 제품의 정보 -->
+	<select id="getShoppingBagsProduct" resultType="com.hdsm.domain.ProductVO">
+		SELECT
+			*
+		FROM product
+		where 
+			pid in #{pid}
+
+	</select>
+	<!-- 그제품들의 컬러  정보 -->
+	<select id="getProductsColor" resultType="com.hdsm.domain.ThumbnailColorVO">
+		SELECT
+			product_pid, ccolorcode, cname, ccolorimage, c_thumbnail1, c_thumbnail2
+		FROM color
+		where 
+			product_pid = #{pid}
+
 	</select>
 	
 	<select id="getMember" resultType="com.hdsm.domain.MemberVO">

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- parameterType="com.hdsm.domain.MemberVO" -->
+<mapper namespace="com.hdsm.persistence.MemberMapper2">
+
+	<select id="getMembersShoppingBag" resultType="com.hdsm.domain.MemberSbagDTO">
+		SELECT
+			*
+		FROM mycart
+		<trim prefix="WHERE" prefixOverrides="AND |OR">
+			<if test="mid != null and mid !='' ">
+				mid = #{mid}
+			</if>
+		</trim>
+
+	</select>
+	
+	<select id="getShoppingBagsProduct" resultType="com.hdsm.domain.ProductVO">
+		SELECT
+			*
+		FROM product
+		where 
+			pid in #{pid}
+
+	</select>
+	
+	<select id="getProductsColor" resultType="com.hdsm.domain.ThumbnailColorVO">
+		SELECT
+			product_pid, ccolorcode, cname, ccolorimage, c_thumbnail1, c_thumbnail2
+		FROM color
+		where 
+			product_pid = #{pid}
+
+	</select>
+</mapper> 

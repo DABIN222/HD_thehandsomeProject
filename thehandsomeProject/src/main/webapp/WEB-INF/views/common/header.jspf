@@ -41,7 +41,7 @@
 						<ul class="clearfix">
 
 							<%
-								if (session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
 							%>
 							<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
 							<%
@@ -51,6 +51,7 @@
 							<li style="margin-top: 9px;"><%=session.getAttribute("member")%> 님 환영합니다</li>
 
 							<!-- 버튼을 클릭했을때 함수호출 -->
+<<<<<<< HEAD
 							<li id="logout_btn"><a href="/" onclick="delete_session()"> 로그아웃 </a></li>
 							
 							<!-- 세션 초기화 -->
@@ -59,6 +60,9 @@
 									<%session.invalidate();%>
 								}
 							</script> --%>
+=======
+							<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>
+>>>>>>> 2a1f567fee01828ad18dd57b4df565879a1f2c62
 
 							<%
 								}

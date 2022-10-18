@@ -14,6 +14,7 @@ public class MemberVO {
 	private String memail;
 	private String mtel;
 	private int mzipcode;
+	private int buysum;
 	private String maddress1;
 	private String maddress2;
 	private String mgrade;
