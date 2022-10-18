@@ -17,6 +17,7 @@ import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.persistence.MemberMapper2;
+import com.hdsm.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -33,6 +34,9 @@ public class MemberControllerTests {
 	
 	@Autowired
 	private MemberMapper2 membermapper2;	//MemberMapper.java 인터페이스 의존성 주입
+	
+	@Autowired
+	MemberService memberservice;
 	
 	//회원가입 쿼리 테스트 메서드
 	@Test
@@ -88,6 +92,7 @@ public class MemberControllerTests {
 		
 	}
 	
+	/*
 	// 장바구니 변경
 	@Test
 	public void updateShoppingbag() throws Exception {
@@ -104,5 +109,53 @@ public class MemberControllerTests {
 		membermapper2.updateShoppingBag(msVO);
 		log.info("당바구니 변경 성공!");
 	} 
+	*/
 	
+	// 장바구니 삭제
+	@Test
+	public void deleteShoppingBag() throws Exception {
+		log.info("장바구니 변경 진입");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid("admin");
+		msVO.setPid("TH2C9ASZ092M");
+		msVO.setPsize("280");
+		msVO.setPcolor("BLACK");
+		msVO.setPamount(1);	
+		
+		membermapper2.deleteShoppingBag(msVO);
+		log.info("당바구니 변경 성공!");
+	} 
+	
+	// 장바구니 변경
+	@Test
+	public void updateShoppingbag() throws Exception {
+		log.info("장바구니 변경 진입");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid("admin");
+		msVO.setPid("TH2C8TTO628M");
+		msVO.setPsize("95");
+		msVO.setPcolor("OTMEAL");
+		msVO.setPamount(2);	
+		
+		int select = membermapper2.selectShoppingBag(msVO);
+		log.info("select 값 : "+select);
+		
+		if(select != 0) {
+			log.info("이미 장바구니에 존재함");
+		} else {
+			int cnt = membermapper2.updateShoppingBag(msVO);
+			
+			if(cnt != 0) {
+				log.info("장바구니 변경 성공!");
+			} else {
+				log.info("장바구니 변경 실패.....!");
+			}
+		}
+		
+		log.info("당바구니 변경 성공!");
+	} 
 }

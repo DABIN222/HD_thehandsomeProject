@@ -44,4 +44,14 @@
 		WHERE
 			mid = #{mid} and pid = #{pid}
 	</update>
+	<delete id="deleteShoppingBag">
+		DELETE FROM mycart
+		WHERE
+			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+	</delete>
+	<select id="selectShoppingBag" resultType="int">
+		SELECT count(mid) FROM mycart
+		WHERE
+			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+	</select>
 </mapper> 
