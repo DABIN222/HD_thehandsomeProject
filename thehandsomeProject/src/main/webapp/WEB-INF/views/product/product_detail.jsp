@@ -3473,12 +3473,13 @@
 											pcolor: selectColor,
 											pamount: $("#txtqty").val()
 									}
+									console.log(params);
 									//ajax 호출!
 									$.ajax({
 							                type : "POST",            // HTTP method type(GET, POST) 형식이다.
-							                url : "/memeber/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소이다.
+							                url : "/member/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소이다.
 							                data : params,            // Json 형식의 데이터이다.
-							                success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+							                success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 							                    // 응답코드 > 0000
 												$(".layerArea").show();
 												$("#putCart").show();
@@ -3490,6 +3491,7 @@
 								<%
 									}
 								%>
+							}     
 						});
 						//계속 쇼핑하기 버튼을 눌렀을 경우
 						$("#clsBtn").on("click", function() {

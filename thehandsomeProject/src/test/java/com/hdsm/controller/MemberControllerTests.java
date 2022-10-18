@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.persistence.MemberMapper;
 
@@ -62,6 +63,25 @@ public class MemberControllerTests {
 		member.setMpassword("1234");
 		
 		membermapper.login(member);
+	}
+	
+	// 장바구니 담기
+	@Test
+	public void insertShoppingbag() throws Exception {
+		log.info("장바구니 담기 진입!");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid("admin");
+		msVO.setPid("CM2CAWOT470W");
+		msVO.setPsize("82, 76");
+		msVO.setPcolor("OT(OTMEAL)");
+		msVO.setPamount(2);		
+		
+		// 장바구니 담기 실시
+		membermapper.insertShoppingBags(msVO);
+		log.info("당바구니 담기 성공!");
+		
 	}
 	
 }
