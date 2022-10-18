@@ -799,14 +799,14 @@
 						</div>
 						<!--//190508 추가 -->
 
-						<form id="addToCartForm" name="addToCartForm"
-							action="/쇼핑백 등록 url"
+						<form id="addToCartForm" name="addToCartForm" action="/쇼핑백 등록 url"
 							method="post">
-							<input type="hidden" name="cart_prev_colorcode" id="cart_prev_colorcode"value="${curcolorcode}"/>
-							<input type="hidden" name="cart_size" id="cart_size" value=""/>
-							<input type="hidden" name="cart_sumprice" id="cart_sumprice" value=""/>
-							<input type="hidden" name="hsm" id="hsm" value=""/>
-							<input type="hidden" name="hspoint" id="hspoint" value=""/> 
+							<input type="hidden" name="cart_prev_colorcode"
+								id="cart_prev_colorcode" value="${curcolorcode}" /> <input
+								type="hidden" name="cart_size" id="cart_size" value="" /> <input
+								type="hidden" name="cart_sumprice" id="cart_sumprice" value="" />
+							<input type="hidden" name="hsm" id="hsm" value="" /> <input
+								type="hidden" name="hspoint" id="hspoint" value="" />
 							<!-- <input type="hidden" maxlength="3" size="1" name="qty" class="qty">
 							<input type="hidden" name="productCodePost" value="TH2CBKPC033M_BK"> 
 							<input type="hidden" id="productCodeType" name="productCodeType" value="ApparelStyleVariantProduct">
@@ -827,16 +827,26 @@
 							<input type="hidden" name="pickupList" id="pickupList">
 							<input type="hidden" name="quickList" id="quickList"> 
 							<input type="hidden" name="buyNowYn" id="buyNowYn" value="false"> -->
-							<input type="button" value="쇼핑백 담기" class="btn cart1803 float_left ml0" id="addToCartButton">
+							<input type="button" value="쇼핑백 담기"
+								class="btn cart1803 float_left ml0" id="addToCartButton">
 							<!-- onclick="addToCart();GA_Event('상품_상세','하단 고정 버튼','쇼핑백담기');" -->
 							<div>
 								<input type="hidden" name="CSRFToken"
 									value="7399b544-9191-4d49-af3a-9a782a52adc4">
 							</div>
 						</form>
-						<input type="button" value="바로주문"
-							class="btn order float_right mr0" id="addToCartBuyNowButton"
-							onclick="GA_Event('상품_상세','하단 고정 버튼','바로주문');addToCart(true);">
+						<form id="addToCartBuynowForm" name="addToCartBuynowForm"
+							action="/product/order_page" method="post">
+							<input type="hidden" name="order_colorcode" id="order_colorcode"
+								value="${curcolorcode}" /> <input type="hidden"
+								name="order_size" id="order_size" value="" /> <input
+								type="hidden" name="order_sumprice" id="order_sumprice" value="" />
+							<input type="hidden" name="order_hsm" id="order_hsm" value="" />
+							<input type="hidden" name="order_hspoint" id="order_hspoint"
+								value="" /> <input type="hidden" name="order_count"
+								id="order_count" value="" /> <input type="button" value="바로주문"
+								class="btn order float_right mr0" id="addToCartBuyNowButton">
+						</form>
 					</div>
 
 					<dl class="toggle_type1" style="margin-top: 80px;">
@@ -1539,7 +1549,7 @@
 			<h3>Q&amp;A</h3>
 		</div>
 		<div class="pop_cnt evaluation_list">
-			<a href="javascript:fn_popuProductQnAWrite();" class="btn_evaluation"
+			<a href="javascript:fn_popupProductQnAWrite();" class="btn_evaluation"
 				id="productQnAWrite">상품문의하기</a>
 			<div class="clearfix">
 				<table class="pop_tbl_ltype1">
@@ -3093,13 +3103,23 @@
 			</h3>
 			<div class="btnwrap">
 				<input type="button" id="clsBtn" class="btn wt_s mr5"
-					value="계속 쇼핑하기">
-					<input type="button" id="cfBtn"
+					value="계속 쇼핑하기"> <input type="button" id="cfBtn"
 					class="btn gray_s mr0" value="쇼핑백 바로가기">
 			</div>
 		</div>
 		<a href="javascript:void(0);" class="btn_close"><img
 			src="/resources/images/ico_close.png" alt="닫기"></a>
+	</div>
+	<div class="popwrap w_type_1 " id="Order_confirm" style="z-index: 150; margin-top: 753px; display:none;"
+		tabindex="-1">
+		<div class="pop_cnt">
+			<h3 class="pop_tlt copy">사이즈를 선택해 주세요.</h3>
+			<div class="btnwrap">
+				<input type="button" class="btn gray_s mr0" onclick="sizeConfirm();" value="확인">
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="btn_close"> <img
+			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
 	</div>
 </div>
 
@@ -3154,24 +3174,34 @@
 		$(".btn_close").trigger("click");
 	}
 	
+	//사이즈 확인 모달 창 버튼의 class에 스타일이 적용되있으ㅓㅅ
+	/* function fn_Order_confirm() {
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+	} */
 	
-
 	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
 	$(".btn_close").on("click", function() {
 		$('#productLayer').hide();
 		$(".popwrap").hide();
 	});
-
+	
 	//QnA 작성란 띄우기
-	function fn_popuProductQnAWrite() {
+	function fn_popupProductQnAWrite() {
+		
+		//QnA 리스트를 숨긴다.
 		$("#productQnADiv").hide();
+		//작성란을 띄운다.
 		viewPopup("#productQnAWriteDiv");
 	}
-
+	
+	
 	//x 버튼을 누르면 QnA 작성창 닫기
 	function fn_closeProductQnAWrite() {
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
 		$(".btn_close").trigger("click");
+		//QnA 작성 리스트를 띄운다.
 		viewPopup("#productQnADiv");
 	}
 
@@ -3185,8 +3215,14 @@
 		}
 
 	});
-
-	//팝업 창을 띄우는 함수(공홈을 참고함)
+	
+	//사이즈 체크 확인 창이 뜨고 확인버튼을 누르면 확인 모달창에 사라짐
+	function sizeConfirm(){
+		$('#productLayer').hide();
+		$("#Order_confirm").hide();
+	}
+	
+	//QnA 팝업 창의 크기를 조절하고 띄우는 함수(공홈을 참고함)
 	function viewPopup(v, n) {
 
 		var obj = $("#" + v.split("#")[1]);
@@ -3243,14 +3279,13 @@
 			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
-
-
+	
 	$(document)
 			.ready(
 					function() {
 						//쇼핑백에 담을 변수 선언
-						let cart_size="";
-						let cart_sumprice="";
+						let CartorOrder_size = "";
+						let CartorOrder_sumprice = "";
 						//페이지 로드할때 선택된 이미지로 상세보기이미지가 띄워지고 
 						let prev_colorcode = "${curColorCode}";
 						$(".image_view_" + prev_colorcode).css('display',
@@ -3301,7 +3336,7 @@
 									//또한 누르면 그버튼이 계속 눌렸다는걸 표시
 									$(this).addClass('on');
 									//쇼핑백에 size에 담음
-									cart_size=sizeText;
+									CartorOrder_size = sizeText;
 								});
 
 						//처음 로드될때 가격에 3자리마다 콤마찍음
@@ -3310,7 +3345,7 @@
 						//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
 						$("#pricespan").text("₩" + num);
 						$("#sumPrice").text("₩" + num);
-						
+
 						//상품상세 같은 dt눌렀을때를 공홈꺼 그대로 가져옴
 						$('.toggle_type1>dt')
 								.click(
@@ -3410,7 +3445,7 @@
 											}
 										});
 						//쇼핑백 담기 버튼을 눌렀을 경우
-						$("#addToCartButton").on("click",function(){
+						$("#addToCartButton").on("click", function() {
 							//밖에 있는 layerArea 태그를 보이게 한다.
 							$(".layerArea").show();
 							//그중 Cart 모달을 나타내는 태그를 보이게 한다.
@@ -3422,22 +3457,46 @@
 							$('#hsm').val(hsm);
 							$('#hspoint').val(hspoint); */
 						});
-						
+
 						//계속 쇼핑하기 버튼을 눌렀을 경우
-						$("#clsBtn").on("click",function(){
+						$("#clsBtn").on("click", function() {
 							//밖에 있는 layerArea 태그를 숨긴다.
 							$(".layerArea").hide();
 							//그중 Cart 모달을 나타내는 태그를 숨긴다
 							$("#putCart").hide();
 						});
-						
+
 						//쇼핑백으로 바로가기를 눌렀을 경우
-						$("#cfBtn").on("click",function(){
-							
-							location.href="회원쇼핑백 태그 url";
+						$("#cfBtn").on("click", function() {
+
+							location.href = "/member/shoppingbag";
 						});
-						
-					
+
+						$("#addToCartBuyNowButton").on(
+								"click",
+								function() {
+									console.log("addToCartBuyNowButton");
+									$('#order_colorcode').val($('#pcscode').text());
+									if (CartorOrder_size == "") {
+										$(".layerArea").show();
+										$("#Order_confirm").show();
+										return;
+									} else {
+										$('#order_size').val(CartorOrder_size);
+									}
+									
+									
+									let cart_Sumprice = $("#productPrice")
+											.val()
+											* parseInt($("#txtqty").val());
+									$('#order_sumprice').val(cart_Sumprice);
+									$('#order_hsm').val(hsm);
+									$('#order_hspoint').val(hspoint);
+									$('#order_count').val($('#txtqty').val());
+
+									$('#addToCartBuynowForm').submit();
+								});
+
 					});
 
 	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.

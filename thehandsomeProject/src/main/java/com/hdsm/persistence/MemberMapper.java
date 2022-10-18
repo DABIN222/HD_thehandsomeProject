@@ -23,6 +23,8 @@ public interface MemberMapper {
 	// 로그인
 	public MemberVO login(MemberVO member);
 	
+	public MemberVO getMember(String memberId);
+	
 	//회원 장바구니 목록
 	public List<MemberSbagDTO> getMembersShoppingBag(@Param("mid") String mid);
 	

@@ -18,7 +18,9 @@ public interface MemberService {
 	
 	// 로그인
 	public MemberVO login(MemberVO member); 
-	
+
+	public MemberVO getMember(String memberId);
+
 	// 유저의 장바구니에 담긴 정보들 가져오기
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid); 
 }

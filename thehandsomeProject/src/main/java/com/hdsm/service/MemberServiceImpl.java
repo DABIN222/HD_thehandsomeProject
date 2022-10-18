@@ -51,6 +51,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public MemberVO getMember(String memberId) {
+		
+	return mapper.getMember(memberId);
+	}
+	
+	@Override
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
 		
 		List<MemberSbagDTO> dto = mapper.getMembersShoppingBag("asd");
