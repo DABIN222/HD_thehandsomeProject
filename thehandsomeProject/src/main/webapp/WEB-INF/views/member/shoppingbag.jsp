@@ -73,17 +73,18 @@
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
 										<a
-											href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
+											
+											href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}"
 											onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
 											<img
 											src="${shoppingbag.thumbnail}"
+											style = "object-fit : cover"
 											alt="" />
 										</a>
 										<div class="tlt_wrap">
 											<a
-												href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
-												class="basket_tlt"
-												onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
+												href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}"
+												class="basket_tlt">
 												<span class="tlt">${shoppingbag.bname}</span> <span class="sb_tlt">
 													${shoppingbag.pname}</span>
 											</a>
@@ -95,9 +96,7 @@
 											</p>
 
 											<div class="option_wrap">
-												<a href="#none" class="btn_option"
-													id="optOpenLayer^0^SH2C9WJC201M_KG"
-													onclick="GA_Event('쇼핑백','옵션변경', '캐시미어 블렌드 헤링본 재킷')">옵션변경</a>
+												<a href="javascript:void(0);" class="btn_option">옵션변경</a>
 											</div>
 										</div>
 									</div> <!-- //pt_list_all-->
@@ -126,7 +125,7 @@
 											class="right" >다음 버튼</a>
 										</span>
 										<!-- //qty_sel -->
-										<a href="#none" id="QuantityProduct_0"
+										<a href="javascript:void(0);" id="QuantityProduct_0"
 											class="btn wt_ss qty_w mr0">변경</a>
 										<div>
 											<input type="hidden" name="CSRFToken"
@@ -137,9 +136,10 @@
 								<td class="al_middle">
 									<!-- Price -->
 									<div class="price_wrap">
-										<span>${shoppingbag.pprice}</span> <input type="hidden"
-											name="checkZeroPrice" value="${shoppingbag.pprice}" />
-									</div> <!-- //Price -->
+										<span></span> 
+										<input type="hidden" name="checkZeroPrice" value="${shoppingbag.pprice}" />
+									</div> 
+									<!-- //Price -->
 								</td>
 								<td class="al_middle"><span class="earn">5% (한섬마일리지)</span>
 									<br> <span class="earn">0.1% (H.Point)</span></td>
@@ -156,26 +156,60 @@
 							</tr>
 							<!-- Info wrap -->
 							<tr>
-								<td colspan="6" class="basket_wrap">
-									<!-- Info -->
-									<div class="basket_info">
-										<span class="btn_arr">위치아이콘</span>
-										<div class="info">
-											<!-- Products -->
-											<div class="pt_list" id="pt_list_0"></div>
-											<!-- //Products -->
-											<!-- btns -->
-											<div class="btns">
-												<a href="#none" class="btn wt_ss mr0" id="UpdateCart_0">변경</a>
-												<a href="#none" class="btn wt_ss mt10 mr0"
-													id="optCancelLayer_0">취소</a> <a href="#none"
-													class="btn_close" id="optCloseLayer_0">닫기</a>
-											</div>
-											<!-- //btns -->
-										</div>
-									</div> <!-- //Info -->
-								</td>
-							</tr>
+                                <td colspan="6" class="basket_wrap">
+                                    <!-- Info -->
+                                    <div class="basket_info" style="display: none;">
+                                        <span class="btn_arr">위치아이콘</span>
+                                        <div class="info">
+                                            <!-- Products -->
+                                            <div class="pt_list" id="pt_list_0"><a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
+												<img src="${shoppingbag.thumbnail}" alt="">
+													</a>
+													<div class="tlt_wrap">
+														<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}" class="basket_tlt">
+													        <span class="tlt">${shoppingbag.bname}</span>
+													        <span class="sb_tlt">${shoppingbag.pname}</span>
+													    </a>
+														<!-- color_size -->
+														<dl class="cs_wrap">
+															<dt>COLOR</dt>
+															<c:forEach items="${shoppingbag.colorlist}" var="coloritem" varStatus="status">
+															<dd>
+																<div class="cl_select">
+																<a href="javascript:void(0);" 
+																	class="beige on" 
+																	style="background:#7e3f42 url('${coloritem.ccolorimage}')">BURGUNDY</a>
+																	<span class="cs_sel1807">${coloritem.cname}</span>
+																</div>
+															</dd>
+															</c:forEach>
+															<dt>SIZE</dt>
+															<dd style="width: 90%; height: 100%;">
+																<div class="sz_select">
+																	<c:forEach items="${shoppingbag.sizeList}" var="size" varStatus="status">
+																		<a href="javascript:void(0);" <c:if test="${size eq shoppingbag.ssize}" >
+																			class="on" style="line-height: 15px;"
+																		</c:if>> ${size}</a>
+																	</c:forEach>
+																</div>
+															</dd>
+															
+														</dl>
+														<!-- //color_size -->
+													</div>
+												</div>
+                                            <!-- //Products -->
+                                            <!-- btns -->
+                                            <div class="btns">
+                                                <a href="#none" class="btn wt_ss mr0" id="UpdateCart_0">변경</a>
+                                                <a href="#none" class="btn wt_ss mt10 mr0" id="optCancelLayer_0">취소</a>
+                                                <a href="#none" class="btn_close" id="optCloseLayer_0">닫기</a>
+                                            </div>
+                                            <!-- //btns -->
+                                        </div>
+                                    </div> <!-- //Info -->
+                                </td>
+                            </tr>
 							<tr>
 								<td colspan="6" class="basket_wrap"></td>
 							</tr>
@@ -183,18 +217,19 @@
 
 							<!-- AceCounter eCommerce (Product_Detail) v7.5 Start -->
 							<!-- Data Allocation (Product_Detail) -->
-							<script language='javascript' type="text/javascript">
+							<!-- <script language='javascript' type="text/javascript">
 								_A_amt[_ace_countvar] = "590000";
 								_A_nl[_ace_countvar] = "1";
 								_A_pl[_ace_countvar] = "SH2C9WJC201M_KG_100";
 								_A_pn[_ace_countvar] = "캐시미어 블렌드 헤링본 재킷";
 								_A_ct[_ace_countvar] = "SYSTEM HOMME";
 								_ace_countvar++;
-							</script>
+							</script> -->
 							<!-- AceCounter eCommerce (Cart_InOut) v7.5 End -->
 							<!-- //Info wrap -->
+							</c:forEach>
 						</tbody>
-						</c:forEach>
+						
 					</table>
 				</div>
 				<!--// shoppingback table-->
@@ -205,7 +240,7 @@
 						<dl>
 							<dt>상품 합계</dt>
 							<dd>
-								<span id="cartDataSubtotal">₩590,000</span>
+								<span id="cartDataSubtotal"></span>
 							</dd>
 							<dt class="delch_wrap">
 								<p class="tlt_ship">배송비</p>
@@ -229,7 +264,7 @@
 						<dl class="total ">
 							<dt>합계</dt>
 							<dd>
-								<span id="cartDataTotalPrice">₩590,000</span>
+								<span id="cartDataTotalPrice"></span>
 							</dd>
 						</dl>
 					</div>
@@ -394,15 +429,92 @@
 	}
 </script>
 <script>
+	function priceComma(price) {
+		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
 	$(document).ready(
 		function() {
+			//전부 체크해버려!
+			$("input[name='cartlist']").each(function(index, item){
+				$(this).prop("checked", true);
+			});
+			//기본이 전부 선택이니까 전체 가격이랑 갯수 세기!!
+			//시작할때 가격 3자리마다 , 붙이게
+			$(".price_wrap").each(function(index, item){
+				const price = priceComma($(this).find("input").val());
+				$(this).find("span").text('₩'+price);
+			});
+			//시작할때 합계 구하기
+			let total = 0;
+			let count = 0;
+			$("tr[name='entryProductInfo']").each(function(index, item){
+				//수량
+				const q = parseInt($(this).find("input[name='quantity']").val());
+				//가격
+				const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+				//합 더하기
+				total += p*q;
+				count++;
+			});	
+			$("#cartDataSubtotal").text('₩'+priceComma(total))
+			$("#cartDataTotalPrice").text('₩'+priceComma(total))
+			$("#selectProductCount").text(count+'');
+			
+			//checkbox눌릴때마다 개수랑 합계 구하기
+			$("input[name='cartlist']").on("click", function(){
+				let checkedcount = 0;
+				let checkedsumtotal = 0;
+				$("tr[name=entryProductInfo]").each(function(index, item){
+					if( $(this).find("input[name='cartlist']").is(":checked")){
+						checkedcount += parseInt($(this).find("input[name='quantity']").val());
+						checkedsumtotal += parseInt($(this).find("input[name='checkZeroPrice']").val());
+					}
+				});
+				$("#cartDataSubtotal").text('₩'+priceComma(checkedsumtotal))
+				$("#cartDataTotalPrice").text('₩'+priceComma(checkedsumtotal))
+				$("#selectProductCount").text(checkedcount+'');
+			});
+			//checkbox 전부 선택버튼
+			$("#entryCheckAll").click(function(){
+				let checkedcount = 0;
+				let checkedsumtotal = 0;
+				if($("#entryCheckAll").is(":checked")){
+					$("input[name=cartlist]").prop("checked", true);
+					$("tr[name='entryProductInfo']").each(function(index, item){
+						const q = parseInt($(this).find("input[name='quantity']").val());
+						const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+						checkedsumtotal += p*q;
+						checkedcount++;
+					});	
+				}
+				else{
+					$("input[name=cartlist]").prop("checked", false);
+					checkedcount = 0;
+					checkedsumtotal = 0;
+				}
+				$("#cartDataSubtotal").text('₩'+priceComma(checkedsumtotal))
+				$("#cartDataTotalPrice").text('₩'+priceComma(checkedsumtotal))
+				$("#selectProductCount").text(checkedcount+'');
+			});
+			//상품 수량 변경하는거 
 			$(".left").on("click", function(){
-				const volumn = $(this).closest("span").find("input[name='quantity']").val();
-				console.log(volumn);
+				let volumn = parseInt($(this).closest("span").find("input[name='quantity']").val());
+				if(volumn > 1){
+					volumn--;
+				}
+				$(this).closest("span").find("input[name='quantity']").val(volumn);
 			});
 			$(".right").on("click", function(){
-				const volumn = $(this).closest("span").find("input[name='quantity']").val();
-				console.log(volumn);
+				let volumn = parseInt($(this).closest("span").find("input[name='quantity']").val());
+				if(volumn < 2){
+					volumn++;
+				}
+				$(this).closest("span").find("input[name='quantity']").val(volumn);
+			});
+			//옵션변경 버튼누를때!
+			$(".btn.wt_ss.qty_w.mr0").click(function(){
+				console.log("누렸어용");
 			});
 		});
 		

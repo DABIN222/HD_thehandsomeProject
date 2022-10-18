@@ -3503,7 +3503,7 @@
 
 						//쇼핑백으로 바로가기를 눌렀을 경우
 						$("#cfBtn").on("click", function() {
-							location.href = "/member/shoppingbag";
+							location.href = "/member/shoppingbag?mid=${member}";
 						});
 
 						$("#addToCartBuyNowButton").on(
