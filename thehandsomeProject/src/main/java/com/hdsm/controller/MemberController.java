@@ -185,8 +185,9 @@ public class MemberController {
 		// 장바구니 담기 실시
 		memberservice.insertShoppingBags(msVO);
 		log.info("당바구니 담기 성공!");
-		
+
 		return "good";
+
 	}
 
 	/*
