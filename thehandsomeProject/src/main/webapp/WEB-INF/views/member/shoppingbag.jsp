@@ -49,8 +49,8 @@
 						<thead>
 							<tr>
 								<th scope="col">
-									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> <input
-									type="checkbox" id="entryCheckAll" value="cartlist">
+									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> 
+									<input type="checkbox" id="entryCheckAll" value="cartlist">
 								</th>
 								<th scope="col">상품정보</th>
 								<th scope="col">수량</th>
@@ -146,10 +146,8 @@
 								<td class="al_middle">
 									<!-- Button size -->
 									<div class="btn_wrap">
-										<a href="#none" class="btn wt_ss"
-											onclick="callWishListClick('캐시미어 블렌드 헤링본 재킷',$(this),'SH2C9WJC201M_KG_100');"
-											data-value="0">위시리스트</a> <a href="#none" id="RemoveProduct_0"
-											class="btn wt_ss"
+										<a href="#none" class="btn wt_ss" onclick="callWishListClick('캐시미어 블렌드 헤링본 재킷',$(this),'SH2C9WJC201M_KG_100');" data-value="0">위시리스트</a> 
+										<a href="/member/deleteShoppingBag" id="RemoveProduct_0" class="btn wt_ss"
 											onclick="GA_Event('쇼핑백','삭제','캐시미어 블렌드 헤링본 재킷');">삭제</a>
 									</div> <!-- //Button size -->
 								</td>
@@ -163,8 +161,7 @@
                                         <div class="info">
                                             <!-- Products -->
                                             <div class="pt_list" id="pt_list_0"><a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
-												<img src="${shoppingbag.thumbnail}" style = "object-fit : cover" alt="">
-													</a>
+												<img src="${shoppingbag.thumbnail}" style = "object-fit : cover" alt=""></a>
 													<div class="tlt_wrap">
 														<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}" class="basket_tlt">
 													        <span class="tlt">${shoppingbag.bname}</span>
@@ -184,7 +181,7 @@
 															</dd>
 															</c:forEach>
 															<dt>SIZE</dt>
-															<dd style="width: 90%; height: 100%;">
+															<dd style="width: 200px; height: 100%;">
 																<div class="sz_select">
 																	<c:forEach items="${shoppingbag.sizeList}" var="size" varStatus="status">
 																		<a href="javascript:void(0);" <c:if test="${size eq shoppingbag.ssize}" >
@@ -513,7 +510,7 @@
 				$(this).closest("span").find("input[name='quantity']").val(volumn);
 			});
 			//옵션변경 버튼누를때!
-			$(".btn.wt_ss.qty_w.mr0").click(function(){
+			$(".btn_option").click(function(){
 				//$(this).closest("")
 				let checkElement = $(this).closest('tr').next();
 				console.log(checkElement);
