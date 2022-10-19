@@ -2,6 +2,7 @@ package com.hdsm.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -75,9 +76,9 @@ public class MemberServiceImpl implements MemberService {
 			List<String> slist = new ArrayList<String>();
 			
 			for(String size : pvo.getP_size().split(",")) {
-				System.out.println(size);
 				slist.add(size.trim());
 			}
+			Collections.sort(slist);
 			
 			MemberSbagDTOForJsp insertdto = new MemberSbagDTOForJsp();
 			

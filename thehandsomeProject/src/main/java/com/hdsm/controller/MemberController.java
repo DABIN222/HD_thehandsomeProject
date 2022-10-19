@@ -227,17 +227,13 @@ public class MemberController {
 		// 장바구니 담기 실시
 		int select = memberservice.selectShoppingBag(msVO);
 		
-		// 장바구니에 존재함
-		if(select != 0) {
-			log.info("이미 장바구니에 존재함");
-		} else {	// 장바구니에 존재하지 않음
-			int cnt = memberservice.updateShoppingBag(msVO);
-			if(cnt != 0) {
-				log.info("장바구니 변경 성공!");
-			}else {
-				log.info("장바구니 변경 실패!");
-			}
+		int cnt = memberservice.updateShoppingBag(msVO);
+		if(cnt != 0) {
+			log.info("장바구니 변경 성공!");
+		}else {
+			log.info("장바구니 변경 실패!");
 		}
+		
 		return "member/shoppingbag";
 	}
 	
@@ -267,37 +263,58 @@ public class MemberController {
 		return "member/shoppingbag";
 	}
 	*/
-//	@PostMapping("/deleteShoppingBag")
-//	@ResponseBody
-//	public String deleteShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
-//		log.info("장바구니 삭제 진입!");
-//		
-//		// jsp에서 name에 입력된 값 vo에 저장		
+	/*
+	@PostMapping("/deleteShoppingBag")
+	@ResponseBody
+	public String deleteShoppingBag(Model model) throws Exception {
+		log.info("장바구니 삭제 진입!");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+		List<MemberSbagDTO> msBagDtoList = new ArrayList<MemberSbagDTO>();
+		
+		model.getAttribute("", )
+		
+		
 //		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
 //		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
 //		msVO.setPsize(request.getParameter("psize"));	// 선택 사이즈 name
 //		msVO.setPcolor(request.getParameter("pcolor"));	// 선택 컬러 name
 //		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
-//		
-//		// 장바구니 담기 실시
-//		int cnt = memberservice.deleteShoppingBag(msVO);
-//		
-//		if(cnt != 0) {
-//			log.info("장바구니 삭제 성공!");
-//		}else {
-//			log.info("장바구니 삭제 실패!");
-//		}
-//		
-//		return "member/shoppingbag";
-//	}
+		
+		msBagDtoList.add(msVO);
+		
+		// 장바구니 담기 실시
+		int cnt = memberservice.deleteShoppingBag(msBagDtoList);
+		
+		if(cnt != 0) {
+			log.info("장바구니 삭제 성공!");
+		}else {
+			log.info("장바구니 삭제 실패!");
+		}
+		
+		return "member/shoppingbag";
+	}
 	
-	
+	*/
 	// 마이 페이지 진입
 	@GetMapping("/mypage")
 	public String mypageForm() {
-		log.info("로그인 페이지 왔다");
+		log.info("마이 페이지 왔다");
 		return "member/mypage";
 	}
 	
+	// 위시리스트 페이지 진입
+	@GetMapping("/wishList")
+	public String wishListForm() {
+		log.info("위시리스트 페이지 왔다");
+		return "member/wishList";
+	}
+	
+	// 회원 등급 페이지 진입
+	@GetMapping("/myGradeInfo")
+	public String myGradeInfoForm() {
+		log.info("위시리스트 페이지 왔다");
+		return "member/myGradeInfo";
+	}
 	
 }
