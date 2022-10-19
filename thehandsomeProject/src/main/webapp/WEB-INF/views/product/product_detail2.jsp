@@ -1028,8 +1028,7 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="#;" onclick="GA_Event('상품_상세','정보','상품평');">상품평(<span
-								id="customerReviewCnt">0</span>)
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span id="customerReviewCnt">0</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
@@ -1039,13 +1038,12 @@
 							</a>
 						</div>
 						<!--//상품평 btn-->
-
 					</dl>
 				</div>
 
 				<div class="clearfix mt30">
 					<div class="btnwrap float_left">
-						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r>Q&amp;A(<span
+						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0">Q&amp;A(<span
 							class="data" id="productQnACnt">0</span>)
 						</a>
 					</div>
@@ -1167,8 +1165,7 @@
 					<span class="cmt_per" id="totalStarScore">별점</span>
 				</span>
 			</div>
-			<a href="#;" class="btn_evaluation1905" id="customerReviewWrite"
-				onclick="GA_Event('상품평','상품평 작성하기','클릭');">상품평 작성하기</a>
+			<a href="javascript:fn_popupCustomerReviewWrite();" class="btn_evaluation1905" id="customerReviewWrite">상품평 작성하기</a>
 		</div>
 		<!-- pop_cnt-->
 		<div class="pop_cnt evaluation_list1807 options">
@@ -1198,8 +1195,7 @@
 	<!--//상품평 리스트 팝업 -->
 
 	<!--상품평 쓰기 팝업 -->
-	<div class="popwrap w_type_4" id="customerReviewWriteDiv"
-		style="display: none;">
+	<div class="popwrap w_type_4" id="customerReviewWriteDiv" style="display: none;">
 		<div class="pop_tltwrap2 customerreviewwritediv1807">
 			<h3 id="review_title">상품평 작성하기</h3>
 			<p class="reqd_txt float_right">
@@ -1207,44 +1203,36 @@
 			</p>
 		</div>
 		<div class="pop_cnt evaluation_write1905 options1811">
-			<form id="reviewForm" name="reviewForm"
-				action="/ko/HANDSOME/MEN/PANTS/%EC%A1%B0%EA%B1%B0-%ED%8A%B8%EB%9E%99/%5BSET%5D-%EC%9A%B8-%EC%A1%B0%EA%B1%B0-%ED%8C%AC%EC%B8%A0/p/TH2CBKPC033M_BK"
-				method="post" enctype="multipart/form-data">
-				<input type="hidden" name="productCode"> <input
-					type="hidden" name="productCodeType"> <input type="hidden"
-					name="orderNumber" id="orderNumber" value=""> <input
-					type="hidden" name="purchaseColor" id="purchaseColor" value="">
-				<input type="hidden" name="purchaseColorName" id="purchaseColorName"
-					value=""> <input type="hidden" name="purchaseSize"
-					id="purchaseSize" value=""> <input type="hidden"
-					name="purchaseProdYN" id="purchaseProdYN" value=""> <input
-					type="hidden" name="orderWriteChk" id="orderWriteChk" value="">
-				<input type="hidden" name="closeWriteChk" id="closeWriteChk"
-					value=""> <input type="hidden" name="productId"
-					id="productId" value=""> <input type="hidden"
-					name="fileDeleteYN" id="fileDeleteYN">
+			<form id="reviewForm" name="reviewForm" action="" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="productCode">
+				<input type="hidden" name="productCodeType">
+				<input type="hidden" name="orderNumber" id="orderNumber" value=""> 
+				<input type="hidden" name="purchaseColor" id="purchaseColor" value="">
+				<input type="hidden" name="purchaseColorName" id="purchaseColorName" value=""> 
+				<input type="hidden" name="purchaseSize" id="purchaseSize" value=""> 
+				<input type="hidden" name="purchaseProdYN" id="purchaseProdYN" value=""> 
+				<input type="hidden" name="orderWriteChk" id="orderWriteChk" value="">
+				<input type="hidden" name="closeWriteChk" id="closeWriteChk" value="">
+				<input type="hidden" name="productId" id="productId" value=""> 
+				<input type="hidden" name="fileDeleteYN" id="fileDeleteYN">
 
 				<!-- 상품평활성화 -->
-				<input type="hidden" name="categoryCode" id="categoryCode"
-					value="SZ11"> <input type="hidden" name="shoulderWidth"
-					id="shoulderWidth" value=""> <input type="hidden"
-					name="chestSize" id="chestSize" value=""> <input
-					type="hidden" name="waistSize" id="waistSize" value=""> <input
-					type="hidden" name="buttSize" id="buttSize" value=""> <input
-					type="hidden" name="totalSize" id="totalSize" value=""> <input
-					type="hidden" name="photoAccumulationRightYn"
-					id="photoAccumulationRightYn" value=""> <input
-					type="hidden" name="offlineOrdDt" id="offlineOrdDt" value="">
+				<input type="hidden" name="categoryCode" id="categoryCode" value="SZ11"> 
+				<input type="hidden" name="shoulderWidth" id="shoulderWidth" value=""> 
+				<input type="hidden" name="chestSize" id="chestSize" value=""> 
+				<input type="hidden" name="waistSize" id="waistSize" value=""> 
+				<input type="hidden" name="buttSize" id="buttSize" value=""> 
+				<input type="hidden" name="totalSize" id="totalSize" value=""> 
+				<input type="hidden" name="photoAccumulationRightYn" id="photoAccumulationRightYn" value=""> 
+				<input type="hidden" name="offlineOr` dDt" id="offlineOrdDt" value="">
 				<input type="hidden" name="offlineShpCd" id="offlineShpCd" value="">
 				<input type="hidden" name="offlineShpNm" id="offlineShpNm" value="">
-				<input type="hidden" name="tempProductId" id="tempProductId"
-					value=""> <input type="hidden" name="reviewFileCd"
-					id="reviewFileCd" value=""> <input type="hidden"
-					name="reviewFileCd1" id="reviewFileCd1" value=""> <input
-					type="hidden" name="reviewFileCd2" id="reviewFileCd2" value="">
-				<input type="hidden" name="reviewFileCd3" id="reviewFileCd3"
-					value=""> <input type="hidden" name="reviewFileCd4"
-					id="reviewFileCd4" value="">
+				<input type="hidden" name="tempProductId" id="tempProductId" value=""> 
+				<input type="hidden" name="reviewFileCd" id="reviewFileCd" value=""> 
+				<input type="hidden" name="reviewFileCd1" id="reviewFileCd1" value=""> 
+				<input type="hidden" name="reviewFileCd2" id="reviewFileCd2" value="">
+				<input type="hidden" name="reviewFileCd3" id="reviewFileCd3" value=""> 
+				<input type="hidden" name="reviewFileCd4" id="reviewFileCd4" value="">
 				<fieldset>
 					<legend>상품평쓰기</legend>
 					<div class="tblwrap">
@@ -1258,20 +1246,32 @@
 							</colgroup>
 							<tbody>
 								<tr>
+								
+					
+						
+						
+						
+								
+								
+								
 									<th scope="row" class="th_space">상품명</th>
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img
-													src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지"
-													onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<c:forEach items="${colorVOList}" var="colorVO">
+													<a href="#;">
+													
+														<c:if test="${not empty colorVO.cimage1}">
+															<img src="${colorVO.cimage1}" id="reviewProducImg" 
+															alt="상품 이미지" onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
+														</c:if>
+													</c:forEach>
+													</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName"></span> <span class="sb_tlt"
-														id="reviewProductProductName"></span> / <span
-														id="reviewProducPrice"></span>
+													<a href="#;" class="basket_tlt"> 
+														<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+														<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span> / <spanid="reviewProducPrice">${productVO.pprice}</span>
 													</a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
@@ -1283,24 +1283,28 @@
 																</p>
 																<ul class="color_chip clearfix">
 																	<input type="hidden" id="colorName" value="BLACK">
-																	<li id="TH2CBKPC033M_BK"><input type="hidden"
-																		class="colorNameVal" value="BLACK"> <a
-																		href="#;" class="beige" data-color="BLACK"
-																		style="background: #000000 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_C01.jpg/dims/resize/24x24');"
-																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_BK', 'BLACK');"
-																		onmouseover="setColorName('BLACK');"
-																		onmouseout="setColorName('');"></a></li>
+																	<li id="TH2CBKPC033M_BK">
+																	<input type="hidden" class="colorNameVal" value="BLACK"> 
+																		<a href="#;" class="beige" data-color="BLACK"
+																			style="background: #000000 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_C01.jpg/dims/resize/24x24');"
+																			onclick="javascript:fn_clickColorCode('TH2CBKPC033M_BK', 'BLACK');"
+																			onmouseover="setColorName('BLACK');"
+																			onmouseout="setColorName('');"></a>
+																	</li>
 																	<li id="TH2CBKPC033M_TG"><input type="hidden"
-																		class="colorNameVal" value="Taupe Grey"> <a
-																		class="beige" data-color="Taupe Grey"
+																		class="colorNameVal" value="Taupe Grey"> 
+																		<a class="beige" data-color="Taupe Grey"
 																		style="background: #9b9595 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_TG_C01.jpg/dims/resize/24x24');"
 																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_TG', 'Taupe Grey');"
 																		onmouseover="setColorName('Taupe Grey');"
-																		onmouseout="setColorName('');"></a></li>
-																	<li><span class="cl_name" id="colorNameContent"></span>
+																		onmouseout="setColorName('');"></a>
+																	</li>
+																	<li>
+																		<span class="cl_name" id="colorNameContent"></span>
 																	</li>
 																</ul>
 															</li>
+															
 															<li class="select_size">
 																<p>
 																	<span class="compulsory">*</span> 사이즈
@@ -1528,6 +1532,24 @@
 			alt="닫기"></a>
 	</div>
 	<!--//상품평 쓰기 팝업 -->
+	
+	<script>
+		// 상품평 작성 버튼 눌렀을 때
+		$('#customerReviewWrite').on("click", function(){
+			$.ajax({
+				url: '/review/reviewWrite',
+				type: 'GET',
+				datatype: 'json',
+				data: {"productCode": $('productCode').val()
+				},
+				success: function(data){
+					
+				},
+			})
+		});
+	
+	</script>
+	
 	<style>
 #delQnAFile {
 	display: inline;
@@ -3134,6 +3156,53 @@
 <iframe style="display: none" id="fileFrame" title="fileFrame" scr=""></iframe>
 
 <!-- footerWrap -->
+<!-- 상품평 스크립트 -->
+<script>
+//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
+function fn_popupCustomerReview() {
+	viewPopup("#customerReviewDiv");
+}
+
+//x 버튼을 누르면 상품평 리스트 닫기
+function fn_closeProductReview() {
+	console.log("fn");
+	//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+	$(".btn_close").trigger("click");
+}
+
+//후기 작성란 띄우기
+function fn_popupCustomerReviewWrite() {
+	
+	//상품평 리스트를 숨긴다.
+	$("#customerReviewDiv").hide();
+	//상품평 작성란을 띄운다.
+	viewPopup("#customerReviewWriteDiv");
+}
+
+
+//x버튼을 눌렀을때 상품평 작성 취소하기
+$("#reviewCancle").on('click', function() {
+
+	//취소를 원하면 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+	if (confirm("취소하시겠습니까?")) {
+		$("#customerReviewWriteDiv").hide();
+		viewPopup("#customerReviewDiv");
+	}
+
+});
+
+//상품평 작성 취소하기
+$("#reviewCloseBtn").on('click', function() {
+
+	//취소를 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+	if (confirm("취소하시겠습니까?")) {
+		$("#customerReviewWriteDiv").hide();
+		viewPopup("#customerReviewDiv");
+	}
+	
+});
+</script>
+
 <script>
 	//가격에 3자리마다 컴마
 	function priceComma(price) {

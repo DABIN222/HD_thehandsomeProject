@@ -11,7 +11,6 @@
 		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
 		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, 0, 
 		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0)
-
 	</insert>
 	
 	<!-- 아이디 중복체크 -->

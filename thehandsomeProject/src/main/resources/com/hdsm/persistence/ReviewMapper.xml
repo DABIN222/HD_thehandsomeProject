@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	ReviewMapper.xml
+	작성자 : 정구현
+	최초 생성일 : 2022-10-18
+	작업내역:  2022-10-18 "reviewInsert 작성"
+			2022-10-19 "getReviewList, Update,Delete, Count 작성"
+ -->  
+<mapper namespace="com.hdsm.persistence.ReviewMapper">
+
+	<!-- 상품평 리스트 가져오기 -->
+	<select id="getReviewList" resultType="com.hdsm.domain.ReviewDTO">
+		SELECT
+			*
+		FROM review
+		<trim prefix="WHERE" prefixOverrides="AND |OR">
+			<if test="pid != null and pid !='' ">
+				pid = #{pid}
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 상품평 작성 -->
+	<insert id="reviewInsert">
+		INSERT INTO review (rno,mid,mname,pid,pname,pcolor,psize,gno,gname,rdate,
+		rage,rheight,rfigure,roption1,roption2,roption3,roption4,
+		rcontent,rrate,rimage1,rimage2,rimage3,rimage4,rtitle,rcomfortable,rprice)
+		VALUES (review_seq.nextval,#{mid},#{mname},#{pid},#{pname},#{pcolor},#{psize},#{gno},#{gname},sysdate,
+		#{rage},#{rheight},#{rfigure},#{roption1},#{roption2},#{roption3},#{roption4},
+		#{rcontent},#{rrate},#{rimage1},#{rimage2},#{rimage3},#{rimage4},'제목',0,0)
+	</insert>
+	
+	<!-- 상품평 수정 -->
+	<update id="reviewUpdate">
+		UPDATE review 
+		SET rdate=sysdate,rage=#{rage},rheight=#{rheight},rfigure=#{rfigure},
+			roption1=#{roption1},roption2=#{roption2},roption3=#{roption3},roption4=#{roption4},
+			rcontent=#{rcontent},rrate=#{rrate},
+			rimage1=#{rimage1},rimage2=#{rimage2},rimage3=#{rimage3},rimage4=#{rimage4}
+		WHERE rno = #{rno}
+	</update>
+	
+	<!-- 상품평 삭제 -->
+	<delete id="reviewDelete">
+		DELETE FROM review
+		WHERE rno=#{rno}
+	</delete>
+
+	<!-- 총 상품평  수 -->
+	<select id="getReviewCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM review
+		WHERE pid=#{pid}
+	</select>
+</mapper> 
