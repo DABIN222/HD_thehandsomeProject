@@ -60,6 +60,13 @@
 							</tr>
 						</thead>
 						<tbody>
+							<script language='javascript' type="text/javascript">
+								let pids = [];
+								let psizes = [];
+								let pcolors = [];
+								let pamounts = [];
+								let _ace_countvar = 0;
+							</script>
 							<c:forEach items="${shoppingbagList}" var="shoppingbag" varStatus="status">
 							<tr name="entryProductInfo" data-pk="10950401196076"
 								data-deliverykind="" data-outofstock="false"
@@ -69,13 +76,10 @@
 									type="checkbox" name="cartlist" data-pk="10950401196076"
 									data-division="" data-deliverykind="" value="0">
 								</td>
-								<td class="pt_list_wrap">
+								<td class="pt_list_wrap" itemnum="${status.index}">
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
-										<a
-											
-											href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}"
-											onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
+										<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
 											<img
 											src="${shoppingbag.thumbnail}"
 											style = "object-fit : cover"
@@ -120,13 +124,13 @@
 										<a href="javascript:void(0);"
 											class="left" >이전 버튼</a>
 											<input id="quantity0" name="quantity" type="text" class="mr0"
-											value="${shoppingbag.amount}" size="1" maxlength="3" style="text-indent: 0;" />
+											value="${shoppingbag.amount}" size="1" maxlength="3" style="text-indent: 0;" itemnum="${status.index}"/>
 											<a href="javascript:void(0);"
 											class="right" >다음 버튼</a>
 										</span>
 										<!-- //qty_sel -->
-										<a href="javascript:void(0);" id="QuantityProduct_0"
-											class="btn wt_ss qty_w mr0">변경</a>
+										<a href="javascript:void(0);" id="QuantityProduct_0" name="changeBtn"
+											class="btn wt_ss qty_w mr0" itemnum="${status.index}">변경</a>
 										<div>
 											<input type="hidden" name="CSRFToken"
 												value="a9703aad-d9dc-4a91-b1a9-28f56c82dc12" />
@@ -168,12 +172,13 @@
 													        <span class="sb_tlt">${shoppingbag.pname}</span>
 													    </a>
 														<!-- color_size -->
-														<dl class="cs_wrap">
+														<dl class="cs_wrap" itemnum="${status.index}">
 															<dt>COLOR</dt>
-															<c:forEach items="${shoppingbag.colorlist}" var="coloritem" varStatus="status">
+															<c:forEach items="${shoppingbag.colorlist}" var="coloritem">
 															<dd>
 																<div class="cl_select">
 																<a href="javascript:void(0);" 
+																	value = "${coloritem.cname}"
 																	class="beige <c:if test="${shoppingbag.scolor eq coloritem.cname}" >on</c:if>"
 																	style="background:#7e3f42 url('${coloritem.ccolorimage}')">BURGUNDY</a>
 																	<span class="cs_sel1807">${coloritem.cname}</span>
@@ -183,8 +188,8 @@
 															<dt>SIZE</dt>
 															<dd style="width: 200px; height: 100%;">
 																<div class="sz_select">
-																	<c:forEach items="${shoppingbag.sizeList}" var="size" varStatus="status">
-																		<a href="javascript:void(0);" <c:if test="${size eq shoppingbag.ssize}" >
+																	<c:forEach items="${shoppingbag.sizeList}" var="size">
+																		<a href="javascript:void(0);" value="${size}" <c:if test="${size eq shoppingbag.ssize}" >
 																			class="on" style="line-height: 15px;"
 																		</c:if>> ${size}</a>
 																	</c:forEach>
@@ -198,31 +203,29 @@
                                             <!-- //Products -->
                                             <!-- btns -->
                                             <div class="btns">
-                                                <a href="#none" class="btn wt_ss mr0" id="UpdateCart_0">변경</a>
-                                                <a href="#none" class="btn wt_ss mt10 mr0" id="optCancelLayer_0">취소</a>
-                                                <a href="#none" class="btn_close" id="optCloseLayer_0">닫기</a>
+                                                <a href="javascript:void(0);" class="btn wt_ss mr0" id="UpdateCart_0" name="changeBtn" itemnum="${status.index}">변경</a>
+                                                <a href="javascript:void(0);" class="btn wt_ss mt10 mr0" id="optCancelLayer_0">취소</a>
+                                                <a href="javascript:void(0);" class="btn_close" id="optCloseLayer_0">닫기</a>
                                             </div>
                                             <!-- //btns -->
                                         </div>
                                     </div> <!-- //Info -->
                                 </td>
                             </tr>
+                            
 							<tr>
 								<td colspan="6" class="basket_wrap"></td>
 							</tr>
 							
-
-							<!-- AceCounter eCommerce (Product_Detail) v7.5 Start -->
+							<!-- 변경을 위한 form tag -->
 							<!-- Data Allocation (Product_Detail) -->
-							<!-- <script language='javascript' type="text/javascript">
-								_A_amt[_ace_countvar] = "590000";
-								_A_nl[_ace_countvar] = "1";
-								_A_pl[_ace_countvar] = "SH2C9WJC201M_KG_100";
-								_A_pn[_ace_countvar] = "캐시미어 블렌드 헤링본 재킷";
-								_A_ct[_ace_countvar] = "SYSTEM HOMME";
+							<script language='javascript' type="text/javascript">
+								pids[_ace_countvar] = "${shoppingbag.pid}";
+								psizes[_ace_countvar] = "${shoppingbag.ssize}";
+								pcolors[_ace_countvar] = "${shoppingbag.scolor}";
+								pamounts[_ace_countvar] = parseInt("${shoppingbag.amount}");
 								_ace_countvar++;
-							</script> -->
-							<!-- AceCounter eCommerce (Cart_InOut) v7.5 End -->
+							</script>
 							<!-- //Info wrap -->
 							</c:forEach>
 						</tbody>
@@ -511,18 +514,104 @@
 			});
 			//옵션변경 버튼누를때!
 			$(".btn_option").click(function(){
-				//$(this).closest("")
 				let checkElement = $(this).closest('tr').next();
-				console.log(checkElement);
-				checkElement.find(".basket_info").css('display', 'block');
+				//눌렸으면숨기고 안눌렸으면 block으로 해서 보이게 하기
+				if(checkElement.find(".basket_info").css('display') == 'none'){
+					checkElement.find(".basket_info").css('display', 'block');
+				}else{
+					checkElement.find(".basket_info").css('display', 'none');
+				}
 			});
+			//옵션변경창 닫기1
+			$("#optCloseLayer_0").click(function(){
+				$(this).closest("tr").find(".basket_info").css('display', 'none');
+			});
+			//옵션변경창 닫기2
+			$("#optCancelLayer_0").click(function(){
+				$(this).closest("tr").find(".basket_info").css('display', 'none');
+			});
+			//옵션변경의 사이즈버튼 눌릴때 적용되게
+			$(".sz_select>a").click(function(){
+			  //일단 모든 버튼 on 지우고
+			  $(this).closest('div').find('a').removeClass('on');
+			  //또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			  $(this).addClass('on');
+			  //변경
+			});
+			//옵션변경의 컬러버튼 눌릴때 적용되게
+			$(".beige").click(function(){
+			  //일단 모든 버튼 on 지우고
+			  $(this).closest('dl').find('.beige').removeClass('on');
+			  //또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			  $(this).addClass('on');
+			});
+			
+			//변경버튼 눌렸을때 처리!	item마다 2개씩 변경 버튼 있는데 전부 name=changeBtn 라는 속성으로 묶어서 처리가능
+			//그리고 그안에 itemnum이라는 index 번호로 알맞게 해당 item의 정보를 뺴와서 바꿀 수 있다
+			$("a[name=changeBtn]").click(function(){
+			  const index = parseInt($(this).attr('itemnum'));
+			  const amount = $("input[itemnum="+index+"]").val();
+			  const color = $("dl[itemnum="+index+"]").find(".beige.on").attr('value');
+			  const size = $("dl[itemnum="+index+"]").find(".sz_select").find(".on").attr('value');
+			  
+			  console.log(color,pcolors[index])
+			  console.log(size,psizes[index] )
+			  console.log(amount,pamounts[index])
+
+			  //변경눌렀을때 기존거랑 하나라도 다르면 업데이트 시켜!
+			  if(color!=pcolors[index] ||
+					  size!=psizes[index] ||
+					  amount!=pamounts[index]){
+				  const params = {
+						  mid: "${member}",
+						  pid: pids[index],
+						  psize: size,
+						  pcolor: color,
+						  pamount: parseInt(amount)
+						}
+				  //통쉰 하자 ~
+				  $.ajax({
+					  type: "POST", // HTTP method type(GET, POST) 형식이다.
+					  url: "/member/updateShoppingBag", // 컨트롤러에서 대기중인 URL 주소이다.
+					  data: params, // Json 형식의 데이터이다.
+					  success: function (data) {
+					    	//성공하면 그 수량대로 전체 합 바꾸고 요소들도 바꿔줘야지!
+							let total = 0;
+							let count = 0;
+							$("tr[name='entryProductInfo']").each(function(index, item){
+								//수량
+								const q = parseInt($(this).find("input[name='quantity']").val());
+								//가격
+								const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+								//합 더하기
+								total += p*q;
+								count++;
+							});	
+							$("#cartDataSubtotal").text('₩'+priceComma(total))
+							$("#cartDataTotalPrice").text('₩'+priceComma(total))
+							$("#selectProductCount").text(count+'');
+							//요소 바꿔주고
+							$("td[itemnum="+index+"]").find(".color_op").html(
+									'color : '+ color +'<span class="and_line">/</span> size : '+ size);
+							//배열값들도 바꿔줘야지
+							pcolors[index]=color;
+					  		psizes[index]=size;
+					  		pamounts[index]=amount;
+							
+					  },
+					  error: function (XMLHttpRequest, textStatus, errorThrown) {
+					    // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+					    alert("통신 실패.");
+					  },
+					});
+			  }
+			});
+
 		});
 		
 </script>
 <input type="hidden" id="apiConfmKey"
 	value="U01TX0FVVEgyMDE5MDYxNzE2NDczMzEwODgxNTI=" />
-
-
 <!-- Enliple Tracker End -->
 </body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
