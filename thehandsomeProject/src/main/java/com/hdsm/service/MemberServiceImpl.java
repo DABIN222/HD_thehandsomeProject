@@ -72,7 +72,8 @@ public class MemberServiceImpl implements MemberService {
 			List<ThumbnailColorVO> cvo = mapper.getProductsColor(pid);
 			List<String> slist = new ArrayList<String>();
 			
-			for(String size : i.getPsize().split(",")) {
+			for(String size : pvo.getP_size().split(",")) {
+				System.out.println(size);
 				slist.add(size.trim());
 			}
 			

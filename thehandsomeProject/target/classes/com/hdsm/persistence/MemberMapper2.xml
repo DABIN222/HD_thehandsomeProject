@@ -35,6 +35,7 @@
 
 	</select>
 	
+	<!-- 장바구니 상품 정보 변경 (수량, 사이즈, 컬러 등) -->
 	<update id="updateShoppingBag">
 		UPDATE mycart
 		SET
@@ -44,14 +45,17 @@
 		WHERE
 			mid = #{mid} and pid = #{pid}
 	</update>
-	<delete id="deleteShoppingBag">
-		DELETE FROM mycart
-		WHERE
-			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
-	</delete>
+	<!-- 장바구니에 상품 있는지 조회 -->
 	<select id="selectShoppingBag" resultType="int">
 		SELECT count(mid) FROM mycart
 		WHERE
 			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
 	</select>
+	
+	<!-- 장바구니 상품 정보 삭제 -->
+	<delete id="deleteShoppingBag">
+		DELETE FROM mycart
+		WHERE
+			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+	</delete>
 </mapper> 

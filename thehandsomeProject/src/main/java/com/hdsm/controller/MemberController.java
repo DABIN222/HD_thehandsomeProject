@@ -242,6 +242,7 @@ public class MemberController {
 	
 	// 장바구니 삭제
 	@PostMapping("/deleteShoppingBag")
+	@ResponseBody
 	public String deleteShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 삭제 진입!");
 		
