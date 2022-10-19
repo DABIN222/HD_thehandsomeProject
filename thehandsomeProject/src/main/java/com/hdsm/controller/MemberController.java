@@ -226,17 +226,13 @@ public class MemberController {
 		// 장바구니 담기 실시
 		int select = memberservice.selectShoppingBag(msVO);
 		
-		// 장바구니에 존재함
-		if(select != 0) {
-			log.info("이미 장바구니에 존재함");
-		} else {	// 장바구니에 존재하지 않음
-			int cnt = memberservice.updateShoppingBag(msVO);
-			if(cnt != 0) {
-				log.info("장바구니 변경 성공!");
-			}else {
-				log.info("장바구니 변경 실패!");
-			}
+		int cnt = memberservice.updateShoppingBag(msVO);
+		if(cnt != 0) {
+			log.info("장바구니 변경 성공!");
+		}else {
+			log.info("장바구니 변경 실패!");
 		}
+		
 		return "member/shoppingbag";
 	}
 	
