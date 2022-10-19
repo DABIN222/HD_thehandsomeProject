@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class MemberSbagDTOForJsp {
+	private String pid;
+	private String colorcode;
 	private String thumbnail;
 	private String bname;
 	private String pname;
@@ -14,4 +16,5 @@ public class MemberSbagDTOForJsp {
 	private int amount;
 	private int pprice;
 	private List<ThumbnailColorVO> colorlist;
+	private List<String> sizeList;
 }

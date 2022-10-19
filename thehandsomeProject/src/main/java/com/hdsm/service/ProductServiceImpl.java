@@ -38,13 +38,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri, FilterDTO fd) {
-
-
-//		log.info("---------------------"+fbnames.get(0)+""+fbnames.get(1));
-//		log.info("---------------------"+fcolor);
-//		log.info("---------------------"+fsizes.get(0)+" "+fsizes.get(1));
-//		log.info("---------------------"+fprice.get(0)+""+fprice.get(1));
-//		log.info("---------------------"+forderBy);
 		
 		List<ProductVO> Productlist = mapper.getListWithPaging(vo, cri, fd);
 		List<String> productIDs = new ArrayList<String>();

@@ -49,8 +49,8 @@
 						<thead>
 							<tr>
 								<th scope="col">
-									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> <input
-									type="checkbox" id="entryCheckAll" value="cartlist">
+									<!-- 2019.11.07 쇼핑백 진입 시 선택 상품 없도록 수정 --> 
+									<input type="checkbox" id="entryCheckAll" value="cartlist">
 								</th>
 								<th scope="col">상품정보</th>
 								<th scope="col">수량</th>
@@ -60,6 +60,13 @@
 							</tr>
 						</thead>
 						<tbody>
+							<script language='javascript' type="text/javascript">
+								let pids = [];
+								let psizes = [];
+								let pcolors = [];
+								let pamounts = [];
+								let _ace_countvar = 0;
+							</script>
 							<c:forEach items="${shoppingbagList}" var="shoppingbag" varStatus="status">
 							<tr name="entryProductInfo" data-pk="10950401196076"
 								data-deliverykind="" data-outofstock="false"
@@ -69,21 +76,19 @@
 									type="checkbox" name="cartlist" data-pk="10950401196076"
 									data-division="" data-deliverykind="" value="0">
 								</td>
-								<td class="pt_list_wrap">
+								<td class="pt_list_wrap" itemnum="${status.index}">
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
-										<a
-											href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
-											onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
+										<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
 											<img
 											src="${shoppingbag.thumbnail}"
+											style = "object-fit : cover"
 											alt="" />
 										</a>
 										<div class="tlt_wrap">
 											<a
-												href="/ko/HANDSOME/MEN/OUTER/JACKET/%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EB%B8%94%EB%A0%8C%EB%93%9C-%ED%97%A4%EB%A7%81%EB%B3%B8-%EC%BD%94%ED%8A%B8/p/SH2C9WJC201M_KG_100"
-												class="basket_tlt"
-												onclick="javascript:setEcommerceData('0', 'Click ADD');GA_Event('쇼핑백','상품','캐시미어 블렌드 헤링본 재킷');">
+												href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}"
+												class="basket_tlt">
 												<span class="tlt">${shoppingbag.bname}</span> <span class="sb_tlt">
 													${shoppingbag.pname}</span>
 											</a>
@@ -95,9 +100,7 @@
 											</p>
 
 											<div class="option_wrap">
-												<a href="#none" class="btn_option"
-													id="optOpenLayer^0^SH2C9WJC201M_KG"
-													onclick="GA_Event('쇼핑백','옵션변경', '캐시미어 블렌드 헤링본 재킷')">옵션변경</a>
+												<a href="javascript:void(0);" class="btn_option">옵션변경</a>
 											</div>
 										</div>
 									</div> <!-- //pt_list_all-->
@@ -121,13 +124,13 @@
 										<a href="javascript:void(0);"
 											class="left" >이전 버튼</a>
 											<input id="quantity0" name="quantity" type="text" class="mr0"
-											value="${shoppingbag.amount}" size="1" maxlength="3" style="text-indent: 0;" />
+											value="${shoppingbag.amount}" size="1" maxlength="3" style="text-indent: 0;" itemnum="${status.index}"/>
 											<a href="javascript:void(0);"
 											class="right" >다음 버튼</a>
 										</span>
 										<!-- //qty_sel -->
-										<a href="#none" id="QuantityProduct_0"
-											class="btn wt_ss qty_w mr0">변경</a>
+										<a href="javascript:void(0);" id="QuantityProduct_0" name="changeBtn"
+											class="btn wt_ss qty_w mr0" itemnum="${status.index}">변경</a>
 										<div>
 											<input type="hidden" name="CSRFToken"
 												value="a9703aad-d9dc-4a91-b1a9-28f56c82dc12" />
@@ -137,64 +140,96 @@
 								<td class="al_middle">
 									<!-- Price -->
 									<div class="price_wrap">
-										<span>${shoppingbag.pprice}</span> <input type="hidden"
-											name="checkZeroPrice" value="${shoppingbag.pprice}" />
-									</div> <!-- //Price -->
+										<span></span> 
+										<input type="hidden" name="checkZeroPrice" value="${shoppingbag.pprice}" />
+									</div> 
+									<!-- //Price -->
 								</td>
 								<td class="al_middle"><span class="earn">5% (한섬마일리지)</span>
 									<br> <span class="earn">0.1% (H.Point)</span></td>
 								<td class="al_middle">
 									<!-- Button size -->
 									<div class="btn_wrap">
-										<a href="#none" class="btn wt_ss"
-											onclick="callWishListClick('캐시미어 블렌드 헤링본 재킷',$(this),'SH2C9WJC201M_KG_100');"
-											data-value="0">위시리스트</a> <a href="#none" id="RemoveProduct_0"
-											class="btn wt_ss"
+										<a href="#none" class="btn wt_ss" onclick="callWishListClick('캐시미어 블렌드 헤링본 재킷',$(this),'SH2C9WJC201M_KG_100');" data-value="0">위시리스트</a> 
+										<a href="/member/deleteShoppingBag" id="RemoveProduct_0" class="btn wt_ss"
 											onclick="GA_Event('쇼핑백','삭제','캐시미어 블렌드 헤링본 재킷');">삭제</a>
 									</div> <!-- //Button size -->
 								</td>
 							</tr>
 							<!-- Info wrap -->
 							<tr>
-								<td colspan="6" class="basket_wrap">
-									<!-- Info -->
-									<div class="basket_info">
-										<span class="btn_arr">위치아이콘</span>
-										<div class="info">
-											<!-- Products -->
-											<div class="pt_list" id="pt_list_0"></div>
-											<!-- //Products -->
-											<!-- btns -->
-											<div class="btns">
-												<a href="#none" class="btn wt_ss mr0" id="UpdateCart_0">변경</a>
-												<a href="#none" class="btn wt_ss mt10 mr0"
-													id="optCancelLayer_0">취소</a> <a href="#none"
-													class="btn_close" id="optCloseLayer_0">닫기</a>
-											</div>
-											<!-- //btns -->
-										</div>
-									</div> <!-- //Info -->
-								</td>
-							</tr>
+                                <td colspan="6" class="basket_wrap">
+                                    <!-- Info -->
+                                    <div class="basket_info" style="display: none;">
+                                        <span class="btn_arr">위치아이콘</span>
+                                        <div class="info">
+                                            <!-- Products -->
+                                            <div class="pt_list" id="pt_list_0"><a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
+												<img src="${shoppingbag.thumbnail}" style = "object-fit : cover" alt=""></a>
+													<div class="tlt_wrap">
+														<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}" class="basket_tlt">
+													        <span class="tlt">${shoppingbag.bname}</span>
+													        <span class="sb_tlt">${shoppingbag.pname}</span>
+													    </a>
+														<!-- color_size -->
+														<dl class="cs_wrap" itemnum="${status.index}">
+															<dt>COLOR</dt>
+															<c:forEach items="${shoppingbag.colorlist}" var="coloritem">
+															<dd>
+																<div class="cl_select">
+																<a href="javascript:void(0);" 
+																	value = "${coloritem.cname}"
+																	class="beige <c:if test="${shoppingbag.scolor eq coloritem.cname}" >on</c:if>"
+																	style="background:#7e3f42 url('${coloritem.ccolorimage}')">BURGUNDY</a>
+																	<span class="cs_sel1807">${coloritem.cname}</span>
+																</div>
+															</dd>
+															</c:forEach>
+															<dt>SIZE</dt>
+															<dd style="width: 200px; height: 100%;">
+																<div class="sz_select">
+																	<c:forEach items="${shoppingbag.sizeList}" var="size">
+																		<a href="javascript:void(0);" value="${size}" <c:if test="${size eq shoppingbag.ssize}" >
+																			class="on" style="line-height: 15px;"
+																		</c:if>> ${size}</a>
+																	</c:forEach>
+																</div>
+															</dd>
+															
+														</dl>
+														<!-- //color_size -->
+													</div>
+												</div>
+                                            <!-- //Products -->
+                                            <!-- btns -->
+                                            <div class="btns">
+                                                <a href="javascript:void(0);" class="btn wt_ss mr0" id="UpdateCart_0" name="changeBtn" itemnum="${status.index}">변경</a>
+                                                <a href="javascript:void(0);" class="btn wt_ss mt10 mr0" id="optCancelLayer_0">취소</a>
+                                                <a href="javascript:void(0);" class="btn_close" id="optCloseLayer_0">닫기</a>
+                                            </div>
+                                            <!-- //btns -->
+                                        </div>
+                                    </div> <!-- //Info -->
+                                </td>
+                            </tr>
+                            
 							<tr>
 								<td colspan="6" class="basket_wrap"></td>
 							</tr>
 							
-
-							<!-- AceCounter eCommerce (Product_Detail) v7.5 Start -->
+							<!-- 변경을 위한 form tag -->
 							<!-- Data Allocation (Product_Detail) -->
 							<script language='javascript' type="text/javascript">
-								_A_amt[_ace_countvar] = "590000";
-								_A_nl[_ace_countvar] = "1";
-								_A_pl[_ace_countvar] = "SH2C9WJC201M_KG_100";
-								_A_pn[_ace_countvar] = "캐시미어 블렌드 헤링본 재킷";
-								_A_ct[_ace_countvar] = "SYSTEM HOMME";
+								pids[_ace_countvar] = "${shoppingbag.pid}";
+								psizes[_ace_countvar] = "${shoppingbag.ssize}";
+								pcolors[_ace_countvar] = "${shoppingbag.scolor}";
+								pamounts[_ace_countvar] = parseInt("${shoppingbag.amount}");
 								_ace_countvar++;
 							</script>
-							<!-- AceCounter eCommerce (Cart_InOut) v7.5 End -->
 							<!-- //Info wrap -->
+							</c:forEach>
 						</tbody>
-						</c:forEach>
+						
 					</table>
 				</div>
 				<!--// shoppingback table-->
@@ -205,7 +240,7 @@
 						<dl>
 							<dt>상품 합계</dt>
 							<dd>
-								<span id="cartDataSubtotal">₩590,000</span>
+								<span id="cartDataSubtotal"></span>
 							</dd>
 							<dt class="delch_wrap">
 								<p class="tlt_ship">배송비</p>
@@ -229,7 +264,7 @@
 						<dl class="total ">
 							<dt>합계</dt>
 							<dd>
-								<span id="cartDataTotalPrice">₩590,000</span>
+								<span id="cartDataTotalPrice"></span>
 							</dd>
 						</dl>
 					</div>
@@ -394,23 +429,189 @@
 	}
 </script>
 <script>
+	function priceComma(price) {
+		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
 	$(document).ready(
 		function() {
+			//전부 체크해버려!
+			$("input[name='cartlist']").each(function(index, item){
+				$(this).prop("checked", true);
+			});
+			//기본이 전부 선택이니까 전체 가격이랑 갯수 세기!!
+			//시작할때 가격 3자리마다 , 붙이게
+			$(".price_wrap").each(function(index, item){
+				const price = priceComma($(this).find("input").val());
+				$(this).find("span").text('₩'+price);
+			});
+			//시작할때 합계 구하기
+			let total = 0;
+			let count = 0;
+			$("tr[name='entryProductInfo']").each(function(index, item){
+				//수량
+				const q = parseInt($(this).find("input[name='quantity']").val());
+				//가격
+				const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+				//합 더하기
+				total += p*q;
+				count++;
+			});	
+			$("#cartDataSubtotal").text('₩'+priceComma(total))
+			$("#cartDataTotalPrice").text('₩'+priceComma(total))
+			$("#selectProductCount").text(count+'');
+			
+			//checkbox눌릴때마다 개수랑 합계 구하기
+			$("input[name='cartlist']").on("click", function(){
+				let checkedcount = 0;
+				let checkedsumtotal = 0;
+				$("tr[name=entryProductInfo]").each(function(index, item){
+					if( $(this).find("input[name='cartlist']").is(":checked")){
+						checkedcount += parseInt($(this).find("input[name='quantity']").val());
+						checkedsumtotal += parseInt($(this).find("input[name='checkZeroPrice']").val());
+					}
+				});
+				$("#cartDataSubtotal").text('₩'+priceComma(checkedsumtotal))
+				$("#cartDataTotalPrice").text('₩'+priceComma(checkedsumtotal))
+				$("#selectProductCount").text(checkedcount+'');
+			});
+			//checkbox 전부 선택버튼
+			$("#entryCheckAll").click(function(){
+				let checkedcount = 0;
+				let checkedsumtotal = 0;
+				if($("#entryCheckAll").is(":checked")){
+					$("input[name=cartlist]").prop("checked", true);
+					$("tr[name='entryProductInfo']").each(function(index, item){
+						const q = parseInt($(this).find("input[name='quantity']").val());
+						const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+						checkedsumtotal += p*q;
+						checkedcount++;
+					});	
+				}
+				else{
+					$("input[name=cartlist]").prop("checked", false);
+					checkedcount = 0;
+					checkedsumtotal = 0;
+				}
+				$("#cartDataSubtotal").text('₩'+priceComma(checkedsumtotal))
+				$("#cartDataTotalPrice").text('₩'+priceComma(checkedsumtotal))
+				$("#selectProductCount").text(checkedcount+'');
+			});
+			//상품 수량 변경하는거 
 			$(".left").on("click", function(){
-				const volumn = $(this).closest("span").find("input[name='quantity']").val();
-				console.log(volumn);
+				let volumn = parseInt($(this).closest("span").find("input[name='quantity']").val());
+				if(volumn > 1){
+					volumn--;
+				}
+				$(this).closest("span").find("input[name='quantity']").val(volumn);
 			});
 			$(".right").on("click", function(){
-				const volumn = $(this).closest("span").find("input[name='quantity']").val();
-				console.log(volumn);
+				let volumn = parseInt($(this).closest("span").find("input[name='quantity']").val());
+				if(volumn < 2){
+					volumn++;
+				}
+				$(this).closest("span").find("input[name='quantity']").val(volumn);
 			});
+			//옵션변경 버튼누를때!
+			$(".btn_option").click(function(){
+				let checkElement = $(this).closest('tr').next();
+				//눌렸으면숨기고 안눌렸으면 block으로 해서 보이게 하기
+				if(checkElement.find(".basket_info").css('display') == 'none'){
+					checkElement.find(".basket_info").css('display', 'block');
+				}else{
+					checkElement.find(".basket_info").css('display', 'none');
+				}
+			});
+			//옵션변경창 닫기1
+			$("#optCloseLayer_0").click(function(){
+				$(this).closest("tr").find(".basket_info").css('display', 'none');
+			});
+			//옵션변경창 닫기2
+			$("#optCancelLayer_0").click(function(){
+				$(this).closest("tr").find(".basket_info").css('display', 'none');
+			});
+			//옵션변경의 사이즈버튼 눌릴때 적용되게
+			$(".sz_select>a").click(function(){
+			  //일단 모든 버튼 on 지우고
+			  $(this).closest('div').find('a').removeClass('on');
+			  //또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			  $(this).addClass('on');
+			  //변경
+			});
+			//옵션변경의 컬러버튼 눌릴때 적용되게
+			$(".beige").click(function(){
+			  //일단 모든 버튼 on 지우고
+			  $(this).closest('dl').find('.beige').removeClass('on');
+			  //또한 누르면 그버튼이 계속 눌렸다는걸 표시
+			  $(this).addClass('on');
+			});
+			
+			//변경버튼 눌렸을때 처리!	item마다 2개씩 변경 버튼 있는데 전부 name=changeBtn 라는 속성으로 묶어서 처리가능
+			//그리고 그안에 itemnum이라는 index 번호로 알맞게 해당 item의 정보를 뺴와서 바꿀 수 있다
+			$("a[name=changeBtn]").click(function(){
+			  const index = parseInt($(this).attr('itemnum'));
+			  const amount = $("input[itemnum="+index+"]").val();
+			  const color = $("dl[itemnum="+index+"]").find(".beige.on").attr('value');
+			  const size = $("dl[itemnum="+index+"]").find(".sz_select").find(".on").attr('value');
+			  
+			  console.log(color,pcolors[index])
+			  console.log(size,psizes[index] )
+			  console.log(amount,pamounts[index])
+
+			  //변경눌렀을때 기존거랑 하나라도 다르면 업데이트 시켜!
+			  if(color!=pcolors[index] ||
+					  size!=psizes[index] ||
+					  amount!=pamounts[index]){
+				  const params = {
+						  mid: "${member}",
+						  pid: pids[index],
+						  psize: size,
+						  pcolor: color,
+						  pamount: parseInt(amount)
+						}
+				  //통쉰 하자 ~
+				  $.ajax({
+					  type: "POST", // HTTP method type(GET, POST) 형식이다.
+					  url: "/member/updateShoppingBag", // 컨트롤러에서 대기중인 URL 주소이다.
+					  data: params, // Json 형식의 데이터이다.
+					  success: function (data) {
+					    	//성공하면 그 수량대로 전체 합 바꾸고 요소들도 바꿔줘야지!
+							let total = 0;
+							let count = 0;
+							$("tr[name='entryProductInfo']").each(function(index, item){
+								//수량
+								const q = parseInt($(this).find("input[name='quantity']").val());
+								//가격
+								const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+								//합 더하기
+								total += p*q;
+								count++;
+							});	
+							$("#cartDataSubtotal").text('₩'+priceComma(total))
+							$("#cartDataTotalPrice").text('₩'+priceComma(total))
+							$("#selectProductCount").text(count+'');
+							//요소 바꿔주고
+							$("td[itemnum="+index+"]").find(".color_op").html(
+									'color : '+ color +'<span class="and_line">/</span> size : '+ size);
+							//배열값들도 바꿔줘야지
+							pcolors[index]=color;
+					  		psizes[index]=size;
+					  		pamounts[index]=amount;
+							
+					  },
+					  error: function (XMLHttpRequest, textStatus, errorThrown) {
+					    // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+					    alert("통신 실패.");
+					  },
+					});
+			  }
+			});
+
 		});
 		
 </script>
 <input type="hidden" id="apiConfmKey"
 	value="U01TX0FVVEgyMDE5MDYxNzE2NDczMzEwODgxNTI=" />
-
-
 <!-- Enliple Tracker End -->
 </body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
