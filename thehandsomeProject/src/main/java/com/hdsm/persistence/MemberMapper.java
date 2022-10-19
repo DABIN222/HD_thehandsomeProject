@@ -35,6 +35,6 @@ public interface MemberMapper {
 	public List<ThumbnailColorVO> getProductsColor(@Param("pid") String pid);
 	
 	// 장바구니 담기
-	public void insertShoppingBags(MemberSbagDTO msVO);
+	public int insertShoppingBags(MemberSbagDTO msVO);
 	
 }

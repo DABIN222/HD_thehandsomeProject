@@ -25,4 +25,13 @@ public interface MemberMapper2 {
 	
 	//그물건들의 각각 colorVO 값들 
 	public List<ThumbnailColorVO> getProductsColor(@Param("pid") String pid);
+
+	// 장바구니 담기
+	public int updateShoppingBag(MemberSbagDTO msVO);
+	
+	// 장바구니 내역 조회
+	public int selectShoppingBag(MemberSbagDTO msVO);
+	
+	// 장바구니 삭제
+	public int deleteShoppingBag(MemberSbagDTO msVO);
 }
