@@ -2,7 +2,9 @@ package com.hdsm.controller;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.SimpleFormatter;
 
@@ -114,18 +116,23 @@ public class MemberControllerTests {
 	// 장바구니 삭제
 	@Test
 	public void deleteShoppingBag() throws Exception {
-		log.info("장바구니 변경 진입");
+		log.info("장바구니 삭제 진입");
 		
 		MemberSbagDTO msVO = new MemberSbagDTO();
+		List<MemberSbagDTO> msBagDtoList = new ArrayList<MemberSbagDTO>();
+
+		
 		// jsp에서 name에 입력된 값 vo에 저장		
 		msVO.setMid("admin");
-		msVO.setPid("TH2C9ASZ092M");
-		msVO.setPsize("280");
-		msVO.setPcolor("BLACK");
-		msVO.setPamount(1);	
+		msVO.setPid("TH2C8TTO628M");
+		msVO.setPsize("95");
+		msVO.setPcolor("OTMEAL");
+		msVO.setPamount(2);	
 		
-		membermapper2.deleteShoppingBag(msVO);
-		log.info("당바구니 변경 성공!");
+		msBagDtoList.add(msVO);
+		
+		membermapper2.deleteShoppingBag(msBagDtoList);
+		log.info("장바구니 삭제 성공!");
 	} 
 	
 	// 장바구니 변경
@@ -134,6 +141,7 @@ public class MemberControllerTests {
 		log.info("장바구니 변경 진입");
 		
 		MemberSbagDTO msVO = new MemberSbagDTO();
+
 		// jsp에서 name에 입력된 값 vo에 저장		
 		msVO.setMid("admin");
 		msVO.setPid("TH2C8TTO628M");

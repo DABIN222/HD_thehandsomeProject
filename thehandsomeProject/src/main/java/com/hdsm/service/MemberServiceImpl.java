@@ -1,8 +1,10 @@
 package com.hdsm.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -115,11 +117,19 @@ public class MemberServiceImpl implements MemberService {
 		return cnt;
 	}
 	
+	/*
 	@Override
 	public int deleteShoppingBag(MemberSbagDTO msVO) {
 		int cnt = mapper2.deleteShoppingBag(msVO);
 		return cnt;
 	}
+	*/
+	public int deleteShoppingBag(List<MemberSbagDTO> msBagDtoList) {
+		int cnt = mapper2.deleteShoppingBag(msBagDtoList);
+		return cnt;
+	};
+	
+	
 
 	@Override
 	public int selectShoppingBag(MemberSbagDTO msVO) {

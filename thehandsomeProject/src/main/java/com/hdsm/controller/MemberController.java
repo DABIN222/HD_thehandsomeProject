@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -241,6 +242,7 @@ public class MemberController {
 	}
 	
 	// 장바구니 삭제
+	/*
 	@PostMapping("/deleteShoppingBag")
 	@ResponseBody
 	public String deleteShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
@@ -264,6 +266,31 @@ public class MemberController {
 		
 		return "member/shoppingbag";
 	}
+	*/
+//	@PostMapping("/deleteShoppingBag")
+//	@ResponseBody
+//	public String deleteShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+//		log.info("장바구니 삭제 진입!");
+//		
+//		// jsp에서 name에 입력된 값 vo에 저장		
+//		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
+//		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
+//		msVO.setPsize(request.getParameter("psize"));	// 선택 사이즈 name
+//		msVO.setPcolor(request.getParameter("pcolor"));	// 선택 컬러 name
+//		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
+//		
+//		// 장바구니 담기 실시
+//		int cnt = memberservice.deleteShoppingBag(msVO);
+//		
+//		if(cnt != 0) {
+//			log.info("장바구니 삭제 성공!");
+//		}else {
+//			log.info("장바구니 삭제 실패!");
+//		}
+//		
+//		return "member/shoppingbag";
+//	}
+	
 	
 	// 마이 페이지 진입
 	@GetMapping("/mypage")
