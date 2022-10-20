@@ -303,7 +303,7 @@ public class MemberController {
 		return "member/wishList";
 	}*/
 	
-	// 위시리스 페이지 진입
+	// 위시리스트 페이지 진입
 	@GetMapping("/wishList")
 	public String wishList(
 		@RequestParam("mid") String mid, Model model ) {
@@ -314,24 +314,29 @@ public class MemberController {
 		return "member/wishList";
 	}
 	
+	// 위시리스트 담기
 	@PostMapping("/insertWishList")
 	@ResponseBody// 이거 안하면 return값을 jsp 찾으라는걸로 인식함
-	public String insertWishList(HttpServletRequest request, MemberWishListDTO wsDTO) throws Exception {
+	public String insertWishList(HttpServletRequest request, 
+			@RequestBody MemberWishListDTO wsDTO) throws Exception {
 		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
 		log.info("위시리스트 담기 진입!");
 		HttpSession session = request.getSession(); // 세션
 		
+		log.info("wsDTO 결과 값 : "+wsDTO);
+		log.info("session 결과 값 : "+session);
+		
 		int cnt = 0;
 		//이미 위시리스트에 담아논 적이 없다면!
-		if(memberservice.isinWishList(wsDTO)<1) {
-			cnt = memberservice.insertWishList(wsDTO);
-			if(cnt > 0) {
-				log.info("위시리스트 담기 성공!");
-				session.setAttribute("wsCount", //위시리스트 잘 담았으면 갯수 세서 리턴
-						memberservice.getWishListCount(wsDTO.getMember_mid()));
-			}
-		}
-		return cnt+"";
+//		if(memberservice.isinWishList(wsDTO)<1) {
+//			cnt = memberservice.insertWishList(wsDTO);
+//			if(cnt > 0) {
+//				log.info("위시리스트 담기 성공!");
+//				session.setAttribute("wsCount", //위시리스트 잘 담았으면 갯수 세서 리턴
+//						memberservice.getWishListCount(wsDTO.getMember_mid()));
+//			}
+//		}
+		return cnt+"success";
 	}
 
 	// 회원 등급 페이지 진입
