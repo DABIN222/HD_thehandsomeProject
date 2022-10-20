@@ -37,4 +37,8 @@ public interface MemberMapper {
 	// 장바구니 담기
 	public int insertShoppingBags(MemberSbagDTO msVO);
 	
+	// 장바구니 갯수 가져오기
+	public int getShoppingBagCount(@Param("mid") String mid);
+	
+	
 }

@@ -124,7 +124,7 @@ public class MemberControllerTests {
 		msVO.setPcolor("BLACK");
 		msVO.setPamount(1);	
 		
-		membermapper2.deleteShoppingBag(msVO);
+		//membermapper2.deleteShoppingBag(msVO);
 		log.info("당바구니 변경 성공!");
 	} 
 	

@@ -3102,7 +3102,7 @@
 			</div>
 		</div>
 		<a href="javascript:void(0);" class="btn_close"> <img
-			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
+			src="/resources/images/ico_close.png" alt="닫기"></a>
 	</div>
 	<!-- 로그인 물어보는 창 -->
 	<div
@@ -3123,9 +3123,29 @@
 	      </div>
 	    </div>
 	    <a href="javascript:void(0);" class="btn_close"
-	      ><img src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"
+	      ><img src="/resources/images/ico_close.png" alt="닫기"
 	    /></a>
   </div>
+  <div
+  		id = "alreadyInsert"
+	  class="popwrap w_type_1"
+	  style="z-index: 150; margin-top: 1072px"
+	  tabindex="-1">
+	  <div class="pop_cnt">
+	    <h3 class="pop_tlt copy">
+		      이미 쇼핑백에 담겨있습니다.<br />
+		      <p style="color: gray; font-size: 14px; margin-top: 8px">
+		        (동일 상품은 최대 2개까지 구매 가능)
+		      </p>
+		    </h3>
+	    <div class="btnwrap">
+	      <input type="button" class="btn gray_s mr0" onclick="sizeConfirm();" value="확인" />
+	    </div>
+	  </div>
+	  <a href="javascript:void(0);" class="btn_close"
+	    ><img src="/resources/images/ico_close.png" alt="닫기"
+	  /></a>
+	</div>
 </div>
 
 <form id="productOneCLickDeliveryForm"
@@ -3481,8 +3501,14 @@
 							                data : params,            // Json 형식의 데이터
 							                success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
 							                    // 응답코드 > 0000
-												$(".layerArea").show();
-												$("#putCart").show();
+							                    console.log(data);
+							                    if(data === 'good'){
+							                    	$(".layerArea").show();
+													$("#putCart").show();	
+							                    }else{
+							                    	$(".layerArea").show();
+													$("#alreadyInsert").show();
+							                    }
 							                },
 							                error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옴
 							                    alert("통신 실패.");

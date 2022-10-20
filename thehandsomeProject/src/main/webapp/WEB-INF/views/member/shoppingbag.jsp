@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.hdsm.domain.MemberSbagDTOForJsp" %>
+
 <%@include file="/WEB-INF/views/common/header.jspf"%>
 <!-- bodyWrap -->
 <div id="bodyWrap">
@@ -65,8 +69,16 @@
 								let psizes = [];
 								let pcolors = [];
 								let pamounts = [];
+								let colorinfos = [];
 								let _ace_countvar = 0;
 							</script>
+								
+								<% List<MemberSbagDTOForJsp> asd = (List<MemberSbagDTOForJsp>)request.getAttribute("shoppingbagList");
+									if(asd.size() == 0 ){ %>
+								<tr>
+                                    <td colspan="6" class="no_data frt">쇼핑백에 담긴 상품이 없습니다.</td>
+                                </tr>
+                                <% } %>
 							<c:forEach items="${shoppingbagList}" var="shoppingbag" varStatus="status">
 							<tr name="entryProductInfo" data-pk="10950401196076"
 								data-deliverykind="" data-outofstock="false"
@@ -79,7 +91,7 @@
 								<td class="pt_list_wrap" itemnum="${status.index}">
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
-										<a href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
+										<a itemnum="a${status.index}" href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
 											<img
 											src="${shoppingbag.thumbnail}"
 											style = "object-fit : cover"
@@ -88,7 +100,8 @@
 										<div class="tlt_wrap">
 											<a
 												href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}"
-												class="basket_tlt">
+												class="basket_tlt"
+												itemnum="a${status.index}">
 												<span class="tlt">${shoppingbag.bname}</span> <span class="sb_tlt">
 													${shoppingbag.pname}</span>
 											</a>
@@ -150,9 +163,8 @@
 								<td class="al_middle">
 									<!-- Button size -->
 									<div class="btn_wrap">
-										<a href="#none" class="btn wt_ss" onclick="callWishListClick('캐시미어 블렌드 헤링본 재킷',$(this),'SH2C9WJC201M_KG_100');" data-value="0">위시리스트</a> 
-										<a href="/member/deleteShoppingBag" id="RemoveProduct_0" class="btn wt_ss"
-											onclick="GA_Event('쇼핑백','삭제','캐시미어 블렌드 헤링본 재킷');">삭제</a>
+										<a href="javascript:void(0);" class="btn wt_ss" data-value="0">위시리스트</a> 
+										<a href="javascript:void(0);" id="RemoveProduct_0" class="btn wt_ss" name="deleteOne" itemnum="${status.index}">삭제</a>
 									</div> <!-- //Button size -->
 								</td>
 							</tr>
@@ -174,6 +186,9 @@
 														<!-- color_size -->
 														<dl class="cs_wrap" itemnum="${status.index}">
 															<dt>COLOR</dt>
+																<script>
+																	let tempDic${status.index} = {};
+																</script>
 															<c:forEach items="${shoppingbag.colorlist}" var="coloritem">
 															<dd>
 																<div class="cl_select">
@@ -184,6 +199,9 @@
 																	<span class="cs_sel1807">${coloritem.cname}</span>
 																</div>
 															</dd>
+																<script>
+																	tempDic${status.index}['${coloritem.cname}'] = ["${coloritem.ccolorcode}","${coloritem.c_thumbnail1}"]
+																</script>
 															</c:forEach>
 															<dt>SIZE</dt>
 															<dd style="width: 200px; height: 100%;">
@@ -204,8 +222,8 @@
                                             <!-- btns -->
                                             <div class="btns">
                                                 <a href="javascript:void(0);" class="btn wt_ss mr0" id="UpdateCart_0" name="changeBtn" itemnum="${status.index}">변경</a>
-                                                <a href="javascript:void(0);" class="btn wt_ss mt10 mr0" id="optCancelLayer_0">취소</a>
-                                                <a href="javascript:void(0);" class="btn_close" id="optCloseLayer_0">닫기</a>
+                                                <a href="javascript:void(0);" class="btn wt_ss mt10 mr0" name="closeclose" id="optCancelLayer_0">취소</a>
+                                                <a href="javascript:void(0);" class="btn_close" name="closeclose" id="optCloseLayer_0">닫기</a>
                                             </div>
                                             <!-- //btns -->
                                         </div>
@@ -224,6 +242,7 @@
 								psizes[_ace_countvar] = "${shoppingbag.ssize}";
 								pcolors[_ace_countvar] = "${shoppingbag.scolor}";
 								pamounts[_ace_countvar] = parseInt("${shoppingbag.amount}");
+								colorinfos[_ace_countvar] = tempDic${status.index};
 								_ace_countvar++;
 							</script>
 							<!-- //Info wrap -->
@@ -278,7 +297,7 @@
 				<!--//Total wrap-->
 				<!--button wrap-->
 				<div class="btnwrap order" id="checkout_btn_wrap">
-					<a href="#;" onclick="selectRemove();"><input value="선택상품삭제"
+					<a href="javascript:void();" ><input id="selectDeleteBtn"value="선택상품삭제"
 						class="btn wt" type="button" /></a> <a href="#;"
 						onclick="checkoutPage();"> <input value="선택상품 주문하기"
 						class="btn gray mr0" type="button" />
@@ -435,6 +454,56 @@
 	
 	$(document).ready(
 		function() {
+			$.deleteFunction =  function(params){
+			    //통쉰 하자 ~
+			    $.ajax({
+			      type: "POST", // HTTP method type(GET, POST) 형식이다.
+			      url: "/member/deleteShoppingBag", // 컨트롤러에서 대기중인 URL 주소이다.
+			      data: params, // Json 형식의 데이터이다.
+			      contentType: "application/json; charset=utf-8",
+		          //dataType: "json",
+			      success: function (data) {
+			          //성공하면 그냥 다시 로드해야징
+			          location.href = "/member/shoppingbag?mid="+"${member}";
+			      },
+			      error: function (XMLHttpRequest, textStatus, errorThrown) {
+			        // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+			        alert("통신 실패.");
+			      },
+			    });
+			}
+			
+			//선택된 놈들만 지우기
+			$.selectRemove = function(){
+				const deleteList = [];
+				let checkCount = 0;
+				$("tr[name=entryProductInfo]").each(function(index, item){
+					if( $(this).find("input[name='cartlist']").is(":checked")){
+						let itemMap = new Map();
+						itemMap.set('mid',"${member}");
+						itemMap.set('pid', pids[index]);
+						itemMap.set('psize', psizes[index]);
+						itemMap.set('pcolor', pcolors[index]);
+						itemMap.set('pamount', parseInt(pamounts[index]));
+						
+						//객체화 시켜서 넣음
+						deleteList.push(Object.fromEntries(itemMap));
+						checkCount++;
+					}
+				});
+				console.log(deleteList);
+				//직렬화 해서 넘겨주자!
+				if(checkCount > 0){
+					$.deleteFunction(JSON.stringify(deleteList));	
+				}
+				
+			}
+			//선택상품삭제 버튼눌렀을때 실행시켜!
+			$('#selectDeleteBtn').click(function(){
+				$.selectRemove();
+			});
+			
+			
 			//전부 체크해버려!
 			$("input[name='cartlist']").each(function(index, item){
 				$(this).prop("checked", true);
@@ -467,7 +536,7 @@
 				let checkedsumtotal = 0;
 				$("tr[name=entryProductInfo]").each(function(index, item){
 					if( $(this).find("input[name='cartlist']").is(":checked")){
-						checkedcount += parseInt($(this).find("input[name='quantity']").val());
+						checkedcount++;
 						checkedsumtotal += parseInt($(this).find("input[name='checkZeroPrice']").val());
 					}
 				});
@@ -522,12 +591,8 @@
 					checkElement.find(".basket_info").css('display', 'none');
 				}
 			});
-			//옵션변경창 닫기1
-			$("#optCloseLayer_0").click(function(){
-				$(this).closest("tr").find(".basket_info").css('display', 'none');
-			});
-			//옵션변경창 닫기2
-			$("#optCancelLayer_0").click(function(){
+			//옵션변경창 닫기1,2
+			$("a[name=closeclose]").click(function(){
 				$(this).closest("tr").find(".basket_info").css('display', 'none');
 			});
 			//옵션변경의 사이즈버튼 눌릴때 적용되게
@@ -544,6 +609,17 @@
 			  $(this).closest('dl').find('.beige').removeClass('on');
 			  //또한 누르면 그버튼이 계속 눌렸다는걸 표시
 			  $(this).addClass('on');
+			  //그리고 사진도 바뀌게 해줘야징
+			  const itemIndex = parseInt($(this).closest('dl').attr("itemnum"));
+			  const colorName = $(this).attr('value');
+
+			  const colorCode = colorinfos[itemIndex][colorName][0];
+			  const colorThumbUrl = colorinfos[itemIndex][colorName][1];
+			  const productId = pids[itemIndex];
+			  //사진과 href 다 바꿔버려 !
+			  $(this).closest(".pt_list").find('img').attr('src', colorThumbUrl);
+			  $(this).closest(".pt_list").find('.basket_tlt').attr('href', "/product/product_detail?pid="+productId+"&colorcode="+colorCode);
+			  $(this).closest(".pt_list").children('a').attr('href', "/product/product_detail?pid="+productId+"&colorcode="+colorCode);
 			});
 			
 			//변경버튼 눌렸을때 처리!	item마다 2개씩 변경 버튼 있는데 전부 name=changeBtn 라는 속성으로 묶어서 처리가능
@@ -553,10 +629,6 @@
 			  const amount = $("input[itemnum="+index+"]").val();
 			  const color = $("dl[itemnum="+index+"]").find(".beige.on").attr('value');
 			  const size = $("dl[itemnum="+index+"]").find(".sz_select").find(".on").attr('value');
-			  
-			  console.log(color,pcolors[index])
-			  console.log(size,psizes[index] )
-			  console.log(amount,pamounts[index])
 
 			  //변경눌렀을때 기존거랑 하나라도 다르면 업데이트 시켜!
 			  if(color!=pcolors[index] ||
@@ -579,17 +651,25 @@
 							let total = 0;
 							let count = 0;
 							$("tr[name='entryProductInfo']").each(function(index, item){
-								//수량
-								const q = parseInt($(this).find("input[name='quantity']").val());
-								//가격
-								const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
-								//합 더하기
-								total += p*q;
-								count++;
+								if( $(this).find("input[name='cartlist']").is(":checked")){
+									//수량
+									const q = parseInt($(this).find("input[name='quantity']").val());
+									//가격
+									const p = parseInt($(this).find("input[name='checkZeroPrice']").val());
+									//합 더하기
+									total += p*q;
+									count++;
+								}
 							});	
 							$("#cartDataSubtotal").text('₩'+priceComma(total))
 							$("#cartDataTotalPrice").text('₩'+priceComma(total))
 							$("#selectProductCount").text(count+'');
+							//컬러가 바뀌면 바뀐 colorcode로 img랑 a의 href 바꿔줘야지
+							const cc = colorinfos[index][color][0]
+							const thumburl = colorinfos[index][color][1]
+							$("a[itemnum=a"+index+"]").find("img").attr("src", thumburl);
+							$("a[itemnum=a"+index+"]").attr("href","/product/product_detail?pid="+pids[index]+"&colorcode="+cc);
+							
 							//요소 바꿔주고
 							$("td[itemnum="+index+"]").find(".color_op").html(
 									'color : '+ color +'<span class="and_line">/</span> size : '+ size);
@@ -606,7 +686,22 @@
 					});
 			  }
 			});
-
+			
+			//아이템 삭제 (1개만)
+			$("a[name=deleteOne]").click(function(){
+			  const itemIndex = parseInt($(this).attr('itemnum'));
+			  const deleteList = []
+			  let itemMap = new Map();
+			  itemMap.set('mid',"${member}");
+			  itemMap.set('pid', pids[itemIndex]);
+			  itemMap.set('psize', psizes[itemIndex]);
+			  itemMap.set('pcolor', pcolors[itemIndex]);
+			  itemMap.set('pamount', parseInt(pamounts[itemIndex]));
+			  
+			  deleteList.push(Object.fromEntries(itemMap));
+			  //직렬화 해서 넘겨주자!
+			  $.deleteFunction(JSON.stringify(deleteList));
+			});
 		});
 		
 </script>
