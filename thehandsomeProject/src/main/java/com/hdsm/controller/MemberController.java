@@ -164,14 +164,13 @@ public class MemberController {
        
        return "home";  
 	}
-	
-	// 회원가입 페이지 진입
+
 	
 	// 유저 쇼핑백 페이지 로드
 	@GetMapping("/shoppingbag")
 	public String userShoppingBag(
-				@RequestParam("mid") String mid,
-				Model model ) {
+		@RequestParam("mid") String mid, Model model ) {
+		
 		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
 		model.addAttribute("shoppingbagList",list);
 
@@ -289,7 +288,7 @@ public class MemberController {
 		log.info("마이 페이지 왔다");
 		return "member/mypage";
 	}
-	
+/*
 	// 위시리스트 페이지 진입
 	@GetMapping("/wishList")
 	public String wishListForm(
@@ -301,6 +300,17 @@ public class MemberController {
 		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(wsDTO);
 		model.addAttribute("wishlistList", list);
 		
+		return "member/wishList";
+	}*/
+	
+	// 위시리스 페이지 진입
+	@GetMapping("/wishList")
+	public String wishList(
+		@RequestParam("mid") String mid, Model model ) {
+		
+		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
+		model.addAttribute("wishList",list);
+
 		return "member/wishList";
 	}
 	
