@@ -36,4 +36,7 @@ public interface MemberService {
 	
 	// 장바구니 삭제
 	public int deleteShoppingBag(List<MemberSbagDTO> msList);
+	
+	//장바구니 개수 가져오기
+	public int getShoppingBagCount(String mid);
 }

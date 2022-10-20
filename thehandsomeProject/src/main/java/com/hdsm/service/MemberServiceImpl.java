@@ -128,4 +128,9 @@ public class MemberServiceImpl implements MemberService {
 		return select;
 	}
 
+	@Override
+	public int getShoppingBagCount(String mid) {
+		return mapper.getShoppingBagCount(mid);
+	}
+
 }

@@ -27,33 +27,34 @@ public class MemberMapperTest3 {
 	
 	@Autowired
 	private MemberMapper2 mapper2;
+	@Autowired
 	private MemberMapper mapper;
 	
 	//@Test
-//	public void testGetSb() {
-//		List<MemberSbagDTO> mslist = new ArrayList<MemberSbagDTO>();
-//		MemberSbagDTO dto = new MemberSbagDTO();
-//		String mid="asd"; 
-//		String pid = "MN2CAQOT461W"; 
-//		String psize= "76";
-//		String pcolor="BROWN";
-//		int pamount=1;
-//		
-//		dto.setMid(mid);
-//		dto.setPid(pid);
-//		dto.setPcolor(pcolor);
-//		dto.setPsize(psize);
-//		dto.setPamount(pamount);
-//		
-//		mslist.add(dto);
-//		
-//		mapper2.deleteShoppingBag(mslist);
-//		
-//	}
+	public void testGetSb() {
+		List<MemberSbagDTO> mslist = new ArrayList<MemberSbagDTO>();
+		MemberSbagDTO dto = new MemberSbagDTO();
+		String mid="asd"; 
+		String pid = "MN2CAQOT461W"; 
+		String psize= "76";
+		String pcolor="BROWN";
+		int pamount=1;
+		
+		dto.setMid(mid);
+		dto.setPid(pid);
+		dto.setPcolor(pcolor);
+		dto.setPsize(psize);
+		dto.setPamount(pamount);
+		
+		mslist.add(dto);
+		
+		mapper2.deleteShoppingBag(mslist);
+		
+	}
 	@Test
 	public void testCountSB() {
-		String as = "asd";
-		mapper.getShoppingBagCount(as);
+		String mid = "asd";
+		mapper.getShoppingBagCount(mid);
 		
 	}
 }

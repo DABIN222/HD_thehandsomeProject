@@ -479,7 +479,7 @@
 									<a href="/member/shoppingbag?mid=${member}">
 										<span class="ico cart">장바구니</span> 
 										<span class="count">
-											(<span id="cartCount">0</span>)
+											(<span id="cartCount">${sbCount}</span>)
 										</span>
 									</a>
 								</c:when>

@@ -127,7 +127,7 @@ public class MemberController {
 
 		mid = member.getMid(); // 사용자 입력값 저장
 		mpwd = member.getMpassword(); // 사용자 비밀번호 저장
-
+		
 		MemberVO vo = memberservice.login(member); // mapper -> service 에서 가져온 db값(mid,mpassword)를 객체에 저장
 //			String id = vo.getMid();
 //			String pw = vo.getMpassword();
@@ -136,6 +136,7 @@ public class MemberController {
 		if (vo != null) { // 객체에 값이 있으면 로그인 가능
 			System.out.println("로그인 성공");
 			session.setAttribute("member", mid); // member 변수에 id값 저장
+			session.setAttribute("sbCount", memberservice.getShoppingBagCount(mid));//장바구니 개수 가져오기
 			String name = (String) session.getAttribute("member"); // member 가져와서 저장
 			System.out.println(name);
 
@@ -179,6 +180,8 @@ public class MemberController {
 	public String insertShoppingbag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 담기 진입!");
 		
+		HttpSession session = request.getSession(); // 세션
+		
 		// jsp에서 name에 입력된 값 vo에 저장		
 		msVO.setMid(request.getParameter("mid"));
 		msVO.setPid(request.getParameter("pid"));
@@ -193,11 +196,17 @@ public class MemberController {
 			log.info("이미 장바구니에 존재합니다");
 			return "false";
 		}
+
 		// 장바구니 담기 실시
 		memberservice.insertShoppingBags(msVO);
+		
+		//바뀐 장바구니 갯수 !
+		int count = memberservice.getShoppingBagCount((String)session.getAttribute("member"));
+		
+		session.setAttribute("sbCount", count);// 바뀐 장바구니 갯수 다시 세서 가져오기
 		log.info("당바구니 담기 성공!");
 
-		return "good";
+		return count+"";
 
 	}
 
@@ -252,12 +261,15 @@ public class MemberController {
 	public ResponseEntity<Void> deleteShoppingBag(HttpServletRequest request, 
 			@RequestBody List<MemberSbagDTO> parameters) throws Exception {
 		log.info("장바구니 삭제 진입!");
+		HttpSession session = request.getSession(); // 세션
 		
 		// 장바구니 지우기 실시
 		int cnt = memberservice.deleteShoppingBag(parameters);
 		
 		if(cnt != 0) {
 			log.info("장바구니 삭제 성공!");
+			session.setAttribute("sbCount", 
+					memberservice.getShoppingBagCount((String)session.getAttribute("member")));// 바뀐 장바구니 갯수 다시 세서 가져오기
 		}else {
 			log.info("장바구니 삭제 실패!");
 		}
