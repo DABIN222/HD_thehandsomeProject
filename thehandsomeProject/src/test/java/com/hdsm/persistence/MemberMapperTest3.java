@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
+import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
@@ -51,10 +52,32 @@ public class MemberMapperTest3 {
 		mapper2.deleteShoppingBag(mslist);
 		
 	}
-	@Test
+	//@Test
 	public void testCountSB() {
 		String mid = "asd";
 		mapper.getShoppingBagCount(mid);
+	}
+	
+	//@Test
+	public void testInsertWishList_and_Count() {
+		MemberWishListDTO dto = new MemberWishListDTO();
+		dto.setMember_mid("asd");
+		dto.setPid("MU2C1WJM058WN3");
 		
+		//mapper.insertWishList(dto);
+		log.info(mapper.getWishListCount("asd"));
+		log.info(mapper.isinWishList(dto));
+	}
+	
+	@Test
+	public void testGetUsersWishList() {
+		MemberWishListDTO dto = new MemberWishListDTO();
+		dto.setMember_mid("asd");
+		
+		List<MemberWishListDTO> list = mapper.getUsersWishList(dto);
+		
+		for(MemberWishListDTO d : list) {
+			log.info(d);
+		}
 	}
 }

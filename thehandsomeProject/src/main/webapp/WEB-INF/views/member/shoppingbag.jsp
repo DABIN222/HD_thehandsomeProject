@@ -454,6 +454,7 @@
 	
 	$(document).ready(
 		function() {
+			//삭제를 위한 ajax
 			$.deleteFunction =  function(params){
 			    //통쉰 하자 ~
 			    $.ajax({

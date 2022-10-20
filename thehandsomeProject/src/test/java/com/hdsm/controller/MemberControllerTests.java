@@ -2,16 +2,23 @@ package com.hdsm.controller;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.SimpleFormatter;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
@@ -25,7 +32,8 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
 	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/root-context.xml" })
+	"file:src/main/webapp/WEB-INF/spring/root-context.xml"
+	})
 @Log4j
 public class MemberControllerTests {
 
@@ -38,8 +46,17 @@ public class MemberControllerTests {
 	@Autowired
 	MemberService memberservice;
 	
+	@Autowired
+	private WebApplicationContext ctx;
+		
+	private MockMvc mockMvc;
+	
+	@Before
+	public void setup() {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();		
+	}//end setup
 	//회원가입 쿼리 테스트 메서드
-	@Test
+	//@Test
 	public void memberInsert() throws Exception {
 		MemberVO member = new MemberVO();
 		
@@ -64,7 +81,7 @@ public class MemberControllerTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void login() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setMid("admin");
@@ -74,7 +91,7 @@ public class MemberControllerTests {
 	}
 	
 	// 장바구니 담기
-	@Test
+	//@Test
 	public void insertShoppingbag() throws Exception {
 		log.info("장바구니 담기 진입!");
 		
@@ -106,34 +123,20 @@ public class MemberControllerTests {
 		msVO.setPcolor("OT(OTMEAL)");
 		msVO.setPamount(1);	
 		
-		membermapper2.updateShoppingBag(msVO);
+		membermapper.updateShoppingBag(msVO);
 		log.info("당바구니 변경 성공!");
 	} 
 	*/
 	
 	// 장바구니 삭제
-	@Test
+	//@Test
 	public void deleteShoppingBag() throws Exception {
-		log.info("장바구니 변경 진입");
+		log.info("장바구니 삭제 진입");
 		
 		MemberSbagDTO msVO = new MemberSbagDTO();
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid("admin");
-		msVO.setPid("TH2C9ASZ092M");
-		msVO.setPsize("280");
-		msVO.setPcolor("BLACK");
-		msVO.setPamount(1);	
+		List<MemberSbagDTO> msBagDtoList = new ArrayList<MemberSbagDTO>();
+
 		
-		//membermapper2.deleteShoppingBag(msVO);
-		log.info("당바구니 변경 성공!");
-	} 
-	
-	// 장바구니 변경
-	@Test
-	public void updateShoppingbag() throws Exception {
-		log.info("장바구니 변경 진입");
-		
-		MemberSbagDTO msVO = new MemberSbagDTO();
 		// jsp에서 name에 입력된 값 vo에 저장		
 		msVO.setMid("admin");
 		msVO.setPid("TH2C8TTO628M");
@@ -141,13 +144,34 @@ public class MemberControllerTests {
 		msVO.setPcolor("OTMEAL");
 		msVO.setPamount(2);	
 		
-		int select = membermapper2.selectShoppingBag(msVO);
+		msBagDtoList.add(msVO);
+		
+		membermapper.deleteShoppingBag(msBagDtoList);
+		log.info("장바구니 삭제 성공!");
+
+	} 
+	
+	// 장바구니 변경
+	//@Test
+	public void updateShoppingbag() throws Exception {
+		log.info("장바구니 변경 진입");
+		
+		MemberSbagDTO msVO = new MemberSbagDTO();
+
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid("admin");
+		msVO.setPid("TH2C8TTO628M");
+		msVO.setPsize("95");
+		msVO.setPcolor("OTMEAL");
+		msVO.setPamount(2);	
+		
+		int select = membermapper.selectShoppingBag(msVO);
 		log.info("select 값 : "+select);
 		
 		if(select != 0) {
 			log.info("이미 장바구니에 존재함");
 		} else {
-			int cnt = membermapper2.updateShoppingBag(msVO);
+			int cnt = membermapper.updateShoppingBag(msVO);
 			
 			if(cnt != 0) {
 				log.info("장바구니 변경 성공!");
@@ -158,4 +182,31 @@ public class MemberControllerTests {
 		
 		log.info("당바구니 변경 성공!");
 	} 
+	//위시리스트 잘담기는지(위시리스트 몇개고, 이미 담았는지 확인하고 위시리스트 담기 까지 전부함)
+	//@Test
+	public void insertWishList() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/insertWishList")
+				.param("member_mid", "asd")
+				.param("pid","SH2C8LJM902M")
+				)
+				.andReturn()
+//				.getModelAndView()
+//				.getModelMap()
+				);
+	}
+	
+	//@Test
+	public void testGetUsersWishList() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.get("/member/wishList")
+				.param("member_mid", "asd")
+				)
+				.andReturn()
+				.getModelAndView()
+				.getModelMap()
+				);
+	}
 }
