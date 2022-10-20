@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,20 +26,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.OrderItemVO;
+import com.hdsm.domain.OrderPageItemVO;
+import com.hdsm.domain.OrderPageListVO;
 import com.hdsm.domain.ProductColorVO;
+import com.hdsm.domain.ProductVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.MemberService2;
 import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/member2/*")
-public class MemberController {
+@RequestMapping("/member/*")
+public class MemberController2 {
 	
 	@Autowired
-	MemberService memberservice;
+	MemberService2 memberservice;
 	
 	@Autowired
 	ProductService productservice;
@@ -73,7 +79,6 @@ public class MemberController {
 		//박진수 수정
 		member.setMzipcode(Integer.parseInt(request.getParameter("zonecode")));
 		//박진수 수정
-		
 		// 회원가입 실시
 		memberservice.insertMember(member);
 		log.info("회원가입 성공!");
@@ -219,6 +224,34 @@ public class MemberController {
 	public String mypageForm() {
 		log.info("로그인 페이지 왔다");
 		return "member/mypage";
+	}
+	
+	@PostMapping("/order_page")
+	public void order_page(OrderPageListVO olv, Model model,HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		System.out.println("colorcode:"+olv.getOrders().get(0).getCcolorcode());
+		model.addAttribute("member", memberservice.getMember((String)session.getAttribute("member")));
+		model.addAttribute("orderList",memberservice.getOrderPageInfo(olv.getOrders()));
+		int realTotalPoint=0;
+		int realTotalPrice=0;
+		int realMilege=0;
+		for(int i=0;i<olv.getOrders().size();i++) {
+			realTotalPoint+=olv.getOrders().get(i).getTotalpoint();
+			realTotalPrice+=olv.getOrders().get(i).getTotalprice();
+			realMilege+=olv.getOrders().get(i).getMilege();
+		}
+		
+		model.addAttribute("realTotalPoint",realTotalPoint);
+		model.addAttribute("realTotalPrice",realTotalPrice);
+		model.addAttribute("realMilege", realMilege);
+	
+	}
+	
+	@PostMapping("/order")
+	public void order(OrderItemVO oiv,List<OrderPageItemVO> orp) {
+		System.out.println(oiv.getMid());
+		System.out.println(orp.get(0).getPid());
+		
 	}
 	
 	

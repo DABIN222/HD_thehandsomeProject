@@ -8,7 +8,7 @@ import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.OrderPageItemVO;
 import com.hdsm.domain.OrderPageListVO;
 
-public interface MemberService {
+public interface MemberService2 {
 	
 	// 회원가 입
 	public void insertMember(MemberVO member);
@@ -30,4 +30,6 @@ public interface MemberService {
 	// 장바구니 담기
 	public void insertShoppingBags(MemberSbagDTO msVO);
 	
+	//주문 페이지 가져오기
+	public List<OrderPageItemVO> getOrderPageInfo(List<OrderPageItemVO> olist);
 }

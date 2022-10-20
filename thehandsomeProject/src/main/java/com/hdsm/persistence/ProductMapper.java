@@ -34,6 +34,6 @@ public interface ProductMapper {
 	
 	public ProductVO getProduct(String pid);
 	
-	public List<ProductColorVO> getProductColor(String colorcode);
+	public List<ProductColorVO> getProductColor(String pid);
 
 }
