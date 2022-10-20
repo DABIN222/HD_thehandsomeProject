@@ -3485,7 +3485,12 @@
 							                success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
 							                    // 응답코드 > 0000
 							                    console.log(data);
-							                    if(data === 'good'){
+							                    const isfail = data.split(':')[0];
+							                    const count = parseInt(data.split(':')[1]);
+							                    
+							                    //만약 세션의 장바구니 갯수와 반환받은 data와 다르면 성공 ! 같으면 안된거니까 실패 !
+							                    if(isfail === 'success' ){
+							                    	$("#cartCount").text(count);
 							                    	$(".layerArea").show();
 													$("#putCart").show();	
 							                    }else{
