@@ -305,10 +305,14 @@ public class MemberController {
 	
 	// 위시리스 페이지 진입
 	@GetMapping("/wishList")
-	public String wishList(
-		@RequestParam("mid") String mid, Model model ) {
+	public String wishList(HttpServletRequest request, Model model ) {
+		HttpSession session = request.getSession(); // 세션
+		String mid = (String) session.getAttribute("member");
 		
-		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
+		MemberWishListDTO dto = new MemberWishListDTO();
+		dto.setMember_mid(mid);
+		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(dto);
+		
 		model.addAttribute("wishList",list);
 
 		return "member/wishList";
