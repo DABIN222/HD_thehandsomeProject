@@ -1,9 +1,11 @@
 package com.hdsm.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,8 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
-	@Autowired
-	private MemberMapper2 mapper2;
+//	@Autowired
+//	private MemberMapper2 mapper2;
 
 	// 회원 가입
 	@Override
@@ -112,19 +114,29 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int updateShoppingBag(MemberSbagDTO msVO) {
-		int cnt = mapper2.updateShoppingBag(msVO);
+		int cnt = mapper.updateShoppingBag(msVO);
 		return cnt;
 	}
 	
+
 	@Override
 	public int deleteShoppingBag(List<MemberSbagDTO> msList) {
-		int cnt = mapper2.deleteShoppingBag(msList);
+		int cnt = mapper.deleteShoppingBag(msList);
 		return cnt;
 	}
 
+	/*
+	public int deleteShoppingBag(List<MemberSbagDTO> msBagDtoList) {
+		int cnt = mapper.deleteShoppingBag(msBagDtoList);
+		return cnt;
+	};
+	*/
+	
+	
+
 	@Override
 	public int selectShoppingBag(MemberSbagDTO msVO) {
-		int select = mapper2.selectShoppingBag(msVO);
+		int select = mapper.selectShoppingBag(msVO);
 		return select;
 	}
 

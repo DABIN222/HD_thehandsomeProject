@@ -40,5 +40,12 @@ public interface MemberMapper {
 	// 장바구니 갯수 가져오기
 	public int getShoppingBagCount(@Param("mid") String mid);
 	
+	// 장바구니 변경
+	public int updateShoppingBag(MemberSbagDTO msVO);
 	
+	// 장바구니 내역 조회
+	public int selectShoppingBag(MemberSbagDTO msVO);
+	
+	// 장바구니 삭제
+	public int deleteShoppingBag(@Param("msList")List<MemberSbagDTO> msList);
 }

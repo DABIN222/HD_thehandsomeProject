@@ -64,6 +64,7 @@
 		select * from member where mid=#{memberId}
 	</select>
 	
+	<!-- 장바구니 담기 -->
 	<insert id="insertShoppingBags">
 		INSERT INTO mycart (mid, pid, psize, pcolor, pamount)
 		VALUES (#{mid}, #{pid}, #{psize}, #{pcolor}, #{pamount})
@@ -73,4 +74,31 @@
 	<select id="getShoppingBagCount" resultType="int">
 		select count(*) from mycart where mid=#{mid}
 	</select>
+	
+	<!-- 장바구니 상품 정보 변경 (수량, 사이즈, 컬러 등) -->
+	<update id="updateShoppingBag">
+		UPDATE mycart
+		SET
+			psize = #{psize},
+			pcolor = #{pcolor},
+			pamount = #{pamount}
+		WHERE
+			mid = #{mid} and pid = #{pid}
+	</update>
+	
+	<!-- 장바구니에 동일 상품이 있는지 조회 -->
+	<select id="selectShoppingBag" resultType="int">
+		SELECT count(mid) FROM mycart
+		WHERE
+			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+	</select>
+	
+	<!-- 장바구니 상품 정보 삭제 -->
+	<delete id="deleteShoppingBag">
+			DELETE FROM mycart
+			WHERE
+			<foreach collection="msList" item="dto" index="index" separator="OR">
+				mid = #{dto.mid} and pid = #{dto.pid} and psize = #{dto.psize} and pcolor = #{dto.pcolor}
+			</foreach>
+	</delete>
 </mapper> 
