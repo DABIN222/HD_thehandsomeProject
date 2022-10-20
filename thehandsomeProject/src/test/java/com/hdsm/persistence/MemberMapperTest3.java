@@ -62,14 +62,14 @@ public class MemberMapperTest3 {
 	public void testInsertWishList_and_Count() {
 		MemberWishListDTO dto = new MemberWishListDTO();
 		dto.setMember_mid("asd");
-		dto.setPid("MU2C1WJM058WN3");
+		dto.setPid("TH2CAWJM336M");
 		
-		//mapper.insertWishList(dto);
+		mapper.insertWishList(dto);
 		log.info(mapper.getWishListCount("asd"));
 		log.info(mapper.isinWishList(dto));
 	}
 	
-	@Test
+	//@Test
 	public void testGetUsersWishList() {
 		MemberWishListDTO dto = new MemberWishListDTO();
 		dto.setMember_mid("asd");
@@ -79,5 +79,19 @@ public class MemberMapperTest3 {
 		for(MemberWishListDTO d : list) {
 			log.info(d);
 		}
+	}
+	@Test
+	public void testdeleteWishList() {
+		MemberWishListDTO dto = new MemberWishListDTO();
+		List<MemberWishListDTO> list = new ArrayList<MemberWishListDTO>();
+		dto.setMember_mid("asd");
+		dto.setPid("TH2CAWJM336M");
+		
+		list.add(dto);
+		
+		int cnt = mapper.deleteWishListItem(list);
+		log.info(cnt);
+		
+
 	}
 }
