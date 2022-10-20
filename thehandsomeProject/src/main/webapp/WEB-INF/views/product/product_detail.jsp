@@ -3551,9 +3551,48 @@
 	
 	// 좋아요 눌렀을 때 
 	function addWishListClick() {
+		
+		
+		// 로그인 안했으면 로그인 했는지 물어보기
+		<%
+			if ((String)session.getAttribute("member") == null) {
+				// 세션에 값이 없으면 로그인 페이지로
+		%>
+			$(".layerArea").show();
+			$("#AskLogin").show();
+		<%
+			} else {
+		%>
+				let param = {
+					mid : "${member}",
+					pid : "${productVO.pid}"
+				}
+				const params = JSON.stringify(param);
+				console.log(params);
+				$.ajax({
+					type : "POST",
+					url : "/member/insertWishList",
+					data : params,					// json 형태의 데이터
 
+					success : function(data) {
+						console.log("data" + data);
+						const count = parseInt(data.split(':')[1]);
+						const isfail = data.split(':')[0];
+
+						// 만약 세션의 위시리스트 개수와 반환받은 data와 다르면 성공, 아니면 실패
+						if(isfail == 'success') {
+							console.log("count : "+count+" / isfail : "+isfail);
+						}else {
+							console.log("시발좆대따");
+						}
+					}
+				})
+		<%
+			}
+		%>
+		
 		var productCode = $("#productCode").val();
-		console.log(productCode);
+		//console.log(productCode);
 		$('.wishlist1803').stop().toggleClass('on');
 		$('.toast_popup').stop().toggleClass('on');
 		$('.toast_popup p').stop().show();
