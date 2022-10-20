@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<% String loginYn = (String)session.getAttribute("member"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -473,18 +474,24 @@
 							</a>
 						</li>
 						<li>
-							<a href="/member/shoppingbag
-							<%
-								if ((String)session.getAttribute("member") != null) { //세션에 값이 없으면 로그인 링크를 출력
-									out.print("?mid="+session.getAttribute("member"));
-								}
-							%>
-							">
-								<span class="ico cart">장바구니</span> 
-								<span class="count">
-									(<span id="cartCount">0</span>)
-								</span>
-							</a>
+							<c:choose>
+								<c:when test="${not empty member}"><!-- //세션에 값이 없으면 로그인 링크를 출력 -->
+									<a href="/member/shoppingbag?mid=${member}">
+										<span class="ico cart">장바구니</span> 
+										<span class="count">
+											(<span id="cartCount">${sbCount}</span>)
+										</span>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="/member/loginForm">
+										<span class="ico cart">장바구니</span> 
+										<span class="count">
+											(<span id="cartCount">0</span>)
+										</span>
+									</a>
+								</c:otherwise>
+							</c:choose>
 						</li>
 					</ul>
 				</div>

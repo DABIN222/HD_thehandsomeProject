@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- parameterType="com.hdsm.domain.MemberVO" -->
 <mapper namespace="com.hdsm.persistence.MemberMapper2">
+
 		<!-- 회원가입 -->
 	<insert id="insertMember">
 		<!-- 박진수 수정 
@@ -23,6 +24,10 @@
 		select * from member where mid=#{memberId}
 	</select>
 	
+
+
+	<!-- 유저의 장바구니목록들 가져오기 -->
+
 	<select id="getMembersShoppingBag" resultType="com.hdsm.domain.MemberSbagDTO">
 		SELECT
 			*
@@ -35,6 +40,7 @@
 
 	</select>
 	
+	<!-- 그목록들에 있는 제품의 정보 -->
 	<select id="getShoppingBagsProduct" resultType="com.hdsm.domain.ProductVO">
 		SELECT
 			*
@@ -44,6 +50,7 @@
 
 	</select>
 	
+	<!-- 그제품들의 컬러  정보 -->
 	<select id="getProductsColor" resultType="com.hdsm.domain.ThumbnailColorVO">
 		SELECT
 			product_pid, ccolorcode, cname, ccolorimage, c_thumbnail1, c_thumbnail2
@@ -52,4 +59,30 @@
 			product_pid = #{pid}
 
 	</select>
+	
+	<!-- 장바구니 상품 정보 변경 (수량, 사이즈, 컬러 등) -->
+	<update id="updateShoppingBag">
+		UPDATE mycart
+		SET
+			psize = #{psize},
+			pcolor = #{pcolor},
+			pamount = #{pamount}
+		WHERE
+			mid = #{mid} and pid = #{pid}
+	</update>
+	<!-- 장바구니에 상품 있는지 조회 -->
+	<select id="selectShoppingBag" resultType="int">
+		SELECT count(mid) FROM mycart
+		WHERE
+			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+	</select>
+	
+	<!-- 장바구니 상품 정보 삭제 -->
+	<delete id="deleteShoppingBag">
+			DELETE FROM mycart
+			WHERE
+			<foreach collection="msList" item="dto" index="index" separator="OR">
+				mid = #{dto.mid} and pid = #{dto.pid} and psize = #{dto.psize} and pcolor = #{dto.pcolor}
+			</foreach>
+	</delete>
 </mapper> 

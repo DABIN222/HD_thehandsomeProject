@@ -4,7 +4,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.MemberWishListDTO;
+import com.hdsm.domain.MemberWishListDTOforJsp;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
@@ -126,7 +133,7 @@ public class MemberController {
 
 		mid = member.getMid(); // 사용자 입력값 저장
 		mpwd = member.getMpassword(); // 사용자 비밀번호 저장
-
+		
 		MemberVO vo = memberservice.login(member); // mapper -> service 에서 가져온 db값(mid,mpassword)를 객체에 저장
 //			String id = vo.getMid();
 //			String pw = vo.getMpassword();
@@ -135,6 +142,7 @@ public class MemberController {
 		if (vo != null) { // 객체에 값이 있으면 로그인 가능
 			System.out.println("로그인 성공");
 			session.setAttribute("member", mid); // member 변수에 id값 저장
+			session.setAttribute("sbCount", memberservice.getShoppingBagCount(mid));//장바구니 개수 가져오기
 			String name = (String) session.getAttribute("member"); // member 가져와서 저장
 			System.out.println(name);
 
@@ -159,13 +167,13 @@ public class MemberController {
        
        return "home";  
 	}
+
 	
 	// 유저 쇼핑백 페이지 로드
-	// 회원가입 페이지 진입
 	@GetMapping("/shoppingbag")
 	public String userShoppingBag(
-				@RequestParam("mid") String mid,
-				Model model ) {
+		@RequestParam("mid") String mid, Model model ) {
+		
 		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
 		model.addAttribute("shoppingbagList",list);
 
@@ -178,6 +186,8 @@ public class MemberController {
 	public String insertShoppingbag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 담기 진입!");
 		
+		HttpSession session = request.getSession(); // 세션
+
 		// jsp에서 name에 입력된 값 vo에 저장		
 		msVO.setMid(request.getParameter("mid"));
 		msVO.setPid(request.getParameter("pid"));
@@ -186,10 +196,23 @@ public class MemberController {
 		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));		
 		
 		// 장바구니 담기 실시
+		int select = memberservice.selectShoppingBag(msVO);
+		
+		if(select>0) {
+			log.info("이미 장바구니에 존재합니다");
+			return "fail:-1";
+		}
+
+		// 장바구니 담기 실시
 		memberservice.insertShoppingBags(msVO);
+		
+		//바뀐 장바구니 갯수 !
+		int count = memberservice.getShoppingBagCount((String)session.getAttribute("member"));
+		
+		session.setAttribute("sbCount", count);// 바뀐 장바구니 갯수 다시 세서 가져오기
 		log.info("당바구니 담기 성공!");
 
-		return "good";
+		return "success:"+count;
 
 	}
 
@@ -214,12 +237,149 @@ public class MemberController {
 	 * return "member/shoppingbag"; }
 	 */
 	
-	// 마이 페이지 진입
-	@GetMapping("/mypage")
-	public String mypageForm() {
-		log.info("로그인 페이지 왔다");
-		return "member/mypage";
+	// 장바구니 변경
+	@PostMapping("/updateShoppingBag")
+	@ResponseBody
+	public String updateShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+		log.info("장바구니 변경 진입!");
+		
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
+		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
+		msVO.setPsize(request.getParameter("psize"));	// 바꿀 사이즈 name
+		msVO.setPcolor(request.getParameter("pcolor"));	// 바꿀 컬러 name
+		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
+		
+		int cnt = memberservice.updateShoppingBag(msVO);
+		if(cnt != 0) {
+			log.info("장바구니 변경 성공!");
+		}else {
+			log.info("장바구니 변경 실패!");
+		}
+		
+		return "member/shoppingbag";
 	}
 	
 	
+	// 장바구니 삭제
+
+//	@PostMapping("/deleteShoppingBag")
+	@RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
+	public ResponseEntity<Void> deleteShoppingBag(HttpServletRequest request, 
+			@RequestBody List<MemberSbagDTO> parameters) throws Exception {
+		log.info("장바구니 삭제 진입!");
+		HttpSession session = request.getSession(); // 세션
+		
+		// 장바구니 지우기 실시
+		int cnt = memberservice.deleteShoppingBag(parameters);
+		
+		if(cnt != 0) {
+			log.info("장바구니 삭제 성공!");
+			session.setAttribute("sbCount", 
+					memberservice.getShoppingBagCount((String)session.getAttribute("member")));// 바뀐 장바구니 갯수 다시 세서 가져오기
+		}else {
+			log.info("장바구니 삭제 실패!");
+		}
+		
+		
+		return new ResponseEntity<Void>(HttpStatus.OK);//객체로 받았기 때문에 똑같이 객체로 돌려줘야하기 때문
+	}
+	
+	// 마이 페이지 진입
+	@GetMapping("/mypage")
+	public String mypageForm() {
+		log.info("마이 페이지 왔다");
+		return "member/mypage";
+	}
+/*
+	// 위시리스트 페이지 진입
+	@GetMapping("/wishList")
+	public String wishListForm(
+			HttpServletRequest request, 
+			MemberWishListDTO wsDTO,
+			Model model ) {
+		log.info("위시리스트 페이지 진입!");
+		
+		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(wsDTO);
+		model.addAttribute("wishlistList", list);
+		
+		return "member/wishList";
+	}*/
+	
+	// 위시리스트 페이지 진입
+	@GetMapping("/wishList")
+	public String wishList(HttpServletRequest request, Model model ) {
+		HttpSession session = request.getSession(); // 세션
+		String mid = (String) session.getAttribute("member");
+		
+		MemberWishListDTO dto = new MemberWishListDTO();
+		dto.setMember_mid(mid);
+		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(dto);
+		
+		model.addAttribute("wishList",list);
+
+		return "member/wishList";
+	}
+	
+	// 위시리스트 담기
+	@PostMapping("/insertWishList")
+	@ResponseBody// 이거 안하면 return값을 jsp 찾으라는걸로 인식함
+	public String insertWishList(HttpServletRequest request, 
+			MemberWishListDTO wsDTO) throws Exception {
+		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
+		log.info("위시리스트 담기 진입!");
+		HttpSession session = request.getSession(); // 세션
+		
+		log.info("wsDTO 결과 값 : "+wsDTO);
+		log.info("session 결과 값 : "+session);
+		
+		int cnt = 0;
+		//이미 위시리스트에 담아논 적이 없다면!
+		if(memberservice.isinWishList(wsDTO)<1) {
+			cnt = memberservice.insertWishList(wsDTO);
+			if(cnt > 0) {
+				log.info("위시리스트 담기 성공!");
+				session.setAttribute("wsCount", //위시리스트 잘 담았으면 갯수 세서 리턴
+						memberservice.getWishListCount(wsDTO.getMember_mid()));
+				return "success:"+cnt;
+			}
+		}
+		return "fail:"+cnt;
+	}
+
+	// 위시리스트 삭제
+	@RequestMapping(value = "/deleteWishList", produces = "application/json")
+	public ResponseEntity<String> deleteWishListItem(
+			HttpServletRequest request, 
+			@RequestBody List<MemberWishListDTO> deleteList) throws Exception {
+		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
+		log.info("위시리스트 삭제 진입!");
+		HttpSession session = request.getSession(); // 세션
+		
+		ResponseEntity<String> result = null;
+	
+		for(MemberWishListDTO d : deleteList) {
+			log.info(d);
+		}
+		int cnt = memberservice.deleteWishListItem(deleteList);
+		
+		result = ResponseEntity.status(HttpStatus.OK).body("1");//삭제 안됬으면 고대로 1 돌려줘야지
+		
+		if(cnt>0) {//성공
+			result = ResponseEntity.status(HttpStatus.OK).body("0"); //객체로 받았기 때문에 똑같이 객체로 돌려줘야하고 거기에 값을 ""넣어줘서 다시 삭제가 안되도록
+			log.info("삭제 성공!");
+		}
+		
+		
+		
+		return result;
+		
+	}
+	// 회원 등급 페이지 진입
+	@GetMapping("/myGradeInfo")
+	public String myGradeInfoForm() {
+		log.info("위시리스트 페이지 왔다");
+		return "member/myGradeInfo";
+	}
+
 }
