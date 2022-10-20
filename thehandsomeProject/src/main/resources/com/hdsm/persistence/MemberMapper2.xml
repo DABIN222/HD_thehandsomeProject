@@ -54,8 +54,10 @@
 	
 	<!-- 장바구니 상품 정보 삭제 -->
 	<delete id="deleteShoppingBag">
-		DELETE FROM mycart
-		WHERE
-			mid = #{mid} and pid = #{pid} and psize = #{psize} and pcolor = #{pcolor}
+			DELETE FROM mycart
+			WHERE
+			<foreach collection="msList" item="dto" index="index" separator="OR">
+				mid = #{dto.mid} and pid = #{dto.pid} and psize = #{dto.psize} and pcolor = #{dto.pcolor}
+			</foreach>
 	</delete>
 </mapper> 

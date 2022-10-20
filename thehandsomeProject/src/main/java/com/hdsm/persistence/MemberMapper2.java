@@ -33,5 +33,5 @@ public interface MemberMapper2 {
 	public int selectShoppingBag(MemberSbagDTO msVO);
 	
 	// 장바구니 삭제
-	public int deleteShoppingBag(MemberSbagDTO msVO);
+	public int deleteShoppingBag(@Param("msList")List<MemberSbagDTO> msList);
 }

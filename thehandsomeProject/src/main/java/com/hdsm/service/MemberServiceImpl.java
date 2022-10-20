@@ -117,8 +117,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int deleteShoppingBag(MemberSbagDTO msVO) {
-		int cnt = mapper2.deleteShoppingBag(msVO);
+	public int deleteShoppingBag(List<MemberSbagDTO> msList) {
+		int cnt = mapper2.deleteShoppingBag(msList);
 		return cnt;
 	}
 
