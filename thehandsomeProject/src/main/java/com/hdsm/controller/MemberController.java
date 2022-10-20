@@ -305,10 +305,14 @@ public class MemberController {
 	
 	// 위시리스트 페이지 진입
 	@GetMapping("/wishList")
-	public String wishList(
-		@RequestParam("mid") String mid, Model model ) {
+	public String wishList(HttpServletRequest request, Model model ) {
+		HttpSession session = request.getSession(); // 세션
+		String mid = (String) session.getAttribute("member");
 		
-		List<MemberSbagDTOForJsp> list = memberservice.getMemberShoppingBag(mid);
+		MemberWishListDTO dto = new MemberWishListDTO();
+		dto.setMember_mid(mid);
+		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(dto);
+		
 		model.addAttribute("wishList",list);
 
 		return "member/wishList";
@@ -318,7 +322,7 @@ public class MemberController {
 	@PostMapping("/insertWishList")
 	@ResponseBody// 이거 안하면 return값을 jsp 찾으라는걸로 인식함
 	public String insertWishList(HttpServletRequest request, 
-			@RequestBody MemberWishListDTO wsDTO) throws Exception {
+			MemberWishListDTO wsDTO) throws Exception {
 		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
 		log.info("위시리스트 담기 진입!");
 		HttpSession session = request.getSession(); // 세션
@@ -328,17 +332,46 @@ public class MemberController {
 		
 		int cnt = 0;
 		//이미 위시리스트에 담아논 적이 없다면!
-//		if(memberservice.isinWishList(wsDTO)<1) {
-//			cnt = memberservice.insertWishList(wsDTO);
-//			if(cnt > 0) {
-//				log.info("위시리스트 담기 성공!");
-//				session.setAttribute("wsCount", //위시리스트 잘 담았으면 갯수 세서 리턴
-//						memberservice.getWishListCount(wsDTO.getMember_mid()));
-//			}
-//		}
-		return cnt+"success";
+		if(memberservice.isinWishList(wsDTO)<1) {
+			cnt = memberservice.insertWishList(wsDTO);
+			if(cnt > 0) {
+				log.info("위시리스트 담기 성공!");
+				session.setAttribute("wsCount", //위시리스트 잘 담았으면 갯수 세서 리턴
+						memberservice.getWishListCount(wsDTO.getMember_mid()));
+				return "success:"+cnt;
+			}
+		}
+		return "fail:"+cnt;
 	}
 
+	// 위시리스트 삭제
+	@RequestMapping(value = "/deleteWishList", produces = "application/json")
+	public ResponseEntity<String> deleteWishListItem(
+			HttpServletRequest request, 
+			@RequestBody List<MemberWishListDTO> deleteList) throws Exception {
+		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
+		log.info("위시리스트 삭제 진입!");
+		HttpSession session = request.getSession(); // 세션
+		
+		ResponseEntity<String> result = null;
+	
+		for(MemberWishListDTO d : deleteList) {
+			log.info(d);
+		}
+		int cnt = memberservice.deleteWishListItem(deleteList);
+		
+		result = ResponseEntity.status(HttpStatus.OK).body("1");//삭제 안됬으면 고대로 1 돌려줘야지
+		
+		if(cnt>0) {//성공
+			result = ResponseEntity.status(HttpStatus.OK).body("0"); //객체로 받았기 때문에 똑같이 객체로 돌려줘야하고 거기에 값을 ""넣어줘서 다시 삭제가 안되도록
+			log.info("삭제 성공!");
+		}
+		
+		
+		
+		return result;
+		
+	}
 	// 회원 등급 페이지 진입
 	@GetMapping("/myGradeInfo")
 	public String myGradeInfoForm() {

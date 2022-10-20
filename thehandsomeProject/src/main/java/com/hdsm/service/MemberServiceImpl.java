@@ -192,4 +192,9 @@ public class MemberServiceImpl implements MemberService {
 		return wslistList;
 	}
 
+	@Override
+	public int deleteWishListItem(List<MemberWishListDTO> wsList) {
+		return mapper.deleteWishListItem(wsList);
+	}
+
 }

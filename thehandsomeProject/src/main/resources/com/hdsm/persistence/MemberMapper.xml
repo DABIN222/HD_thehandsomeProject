@@ -128,4 +128,13 @@
 			member_mid = #{member_mid}
 	</select>
 	
+	<!-- 위시리스트 아이템 삭제 -->
+	<delete id="deleteWishListItem">
+			DELETE FROM wishlist
+			WHERE
+			<foreach collection="wsList" item="dto" index="index" separator="OR">
+				member_mid = #{dto.member_mid} and pid = #{dto.pid}
+			</foreach>
+	</delete>
+	
 </mapper> 

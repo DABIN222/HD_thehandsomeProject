@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
+import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
@@ -211,9 +212,27 @@ public class ProductController {
 	//상품 상세 정보 보기
 	@GetMapping("/product_detail")
 	public String product_detail(
+			HttpServletRequest request,
 			@RequestParam("pid") String pid,
 			@RequestParam("colorcode") String colorcode
 			,Model model) {
+		String mid;
+		HttpSession session = request.getSession(); // 세션
+		
+		model.addAttribute("isWishList",0);
+		
+		//만약 로그인된 상태면 세션에서 아이디 가져오기
+		if((String)session.getAttribute("member") != null) {
+			mid = (String)session.getAttribute("member");
+			MemberWishListDTO wsDTO = new MemberWishListDTO(); 
+			wsDTO.setMember_mid(mid);
+			wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+			int cnt = mservice.isinWishList(wsDTO);
+			if(cnt>0) {
+				model.addAttribute("isWishList",cnt);
+			}
+		}
+		
 		ProductVO product=service.getProduct(pid);
 		System.out.println(product.getP_size());
 		String[] sizelist=product.getP_size().split(",");

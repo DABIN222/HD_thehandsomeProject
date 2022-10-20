@@ -209,4 +209,17 @@ public class MemberControllerTests {
 				.getModelMap()
 				);
 	}
+	@Test
+	public void testdeleteWishList() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/deleteWishList")
+				.param("member_mid", "asd")
+				.param("pid", "SH2C8LJM902M")
+				)
+				.andReturn()
+				.getModelAndView()
+				.getModelMap()
+				);
+	}
 }

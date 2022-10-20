@@ -5,302 +5,6 @@
 
 <%@include file="/WEB-INF/views/common/header.jspf"%>
 
-<!-- bodyWrap -->
-<body oncontextmenu='return false'>
-	<!-- <div id="transparent_mask"></div> -->
-	<!-- Loading -->
-	<div class="loading_bar" id="loadingBarDiv" style="display: none;">
-		<img src="/_ui/desktop/common/images/common/loading.gif" alt="loading" />
-		<span>�로딩중</span>
-	</div>
-	<!-- //Loading -->
-
-	<form id="CSRFForm" action="/ko/mypage/myWish" method="post">
-		<div>
-			<input type="hidden" name="CSRFToken" value="95caf11d-837e-4d15-bf16-8f8f0055cc28" />
-		</div>
-	</form>
-	<!-- headerWrap -->
-	<div id="headerWrap">
-		<div class="header header_fixed header_main1903">
-			<script type="text/javascript" src="/_ui/desktop/common/js/SsoAjax.js"></script>
-			<form id="autologinForm" name="autologinForm" action="/ko/hp/autologin" method="get">
-				<input type="hidden" name="hcid" id="hcid" value="e2gaf@naver.com" />
-			</form>
-			<div class="top_nav topnav1903">
-				<div class="top_nav_wrap clearfix">
-					<div class="brand_menu brand_menu1903">
-						<ul class="clearfix">
-							<!-- 선호 브랜드 있음 -->
-							<li><span class="on"><a href="/" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
-							<!-- 공간 상 들어가지 못한 나머지 브랜드-->
-						</ul>
-					</div>
-					<div class="gnb_sh_wrap" style="display: none;">
-						<!-- search box -->
-						<div class="gnb_sh_box">
-							<input type="text" class="input" id="gnbsearchwords" title="검색어 입력" value="" onkeypress="if(event.keyCode==13) {EnterSearchHeader(); return false;}" />
-							<a href="javascript:void(0);" id="gnbsearch">검색</a>
-						</div>
-						<!-- //search box -->
-						<!-- search result -->
-						<div class="gnb_sh_result">
-							<div class="tab">
-								<a href="javascript:void(0);" class="menu on">최근검색어</a>
-								<div class="result_list on">
-									<div class="searchWord1" style="display: none;">
-										<a href="javascript:void(0);" class="ml newlyBtn" id="searchWord1"></a><a href="javascript:void(0);"
-											class="close" onclick="deletecookie('HS_Seachwords1')">닫기</a>
-									</div>
-									<div class="searchWord2" style="display: none;">
-										<a href="javascript:void(0);" class="ml newlyBtn" id="searchWord2"></a><a href="javascript:void(0);"
-											class="close" onclick="deletecookie('HS_Seachwords2')">닫기</a>
-									</div>
-									<div class="searchWord3" style="display: none;">
-										<a href="javascript:void(0);" class="ml newlyBtn" id="searchWord3"></a><a href="javascript:void(0);"
-											class="close" onclick="deletecookie('HS_Seachwords3')">닫기</a>
-									</div>
-									<div class="searchWord4" style="display: none;">
-										<a href="javascript:void(0);" class="ml newlyBtn" id="searchWord4"></a><a href="javascript:void(0);"
-											class="close" onclick="deletecookie('HS_Seachwords4')">닫기</a>
-									</div>
-									<div class="searchWord5" style="display: none;">
-										<a href="javascript:void(0);" class="ml newlyBtn" id="searchWord5"></a><a href="javascript:void(0);"
-											class="close" onclick="deletecookie('HS_Seachwords5')">닫기</a>
-									</div>
-									<a href="javascript:void(0);" class="btn_svclose">검색어 <span id="searchSaveYN" save="on">끄기</span></a> 
-									<a href="javascript:void(0);" class="btn_allclose on" onclick="searchOff()">닫기</a>
-								</div>
-								<a href="javascript:void(0);" class="menu">인기검색어</a>
-								<div class="result_list">
-									<div>
-										<a href="javascript:void(0);" class="ml favBtn">jacket</a>
-										<!-- <a href="javascript:void(0);" class="close">닫기</a> -->
-									</div>
-									<div>
-										<a href="javascript:void(0);" class="ml favBtn">blouse</a>
-										<!-- <a href="javascript:void(0);" class="close">닫기</a> -->
-									</div>
-									<div>
-										<a href="javascript:void(0);" class="ml favBtn">stripe</a>
-										<!-- <a href="javascript:void(0);" class="close">닫기</a> -->
-									</div>
-									<div>
-										<a href="javascript:void(0);" class="ml favBtn">ribbon</a>
-										<!-- <a href="javascript:void(0);" class="close">닫기</a> -->
-									</div>
-									<div>
-										<a href="javascript:void(0);" class="ml favBtn">blouson</a>
-										<!-- <a href="javascript:void(0);" class="close">닫기</a> -->
-									</div>
-									<a href="javascript:void(0);" class="btn_svclose">검색어 <span id="searchSaveYNfame" save="on">끄기</span></a> 
-									<a href="javascript:void(0);" class="btn_allclose" onclick="searchOff()">닫기</a>
-								</div>
-							</div>
-						</div>
-						<!-- //search result -->
-					</div>
-					<!-- 201705 search_box_wrap -->
-					<div class="search_box_wrap sbw1803" id="searchBox">
-						<form name="search" id="search" action="/ko/hssearch/searchCount" method="post" onsubmit="return false;">
-							<input type="hidden" name="CSRFToken" value="95caf11d-837e-4d15-bf16-8f8f0055cc28" /> 
-							<input type="hidden" name="searchwords" value="" /> 
-							<input type="hidden" name="startCount" value=""> 
-							<input type="hidden" name="mode" value=""> 
-							<input type="hidden" name="sort" value=""> 
-							<input type="hidden" name="collection" value=""> 
-							<input type="hidden" name="range" value=""> 
-							<input type="hidden" name="startDate" value=""> 
-							<input type="hidden" name="endDate" value=""> 
-							<input type="hidden" name="searchField" value=""> 
-							<input type="hidden" name="reQuery" /> 
-							<input type="hidden" id="prefixQuery" value="" /> 
-							<input type="hidden" id="identity" name="identity" value=""> 
-							<input type="hidden" id="realQuery" name="realQuery" value="" /> 
-							<input type="hidden" id="loginState" value="loginOn" /> 
-							<input type="hidden" id="athomeInfo" value="" /> 
-							<input type="hidden" id="selectedLang" name="selectedLang" value="product_ko" /> 
-							<input type="hidden" id="lang" name="lang" value="ko" /> 
-							<input type="hidden" id="brandPageGubun" name="brandPageGubun" value="off">
-							<!-- 브랜드 페이지 여부 -->
-							<input type="hidden" id="brand_img" name="brand_img" value="">
-							<input type="hidden" id="brand_url" name="brand_url" value="">
-							<div class="search_box">
-								<label for="query" class="hidden">search</label> 
-								<input type="search" id="query" name="query" value="" onKeypress="javascript:pressCheck((event),this);"
-									style="margin-top: 0.2px;" autocomplete="off"> 
-								<span class="placeholder"></span> 
-								<a href="javascript:void(0);"><span class="btn_close">닫기</span></a> 
-								<a href="javascript:GA_search();doSearch();" class="search"><span class="ico">검색</span></a>
-							</div>
-						</form>
-						<!--검색박스 활성화 data_react -->
-						<div class="data_react">
-							<!-- tab 검색어 입력 전 -->
-							<div class="search_tab">
-								<div class="btn_search_tab" style="display: none;">
-									<a href="javascript:void(0);" rel="recent_search" class="btn_recent_search on"
-										onclick="GA_Event('검색','최근 검색어','클릭')">최근 검색어</a> 
-									<a href="javascript:void(0);" rel="style_search" class="btn_style_search" id="btn_style_search">Style Search</a> 
-									<a href="javascript:void(0);" rel="popular_search" class="btn_style_search" id="btn_top_search"
-										style="display: none;" onclick="GA_Event('검색','인기검색어','클릭')">인기검색어</a>
-								</div>
-								<!-- 최근 검색어 -->
-								<div class="recent_search s_tab">
-									<ul id="mykeyword"></ul>
-								</div>
-								<!-- style search -->
-								<form id="searchStyle" name="searchStyle" action="/ko/hssearch/searchCount" method="post" onsubmit="return false;">
-									<input type="hidden" name="query" value="" /> 
-									<input type="hidden" name="collection" value="" /> 
-									<input type="hidden" id="CSRFToken" name="CSRFToken" value="95caf11d-837e-4d15-bf16-8f8f0055cc28" /> 
-									<input type="hidden" id="searchStyleYn" name="searchStyleYn" value="searchStyle" />
-								</form>
-
-								<div class="style_search s_tab" id="stylesearch_area">
-									<p class="style_search_tlt">Style Search 2018</p>
-									<div class="ss_txt_list">
-										<ul class="style_search_arr" id="style_search_arr"></ul>
-									</div>
-									<div class="ss_img_list" id="styleSearchSlider">
-										<ul class="slides">
-											<li></li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- style search 컨텐츠 하나일 때-->
-								<!-- <div class="style_search s_tab">
-	                            <div class="ss_txt_list">
-	                                <p class="style_search_tlt">Style Search 2017 S/S</p>
-	                                <ul id="style_search_arr">
-	                               </ul>
-	                            </div>
-	                             <div class="ss_img_list" id="styleSearchSlider">
-                                    <ul class="slides"><li></li></ul>
-                                </div>
-	                        </div> -->
-								<!-- //style search 컨텐츠 하나일 때-->
-								<div class="popular_search s_tab" id="topsearch_area" style="display: none;">
-									<ol class="ol_popular1" id="topsearchLeft"></ol>
-									<!-- <ol class="ol_popular2" id="topsearchRight"></ol> -->
-								</div>
-							</div>
-							<!--// tab 검색어 입력 전 -->
-							<!-- 검색어 입력 후 (검색어 자동완성) -->
-							<div class="search_autocomplete">
-								<div class="autocomplete_txt">
-									<div id="brandView">
-										<ul></ul>
-									</div>
-									<div id="ark" style="height: 170px;"></div>
-								</div>
-								<div class="autocomplete_right">
-									<div class="category_brand">
-										<p>카테고리/브랜드</p>
-										<div class="brand">
-											<p id="autocomplete_brand">브랜드</p>
-										</div>
-										<div class="category">
-											<p id="autocomplete_category">카테고리</p>
-										</div>
-									</div>
-									<div class="autocomplete_img">
-										<p>
-											<span>"<span id="autocomplete_query">{0}</span>"</span>에 대한 주요 검색 결과
-										</p>
-										<!-- <p><span>"<span id="autocomplete_query"></span>&#32;"</span>에 대한 주요 검색 결과</p> -->
-										<ul id="auto2"></ul>
-									</div>
-								</div>
-							</div>
-							<!--// 검색어 입력 후 (검색어 자동완성) -->
-						</div>
-						<!--//검색박스 활성화 data_react -->
-					</div>
-					<!--// 201705 search_box_wrap -->
-					<div class="util_menu" style="display: block;">
-						<ul class="clearfix">
-							<li><a href="javascript:setLogout();" onclick="GA_Event('공통','헤더_메뉴','로그아웃')">로그아웃</a></li>
-							<li class="header_dropmemu mypage">
-								<a href="/member/mypage" class="btn" onclick="GA_Event('공통','헤더_메뉴','마이페이지')">마이페이지</a>
-								<div class="list">
-									<ul>
-										<li><a href="/ko/mypage/order/myorders" onclick="GA_Event('공통','헤더_메뉴','마이페이지_주문조회')">주문조회<!-- 주문조회 --></a></li>
-										<li><a href="/ko/mypage/myGradeInfo" onclick="GA_Event('공통','헤더_메뉴','마이페이지_나의회원등급')">나의회원등급<!-- 온라인등급 --></a></li>
-										<li><a href="/ko/mypage/voucher" onclick="GA_Event('공통','헤더_메뉴','마이페이지_쿠폰조회')">쿠폰조회<!-- 쿠폰조회 --></a></li>
-										<li><a href="/ko/mypage/mypoint" onclick="GA_Event('공통','헤더_메뉴','마이페이지_마일리지조회')">마일리지조회<!-- 포인트조회 --></a></li>
-										<li><a href="/ko/mypage/personInfomationChangePWCheck" onclick="GA_Event('공통','헤더_메뉴','마이페이지_회원정보변경')">회원정보변경<!-- 회원정보변경 --></a></li>
-										<li><a href="/ko/svcenter/mantomaninquiry" onclick="GA_Event('공통','헤더_메뉴','마이페이지_온라인상담')">온라인상담<!-- 온라인 상담 --></a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="honey_talk_service1905 remove1907">
-						<!-- 추가 190702 -->
-						<!-- vip 채팅 서비스 -->
-						<div id="chatbotMain" style="display: none;">
-							<!-- <div class="vip_chat_img">
-	                        <span>VIP 채팅 서비스</span>
-	                    </div> -->
-							<!-- 200921 챗봇 이미지 변경 -->
-							<a href="#none" class="btn_viptalk_v2 v3" onclick="callChatbot();GA_Event('공통','유틸_메뉴','하니톡');"> 
-								<img src="http://cdn.thehandsome.com/_ui/desktop/common/images/main/talk-talk-chat-icon.png">
-							</a>
-						</div>
-						<!-- //vip 채팅 서비스 -->
-					</div>
-				</div>
-			</div>
-
-			<!-- validation check message global -->
-			<input type="hidden" id="validationCheckPwd" value="비밀번호를 재입력 하셔야 합니다." /> 
-			<input type="hidden" id="validationCheck" value="필수데이터가 입력되지 않았습니다." /> 
-			<input type="hidden" id="validationCheckMsg" value="다음 사항을 확인해 주세요." /> 
-			<input type="hidden" id="validationCheckMsg1" value="필수데이터가 입력되지 않았습니다." />
-			<input type="hidden" id="validationCheckMsg2" value="동일문자를 3번 이상 사용할 수 없습니다." /> 
-			<input type="hidden" id="validationCheckMsg3" value="연속된 문자열(123 또는 321, abc, cba 등) 3자리이상 올 수 없습니다." /> 
-			<input type="hidden" id="validationCheckMsg4" value="Caps Lock 이 켜져 있습니다." />
-			<input type="hidden" id="validationCheckMsg5" value="이메일 아이디의 중복 확인이 필요합니다." /> 
-			<input type="hidden" id="validationCheckMsg6" value="이메일의 중복확인이 필요합니다." /> 
-			<input type="hidden" id="deliveryOkMsg" value="확인" /> 
-			<input type="hidden" id="deliveryCancelMsg" value="취소" />
-
-			<form id="chatbotForm" action="https://talk.thehandsome.com/front/v1/jsp/view/chat.jsp" method="post" target="chatwindow">
-				<input type="hidden" name="token" id="chatbot_token"> 
-				<input type="hidden" name="talkId" id="chatbot_talkId">
-				<div>
-					<input type="hidden" name="CSRFToken" value="95caf11d-837e-4d15-bf16-8f8f0055cc28" />
-				</div>
-			</form>
-			<!-- //headerWrap -->
-			<div class="gnbwarp new201608 clearfix">
-				<h1 class="logo logo1903">
-					<a href="/" onclick="GA_Event('공통', '로고', '상단');">thehandsome.com</a>
-				</h1>
-				<!-- 첫번째 c:if -->
-
-
-				<div id="transparent_mask"></div>
-				<!-- 201803 util menu -->
-				<div class="util_menu util_menu1803">
-					<ul class="clearfix">
-						<li><a href="javascript:void(0);"><span class="ico_sh">search</span></a></li>
-						<li><a href="/member/wishList" onclick="GA_Event('공통','유틸_메뉴','위시리스트');">
-							<span class="ico wishlist">wish list</span> 
-							<span class="count">(<span id="wishlistCount">2</span>)</span></a></li>
-						<li><a href="/member/shoppingbag" onclick="GA_Event('공통','유틸_메뉴','쇼핑백');">
-							<span class="ico cart">장바구니</span> 
-							<span class="count">(<span id="cartCount">2</span>)</span></a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- //201803 util menu -->
-		</div>
-	</div>
-	<!-- //headerWrap -->
-
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
 			<span id="menuTitle">위시리스트</span>
@@ -386,6 +90,7 @@
 				<form id="wishListForm" action="/ko/mypage/myWishList"></form>
 				<!-- Table -->
 				<div class="tblwrap">
+					
 					<table class="tbl_ltype">
 						<caption>Backet</caption>
 						<colgroup>
@@ -405,7 +110,191 @@
 							</tr>
 						</thead>
 						<tbody id="listBody">
-						</tbody>
+							<c:forEach items="${wishList}" var="wishitem" varStatus="status">
+							  <tr>
+							    <td class="frt">
+							      <input
+							        type="checkbox"
+							        title="선택"
+							        value="9611194827454"
+							        name="checkpd"
+							        data-value="SH2C9WJC201M"
+							      />
+							    </td>
+							    <td class="pt_list_wrap">
+							      <div class="pt_list_all">
+							        <a
+							          href="/ko/p/SH2C9WJC201M"
+							          onclick="javascript:setEcommerceData('0','Click');GA_Event('위시리스트', '상품', '캐시미어 블렌드 헤링본 재킷');"
+							          ><img
+							            src=""
+							            alt="상품 이미지"
+							        /></a>
+							        <div class="tlt_wrap">
+							          <a
+							            href="/ko/p/SH2C9WJC201M"
+							            class="basket_tlt"
+							            onclick="javascript:setEcommerceData('0','Click');GA_Event('위시리스트', '상품', '캐시미어 블렌드 헤링본 재킷');"
+							          >
+							            <span class="tlt">${wishitem.pvo.bname}</span>
+							            <span class="sb_tlt">${wishitem.pvo.pname}</span>
+							          </a>
+							        </div>
+							      </div>
+							    </td>
+							    <td class="al_middle">
+							      <div class="price_wrap"><span>${wishitem.pvo.pprice}</span></div>
+							    </td>
+							    <td class="al_middle"><span class="earn">5 %</span></td>
+							    <td class="al_middle">
+							      <div class="btn_wrap">
+							        <a
+							          href="javascript:void(0)"
+							          class="btn wt_ss add_bag parent_add_bag"
+							          product="8864770457601"
+							          index="0"
+							          productcode="SH2C9WJC201M"
+							          onclick='GA_Event("위시리스트", "쇼핑백담기", "캐시미어 블렌드 헤링본 재킷");'
+							          >쇼핑백담기<!-- 쇼핑백담기 --></a
+							        >
+							        <a
+							          href="javascript:void(0)"
+							          class="btn wt_ss wishDel"
+							          wishcode="9611194827454"
+							          onclick='GA_Event("위시리스트", "삭제", "캐시미어 블렌드 헤링본 재킷");'
+							          data-value="SH2C9WJC201M"
+							          >삭제<!-- 삭제 --></a
+							        >
+							      </div>
+							    </td>
+							  </tr>
+							  <tr class="hid">
+								  <td colspan="5" class="basket_wrap">
+								    <div class="basket_info" id="cart0" style="display: block">
+								      <span class="btn_arr">위치아이콘</span>
+								      <div class="info">
+								        <div class="pt_list" id="pt_list_0">
+								          <a
+								            href="/ko/HANDSOME/FASHION-ACC-/MEN-SHOES/Formal-shoes/%EB%A0%88%EB%8D%94-%EC%97%A0%EB%B8%94%EB%9F%BC-%EC%BD%94%EC%9D%B8-%EB%A1%9C%ED%8D%BC/p/SH2C7ASZ074M_BK"
+								          >
+								            <img
+								              src="http://newmedia.thehandsome.com/SH/2C/FW/SH2C7ASZ074M_BK_S01.jpg"
+								              alt=""
+								            />
+								          </a>
+								          <div class="tlt_wrap wish">
+								            <a
+								              href="/ko/HANDSOME/FASHION-ACC-/MEN-SHOES/Formal-shoes/%EB%A0%88%EB%8D%94-%EC%97%A0%EB%B8%94%EB%9F%BC-%EC%BD%94%EC%9D%B8-%EB%A1%9C%ED%8D%BC/p/SH2C7ASZ074M_BK"
+								              class="basket_tlt"
+								            >
+								              <input type="hidden" id="promotionProduct0" value="false" />
+								              <span class="tlt" id="brandName0">${wishitem.pvo.bname}</span>
+								              <span class="sb_tlt" id="productName0"
+								                ><span class="reserveProdNmChild"></span>${wishitem.pvo.pname}</span
+								              >
+								            </a>
+								            <!-- color_size -->
+								            <dl class="cs_wrap">
+								              <dt>COLOR</dt>
+								              <dd>
+								                <div class="cl_select">
+								                	<c:forEach items="${wishitem.colorList}" var="color">
+									                  <a
+									                    href="javascript:void(0)"
+									                    onclick="setOptions(this, '0', 'SH2C7ASZ074M_BK', 'style');"
+									                    class="beige on"
+									                    style="
+									                      background: #000000
+									                        url('${color.ccolorimage}');
+									                    "
+									                    >${color.cname}</a>
+								                    </c:forEach>
+								                </div>
+								              </dd>
+								              <dt>SIZE</dt>
+								              <dd>
+								                <div class="sz_select">
+								                	<c:forEach items="${wishitem.sizeList}" var="size">
+								                  <a
+								                    href="javascript:void(0)"
+								                    onclick="setOptions(this, '0', 'SH2C7ASZ074M_BK_260', 'size');"
+								                    id="SH2C7ASZ074M_BK_260"
+								                    class="on"
+								                    >${size}</a
+								                  >
+								                  </c:forEach>
+								                </div>
+								              </dd>
+								              <dt>수량<!-- 수량 --></dt>
+								              <dd>
+								                <span class="qty_sel num">
+								                  <a href="javascript:leftClick(0)" class="left">이전 버튼</a>
+								                  <input
+								                    type="text"
+								                    title="수량"
+								                    value="1"
+								                    id="quantity0"
+								                    class="mr0"
+								                    readonly="readonly"
+								                  />
+								                  <a href="javascript:rightClick(0)" class="right">다음 버튼</a>
+								                </span>
+								              </dd>
+								            </dl>
+								            <!-- //color_size -->
+								            <form
+								              id="addToCartForm0"
+								              name="addToCartForm"
+								              action="/ko/mypage/wishlistaddcart?productCode=SH2C7ASZ074M&amp;index=0"
+								              method="post"
+								            >
+								              <input
+								                type="hidden"
+								                maxlength="3"
+								                size="1"
+								                name="qty"
+								                class="qty"
+								              />
+								              <input
+								                type="hidden"
+								                name="productCodePost"
+								                value="SH2C7ASZ074M_BK_260"
+								              />
+								              <input
+								                type="hidden"
+								                name="productCodeType"
+								                value="ApparelSizeVariantProduct"
+								              />
+								              <input type="hidden" id="stockCnt0" value="16" />
+								              <input type="hidden" name="onlyStorePickup" value="false" />
+								              <div>
+								                <input
+								                  type="hidden"
+								                  name="CSRFToken"
+								                  value="6a78cd6f-6ec6-4c63-88fb-3fa2102e55df"
+								                />
+								              </div>
+								            </form>
+								          </div>
+								        </div>
+								        <div class="btns">
+								          <a href="javascript:void(0)" class="btn wt_ss bag" id="addToCart_0"
+								            >쇼핑백담기<!-- 쇼핑백담기 --></a
+								          >
+								          <a href="javascript:void(0)" class="btn wt_ss mt10 bag" id="cancle_0"
+								            >취소<!-- 취소 --></a
+								          >
+								          <a href="javascript:void(0)" class="btn_close bag" id="close_0"
+								            >닫기<!-- 닫기 --></a
+								          >
+								        </div>
+								      </div>
+								    </div>
+								  </td>
+								</tr>
+
+							  </c:forEach>
+							</tbody>
 					</table>
 				</div>
 				<!-- //Table -->
@@ -423,6 +312,4 @@
 			<!-- //cnts -->
 		</div>
 	</div>
-</body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
-</html>

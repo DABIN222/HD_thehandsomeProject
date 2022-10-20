@@ -2,6 +2,8 @@ package com.hdsm.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -53,4 +55,8 @@ public interface MemberService {
 	
 	// 위시리스트에 목록들 가져오기
 	public List<MemberWishListDTOforJsp> getUsersWishList(MemberWishListDTO wsDTO);
+	
+	//유저가 위시리스트 아이템 지울때
+	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
+	
 }

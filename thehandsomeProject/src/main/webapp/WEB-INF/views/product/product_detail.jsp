@@ -3269,6 +3269,7 @@
 			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
+	
 	//수량버튼 올렸을때! 3개면 안된다고 경고!
 	function fn_qtyAdd() {
 		let qty = parseInt($("#txtqty").val());
@@ -3288,8 +3289,85 @@
 		}
 	}
 	
+	let isWishList = "${isWishList}";
+	//좋아요 지우는 ajax처리
+	function deleteajaxRequest(params){
+		$.ajax({
+			type : "POST",
+			url : "/member/deleteWishList",
+			data : params,// json 형태의 데이터
+			contentType: "application/json; charset=utf-8",
+			success : function(data) {
+				console.log(data);
+				isWishList=data;
+				$('.wishlist1803').stop().toggleClass('on');
+				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
+				$('.toast_popup').stop().removeClass('on');
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+            	console.log(jqXHR);  //응답 메시지
+            	console.log(textStatus); //"error"로 고정인듯함
+            	console.log(errorThrown);
+            }
+		});
+	}
+	
+	
+	// 좋아요 눌렀을 때 
+	function addWishListClick() {
+		// 로그인 안했으면 로그인 했는지 물어보기
+		<%
+			if ((String)session.getAttribute("member") == null) {
+				// 세션에 값이 없으면 로그인 페이지로
+		%>
+			$(".layerArea").show();
+			$("#AskLogin").show();
+		<%
+			} else {
+		%>
+				if(isWishList != "0"){//이미 등록된 상태 일때
+					const deleteList = [];
+					let itemMap = new Map();
+					itemMap.set('member_mid',"${member}");
+					itemMap.set('pid', "${productVO.pid}");
+					deleteList.push(Object.fromEntries(itemMap));
+					deleteajaxRequest(JSON.stringify(deleteList));
+				}else{
+					//등록하고싶을때
+					let params = {
+						member_mid : "${member}",
+						pid : "${productVO.pid}"
+					}
+					$.ajax({
+						type : "POST",
+						url : "/member/insertWishList",
+						data : params,					// json 형태의 데이터
+						success : function(data) {
+							console.log("삽입성공");
+							isWishList="1";
+							console.log(isWishList);
+							$('.toast_popup p').text('위시리스트에 담았습니다.');
+							$('.wishlist1803').stop().toggleClass('on');
+						},
+						error : function(jqXHR, textStatus, errorThrown){
+			            	console.log(jqXHR);  //응답 메시지
+			            	console.log(textStatus); //"error"로 고정인듯함
+			            	console.log(errorThrown);
+			            }
+					});
+				}
+
+		<%
+			}
+		%>
+	}
+	
 	$(document).ready(
 					function() {
+						//페이지 로드될때 좋아요 누른거면 좋아요 처리를 합시다
+						if(isWishList !== "0"){
+							$('.wishlist1803').stop().toggleClass('on');
+						}
 						//쇼핑백에 담을 변수 선언
 						let CartorOrder_size = "";
 						let CartorOrder_sumprice = "";
@@ -3545,80 +3623,8 @@
 									$('#addToCartBuynowForm').submit();
 								});
 
+
+
 					});
-
-	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.
-	
-	// 좋아요 눌렀을 때 
-	function addWishListClick() {
-		
-		
-		// 로그인 안했으면 로그인 했는지 물어보기
-		<%
-			if ((String)session.getAttribute("member") == null) {
-				// 세션에 값이 없으면 로그인 페이지로
-		%>
-			$(".layerArea").show();
-			$("#AskLogin").show();
-		<%
-			} else {
-		%>
-				let param = {
-					mid : "${member}",
-					pid : "${productVO.pid}"
-				}
-				const params = JSON.stringify(param);
-				console.log(params);
-				$.ajax({
-					type : "POST",
-					url : "/member/insertWishList",
-					data : params,					// json 형태의 데이터
-
-					success : function(data) {
-						console.log("data" + data);
-						const count = parseInt(data.split(':')[1]);
-						const isfail = data.split(':')[0];
-
-						// 만약 세션의 위시리스트 개수와 반환받은 data와 다르면 성공, 아니면 실패
-						if(isfail == 'success') {
-							console.log("count : "+count+" / isfail : "+isfail);
-						}else {
-							console.log("시발좆대따");
-						}
-					}
-				})
-		<%
-			}
-		%>
-		
-		var productCode = $("#productCode").val();
-		//console.log(productCode);
-		$('.wishlist1803').stop().toggleClass('on');
-		$('.toast_popup').stop().toggleClass('on');
-		$('.toast_popup p').stop().show();
-		if ($('.wishlist1803').hasClass('on')) {
-			$('.toast_popup p').text('위시리스트에 담았습니다.');
-			$('.toast_popup').stop().addClass('on');
-		} else {
-			$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
-			$('.toast_popup').stop().removeClass('on');
-		}
-		$('.toast_popup p').stop().animate({
-			'top' : '-42px',
-			'opacity' : 1
-		});
-		setTimeout(function() {
-			$('.toast_popup p').stop().animate({
-				'top' : 0,
-				'opacity' : 0
-			});
-		}, 1750);
-		setTimeout(function() {
-			$('.toast_popup p').stop().fadeOut();
-		}, 2000);
-
-	}
-	
-	
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
