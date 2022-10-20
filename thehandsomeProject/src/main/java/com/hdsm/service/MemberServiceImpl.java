@@ -14,12 +14,9 @@ import org.springframework.stereotype.Service;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
-<<<<<<< HEAD
 import com.hdsm.domain.OrderPageItemVO;
-=======
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
->>>>>>> b12e34a8833d59d96b24d2d7794794f3a9eb65e8
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.persistence.MemberMapper;
@@ -35,15 +32,13 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	private ProductMapper productmapper;
 	
 //	@Autowired
 //	private MemberMapper2 mapper2;
 
->>>>>>> b12e34a8833d59d96b24d2d7794794f3a9eb65e8
 	// 회원 가입
 	@Override
 	public void insertMember(MemberVO member) {
