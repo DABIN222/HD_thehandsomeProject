@@ -27,44 +27,37 @@
 						<div class="item_visual" id="imageDiv" style="margin-top: 20px;">
 							<ul>
 								<c:if test="${not empty colorVO.cimage1}">
-									<li><img src="${colorVO.cimage1}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage1}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage2}">
-									<li><img src="${colorVO.cimage2}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage2}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage3}">
-									<li><img src="${colorVO.cimage3}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage3}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage4}">
-									<li><img src="${colorVO.cimage4}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage4}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage5}">
-									<li><img src="${colorVO.cimage5}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage5}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage6}">
-									<li><img src="${colorVO.cimage6}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage6}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
 								<c:if test="${not empty colorVO.cimage7}">
-									<li><img src="${colorVO.cimage7}" class="respon_image"
-										alt=""
+									<li><img src="${colorVO.cimage7}" class="respon_image" alt=""
 										onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'">
 									</li>
 								</c:if>
@@ -95,7 +88,7 @@
 							<span class="name ko_fir_spel">${productVO.pname}<input
 								type="hidden" id="brandName" value="${productVO.bname}">
 								<input type="hidden" id="productName" value="${productVO.pname}">
-								<input type="hidden" id="productCode" value=""> <!-- 이거는 jquery로 처리하자 -->
+								<input type="hidden" id="productCode" value="${productVO.pid}"> <!-- 이거는 jquery로 처리하자 -->
 							</span>
 						</h4>
 
@@ -179,9 +172,8 @@
 										<c:forEach items="${colorVOList}" var="colorVO">
 											<input type="hidden" id="colorName" value="${colorVO.cname}">
 											<li id="${colorVO.ccolorcode}"><input type="hidden"
-												class="colorNameVal" > <a
-												href="javascript:void(0);" class="colorBtn"
-												value="${colorVO.cname}"
+												class="colorNameVal" > 
+											<a href="javascript:void(0);" class="colorBtn" value="${colorVO.cname}"
 												colorcode="${colorVO.ccolorcode}"
 												style="background: #000000 url('${colorVO.ccolorimage})"
 												onmouseover="setColorName('${colorVO.cname}');"
@@ -781,13 +773,10 @@
 					<!-- //st_store_wrap -->
 					<div class="btnwrap clearfix"
 						style="position: absolute; width: 473px; /* margin-top: -153.979px; */ margin-bottom: 153.979px;">
-						<input type="button" value=""
-							class="btn wishlist1803 float_left ml0  "
-							onclick="addWishListClick();GA_Event('상품_상세','하단 고정 버튼','좋아요');">
+						<input type="button" value="" class="btn wishlist1803 float_left ml0  " onclick="addWishListClick();">
 
 						<div class="toast_popup">
-							<p style="display: none; top: -4.12381px; opacity: 0.031172;">위시리스트에서
-								삭제했습니다.</p>
+							<p style="display: none; top: -4.12381px; opacity: 0.031172;">위시리스트에서 삭제했습니다.</p>
 						</div>
 
 						<!--190508 추가 -->
@@ -800,33 +789,26 @@
 						</div>
 						<!--//190508 추가 -->
 
-						<form id="addToCartForm" name="addToCartForm" action="/쇼핑백 등록 url"
-							method="post">
-							<input type="hidden" name="cart_prev_colorcode"
-								id="cart_prev_colorcode" value="${curcolorcode}" /> <input
-								type="hidden" name="cart_size" id="cart_size" value="" /> <input
-								type="hidden" name="cart_sumprice" id="cart_sumprice" value="" />
-							<input type="hidden" name="hsm" id="hsm" value="" /> <input
-								type="hidden" name="hspoint" id="hspoint" value="" />
-							<input type="button" value="쇼핑백 담기"
-								class="btn cart1803 float_left ml0" id="addToCartButton">
+						<form id="addToCartForm" name="addToCartForm" action="/쇼핑백 등록 url" method="post">
+							<input type="hidden" name="cart_prev_colorcode" id="cart_prev_colorcode" value="${curcolorcode}" /> 
+							<input type="hidden" name="cart_size" id="cart_size" value="" /> 
+							<input type="hidden" name="cart_sumprice" id="cart_sumprice" value="" />
+							<input type="hidden" name="hsm" id="hsm" value="" /> 
+							<input type="hidden" name="hspoint" id="hspoint" value="" />
+							<input type="button" value="쇼핑백 담기" class="btn cart1803 float_left ml0" id="addToCartButton">
 							<!-- onclick="addToCart();GA_Event('상품_상세','하단 고정 버튼','쇼핑백담기');" -->
 							<div>
-								<input type="hidden" name="CSRFToken"
-									value="7399b544-9191-4d49-af3a-9a782a52adc4">
+								<input type="hidden" name="CSRFToken" value="7399b544-9191-4d49-af3a-9a782a52adc4">
 							</div>
 						</form>
-						<form id="addToCartBuynowForm" name="addToCartBuynowForm"
-							action="/product/order_page" method="post">
-							<input type="hidden" name="order_colorcode" id="order_colorcode"
-								value="${curcolorcode}" /> <input type="hidden"
-								name="order_size" id="order_size" value="" /> <input
-								type="hidden" name="order_sumprice" id="order_sumprice" value="" />
+						<form id="addToCartBuynowForm" name="addToCartBuynowForm" action="/product/order_page" method="post">
+							<input type="hidden" name="order_colorcode" id="order_colorcode" value="${curcolorcode}" /> 
+							<input type="hidden" name="order_size" id="order_size" value="" /> 
+							<input type="hidden" name="order_sumprice" id="order_sumprice" value="" />
 							<input type="hidden" name="order_hsm" id="order_hsm" value="" />
-							<input type="hidden" name="order_hspoint" id="order_hspoint"
-								value="" /> <input type="hidden" name="order_count"
-								id="order_count" value="" /> <input type="button" value="바로주문"
-								class="btn order float_right mr0" id="addToCartBuyNowButton">
+							<input type="hidden" name="order_hspoint" id="order_hspoint" value="" /> 
+							<input type="hidden" name="order_count" id="order_count" value="" /> 
+							<input type="button" value="바로주문" class="btn order float_right mr0" id="addToCartBuyNowButton">
 						</form>
 					</div>
 
@@ -1243,16 +1225,14 @@
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img
-													src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지"
-													onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<a href="#;"><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
+													id="reviewProducImg" alt="상품 이미지" onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName"></span> <span class="sb_tlt"
-														id="reviewProductProductName"></span> / <span
-														id="reviewProducPrice"></span>
+													<a href="#;" class="basket_tlt"> 
+													<span class="tlt" id="reviewProductBrandName"></span> 
+													<span class="sb_tlt" id="reviewProductProductName"></span> / 
+													<span id="reviewProducPrice"></span>
 													</a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
@@ -1264,20 +1244,18 @@
 																</p>
 																<ul class="color_chip clearfix">
 																	<input type="hidden" id="colorName" value="BLACK">
-																	<li id="TH2CBKPC033M_BK"><input type="hidden"
-																		class="colorNameVal" value="BLACK"> <a
-																		href="#;" class="beige" data-color="BLACK"
+																	<li id="TH2CBKPC033M_BK">
+																		<input type="hidden" class="colorNameVal" value="BLACK"> 
+																		<a href="#;" class="beige" data-color="BLACK"
 																		style="background: #000000 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_C01.jpg/dims/resize/24x24');"
 																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_BK', 'BLACK');"
-																		onmouseover="setColorName('BLACK');"
-																		onmouseout="setColorName('');"></a></li>
-																	<li id="TH2CBKPC033M_TG"><input type="hidden"
-																		class="colorNameVal" value="Taupe Grey"> <a
-																		class="beige" data-color="Taupe Grey"
+																		onmouseover="setColorName('BLACK');" onmouseout="setColorName('');"></a></li>
+																	<li id="TH2CBKPC033M_TG">
+																		<input type="hidden" class="colorNameVal" value="Taupe Grey"> 
+																		<a class="beige" data-color="Taupe Grey"
 																		style="background: #9b9595 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_TG_C01.jpg/dims/resize/24x24');"
 																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_TG', 'Taupe Grey');"
-																		onmouseover="setColorName('Taupe Grey');"
-																		onmouseout="setColorName('');"></a></li>
+																		onmouseover="setColorName('Taupe Grey');" onmouseout="setColorName('');"></a></li>
 																	<li><span class="cl_name" id="colorNameContent"></span>
 																	</li>
 																</ul>
@@ -1329,35 +1307,40 @@
 								</tr>
 								<tr class="radio_btn_1905 bk">
 									<th scope="row" class="th_space">연 령</th>
-									<td colspan="3"><input id="ageG1" type="radio" name="age"
-										value="18세 이하"> <label for="ageG1">18세 이하</label> <input
-										id="ageG2" type="radio" name="age" value="20대"> <label
-										for="ageG2">20대</label> <input id="ageG3" type="radio"
-										name="age" value="30대"> <label for="ageG3">30대</label>
+									<td colspan="3">
+										<input id="ageG1" type="radio" name="age" value="18세 이하"> 
+										<label for="ageG1">18세 이하</label> 
+										<input id="ageG2" type="radio" name="age" value="20대"> 
+										<label for="ageG2">20대</label> 
+										<input id="ageG3" type="radio" name="age" value="30대"> 
+										<label for="ageG3">30대</label>
 										<input id="ageG4" type="radio" name="age" value="40대">
-										<label for="ageG4">40대</label> <input id="ageG5" type="radio"
-										name="age" value="50대"> <label for="ageG5">50대</label>
+										<label for="ageG4">40대</label> 
+										<input id="ageG5" type="radio" name="age" value="50대"> 
+										<label for="ageG5">50대</label>
 										<input id="ageG6" type="radio" name="age" value="60대 이상">
-										<label for="ageG6">60대 이상</label></td>
+										<label for="ageG6">60대 이상</label>
+									</td>
 								</tr>
 								<tr class="input_txt_1905">
-									<th scope="row" class="th_space" id="thHeight"><strong
-										class="reqd">*</strong> 키</th>
-									<td><input type="text" name="height" id="height"
-										style="width: 75%; margin-right: 10px">cm</td>
-									<th scope="row" class="th_space" id="thEnjoySize"><strong
-										class="reqd">*</strong> 평소 사이즈</th>
+									<th scope="row" class="th_space" id="thHeight">
+										<strong class="reqd">*</strong> 키</th>
+									<td><input type="text" name="height" id="height" style="width: 75%; margin-right: 10px">cm</td>
+									<th scope="row" class="th_space" id="thEnjoySize">
+										<strong class="reqd">*</strong> 평소 사이즈</th>
 									<td><input type="text" name="enjoySize" id="enjoySize"></td>
 								</tr>
 								<tr class="radio_btn_1905">
-									<th scope="row" class="th_space" id="thBodyType"><strong
-										class="reqd">*</strong> 체 형</th>
-									<td colspan="3"><input id="dark1" type="radio"
-										name="bodyType" value="마른 체형"> <label for="dark1">마른
-											체형</label> <input id="dark2" type="radio" name="bodyType" value="보통">
-										<label for="dark2">보통</label> <input id="dark3" type="radio"
-										name="bodyType" value="통통한 체형"> <label for="dark3">통통한
-											체형</label></td>
+									<th scope="row" class="th_space" id="thBodyType">
+										<strong class="reqd">*</strong> 체 형</th>
+									<td colspan="3">
+										<input id="dark1" type="radio" name="bodyType" value="마른 체형"> 
+										<label for="dark1">마른 체형</label> 
+										<input id="dark2" type="radio" name="bodyType" value="보통">
+										<label for="dark2">보통</label> 
+										<input id="dark3" type="radio" name="bodyType" value="통통한 체형"> 
+										<label for="dark3">통통한 체형</label>
+									</td>
 								</tr>
 								<tr class="tbl_blank1807">
 									<td colspan="4">&nbsp;</td>
@@ -3560,5 +3543,38 @@
 					});
 
 	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.
+	
+	// 좋아요 눌렀을 때 
+	function addWishListClick() {
+
+		var productCode = $("#productCode").val();
+		console.log(productCode);
+		$('.wishlist1803').stop().toggleClass('on');
+		$('.toast_popup').stop().toggleClass('on');
+		$('.toast_popup p').stop().show();
+		if ($('.wishlist1803').hasClass('on')) {
+			$('.toast_popup p').text('위시리스트에 담았습니다.');
+			$('.toast_popup').stop().addClass('on');
+		} else {
+			$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
+			$('.toast_popup').stop().removeClass('on');
+		}
+		$('.toast_popup p').stop().animate({
+			'top' : '-42px',
+			'opacity' : 1
+		});
+		setTimeout(function() {
+			$('.toast_popup p').stop().animate({
+				'top' : 0,
+				'opacity' : 0
+			});
+		}, 1750);
+		setTimeout(function() {
+			$('.toast_popup p').stop().fadeOut();
+		}, 2000);
+
+	}
+	
+	
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
