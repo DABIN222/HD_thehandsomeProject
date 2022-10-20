@@ -35,6 +35,6 @@ public interface MemberService {
 	public int selectShoppingBag(MemberSbagDTO msVO);
 	
 	// 장바구니 삭제
-	/* public int deleteShoppingBag(MemberSbagDTO msVO); */
-	public int deleteShoppingBag(List<MemberSbagDTO> msBagDtoList);
+	public int deleteShoppingBag(List<MemberSbagDTO> msList);
+
 }

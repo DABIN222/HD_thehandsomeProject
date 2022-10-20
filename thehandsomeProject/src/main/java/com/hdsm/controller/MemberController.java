@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -184,6 +188,13 @@ public class MemberController {
 		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));		
 		
 		// 장바구니 담기 실시
+		int select = memberservice.selectShoppingBag(msVO);
+		
+		if(select>0) {
+			log.info("이미 장바구니에 존재합니다");
+			return "false";
+		}
+		// 장바구니 담기 실시
 		memberservice.insertShoppingBags(msVO);
 		log.info("당바구니 담기 성공!");
 
@@ -214,6 +225,7 @@ public class MemberController {
 	
 	// 장바구니 변경
 	@PostMapping("/updateShoppingBag")
+	@ResponseBody
 	public String updateShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 변경 진입!");
 		
@@ -223,9 +235,6 @@ public class MemberController {
 		msVO.setPsize(request.getParameter("psize"));	// 바꿀 사이즈 name
 		msVO.setPcolor(request.getParameter("pcolor"));	// 바꿀 컬러 name
 		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
-		
-		// 장바구니 담기 실시
-		int select = memberservice.selectShoppingBag(msVO);
 		
 		int cnt = memberservice.updateShoppingBag(msVO);
 		if(cnt != 0) {
@@ -237,22 +246,17 @@ public class MemberController {
 		return "member/shoppingbag";
 	}
 	
+	
 	// 장바구니 삭제
-	/*
-	@PostMapping("/deleteShoppingBag")
-	@ResponseBody
-	public String deleteShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+
+//	@PostMapping("/deleteShoppingBag")
+	@RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
+	public ResponseEntity<Void> deleteShoppingBag(HttpServletRequest request, 
+			@RequestBody List<MemberSbagDTO> parameters) throws Exception {
 		log.info("장바구니 삭제 진입!");
 		
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
-		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
-		msVO.setPsize(request.getParameter("psize"));	// 선택 사이즈 name
-		msVO.setPcolor(request.getParameter("pcolor"));	// 선택 컬러 name
-		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
-		
-		// 장바구니 담기 실시
-		int cnt = memberservice.deleteShoppingBag(msVO);
+		// 장바구니 지우기 실시
+		int cnt = memberservice.deleteShoppingBag(parameters);
 		
 		if(cnt != 0) {
 			log.info("장바구니 삭제 성공!");
@@ -260,9 +264,10 @@ public class MemberController {
 			log.info("장바구니 삭제 실패!");
 		}
 		
-		return "member/shoppingbag";
+		
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	*/
+	
 	/*
 	@PostMapping("/deleteShoppingBag")
 	@ResponseBody
@@ -316,5 +321,5 @@ public class MemberController {
 		log.info("위시리스트 페이지 왔다");
 		return "member/myGradeInfo";
 	}
-	
+
 }

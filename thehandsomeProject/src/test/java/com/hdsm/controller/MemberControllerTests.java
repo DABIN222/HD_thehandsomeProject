@@ -108,7 +108,7 @@ public class MemberControllerTests {
 		msVO.setPcolor("OT(OTMEAL)");
 		msVO.setPamount(1);	
 		
-		membermapper2.updateShoppingBag(msVO);
+		membermapper.updateShoppingBag(msVO);
 		log.info("당바구니 변경 성공!");
 	} 
 	*/
@@ -131,8 +131,9 @@ public class MemberControllerTests {
 		
 		msBagDtoList.add(msVO);
 		
-		membermapper2.deleteShoppingBag(msBagDtoList);
+		membermapper.deleteShoppingBag(msBagDtoList);
 		log.info("장바구니 삭제 성공!");
+
 	} 
 	
 	// 장바구니 변경
@@ -149,13 +150,13 @@ public class MemberControllerTests {
 		msVO.setPcolor("OTMEAL");
 		msVO.setPamount(2);	
 		
-		int select = membermapper2.selectShoppingBag(msVO);
+		int select = membermapper.selectShoppingBag(msVO);
 		log.info("select 값 : "+select);
 		
 		if(select != 0) {
 			log.info("이미 장바구니에 존재함");
 		} else {
-			int cnt = membermapper2.updateShoppingBag(msVO);
+			int cnt = membermapper.updateShoppingBag(msVO);
 			
 			if(cnt != 0) {
 				log.info("장바구니 변경 성공!");
