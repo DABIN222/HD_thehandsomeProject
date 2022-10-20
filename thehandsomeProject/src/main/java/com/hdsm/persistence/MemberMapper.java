@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 
@@ -48,4 +49,18 @@ public interface MemberMapper {
 	
 	// 장바구니 삭제
 	public int deleteShoppingBag(@Param("msList")List<MemberSbagDTO> msList);
+	
+	//위시리스트 갯수 가져오기
+	public int getWishListCount(String mid);
+	
+	//위시리스트 넣기
+	public int insertWishList(MemberWishListDTO wsDTO);
+	
+	//해당유저와 물건이 위시리스트에 있는지 확인
+	public int isinWishList(MemberWishListDTO wsDTO);
+	
+	//해당 유저가 담아놓은 위시리스트목록들 가져오기
+	public List<MemberWishListDTO> getUsersWishList(MemberWishListDTO wsDTO);
+	
+	
 }
