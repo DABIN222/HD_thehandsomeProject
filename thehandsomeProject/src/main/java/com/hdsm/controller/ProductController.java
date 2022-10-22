@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
+import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.PageDTO;
+import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailVO;
+import com.hdsm.service.MemberService;
 import com.hdsm.service.ProductService;
 import com.hdsm.util.ProductUtil;
 
@@ -34,7 +39,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
-
+	
+	@Autowired
+	private MemberService mservice;
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {
@@ -42,7 +49,11 @@ public class ProductController {
 //		/* model.addAttribute("prodList", service.getList()); */
 //	}
 	
-	
+	@GetMapping("/review_temp")
+	public String rivewPage() {
+
+		return "product/review_temp" ;
+	}
 
 //	//페이징 없는 테스트용 상품목록
 //	@GetMapping("/list")
@@ -205,9 +216,27 @@ public class ProductController {
 	//상품 상세 정보 보기
 	@GetMapping("/product_detail")
 	public String product_detail(
+			HttpServletRequest request,
 			@RequestParam("pid") String pid,
 			@RequestParam("colorcode") String colorcode
 			,Model model) {
+		String mid;
+		HttpSession session = request.getSession(); // 세션
+		
+		model.addAttribute("isWishList",0);
+		
+		//만약 로그인된 상태면 세션에서 아이디 가져오기
+		if((String)session.getAttribute("member") != null) {
+			mid = (String)session.getAttribute("member");
+			MemberWishListDTO wsDTO = new MemberWishListDTO(); 
+			wsDTO.setMember_mid(mid);
+			wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+			int cnt = mservice.isinWishList(wsDTO);
+			if(cnt>0) {
+				model.addAttribute("isWishList",cnt);
+			}
+		}
+		
 		ProductVO product=service.getProduct(pid);
 		System.out.println(product.getP_size());
 		String[] sizelist=product.getP_size().split(",");
@@ -229,5 +258,46 @@ public class ProductController {
 	public String putShoppingbag(ProductVO product) {
 		
 		return "/product/list";
+	}
+	
+	@PostMapping("/order_page")
+	public void order_page(
+			@RequestParam("order_colorcode") String order_colorcode,
+			@RequestParam("order_size") String order_size,
+			@RequestParam("order_sumprice") String order_sumprice,
+			@RequestParam("order_hsm") String order_hsm,
+			@RequestParam("order_hspoint") String order_hspoint,
+			@RequestParam("order_count") String order_count,
+			Model model,
+			HttpServletRequest request
+			) {
+			System.out.println(order_colorcode);
+			System.out.println(order_size);
+			System.out.println(order_sumprice);
+			System.out.println(order_hsm);
+			System.out.println(order_hspoint);
+			System.out.println(order_count);
+			String[]pscode = order_colorcode.split("_");
+			String colorcode=pscode[0]+"_"+pscode[1];
+			ProductColorVO colorVO=new ProductColorVO();
+			List<ProductColorVO> productColorVO= service.getProductColor(pscode[0]);
+			for(int i=0;i<productColorVO.size();i++) {
+				if(productColorVO.get(i).getCcolorcode().equals(colorcode)) {
+					colorVO=productColorVO.get(i);
+					break;
+				}
+			}
+			ProductVO productVO= service.getProduct(colorVO.getProduct_pid());
+			HttpSession session=request.getSession(); 
+			String memberId=(String)session.getAttribute("member");
+			model.addAttribute("member", mservice.getMember(memberId));
+			model.addAttribute("productVO", productVO);
+			model.addAttribute("colorVO", colorVO);
+			model.addAttribute("order_size", order_size);
+			model.addAttribute("order_sumprice", Integer.parseInt(order_sumprice));
+			model.addAttribute("order_hsm", Integer.parseInt(order_hsm));
+			model.addAttribute("order_hspoint", Integer.parseInt(order_hspoint));
+			model.addAttribute("order_count", Integer.parseInt(order_count));
+			
 	}
 }

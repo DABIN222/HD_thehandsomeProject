@@ -70,7 +70,7 @@
 
 	<select id="getColorList" resultType="com.hdsm.domain.ThumbnailColorVO">
         select 
-        	product_pid, ccolorcode, ccolorimage, c_thumbnail1, c_thumbnail2
+        	product_pid, ccolorcode, cname, ccolorimage, c_thumbnail1, c_thumbnail2
 		from 
 			color
 		where 
