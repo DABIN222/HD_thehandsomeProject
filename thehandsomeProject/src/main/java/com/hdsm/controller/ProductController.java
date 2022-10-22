@@ -49,7 +49,11 @@ public class ProductController {
 //		/* model.addAttribute("prodList", service.getList()); */
 //	}
 	
-	
+	@GetMapping("/review_temp")
+	public String rivewPage() {
+
+		return "product/review_temp" ;
+	}
 
 //	//페이징 없는 테스트용 상품목록
 //	@GetMapping("/list")
