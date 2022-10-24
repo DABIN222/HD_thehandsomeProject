@@ -65,5 +65,10 @@ public interface MemberMapper {
 	//유저가 위시리스트 아이템 지울때
 	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
 	
+	//유저 탈퇴
+	public void deleteuser(String mid);
+		
+	//유저 비밀번호 변경 
+	public void updateuser(MemberVO mid);
 	
 }
