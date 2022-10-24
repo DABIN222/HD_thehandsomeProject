@@ -16,6 +16,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,6 +36,7 @@ import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
+import com.hdsm.security.CustomUserDetailsService;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.ProductService;
 
@@ -50,12 +53,17 @@ public class MemberController {
 	@Autowired
 	ProductService productservice;
 	
+	@Autowired
+	CustomUserDetailsService customdetailsservice;
+	
+	PasswordEncoder pwencoder;
+	
 	// 로그인 페이지 진입
-	@GetMapping("/loginForm")
-	public String loginForm() {
-		log.info("로그인 페이지 왔다");
-		return "member/loginForm";
-	}
+//	@GetMapping("/loginForm")
+//	public void loginForm() {
+//		log.info("로그인 페이지 왔다");
+////		return "member/loginForm";
+//	}
 	
 	// 회원가입 페이지 진입
 	@GetMapping("/joinForm")
@@ -78,8 +86,10 @@ public class MemberController {
 		member.setMaddress1(request.getParameter("partner.postNo"));
 		member.setMaddress2(request.getParameter("partner.addr1"));
 		
+		member.setMpassword(member.encode(member.getMpassword()));
 		// 회원가입 실시
 		memberservice.insertMember(member);
+		
 		log.info("회원가입 성공!");
 		
 		return "member/joinResult";
@@ -116,79 +126,137 @@ public class MemberController {
 			return "success";
 		}
 	}
+
+	// 로그인
+	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	public void loginInput(String error, String logout, Model model) {
+		log.info("error....." + error);
+		log.info("logout...." + logout);
+		
+		if(error != null) {
+			model.addAttribute("error", "Login Error check your Account");
+		}//end if
+		
+		if(logout != null) {
+			model.addAttribute("logout", "LoginOut!! ");
+		}//end if	
+	}
+	// 로그인
+//	@RequestMapping(value = "login", method = RequestMethod.POST)
+//	public String login(MemberVO member, HttpServletRequest request) throws Exception {
+//
+//		log.info("로그인 진입한거지..?!");
+//		HttpSession session = request.getSession(); // 세션
+//
+//		String mid = "";
+//		String mpwd = "";
+//
+//		mid = member.getMid(); // 사용자 입력값 저장
+//		mpwd = member.getMpassword(); // 사용자 비밀번호 저장
+//		
+//		MemberVO vo = memberservice.login(member); // mapper -> service 에서 가져온 db값(mid,mpassword)를 객체에 저장
+////			String id = vo.getMid();
+////			String pw = vo.getMpassword();
+////			System.out.println(id+" "+pw);
+//
+//		if (vo != null) { // 객체에 값이 있으면 로그인 가능
+//			session.setAttribute("member", mid); // member 변수에 id값 저장
+//			session.setAttribute("sbCount", memberservice.getShoppingBagCount(mid));//장바구니 개수 가져오기
+//			String name = (String) session.getAttribute("member"); // member 가져와서 저장
+//
+//			return "/home"; // home으로 이동
+//
+//		} else {
+//			System.out.println("로그인 실패");
+//			return "member/loginForm";
+//		}
+//	}
 	
+
+	/*로그아웃 */
+	@RequestMapping(value="/logout", method=RequestMethod.GET)//받는 형태는 일단 GET으로
+   public void logoutMainGET(HttpServletRequest request) throws Exception{
+       
+       log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
+       
+//       HttpSession session = request.getSession(); //세션을 가져와서
+//       
+//       session.invalidate(); //다 없애 버림    세션을 지우는 방법은 두가지 invalidate()", "removeAttribute() 가있는데 앞에있는거는 다지우는거 뒤에있는거는 특정 세션 타게팅삭제
+//       
+//       return "home";  
+	}
+
 	// 로그인(승준)
-		@RequestMapping(value ="login", method = RequestMethod.POST)
-		public String login(MemberVO member, HttpServletRequest request, String re) throws Exception {
-			
-			log.info("로그인 진입한거지..?!");
-			HttpSession session = request.getSession(); // 세션
-
-			String mid = "";
-			String mpwd = "";
-
-			mid = member.getMid(); // 사용자 입력값 저장
-			mpwd = member.getMpassword(); // 사용자 비밀번호 저장
-			String url = request.getParameter("referer");
-			
-			MemberVO vo = memberservice.login(member); // mapper -> service 에서 가져온 db값(mid,mpassword)를 객체에 저장
-//				String id = vo.getMid();
-//				String pw = vo.getMpassword();
-//				System.out.println(id+" "+pw);
-			
-			
-			if (vo != null) { // 객체에 값이 있으면 로그인 가능
-				System.out.println("로그인 성공");
-				session.setAttribute("member", mid); // member 변수에 id값 저장
-				
-				String name = (String) session.getAttribute("member"); // member 가져와서 저장
-				int check =0; //로그아웃으로 가는지에 대한 체크 변수
-				System.out.println(name); 
-				System.out.println(url);
-				String urlsp[] = url.split("/"); //전에있던 url을 자르고 logout이 있는지 확인 
-				for(int i=0;i<urlsp.length;i++) {
-					System.out.println(urlsp[i]);
-					if(urlsp[i].equals("logout")) {
-						check=1;
-					}else if(urlsp[i].equals("login")||urlsp[i].equals("loginForm")) {
-						check =2 ;
-					}
-				}
-				System.out.println(check);
-				if(check==1) { //로그아웃이 있으면 home으로 보낸다 
-					return "home";
-				}
-				
-				else if(check==2) { //없다면 전에 있던 url로 이동
-					return "home"; 
-				}
-				else {
-					return "redirect:"+url;
-				}
-
-				
-			}
-			
-			else { //객체에 값이 없으면 로그인 실패 
-				System.out.println("로그인 실패");
-				
-				return "member/loginForm";
-			}
-		}
-
-
-		/* 메인페이지 로그아웃 (승준)*/
-		@RequestMapping(value="/logout", method=RequestMethod.GET)
-	   public String logoutMainGET(HttpServletRequest request) throws Exception{
-	       
-	       log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
-	       
-	       HttpSession session = request.getSession(); //세션을 가져와서
-	       
-	       session.invalidate(); //다 없애 버림    세션을 지우는 방법은 두가지 invalidate()", "removeAttribute() 가있는데 앞에있는거는 다지우는거 뒤에있는거는 특정 세션 타게팅삭제
-	       
-	       return "home";  
-		}
+//		@RequestMapping(value ="login", method = RequestMethod.POST)
+//		public String login(MemberVO member, HttpServletRequest request, String re) throws Exception {
+//			
+//			log.info("로그인 진입한거지..?!");
+//			HttpSession session = request.getSession(); // 세션
+//
+//			String mid = "";
+//			String mpwd = "";
+//
+//			mid = member.getMid(); // 사용자 입력값 저장
+//			mpwd = member.getMpassword(); // 사용자 비밀번호 저장
+//			String url = request.getParameter("referer");
+//			
+//			MemberVO vo = memberservice.login(member); // mapper -> service 에서 가져온 db값(mid,mpassword)를 객체에 저장
+////				String id = vo.getMid();
+////				String pw = vo.getMpassword();
+////				System.out.println(id+" "+pw);
+//			
+//			
+//			if (vo != null) { // 객체에 값이 있으면 로그인 가능
+//				System.out.println("로그인 성공");
+//				session.setAttribute("member", mid); // member 변수에 id값 저장
+//				
+//				String name = (String) session.getAttribute("member"); // member 가져와서 저장
+//				int check =0; //로그아웃으로 가는지에 대한 체크 변수
+//				System.out.println(name); 
+//				System.out.println(url);
+//				String urlsp[] = url.split("/"); //전에있던 url을 자르고 logout이 있는지 확인 
+//				for(int i=0;i<urlsp.length;i++) {
+//					System.out.println(urlsp[i]);
+//					if(urlsp[i].equals("logout")) {
+//						check=1;
+//					}else if(urlsp[i].equals("login")||urlsp[i].equals("loginForm")) {
+//						check =2 ;
+//					}
+//				}
+//				System.out.println(check);
+//				if(check==1) { //로그아웃이 있으면 home으로 보낸다 
+//					return "home";
+//				}
+//				
+//				else if(check==2) { //없다면 전에 있던 url로 이동
+//					return "home"; 
+//				}
+//				else {
+//					return "redirect:"+url;
+//				}
+//
+//				
+//			}
+//			
+//			else { //객체에 값이 없으면 로그인 실패 
+//				System.out.println("로그인 실패");
+//				
+//				return "member/loginForm";
+//			}
+//		}
+//
+//		/* 메인페이지 로그아웃 (승준)*/
+//		@RequestMapping(value="/logout", method=RequestMethod.GET)
+//	   public String logoutMainGET(HttpServletRequest request) throws Exception{
+//	       
+//	       log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
+//	       
+//	       HttpSession session = request.getSession(); //세션을 가져와서
+//	       
+//	       session.invalidate(); //다 없애 버림    세션을 지우는 방법은 두가지 invalidate()", "removeAttribute() 가있는데 앞에있는거는 다지우는거 뒤에있는거는 특정 세션 타게팅삭제
+//	       
+//	       return "home";  
+//		}
 	
 	// 유저 쇼핑백 페이지 로드
 	@GetMapping("/shoppingbag")

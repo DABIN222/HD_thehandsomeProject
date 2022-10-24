@@ -1,0 +1,565 @@
+[33mcommit 5eb2cc8339208ce2b603f73e2c6c0c6f00d75a4a[m[33m ([m[1;36mHEAD -> [m[1;32mym[m[33m)[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Mon Oct 24 17:05:55 2022 +0900
+
+    풀읠 위한 커밋
+
+[33mcommit cf085af16d7a8e0c8f72722360422167b9dc25ae[m[33m ([m[1;31morigin/ym[m[33m)[m
+Merge: 2908c21 4d89246
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 22:08:04 2022 +0900
+
+    wishlist 잘되게 해놨엉
+
+[33mcommit 4d89246ec5a4aea3529b3e62733829c987d7f507[m
+Merge: 61703f0 e9b47ae
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Thu Oct 20 17:48:28 2022 +0900
+
+    위시리스트 푸시
+    
+    위시리스트 푸시
+
+[33mcommit e9b47ae1e704353247244ed70ce483c802f2db21[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Thu Oct 20 17:47:33 2022 +0900
+
+    위시리스트 푸시
+
+[33mcommit 2908c2118513c03a169750ac2a49cc037437813e[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 17:46:28 2022 +0900
+
+    위시리스트 페이지 건들였어염
+
+[33mcommit 61703f0e3b0cf18efd8fc6ebe8c333fe6a5fcc39[m
+Merge: d287800 c9d74af
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Thu Oct 20 16:28:46 2022 +0900
+
+    Dabin - wishlist push
+    
+    Dabin - wishlist push
+
+[33mcommit c9d74afd930b451bd9addce51ced1345be16b72d[m
+Merge: 651342f d287800
+Author: DABIN222 <req134679@naver.com>
+Date:   Thu Oct 20 16:28:04 2022 +0900
+
+    dabin wishlist push
+
+[33mcommit 651342f6578e5d1c08481f154c28635774a11c49[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Thu Oct 20 16:23:39 2022 +0900
+
+    wishlist 팝업, 좋아요 처리
+
+[33mcommit d28780091ac241c87e06d581b3772274b6b9d22d[m
+Merge: c449e52 0c5ba62
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Thu Oct 20 16:20:10 2022 +0900
+
+    Merge pull request #115 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Ym
+
+[33mcommit 0c5ba62fd1298ee1f9bd7af6469f2b078f80949d[m
+Merge: 3d030cd c449e52
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 16:19:32 2022 +0900
+
+    위시리스트 백쪽 테스트까지 다 해서 구현 완료
+
+[33mcommit 3d030cdb9b75ff4df22ed23c8f947a8b463273f6[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 11:35:12 2022 +0900
+
+    pull을 위한 커밋
+
+[33mcommit c449e524d141331ea4b13e38061b0faa514b2359[m
+Merge: da76b85 e1ef491
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Thu Oct 20 11:22:40 2022 +0900
+
+    장바구니 mapper 1로 이동 / mypage 위시리스트, 회원 등급 안내 jsp 추가
+    
+    장바구니 mapper 1로 이동 / mypage 위시리스트, 회원 등급 안내 jsp 추가
+
+[33mcommit e1ef49186106e9429be2d0439b7e5144efd13ff5[m
+Merge: 7c2ff23 da76b85
+Author: DABIN222 <req134679@naver.com>
+Date:   Thu Oct 20 11:21:38 2022 +0900
+
+    장바구니 mapper 1로 이동 / mypage 위시리스트, 회원 등급 안내 jsp 추가
+
+[33mcommit 7c2ff23428c9057a9cff86c9b0b799744276a5ce[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Thu Oct 20 11:01:59 2022 +0900
+
+    내꺼 commit
+
+[33mcommit da76b85eaa06573868cec464297b41c6a422a5b3[m
+Merge: 5a373d1 a15705c
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Thu Oct 20 10:57:46 2022 +0900
+
+    Merge pull request #113 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Ym
+
+[33mcommit a15705cc4b2f76d5b6b8c125eb1cd28b8762162e[m
+Merge: fe42fbf 5a373d1
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 10:57:15 2022 +0900
+
+    왜안돼
+
+[33mcommit 5a373d1c90c2a1a1d3736a19f39cbefb6eb1efd5[m
+Merge: 259d361 80a48f5
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Thu Oct 20 10:56:30 2022 +0900
+
+    Merge pull request #112 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Merge pull request #111 from Hyundai2ndProject-THE-HANDSOME/main
+
+[33mcommit fe42fbfa7ff7356c649f66c93f840ac2b38ad862[m
+Merge: f5fba86 259d361
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 10:54:49 2022 +0900
+
+    커밋되라
+
+[33mcommit f5fba861c2103cca9ec72cbfd3c0e57bdd81d5ad[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Thu Oct 20 10:54:05 2022 +0900
+
+    장바구니 디테일 잡았수
+
+[33mcommit 532c95ee1382a9c70b09904be687b9136717e3b1[m
+Merge: b2d3f46 259d361
+Author: DABIN222 <req134679@naver.com>
+Date:   Wed Oct 19 21:13:58 2022 +0900
+
+    mypage jsp추가 및 wishList 변경하다 맘
+
+[33mcommit 80a48f51965266c3cb01dd6efa145f33592d08a1[m
+Merge: 1b3311e 259d361
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Wed Oct 19 20:44:27 2022 +0900
+
+    Merge pull request #111 from Hyundai2ndProject-THE-HANDSOME/main
+    
+    아뭐야 왜없어
+
+[33mcommit b2d3f46001ef71ac5938b61255793a526b506c10[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Wed Oct 19 12:02:10 2022 +0900
+
+    dabin mycart delete 다중삭제 중
+
+[33mcommit 259d361625f12be6672bf6a8fcb8da500c22a5d9[m
+Merge: 75c6344 1b3311e
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Wed Oct 19 11:59:50 2022 +0900
+
+    Merge pull request #110 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    다시
+
+[33mcommit 1b3311e4a5dfda8837b17cc17374809686983cc4[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Wed Oct 19 11:59:27 2022 +0900
+
+    다시
+
+[33mcommit 75c63441f09714ccf1c8b075f9e1d36af2dfeedc[m
+Merge: 82ef918 f7565c6
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Wed Oct 19 11:58:32 2022 +0900
+
+    Merge pull request #109 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Ym
+
+[33mcommit f7565c6ebdfed93a28cda9e74821baf8a5e431f9[m
+Merge: dd900fc 82ef918
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Wed Oct 19 11:57:49 2022 +0900
+
+    장바구니기능까지연동 성공!
+
+[33mcommit dd900fcc86b75c473575bfadf369f9cf1d385470[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Wed Oct 19 09:13:22 2022 +0900
+
+    왜 계속 커밋하래
+
+[33mcommit 82ef918cedf0d88367b118fd02650885b9ecc5ba[m
+Merge: 044d948 2cf7383
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Wed Oct 19 09:12:43 2022 +0900
+
+    mycart css 수정
+    
+    mycart css 수정
+
+[33mcommit 2cf7383e30586473c13b60d6cf1cbf8621fb9364[m
+Merge: 9d373a3 044d948
+Author: DABIN222 <req134679@naver.com>
+Date:   Wed Oct 19 09:11:33 2022 +0900
+
+    mycart css 변경
+
+[33mcommit 9d373a3c9e5faddf26f7788c9b4531587ddcfa7e[m
+Merge: 8b7d02b 5e2064d
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 22:57:51 2022 +0900
+
+    mycart delete, update(select)추가
+
+[33mcommit 044d948b31a71964697cc761c24a6d5788781db7[m
+Merge: 5e2064d 97c4c54
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Tue Oct 18 22:45:14 2022 +0900
+
+    Merge pull request #107 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    장바구니 디테일 더 손봄
+
+[33mcommit 97c4c54289710d408467380ad67f2fa2241683e4[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 22:43:56 2022 +0900
+
+    장바구니 디테일 더 손봄
+
+[33mcommit 8b7d02b5c427d28a0a5d0942e87fd4501ee75727[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 21:49:41 2022 +0900
+
+    mycart update controller
+
+[33mcommit 5e2064dece5a4cc3efbc08685af6c921cd33a70f[m
+Merge: 1cf3eb3 0ab8b31
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Tue Oct 18 21:43:10 2022 +0900
+
+    Merge pull request #106 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    장바구니 디테일부분 손봤다
+
+[33mcommit 0ab8b31893e2ac4cce11fef1c83b697f5a20e5b5[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 21:42:46 2022 +0900
+
+    장바구니 디테일부분 손봤다
+
+[33mcommit 1cf3eb314abd91cb0b537f6457ff9a905009c4d6[m
+Merge: 512843a 9ba2210
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Tue Oct 18 17:30:23 2022 +0900
+
+    Merge pull request #103 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Ym
+
+[33mcommit 9ba22106b38ef4fdc4e79eb9bdc324c6a02147a5[m
+Merge: 714838f 512843a
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 17:30:00 2022 +0900
+
+    올라갈 제발
+
+[33mcommit 512843a841cfd18ac630f2a3b92c72b4c15b42aa[m
+Merge: 83268cb d5fbfec
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 17:27:19 2022 +0900
+
+    Merge pull request #105 from Hyundai2ndProject-THE-HANDSOME/jinsoo
+    
+    push pjs
+
+[33mcommit d5fbfec2bff35691701b53098eac2eef32af3366[m
+Merge: 16139d0 83268cb
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 17:27:11 2022 +0900
+
+    Merge branch 'main' into jinsoo
+
+[33mcommit 16139d01d2522979d1c2bd8dec56900beeed809f[m
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 17:24:56 2022 +0900
+
+    push pjs
+
+[33mcommit 83268cb8131b055fa776523969bf84435fe59856[m
+Merge: cdf554a fbcfc13
+Author: 9_hyeonn <70796139+nexusgh12@users.noreply.github.com>
+Date:   Tue Oct 18 17:24:24 2022 +0900
+
+    Merge pull request #104 from Hyundai2ndProject-THE-HANDSOME/guhyeon
+    
+    Guhyeon
+
+[33mcommit fbcfc13cbaee6006e6b942d52d1b8424e29dc839[m
+Merge: 70cc907 367dd58
+Author: nexusgh12 <j221485@gmail.com>
+Date:   Tue Oct 18 17:23:42 2022 +0900
+
+    제품 상세 2 생성
+
+[33mcommit 70cc907abd97955b22e60efe772c90530c1c2907[m
+Author: nexusgh12 <j221485@gmail.com>
+Date:   Tue Oct 18 17:20:26 2022 +0900
+
+    제품 상세 2 생성
+
+[33mcommit dac82d0fd525737ff5eee8b8a81ad31672113faf[m
+Author: nexusgh12 <j221485@gmail.com>
+Date:   Tue Oct 18 17:18:38 2022 +0900
+
+    제품 상세 2 생성
+
+[33mcommit 714838f8eaf6c3c1d0f52862703b4b388368fecd[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 17:15:16 2022 +0900
+
+    씨1발련들아 되라 좀
+
+[33mcommit 9de7f4795a5a5f5ab7da4ab5a9d4890d520e7925[m
+Merge: aad37bd 1ec09d1
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 16:40:15 2022 +0900
+
+    장바구니 연동되게 jsp들 수정
+
+[33mcommit cdf554a215b59fc4c33b6a83a57099326313f298[m
+Merge: de475f3 7806770
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Tue Oct 18 16:34:36 2022 +0900
+
+    쇼핑백 insert
+    
+    쇼핑백 insert
+
+[33mcommit 78067702b02c671e287fb5ba88dd2ce64da42188[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 16:33:09 2022 +0900
+
+    port 번호 변경 및 쇼핑백 insert
+
+[33mcommit 204f0c3786c2a8f6e651381385af976d19c4560b[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 16:30:10 2022 +0900
+
+    쇼핑백 insert
+
+[33mcommit de475f3af42160feab967ffd339f8c64d7015b31[m
+Merge: c3b0c69 34b6130
+Author: jamespark6897 <112853054+jamespark6897@users.noreply.github.com>
+Date:   Tue Oct 18 15:12:17 2022 +0900
+
+    header2차수정
+    
+    header2차수정
+
+[33mcommit 34b613074a2cd6605c9f425bab20787af9844aac[m
+Author: jamespark6897 <jamespark6897@gmail.com>
+Date:   Tue Oct 18 15:10:20 2022 +0900
+
+    header2차수정
+
+[33mcommit c3b0c697c323f9c4e6913402705f121eff1863f2[m
+Merge: 1ec09d1 4362079
+Author: jamespark6897 <112853054+jamespark6897@users.noreply.github.com>
+Date:   Tue Oct 18 15:05:00 2022 +0900
+
+    header충돌수정
+    
+    header충돌수정
+
+[33mcommit 43620794d010b65cd35a6cabee87c5bbb9e06601[m
+Author: jamespark6897 <jamespark6897@gmail.com>
+Date:   Tue Oct 18 15:04:11 2022 +0900
+
+    header충돌수정
+
+[33mcommit aad37bd3829096cc1a4c004c5826b43e003bb0b8[m
+Merge: 5ca8b91 2a1f567
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 12:13:15 2022 +0900
+
+    풀 전에 커밋
+
+[33mcommit 1ec09d168b4d767d8e8f22c11e0bf0278795886e[m
+Merge: 2a1f567 8275422
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 12:12:23 2022 +0900
+
+    Merge pull request #98 from Hyundai2ndProject-THE-HANDSOME/jinsoo
+    
+    list 수정
+
+[33mcommit 8275422e501c71400374eea368111445d8fcc6cb[m
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 12:11:22 2022 +0900
+
+    Commit jinsoo
+
+[33mcommit 51af7c2b41cfff8ce52ad729d57c4f2636ba61a9[m
+Merge: 0e8bb4d 2a1f567
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 12:08:13 2022 +0900
+
+    commit
+
+[33mcommit 0e8bb4ddb44933a814a9d466eb9466ea7a4dd421[m
+Author: jin-su-park <gary3545@naver.com>
+Date:   Tue Oct 18 12:03:26 2022 +0900
+
+    list push pjs
+
+[33mcommit 5ca8b91286213f8aee2bcb6699aab8ea483d79d0[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Tue Oct 18 11:36:49 2022 +0900
+
+    풀을 위한 커밋
+
+[33mcommit 367dd58d4e1d09a21635e98f2e0bc7f9c9c95e85[m
+Author: nexusgh12 <j221485@gmail.com>
+Date:   Tue Oct 18 09:33:18 2022 +0900
+
+    커밋
+
+[33mcommit 2a1f567fee01828ad18dd57b4df565879a1f2c62[m
+Merge: a407931 5f192a5
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Tue Oct 18 09:26:30 2022 +0900
+
+    login 문제 해결
+    
+    login 문제 해결
+
+[33mcommit 5f192a5d7c02c86f1c3990cbd041fdcb290186db[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 09:25:32 2022 +0900
+
+    login 문제 해결
+
+[33mcommit a4079316d0a7374ee5d6988d7600cacee1499435[m
+Merge: 71322b7 880f095
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Tue Oct 18 09:18:56 2022 +0900
+
+    마이페이지 프론트&회원가입 새테이블 재수정
+    
+    마이페이지 프론트&회원가입 새테이블 재수정
+
+[33mcommit 880f095f30af37146372df9ae4a4a81e27bee7c4[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Tue Oct 18 09:17:01 2022 +0900
+
+    마이페이지 프론트
+
+[33mcommit 71322b78130e946a5f7ee7f07f43f003e7f76063[m
+Merge: 6cc4494 2cfea40
+Author: parkyeomyeong <68410186+parkyeomyeong@users.noreply.github.com>
+Date:   Mon Oct 17 18:45:27 2022 +0900
+
+    Merge pull request #95 from Hyundai2ndProject-THE-HANDSOME/ym
+    
+    Ym
+
+[33mcommit 2cfea40a6a91a73437119c5baf65f7b87d727a2f[m
+Merge: 50efd56 6cc4494
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Mon Oct 17 18:43:51 2022 +0900
+
+    장바구니 기능까지 완료2
+
+[33mcommit 50efd5641e3ec0761ef3ee22d366198dfe08feae[m
+Merge: e75d0e2 b8fb703
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Mon Oct 17 18:42:20 2022 +0900
+
+    장바구니 기능은 완료
+
+[33mcommit 6cc4494a85b3883b097341972161d9348f21182b[m
+Merge: b8fb703 672a37b
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 18:36:59 2022 +0900
+
+    Merge pull request #94 from Hyundai2ndProject-THE-HANDSOME/jinsoo
+    
+    Jinsoo
+
+[33mcommit 672a37b6a1cc8829dbd3ad7c9d9d6d246679f14b[m
+Merge: fe31150 b8fb703
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 18:35:38 2022 +0900
+
+    commit
+
+[33mcommit e75d0e250a55b98308af0b1e568f7519e448304d[m
+Author: parkyeomyeong <tldldh1212@naver.com>
+Date:   Mon Oct 17 18:09:23 2022 +0900
+
+    장바구니 xml, test까지 완성~
+
+[33mcommit fe3115038ebe9fb17fe54f6b450e14856bd10260[m
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 18:08:19 2022 +0900
+
+    commit
+
+[33mcommit deb4efd0e06433d4de9b4b68e3346398bfa5c835[m
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 18:03:25 2022 +0900
+
+    계속 쇼핑하기 버튼 모달 보이게 설정 및 닫기 버튼 설정
+
+[33mcommit b8fb703fbcd207cf49bd4e326c6f8e0b90d6124a[m
+Merge: 199248a 25aa4d9
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Mon Oct 17 17:29:48 2022 +0900
+
+    url 수정, test코드 추가
+    
+    login/membership 수정
+
+[33mcommit 25aa4d9af40bc34ced2a9d3353af7b23b34c891a[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Mon Oct 17 17:28:42 2022 +0900
+
+    login/membership 수정
+
+[33mcommit 199248ad9c12a363af9287dac1923d88578a4f5e[m
+Merge: 86653bf 75071f7
+Author: KDBjava <96757077+DABIN222@users.noreply.github.com>
+Date:   Mon Oct 17 17:09:21 2022 +0900
+
+    로그인, 회원가입 1차 통합 완료
+    
+    로그인, 회원가입 1차 통합 완료
+
+[33mcommit 75071f7814137627eecf9e755ea5bb91abccf1a7[m
+Author: DABIN222 <req134679@naver.com>
+Date:   Mon Oct 17 17:08:43 2022 +0900
+
+    로그인, 회원가입 1차 통합 완료
+
+[33mcommit ac868c6cfb9e4d704294e0dc9e4f5e5091fd96c6[m
+Merge: 8943417 e4db0e9
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 14:55:16 2022 +0900
+
+    commit
+
+[33mcommit 86653bf38b7020fa32086d98c80e0a6404e5c072[m
+Merge: e4db0e9 6074b42
+Author: jin-su-park <gary3545@naver.com>
+Date:   Mon Oct 17 14:52:58 2022 +0900
+
+    Merge pull request #91 from Hyundai2ndProject-THE-HANDSOME/jinsoo
+    
+    상품 상세 QnA 버튼을 누를 시 QnA 리스트 및 QnA 작성란이 나오게 하는 기능 구현(jsp)
