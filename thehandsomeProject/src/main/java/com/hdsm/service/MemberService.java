@@ -59,4 +59,9 @@ public interface MemberService {
 	//유저가 위시리스트 아이템 지울때
 	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
 	
+	//회원 탈퇴
+	public void deleteuser(String mid);
+		
+	//비밀번호 변경
+	public void updateuser(MemberVO member);
 }

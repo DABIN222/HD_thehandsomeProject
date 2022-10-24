@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>더한섬닷컴 | THE HANDSOME.COM</title>
+  
 
 <link rel="stylesheet" href="/resources/css/layout.css" />
 <link rel="stylesheet" href="/resources/css/common.css" />
@@ -23,7 +24,7 @@
 	<!-- headerWrap -->
 	<div id="headerWrap">
 		<div class="header header_fixed header_main1903">
-			<script type="text/javascript" src="/_ui/desktop/common/js/SsoAjax.js"></script>
+			
 
 			<form id="autologinForm" name="autologinForm" action="/ko/hp/autologin" method="get">
 				<input type="hidden" name="hcid" id="hcid" value="e2gaf@naver.com" />
@@ -33,7 +34,7 @@
 					<div class="brand_menu brand_menu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 있음 -->
-							<li><span class="on"><a href="/">HOME</a></span></li>
+							<li><span class="on"><a href="/" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
 							<li><span><a href="/ko/c/br44/br44" onclick="GA_Common('topNav',$(this))">CLUB MONACO</a></span></li>
 							<!-- 공간 상 들어가지 못한 나머지 브랜드-->
 						</ul>
@@ -215,6 +216,7 @@
 					<!--// 201705 search_box_wrap -->
 					<div class="util_menu" style="display: block;">
 						<ul class="clearfix">
+						
 								<%
 								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
 							%>
@@ -322,13 +324,13 @@
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
-			<span id="menuTitle">마이 페이지</span>
+			<span id="menuTitle">회원 탈퇴</span>
 		</h3>
 		<div class="sub_container">
 			<!-- lnb -->
 			<div class="lnb_wrap">
 				<h4>
-					<a href="/ko/mypage">마이페이지<!-- 마이페이지 --></a>
+					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
 				<div class="lnb">
 					<dl>
@@ -371,7 +373,8 @@
 					<dl>
 						<dt>나의 정보관리</dt>
 						<dd>
-							<a href="/member/pwcheck">개인정보 변경/탈퇴</a>
+							<a href="/ko/mypage/personInfomationChangePWCheck"
+								onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
 						</dd>
 						<dd>
 							<a href="/ko/mypage/shoppingAddressPWCheck"
@@ -422,93 +425,70 @@
 			<!-- //lnb -->
 			<!-- cnts -->
 			<div class="sub_cnts">
-			
-			
-			
-    <form id="hpointHiddenForm" method="post" action="" target="joinStart_window">
-        <input type="hidden" name="prtnrReqGb" value="02">
-        <input type="hidden" name="prtnrId" value="D080">
-        <input type="hidden" name="chnnlId" value="1705">
-        <input type="hidden" name="ptcoReqnMdaInf" id="ptcoReqnMdaInf" value="">
-    </form>
-    <form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
-        <input type="hidden" name="sterm" class="input_date" title="기간 입력" id="sterm" value="2022-09-19" readonly="">
-        <input type="hidden" name="eterm" class="input_date" title="기간 입력" id="eterm" value="2022-10-19" readonly="">
-    </form>
-    <!-- 회원정보 -->
-    <div class="profile_info1 clearfix review_betterment1905">
-            <div class="name type2">
-                    <span class="ico_grade"> <%=session.getAttribute("member")%>   <span>님</span></span>
-                    <span class="grade_txt"></span>
-                </div>              
-                <div class="point" style="border:0; padding-left:0; width:95px">
-                    <p class="title">COUPON</p>
-                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">0&nbsp;<span>장</span></a>
-                </div>
-                <div class="point review">
-                    <p class="title">상품평</p>
-                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">0&nbsp;<span>개</span></a>
-                </div>
-                <div class="point type2">
-                   <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
-                   <a href="javascript:void(0);" id="hpoinJoin" class="btn" onclick="GA_Event('마이페이지','회원정보','H.POINT 회원가입');">H.Point 회원가입</a>
-               </div>
-            </div>
-    <!-- 회원정보 -->
-    <!-- 최근주문 -->
-    <div class="title_wrap">
-        <h4 class="float_left">최근주문<!-- 최근주문 --></h4>
-        <p class="txt_line">최근 1개월 내 주문하신 내역입니다.<!-- 최근 1개월 내 주문하신 내역 입니다. --></p>
-        <div class="btn_wrap">
-            <a href="/ko/mypage/order/myorders" class="btn add_ss" onclick="GA_Event('마이페이지','최근주문','전체보기');">전체보기<!-- 전체보기 --></a>
-        </div>
-    </div>
-    <!-- table -->
-    <div class="tblwrap lncl1812"><!-- 클래스추가 181204 -->
-        <table class="tbl_ltype review_betterment1905">
-            <caption>상품평 리스트</caption>
-            <colgroup class="interval1812"><!-- 수정 181204 -->
-                <col style="width:120px">
-                <col>
-                <col style="width:42px">
-                <col style="width:107px">
-                <col style="width:108px">
-                <col style="width:96px">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">주문번호<!-- 주문번호 --></th>
-                    <th scope="col">상품정보<!-- 상품정보 --></th>
-                    <th scope="col" style="padding:15px 0">수량<!-- 수량 --></th><!-- 스타일추가 181204 -->
-                    <th scope="col">판매가<!-- 판매가 --></th>
-                    <th scope="col">주문상태<!-- 주문상태 --></th>
-                    <th scope="col">구분<!-- 구분 --></th>
-                </tr>
-            </thead>
-            <tbody id="listBody">
-                <tr>
-                    <td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
-                </tr>
-            </tbody>
-        </table>
-    </div> 
-    <!-- table -->
-    <!-- 위시리스트 -->
-    <div class="title_wrap line mt50">
-        <h4>위시리스트<!-- 위시리스트 --></h4>
-        <div class="btn_wrap">
-            <a href="/ko/mypage/myWish" class="btn add_ss" onclick="GA_Event('마이페이지','위시리스트','전체보기');">전체보기<!-- 전체보기 --></a>
-        </div>
-    </div>
-    <ul class="wish_wrap">
-        <li class="no_data">
-                위시리스트에 저장된 상품이 없습니다.<!-- 위시리스트에 저장된 상품이 없습니다. -->
-            </li>
-        </ul>
+	<div class="title_wrap line mt30">
+		<h4 class="float_left">회원 탈퇴 안내<!-- 회원 탈퇴 안내 --></h4>
+		<p class="txt_line">회원 탈퇴 전 다음 사항을 반드시 숙지해 주시기 바랍니다.<!-- 회원 탈퇴 전 다음 사항을 반드시 숙지해 주시기 바랍니다. --></p>
+	</div>
 
+	<div class="dropout_info info_cont190830">
+		<ul>
+			<li>
+				<div>
+				<strong>1 </strong>
+					<p>
+						더한섬닷컴 <b>탈퇴 시 보유하신 쿠폰, 회원정보, 거래정보 등은 모두 삭제</b>됩니다.<!-- 회원 탈퇴 시 회원님께서 보유하셨던 e-money 잔액, 쿠폰, 회원정보, 거래정보 등은 모두 삭제 됩니다. -->
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="line2">
+						<strong>2</strong>
+						<p>
+							거래 정보가 있는 경우, 판매 거래 정보 관리를 위하여 구매와 관련된 상품정보, 거래 내역 등에 대한 기본정보는 탈퇴 후 5년간 <br>보관합니다. <!-- 거래 정보가 있는 경우, 판매 거래 정보 관리를 위하여 구매와 관련된 상품정보, 아이디, 거래 내역 등에 대한 기본정보는 탈퇴 후 5년간 보관합니다. -->
+						</p>
+					</div>
+				</li>
+			<li>
+				<div class="line2">
+					<strong>3</strong>
+					<p>
+						회원 <b>탈퇴 후 90일간 재가입이 불가</b>하며, 탈퇴 후 재가입 시에는 신규 회원가입으로 처리됩니다.<br>(탈퇴 전 쿠폰, 회원정보, 거래내역 등은 복구되지 않습니다.)<!-- 회원 탈퇴 후 재가입 시에는 신규 회원 가입으로 처리되며, 탈퇴 전의 회원정보와 거래정보 및 e-money 잔액, 쿠폰 정보 등은 복구되지 않습니다. -->
+						</p>
+				</div>
+			</li>
+            <li>
+                <div class="line2">
+		            <strong>4</strong>
+		            <p>
+			            더한섬닷컴의 주문(배송/교환/반품) 및 상담 등이 진행중이거나, e-money의 자산을 보유한 경우 탈퇴가 불가합니다.<br>(진행 건 처리 완료 및 자산 소진 시 탈퇴 가능)</p>
+                </div>
+	        </li>
+	        </ul>
+	</div>
+    
+
+	
+	<!-- btn_btwrap -->
+	<a href="/member/deleteruserpro"> <!-- 이걸로 매핑해서 sql가져와서 알지? 굿 -->
+	<div class="btnwrap">
+	
+		<input type="button" class="btn gray" id="memberSecessionBtn" value="회원탈퇴 " > <!-- 회원탈퇴 --> <!-- 여기부터 밥먹고 와서 하자 로그인 하는거랑 비슷하게 함  -->
+	</div>
+	</a>
+	<!-- //btn_btwrap -->
 </div>
 			<!-- //cnts -->
+
+			
 		</div>
 	</div>
+	
+	<script>
+	//탈퇴하면 알림(승준)
+	$("#memberSecessionBtn").click(function(){
+		alert("탈퇴되었습니다 생각나면 다시와주세요");
+	})
+	
+	</script>
 </body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

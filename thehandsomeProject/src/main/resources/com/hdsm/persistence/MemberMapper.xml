@@ -137,4 +137,11 @@
 			</foreach>
 	</delete>
 	
+	<delete id="deleteuser">
+	delete from member where mid=#{mid}
+	</delete>
+	<update id="updateuser">
+		update member set mpassword =#{mpassword},memail=#{memail},mname=#{mname},mtel=#{mtel} where mid =#{mid}
+	</update>
+	
 </mapper> 

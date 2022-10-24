@@ -56,7 +56,7 @@
 							%>
 
 							<li class="header_dropmemu mypage">				
-								<a href="#" class="btn">마이페이지</a>								
+								<a href="/member/mypage" class="btn">마이페이지</a>								
 								<div class="list" style="display: none; height: 164px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 									<ul>
 										<li><!-- 주문조회 -->

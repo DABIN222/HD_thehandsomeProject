@@ -62,6 +62,16 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(MemberVO member) {
 		return mapper.login(member);
 	}
+	// 유저탈퇴 
+	@Override
+	public void deleteuser(String mid) {
+		mapper.deleteuser(mid);
+		}
+	// 유저업 데이트
+	@Override
+	public void updateuser(MemberVO mid) {
+		mapper.updateuser(mid);
+	}
 
 	@Override
 	public MemberVO getMember(String memberId) {
