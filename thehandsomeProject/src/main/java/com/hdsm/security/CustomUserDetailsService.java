@@ -31,10 +31,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 		log.warn("Load User By UserName :" +username);
 		MemberVO vo = membermapper.read(username);		
 		log.warn("Query by memebr maper :" +vo);
+		
+		if(vo != null) {
+			int wscount = membermapper.getWishListCount(username);
+			int sbcount = membermapper.getShoppingBagCount(username);
 			
-		//삼항식
-		return ( vo == null ? null : new CustomUser(vo) );
-
+			CustomUser customuser = new CustomUser(vo);
+			customuser.setUsersWishCount(wscount);
+			customuser.setUsersShoppingBagCount(sbcount);
+			
+			return customuser;
+		}
+		
+		return null;
 	}//end loadUserByUsern...
 
 

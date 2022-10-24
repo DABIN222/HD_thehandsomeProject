@@ -11,20 +11,21 @@ import org.springframework.security.core.userdetails.User;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.persistence.MemberMapper;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-@Getter
+@Data
 public class CustomUser  extends User{
-	
-	@Autowired
-	private MemberMapper membermapper;
 	
 	//Serialization
 	private static final long serialVersionUID = 1L;
 	
 	private MemberVO member;
+	
+	private int usersWishCount;// nav 바에서 갯수 보여주기위해 
+	private int usersShoppingBagCount;// // nav 바에서 갯수 보여주기위해
 	
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);

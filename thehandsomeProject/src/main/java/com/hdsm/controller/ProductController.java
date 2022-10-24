@@ -226,6 +226,7 @@ public class ProductController {
 		model.addAttribute("isWishList",0);
 		
 		//만약 로그인된 상태면 세션에서 아이디 가져오기
+		
 		if((String)session.getAttribute("member") != null) {
 			mid = (String)session.getAttribute("member");
 			MemberWishListDTO wsDTO = new MemberWishListDTO(); 
