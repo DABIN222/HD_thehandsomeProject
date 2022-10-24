@@ -32,8 +32,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<security:form-login
 			login-page="/member/loginForm" />
 
-		<security:logout logout-url="logout"
-			invalidate-session="true" />
+		<security:logout logout-url="/member/customLogout"
+			invalidate-session="true" delete-cookies="JSESSION_ID"/>
 
 
 

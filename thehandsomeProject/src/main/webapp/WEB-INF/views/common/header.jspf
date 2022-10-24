@@ -46,13 +46,20 @@
 								<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
 							</sec:authorize>
 
-
+							
 							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
 							<sec:authorize access="isAuthenticated()">
 								<li style="margin-top: 9px;"><sec:authentication property="principal.username"/> 님 환영합니다</li>
-								<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>	
+								<li id="logout_btn"><a href="javascript:logoutAction();"> 로그아웃 </a></li>	
+								<form id='logoutAction' action="/member/customLogout" method='post'>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								</form>
 							</sec:authorize>
-							
+							<script>
+								function logoutAction(){
+									$("#logoutAction").submit();
+								}
+							</script>
 							<li class="header_dropmemu mypage">				
 								<a href="/member/mypage" class="btn">마이페이지</a>								
 								<div class="list" style="display: none; height: 164px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
@@ -467,29 +474,35 @@
 						<li>
 							<a href="/member/wishList"><span class="ico wishlist">wish list</span> 
 								<span class="count">
-									(<span id="wishlistCount">0</span>)
+									<sec:authorize access="isAnonymous()">
+										(<span id="wishlistCount">0</span>)
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+										(<span id="wishlistCount"><sec:authentication property="principal.usersWishCount"/></span>)
+									</sec:authorize>
 								</span>
 							</a>
 						</li>
 						<li>
-							<c:choose>
-								<c:when test="${not empty member}"><!-- //세션에 값이 없으면 로그인 링크를 출력 -->
-									<a href="/member/shoppingbag?mid=${member}">
-										<span class="ico cart">장바구니</span> 
-										<span class="count">
-											(<span id="cartCount">${sbCount}</span>)
-										</span>
-									</a>
-								</c:when>
-								<c:otherwise>
-									<a href="/member/loginForm">
+							<sec:authorize access="isAnonymous()">
+								<a href="/member/loginForm">
 										<span class="ico cart">장바구니</span> 
 										<span class="count">
 											(<span id="cartCount">0</span>)
 										</span>
+								</a>
+							</sec:authorize>
+
+
+							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
+							<sec:authorize access="isAuthenticated()">
+								<a href="/member/shoppingbag?mid=<sec:authentication property="principal.username"/>">
+										<span class="ico cart">장바구니</span> 
+										<span class="count">
+											(<span id="cartCount"><sec:authentication property="principal.usersShoppingBagCount"/></span>)
+										</span>
 									</a>
-								</c:otherwise>
-							</c:choose>
+							</sec:authorize>
 						</li>
 					</ul>
 				</div>

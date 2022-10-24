@@ -185,7 +185,6 @@
 			<version>2.9.6</version>
 		</dependency>
 		
-		
 		<!-- 스프링 시큐리티 동일한 버젼으로 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
