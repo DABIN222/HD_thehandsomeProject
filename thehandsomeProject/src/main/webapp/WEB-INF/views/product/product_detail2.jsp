@@ -1235,10 +1235,10 @@
 												</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName">${productVO.bname}</span> <span
-														class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
-														/ <spanid="reviewProducPrice">${productVO.pprice}</span></a>
+													<a href="#;" class="basket_tlt"> 
+													<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+													<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
+														/ <span id="reviewProducPrice">${productVO.pprice}</span></a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
 														<ul class="select_options">
@@ -3106,6 +3106,8 @@
 <!-- footerWrap -->
 <!-- 상품평 스크립트 -->
 <script>
+	let fileObject = new Object();
+	
 	function fn_reviewWriteSend() {
 		if (!confirm("작성 하시겠습니까?"))
 			return false;
@@ -3128,6 +3130,8 @@
 		rcontent.set('headline', $("#reviewHeadline").val()); //내용
 		rcontent.set('fileText', $('#fileText').val()); //파일이름
 
+		rcontent.set('thumbnailImage',fileObject.thumbPath);
+		rcontent.set('imagesPath',fileObject.imagesPath);
 		//console.log("rcontent : " + rcontent);
 
 		//map 직렬화
@@ -3135,6 +3139,10 @@
 
 		//console.log(serializedMap);
 
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+	
 		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
 		let csrfHeaderName ="${_csrf.headerName}";
 		let csrfTokenValue="${_csrf.token}";
@@ -3489,10 +3497,10 @@
 		}
 	}
 
-	let fileObject = new Object();
+	
 	$(document)
 			.ready(
-					function() {
+			function() {
 						
 			//사진등록						
 			var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
