@@ -212,12 +212,12 @@
 										<!-- pt_list_all -->
 										<div class="pt_list_all">
 											<a
-												href="/ko/HANDSOME/MEN/TOP/SHIRTS/%ED%94%8C%EB%9E%A9-%ED%8F%AC%EC%BC%93-%EC%85%94%EC%B8%A0/p/SH2CAWSH714M_NY_100">
-												<img src="${orderitem.thumbnail.c_thumbnail1 }" alt="">
+												href="/product/product_detail?pid=${orderitem.pid}&colorcode=${orderitem.ccolorcode}">
+												<img src="${orderitem.thumbnail.c_thumbnail1 }" style = "object-fit : cover" alt="">
 											</a>
 											<div class="tlt_wrap">
 												<a
-													href="/ko/HANDSOME/MEN/TOP/SHIRTS/%ED%94%8C%EB%9E%A9-%ED%8F%AC%EC%BC%93-%EC%85%94%EC%B8%A0/p/SH2CAWSH714M_NY_100"
+													href="/product/product_detail?pid=${orderitem.pid}&colorcode=${orderitem.ccolorcode}"
 													class="basket_tlt"> <span class="tlt">${orderitem.productVO.bname}</span>
 													<span class="sb_tlt">${orderitem.productVO.pname }</span>
 												</a>
@@ -235,7 +235,7 @@
 									<input type="hidden" id="oprice" value="${orderitem.oprice }">
 										<!-- price_wrap -->
 										<div class="price_wrap ">
-											<span id="sum_price"> ₩ ${orderitem.totalprice }</span><input
+											<span class ="item_price">${orderitem.totalprice }</span><input
 												type="hidden" id="sumprice" value="${orderitem.totalprice  }">
 										</div> <!-- //price_wrap -->
 									</td>
@@ -771,6 +771,7 @@
 		<form id="PAY_FORM" method="post"></form>
 	</div>
 		<form id="orderUserInfo" action="/order/ordersuccess" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<input type="hidden" name="oid" value="">
 	<!-- <input type="hidden" name="mid" value="">
 	<input type="hidden" name="oaddress1" value="">
@@ -941,12 +942,18 @@ function doOrder(){
     
     //map 직렬화
     let serializedMap = JSON.stringify(Object.fromEntries(ordermember));
+    
+    //스프링 보안 설정 CSRF 토큰값
+	let csrfHeaderName ="${_csrf.headerName}";
+	let csrfTokenValue="${_csrf.token}";
 	
     //주문상품을 등록한다.
     $.ajax({
     url: '/order/orderexec',
     type: 'POST',
     data: serializedMap,
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
     //dataType: 'json',
     contentType : 'application/json; charset=utf-8',
     success: function(data){
@@ -1075,10 +1082,12 @@ $(document).ready(
 				
 				console.log("function");
 				//sumprice랑 subprice totalPrice 값을 세자리 수마다 ,를 찍고 출력시킨다.
-				const sum_price = priceComma($("#sumprice").val());
 				const sub_sumprice= priceComma($("#subsumprice").val());
 				//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
-				$("#sum_price").text("₩" + sum_price);
+				$(".item_price").each(function(index, item){
+					let price = '₩'+priceComma($(this).text());
+					$(this).text(price)
+				});
 				$("#sub_sumprice").text("₩" + sub_sumprice);
 				$("#totalPrice").text("₩" + sub_sumprice);
 				const milege_price = '${realMilege}'.replace(
