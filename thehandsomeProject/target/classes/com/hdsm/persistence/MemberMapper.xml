@@ -181,6 +181,15 @@
 		member_mid = #{member_mid}
 	</select>
 
+	<!-- 그목록들에 있는 제품의 정보 -->
+	<select id="getWishListProduct" resultType="com.hdsm.domain.ProductVO">
+		SELECT
+			*
+		FROM wishlist
+		where 
+			pid = #{pid}
+	</select>
+
 	<!-- 위시리스트 아이템 삭제 -->
 	<delete id="deleteWishListItem">
 		DELETE FROM wishlist
@@ -190,7 +199,7 @@
 			member_mid = #{dto.member_mid} and pid = #{dto.pid}
 		</foreach>
 	</delete>
-
+	
 	<delete id="deleteuser">
 	delete from member where mid=#{mid}
 	</delete>

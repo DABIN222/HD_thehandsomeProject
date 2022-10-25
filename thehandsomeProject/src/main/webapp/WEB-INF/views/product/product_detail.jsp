@@ -3306,10 +3306,11 @@
 			success : function(data) {
 				console.log(data);
 				isWishList=data;
-				$('.wishlist1803').stop().toggleClass('on');
+
 				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
 				$('.toast_popup').stop().removeClass('on');
 				$("#wishlistCount").text((parseInt($("#wishlistCount").text())-1)+'')
+
 			},
 			error : function(jqXHR, textStatus, errorThrown){
             	console.log(jqXHR);  //응답 메시지
@@ -3331,19 +3332,55 @@
 			$("#AskLogin").show();
 		<%
 			} else {
-		%>
+		%>	
+			let selectSize = "";
+			let selectColor = "";
+			let prev_colorcode = "${curColorCode}"; //colorcode
+
+			selectColor = $('a[colorcode='+prev_colorcode+']').attr('value');	
+			selectSize = "${productVO.p_info}";
+			console.log("prev_colorcode -------------- " + prev_colorcode);
+			console.log("selectColor -------------- " + selectColor);
+			
+			let itemMap = new Map();
+			itemMap.set('member_mid',"${member}");
+			itemMap.set('pid', "${productVO.pid}");
+			itemMap.set('psize', selectSize);
+			itemMap.set('pcolor', selectColor);
+			
+			$('.toast_popup').stop().toggleClass('on');
+            $('.toast_popup p').stop().show();
+			
+            $('.toast_popup p').stop().animate({
+                'top' : '-42px',
+                'opacity' : 1
+             });
+            
+            
+             setTimeout(function() {
+                $('.toast_popup p').stop().animate({
+                   'top' : 0,
+                   'opacity' : 0
+                });
+             }, 1750);
+             setTimeout(function() {
+                $('.toast_popup p').stop().fadeOut();
+             }, 2000);
+
+            
 				if(isWishList != "0"){//이미 등록된 상태 일때
+
 					const deleteList = [];
-					let itemMap = new Map();
-					itemMap.set('member_mid',"${member}");
-					itemMap.set('pid', "${productVO.pid}");
+
 					deleteList.push(Object.fromEntries(itemMap));
 					deleteajaxRequest(JSON.stringify(deleteList));
 				}else{
 					//등록하고싶을때
 					let params = {
 						member_mid : "${member}",
-						pid : "${productVO.pid}"
+						pid : "${productVO.pid}",
+						psize : selectSize,
+						pcolor : selectColor
 					}
 					//스프링 보안 설정 CSRF 토큰값
 					let csrfHeaderName ="${_csrf.headerName}";
@@ -3360,6 +3397,8 @@
 							isWishList="1";
 							console.log(isWishList);
 							$('.toast_popup p').text('위시리스트에 담았습니다.');
+	                        $('.toast_popup').stop().addClass('on');
+
 							$('.wishlist1803').stop().toggleClass('on');
 							$("#wishlistCount").text((<%= (int)session.getAttribute("wsCount") %>+1)+'');
 						},

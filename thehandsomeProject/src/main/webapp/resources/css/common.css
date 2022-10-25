@@ -26,7 +26,7 @@ input[type=text],
 input[type=password],
 input[type=email],
 input[type=number],
-input[type=search]{margin-right:5px;height:28px;line-height:30px;text-indent:10px;border:1px solid #ccc}
+input[type=search]{margin-right:5px;height:28px;line-height:30px;border:1px solid #ccc}
 input[type=file]{margin-right:5px;height:28px;line-height:30px;border:1px solid #ccc}
 input[type=radio],input[type=checkbox]{width:13px;height:13px;margin:3px 3px 0 0; margin:1px 3px 0 0\9;}
 textarea{padding:5px 10px;width:97%;border:1px solid #ccc;resize:none;line-height: 20px}
@@ -676,7 +676,7 @@ table td .receive_choice > span label{padding-right:25px;display:inline-block;}
 .basket_info{display:none;}
 .basket_info .info{position:relative;z-index:1;margin-top:-9px;padding:10px 0 10px 45px;overflow:hidden;background:#f8f8f8;border:1px solid #ccc;}
 .basket_info .btn_arr{position:relative;left:50%;top:-8px;z-index:2;width:15px;height:8px;display:block;text-indent:-100px;overflow:hidden;background: url("/resources/images/ico_tb_arr.png") no-repeat center center;}
-.basket_info .pt_list{float:left;overflow:hidden; /* width:820px;*/}
+.basket_info .pt_list{float:left;overflow:hidden; width:600px;}
 .basket_info .pt_list img{float:left;width:98px;height:98px;border:1px solid #ccc;}
 .basket_info .pt_list .tlt_wrap{float:left;position:relative;margin-left:20px;width:400px;}
 .basket_info .pt_list .tlt_wrap .basket_tlt{text-align:left;display:block;}
@@ -794,7 +794,7 @@ table td .receive_choice > span label{padding-right:25px;display:inline-block;}
 /*위시리스트*/
 .set .wish .color_op_all .color_op_wrap .tlt{width:320px;}
 .set .wish .set_type{width:270px;}
-.basket_info .pt_list .wish .cs_wrap dd{width:460px;}/* 200227 수정 */
+.basket_info .pt_list .wish .cs_wrap dd{width:250px;}/* 200227 수정 */
 
 .basket_info .pt_list .cs_wrap.set_type .sz_select a{margin-bottom:3px;}
 .basket_info .pt_list .wish .cs_wrap .data_set{width:150px;}
