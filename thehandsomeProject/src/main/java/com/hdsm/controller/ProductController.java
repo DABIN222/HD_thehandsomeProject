@@ -375,13 +375,13 @@ public class ProductController {
 			String[] sizelist=product.getP_size().split(",");
 			
 			// 상품평 리스트 받기
-			List<ReviewDTO> list = reviewService.getReviewList(pid);
+			List<ReviewDTO> getReview = reviewService.getReviewList(pid);
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 			
 			// 상품평 속 rcontent map 받아오기
-			for(ReviewDTO dto : list) {
+			for(ReviewDTO dto : getReview) {
 				Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
 				log.info("rcontent에 값 넣었다-------------------\n");
 				log.info("age : " + rcontent.get("age")+"\n");
@@ -407,7 +407,7 @@ public class ProductController {
 			model.addAttribute("reviewList",reviewList);
 			
 			
-			return "/product/product_detail";
+			return "/product/product_detail2";
 		}
 		
 	

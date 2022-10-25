@@ -1026,10 +1026,8 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="javascript:fn_popupCustomerReview();">상품평(<span
-								id="customerReviewCnt">0</span>)
-								<div class="star_score1807" id="prodTotalStarScoreWrapper"
-									style="display: none;">
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span id="customerReviewCnt">0</span>)
+								<div class="star_score1807" id="prodTotalStarScoreWrapper" style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
 										<span class="cmt_per" id="prodTotalStarScore">별점</span>
 									</span>
@@ -1181,7 +1179,8 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
@@ -3189,31 +3188,6 @@
 
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
-		console.log("${productVO.pid}");
-		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
-		let csrfHeaderName ="${_csrf.headerName}";
-		let csrfTokenValue="${_csrf.token}";
-		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
-		const params = {
-			pid : "${productVO.pid}"
-		};
-		//let serializedMap = JSON.stringify(Object.fromEntries(params));
-		$.ajax({
-			url : '/review/reviewList',
-			type : 'POST',
-			data : params, //직렬화
-			beforeSend: function(xhr) {xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-			success : function(result) {
-				console.log(JSON.stringify(result));
-				$.each(result, function(idx, val) {
-					console.log(idx + " " + val.rcontentMap.age);
-				});
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-				alert("통신 실패.");
-			},
-		});
 		viewPopup("#customerReviewDiv");
 
 	}
