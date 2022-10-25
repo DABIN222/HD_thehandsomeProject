@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hdsm.controller.MemberController;
@@ -32,6 +33,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private ProductMapper productmapper;
+	
+
 	
 //	@Autowired
 //	private MemberMapper2 mapper2;
@@ -62,6 +65,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO member) {
 		return mapper.login(member);
+	}
+	// 유저탈퇴 
+	@Override
+	public void deleteuser(String mid) {
+		mapper.deleteuser(mid);
+		}
+	// 유저업 데이트
+	@Override
+	public void updateuser(MemberVO mid) {
+		mapper.updateuser(mid);
 	}
 
 	@Override

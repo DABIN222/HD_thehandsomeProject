@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>더한섬닷컴 | THE HANDSOME.COM</title>
+  
 
 <link rel="stylesheet" href="/resources/css/layout.css" />
 <link rel="stylesheet" href="/resources/css/common.css" />
@@ -23,7 +24,7 @@
 	<!-- headerWrap -->
 	<div id="headerWrap">
 		<div class="header header_fixed header_main1903">
-			<script type="text/javascript" src="/_ui/desktop/common/js/SsoAjax.js"></script>
+			
 
 			<form id="autologinForm" name="autologinForm" action="/ko/hp/autologin" method="get">
 				<input type="hidden" name="hcid" id="hcid" value="e2gaf@naver.com" />
@@ -33,7 +34,7 @@
 					<div class="brand_menu brand_menu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 있음 -->
-							<li><span class="on"><a href="/">HOME</a></span></li>
+							<li><span class="on"><a href="/" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
 							<li><span><a href="/ko/c/br44/br44" onclick="GA_Common('topNav',$(this))">CLUB MONACO</a></span></li>
 							<!-- 공간 상 들어가지 못한 나머지 브랜드-->
 						</ul>
@@ -215,6 +216,7 @@
 					<!--// 201705 search_box_wrap -->
 					<div class="util_menu" style="display: block;">
 						<ul class="clearfix">
+						
 								<%
 								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
 							%>
@@ -322,13 +324,13 @@
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
-			<span id="menuTitle">마이 페이지</span>
+			<span id="menuTitle">회원 탈퇴</span>
 		</h3>
 		<div class="sub_container">
 			<!-- lnb -->
 			<div class="lnb_wrap">
 				<h4>
-					<a href="/ko/mypage">마이페이지<!-- 마이페이지 --></a>
+					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
 				<div class="lnb">
 					<dl>
@@ -371,7 +373,8 @@
 					<dl>
 						<dt>나의 정보관리</dt>
 						<dd>
-							<a href="/member/pwcheck">개인정보 변경/탈퇴</a>
+							<a href="/ko/mypage/personInfomationChangePWCheck"
+								onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
 						</dd>
 						<dd>
 							<a href="/ko/mypage/shoppingAddressPWCheck"
@@ -424,91 +427,76 @@
 			<div class="sub_cnts">
 			
 			
-			
-    <form id="hpointHiddenForm" method="post" action="" target="joinStart_window">
-        <input type="hidden" name="prtnrReqGb" value="02">
-        <input type="hidden" name="prtnrId" value="D080">
-        <input type="hidden" name="chnnlId" value="1705">
-        <input type="hidden" name="ptcoReqnMdaInf" id="ptcoReqnMdaInf" value="">
-    </form>
-    <form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
-        <input type="hidden" name="sterm" class="input_date" title="기간 입력" id="sterm" value="2022-09-19" readonly="">
-        <input type="hidden" name="eterm" class="input_date" title="기간 입력" id="eterm" value="2022-10-19" readonly="">
-    </form>
-    <!-- 회원정보 -->
-    <div class="profile_info1 clearfix review_betterment1905">
-            <div class="name type2">
-                    <span class="ico_grade"> <%=session.getAttribute("member")%>   <span>님</span></span>
-                    <span class="grade_txt"></span>
-                </div>              
-                <div class="point" style="border:0; padding-left:0; width:95px">
-                    <p class="title">COUPON</p>
-                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">0&nbsp;<span>장</span></a>
-                </div>
-                <div class="point review">
-                    <p class="title">상품평</p>
-                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">0&nbsp;<span>개</span></a>
-                </div>
-                <div class="point type2">
-                   <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
-                   <a href="javascript:void(0);" id="hpoinJoin" class="btn" onclick="GA_Event('마이페이지','회원정보','H.POINT 회원가입');">H.Point 회원가입</a>
-               </div>
-            </div>
-    <!-- 회원정보 -->
-    <!-- 최근주문 -->
-    <div class="title_wrap">
-        <h4 class="float_left">최근주문<!-- 최근주문 --></h4>
-        <p class="txt_line">최근 1개월 내 주문하신 내역입니다.<!-- 최근 1개월 내 주문하신 내역 입니다. --></p>
-        <div class="btn_wrap">
-            <a href="/ko/mypage/order/myorders" class="btn add_ss" onclick="GA_Event('마이페이지','최근주문','전체보기');">전체보기<!-- 전체보기 --></a>
-        </div>
-    </div>
-    <!-- table -->
-    <div class="tblwrap lncl1812"><!-- 클래스추가 181204 -->
-        <table class="tbl_ltype review_betterment1905">
-            <caption>상품평 리스트</caption>
-            <colgroup class="interval1812"><!-- 수정 181204 -->
-                <col style="width:120px">
-                <col>
-                <col style="width:42px">
-                <col style="width:107px">
-                <col style="width:108px">
-                <col style="width:96px">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">주문번호<!-- 주문번호 --></th>
-                    <th scope="col">상품정보<!-- 상품정보 --></th>
-                    <th scope="col" style="padding:15px 0">수량<!-- 수량 --></th><!-- 스타일추가 181204 -->
-                    <th scope="col">판매가<!-- 판매가 --></th>
-                    <th scope="col">주문상태<!-- 주문상태 --></th>
-                    <th scope="col">구분<!-- 구분 --></th>
-                </tr>
-            </thead>
-            <tbody id="listBody">
-                <tr>
-                    <td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
-                </tr>
-            </tbody>
-        </table>
-    </div> 
-    <!-- table -->
-    <!-- 위시리스트 -->
-    <div class="title_wrap line mt50">
-        <h4>위시리스트<!-- 위시리스트 --></h4>
-        <div class="btn_wrap">
-            <a href="/ko/mypage/myWish" class="btn add_ss" onclick="GA_Event('마이페이지','위시리스트','전체보기');">전체보기<!-- 전체보기 --></a>
-        </div>
-    </div>
-    <ul class="wish_wrap">
-        <li class="no_data">
-                위시리스트에 저장된 상품이 없습니다.<!-- 위시리스트에 저장된 상품이 없습니다. -->
-            </li>
-        </ul>
+			<script type="text/javascript" src="/_ui/desktop/common/js/jquery-1.11.2.min.js"></script>
 
+
+	<form id="personInfomationChangePage" name="manToManInquiryForm" action="/ko/mypage/personInfomationChangePWCheck" method="post"><input type="hidden" name="directInto" value="NO">
+	<div>
+<input type="hidden" name="CSRFToken" value="2081f55e-60bf-4593-b34e-ade5383b2b89">
+</div></form><div class="title_wrap mt30">
+		<h4 class="float_left">비밀번호 재확인</h4>
+		<p class="txt_line">고객님의 정보보호를 위하여 비밀번호를 다시 한번 확인합니다.</p>
+	</div>
+
+    <!-- pw reaffirm -->
+    <div class="pw_reaffirm">
+        <form id="pwcheckform" >
+            <fieldset>
+                <legend>입력항목</legend>
+                <div class="login_section">
+                    
+                    <div>
+                        <div>
+                            <label for="j_username">아이디</label>
+                            <input type="text" id="j_username" name="j_username" value="${member.mid}" readonly>
+                        </div>
+                        <div>
+                            <label for="j_password">비밀번호</label>
+                            <input type="password" id="j_password" name="j_password" title="비밀번호">
+                        </div>
+                    </div>
+                    <p class="guide_comment ml50">
+                    <!-- 입력하신 아이디 혹은 비밀번호가 일치하지 않습니다. --></p>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!-- //pw reaffirm -->
+
+	<!-- btn_btwrap -->
+	<div class="btnwrap mypage2">
+		<a href="javascript:void(0);" class="btn wt" id="cancle_btn">취소</a>
+		<a href="javascript:void(0);" class="btn gray" id="login_btn" >확인</a>
+	</div>
 </div>
 			<!-- //cnts -->
+
+			
 		</div>
 	</div>
+	<script>
+	/* 확인버튼 누르면 컨트롤러에가서 처리 (승준) */
+	$("#login_btn").click(function(){
+		$("#pwcheckform").attr("action","/member/pwcheckpro");
+		$("#pwcheckform").submit();
+		
+		
+		
+		
+	});
+	/* 뒤로가기 누를시에 전으로 이동(승준) */
+	$("#cancle_btn").click(function(){
+		
+		window.history.go(-1);
+		
+		
+	});
+
+	
+	
+
+	
+	</script>
+	
 </body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

@@ -1,6 +1,7 @@
 package com.hdsm.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +28,7 @@ import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailVO;
+import com.hdsm.security.domain.CustomUser;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.ProductService;
 import com.hdsm.util.ProductUtil;
@@ -218,24 +223,37 @@ public class ProductController {
 	public String product_detail(
 			HttpServletRequest request,
 			@RequestParam("pid") String pid,
-			@RequestParam("colorcode") String colorcode
-			,Model model) {
+			@RequestParam("colorcode") String colorcode,
+			Principal principal,
+			Model model) {
 		String mid;
 		HttpSession session = request.getSession(); // 세션
 		
 		model.addAttribute("isWishList",0);
 		
+		
 		//만약 로그인된 상태면 세션에서 아이디 가져오기
-		if((String)session.getAttribute("member") != null) {
-			mid = (String)session.getAttribute("member");
+		if(principal != null) {
+			mid = principal.getName();
 			MemberWishListDTO wsDTO = new MemberWishListDTO(); 
 			wsDTO.setMember_mid(mid);
-			wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+			wsDTO.setPid(pid);
 			int cnt = mservice.isinWishList(wsDTO);
 			if(cnt>0) {
 				model.addAttribute("isWishList",cnt);
 			}
+			model.addAttribute("member",mid);
 		}
+//		if((String)session.getAttribute("member") != null) {
+//			mid = (String)session.getAttribute("member");
+//			MemberWishListDTO wsDTO = new MemberWishListDTO(); 
+//			wsDTO.setMember_mid(mid);
+//			wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+//			int cnt = mservice.isinWishList(wsDTO);
+//			if(cnt>0) {
+//				model.addAttribute("isWishList",cnt);
+//			}
+//		}
 		
 		ProductVO product=service.getProduct(pid);
 		System.out.println(product.getP_size());
