@@ -73,7 +73,7 @@ public class MemberMapperTest3 {
 	public void testGetUsersWishList() {
 		MemberWishListDTO dto = new MemberWishListDTO();
 		dto.setMember_mid("asd");
-		
+		//테스트 위한 주석처리
 		List<MemberWishListDTO> list = mapper.getUsersWishList(dto);
 		
 		for(MemberWishListDTO d : list) {

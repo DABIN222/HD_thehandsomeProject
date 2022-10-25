@@ -209,13 +209,31 @@ public class MemberControllerTests {
 				.getModelMap()
 				);
 	}
-	@Test
+	//@Test
 	public void testdeleteWishList() throws Exception {
 		log.info(
 				mockMvc.perform(
 				MockMvcRequestBuilders.post("/member/deleteWishList")
 				.param("member_mid", "asd")
 				.param("pid", "SH2C8LJM902M")
+				)
+				.andReturn()
+				.getModelAndView()
+				.getModelMap()
+				);
+	}
+	
+	//CustomUserDetailsService를 이용한 회원가입
+	@Test
+	public void testuseCustomUserDetailsServicejoin() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/join")
+				.param("custId", "qwe")
+				.param("custPwd", "qwe")
+				.param("custName", "qwe")
+				.param("emailtotal", "tlqkffusek@123.asd")
+				.param("custTel", "010123457")
 				)
 				.andReturn()
 				.getModelAndView()

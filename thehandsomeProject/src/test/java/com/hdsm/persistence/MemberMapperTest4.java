@@ -38,12 +38,17 @@ public class MemberMapperTest4 {
 	@Autowired
 	private MemberMapper mapper;
 	
-	/*
-	 * @Test public void testRead() { //MemberVO vo = mapper.read("asd");
-	 * log.info(vo); //vo.getAuthList().forEach( authVO -> log.info(authVO)); for (
-	 * MemberAuthVO authVO: vo.getAuthList() ) { log.info(authVO); }//end for
-	 * 
-	 * }//end testRead()
-	 */
+
+	@Test
+	public void testRead() {
+		MemberVO vo = mapper.read("asd");	
+		log.info(vo);		
+		//vo.getAuthList().forEach( authVO -> log.info(authVO));		
+		for ( MemberAuthVO  authVO: vo.getAuthList()  ) {
+			log.info(authVO);			
+		}//end for
+		
+	}//end testRead()
+
 
 }

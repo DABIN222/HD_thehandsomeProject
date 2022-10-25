@@ -9,8 +9,10 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hdsm.controller.MemberController;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -34,6 +36,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private ProductMapper productmapper;
+	
+
 	
 //	@Autowired
 //	private MemberMapper2 mapper2;
@@ -64,6 +68,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO member) {
 		return mapper.login(member);
+	}
+	// 유저탈퇴 
+	@Override
+	public void deleteuser(String mid) {
+		mapper.deleteuser(mid);
+		}
+	// 유저업 데이트
+	@Override
+	public void updateuser(MemberVO mid) {
+		mapper.updateuser(mid);
 	}
 
 	@Override
@@ -186,6 +200,16 @@ public class MemberServiceImpl implements MemberService {
 			for(String size : pvo.getP_size().split(",")) {
 				slist.add(size.trim());
 			}
+			
+			String thumbnailImg = cvo.get(0).getC_thumbnail1();
+			String colorcode = cvo.get(0).getCcolorcode();
+
+
+			wsDTOforJsp.setPid(pid);
+			wsDTOforJsp.setColorcode(colorcode);
+			wsDTOforJsp.setThumbnail(thumbnailImg);
+			wsDTOforJsp.setScolor(dto.getPcolor());
+			wsDTOforJsp.setSsize(dto.getPsize());
 			wsDTOforJsp.setPvo(pvo);
 			wsDTOforJsp.setColorList(cvo);
 			wsDTOforJsp.setSizeList(slist);

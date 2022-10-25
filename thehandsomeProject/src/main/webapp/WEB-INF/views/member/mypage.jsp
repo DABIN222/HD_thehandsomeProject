@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>더한섬닷컴 | THE HANDSOME.COM</title>
 
-<%@include file="/WEB-INF/views/common/header.jspf"%>
+<link rel="stylesheet" href="/resources/css/layout.css" />
+<link rel="stylesheet" href="/resources/css/common.css" />
+<link rel="stylesheet" href="/resources/css/contents.css" />
 
-<!-- bodyWrap -->
+<!-- 제이쿼리 cdn -->	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- ui 공통 스크립트 -->
+<script type="text/javascript" src="/resources/js/ui.js"></script>
+
 <body>
 	<!-- headerWrap -->
 	<div id="headerWrap">
@@ -20,7 +33,8 @@
 					<div class="brand_menu brand_menu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 있음 -->
-							<li><span class="on"><a href="/" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
+							<li><span class="on"><a href="/">HOME</a></span></li>
+							<li><span><a href="/ko/c/br44/br44" onclick="GA_Common('topNav',$(this))">CLUB MONACO</a></span></li>
 							<!-- 공간 상 들어가지 못한 나머지 브랜드-->
 						</ul>
 					</div>
@@ -132,9 +146,11 @@
 							<!-- tab 검색어 입력 전 -->
 							<div class="search_tab">
 								<div class="btn_search_tab" style="display: none;">
-									<a href="javascript:void(0);" rel="recent_search" class="btn_recent_search on" onclick="GA_Event('검색','최근 검색어','클릭')">최근 검색어</a> 
+									<a href="javascript:void(0);" rel="recent_search" class="btn_recent_search on"
+										onclick="GA_Event('검색','최근 검색어','클릭')">최근 검색어</a> 
 									<a href="javascript:void(0);" rel="style_search" class="btn_style_search" id="btn_style_search">Style Search</a> 
-									<a href="javascript:void(0);" rel="popular_search" class="btn_style_search" id="btn_top_search" style="display: none;" onclick="GA_Event('검색','인기검색어','클릭')">인기검색어</a>
+									<a href="javascript:void(0);" rel="popular_search" class="btn_style_search" id="btn_top_search"
+										style="display: none;" onclick="GA_Event('검색','인기검색어','클릭')">인기검색어</a>
 								</div>
 								<!-- 최근 검색어 -->
 								<div class="recent_search s_tab">
@@ -199,18 +215,48 @@
 					<!--// 201705 search_box_wrap -->
 					<div class="util_menu" style="display: block;">
 						<ul class="clearfix">
-							<li><a href="javascript:setLogout();" onclick="GA_Event('공통','헤더_메뉴','로그아웃')">로그아웃</a></li>
+								<%
+								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+							%>
+							<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
+							<%
+								} else {
+							%>
+							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
+							<li style="margin-top: 9px;"><%=session.getAttribute("member")%> 님 환영합니다</li>
+
+							<!-- 버튼을 클릭했을때 함수호출 -->
+
+							<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>
+
+
+							<%
+								}
+							%>
 							<li class="header_dropmemu mypage">
-								<a href="/member/mypage" class="btn" onclick="GA_Event('공통','헤더_메뉴','마이페이지')">마이페이지</a>
+								<a href="/ko/mypage" class="btn" onclick="GA_Event('공통','헤더_메뉴','마이페이지')">마이페이지</a>
 								<div class="list">
 									<ul>
 										<li><a href="/ko/mypage/order/myorders" onclick="GA_Event('공통','헤더_메뉴','마이페이지_주문조회')">주문조회<!-- 주문조회 --></a></li>
 										<li><a href="/ko/mypage/myGradeInfo" onclick="GA_Event('공통','헤더_메뉴','마이페이지_나의회원등급')">나의회원등급<!-- 온라인등급 --></a></li>
 										<li><a href="/ko/mypage/voucher" onclick="GA_Event('공통','헤더_메뉴','마이페이지_쿠폰조회')">쿠폰조회<!-- 쿠폰조회 --></a></li>
 										<li><a href="/ko/mypage/mypoint" onclick="GA_Event('공통','헤더_메뉴','마이페이지_마일리지조회')">마일리지조회<!-- 포인트조회 --></a></li>
+										<li><a href="/ko/mypage/myEGiftCard" onclick="GA_Event('공통','헤더_메뉴','마이페이지_e-Gift Card')">e-Gift Card<!-- e-Gfit Card --></a></li>
 										<li><a href="/ko/mypage/personInfomationChangePWCheck" onclick="GA_Event('공통','헤더_메뉴','마이페이지_회원정보변경')">회원정보변경<!-- 회원정보변경 --></a></li>
 										<li><a href="/ko/svcenter/mantomaninquiry" onclick="GA_Event('공통','헤더_메뉴','마이페이지_온라인상담')">온라인상담<!-- 온라인 상담 --></a></li>
 									</ul>
+								</div>
+							</li>
+							<li>
+								<div class="header_dropmemu lang_switch lang_1911">
+									<a href="javascript:void(0);" class="btn" onclick="GA_Event('공통','헤더_메뉴','LANGUAGE')">LANGUAGE</a>
+									<div class="list" style="display: none; height: 87px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+										<ul>
+											<li><a href="javascript:language('ko')" onclick="GA_Event('공통','헤더_메뉴','LANGUAGE_한국어')">한국어</a></li>
+											<li><a href="javascript:language('en')" onclick="GA_Event('공통','헤더_메뉴','LANGUAGE_ENGLISH')">ENGLISH</a></li>
+											<li><a href="javascript:language('zh')" onclick="GA_Event('공통','헤더_메뉴','LANGUAGE_中文')">中文</a></li>
+										</ul>
+									</div>
 								</div>
 							</li>
 						</ul>
@@ -252,7 +298,7 @@
 
 			<div class="gnbwarp new201608 clearfix">
 				<h1 class="logo logo1903">
-					<a href="/" onclick="GA_Event('공통', '로고', '상단');">thehandsome.com</a>
+					<a href="/">thehandsome.com</a>
 				</h1>
 				<!-- 첫번째 c:if -->
 
@@ -261,9 +307,9 @@
 				<div class="util_menu util_menu1803">
 					<ul class="clearfix">
 						<li><a href="javascript:void(0);"><span class="ico_sh">search</span></a></li>
-						<li><a href="/member/wishList" onclick="GA_Event('공통','유틸_메뉴','위시리스트');">
+						<li><a href="/ko/mypage/myWish" onclick="GA_Event('공통','유틸_메뉴','위시리스트');">
 							<span class="ico wishlist">wish list</span> <span class="count">(<span id="wishlistCount">0</span>)</span></a></li>
-						<li><a href="/member/shoppingbag" onclick="GA_Event('공통','유틸_메뉴','쇼핑백');">
+						<li><a href="/ko/shoppingbag" onclick="GA_Event('공통','유틸_메뉴','쇼핑백');">
 							<span class="ico cart">장바구니</span> <span class="count">(<span id="cartCount">1</span>)</span></a></li>
 					</ul>
 				</div>
@@ -276,19 +322,19 @@
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
-			<span id="menuTitle"></span>
+			<span id="menuTitle">마이 페이지</span>
 		</h3>
 		<div class="sub_container">
 			<!-- lnb -->
 			<div class="lnb_wrap">
 				<h4>
-					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
+					<a href="/ko/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
 				<div class="lnb">
 					<dl>
 						<dt>주문조회</dt>
 						<dd>
-							<a href="/member/mypage"
+							<a href="/ko/mypage/order/myorders"
 								onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
 						</dd>
 					</dl>
@@ -306,23 +352,38 @@
 							<a href="/ko/mypage/mypoint"
 								onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
 						</dd>
+						<dd>
+							<a href="/ko/mypage/myEGiftCard"
+								onclick="GA_Event('마이페이지','LNB','E-GIFT CARD');">e-Gift Card</a>
+						</dd>
 					</dl>
 					<dl>
 						<dt>나의 상품관리</dt>
 						<dd>
-							<a href="/member/wishList"
+							<a href="/ko/mypage/myWish"
 								onclick="GA_Event('마이페이지','LNB','위시리스트');">위시리스트<!-- 위시리스트 --></a>
+						</dd>
+						<dd>
+							<a href="/ko/mypage/rsalarm"
+								onclick="GA_Event('마이페이지','LNB','재입고 알림');">재입고 알림<!-- 재입고알림 --></a>
 						</dd>
 					</dl>
 					<dl>
 						<dt>나의 정보관리</dt>
 						<dd>
-							<a href="/ko/mypage/personInfomationChangePWCheck"
-								onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
+							<a href="/member/pwcheck">개인정보 변경/탈퇴</a>
 						</dd>
 						<dd>
 							<a href="/ko/mypage/shoppingAddressPWCheck"
 								onclick="GA_Event('마이페이지','LNB','배송지 관리');">배송지 관리</a>
+						</dd>
+						<dd>
+							<a href="/ko/mypage/oneClick"
+								onclick="GA_Event('마이페이지','LNB','원클릭 결제 관리');">원클릭 결제 관리</a>
+						</dd>
+						<dd>
+							<a href="/ko/mypage/mergeCustomerInfo"
+								onclick="GA_Event('마이페이지','LNB','한섬 멤버십 통합');">한섬 멤버십 통합</a>
 						</dd>
 					</dl>
 					<dl>
@@ -361,53 +422,90 @@
 			<!-- //lnb -->
 			<!-- cnts -->
 			<div class="sub_cnts">
-				<!-- search1 -->
-				<form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
-					<div class="search_wrap">
-						<!-- cnd -->
-						<ul>
-							<li>
-								<p class="bul_sty01">
-									<label for="term">조회기간<!-- 조회기간 --></label>
-								</p>
-								<div class="calendar_wrap mr5">
-									<input type="text" name="sterm" class="input_date"
-										title="mypage.order.history.serch.term.insert" id="sterm"
-										readonly />
-									<!-- <a href="#" class="ico_cld">날짜 선택 버튼</a> -->
-									<div class="form_hyphen pl5">-</div>
-									<input type="text" name="eterm" class="input_date"
-										title="mypage.order.history.serch.term.insert" id="eterm"
-										readonly />
-									<!-- <a href="#" class="ico_cld">날짜 선택 버튼</a> -->
-								</div>
-								<div class="tab_c">
-									<ul class="clearfix">
-										<li><a href="javascript:void(0);" id="setDateBtn1">1주일<!-- 1주일 --></a></li>
-										<li><a href="javascript:void(0);" id="setDateBtn2">1개월<!-- 1개월 --></a></li>
-										<li><a href="javascript:void(0);" id="setDateBtn3">3개월<!-- 3개월 --></a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="space">
-								<p class="bul_sty01">
-									<label for="id_sel">검색구분<!-- 검색구분 --></label>
-								</p> <select name="searchType" title="검색구분" class="select">
-									<option value="productName">상품명
-										<!-- 상품명 --></option>
-									<option value="orderNumber">주문번호
-										<!-- 주문번호 --></option>
-							</select> <input type="text" name="searchWord" class="input_all"
-								title="검색어 입력" /> <!-- 검색어 입력 -->
-							</li>
-						</ul>
-						<!-- //cnd -->
-						<input type="button" id="searchBtn" class="btn_search"
-							value="조회하기">
-						<!-- 조회하기 -->
-					</div>
-				</form>
-				<!-- //search1 -->
+			
+			
+			
+    <form id="hpointHiddenForm" method="post" action="" target="joinStart_window">
+        <input type="hidden" name="prtnrReqGb" value="02">
+        <input type="hidden" name="prtnrId" value="D080">
+        <input type="hidden" name="chnnlId" value="1705">
+        <input type="hidden" name="ptcoReqnMdaInf" id="ptcoReqnMdaInf" value="">
+    </form>
+    <form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
+        <input type="hidden" name="sterm" class="input_date" title="기간 입력" id="sterm" value="2022-09-19" readonly="">
+        <input type="hidden" name="eterm" class="input_date" title="기간 입력" id="eterm" value="2022-10-19" readonly="">
+    </form>
+    <!-- 회원정보 -->
+    <div class="profile_info1 clearfix review_betterment1905">
+            <div class="name type2">
+                    <span class="ico_grade"> <%=session.getAttribute("member")%>   <span>님</span></span>
+                    <span class="grade_txt"></span>
+                </div>              
+                <div class="point" style="border:0; padding-left:0; width:95px">
+                    <p class="title">COUPON</p>
+                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">0&nbsp;<span>장</span></a>
+                </div>
+                <div class="point review">
+                    <p class="title">상품평</p>
+                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">0&nbsp;<span>개</span></a>
+                </div>
+                <div class="point type2">
+                   <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
+                   <a href="javascript:void(0);" id="hpoinJoin" class="btn" onclick="GA_Event('마이페이지','회원정보','H.POINT 회원가입');">H.Point 회원가입</a>
+               </div>
+            </div>
+    <!-- 회원정보 -->
+    <!-- 최근주문 -->
+    <div class="title_wrap">
+        <h4 class="float_left">최근주문<!-- 최근주문 --></h4>
+        <p class="txt_line">최근 1개월 내 주문하신 내역입니다.<!-- 최근 1개월 내 주문하신 내역 입니다. --></p>
+        <div class="btn_wrap">
+            <a href="/ko/mypage/order/myorders" class="btn add_ss" onclick="GA_Event('마이페이지','최근주문','전체보기');">전체보기<!-- 전체보기 --></a>
+        </div>
+    </div>
+    <!-- table -->
+    <div class="tblwrap lncl1812"><!-- 클래스추가 181204 -->
+        <table class="tbl_ltype review_betterment1905">
+            <caption>상품평 리스트</caption>
+            <colgroup class="interval1812"><!-- 수정 181204 -->
+                <col style="width:120px">
+                <col>
+                <col style="width:42px">
+                <col style="width:107px">
+                <col style="width:108px">
+                <col style="width:96px">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">주문번호<!-- 주문번호 --></th>
+                    <th scope="col">상품정보<!-- 상품정보 --></th>
+                    <th scope="col" style="padding:15px 0">수량<!-- 수량 --></th><!-- 스타일추가 181204 -->
+                    <th scope="col">판매가<!-- 판매가 --></th>
+                    <th scope="col">주문상태<!-- 주문상태 --></th>
+                    <th scope="col">구분<!-- 구분 --></th>
+                </tr>
+            </thead>
+            <tbody id="listBody">
+                <tr>
+                    <td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <!-- table -->
+    <!-- 위시리스트 -->
+    <div class="title_wrap line mt50">
+        <h4>위시리스트<!-- 위시리스트 --></h4>
+        <div class="btn_wrap">
+            <a href="/ko/mypage/myWish" class="btn add_ss" onclick="GA_Event('마이페이지','위시리스트','전체보기');">전체보기<!-- 전체보기 --></a>
+        </div>
+    </div>
+    <ul class="wish_wrap">
+        <li class="no_data">
+                위시리스트에 저장된 상품이 없습니다.<!-- 위시리스트에 저장된 상품이 없습니다. -->
+            </li>
+        </ul>
+
 
 				<div class="title_wrap mt50">
 					<h4>상품 주문 목록<!-- 상품 주문목록 --></h4>
@@ -579,6 +677,7 @@
 				</div>
 				<!-- //Guide Table -->
 			</div>
+
 			<!-- //cnts -->
 		</div>
 	</div>

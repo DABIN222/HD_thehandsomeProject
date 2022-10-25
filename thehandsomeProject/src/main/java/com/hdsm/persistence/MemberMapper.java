@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MemberWishListDTO;
@@ -14,6 +15,12 @@ public interface MemberMapper {
 	
 	// 회원가입
 	public void insertMember(MemberVO member);
+	
+	// 회원가입때 권한관련 정보도 같이 넣어주기
+	public void insertMemberAutority(MemberAuthVO auto);
+	
+	// 회원의 모든 정보(권한까지)읽어오기
+	public MemberVO read(String userid);
 	
 	// 아이디 중복 확인
 	public int idCheck(String memberId);
@@ -62,7 +69,15 @@ public interface MemberMapper {
 	//해당 유저가 담아놓은 위시리스트목록들 가져오기
 	public List<MemberWishListDTO> getUsersWishList(MemberWishListDTO wsDTO);
 	
+	//장바구니에 있는 물건들의 정보들 가져오기
+	public ProductVO getWishListProduct(@Param("pid") String pid);
+	
 	//유저가 위시리스트 아이템 지울때
 	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
 	
+	//유저 탈퇴
+	public void deleteuser(String mid);
+		
+	//유저 비밀번호 변경 
+	public void updateuser(MemberVO mid);
 }

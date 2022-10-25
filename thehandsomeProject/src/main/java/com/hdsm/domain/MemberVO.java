@@ -1,8 +1,12 @@
 package com.hdsm.domain;
 
 import java.sql.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.Data;
 
@@ -18,11 +22,17 @@ public class MemberVO {
 	private String maddress1;
 	private String maddress2;
 	private String mgrade;
-	
-//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private java.sql.Date mdate;
-	
 	private int mpoint;
 	private int menabled;
 	
+	private List<MemberAuthVO> authList;
+	
+	public String encode(String str) {
+
+		BCryptPasswordEncoder pec = new BCryptPasswordEncoder();
+		
+		return pec.encode(str);
+	}
 }
