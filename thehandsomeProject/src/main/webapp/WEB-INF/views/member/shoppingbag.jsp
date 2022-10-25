@@ -92,10 +92,8 @@
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
 										<a itemnum="a${status.index}" href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
-											<img
-											src="${shoppingbag.thumbnail}"
-											style = "object-fit : cover"
-											alt="" />
+											<img src="${shoppingbag.thumbnail}"
+											style = "object-fit : cover" alt="" />
 										</a>
 										<div class="tlt_wrap">
 											<a
@@ -454,11 +452,17 @@
 	
 	$(document).ready(
 		function() {
+			//삭제를 위한 ajax
 			$.deleteFunction =  function(params){
+				let csrfHeaderName ="${_csrf.headerName}";
+				let csrfTokenValue="${_csrf.token}";
+				
 			    //통쉰 하자 ~
 			    $.ajax({
 			      type: "POST", // HTTP method type(GET, POST) 형식이다.
 			      url: "/member/deleteShoppingBag", // 컨트롤러에서 대기중인 URL 주소이다.
+			      beforeSend: function(xhr) {
+	                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			      data: params, // Json 형식의 데이터이다.
 			      contentType: "application/json; charset=utf-8",
 		          //dataType: "json",
@@ -612,8 +616,9 @@
 			  //그리고 사진도 바뀌게 해줘야징
 			  const itemIndex = parseInt($(this).closest('dl').attr("itemnum"));
 			  const colorName = $(this).attr('value');
-
+			  
 			  const colorCode = colorinfos[itemIndex][colorName][0];
+			 
 			  const colorThumbUrl = colorinfos[itemIndex][colorName][1];
 			  const productId = pids[itemIndex];
 			  //사진과 href 다 바꿔버려 !
@@ -634,6 +639,9 @@
 			  if(color!=pcolors[index] ||
 					  size!=psizes[index] ||
 					  amount!=pamounts[index]){
+				  let csrfHeaderName ="${_csrf.headerName}";
+				  let csrfTokenValue="${_csrf.token}";
+				  
 				  const params = {
 						  mid: "${member}",
 						  pid: pids[index],
@@ -646,6 +654,8 @@
 					  type: "POST", // HTTP method type(GET, POST) 형식이다.
 					  url: "/member/updateShoppingBag", // 컨트롤러에서 대기중인 URL 주소이다.
 					  data: params, // Json 형식의 데이터이다.
+					  beforeSend: function(xhr) {
+		                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 					  success: function (data) {
 					    	//성공하면 그 수량대로 전체 합 바꾸고 요소들도 바꿔줘야지!
 							let total = 0;

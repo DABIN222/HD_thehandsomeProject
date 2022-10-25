@@ -2,9 +2,13 @@ package com.hdsm.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.MemberWishListDTO;
+import com.hdsm.domain.MemberWishListDTOforJsp;
 
 public interface MemberService {
 	
@@ -36,4 +40,28 @@ public interface MemberService {
 	
 	// 장바구니 삭제
 	public int deleteShoppingBag(List<MemberSbagDTO> msList);
+	
+	//장바구니 개수 가져오기
+	public int getShoppingBagCount(String mid);
+	
+	//위시리스트 갯수 가져오기
+	public int getWishListCount(String mid);
+	
+	//위시리스트 넣기
+	public int insertWishList(MemberWishListDTO wsDTO);
+	
+	//해당유저와 물건이 위시리스트에 있는지 확인
+	public int isinWishList(MemberWishListDTO wsDTO);
+	
+	// 위시리스트에 목록들 가져오기
+	public List<MemberWishListDTOforJsp> getUsersWishList(MemberWishListDTO wsDTO);
+	
+	//유저가 위시리스트 아이템 지울때
+	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
+	
+	//회원 탈퇴
+	public void deleteuser(String mid);
+		
+	//비밀번호 변경
+	public void updateuser(MemberVO member);
 }

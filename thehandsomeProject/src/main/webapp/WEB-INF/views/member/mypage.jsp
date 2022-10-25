@@ -33,7 +33,7 @@
 					<div class="brand_menu brand_menu1903">
 						<ul class="clearfix">
 							<!-- 선호 브랜드 있음 -->
-							<li><span class="on"><a href="/ko/main" onclick="GA_Event('공통','탑_네비게이션','HOME')">HOME</a></span></li>
+							<li><span class="on"><a href="/">HOME</a></span></li>
 							<li><span><a href="/ko/c/br44/br44" onclick="GA_Common('topNav',$(this))">CLUB MONACO</a></span></li>
 							<!-- 공간 상 들어가지 못한 나머지 브랜드-->
 						</ul>
@@ -215,7 +215,24 @@
 					<!--// 201705 search_box_wrap -->
 					<div class="util_menu" style="display: block;">
 						<ul class="clearfix">
-							<li><a href="javascript:setLogout();" onclick="GA_Event('공통','헤더_메뉴','로그아웃')">로그아웃</a></li>
+								<%
+								if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
+							%>
+							<li id="login_btn"><a href="/member/loginForm/">로그인</a></li>
+							<%
+								} else {
+							%>
+							<!-- 세션에 값이 있으면 ~님 환영합니다 출력 하고 로그아웃리으 출력 -->
+							<li style="margin-top: 9px;"><%=session.getAttribute("member")%> 님 환영합니다</li>
+
+							<!-- 버튼을 클릭했을때 함수호출 -->
+
+							<li id="logout_btn"><a href="/member/logout"> 로그아웃 </a></li>
+
+
+							<%
+								}
+							%>
 							<li class="header_dropmemu mypage">
 								<a href="/ko/mypage" class="btn" onclick="GA_Event('공통','헤더_메뉴','마이페이지')">마이페이지</a>
 								<div class="list">
@@ -281,7 +298,7 @@
 
 			<div class="gnbwarp new201608 clearfix">
 				<h1 class="logo logo1903">
-					<a href="/ko/main" onclick="GA_Event('공통', '로고', '상단');">thehandsome.com</a>
+					<a href="/">thehandsome.com</a>
 				</h1>
 				<!-- 첫번째 c:if -->
 
@@ -305,7 +322,7 @@
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
-			<span id="menuTitle"></span>
+			<span id="menuTitle">마이 페이지</span>
 		</h3>
 		<div class="sub_container">
 			<!-- lnb -->
@@ -354,8 +371,7 @@
 					<dl>
 						<dt>나의 정보관리</dt>
 						<dd>
-							<a href="/ko/mypage/personInfomationChangePWCheck"
-								onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
+							<a href="/member/pwcheck">개인정보 변경/탈퇴</a>
 						</dd>
 						<dd>
 							<a href="/ko/mypage/shoppingAddressPWCheck"
@@ -406,181 +422,91 @@
 			<!-- //lnb -->
 			<!-- cnts -->
 			<div class="sub_cnts">
-				<!-- search1 -->
-				<form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
-					<div class="search_wrap">
-						<!-- cnd -->
-						<ul>
-							<li>
-								<p class="bul_sty01">
-									<label for="term">조회기간<!-- 조회기간 --></label>
-								</p>
-								<div class="calendar_wrap mr5">
-									<input type="text" name="sterm" class="input_date"
-										title="mypage.order.history.serch.term.insert" id="sterm"
-										readonly />
-									<!-- <a href="#" class="ico_cld">날짜 선택 버튼</a> -->
-									<div class="form_hyphen pl5">-</div>
-									<input type="text" name="eterm" class="input_date"
-										title="mypage.order.history.serch.term.insert" id="eterm"
-										readonly />
-									<!-- <a href="#" class="ico_cld">날짜 선택 버튼</a> -->
-								</div>
-								<div class="tab_c">
-									<ul class="clearfix">
-										<li><a href="javascript:void(0);" id="setDateBtn1">1주일<!-- 1주일 --></a></li>
-										<li><a href="javascript:void(0);" id="setDateBtn2">1개월<!-- 1개월 --></a></li>
-										<li><a href="javascript:void(0);" id="setDateBtn3">3개월<!-- 3개월 --></a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="space">
-								<p class="bul_sty01">
-									<label for="id_sel">검색구분<!-- 검색구분 --></label>
-								</p> <select name="searchType" title="검색구분" class="select">
-									<option value="productName">상품명
-										<!-- 상품명 --></option>
-									<option value="orderNumber">주문번호
-										<!-- 주문번호 --></option>
-							</select> <input type="text" name="searchWord" class="input_all"
-								title="검색어 입력" /> <!-- 검색어 입력 -->
-							</li>
-						</ul>
-						<!-- //cnd -->
-						<input type="button" id="searchBtn" class="btn_search"
-							value="조회하기">
-						<!-- 조회하기 -->
-					</div>
-				</form>
-				<!-- //search1 -->
+			
+			
+			
+    <form id="hpointHiddenForm" method="post" action="" target="joinStart_window">
+        <input type="hidden" name="prtnrReqGb" value="02">
+        <input type="hidden" name="prtnrId" value="D080">
+        <input type="hidden" name="chnnlId" value="1705">
+        <input type="hidden" name="ptcoReqnMdaInf" id="ptcoReqnMdaInf" value="">
+    </form>
+    <form id="orderSearchForm" action="/ko/mypage/order/myorderlist">
+        <input type="hidden" name="sterm" class="input_date" title="기간 입력" id="sterm" value="2022-09-19" readonly="">
+        <input type="hidden" name="eterm" class="input_date" title="기간 입력" id="eterm" value="2022-10-19" readonly="">
+    </form>
+    <!-- 회원정보 -->
+    <div class="profile_info1 clearfix review_betterment1905">
+            <div class="name type2">
+                    <span class="ico_grade"> <%=session.getAttribute("member")%>   <span>님</span></span>
+                    <span class="grade_txt"></span>
+                </div>              
+                <div class="point" style="border:0; padding-left:0; width:95px">
+                    <p class="title">COUPON</p>
+                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">0&nbsp;<span>장</span></a>
+                </div>
+                <div class="point review">
+                    <p class="title">상품평</p>
+                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">0&nbsp;<span>개</span></a>
+                </div>
+                <div class="point type2">
+                   <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
+                   <a href="javascript:void(0);" id="hpoinJoin" class="btn" onclick="GA_Event('마이페이지','회원정보','H.POINT 회원가입');">H.Point 회원가입</a>
+               </div>
+            </div>
+    <!-- 회원정보 -->
+    <!-- 최근주문 -->
+    <div class="title_wrap">
+        <h4 class="float_left">최근주문<!-- 최근주문 --></h4>
+        <p class="txt_line">최근 1개월 내 주문하신 내역입니다.<!-- 최근 1개월 내 주문하신 내역 입니다. --></p>
+        <div class="btn_wrap">
+            <a href="/ko/mypage/order/myorders" class="btn add_ss" onclick="GA_Event('마이페이지','최근주문','전체보기');">전체보기<!-- 전체보기 --></a>
+        </div>
+    </div>
+    <!-- table -->
+    <div class="tblwrap lncl1812"><!-- 클래스추가 181204 -->
+        <table class="tbl_ltype review_betterment1905">
+            <caption>상품평 리스트</caption>
+            <colgroup class="interval1812"><!-- 수정 181204 -->
+                <col style="width:120px">
+                <col>
+                <col style="width:42px">
+                <col style="width:107px">
+                <col style="width:108px">
+                <col style="width:96px">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">주문번호<!-- 주문번호 --></th>
+                    <th scope="col">상품정보<!-- 상품정보 --></th>
+                    <th scope="col" style="padding:15px 0">수량<!-- 수량 --></th><!-- 스타일추가 181204 -->
+                    <th scope="col">판매가<!-- 판매가 --></th>
+                    <th scope="col">주문상태<!-- 주문상태 --></th>
+                    <th scope="col">구분<!-- 구분 --></th>
+                </tr>
+            </thead>
+            <tbody id="listBody">
+                <tr>
+                    <td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <!-- table -->
+    <!-- 위시리스트 -->
+    <div class="title_wrap line mt50">
+        <h4>위시리스트<!-- 위시리스트 --></h4>
+        <div class="btn_wrap">
+            <a href="/ko/mypage/myWish" class="btn add_ss" onclick="GA_Event('마이페이지','위시리스트','전체보기');">전체보기<!-- 전체보기 --></a>
+        </div>
+    </div>
+    <ul class="wish_wrap">
+        <li class="no_data">
+                위시리스트에 저장된 상품이 없습니다.<!-- 위시리스트에 저장된 상품이 없습니다. -->
+            </li>
+        </ul>
 
-				<div class="title_wrap mt50">
-					<h4>
-						상품 주문 목록
-						<!-- 상품 주문목록 -->
-					</h4>
-				</div>
-				<!-- table -->
-				<div class="tblwrap lncl1812">
-					<!-- 클래스추가 181204 -->
-					<table class="tbl_ltype review_betterment1905">
-						<caption>상품 주문 목록</caption>
-						<colgroup class="interval1812">
-							<!-- 수정 181204 -->
-							<col style="width: 120px">
-							<col>
-							<col style="width: 43px">
-							<col style="width: 112px">
-							<col style="width: 89px">
-							<col style="width: 111px">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">주문번호<!-- 주문번호 --></th>
-								<th scope="col">상품정보<!-- 상품정보 --></th>
-								<th scope="col" style="padding: 15px 0">수량<!-- 수량 --></th>
-								<!-- 스타일추가 181204 -->
-								<th scope="col">판매가<!-- 판매가 --></th>
-								<th scope="col">주문상태<!-- 주문상태 --></th>
-								<th scope="col">구분<!-- 구분 --></th>
-							</tr>
-						</thead>
-						<tbody id="listBody">
-							<tr>
-								<td colspan="6" class="no_data">주문내역이 없습니다.<!-- 주문내역이 없습니다. --></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<!-- //table -->
-				<!-- paging -->
-				<div class="paging"></div>
-				<!-- //paging -->
-
-				<!-- Guide Table -->
-				<div class="gd_wrap mt70">
-					<dl class="gd_list com pl0">
-						<dt>
-							주문 배송 조회 안내
-							<!-- 주문 배송 조회 안내 -->
-						</dt>
-						<dd>
-							<ul class="bul_sty01_li">
-								<li>한섬마일리지는 배송 완료 후 10일 후 지급 됩니다.<!-- 한섬마일리지는 배송 완료 후 10일 후 지급 됩니다. --></li>
-								<li>반품신청은 배송완료 후 7일까지 가능 합니다.<!-- 반품신청은 배송완료 후 7일까지 가능 합니다. --></li>
-								<li>배송준비중 상태에서는 주문의 취소/변경이나 주소의 변경이 불가능 합니다.<!-- 배송준비중 상태에서는 주문의 취소/변경이나 주소의 변경이 불가능 합니다. --></li>
-								<li>주문 시 사용한 기프트 카드, 한섬마일리지는 모두 동일 수단으로 환불됩니다.<!-- 주문 시 사용한 기프트 카드 , 한섬마일리지는 모두 동일 수단으로 환불됩니다. --></li>
-								<li>한섬마일리지는 정상 매장 기준 5%, 아울렛 1% 적립됩니다. (세일상품 제외)<!-- 한섬마일리지는 정상 매장 기준 5%, 아울렛 1% 적립됩니다. (세일상품 제외) --></li>
-								<li>10%를 초과하여 할인하는 상품은 마일리지 적립 대상에서 제외됩니다.<!-- 10%를 초과하여 할인하는 상품은 마일리지 적립 대상에서 제외됩니다. --></li>
-								<li>주문완료 상태까지는 배송지 수정이 가능 합니다.<!-- 주문완료 상태까지는 배송지 수정이 가능 합니다. --></li>
-								<li>가상계좌 결제 시 입금대기 상태에서 4시간 내 입금하지 않으면 자동으로 주문이 취소 됩니다.<!-- 가상계좌 결제 시 입금대기 상태에서 24시간 내 입금하지 않으면 자동으로 주문이 취소 됩니다. --></li>
-								<li>상세보기 화면에서 증빙서류의 출력이 가능 합니다.<!-- 상세보기 화면에서 증빙서류의 출력이 가능 합니다. --></li>
-							</ul>
-						</dd>
-					</dl>
-				</div>
-				<div class="gd_wrap">
-					<div class="delivery_step">
-						<p class="title">
-							주문/배송프로세스
-							<!-- 주문 / 배송 프로세스 -->
-						</p>
-						<ol>
-							<li>
-								<p class="step">
-									<span>STEP 1</span> 1. 입금대기중
-									<!-- 입금 대기중 -->
-								</p>
-								<p class="txt">
-									가상계좌를 선택 하셨다면 결제를 완료해 주세요.
-									<!-- 가상계좌를 선택 하셨다면<br>결제를 완료해 주세요. -->
-								</p>
-							</li>
-							<li>
-								<p class="step">
-									<span>STEP 2</span> 2. 주문완료
-									<!-- 주문완료 -->
-								</p>
-								<p class="txt">
-									주문정보를 확인하고 있습니다.
-									<!-- 주문정보를 확인 하고<br>있습니다. -->
-								</p>
-							</li>
-							<li>
-								<p class="step">
-									<span>STEP 3</span> 3. 배송준비중
-									<!-- 배송 준비중 -->
-								</p>
-								<p class="txt">
-									상품의 배송을 준비하고 있습니다.
-									<!-- 상품의 배송을 준비하고<br>있습니다. -->
-								</p>
-							</li>
-							<li>
-								<p class="step">
-									<span>STEP 4</span> 4. 배송중
-									<!-- 배송중 -->
-								</p>
-								<p class="txt">
-									물품이 발송되어 고객님께 배송 중 입니다.
-									<!-- 물품이 발송되어 고객님께<br>배송 중 입니다. -->
-								</p>
-							</li>
-							<li>
-								<p class="step">
-									<span>STEP 5</span> 5. 배송완료
-									<!-- 배송완료 -->
-								</p>
-								<p class="txt">
-									배송이 완료 되었습니다.
-									<!-- 배송이 완료 되었습니다.-->
-								</p>
-							</li>
-						</ol>
-					</div>
-				</div>
-				<!-- //Guide Table -->
-			</div>
+</div>
 			<!-- //cnts -->
 		</div>
 	</div>

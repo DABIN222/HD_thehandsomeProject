@@ -5,6 +5,7 @@
 <!-- parameterType="com.hdsm.domain.MemberVO" -->
 <mapper namespace="com.hdsm.persistence.MemberMapper2">
 
+	<!-- 유저의 장바구니목록들 가져오기 -->
 	<select id="getMembersShoppingBag" resultType="com.hdsm.domain.MemberSbagDTO">
 		SELECT
 			*
@@ -17,6 +18,7 @@
 
 	</select>
 	
+	<!-- 그목록들에 있는 제품의 정보 -->
 	<select id="getShoppingBagsProduct" resultType="com.hdsm.domain.ProductVO">
 		SELECT
 			*
@@ -26,6 +28,7 @@
 
 	</select>
 	
+	<!-- 그제품들의 컬러  정보 -->
 	<select id="getProductsColor" resultType="com.hdsm.domain.ThumbnailColorVO">
 		SELECT
 			product_pid, ccolorcode, cname, ccolorimage, c_thumbnail1, c_thumbnail2
