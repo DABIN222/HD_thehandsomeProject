@@ -1,5 +1,7 @@
 package com.hdsm.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Collections;
@@ -31,6 +33,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
+
 	@Autowired
 	private ProductMapper productmapper;
 	
@@ -132,6 +135,7 @@ public class MemberServiceImpl implements MemberService {
 		mapper.insertShoppingBags(msVO);
 	}
 
+
 	@Override
 	public int updateShoppingBag(MemberSbagDTO msVO) {
 		int cnt = mapper.updateShoppingBag(msVO);
@@ -220,5 +224,6 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteWishListItem(List<MemberWishListDTO> wsList) {
 		return mapper.deleteWishListItem(wsList);
 	}
+
 
 }

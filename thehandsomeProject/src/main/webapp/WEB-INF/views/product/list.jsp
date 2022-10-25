@@ -562,53 +562,59 @@
 			    	            location.href="/product/list/${ctg}/"+$(this).attr("pagenum")+ "_${productCount}" + "${page_info_ex}";
 			    	        });//end click
 			    	        
+			    	        //박진수 수정
 			    	        //이전 < 버튼을 누를 경우 실행
 			    	        $(".prev").on("click",function(e){
 			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
 			    	                alert("처음페이지입니다.");
-			    	            }else{
+			    	            	return;
+			    	            }
 			    	            e.preventDefault(); //<a> 작동 중지
 			    	            console.log('click');
 
 			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}"; */
 			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))-1)+"_${productCount}" +"${page_info_ex}";
-			    	            }
+			    	            
 			    	        });
 			    	        
 			    	        //다음 > 버튼을 누를 경우 실행
 			    	        $(".next").on("click",function(e){
 			    	            if(parseInt(curPageNum.attr("pagenum"))=== ${pageMaker.realEnd}){
 			    	                alert("마지막페이지입니다.");
-			    	            }else {
+			    	                return;
+			    	            }
 			    	            e.preventDefault(); //<a> 작동 중지
 			    	            console.log('click');
 			    	            /* location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}"+"_0_0_0_0_0"; */
 			    	            location.href="/product/list/${ctg}/"+(parseInt(curPageNum.attr("pagenum"))+1)+"_${productCount}" +"${page_info_ex}";
 
-			    	            }
+			    	            
 			    	        });
 			    	        
 			    	        //맨 끝 >> 버튼을 누를 경우 실행
 			    	        $(".next2").on("click",function(e){
 			    	            if(parseInt(curPageNum.attr("pagenum"))===${pageMaker.realEnd}){
 			    	                alert("마지막페이지입니다.");
-			    	            }else{
+			    	            	return;
+			    	            	}
 			    	            e.preventDefault(); //<a> 작동 중지
 			    	            console.log('click');
 			    	            location.href="/product/list/${ctg}/${pageMaker.realEnd}"+"_${productCount}" +"${page_info_ex}";
-			    	            }
+			    	            
 			    	        });
 			    	        
 			    	        //맨 처음 << 버튼을 누를 경우 실행
 			    	        $(".prev2").on("click",function(e){
 			    	            if(parseInt(curPageNum.attr("pagenum"))===1){
 			    	                alert("처음페이지입니다.");
-			    	            }else{
+			    	            	return;	
+			    	            }
 			    	            e.preventDefault(); //<a> 작동 중지
 			    	            console.log('click');
 			    	            location.href="/product/list/${ctg}/1"+"_${productCount}" +"${page_info_ex}";
-			    	            }
+			    	            
 			    	        });
+			    	        //박진수 수정 끝
 			    	        
 			    	        //해당 상품을 클릭할 경우 상품 상세 페이지로 ctg와 pagenum을 이동시킨다.
 			    	        $(".item_img").on("click",function(e){

@@ -506,9 +506,183 @@
             </li>
         </ul>
 
-</div>
+
+				<div class="title_wrap mt50">
+					<h4>상품 주문 목록<!-- 상품 주문목록 --></h4>
+				</div>
+				<!-- table -->
+				<div class="tblwrap lncl1812">
+					<!-- 클래스추가 181204 -->
+					<table class="tbl_ltype review_betterment1905">
+						<caption>상품 주문 목록</caption>
+						<colgroup class="interval1812">
+							<!-- 수정 181204 -->
+							<col style="width: 120px">
+							<col>
+							<col style="width: 43px">
+							<col style="width: 112px">
+							<col style="width: 89px">
+							<col style="width: 111px">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">주문번호<!-- 주문번호 --></th>
+								<th scope="col">상품정보<!-- 상품정보 --></th>
+								<th scope="col" style="padding: 15px 0">수량<!-- 수량 --></th>
+								<!-- 스타일추가 181204 -->
+								<th scope="col">판매가<!-- 판매가 --></th>
+								<th scope="col">주문상태<!-- 주문상태 --></th>
+								<th scope="col">구분<!-- 구분 --></th>
+							</tr>
+						</thead>
+						<tbody id="listBody">
+						<c:choose>
+						<c:when test="${ouvl eq null }">
+							<tr>
+								<td colspan="6" class="no_data">주문내역이 없습니다.<!-- 주문내역이 없습니다. --></td>
+							</tr>
+							</c:when>
+							<c:otherwise>
+							<c:forEach items="${ ouvl}" var="ouv">
+							<tr class="al_middle">
+								<td rowspan="2" class="frt">
+								<p class="num">${ouv.oid }</p>
+								<span class="sum_date">
+								${ouv.odate }
+								</span>
+								</td>
+								<c:forEach items="${ ouv.orders}" var="order" varStatus="st">
+								<tr class="al_middle">
+								<td>
+								<div class="pt_list_all">
+								<img src="${order.thumbnail.c_thumbnail1 }"> 
+								<div class="tlt_wrap">
+								<span class="tlt">
+								${order.productVO.bname }
+								</span>
+								<br/>  
+								<span class="sb_tlt">
+								${order.productVO.pname }
+								</span>
+								<p class="color_op">
+								color : ${order.thumbnail.cname }
+								<span class="and_line">
+								/</span>  
+								size : ${order.ssize }
+								</p>
+								</div>
+								</div>
+								</td>
+								<td>${order.oamount }</td>
+								<td class="totalprice">${order.totalprice }
+								<input type="hidden" class="totalprice" value="${order.totalprice }">
+								</td>
+								<td>배송중</td>
+								<td></td>
+								</tr>
+								</c:forEach> 
+								 </tr>                                                                                                                                                                                                                                                                                     						
+						</c:forEach>
+						</c:otherwise>
+						</c:choose>
+						</tbody>
+					</table>
+				</div>
+				<!-- //table -->
+				<!-- paging -->
+				<div class="paging"></div>
+				<!-- //paging -->
+
+				<!-- Guide Table -->
+				<div class="gd_wrap mt70">
+					<dl class="gd_list com pl0">
+						<dt>
+							주문 배송 조회 안내
+							<!-- 주문 배송 조회 안내 -->
+						</dt>
+						<dd>
+							<ul class="bul_sty01_li">
+								<li>한섬마일리지는 배송 완료 후 10일 후 지급 됩니다.<!-- 한섬마일리지는 배송 완료 후 10일 후 지급 됩니다. --></li>
+								<li>반품신청은 배송완료 후 7일까지 가능 합니다.<!-- 반품신청은 배송완료 후 7일까지 가능 합니다. --></li>
+								<li>배송준비중 상태에서는 주문의 취소/변경이나 주소의 변경이 불가능 합니다.<!-- 배송준비중 상태에서는 주문의 취소/변경이나 주소의 변경이 불가능 합니다. --></li>
+								<li>주문 시 사용한 기프트 카드, 한섬마일리지는 모두 동일 수단으로 환불됩니다.<!-- 주문 시 사용한 기프트 카드 , 한섬마일리지는 모두 동일 수단으로 환불됩니다. --></li>
+								<li>한섬마일리지는 정상 매장 기준 5%, 아울렛 1% 적립됩니다. (세일상품 제외)<!-- 한섬마일리지는 정상 매장 기준 5%, 아울렛 1% 적립됩니다. (세일상품 제외) --></li>
+								<li>10%를 초과하여 할인하는 상품은 마일리지 적립 대상에서 제외됩니다.<!-- 10%를 초과하여 할인하는 상품은 마일리지 적립 대상에서 제외됩니다. --></li>
+								<li>주문완료 상태까지는 배송지 수정이 가능 합니다.<!-- 주문완료 상태까지는 배송지 수정이 가능 합니다. --></li>
+								<li>가상계좌 결제 시 입금대기 상태에서 4시간 내 입금하지 않으면 자동으로 주문이 취소 됩니다.<!-- 가상계좌 결제 시 입금대기 상태에서 24시간 내 입금하지 않으면 자동으로 주문이 취소 됩니다. --></li>
+								<li>상세보기 화면에서 증빙서류의 출력이 가능 합니다.<!-- 상세보기 화면에서 증빙서류의 출력이 가능 합니다. --></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<div class="gd_wrap">
+					<div class="delivery_step">
+						<p class="title">
+							주문/배송프로세스
+							<!-- 주문 / 배송 프로세스 -->
+						</p>
+						<ol>
+							<li>
+								<p class="step">
+									<span>STEP 1</span> 1. 입금대기중
+									<!-- 입금 대기중 -->
+								</p>
+								<p class="txt">
+									가상계좌를 선택 하셨다면 결제를 완료해 주세요.
+									<!-- 가상계좌를 선택 하셨다면<br>결제를 완료해 주세요. -->
+								</p>
+							</li>
+							<li>
+								<p class="step">
+									<span>STEP 2</span> 2. 주문완료
+									<!-- 주문완료 -->
+								</p>
+								<p class="txt">
+									주문정보를 확인하고 있습니다.
+									<!-- 주문정보를 확인 하고<br>있습니다. -->
+								</p>
+							</li>
+							<li>
+								<p class="step">
+									<span>STEP 3</span> 3. 배송준비중
+									<!-- 배송 준비중 -->
+								</p>
+								<p class="txt">
+									상품의 배송을 준비하고 있습니다.
+									<!-- 상품의 배송을 준비하고<br>있습니다. -->
+								</p>
+							</li>
+							<li>
+								<p class="step">
+									<span>STEP 4</span> 4. 배송중
+									<!-- 배송중 -->
+								</p>
+								<p class="txt">
+									물품이 발송되어 고객님께 배송 중 입니다.
+									<!-- 물품이 발송되어 고객님께<br>배송 중 입니다. -->
+								</p>
+							</li>
+							<li>
+								<p class="step">
+									<span>STEP 5</span> 5. 배송완료
+									<!-- 배송완료 -->
+								</p>
+								<p class="txt">
+									배송이 완료 되었습니다.
+									<!-- 배송이 완료 되었습니다.-->
+								</p>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- //Guide Table -->
+			</div>
+
 			<!-- //cnts -->
 		</div>
 	</div>
 </body>
+<script>
+$('.totalprice').text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+</script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

@@ -35,10 +35,13 @@ import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
+import com.hdsm.domain.OrderItemVO;
+import com.hdsm.domain.OrderUserVO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.security.CustomUserDetailsService;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
@@ -55,10 +58,12 @@ public class MemberController {
 	ProductService productservice;
 	
 	@Autowired
+
+	OrderService orderservice;
+
 	CustomUserDetailsService customdetailsservice;
 	
 	PasswordEncoder pwencoder;
-	
 	// 로그인 페이지 진입
 //	@GetMapping("/loginForm")
 //	public void loginForm() {
@@ -86,6 +91,9 @@ public class MemberController {
 		member.setMtel(request.getParameter("custTel"));
 		member.setMaddress1(request.getParameter("partner.postNo"));
 		member.setMaddress2(request.getParameter("partner.addr1"));
+		//박진수 수정
+		member.setMzipcode(Integer.parseInt(request.getParameter("zonecode")));
+		//박진수 수정
 		
 		member.setMpassword(member.encode(member.getMpassword()));
 		// 회원가입 실시
@@ -376,9 +384,25 @@ public class MemberController {
 		return new ResponseEntity<Void>(HttpStatus.OK);//객체로 받았기 때문에 똑같이 객체로 돌려줘야하기 때문
 	}
 	
-	// 마이 페이지 진입 (승준)
+
+	 // 마이 페이지 진입 (승준)
 		@GetMapping("/mypage")
-		public String mypageForm(HttpServletRequest request) {
+		public String mypageForm(HttpServletRequest request,Model model) {
+			
+			  HttpSession session=request.getSession(); 
+			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO((String)session.getAttribute("member"));
+			 
+			  model.addAttribute("ouvl", ouvl);
+			  List<OrderItemVO> oiv=new ArrayList<OrderItemVO>();
+			  
+			  for(int i=0;i<ouvl.size();i++) {
+				 for(int j=0;j<ouvl.get(i).getOrders().size();j++) {
+				  oiv.add(ouvl.get(i).getOrders().get(i));
+				 }
+			  }
+			  model.addAttribute("oiv", oiv);
+			log.info("마이 페이지 왔다");
+			
 			String memberID = (String)request.getSession().getAttribute("member");
 			if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄
 			
@@ -488,7 +512,6 @@ public class MemberController {
 			}
 			
 			
-		
 /*
 	// 위시리스트 페이지 진입
 	@GetMapping("/wishList")
