@@ -45,11 +45,11 @@ public class OrderController {
 
 	//order_page로 이동
 	@PostMapping("/order_page")
-	public void order_page(OrderListVO olv, Model model,HttpServletRequest request) {
+	public void order_page(OrderListVO olvo, Model model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
-		System.out.println(olv.getOrders().get(0).getPid());
-		System.out.println("colorcode:"+olv.getOrders().get(0).getCcolorcode());
-		List<OrderItemVO> orders=olv.getOrders();
+		System.out.println(olvo.getOrders().get(0).getPid());
+		System.out.println("colorcode:"+olvo.getOrders().get(0).getCcolorcode());
+		List<OrderItemVO> orders = olvo.getOrders();
 		model.addAttribute("couponList", orderservice.getcoupon((String)session.getAttribute("member")));
 		model.addAttribute("member", memberservice.getMember((String)session.getAttribute("member")));
 		model.addAttribute("orderList",orderservice.getOrderPageInfo(orders));
@@ -67,6 +67,7 @@ public class OrderController {
 		model.addAttribute("realTotalPrice",realTotalPrice);
 		model.addAttribute("realMilege", realMilege);
 		model.addAttribute("addressList",orderservice.getAddress((String)session.getAttribute("member")));
+		
 		}
 
 		@PostMapping("/orderexec")

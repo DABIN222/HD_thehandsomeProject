@@ -808,6 +808,7 @@
 							<input type="hidden" name="orders[0].ccolorcode" id="ccolorcode" value="" /> 
 							<input type="hidden" name="orders[0].ssize" id="ssize" value="" />
 							<input type="button" value="바로주문" class="btn order float_right mr0" id="addToCartBuyNowButton">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>
 

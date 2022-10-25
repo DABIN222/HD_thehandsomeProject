@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -70,6 +71,7 @@
 								let pcolors = [];
 								let pamounts = [];
 								let colorinfos = [];
+								let colorcodes  = [];
 								let _ace_countvar = 0;
 							</script>
 								
@@ -241,6 +243,7 @@
 								pcolors[_ace_countvar] = "${shoppingbag.scolor}";
 								pamounts[_ace_countvar] = parseInt("${shoppingbag.amount}");
 								colorinfos[_ace_countvar] = tempDic${status.index};
+								colorcodes[_ace_countvar] = "${shoppingbag.colorcode}";
 								_ace_countvar++;
 							</script>
 							<!-- //Info wrap -->
@@ -296,9 +299,8 @@
 				<!--button wrap-->
 				<div class="btnwrap order" id="checkout_btn_wrap">
 					<a href="javascript:void();" ><input id="selectDeleteBtn"value="선택상품삭제"
-						class="btn wt" type="button" /></a> <a href="#;"
-						onclick="checkoutPage();"> <input value="선택상품 주문하기"
-						class="btn gray mr0" type="button" />
+						class="btn wt" type="button" /></a> <a href="javascript:selectItemOrder();" > 
+						<input value="선택상품 주문하기" class="btn gray mr0" type="button" />
 					</a>
 
 				</div>
@@ -435,6 +437,10 @@
 	<div class="layerBg"></div>
 </div>
 
+<!-- 1~N개 주문을 위한  form-->
+<form commandName="OrderListVO" id="itemsOrderForm" method='post'>
+
+</form>
 
 <script type="text/javascript">
 	var virtusizeViewYn = false;
@@ -448,6 +454,26 @@
 <script>
 	function priceComma(price) {
 		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
+	function selectItemOrder(){
+		let itemindex = 0;
+		$('#itemsOrderForm').empty();
+		$("tr[name=entryProductInfo]").each(function(index, item){
+			if( $(this).find("input[name='cartlist']").is(":checked")){
+				$('#itemsOrderForm').append('<input name="orders['+itemindex+'].pid" type="hidden" value="'+pids[index]+'">');
+				$('#itemsOrderForm').append('<input name="orders['+itemindex+'].oamount" type="hidden" value="'+parseInt(pamounts[index])+'">');
+				$('#itemsOrderForm').append('<input name="orders['+itemindex+'].ccolorcode" type="hidden" value="'+colorcodes[index]+'">');
+				$('#itemsOrderForm').append('<input name="orders['+itemindex+'].ssize" type="hidden" value="'+psizes[index]+'">');
+				itemindex ++;
+			}
+		});
+		
+		$('#itemsOrderForm').append('<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>');
+		
+		$("#itemsOrderForm").attr("action","/order/order_page");
+		$("#itemsOrderForm").submit();
+		
 	}
 	
 	$(document).ready(
