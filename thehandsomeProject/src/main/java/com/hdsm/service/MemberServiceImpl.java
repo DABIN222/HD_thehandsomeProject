@@ -197,16 +197,9 @@ public class MemberServiceImpl implements MemberService {
 				slist.add(size.trim());
 			}
 			
-			String thumbnailImg = "";
-			String colorcode = "";
+			String thumbnailImg = cvo.get(0).getC_thumbnail1();
+			String colorcode = cvo.get(0).getCcolorcode();
 
-			for (ThumbnailColorVO j : cvo) {
-				if (j.getCname().equals(dto.getPcolor())) {
-					thumbnailImg = j.getC_thumbnail1();
-					colorcode = j.getCcolorcode();
-					break;
-				}
-			}
 
 			wsDTOforJsp.setPid(pid);
 			wsDTOforJsp.setColorcode(colorcode);

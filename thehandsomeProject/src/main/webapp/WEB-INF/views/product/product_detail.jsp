@@ -3292,9 +3292,15 @@
 	let isWishList = "${isWishList}";
 	//좋아요 지우는 ajax처리
 	function deleteajaxRequest(params){
+		//스프링 보안 설정 CSRF 토큰값
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
 		$.ajax({
 			type : "POST",
 			url : "/member/deleteWishList",
+			beforeSend: function(xhr) {
+		          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			data : params,// json 형태의 데이터
 			contentType: "application/json; charset=utf-8",
 			success : function(data) {
@@ -3302,9 +3308,8 @@
 				isWishList=data;
 
 				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
-                $('.toast_popup').stop().removeClass('on');
-                
-                $('.wishlist1803').stop().toggleClass('on');
+				$('.toast_popup').stop().removeClass('on');
+				$("#wishlistCount").text((parseInt($("#wishlistCount").text())-1)+'')
 
 			},
 			error : function(jqXHR, textStatus, errorThrown){
@@ -3377,9 +3382,15 @@
 						psize : selectSize,
 						pcolor : selectColor
 					}
+					//스프링 보안 설정 CSRF 토큰값
+					let csrfHeaderName ="${_csrf.headerName}";
+					let csrfTokenValue="${_csrf.token}";
+
 					$.ajax({
 						type : "POST",
 						url : "/member/insertWishList",
+						beforeSend: function(xhr) {
+					          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 						data : params,					// json 형태의 데이터
 						success : function(data) {
 							console.log("삽입성공");
@@ -3389,6 +3400,7 @@
 	                        $('.toast_popup').stop().addClass('on');
 
 							$('.wishlist1803').stop().toggleClass('on');
+							$("#wishlistCount").text((<%= (int)session.getAttribute("wsCount") %>+1)+'');
 						},
 						error : function(jqXHR, textStatus, errorThrown){
 			            	console.log(jqXHR);  //응답 메시지
