@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -77,6 +78,15 @@ public class ReviewController {
 			log.info("realWearSize3 : " + rcontent.get("realWearSize3")+"\n");
 			log.info("realProductColor : " + rcontent.get("rating")+"\n");
 			log.info("headline : " + rcontent.get("realWearSize1")+"\n");
+			
+			log.info("headline : " + rcontent.get("thumbnailImage")+"\n");
+			
+			ArrayList<String> asd = (ArrayList<String>) rcontent.get("imagesPath");
+			
+			for(String imagePath : asd) {
+				log.info("asdasd : " + imagePath+"\n");
+			}
+			
 			
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
@@ -187,9 +197,9 @@ public class ReviewController {
 							new FileOutputStream(new File(uploadPath, uploadFileThubmNailName));
 						Thumbnailator.createThumbnail( //썸내일 생성
 								multipartFile.getInputStream(),thumnail, 60, 60);
-						thumnail.close(); //파일 닫기					
+						thumnail.close(); //파일 닫기
+						attachDTO.setThumbPath("/resources/review_images/"+pid+"/"+uploadFileThubmNailName);//썸네일 이미지 경로
 					}//end if
-					attachDTO.setThumbPath("/resources/review_images/"+pid+"/"+uploadFileThubmNailName);//썸네일 이미지 경로
 				} catch (Exception e) {
 					log.error(e.getMessage());
 				} // end catch

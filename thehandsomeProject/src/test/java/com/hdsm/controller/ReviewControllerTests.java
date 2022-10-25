@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -45,7 +46,7 @@ public class ReviewControllerTests {
 	@Autowired
 	private ReviewMapper reviewmapper;	//ReviewMapper.java 인터페이스 의존성 주입
 	
-	@Test
+	//@Test
 	public void testReviewWrite() throws Exception {
 		log.info(
 				mockMvc.perform(
@@ -62,4 +63,16 @@ public class ReviewControllerTests {
 				);
 	}//end testList
 	
+	@Test
+	@PreAuthorize("isAuthenticated()")
+	public void testReviewList() throws Exception {
+		log.info(
+				mockMvc.perform(
+				MockMvcRequestBuilders.post("/review/reviewList")
+				.param("pid", "SH2C9ASZ092M")
+				).andReturn()
+				.getModelAndView()
+				//.getModelMap()
+				);
+	}//end testList
 }
