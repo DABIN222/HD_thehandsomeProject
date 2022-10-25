@@ -61,6 +61,7 @@ public class ReviewController {
 		System.out.println("pid : " + pid);
 		List<ReviewDTO> list = reviewService.getReviewList(pid);
 		log.info("------------------ list ----------------\n"+list.toString());
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		for(ReviewDTO dto : list) {
@@ -79,8 +80,8 @@ public class ReviewController {
 			
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
-			
 		}
+		
 		log.info("리스트에 값 넣었다-------------------\n"+reviewList.toString());
 		//model.addAttribute("reviewList",reviewList);
 		
@@ -220,7 +221,7 @@ public class ReviewController {
 		public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
 
 			//컴퓨터마다 환경이다르므로 바꿔줘야해 !
-			String uploadFolder = "C:\\Users\\tldld\\Desktop\\HyeonDai\\2nd_project\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
+			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images\\temp";
 			
 			log.info(uploadFile);
 			log.info(uploadFile.length);

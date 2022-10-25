@@ -86,7 +86,7 @@ public class ReviewMapperTest {
 
 		List<ReviewDTO> list = mapper.getReviewList(pid);
 		ObjectMapper objectMapper = new ObjectMapper();
-		
+		log.info("------------list 객체 테스트------------\n" + list.toString()+"------------\n");
 		
 		for(ReviewDTO dto : list) {
 			log.info("------------dto 객체 테스트------------\n" + dto+"------------\n");
