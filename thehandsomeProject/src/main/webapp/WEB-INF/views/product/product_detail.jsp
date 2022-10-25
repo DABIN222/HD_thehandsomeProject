@@ -3538,14 +3538,13 @@
 							}
 							else{
 								//로그인 안했으면 로그인 했는지 물어보고
-								<%
-									if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
-								%>
+								if("${member}" == ""){
 									$(".layerArea").show();
 									$("#AskLogin").show();
-								<%
-									} else {
-								%>
+								}
+								else{
+									let csrfHeaderName ="${_csrf.headerName}";
+									let csrfTokenValue="${_csrf.token}";
 
 									const params = {
 											mid: "${member}",
@@ -3560,6 +3559,9 @@
 							                type : "POST",            // HTTP method type(GET, POST) 형식
 							                url : "/member/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소
 							                data : params,            // Json 형식의 데이터
+							                beforeSend: function(xhr) {
+							                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+							                },
 							                success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
 							                    // 응답코드 > 0000
 							                    console.log(data);
@@ -3580,10 +3582,8 @@
 							                    alert("통신 실패.");
 							                }
 							            });
-								<%
-									}
-								%>
-							}     
+									} 
+								}
 						});
 						//계속 쇼핑하기 버튼을 눌렀을 경우
 						$("#clsBtn").on("click", function() {

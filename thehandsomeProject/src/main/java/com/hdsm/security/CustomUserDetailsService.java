@@ -1,5 +1,7 @@
 package com.hdsm.security;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,18 +29,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		
 		log.warn("Load User By UserName :" +username);
-		MemberVO vo = membermapper.read(username);		
+		MemberVO vo = membermapper.read(username);
 		log.warn("Query by memebr maper :" +vo);
 		
 		if(vo != null) {
-			int wscount = membermapper.getWishListCount(username);
-			int sbcount = membermapper.getShoppingBagCount(username);
-			
+//			int wscount = membermapper.getWishListCount(username);
+//			int sbcount = membermapper.getShoppingBagCount(username);
+//			
 			CustomUser customuser = new CustomUser(vo);
-			customuser.setUsersWishCount(wscount);
-			customuser.setUsersShoppingBagCount(sbcount);
+//			customuser.setUsersWishCount(wscount);
+//			customuser.setUsersShoppingBagCount(sbcount);
 			
 			return customuser;
 		}

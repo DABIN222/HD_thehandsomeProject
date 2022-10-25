@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Controller;
@@ -271,6 +272,7 @@ public class MemberController {
 	
 	// 장바구니 담기
 	@PostMapping("/insertShoppingbag")
+	@PreAuthorize("isAuthenticated()")
 	@ResponseBody// 이거 안하면 return값을 jsp 찾으라는걸로 인식함
 	public String insertShoppingbag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
 		log.info("장바구니 담기 진입!");
