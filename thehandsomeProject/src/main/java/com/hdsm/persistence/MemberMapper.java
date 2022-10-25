@@ -80,5 +80,4 @@ public interface MemberMapper {
 		
 	//유저 비밀번호 변경 
 	public void updateuser(MemberVO mid);
-	
 }

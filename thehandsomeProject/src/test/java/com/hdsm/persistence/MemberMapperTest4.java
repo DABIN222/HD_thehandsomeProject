@@ -38,6 +38,7 @@ public class MemberMapperTest4 {
 	@Autowired
 	private MemberMapper mapper;
 	
+
 	@Test
 	public void testRead() {
 		MemberVO vo = mapper.read("asd");	

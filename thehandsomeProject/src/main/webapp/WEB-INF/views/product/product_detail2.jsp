@@ -836,15 +836,12 @@
 							</div>
 						</form>
 						<form id="addToCartBuynowForm" name="addToCartBuynowForm"
-							action="/product/order_page" method="post">
-							<input type="hidden" name="order_colorcode" id="order_colorcode"
-								value="${curcolorcode}" /> <input type="hidden"
-								name="order_size" id="order_size" value="" /> <input
-								type="hidden" name="order_sumprice" id="order_sumprice" value="" />
-							<input type="hidden" name="order_hsm" id="order_hsm" value="" />
-							<input type="hidden" name="order_hspoint" id="order_hspoint"
-								value="" /> <input type="hidden" name="order_count"
-								id="order_count" value="" /> <input type="button" value="바로주문"
+							action="/member/order_page" method="post">
+							<input type="hidden" name="orders[0].pid" value="${ productVO.pid}"/>
+							<input type="hidden" name="orders[0].oamount" value=""/>
+							<input type="hidden" name="orders[0].ccolorcode" value=""/>
+							<input type="hidden" name="orders[0].ssize" value=""/>
+								<input type="button" value="바로주문"
 								class="btn order float_right mr0" id="addToCartBuyNowButton">
 						</form>
 					</div>
@@ -3475,26 +3472,30 @@
 						$("#addToCartBuyNowButton").on(
 								"click",
 								function() {
-									console.log("addToCartBuyNowButton");
-									$('#order_colorcode').val($('#pcscode').text());
+									console.log("addToCartBuyNowButton");	
 									if (CartorOrder_size == "") {
 										$(".layerArea").show();
 										$("#Order_confirm").show();
 										return;
-									} else {
-										$('#order_size').val(CartorOrder_size);
 									}
 									
 									
-									let cart_Sumprice = $("#productPrice")
+								/* 	let cart_Sumprice = $("#productPrice")
 											.val()
-											* parseInt($("#txtqty").val());
-									$('#order_sumprice').val(cart_Sumprice);
+											* parseInt($("#txtqty").val()); */
+									/* $('#order_sumprice').val(cart_Sumprice);
 									$('#order_hsm').val(hsm);
 									$('#order_hspoint').val(hspoint);
-									$('#order_count').val($('#txtqty').val());
-
+									*/
+									//박진수 수정
+									let colorcodeArr=$('#pcscode').text().split("_");
+									let colorcode=colorcodeArr[0]+"_"+colorcodeArr[1];
+									$('#addToCartBuynowForm').find("input[name='orders[0].oamount']").val($('#txtqty').val());
+									$('#addToCartBuynowForm').find("input[name='orders[0].ccolorcode']").val(colorcode);
+									$('#addToCartBuynowForm').find("input[name='orders[0].ssize']").val(CartorOrder_size);
+									
 									$('#addToCartBuynowForm').submit();
+									//박진수 수정
 								});
 
 					});
