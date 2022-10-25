@@ -33,11 +33,11 @@ public class MemberTests {
 	MemberVO mvo = new MemberVO();
 	MemberAuthVO mavo = new MemberAuthVO();
 	
-	mvo.setMid("req134679");
+	mvo.setMid("admin");
 	mvo.setMpassword(pwencoder.encode("1234"));
-	mvo.setMname("김다빈");
-	mvo.setMemail("req134679@naver.com");
-	mvo.setMtel("01075124046");
+	mvo.setMname("관리자");
+	mvo.setMemail("tldldh1212@naver.com");
+	mvo.setMtel("01040818409");
 	mvo.setMzipcode(01234);
 	mvo.setBuysum(0);
 	mvo.setMaddress1("서울시 종로구 창경궁로 31길");
@@ -45,8 +45,7 @@ public class MemberTests {
 	mvo.setMgrade("silver");
 	mvo.setMpoint(0);
 	mvo.setMenabled(0);
-	
-	mavo.setUsername("req134679");
+	mavo.setUsername("admin");
 	mavo.setAuthority("ROLE_USER");
     mapper.insertMember(mvo);
     mapper.insertMemberAutority(mavo);

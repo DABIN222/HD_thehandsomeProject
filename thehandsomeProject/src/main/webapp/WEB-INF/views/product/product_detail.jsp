@@ -991,7 +991,7 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="#;" onclick="GA_Event('상품_상세','정보','상품평');">상품평(<span
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span
 								id="customerReviewCnt">0</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
@@ -1130,8 +1130,8 @@
 					<span class="cmt_per" id="totalStarScore">별점</span>
 				</span>
 			</div>
-			<a href="#;" class="btn_evaluation1905" id="customerReviewWrite"
-				onclick="GA_Event('상품평','상품평 작성하기','클릭');">상품평 작성하기</a>
+			<a href="javascript:fn_popupCustomerReviewWrite();"
+			class="btn_evaluation1905" id="customerReviewWrite">상품평 작성하기</a>
 		</div>
 		<!-- pop_cnt-->
 		<div class="pop_cnt evaluation_list1807 options">
@@ -1147,7 +1147,82 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+					
+					<c:forEach items="${reviewList}" var="review">
+						<div class="clearfix review_tab1_1807">
+						<ul>
+							<li class="evaluation_view on" id="evaluation_view0"><div
+									class="member_info_top">
+									<ul>
+										<li class="name">${review.mid}</li>
+										<li class="grade">${review.mgrade}</li>
+										<li class="date">${review.rdate}</li>
+										<li class="stars">
+											<div class="star_score1807">
+												<span class="cmt_star"> <span class="cmt_per star${review.rcontentMap.rating}">별점</span>
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="member_info_bottom">
+									<ul>
+										<li class="choice">• <span>${review.rcontentMap.age}</span> / <span>${review.rcontentMap.height}</span>
+											/ <span>${review.rcontentMap.bodyType}</span> / 평소 사이즈 : <span>${review.rcontentMap.enjoySize}</span>
+										</li>
+										<li class="must">• 구매 정보 : <span>${review.pcolor}</span> / <span>${review.psize}</span>
+											/ <span>더한섬닷컴</span>
+										</li>
+									</ul>
+								</div>
+								<div class="review_txt_wrap">
+									<p class="review_txt">${review.rcontentMap.headline}</p>
+								</div>
+								<div class="sizecolor clearfix">
+									<div class="real_fit_size1905">
+										<strong>• 실 착용 사이즈</strong>
+										<div class="evaluation_wrap1905">
+											<p>허리둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>엉덩이둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>총길이 :</p>
+											<div class="clearfix">
+												<span class="">짧은 편</span> <span class=" on">적당함</span> <span
+													class="">긴 편</span>
+											</div>
+										</div>
+									</div>
+									<div class="real_color1905">
+										<strong>• 실 제품 색상</strong>
+										<div class="clearfix">
+											<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
+												class="">밝아요</span>
+										</div>
+									</div>
+								</div>
+								<div class="review_more_1807">
+									<a href="#;"
+										onclick="GA_Event(&quot;상품평&quot;,&quot;자세히보기&quot;,&quot;클릭&quot;);">리뷰
+										더보기</a>
+								</div>
+							</li>
+							</ul>
+							</div>
+						</c:forEach>
+				
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
@@ -1225,14 +1300,18 @@
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지" onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<a href="javascript:void(0);">
+												<img src="${colorVO[0].cimage1}" id="reviewProducImg"
+																alt="상품 이미지"
+																onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"
+																style="object-fit: cover">
+													</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
 													<a href="#;" class="basket_tlt"> 
-													<span class="tlt" id="reviewProductBrandName"></span> 
-													<span class="sb_tlt" id="reviewProductProductName"></span> / 
-													<span id="reviewProducPrice"></span>
+													<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+													<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
+												  / <span id="reviewProducPrice">${productVO.pprice}</span></a>
 													</a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
@@ -3143,6 +3222,247 @@
 
 <!-- footerWrap -->
 <script>
+	//리------------------------------------------------------------------뷰
+	let fileObject = new Object();
+
+	function fn_reviewWriteSend() {
+		if (!confirm("작성 하시겠습니까?"))
+			return false;
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		let rcontent = new Map();
+		rcontent.set('age', $("input[type=radio][name=age]:checked").val()); // 연령대
+		rcontent.set('height', $('#height').val()); // 키
+		rcontent.set('enjoySize', $('#enjoySize').val()); //실 착용 사이즈
+		rcontent.set('bodyType', $("input[type=radio][name=bodyType]:checked")
+				.val()); //체형
+		rcontent.set('rating', $('#rating').val()); //평점
+		rcontent.set('realWearSize1', $(
+				"input[type=radio][name=realWearSize1]:checked").val()); //리뷰 옵션
+		rcontent.set('realWearSize2', $(
+				"input[type=radio][name=realWearSize2]:checked").val()); //리뷰옵션
+		rcontent.set('realWearSize3', $(
+				"input[type=radio][name=realWearSize3]:checked").val()); //리뷰옵션
+		rcontent.set('realProductColor', $(
+				"input[type=radio][name=realProductColor]:checked").val()); //색감
+		rcontent.set('headline', $("#reviewHeadline").val()); //내용
+		rcontent.set('fileText', $('#fileText').val()); //파일이름
+	
+		rcontent.set('thumbnailImage',fileObject.thumbPath);
+		rcontent.set('imagesPath',fileObject.imagesPath);
+		//console.log("rcontent : " + rcontent);
+	
+		//map 직렬화
+		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
+	
+		//console.log(serializedMap);
+	
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+	
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+			rcontent : serializedMap,
+		};
+	
+		console.log("params :" + JSON.stringify(params));
+	
+		//let serializedMap = JSON.stringify(Object.fromEntries(params));
+	
+		$.ajax({
+			url : '/review/reviewWrite',
+			type : 'POST',
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : JSON.stringify(params), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//작성 성공시 작성창 닫기
+				if (result == "Success") {
+					alert("리뷰가 작성되었습니다.");
+					console.log("리뷰가 작성되었습니다.");
+					reviewReset();
+					$("#customerReviewWriteDiv").hide();
+					viewPopup("#customerReviewDiv");
+				} /* else if(result == "fail"){
+								alert("리뷰를 이미 작성하셨습니다.");
+								console.log("리뷰를 이미 작성하셨습니다.");
+								$("#customerReviewWriteDiv").hide();
+								viewPopup("#customerReviewDiv");
+							} */
+	
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+	
+	};
+	
+	// 상품평 등록하기 버튼 눌렀을 때
+	$('#reviewWriteSend').on("click", function() {
+		fn_reviewWriteSend();
+	
+	});
+	
+	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
+	function fn_popupCustomerReview() {
+		viewPopup("#customerReviewDiv");
+	}
+	
+	//x 버튼을 누르면 상품평 리스트 닫기
+	function fn_closeProductReview() {
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+	}
+	
+	function fn_reviewWriteCheck() {
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
+	
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+		};
+	
+		console.log("params :" + JSON.stringify(params));
+	
+		$.ajax({
+			url : '/review/reviewWriteCheck',
+			type : 'POST',
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			data : JSON.stringify(params), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//리뷰 작성 가능 여부 확인
+				if (result == "pass") {
+					console.log("리뷰 작성 가능");
+					//상품평 리스트를 숨긴다.
+					$("#customerReviewDiv").hide();
+					//상품평 작성란을 띄운다.
+					viewPopup("#customerReviewWriteDiv");
+				} else if (result == "exist") { // 이미 작성했을 때
+					alert("리뷰를 이미 작성하셨습니다.");
+					console.log("리뷰를 이미 작성하셨습니다.");
+				} else if (result == "empty") { // 구매내역이 없을 때
+					alert("구매내역이 없습니다.");
+					console.log("구매내역이 없습니다.");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+	}
+	
+	//후기 작성란 띄우기
+	function fn_popupCustomerReviewWrite() {
+	<%if ((String) session.getAttribute("member") == null) {%>
+	//세션에 값이 없으면 로그인 폼으로 이동
+		location.href = '/member/loginForm';
+	<%} else {%>
+	fn_reviewWriteCheck();
+	<%}%>
+	}
+	
+	//x버튼을 눌렀을때 상품평 작성 취소하기
+	$("#reviewCancle").on('click', function() {
+	
+		//취소를 원하면 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+	
+	});
+	
+	//상품평 작성 취소하기
+	$("#reviewCloseBtn").on('click', function() {
+	
+		//취소를 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+	
+	});
+	
+	// 상품평 평점 선택
+	$(".btn_star_score li a").on(
+			"click",
+			function() {
+				var idx = $(this).parent('li').index() + 1;
+				for (var i = 1; i < 6; i++) {
+					$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+							'star' + i);
+				}
+				// 선택한 별의 css 수정
+				$('.write_star_score1807 .cmt_star .cmt_per').addClass(
+						'star' + idx);
+				// 선택한 요소의 value 값 가져오기
+				$("#rating").val($(this).attr('value'));
+			});
+	
+	// 상품평 내용 초기화
+	function reviewReset() {
+		//연령
+		$("#customerReviewWriteDiv input[name=age]").prop("checked", false);
+		//키
+		$("#customerReviewWriteDiv #height").val("");
+		//체형
+		$("#customerReviewWriteDiv input[name=bodyType]")
+				.prop("checked", false);
+		//평소 사이즈
+		$("#customerReviewWriteDiv #enjoySize").val("");
+	
+		//실 착용 사이즈
+		$("#realWearSize1_01").prop("checked", false);
+		$("#realWearSize1_02").prop("checked", false);
+		$("#realWearSize1_03").prop("checked", false);
+	
+		$("#realWearSize2_01").prop("checked", false);
+		$("#realWearSize2_02").prop("checked", false);
+		$("#realWearSize2_03").prop("checked", false);
+	
+		$("#realWearSize3_01").prop("checked", false);
+		$("#realWearSize3_02").prop("checked", false);
+		$("#realWearSize3_03").prop("checked", false);
+	
+		//실착용
+		$("#customerReviewWriteDiv input[name=realWearSize]").prop("checked",
+				false);
+		//실 제품 색상
+		$("#customerReviewWriteDiv input[name=realProductColor]").prop(
+				"checked", false);
+		//상품평
+		$("#customerReviewWriteDiv #reviewHeadline").val("");
+		//평점
+		var idx = $("#customerReviewWriteDiv .btn_star_score li:eq(4) > a")
+				.parent('li').index() + 1;
+		for (var i = 1; i < 6; i++) {
+			$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+					'star' + i);
+		}
+		// 선택한 별의 css 수정
+		$('.write_star_score1807 .cmt_star .cmt_per').addClass('star' + idx);
+		// 선택한 요소의 value 값 가져오기
+		$("#rating").val($(this).attr('value'));
+	
+		//사진등록
+	
+	}
+	//리------------------------------------------------------------------뷰
 	//가격에 3자리마다 컴마
 	function priceComma(price) {
 		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -3417,6 +3737,74 @@
 	
 	$(document).ready(
 					function() {
+						//사진등록						
+						var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
+
+						function checkExtension(fileSize) {
+							if (fileSize >= maxSize) {
+								alert("파일 사이즈 초과");
+								return false;
+							}//end if
+
+							return true;
+						}
+
+						function uploadImages() {//등록하기 버튼 눌렀을때 이미지 업로드 되게 하기!
+							let formData = new FormData();
+							
+							formData.append('pid', '${productVO.pid}');
+
+							let csrfHeaderName = "${_csrf.headerName}";
+							let csrfTokenValue = "${_csrf.token}";
+
+							let inputFile = $("input[name='reviewFile']");
+							let files = inputFile[0].files;
+
+							//파일 formdata에 추가
+							for (var i = 0; i < files.length; i++) {
+								// 크기 체크
+								if (!checkExtension(files[i].size)) {
+									return false;
+								}
+								formData.append("uploadFile", files[i])
+							}//end for
+
+							$.ajax({
+								url : "/review/uploadAjaxAction",
+								processData : false,
+								contentType : false,
+								data : formData,
+								type : "post",
+								dataType : 'json',
+								beforeSend : function(xhr) {
+									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+								},
+								success : function(result) {
+									alert("Upload");
+									fileObject = result;
+								}//end suce..			
+							});//end ajax	
+						}
+				
+						$("#reviewFile").change(function() {//input으로 파일을 첨부하면 무슨 파일이 첨부됐는지 바뀐거 보여주기 !
+							let inputFile = $("input[name='reviewFile']");
+							let files = inputFile[0].files
+							let filenames = '';
+
+							for (i = 0; i < files.length; i++) {
+								// 크기 체크
+								if (!checkExtension(files[i].size)) {
+									return false;
+								}
+								filenames += files[i]['name'] + ' ';
+							}
+
+							$("#textReviewFile").val(filenames);
+							
+							uploadImages();
+						});
+						
+						//--------------------------------- 사진등록
 						//페이지 로드될때 좋아요 누른거면 좋아요 처리를 합시다
 						if(isWishList !== "0"){
 							$('.wishlist1803').stop().toggleClass('on');

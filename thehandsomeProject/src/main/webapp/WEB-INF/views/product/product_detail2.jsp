@@ -1026,10 +1026,8 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="javascript:fn_popupCustomerReview();">상품평(<span
-								id="customerReviewCnt">0</span>)
-								<div class="star_score1807" id="prodTotalStarScoreWrapper"
-									style="display: none;">
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span id="customerReviewCnt">0</span>)
+								<div class="star_score1807" id="prodTotalStarScoreWrapper" style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
 										<span class="cmt_per" id="prodTotalStarScore">별점</span>
 									</span>
@@ -1181,7 +1179,8 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
@@ -1236,10 +1235,10 @@
 												</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName">${productVO.bname}</span> <span
-														class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
-														/ <spanid="reviewProducPrice">${productVO.pprice}</span></a>
+													<a href="#;" class="basket_tlt"> 
+													<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+													<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
+														/ <span id="reviewProducPrice">${productVO.pprice}</span></a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
 														<ul class="select_options">
@@ -1362,7 +1361,7 @@
 												<li><a href="#;" value="3">3점</a></li>
 												<li><a href="#;" value="4">4점</a></li>
 												<li><a href="#;" value="5">5점</a></li>
-												<input type="hidden" id="rating" name="rating" value="5">
+												<input type="hidden" id="rating" name="rating" value="5"> <!-- 평점 담을 곳 -->
 											</ul>
 											<p>평점을 선택해 주세요.</p>
 										</div>
@@ -3107,6 +3106,8 @@
 <!-- footerWrap -->
 <!-- 상품평 스크립트 -->
 <script>
+	let fileObject = new Object();
+	
 	function fn_reviewWriteSend() {
 		if (!confirm("작성 하시겠습니까?"))
 			return false;
@@ -3129,6 +3130,8 @@
 		rcontent.set('headline', $("#reviewHeadline").val()); //내용
 		rcontent.set('fileText', $('#fileText').val()); //파일이름
 
+		rcontent.set('thumbnailImage',fileObject.thumbPath);
+		rcontent.set('imagesPath',fileObject.imagesPath);
 		//console.log("rcontent : " + rcontent);
 
 		//map 직렬화
@@ -3136,7 +3139,13 @@
 
 		//console.log(serializedMap);
 
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+	
 		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
 		const params = {
 			pid : "${productVO.pid}",
 			mid : "${member}",
@@ -3148,12 +3157,14 @@
 		//let serializedMap = JSON.stringify(Object.fromEntries(params));
 
 		$.ajax({
-			url : '/review/reviewWrite',
-			type : 'POST',
-			data : JSON.stringify(params), //직렬화
-			dataType : 'text',
-			contentType : 'application/json; charset=utf-8',
-			success : function(result) {
+			url: '/review/reviewWrite',
+			type: 'POST',
+			data: JSON.stringify(params), //직렬화
+			dataType: 'text',
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+		    contentType : 'application/json; charset=utf-8',
+			success: function(result){
 				//작성 성공시 작성창 닫기
 				if (result == "Success") {
 					alert("리뷰가 작성되었습니다.");
@@ -3185,28 +3196,6 @@
 
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
-		console.log("${productVO.pid}");
-		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
-		const params = {
-			pid : "${productVO.pid}"
-		};
-		//let serializedMap = JSON.stringify(Object.fromEntries(params));
-		$.ajax({
-			url : '/review/reviewList',
-			type : 'POST',
-			data : params, //직렬화
-			success : function(result) {
-				console.log(JSON.stringify(result));
-				$.each(result, function(idx, val) {
-					console.log(idx + " " + val.rcontentMap.age);
-
-				});
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-				alert("통신 실패.");
-			},
-		});
 		viewPopup("#customerReviewDiv");
 
 	}
@@ -3323,6 +3312,7 @@
 				.prop("checked", false);
 		//평소 사이즈
 		$("#customerReviewWriteDiv #enjoySize").val("");
+
 
 		//실 착용 사이즈
 		$("#realWearSize1_01").prop("checked", false);
@@ -3507,10 +3497,10 @@
 		}
 	}
 
-	let fileObject = new Object();
+	
 	$(document)
 			.ready(
-					function() {
+			function() {
 						
 			//사진등록						
 			var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
