@@ -1218,9 +1218,10 @@
 										더보기</a>
 								</div>
 							</li>
+							</ul>
+							</div>
 						</c:forEach>
-						</ul>
-					</div>
+				
 				</ul>
 			</div>
 			<!-- paging -->
