@@ -151,6 +151,9 @@
 							</button>
 						</div>
 						<div class="inp_bundle">
+							<!-- 박진수 수정 -->
+							<input type="hidden" id="zonecode" name="zonecode" value="">
+							<!-- 박진수 수정 -->
 							<input type="text" title="주소 입력" name="partner.addr1"
 								id="regAddr1" class="inp flex" placeholder="상세주소">
 						</div>
@@ -179,9 +182,14 @@
 				//카카오 지도 발생
 				new daum.Postcode({
 					oncomplete : function(data) { //선택시 입력값 세팅
+						//박진수 수정
+						document.getElementById("zonecode").value=data.zonecode;
+						//박진수 수정
 						document.getElementById("regPostNo").value = data.address; // 주소 넣기
 						// console.log(document.getElementById("regPostNo").value);
-						document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+						//박진수 수정
+						document.querySelector("input[name='partner.addr1']").focus(); //상세입력 포커싱
+						//박진수 수정
 					}
 				}).open();
 			});

@@ -801,14 +801,14 @@
 								<input type="hidden" name="CSRFToken" value="7399b544-9191-4d49-af3a-9a782a52adc4">
 							</div>
 						</form>
-						<form id="addToCartBuynowForm" name="addToCartBuynowForm" action="/product/order_page" method="post">
-							<input type="hidden" name="order_colorcode" id="order_colorcode" value="${curcolorcode}" /> 
-							<input type="hidden" name="order_size" id="order_size" value="" /> 
-							<input type="hidden" name="order_sumprice" id="order_sumprice" value="" />
-							<input type="hidden" name="order_hsm" id="order_hsm" value="" />
-							<input type="hidden" name="order_hspoint" id="order_hspoint" value="" /> 
-							<input type="hidden" name="order_count" id="order_count" value="" /> 
+						<!-- 박진수 수정 -->
+						<form id="addToCartBuynowForm" name="addToCartBuynowForm" action="/order/order_page" method="post">
+							<input type="hidden" name="orders[0].pid" id="pid" value="${ productVO.pid}"/>
+							<input type="hidden" name="orders[0].oamount" id="oamount" value="" /> 
+							<input type="hidden" name="orders[0].ccolorcode" id="ccolorcode" value="" /> 
+							<input type="hidden" name="orders[0].ssize" id="ssize" value="" />
 							<input type="button" value="바로주문" class="btn order float_right mr0" id="addToCartBuyNowButton">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>
 
@@ -3099,7 +3099,7 @@
 	      <div class="btnwrap">
 	        <input
 	          type="button"
-	          id="clsBtn"
+	          id="clslogin"
 	          class="btn wt_s mr5"
 	          value="취소"
 	        /><input type="button" id="cfBtn" class="btn gray_s mr0" value="확인" onclick="location.href='/member/loginForm'" />
@@ -3581,7 +3581,10 @@
 											}
 										});
 
-
+						$("#clslogin").on("click",function(){
+							$(".layerArea").hide();
+							$("#AskLogin").hide();
+						});
 						//장바구니버튼 눌렀을때
 						$("#addToCartButton").on("click", function(e){
 							console.log("selectColor" + selectColor);
@@ -3651,12 +3654,15 @@
 						$("#cfBtn").on("click", function() {
 							location.href = "/member/shoppingbag?mid=${member}";
 						});
-
+						
+						//바로 주문하기 버튼을 클릭했을 경우 실행
 						$("#addToCartBuyNowButton").on(
 								"click",
 								function() {
 									console.log("addToCartBuyNowButton");
-									$('#order_colorcode').val($('#pcscode').text());
+									
+
+									//사이즈를 클릭했는지 확인한다.
 									if (CartorOrder_size == "") {
 										$(".layerArea").show();
 										$("#Order_confirm").show();
@@ -3664,15 +3670,14 @@
 									} else {
 										$('#order_size').val(CartorOrder_size);
 									}
+									//박진수 수정 
+									//pcscode를 가지고 ccolorcode를 만든다.
+									let colorcodeArr=$('#pcscode').text().split("_");
+									let ccolorcode=colorcodeArr[0]+"_"+colorcodeArr[1];
+									$('#addToCartBuynowForm').find("input[name='orders[0].oamount']").val($('#txtqty').val());
+									$('#addToCartBuynowForm').find("input[name='orders[0].ccolorcode']").val(ccolorcode);
+									$('#addToCartBuynowForm').find("input[name='orders[0].ssize']").val(CartorOrder_size);
 									
-									
-									let cart_Sumprice = $("#productPrice")
-											.val()
-											* parseInt($("#txtqty").val());
-									$('#order_sumprice').val(cart_Sumprice);
-									$('#order_hsm').val(hsm);
-									$('#order_hspoint').val(hspoint);
-									$('#order_count').val($('#txtqty').val());
 
 									$('#addToCartBuynowForm').submit();
 								});

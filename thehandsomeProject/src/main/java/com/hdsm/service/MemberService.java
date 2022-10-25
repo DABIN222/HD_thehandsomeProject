@@ -7,8 +7,12 @@ import org.apache.ibatis.annotations.Param;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
+
+import com.hdsm.domain.OrderListVO;
+
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
+
 
 public interface MemberService {
 	
@@ -32,6 +36,7 @@ public interface MemberService {
 	// 장바구니 담기
 	public void insertShoppingBags(MemberSbagDTO msVO);
 	
+
 	// 장바구니 변경
 	public int updateShoppingBag(MemberSbagDTO msVO);
 	

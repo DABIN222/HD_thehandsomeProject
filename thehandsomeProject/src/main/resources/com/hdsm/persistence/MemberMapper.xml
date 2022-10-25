@@ -25,14 +25,17 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO member (mid, mpassword, mname, memail,
-		mtel, mzipcode,
-		maddress1, maddress2, buysum ,mgrade, mdate, mpoint,
-		menabled)
-		VALUES (#{mid},
-		#{mpassword}, #{mname}, #{memail}, #{mtel}, 0,
+	
+		<!-- 박진수 수정 
+		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
+		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
+		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, #{mzipcode}, 
+		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0) 
+		-->
+		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
+		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
+		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, #{mzipcode}, 
 		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0)
-
 	</insert>
 	<!-- 권한 정보도 넣기 -->
 	<insert id="insertMemberAutority">

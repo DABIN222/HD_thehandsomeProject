@@ -151,7 +151,7 @@
 					AND 
 					#{fd.price1} <![CDATA[< pprice AND pprice <=]]>  #{fd.price2}
 			</if>
-
+	
 	</select>
 	<!-- 필터링된 물건 갯수 -->
 </mapper> 

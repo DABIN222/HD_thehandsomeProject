@@ -580,8 +580,8 @@
 .popup_customer_review1807{border-bottom:1px solid #ebebeb;}
 .popup_customer_review1807 a{display:block;padding:25px 0;font-size:14px;color:#363636;}
 .star_score1807{display:inline-block;margin:2px 0 0 3px;}
-.star_score1807 .cmt_star{display:block;background:url('/_ui/desktop/common/images/products/star_score_1807.png') left bottom;width:100px;height:16px;}
-.star_score1807 .cmt_star .cmt_per{display:block;width:0;height:16px;background:url('/_ui/desktop/common/images/products/star_score_1807.png') left top;overflow:hidden;text-indent:-9999px;}
+.star_score1807 .cmt_star{display:block;background:url('/resources/images/star_score_1807.png') left bottom;width:100px;height:16px;}
+.star_score1807 .cmt_star .cmt_per{display:block;width:0;height:16px;background:url('/resources/images/star_score_1807.png') left top;overflow:hidden;text-indent:-9999px;}
 .star_score1807 .cmt_star .cmt_per.star5{width:100%;}
 .star_score1807 .cmt_star .cmt_per.star4{width:80%;}
 .star_score1807 .cmt_star .cmt_per.star3{width:60%;}
@@ -621,8 +621,8 @@
 .evaluation_write1807 .tbl_wtype1 th.th_space{padding-left:15px;font-weight:normal;}
 .write_star_wrap th{padding:0;height:auto;line-height:normal;text-align:center;height:96px;}
 .write_star_score1807{display:inline-block;margin:20px 0 0 3px;position:relative;}
-.write_star_score1807 .cmt_star{display:block;background:url('/_ui/desktop/common/images/products/write_star_score_1807.png') left bottom;width:200px;height:28px;}
-.write_star_score1807 .cmt_star .cmt_per{display:block;width:0;height:28px;background:url('/_ui/desktop/common/images/products/write_star_score_1807.png') left top;overflow:hidden;text-indent:-9999px;}
+.write_star_score1807 .cmt_star{display:block;background:url('/resources/images/write_star_score_1807.png') left bottom;width:200px;height:28px;}
+.write_star_score1807 .cmt_star .cmt_per{display:block;width:0;height:28px;background:url('/resources/images/write_star_score_1807.png') left top;overflow:hidden;text-indent:-9999px;}
 .write_star_score1807 .cmt_star .cmt_per.star5{width:100%;}
 .write_star_score1807 .cmt_star .cmt_per.star4{width:80%;}
 .write_star_score1807 .cmt_star .cmt_per.star3{width:60%;}
