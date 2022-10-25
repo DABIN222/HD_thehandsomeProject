@@ -2,7 +2,9 @@ package com.hdsm.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,16 +23,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
+import com.hdsm.domain.ReviewDTO;
 import com.hdsm.domain.ThumbnailVO;
 import com.hdsm.security.domain.CustomUser;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.ProductService;
+import com.hdsm.service.ReviewService;
 import com.hdsm.util.ProductUtil;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +53,10 @@ public class ProductController {
 	
 	@Autowired
 	private MemberService mservice;
+	
+	@Autowired
+	ReviewService reviewService;
+	
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {
@@ -225,7 +235,7 @@ public class ProductController {
 			@RequestParam("pid") String pid,
 			@RequestParam("colorcode") String colorcode,
 			//Principal principal,
-			Model model) {
+			Model model)  throws Exception {
 		String mid;
 		HttpSession session = request.getSession(); // 세션
 		
@@ -258,10 +268,35 @@ public class ProductController {
 		ProductVO product=service.getProduct(pid);
 		System.out.println(product.getP_size());
 		String[] sizelist=product.getP_size().split(",");
+		
+		// 상품평 리스트 받기
+		List<ReviewDTO> getReview = reviewService.getReviewList(pid);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		// rcontent map으로 변환하기
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			/*
+			 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
+			 * rcontent.get("age")+"\n"); log.info("height : " +
+			 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
+			 */
+			//reviewDTO에 변환한 값 넣기
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+		}
+		
+		//log.info("------------------ list ----------------\n"+reviewList.toString());
+		
 		model.addAttribute("sizelist",sizelist);
 		model.addAttribute("productVO", service.getProduct(pid));
 		model.addAttribute("colorVOList", service.getProductColor(pid));
 		model.addAttribute("curColorCode",colorcode);
+		model.addAttribute("reviewList",reviewList);
+
 		return "/product/product_detail";
 	}
 	
@@ -313,4 +348,86 @@ public class ProductController {
 			model.addAttribute("order_count", Integer.parseInt(order_count));
 			
 	}
+	
+	//상품 상세 정보 보기
+		@GetMapping("/product_detail2")
+		public String product_detail2 (
+				HttpServletRequest request,
+				@RequestParam("pid") String pid,
+				@RequestParam("colorcode") String colorcode,
+				//Principal principal,
+				Model model) throws Exception {
+			String mid;
+			HttpSession session = request.getSession(); // 세션
+			
+			model.addAttribute("isWishList",0);
+			
+			
+			//만약 로그인된 상태면 세션에서 아이디 가져오기
+//			if(principal != null) {
+//				mid = principal.getName();
+//				MemberWishListDTO wsDTO = new MemberWishListDTO(); 
+//				wsDTO.setMember_mid(mid);
+//				wsDTO.setPid(pid);
+//				int cnt = mservice.isinWishList(wsDTO);
+//				if(cnt>0) {
+//					model.addAttribute("isWishList",cnt);
+//				}
+//				model.addAttribute("member",mid);
+//			}
+			if((String)session.getAttribute("member") != null) {
+				mid = (String)session.getAttribute("member");
+				MemberWishListDTO wsDTO = new MemberWishListDTO(); 
+				wsDTO.setMember_mid(mid);
+				wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+				int cnt = mservice.isinWishList(wsDTO);
+				if(cnt>0) {
+					model.addAttribute("isWishList",cnt);
+				}
+			}
+			
+			ProductVO product=service.getProduct(pid);
+			System.out.println(product.getP_size());
+			String[] sizelist=product.getP_size().split(",");
+			
+			// 상품평 리스트 받기
+			List<ReviewDTO> getReview = reviewService.getReviewList(pid);
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+			List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+			
+			// 상품평 속 rcontent map 받아오기
+			for(ReviewDTO dto : getReview) {
+				Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			/*
+			 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
+			 * rcontent.get("age")+"\n"); log.info("height : " +
+			 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
+			 * rcontent.get("enjoySize")+"\n"); log.info("bodyType : " +
+			 * rcontent.get("bodyType")+"\n"); log.info("rating : " +
+			 * rcontent.get("rating")+"\n"); log.info("realWearSize1 : " +
+			 * rcontent.get("realWearSize1")+"\n"); log.info("realWearSize2" +
+			 * rcontent.get("realWearSize2")+"\n"); log.info("realWearSize3 : " +
+			 * rcontent.get("realWearSize3")+"\n"); log.info("realProductColor : " +
+			 * rcontent.get("rating")+"\n"); log.info("headline : " +
+			 * rcontent.get("realWearSize1")+"\n");
+			 */
+				dto.setRcontentMap(rcontent);
+				reviewList.add(dto);
+			}
+			
+			log.info("------------------ list ----------------\n"+reviewList.toString());
+			
+			model.addAttribute("sizelist",sizelist);
+			model.addAttribute("productVO", service.getProduct(pid));
+			model.addAttribute("colorVOList", service.getProductColor(pid));
+			model.addAttribute("curColorCode",colorcode);
+			model.addAttribute("reviewList",reviewList);
+			
+			
+			return "/product/product_detail2";
+		}
+		
+	
+	
 }

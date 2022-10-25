@@ -837,12 +837,13 @@
 						</form>
 						<form id="addToCartBuynowForm" name="addToCartBuynowForm"
 							action="/member/order_page" method="post">
-							<input type="hidden" name="orders[0].pid" value="${ productVO.pid}"/>
-							<input type="hidden" name="orders[0].oamount" value=""/>
-							<input type="hidden" name="orders[0].ccolorcode" value=""/>
-							<input type="hidden" name="orders[0].ssize" value=""/>
-								<input type="button" value="바로주문"
-								class="btn order float_right mr0" id="addToCartBuyNowButton">
+							<input type="hidden" name="orders[0].pid"
+								value="${ productVO.pid}" /> <input type="hidden"
+								name="orders[0].oamount" value="" /> <input type="hidden"
+								name="orders[0].ccolorcode" value="" /> <input type="hidden"
+								name="orders[0].ssize" value="" /> <input type="button"
+								value="바로주문" class="btn order float_right mr0"
+								id="addToCartBuyNowButton">
 						</form>
 					</div>
 
@@ -1025,10 +1026,8 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="#;" onclick="GA_Event('상품_상세','정보','상품평');">상품평(<span
-								id="customerReviewCnt">0</span>)
-								<div class="star_score1807" id="prodTotalStarScoreWrapper"
-									style="display: none;">
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span id="customerReviewCnt">0</span>)
+								<div class="star_score1807" id="prodTotalStarScoreWrapper" style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
 										<span class="cmt_per" id="prodTotalStarScore">별점</span>
 									</span>
@@ -1036,13 +1035,12 @@
 							</a>
 						</div>
 						<!--//상품평 btn-->
-
 					</dl>
 				</div>
 
 				<div class="clearfix mt30">
 					<div class="btnwrap float_left">
-						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r>Q&amp;A(<span
+						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0">Q&amp;A(<span
 							class="data" id="productQnACnt">0</span>)
 						</a>
 					</div>
@@ -1164,8 +1162,8 @@
 					<span class="cmt_per" id="totalStarScore">별점</span>
 				</span>
 			</div>
-			<a href="#;" class="btn_evaluation1905" id="customerReviewWrite"
-				onclick="GA_Event('상품평','상품평 작성하기','클릭');">상품평 작성하기</a>
+			<a href="javascript:fn_popupCustomerReviewWrite();"
+				class="btn_evaluation1905" id="customerReviewWrite">상품평 작성하기</a>
 		</div>
 		<!-- pop_cnt-->
 		<div class="pop_cnt evaluation_list1807 options">
@@ -1181,7 +1179,8 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
@@ -1204,44 +1203,10 @@
 			</p>
 		</div>
 		<div class="pop_cnt evaluation_write1905 options1811">
-			<form id="reviewForm" name="reviewForm"
-				action="/ko/HANDSOME/MEN/PANTS/%EC%A1%B0%EA%B1%B0-%ED%8A%B8%EB%9E%99/%5BSET%5D-%EC%9A%B8-%EC%A1%B0%EA%B1%B0-%ED%8C%AC%EC%B8%A0/p/TH2CBKPC033M_BK"
-				method="post" enctype="multipart/form-data">
-				<input type="hidden" name="productCode"> <input
-					type="hidden" name="productCodeType"> <input type="hidden"
-					name="orderNumber" id="orderNumber" value=""> <input
-					type="hidden" name="purchaseColor" id="purchaseColor" value="">
-				<input type="hidden" name="purchaseColorName" id="purchaseColorName"
-					value=""> <input type="hidden" name="purchaseSize"
-					id="purchaseSize" value=""> <input type="hidden"
-					name="purchaseProdYN" id="purchaseProdYN" value=""> <input
-					type="hidden" name="orderWriteChk" id="orderWriteChk" value="">
-				<input type="hidden" name="closeWriteChk" id="closeWriteChk"
-					value=""> <input type="hidden" name="productId"
-					id="productId" value=""> <input type="hidden"
-					name="fileDeleteYN" id="fileDeleteYN">
-
-				<!-- 상품평활성화 -->
-				<input type="hidden" name="categoryCode" id="categoryCode"
-					value="SZ11"> <input type="hidden" name="shoulderWidth"
-					id="shoulderWidth" value=""> <input type="hidden"
-					name="chestSize" id="chestSize" value=""> <input
-					type="hidden" name="waistSize" id="waistSize" value=""> <input
-					type="hidden" name="buttSize" id="buttSize" value=""> <input
-					type="hidden" name="totalSize" id="totalSize" value=""> <input
-					type="hidden" name="photoAccumulationRightYn"
-					id="photoAccumulationRightYn" value=""> <input
-					type="hidden" name="offlineOrdDt" id="offlineOrdDt" value="">
-				<input type="hidden" name="offlineShpCd" id="offlineShpCd" value="">
-				<input type="hidden" name="offlineShpNm" id="offlineShpNm" value="">
-				<input type="hidden" name="tempProductId" id="tempProductId"
-					value=""> <input type="hidden" name="reviewFileCd"
-					id="reviewFileCd" value=""> <input type="hidden"
-					name="reviewFileCd1" id="reviewFileCd1" value=""> <input
-					type="hidden" name="reviewFileCd2" id="reviewFileCd2" value="">
-				<input type="hidden" name="reviewFileCd3" id="reviewFileCd3"
-					value=""> <input type="hidden" name="reviewFileCd4"
-					id="reviewFileCd4" value="">
+			<form id="reviewForm" name="reviewForm" action="" method="post"
+				enctype="multipart/form-data">
+				<!-- 상품 아이디와 제품정보 담기 -->
+				<input type="hidden" name="orderNumber" id="orderNumber" value="">
 				<fieldset>
 					<legend>상품평쓰기</legend>
 					<div class="tblwrap">
@@ -1259,17 +1224,21 @@
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img
-													src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지"
-													onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<c:forEach items="${colorVOList}" var="colorVO">
+													<a href="#;"> <c:if test="${not empty colorVO.cimage1}">
+															<img src="${colorVO.cimage1}" id="reviewProducImg"
+																alt="상품 이미지"
+																onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"
+																style="object-fit: cover">
+														</c:if>
+												</c:forEach>
+												</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName"></span> <span class="sb_tlt"
-														id="reviewProductProductName"></span> / <span
-														id="reviewProducPrice"></span>
-													</a>
+													<a href="#;" class="basket_tlt"> 
+													<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+													<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
+														/ <span id="reviewProducPrice">${productVO.pprice}</span></a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
 														<ul class="select_options">
@@ -1298,6 +1267,7 @@
 																	</li>
 																</ul>
 															</li>
+
 															<li class="select_size">
 																<p>
 																	<span class="compulsory">*</span> 사이즈
@@ -1363,7 +1333,9 @@
 										style="width: 75%; margin-right: 10px">cm</td>
 									<th scope="row" class="th_space" id="thEnjoySize"><strong
 										class="reqd">*</strong> 평소 사이즈</th>
-									<td><input type="text" name="enjoySize" id="enjoySize"></td>
+									<td><input type="text" name="enjoySize" id="enjoySize">
+
+									</td>
 								</tr>
 								<tr class="radio_btn_1905">
 									<th scope="row" class="th_space" id="thBodyType"><strong
@@ -1389,7 +1361,7 @@
 												<li><a href="#;" value="3">3점</a></li>
 												<li><a href="#;" value="4">4점</a></li>
 												<li><a href="#;" value="5">5점</a></li>
-												<input type="hidden" id="rating" name="rating" value="5">
+												<input type="hidden" id="rating" name="rating" value="5"> <!-- 평점 담을 곳 -->
 											</ul>
 											<p>평점을 선택해 주세요.</p>
 										</div>
@@ -1478,7 +1450,7 @@
 													title="파일 첨부하기" readonly="readonly" name="fileText">
 												<div class="upload_btn">
 													<input type="file" name="reviewFile" id="reviewFile"
-														class="btn add_s" title="파일찾기"> <label
+														class="btn add_s" title="파일찾기" multiple> <label
 														for="reviewFile"> <!-- 	 <button type="button" id="uploadFile1" class="img_upload" title="파일찾기">  -->
 														<span id="uploadFile1" class="img_upload">파일찾기</span> <!--	 </button> -->
 													</label>
@@ -1546,8 +1518,8 @@
 			<h3>Q&amp;A</h3>
 		</div>
 		<div class="pop_cnt evaluation_list">
-			<a href="javascript:fn_popupProductQnAWrite();" class="btn_evaluation"
-				id="productQnAWrite">상품문의하기</a>
+			<a href="javascript:fn_popupProductQnAWrite();"
+				class="btn_evaluation" id="productQnAWrite">상품문의하기</a>
 			<div class="clearfix">
 				<table class="pop_tbl_ltype1">
 					<caption>Q&amp;A</caption>
@@ -3107,12 +3079,13 @@
 		<a href="javascript:void(0);" class="btn_close"><img
 			src="/resources/images/ico_close.png" alt="닫기"></a>
 	</div>
-	<div class="popwrap w_type_1 " id="Order_confirm" style="z-index: 150; margin-top: 753px; display:none;"
-		tabindex="-1">
+	<div class="popwrap w_type_1 " id="Order_confirm"
+		style="z-index: 150; margin-top: 753px; display: none;" tabindex="-1">
 		<div class="pop_cnt">
 			<h3 class="pop_tlt copy">사이즈를 선택해 주세요.</h3>
 			<div class="btnwrap">
-				<input type="button" class="btn gray_s mr0" onclick="sizeConfirm();" value="확인">
+				<input type="button" class="btn gray_s mr0" onclick="sizeConfirm();"
+					value="확인">
 			</div>
 		</div>
 		<a href="javascript:void(0);" class="btn_close"> <img
@@ -3131,6 +3104,254 @@
 <iframe style="display: none" id="fileFrame" title="fileFrame" scr=""></iframe>
 
 <!-- footerWrap -->
+<!-- 상품평 스크립트 -->
+<script>
+	let fileObject = new Object();
+	
+	function fn_reviewWriteSend() {
+		if (!confirm("작성 하시겠습니까?"))
+			return false;
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		let rcontent = new Map();
+		rcontent.set('age', $("input[type=radio][name=age]:checked").val()); // 연령대
+		rcontent.set('height', $('#height').val()); // 키
+		rcontent.set('enjoySize', $('#enjoySize').val()); //실 착용 사이즈
+		rcontent.set('bodyType', $("input[type=radio][name=bodyType]:checked")
+				.val()); //체형
+		rcontent.set('rating', $('#rating').val()); //평점
+		rcontent.set('realWearSize1', $(
+				"input[type=radio][name=realWearSize1]:checked").val()); //리뷰 옵션
+		rcontent.set('realWearSize2', $(
+				"input[type=radio][name=realWearSize2]:checked").val()); //리뷰옵션
+		rcontent.set('realWearSize3', $(
+				"input[type=radio][name=realWearSize3]:checked").val()); //리뷰옵션
+		rcontent.set('realProductColor', $(
+				"input[type=radio][name=realProductColor]:checked").val()); //색감
+		rcontent.set('headline', $("#reviewHeadline").val()); //내용
+		rcontent.set('fileText', $('#fileText').val()); //파일이름
+
+		rcontent.set('thumbnailImage',fileObject.thumbPath);
+		rcontent.set('imagesPath',fileObject.imagesPath);
+		//console.log("rcontent : " + rcontent);
+
+		//map 직렬화
+		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
+
+		//console.log(serializedMap);
+
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+	
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+			rcontent : serializedMap,
+		};
+
+		console.log("params :" + JSON.stringify(params));
+
+		//let serializedMap = JSON.stringify(Object.fromEntries(params));
+
+		$.ajax({
+			url: '/review/reviewWrite',
+			type: 'POST',
+			data: JSON.stringify(params), //직렬화
+			dataType: 'text',
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+		    contentType : 'application/json; charset=utf-8',
+			success: function(result){
+				//작성 성공시 작성창 닫기
+				if (result == "Success") {
+					alert("리뷰가 작성되었습니다.");
+					console.log("리뷰가 작성되었습니다.");
+					reviewReset();
+					$("#customerReviewWriteDiv").hide();
+					viewPopup("#customerReviewDiv");
+				} /* else if(result == "fail"){
+								alert("리뷰를 이미 작성하셨습니다.");
+								console.log("리뷰를 이미 작성하셨습니다.");
+								$("#customerReviewWriteDiv").hide();
+								viewPopup("#customerReviewDiv");
+							} */
+
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+
+	};
+
+	// 상품평 등록하기 버튼 눌렀을 때
+	$('#reviewWriteSend').on("click", function() {
+		fn_reviewWriteSend();
+
+	});
+
+	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
+	function fn_popupCustomerReview() {
+		viewPopup("#customerReviewDiv");
+
+	}
+
+	//x 버튼을 누르면 상품평 리스트 닫기
+	function fn_closeProductReview() {
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+	}
+
+	function fn_reviewWriteCheck() {
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
+
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+		};
+
+		console.log("params :" + JSON.stringify(params));
+
+		$.ajax({
+			url : '/review/reviewWriteCheck',
+			type : 'POST',
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			data : JSON.stringify(params), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//리뷰 작성 가능 여부 확인
+				if (result == "pass") {
+					console.log("리뷰 작성 가능");
+					//상품평 리스트를 숨긴다.
+					$("#customerReviewDiv").hide();
+					//상품평 작성란을 띄운다.
+					viewPopup("#customerReviewWriteDiv");
+				} else if (result == "exist") { // 이미 작성했을 때
+					alert("리뷰를 이미 작성하셨습니다.");
+					console.log("리뷰를 이미 작성하셨습니다.");
+				} else if (result == "empty") { // 구매내역이 없을 때
+					alert("구매내역이 없습니다.");
+					console.log("구매내역이 없습니다.");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+	}
+
+	//후기 작성란 띄우기
+	function fn_popupCustomerReviewWrite() {
+<%if ((String) session.getAttribute("member") == null) {%>
+	//세션에 값이 없으면 로그인 폼으로 이동
+		location.href = '/member/loginForm';
+<%} else {%>
+	fn_reviewWriteCheck();
+<%}%>
+	}
+
+	//x버튼을 눌렀을때 상품평 작성 취소하기
+	$("#reviewCancle").on('click', function() {
+
+		//취소를 원하면 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+
+	});
+
+	//상품평 작성 취소하기
+	$("#reviewCloseBtn").on('click', function() {
+
+		//취소를 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+
+	});
+
+	// 상품평 평점 선택
+	$(".btn_star_score li a").on(
+			"click",
+			function() {
+				var idx = $(this).parent('li').index() + 1;
+				for (var i = 1; i < 6; i++) {
+					$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+							'star' + i);
+				}
+				// 선택한 별의 css 수정
+				$('.write_star_score1807 .cmt_star .cmt_per').addClass(
+						'star' + idx);
+				// 선택한 요소의 value 값 가져오기
+				$("#rating").val($(this).attr('value'));
+			});
+
+	// 상품평 내용 초기화
+	function reviewReset() {
+		//연령
+		$("#customerReviewWriteDiv input[name=age]").prop("checked", false);
+		//키
+		$("#customerReviewWriteDiv #height").val("");
+		//체형
+		$("#customerReviewWriteDiv input[name=bodyType]")
+				.prop("checked", false);
+		//평소 사이즈
+		$("#customerReviewWriteDiv #enjoySize").val("");
+
+
+		//실 착용 사이즈
+		$("#realWearSize1_01").prop("checked", false);
+		$("#realWearSize1_02").prop("checked", false);
+		$("#realWearSize1_03").prop("checked", false);
+
+		$("#realWearSize2_01").prop("checked", false);
+		$("#realWearSize2_02").prop("checked", false);
+		$("#realWearSize2_03").prop("checked", false);
+
+		$("#realWearSize3_01").prop("checked", false);
+		$("#realWearSize3_02").prop("checked", false);
+		$("#realWearSize3_03").prop("checked", false);
+
+		//실착용
+		$("#customerReviewWriteDiv input[name=realWearSize]").prop("checked",
+				false);
+		//실 제품 색상
+		$("#customerReviewWriteDiv input[name=realProductColor]").prop(
+				"checked", false);
+		//상품평
+		$("#customerReviewWriteDiv #reviewHeadline").val("");
+		//평점
+		var idx = $("#customerReviewWriteDiv .btn_star_score li:eq(4) > a")
+				.parent('li').index() + 1;
+		for (var i = 1; i < 6; i++) {
+			$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+					'star' + i);
+		}
+		// 선택한 별의 css 수정
+		$('.write_star_score1807 .cmt_star .cmt_per').addClass('star' + idx);
+		// 선택한 요소의 value 값 가져오기
+		$("#rating").val($(this).attr('value'));
+
+		//사진등록
+
+	}
+</script>
+
 <script>
 	//가격에 3자리마다 컴마
 	function priceComma(price) {
@@ -3170,30 +3391,29 @@
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
 		$(".btn_close").trigger("click");
 	}
-	
+
 	//사이즈 확인 모달 창 버튼의 class에 스타일이 적용되있으ㅓㅅ
 	/* function fn_Order_confirm() {
 		console.log("fn");
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
 		$(".btn_close").trigger("click");
 	} */
-	
+
 	//btn_close라는 클래스 이름을 가진 버튼을 클릭시 닫기 적용
 	$(".btn_close").on("click", function() {
 		$('#productLayer').hide();
 		$(".popwrap").hide();
 	});
-	
+
 	//QnA 작성란 띄우기
 	function fn_popupProductQnAWrite() {
-		
+
 		//QnA 리스트를 숨긴다.
 		$("#productQnADiv").hide();
 		//작성란을 띄운다.
 		viewPopup("#productQnAWriteDiv");
 	}
-	
-	
+
 	//x 버튼을 누르면 QnA 작성창 닫기
 	function fn_closeProductQnAWrite() {
 		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
@@ -3212,13 +3432,13 @@
 		}
 
 	});
-	
+
 	//사이즈 체크 확인 창이 뜨고 확인버튼을 누르면 확인 모달창에 사라짐
-	function sizeConfirm(){
+	function sizeConfirm() {
 		$('#productLayer').hide();
 		$("#Order_confirm").hide();
 	}
-	
+
 	//QnA 팝업 창의 크기를 조절하고 띄우는 함수(공홈을 참고함)
 	function viewPopup(v, n) {
 
@@ -3276,10 +3496,80 @@
 			$("#hspoint").text(priceComma(hspoint) + " P (%0.1)")
 		}
 	}
+
 	
 	$(document)
 			.ready(
-					function() {
+			function() {
+						
+			//사진등록						
+			var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
+
+			function checkExtension(fileSize) {
+				if (fileSize >= maxSize) {
+					alert("파일 사이즈 초과");
+					return false;
+				}//end if
+
+				return true;
+			}
+
+			function uploadImages() {//등록하기 버튼 눌렀을때 이미지 업로드 되게 하기!
+				let formData = new FormData();
+				
+				formData.append('pid', '${productVO.pid}');
+
+				let csrfHeaderName = "${_csrf.headerName}";
+				let csrfTokenValue = "${_csrf.token}";
+
+				let inputFile = $("input[name='reviewFile']");
+				let files = inputFile[0].files;
+
+				//파일 formdata에 추가
+				for (var i = 0; i < files.length; i++) {
+					// 크기 체크
+					if (!checkExtension(files[i].size)) {
+						return false;
+					}
+					formData.append("uploadFile", files[i])
+				}//end for
+
+				$.ajax({
+					url : "/review/uploadAjaxAction",
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : "post",
+					dataType : 'json',
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					success : function(result) {
+						alert("Upload");
+						fileObject = result;
+					}//end suce..			
+				});//end ajax	
+			}
+	
+			$("#reviewFile").change(function() {//input으로 파일을 첨부하면 무슨 파일이 첨부됐는지 바뀐거 보여주기 !
+				let inputFile = $("input[name='reviewFile']");
+				let files = inputFile[0].files
+				let filenames = '';
+
+				for (i = 0; i < files.length; i++) {
+					// 크기 체크
+					if (!checkExtension(files[i].size)) {
+						return false;
+					}
+					filenames += files[i]['name'] + ' ';
+				}
+
+				$("#textReviewFile").val(filenames);
+				
+				uploadImages();
+			});
+			
+			//--------------------------------- 사진등록
 						//쇼핑백에 담을 변수 선언
 						let CartorOrder_size = "";
 						let CartorOrder_sumprice = "";
@@ -3469,34 +3759,46 @@
 							location.href = "/member/shoppingbag";
 						});
 
-						$("#addToCartBuyNowButton").on(
-								"click",
-								function() {
-									console.log("addToCartBuyNowButton");	
-									if (CartorOrder_size == "") {
-										$(".layerArea").show();
-										$("#Order_confirm").show();
-										return;
-									}
-									
-									
-								/* 	let cart_Sumprice = $("#productPrice")
-											.val()
-											* parseInt($("#txtqty").val()); */
-									/* $('#order_sumprice').val(cart_Sumprice);
-									$('#order_hsm').val(hsm);
-									$('#order_hspoint').val(hspoint);
-									*/
-									//박진수 수정
-									let colorcodeArr=$('#pcscode').text().split("_");
-									let colorcode=colorcodeArr[0]+"_"+colorcodeArr[1];
-									$('#addToCartBuynowForm').find("input[name='orders[0].oamount']").val($('#txtqty').val());
-									$('#addToCartBuynowForm').find("input[name='orders[0].ccolorcode']").val(colorcode);
-									$('#addToCartBuynowForm').find("input[name='orders[0].ssize']").val(CartorOrder_size);
-									
-									$('#addToCartBuynowForm').submit();
-									//박진수 수정
-								});
+						$("#addToCartBuyNowButton")
+								.on(
+										"click",
+										function() {
+											console
+													.log("addToCartBuyNowButton");
+											if (CartorOrder_size == "") {
+												$(".layerArea").show();
+												$("#Order_confirm").show();
+												return;
+											}
+
+											/* 	let cart_Sumprice = $("#productPrice")
+														.val()
+											 * parseInt($("#txtqty").val()); */
+											/* $('#order_sumprice').val(cart_Sumprice);
+											$('#order_hsm').val(hsm);
+											$('#order_hspoint').val(hspoint);
+											 */
+											//박진수 수정
+											let colorcodeArr = $('#pcscode')
+													.text().split("_");
+											let colorcode = colorcodeArr[0]
+													+ "_" + colorcodeArr[1];
+											$('#addToCartBuynowForm')
+													.find(
+															"input[name='orders[0].oamount']")
+													.val($('#txtqty').val());
+											$('#addToCartBuynowForm')
+													.find(
+															"input[name='orders[0].ccolorcode']")
+													.val(colorcode);
+											$('#addToCartBuynowForm')
+													.find(
+															"input[name='orders[0].ssize']")
+													.val(CartorOrder_size);
+
+											$('#addToCartBuynowForm').submit();
+											//박진수 수정
+										});
 
 					});
 

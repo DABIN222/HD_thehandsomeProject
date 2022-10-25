@@ -991,7 +991,7 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="#;" onclick="GA_Event('상품_상세','정보','상품평');">상품평(<span
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span
 								id="customerReviewCnt">0</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
@@ -1130,8 +1130,8 @@
 					<span class="cmt_per" id="totalStarScore">별점</span>
 				</span>
 			</div>
-			<a href="#;" class="btn_evaluation1905" id="customerReviewWrite"
-				onclick="GA_Event('상품평','상품평 작성하기','클릭');">상품평 작성하기</a>
+			<a href="javascript:fn_popupCustomerReviewWrite();"
+			class="btn_evaluation1905" id="customerReviewWrite">상품평 작성하기</a>
 		</div>
 		<!-- pop_cnt-->
 		<div class="pop_cnt evaluation_list1807 options">
@@ -1147,13 +1147,103 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+					<c:forEach items="${reviewList}" var="review">
+							<li class="evaluation_view" id="evaluation_view0"><div
+									class="member_info_top">
+									<ul>
+										<li class="name">${review.mid}</li>
+										<li class="grade">${review.mgrade}</li>
+										<li class="date">${review.rdate}</li>
+										<li class="stars">
+											<div class="star_score1807">
+												<span class="cmt_star"> <span class="cmt_per star${review.rcontentMap.rating}">별점</span>
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="member_info_bottom">
+									<ul>
+										<li class="choice">• <span>${review.rcontentMap.age}</span> / <span>${review.rcontentMap.height}</span>
+											/ <span>${review.rcontentMap.bodyType}</span> / 평소 사이즈 : <span>${review.rcontentMap.enjoySize}</span>
+										</li>
+										<li class="must">• 구매 정보 : <span>${review.pcolor}</span> / <span>${review.psize}</span>
+											/ <span>더한섬닷컴</span>
+										</li>
+									</ul>
+								</div>
+								<div class="review_represent_img1912">
+								  <img
+								    src="${review.rcontentMap.thumbnailImage}"
+								    alt="리뷰 이미지"
+								  />
+								</div>
+								<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
+								  <ul class="slides">
+								  	<c:forEach items="${review.rcontentMap.imagesPath}" var="image">
+								    <li>
+								      <div class="review_img_cont_inner191216">
+								        <div class="img_wrap">
+								          <img
+								            src="${image}"
+								            alt="리뷰 이미지"
+								          />
+								        </div>
+								      </div>
+								    </li>
+								    </c:forEach>
+								  </ul>
+								</div>
+								<div class="review_txt_wrap">
+									<p class="review_txt">${review.rcontentMap.headline}</p>
+								</div>
+								<div class="sizecolor clearfix">
+									<div class="real_fit_size1905">
+										<strong>• 실 착용 사이즈</strong>
+										<div class="evaluation_wrap1905">
+											<p>허리둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>엉덩이둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>총길이 :</p>
+											<div class="clearfix">
+												<span class="">짧은 편</span> <span class=" on">적당함</span> <span
+													class="">긴 편</span>
+											</div>
+										</div>
+									</div>
+									<div class="real_color1905">
+										<strong>• 실 제품 색상</strong>
+										<div class="clearfix">
+											<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
+												class="">밝아요</span>
+										</div>
+									</div>
+								</div>
+								<div class="review_more_1807">
+									<a class="review_plus" href="javascript:void(0);" >리뷰 더보기</a>
+								</div>
+							</li>
+						</c:forEach>
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
 			<!-- //paging -->
+			<!--// pop_cnt-->
+
 		</div>
-		<!--// pop_cnt-->
 		<a href="javascript:void(0);" class="btn_close"><img
 			src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 			alt="닫기"></a>
@@ -1225,14 +1315,18 @@
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지" onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<a href="javascript:void(0);">
+												<img src="${colorVOList[0].cimage1}" id="reviewProducImg"
+																alt="상품 이미지"
+																onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"
+																style="object-fit: cover">
+													</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
 													<a href="#;" class="basket_tlt"> 
-													<span class="tlt" id="reviewProductBrandName"></span> 
-													<span class="sb_tlt" id="reviewProductProductName"></span> / 
-													<span id="reviewProducPrice"></span>
+													<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+													<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span>
+												  / <span id="reviewProducPrice">${productVO.pprice}</span></a>
 													</a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
@@ -1445,7 +1539,7 @@
 													title="파일 첨부하기" readonly="readonly" name="fileText">
 												<div class="upload_btn">
 													<input type="file" name="reviewFile" id="reviewFile"
-														class="btn add_s" title="파일찾기"> <label
+														class="btn add_s" title="파일찾기" multiple> <label
 														for="reviewFile"> <!-- 	 <button type="button" id="uploadFile1" class="img_upload" title="파일찾기">  -->
 														<span id="uploadFile1" class="img_upload">파일찾기</span> <!--	 </button> -->
 													</label>
@@ -1698,1363 +1792,7 @@
 			alt="닫기"></a>
 	</div>
 
-
-
-	<!-- 211101 체험단 리뷰 추가 S -->
-	<!-- 체험단 상품평 리스트-->
-	<div class="popwrap w_type_4 pop-tester-review" id="testerReviewDiv"
-		style="display: none;">
-		<div class="pop_tltwrap2 pb0 customerreviewdiv1905">
-			<h3>
-				체험단(<span class="review_cnt">15</span>)
-			</h3>
-			<p>더한섬닷컴 체험단 이벤트에 당첨된 고객님들의 상품 사용 후기입니다.</p>
-		</div>
-		<!-- pop_cnt-->
-		<div class="pop_cnt evaluation_list1807 options">
-			<div class="clearfix review_tab1_1807">
-				<ul>
-					<!-- 1 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>장*윤</span> / <span>30대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_0">
-							<ul class="slides reviewImg0">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_3.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_4.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_5.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_6.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/01/pc_7.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="6" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								열흘 정도 써본 한섬의 럭셔리 뷰티 oera♥ <br> 세안 후 솜으로 닦아내지 않으면 마무리가 되지 않은
-								느낌인데, 오에라의 캘리브레이터로 스킨 대신 첫 단계로 써보니 피부가 한결 정리된 기분. 그리고 무엇보다 울긋불긋한
-								톤이 균일해졌다! 특히 전용 패드가 너~무 좋아서 감동. <br> 세심하게 만든게 느껴지는 오에라의
-								캘리브레이터 꾸준히 쓰면 올 여름 상한 피부가 다시 돌아올 것 같아~
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 2 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>이*주</span> / <span>30대</span> /
-									<span>복합-민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_1">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_5.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_6.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/02/pc_7.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="6" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								오에라의 멀티-베네핏 캘리브레이터는 전용 패드 120매와 80ml의 본품이 함께 구성되어 있습니다. <br>
-								한 손으로 다 잡히지 않는, 넉넉한 용량입니다. 은빛의 고급스러운 패키지가 눈에 띕니다. <br> 용기는
-								펌핑형으로, 무게감이 적당해 사용이 편리했습니다. <br> 제품을 펌핑하여 페이스에 사용하기 전부터 향에서
-								깊은 인상을 받을 수 있었습니다. 스킨케어 첫 단계에서 사용하는 제품인 만큼, 휴식과 안정의 느낌을 선사하는
-								향이라는 느낌이 듭니다.<br> 멀티-베네핏 캘리브레이터는 묽게 흐르는 제형이지만, 피부에 금방 흡수되며
-								촉촉한 느낌입니다. <br> 전용 패드는 한쪽에 엠보가 도드라지며, 다른 한 쪽은 좀더 부드러운
-								느낌입니다. 부드러운 패드 반대 쪽 면에 묻혀 사용하니 진정과 수분 공급에 탁월한 효과를 볼 수 있었습니다. <br>
-								탄력이 조금 더 신경 쓰이는 날에는 패드에 캘리브레이터를 넉넉히 묻혀 팩처럼 활용하기도 했습니다. 시간이 지나
-								패드를 떼어 내면 눈에 띄게 촉촉해지고 쫀쫀해진 피부 때문에 자꾸 손이 가는 제품입니다.<br> 사용하며
-								가장 인상적이었던 점은 자극없이 피부에 생기를 불어넣어 준다는 점입니다. 복합성에 민감성 피부인 제가 민감한 부위에
-								제품을 덧바르더라도 자극이 전혀 느껴지지 않았습니다. <br> 2주 동안 캘리브레이터를 사용하며 스킨
-								토너를 사용할 때보다 수분이 충전되는 느낌을 받았습니다.<br> 캘리브레이터는 기초 첫 단계에서 단독
-								사용하더라도, 토너 뿐만 아니라 에센스의 역할까지도 훌륭히 해내는 듯합니다. 역할까지도 훌륭히 해내는 듯합니다.
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 3 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>최*정</span> / <span>30대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_2">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_5.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/03/pc_6.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								한섬의 프리미엄 스킨케어 브랜드라 해서 넘나 기대가 되었는데요, 포장 상태도 마음에 들었고 케이스도 고급스러운
-								디자인이라, 엄마 선물로도 좋을 것 같아요! <br> 처음에는 큰 박스가 와서 왜 이렇게 큰가 했더니,
-								캘리브레이터랑, 캘리브레이터 전용 패드가 같이 들어가 있었어요!<br> 제가 피부가 예민한 편이라, 많은
-								성분과 기능을 담은 제품은 사용하기 무서워하는 편인데, 오에라 켈리브레이터는 사용 후에 자극이나 가려움이 느껴지지
-								않아서 좋았어요! <br> 왜 패드가 포함되어 있나 했더니, 패드를 활용해서 피부결을 정돈하는 단계가 첫
-								단계더라구요! 패드는 촘촘하지 않은 독특한 재질로 되어 있어요! 피부결을 따라 닦아내듯 발라주면 된답니다!<br>
-								캘리브레이터 전용 패드를 이용해서 피부결을 닦아낸 후에는, 손바닥에 적당량을 펌핑한 후에 피부에 지그시 누르듯
-								흡수시켜주면 된답니다! 용기는 펌핑형으로 되어 있어서 위생적으로 사용하기 좋답니다!ㅎㅎ <br> 제형은
-								흐르는 물 같은 제형에, 향은 딱 맡아도 고급스러운 향이 나더라구요. 자연스러운 향이다보니 호불호가 크게 갈리지
-								않고 사용할 수 있을 것 같았답니다!<br> 무엇보다 흡수력이 빠르고, 얼굴에 두껍게 발리는 느낌이
-								아니여서 산뜻한 느낌이 났어요! <br> 아침저녁으로 사용중인데,촉촉한 느낌이 지속되어서 계속 꾸준히
-								사용해볼 생각이랍니다!
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 4 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>박*영</span> / <span>30대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_3">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_3.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_4.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_5.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/04/pc_6.gif"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								한 박스에는 "오에라 멀티 베네핏 캘리브레이터"가 있었고, 나머지 한 박스는 전용 패드가 들어있다. <br>
-								전용 패드는 일반 화장솜이 아니었다.내 얼굴의 숨은 각질을 한번에 닦아버리겠다는 포부가 그대로 느껴지는 질감!<br>
-								어떤 질감인지, 어떤 색인지 전혀 정보가 없는 채 꾹꾹 눌러보니....액체에 가까운 질감이 손등을 타고 흐른다.<br>
-								손등에 문질러보니 끈적임이 1도 남아있지 않았다. 바르지 않은 손등과 비교해보면, 광택과 확연히 비교가 된다.<br>
-								자연스럽게 손등이 코로 가는데, 향이 인위적인 느낌이 없이 너무 좋았다. <br> 비싸보이는 화장솜에다가
-								멀티 베네핏 캘리브레이터를 몇번 펌프해준다. 기존에 쓰던 스킨을 화장솜에 묻혀 일단 피부결을 정돈하고 전용 패드에
-								적당양 오에라 멀티 베네핏 캘리브레이터를 뿌려 다시 닦아낸다. <br> 특히, 거칠거칠하던 턱 주변과 볼을
-								더 집중적으로 닦아냈다. 일반 화장솜과 다르게 표면이 거칠해서 뭔가 각질이 잘 닦이는 느낌이 들었다. 왜 전용패드를
-								함께 패키지로 파는지 알 것 같았다. 전용패드 다쓰면 꼭 다시 사고 싶다.<br> 그 다음날 아침과
-								저녁세안 후에도 역시 사용을 해본 결과 볼을 만져보니 확실히 부드러워졌다. 정말 제대로 느껴졌다. 괜히 '피부톤
-								개선, 피부결 개선, 피부 탄력' 에 좋다고 한게 아니었다. 계속 부드러운 얼굴을 만져보게 된다 ㅋㅋㅋ<br>
-								제품을 받고 사용한지 약 일주일째.. 이 제품을 이렇게 사용해보게 해준 한섬이 너무 고마워졌다. 일단 내 피부가
-								요즘 거칠하다.. 팩을 해도 거칠다... 라고 고민하시는 분들은 오에라 멀티 베네핏 캘리브레이터 써보시길
-								추천드린다.<br>
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-
-					<!-- 5 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>오*선</span> / <span>40대</span> /
-									<span>복합성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_4">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_5.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_6.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/05/pc_7.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="6" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								아침마다 세수할때 손끝에 느껴지는 부드러움을 알게해준 오에라! 한섬팬인데 오에라팬이 될거같아요. <br>
-								첫째, 피부결이 일주일도 안되어 달라진걸 느꼈어요. <br> 실크처럼 부드럽다라는 말보다 더 좋은 표현을
-								못찾겠어요. 아침저녁 사용하는데 손끝이 너무 행복해요<br> 둘째, 피부결이 정리되니 피부톤도 한결 고르게
-								되고 밝아지는거 같아요.<br> 셋째, 주름개선은 조금 더 써보고 공유할수 있을거 같아요.<br>
-								사용은 펌핑하고 들어있는 패드에 (한쪽은 결이있고, 반대쪽은 매끄러워요~결있는데로 쓱 밀어서 각질까지 케어하고,
-								부드러운면으로 쓱 밀어서 피부결 살리고) 뭍혀서 얼굴결 정리하듯 쓱 발라주고, 한번더 펌핑해서 얼굴에 쏘옥~흡수하면
-								되는데요, 피부에서 겉돌지 않고 쏘옥~흡수되서 사용도 넘넘 편하답니다.<br> 다른 에센스2배 짐승용량이라
-								가치가 있는거 같아요.14일도 안되어 피부결 변화와, 14일이면 느껴지는 피부톤 정리까지!!! 최고예요
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 6 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>송*희</span> / <span>40대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/06/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_5">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/06/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/06/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								40대 중반에 가을이 되니 부석부석해진 피부가 좀 더 건강해졌으면 좋겠다는 바램이 생기더라구요. <br>
-								건강하게 빛나는 피부, 좀 더 어려보이고건강해지고 싶다는 생각으로 피부과, 다양한 화장품, 팩등을 찾고 있던 중 운
-								좋게 만난 오에라의 멀티-베네핏 캘리브레이터♡~ <br> 믿고 사용할 만한 스위스의 기술력과 연구과정으로
-								탄생했다는 과학기술,크로노 엘릭서를 담은 캘리브레이터가 피부를 케어해주네요. <br> 세안후 앞 뒷면이
-								다른 패드 중 더 거친 부분으로 에센스를 3~4방울을 얼굴 전체를 부드럽게 닦아줘요. 그것만으로도 각질이 정리되어
-								피부결 톤을 정리가 되더라구요.<br> 한 번 더 수분감으로 채울 부분은 에센스 몇방울을 덜어 손가락으로
-								살포시 눌러주면 최상의 컨디션으로 피부가 편안해지는 느낌.럭셔리리추얼스킨케어가 가능한 하이엔드 뷰티~였어요.<br>
-								자연분해까지 생각해 환경친밀 비건패드로 수분감이 부족한 부분에 5분간 올려두면 피부의 수분감 충족, 톤과 결,
-								매끄러움을 향상시켜 줍니다. <br> 눈가와 이마의 미세한 주름까지 잡아주는 오에라의 멀티-베네핏
-								캘리브레이터♡로 더 예뻐지세요~
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 7 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>한*연</span> / <span>30대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_6">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/07/pc_5.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								용기 디자인은 깔끔, 영롱한 느낌! 오에라의 분위기를 느낄 수 있어요~<br> 사용 방법은 간단해요 ㅎㅎ
-								먼저 전용 패드를 활용하여 피부결을 정돈하고, 두번째는 손으로 흡수시켜 수분 공급을 해주세요! 레이어링 해주는
-								느낌으로다가:) <br> 처음 전용패드로 발라주었을 때 느낌은 "오!?!" 👀 촉촉 찹찹 바르면 느낌이
-								쫀득쫀득해지는 느낌이더라구요:) <br> 피부톤 개선이나, 피부결, 탄력에 좋다고 하니 꾸준히 사용해 봐야
-								겠어요~<br> 촉촉한 손등 보이죠!? 패드도 완전 꿀템이라 슥슥 닦아주고, 흡수시켜주면 최고의
-								조합이에요~ <br> 환절기 민감한 피부에 추천해봅니다~
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 8 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>김*현</span> / <span>40대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/08/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_7">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/08/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/08/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/08/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/08/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								한섬옷을 좋아하는 편이라, 한섬브랜드에 관심이 많았는데 한섬에서 화장품라인이 나온다는 소식에 넘 기대가 많았다…
-								체험단모집에 별기대없이 댓글 응모하였는데~~선정되어 넘 기쁨~~ <br> 기다리던 "오에라" 브랜드명의
-								멀티-베네핏 캘리브레이터 에센스 도착!!! <br> 밤에 세안 후 전용 패드로 살짝 닦아내듯 바른 후,
-								적당량을 덜어서 누르듯 바름~ <br> 아침에 일어나보니 맑아진 피부톤이 느껴져요~ 역시 명품이 좋군…
-								다른 라인도 넘 체험해보고 싶네요… 향도 고급스러운 향수 느낌의 달달함이 가득한 향이에요...^^ <br>
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-
-					<!-- 9 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>김*정</span> / <span>40대</span> /
-									<span>복합성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/09/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_8">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/09/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/09/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/09/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/09/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								피부에 밸런스를 잡아줄 완벽한 #에센스 발견 <br> 우선 처음 보자마자 멋있다!!! 감탄😍 그리고
-								향수를 쓰는 기분은 보너스~ <br> 1. 피부를 가장 편안한 상태로 만들어주는 오에라만의 처방 솔루션.<br>
-								2. 독자적인 크로노 엘릭서™가 "톤","결","촉(탄력)"을 동시에 케어하는 멀티 베네핏 효과 선사.<br>
-								3. 전용패드로 피부결 정리 후 손으로 흡수시켜 수분공급하는 2-레이어링 케어.<br> 앞으로 내피부를
-								맡겨보기로했다~ #똑똑한에센스 #오에라 #컬러브레이터
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 10 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>한*연</span> / <span>30대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/10/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_9">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/10/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/10/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/10/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/10/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								독자성분 '크로노 엘릭서'와 피부 리듬을 잡아주는 '캘리브레이팅 시스템'<br> 피부 톤/결/촉(탄력)을
-								함께 챙겨주는 멀티-베네핏 캘리브레이터 <br> 1.써본지 2주 되었는데, 지금 계절이면 뒤집어졌을 피부가
-								나름 단단해져 있는 느낌😀<br> 2.친환경 전용 비건패드로 각질을 정돈해주고 손으로 싸악 흡수시켜주니
-								촉촉함이 오래가는 느낌.<br> 3.피부가 좋은편은 아닌데, 요새 안색이 좋아졌다는 얘기를 많이 듣는다.<br>
-								#캘리브레이터 #더한섬닷컴 #모닝뷰티루틴 #에센스추천
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 11 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>박*아</span> / <span>40대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/11/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_10">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/11/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/11/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/11/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								캘리브레이터는 투명하고 묽은 제형으로 피부에 닿았을 때 우드향이 은은하게 나는 게 정말 좋았습니다. <br>
-								함께 들어있는 패드에 두세번 펌핑하여 볼-이마-코와 턱 순으로 부드럽게 닦아 내듯 발라줍니다. <br>
-								패드는 부드러운 면과 거친 면이 양면으로 되어 있어 각질이 신경 쓰일 때는 거친 면으로 바르고, 꼼꼼히 세안을 하여
-								피부가 민감한 상태가 되었을 때는 부드러운 면으로 발라 피부에 최소한으로 자극이 되도록 하였습니다. <br>
-								한 번 닦아 내듯 바른 패드는 바로 버리지 않고 뒤집어서 두어 번 더 펌핑한 후 가장 신경 쓰이는 이마와 미간 주름
-								위에 붙여 놓아 5분 간 팩을 하였습니다. 이마에 패드로 잠시 팩을 하는 동안 손바닥에 다시 캘리브레이터를 적당량
-								덜어 눈가와 볼, 팔자주름 등 피부에 대고 지긋이 누르듯 흡수시켜 주었습니다. <br> 성분이 피부 속에
-								흡수되어 완전히 자리 잡는 데에 한 1~2분 정도 걸리는 것 같아요. 빠르게 피부에 흡수되어 금방 부드럽고
-								촉촉해집니다. 금방 피부에 스며들지만 신기하게도 피부결을 부드럽고 매끄럽게 정돈해주니 정말 신기했습니다. <br>
-								캘리브레이터의 효과를 온전히 느끼고 싶어 2주일 째 화장을 하지 않고 맨 얼굴로 출근을 하고 있는데요, <br>
-								피부에 보습감을 전달하여 하루 종일 건조하지 않으면서 유수분 조절이 되어 산뜻한 느낌이 들었습니다. 쉽게 예민해졌던
-								피부에 자극 없이 스며들어 윤기와 영양분을 공급해주는 듯했습니다. <br> 매일 아침저녁 세안 후
-								사용할수록 피부는 투명해졌고 자꾸 거울을 보고 싶어질 정도로 매끈해졌습니다. <br> 이렇게 단기간에
-								미백효과가 나타나는 것이 정말 신기했고, 꾸준히 사용하면 분명 효과를 볼 수 있을 것 같아요. <br>
-								다양한 피부 상태와 고민에 따라 오에라의 특징적인 솔루션을 담아낸 기능성 제품을 하나씩 단계별로 선택해 자신만의
-								리추얼을 완성해가는 즐거움을 느낄 수 있을 듯 합니다.
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 12 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>최*희</span> / <span>30대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_11">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_3.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_4.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_5.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/12/pc_6.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="2" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="3" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="4" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="5" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								한섬의 럭셔리 뷰티 제품 답게 패키지 역시 고오급지다! 한섬하다! 할만했습니다. <br> 실버톤의 화장품
-								용기며, 제품과 함께 동봉되어있는 친환경 전용 패드!! 그냥 말이 필요 없었습니다.<br> 설명서에
-								나와있는대로 1차는 세안 후 가볍에 패드에 세럼을 약 2회 펌핑하여 피부결을 따라 닦토 하듯 닦어주었습니다.<br>
-								피부에 닿는 순간 냄새 무슨일이죠? 기존 화장품들에서 나는 인위적인 향이 아닌 은은한 향이 특히 마음에 들었구요.<br>
-								굴곡진 패드가 화장품을 흡수하는게 아니라, 그대로 머금고 있다가 제피부에 100% 전달해주어 피부 결정리에 너무
-								좋은 느낌을 받았습니다. <br> 최근 제가 야근과 마법으로 인해 피부가 푸석해졌었는데요.. 요 제품으로
-								아침 저녁 2회씩 사용한 결과 확실히 피부톤이 맑다! 확실히 피부 결 (각질)이 정돈되었다! 하는 느낌을 받을 수
-								있었습니다.<br> 제형은 아주 묽은 타입인데요. 끈적임 없이 피부에 부드럽게 스며들더라구요.가격은
-								조금(?) 비싸지만.. 이래서!! 좋은걸. 쓰는거지...하는 생각이 절로드는 아이였습니다.<br> 평소에
-								화장품에 매우 관심이 많은지라 뷰티 체험단으로 다양한 브랜드도 접해 봤구요. 또 고가 제품, 저렴이 제품 할거 없이
-								신상이라고 하면 꼭! 써봐야 직성이 풀리는 1인인데요.<br> 요아이 정말이지 체험단으로 접했지만 정말
-								제돈주고 사도 아깝지 않겠다!라는 생각이 절로 들었답니다!
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-
-					<!-- 13 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>김*윤</span> / <span>40대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/13/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_12">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/13/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/13/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								처음 받아 봤을때 첫 느낌은 엄청 럭셔리 하네요^^ 향은 좀 호불호가 있을듯 해요~ <br> 부스터 같은
-								에센스라서 손등에 발라 보니까 스킨처럼 흐르네요~ <br> 전용 패드로 자극 없이 피부결 정돈해 주어서
-								오래 쓰면 부드러운 피부결 만들어 줄듯 해요~ <br> 요즘 같은 환절기에 쓰면 촉촉하고 건조하지 않아서
-								좋네요^^ 일주일 써 본 결과 지금까지 만족합니다^^
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 14 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>권*리</span> / <span>30대</span> /
-									<span>건성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/14/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_13">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/14/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<!-- <div class="bx_pager191219">
-                                        <a class ="bx-pager-link" data-slide-index="0" href="#;"></a>
-                                    </div> -->
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								피부 각질 제거 전, 피부 컨디션이 좋지 않은 상태에서 사용했음에도 불구하고, 기타 기초 케어와 피부 화장이 얇게
-								잘 되어서 피부 밸런스를 잘 잡아줄 수 있을 거라 생각됩니다! <br> 피부 각질 제거 후, 묵은 각질이
-								없는 상태에서는 역시나 기초의 역할을 탄탄히 하는 것 같았어요. <br> 바쁜 생활에서 화장 단계를
-								최소화하기 위해 ‘오에라-스킨-선크림-쿠션’으로 사용해 보았습니다. <br> 기초 케어가 부실했음에도
-								불구하고 밀림이나 들뜨는 현상 없이 쿠션을 잡아주어서 매우 놀라웠습니다!<br> 제품의 묽기는 일반 스킨과
-								같이 흐르는 제형이며, 향은 "은은하다" 정도로 생각됩니다.<br> 전용 패드는 100% 생분해 가능한
-								친환경 패드라는 점에 높은 점수를 주고 싶습니다!<br> 제품 용기는 은색의 은은한 용기가 화장대의 어떤
-								화장품과 있어도 어울릴 것 같습니다. <br> 마지막으로 캘리브레이터는 기대 이상으로 스킨케어 첫 단계의
-								역할을 완벽하게 수행하고 있디고 생각되었습니다.<br> 피부의 톤, 결, 탄력을 이상적인 상태로 가꿔줄 수
-								있을 것으로 예상되기 때문에 계속해서 사용할 용의가 있습니다. :)
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-					<!-- 15 -->
-					<li class="evaluation_view">
-						<div class="member_info_bottom">
-							<ul>
-								<li class="choice">• <span>이*민</span> / <span>30대</span> /
-									<span>민감성</span>
-								</li>
-							</ul>
-						</div> <!--리뷰이미지 영역 (이미지 없으면 영역 삭제)-->
-						<div class="review_represent_img1912">
-							<img
-								src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/15/pc_1.jpg"
-								alt="리뷰 이미지">
-							<div class="img_count191212">
-								<span class="img_count191212_inner">+</span>
-							</div>
-						</div>
-						<div class="review_img_wrap review_img_cont191216"
-							id="testerReviewImg_14">
-							<ul class="slides">
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/15/pc_1.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="review_img_cont_inner191216">
-										<div class="img_wrap">
-											<img
-												src="http://cdn.thehandsome.com/_ui/desktop/common/images/beauty/review/15/pc_2.jpg"
-												alt="리뷰 이미지">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<div class="controls">
-								<span class="prev"></span> <span class="next"></span>
-							</div>
-							<div class="bx_pager191219">
-								<a class="bx-pager-link" data-slide-index="0" href="#;"></a> <a
-									class="bx-pager-link" data-slide-index="1" href="#;"></a>
-							</div>
-						</div> <!--//리뷰이미지 영역 -->
-						<div class="review_txt_wrap">
-							<p class="review_txt">
-								캘리브레이터가 처음 피부에 닿았을 때 코로 들어오는 향이 자극적이지 않고, 천연 아로마와 유사한 느낌이 들어
-								향만으로도 힐링이 되었다. 무엇보다 피부에 즉각적으로 잘 스며들어 산뜻함과 촉촉함이 느껴졌다. <br>
-								함께 동봉된 전용 친환경 패드는 한쪽 면은 부드럽고 다른 쪽은 거친 촉감이 다소 느껴져, 과연 부드럽게 닦아질 수
-								있을까? 하는 의문이 들었다. <br> 캘리브레이터를 2~3번 펌핑 후 전용 패드의 부드러운 면으로
-								피부결을 따라 닦아내 본 결과, 평소 쓰던 패드에 비해 피부에 훨씬 빠르게 흡수되며 수분감이 느껴졌다. 리퀴드
-								제형이라 발림성과 흡수성이 뛰어나 에센스만으로 피부 속 영양분이 공급되는 느낌이 들었다. <br> 가을과
-								겨울에는 오일과 함께 사용한다면 수분감의 지속과 더불어 피부 밸런스를 보다 더 균형있게 잡아주는 효과를 얻을 수
-								있을 것 같다. <br> 체험 후, 피부결이 상당히 좋아진 것을 느낄 수 있었다. <br> 체험
-								전에는 메이크업 단계에서 밀리는 경우가 종종 있었는데, 체험 기간 동안에는 메이크업에서 밀림 현상 없이 화장이 잘
-								먹혀서 에센스 사용만으로도 이렇게 달라질 수 있음에 다소 놀랐다.
-							</p>
-						</div>
-						<div class="review_more_1807">
-							<a href="#;">리뷰 더보기</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<!-- paging -->
-			<div class="paging mt30" id="reviewPagingDiv">
-				<span class="num"> <a href="javascript:void(0);"
-					class="pageBtn on" pagenum="1">1</a> <a href="javascript:void(0);"
-					class="pageBtn" pagenum="2">2</a> <a href="javascript:void(0);"
-					class="pageBtn" pagenum="3">3</a> <a href="javascript:void(0);"
-					class="pageBtn" pagenum="4">4</a>
-				</span>
-			</div>
-			<!-- //paging -->
-		</div>
-		<!--// pop_cnt-->
-		<a href="javascript:void(0);" class="btn_close"><img
-			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
-	</div>
-	<!-- //상품평 리스트-->
-	<!-- // 211101 체험단 리뷰 추가 E -->
+	
 </div>
 <div id="criteo-tags-div" style="display: none;"></div>
 
@@ -3143,6 +1881,247 @@
 
 <!-- footerWrap -->
 <script>
+	//리------------------------------------------------------------------뷰
+	let fileObject = new Object();
+
+	function fn_reviewWriteSend() {
+		if (!confirm("작성 하시겠습니까?"))
+			return false;
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		let rcontent = new Map();
+		rcontent.set('age', $("input[type=radio][name=age]:checked").val()); // 연령대
+		rcontent.set('height', $('#height').val()); // 키
+		rcontent.set('enjoySize', $('#enjoySize').val()); //실 착용 사이즈
+		rcontent.set('bodyType', $("input[type=radio][name=bodyType]:checked")
+				.val()); //체형
+		rcontent.set('rating', $('#rating').val()); //평점
+		rcontent.set('realWearSize1', $(
+				"input[type=radio][name=realWearSize1]:checked").val()); //리뷰 옵션
+		rcontent.set('realWearSize2', $(
+				"input[type=radio][name=realWearSize2]:checked").val()); //리뷰옵션
+		rcontent.set('realWearSize3', $(
+				"input[type=radio][name=realWearSize3]:checked").val()); //리뷰옵션
+		rcontent.set('realProductColor', $(
+				"input[type=radio][name=realProductColor]:checked").val()); //색감
+		rcontent.set('headline', $("#reviewHeadline").val()); //내용
+		rcontent.set('fileText', $('#fileText').val()); //파일이름
+	
+		rcontent.set('thumbnailImage',fileObject.thumbPath);
+		rcontent.set('imagesPath',fileObject.imagesPath);
+		//console.log("rcontent : " + rcontent);
+	
+		//map 직렬화
+		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
+	
+		//console.log(serializedMap);
+	
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+	
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+			rcontent : serializedMap,
+		};
+	
+		console.log("params :" + JSON.stringify(params));
+	
+		//let serializedMap = JSON.stringify(Object.fromEntries(params));
+	
+		$.ajax({
+			url : '/review/reviewWrite',
+			type : 'POST',
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : JSON.stringify(params), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//작성 성공시 작성창 닫기
+				if (result == "Success") {
+					alert("리뷰가 작성되었습니다.");
+					console.log("리뷰가 작성되었습니다.");
+					reviewReset();
+					$("#customerReviewWriteDiv").hide();
+					viewPopup("#customerReviewDiv");
+				} /* else if(result == "fail"){
+								alert("리뷰를 이미 작성하셨습니다.");
+								console.log("리뷰를 이미 작성하셨습니다.");
+								$("#customerReviewWriteDiv").hide();
+								viewPopup("#customerReviewDiv");
+							} */
+	
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+	
+	};
+	
+	// 상품평 등록하기 버튼 눌렀을 때
+	$('#reviewWriteSend').on("click", function() {
+		fn_reviewWriteSend();
+	
+	});
+	
+	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
+	function fn_popupCustomerReview() {
+		viewPopup("#customerReviewDiv");
+	}
+	
+	//x 버튼을 누르면 상품평 리스트 닫기
+	function fn_closeProductReview() {
+		console.log("fn");
+		//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+		$(".btn_close").trigger("click");
+	}
+	
+	function fn_reviewWriteCheck() {
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
+	
+		const params = {
+			pid : "${productVO.pid}",
+			mid : "${member}",
+		};
+	
+		console.log("params :" + JSON.stringify(params));
+	
+		$.ajax({
+			url : '/review/reviewWriteCheck',
+			type : 'POST',
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			data : JSON.stringify(params), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//리뷰 작성 가능 여부 확인
+				if (result == "pass") {
+					console.log("리뷰 작성 가능");
+					//상품평 리스트를 숨긴다.
+					$("#customerReviewDiv").hide();
+					//상품평 작성란을 띄운다.
+					viewPopup("#customerReviewWriteDiv");
+				} else if (result == "exist") { // 이미 작성했을 때
+					alert("리뷰를 이미 작성하셨습니다.");
+					console.log("리뷰를 이미 작성하셨습니다.");
+				} else if (result == "empty") { // 구매내역이 없을 때
+					alert("구매내역이 없습니다.");
+					console.log("구매내역이 없습니다.");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+	}
+	
+	//후기 작성란 띄우기
+	function fn_popupCustomerReviewWrite() {
+	<%if ((String) session.getAttribute("member") == null) {%>
+	//세션에 값이 없으면 로그인 폼으로 이동
+		location.href = '/member/loginForm';
+	<%} else {%>
+	fn_reviewWriteCheck();
+	<%}%>
+	}
+	
+	//x버튼을 눌렀을때 상품평 작성 취소하기
+	$("#reviewCancle").on('click', function() {
+	
+		//취소를 원하면 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+	
+	});
+	
+	//상품평 작성 취소하기
+	$("#reviewCloseBtn").on('click', function() {
+	
+		//취소를 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+		if (confirm("취소하시겠습니까?")) {
+			reviewReset();
+			$("#customerReviewWriteDiv").hide();
+			viewPopup("#customerReviewDiv");
+		}
+	
+	});
+	
+	// 상품평 평점 선택
+	$(".btn_star_score li a").on(
+			"click",
+			function() {
+				var idx = $(this).parent('li').index() + 1;
+				for (var i = 1; i < 6; i++) {
+					$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+							'star' + i);
+				}
+				// 선택한 별의 css 수정
+				$('.write_star_score1807 .cmt_star .cmt_per').addClass(
+						'star' + idx);
+				// 선택한 요소의 value 값 가져오기
+				$("#rating").val($(this).attr('value'));
+			});
+	
+	// 상품평 내용 초기화
+	function reviewReset() {
+		//연령
+		$("#customerReviewWriteDiv input[name=age]").prop("checked", false);
+		//키
+		$("#customerReviewWriteDiv #height").val("");
+		//체형
+		$("#customerReviewWriteDiv input[name=bodyType]")
+				.prop("checked", false);
+		//평소 사이즈
+		$("#customerReviewWriteDiv #enjoySize").val("");
+	
+		//실 착용 사이즈
+		$("#realWearSize1_01").prop("checked", false);
+		$("#realWearSize1_02").prop("checked", false);
+		$("#realWearSize1_03").prop("checked", false);
+	
+		$("#realWearSize2_01").prop("checked", false);
+		$("#realWearSize2_02").prop("checked", false);
+		$("#realWearSize2_03").prop("checked", false);
+	
+		$("#realWearSize3_01").prop("checked", false);
+		$("#realWearSize3_02").prop("checked", false);
+		$("#realWearSize3_03").prop("checked", false);
+	
+		//실착용
+		$("#customerReviewWriteDiv input[name=realWearSize]").prop("checked",
+				false);
+		//실 제품 색상
+		$("#customerReviewWriteDiv input[name=realProductColor]").prop(
+				"checked", false);
+		//상품평
+		$("#customerReviewWriteDiv #reviewHeadline").val("");
+		//평점
+		var idx = $("#customerReviewWriteDiv .btn_star_score li:eq(4) > a")
+				.parent('li').index() + 1;
+		for (var i = 1; i < 6; i++) {
+			$('.write_star_score1807 .cmt_star .cmt_per').removeClass(
+					'star' + i);
+		}
+		// 선택한 별의 css 수정
+		$('.write_star_score1807 .cmt_star .cmt_per').addClass('star' + idx);
+		// 선택한 요소의 value 값 가져오기
+		$("#rating").val($(this).attr('value'));
+	
+		//사진등록
+	
+	}
+	//리------------------------------------------------------------------뷰
 	//가격에 3자리마다 컴마
 	function priceComma(price) {
 		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -3417,6 +2396,74 @@
 	
 	$(document).ready(
 					function() {
+						//사진등록						
+						var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
+
+						function checkExtension(fileSize) {
+							if (fileSize >= maxSize) {
+								alert("파일 사이즈 초과");
+								return false;
+							}//end if
+
+							return true;
+						}
+
+						function uploadImages() {//등록하기 버튼 눌렀을때 이미지 업로드 되게 하기!
+							let formData = new FormData();
+							
+							formData.append('pid', '${productVO.pid}');
+
+							let csrfHeaderName = "${_csrf.headerName}";
+							let csrfTokenValue = "${_csrf.token}";
+
+							let inputFile = $("input[name='reviewFile']");
+							let files = inputFile[0].files;
+
+							//파일 formdata에 추가
+							for (var i = 0; i < files.length; i++) {
+								// 크기 체크
+								if (!checkExtension(files[i].size)) {
+									return false;
+								}
+								formData.append("uploadFile", files[i])
+							}//end for
+
+							$.ajax({
+								url : "/review/uploadAjaxAction",
+								processData : false,
+								contentType : false,
+								data : formData,
+								type : "post",
+								dataType : 'json',
+								beforeSend : function(xhr) {
+									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+								},
+								success : function(result) {
+									alert("Upload");
+									fileObject = result;
+								}//end suce..			
+							});//end ajax	
+						}
+				
+						$("#reviewFile").change(function() {//input으로 파일을 첨부하면 무슨 파일이 첨부됐는지 바뀐거 보여주기 !
+							let inputFile = $("input[name='reviewFile']");
+							let files = inputFile[0].files
+							let filenames = '';
+
+							for (i = 0; i < files.length; i++) {
+								// 크기 체크
+								if (!checkExtension(files[i].size)) {
+									return false;
+								}
+								filenames += files[i]['name'] + ' ';
+							}
+
+							$("#textReviewFile").val(filenames);
+							
+							uploadImages();
+						});
+						
+						//--------------------------------- 사진등록
 						//페이지 로드될때 좋아요 누른거면 좋아요 처리를 합시다
 						if(isWishList !== "0"){
 							$('.wishlist1803').stop().toggleClass('on');
@@ -3587,6 +2634,7 @@
 						});
 						//장바구니버튼 눌렀을때
 						$("#addToCartButton").on("click", function(e){
+							console.log("selectColor" + selectColor);
 							//우선 싸이즈 선택 했는지 물어봐
 							if(selectSize === ""){
 								$(".layerArea").show();
@@ -3680,7 +2728,12 @@
 
 									$('#addToCartBuynowForm').submit();
 								});
-
+					//리뷰 더보기 버튼
+					$(".review_plus").click(function(){
+						console.log("asd");
+						$(this).closest(".evaluation_view").toggleClass("on");
+						//$(this).toggleClass("evaluation_view");
+					});
 
 
 					});
