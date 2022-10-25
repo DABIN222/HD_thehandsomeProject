@@ -197,9 +197,9 @@ public class ReviewController {
 							new FileOutputStream(new File(uploadPath, uploadFileThubmNailName));
 						Thumbnailator.createThumbnail( //썸내일 생성
 								multipartFile.getInputStream(),thumnail, 60, 60);
-						thumnail.close(); //파일 닫기					
+						thumnail.close(); //파일 닫기
+						attachDTO.setThumbPath("/resources/review_images/"+pid+"/"+uploadFileThubmNailName);//썸네일 이미지 경로
 					}//end if
-					attachDTO.setThumbPath("/resources/review_images/"+pid+"/"+uploadFileThubmNailName);//썸네일 이미지 경로
 				} catch (Exception e) {
 					log.error(e.getMessage());
 				} // end catch

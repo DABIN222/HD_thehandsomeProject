@@ -611,7 +611,7 @@
 .evaluation_list1807 .evaluation_view.on .review_img_wrap.wlength img,.evaluation_list1807 .evaluation_view.on .review_img_wrap.hlength img{margin:0 auto;width:auto;height:auto;max-width:640px;max-height:390px;}
 .popwrap .evaluation_list1807 .evaluation_view .sizecolor{width:564px;display:none;}
 .popwrap .evaluation_list1807 .evaluation_view.on .sizecolor{display:block;}
-.evaluation_list1807 .evaluation_view .review_more_1807 a{display:block;position:absolute;bottom:0;right:0;width:60px;height:60px;background:#fff url('/_ui/desktop/common/images/common/btn_zoom.png') no-repeat;text-indent:-999em;}
+.evaluation_list1807 .evaluation_view .review_more_1807 a{display:block;position:absolute;bottom:0;right:0;width:60px;height:60px;background:#fff url('/resources/images/btn_zoom.png') no-repeat;text-indent:-999em;}
 .evaluation_list1807 .evaluation_view.on .review_more_1807 a{background-position:left bottom;}
 .evaluation_list1807 .evaluation_view .member_info_top .modify a{display: inline-block;width: 30px;height: 30px;overflow: hidden;background: url(/_ui/desktop/common/images/products/ico_sns.png) no-repeat -45px -94px;background-size: 150px auto;text-indent:-999em;}
 .evaluation_list1807 .evaluation_view .member_info_top .delete a{display: inline-block;width: 30px;height: 30px;overflow: hidden;background: url(/_ui/desktop/common/images/products/ico_sns.png) no-repeat -45px -94px;background-size: 150px auto;background-position: -92px -94px;text-indent:-999em;}
@@ -790,7 +790,7 @@
 .customerreviewdiv1905 + .evaluation_list1807 .evaluation_view{border-bottom:1px solid #ebebeb;padding-bottom:20px;position:relative;margin-bottom:20px;overflow:hidden;}
 .customerreviewdiv1905 + .evaluation_list1807 .evaluation_view .sizecolor{border-top:2px dotted #ebebeb;display:none;width:588px;padding:25px 57px 0 35px;}
 .customerreviewdiv1905 + .evaluation_list1807 .evaluation_view.on{padding-bottom:50px;}
-.customerreviewdiv1905 + .evaluation_list1807 .evaluation_view.on .review_more_1807 a{background:url('/_ui/desktop/common/images/common/btn_zoom.png') no-repeat;background-position:left bottom;}
+.customerreviewdiv1905 + .evaluation_list1807 .evaluation_view.on .review_more_1807 a{background:url('/resources/images/btn_zoom.png') no-repeat;background-position:left bottom;}
 .customerreviewdiv1905 + .evaluation_list1807 .evaluation_view .review_txt_wrap{border-bottom:0;margin-bottom:0;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905{width:auto;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 .clearfix{width:210px;}
