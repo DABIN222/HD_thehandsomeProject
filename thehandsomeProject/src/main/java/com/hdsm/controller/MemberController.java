@@ -313,10 +313,38 @@ public class MemberController {
 		dto.setMember_mid(mid);
 		List<MemberWishListDTOforJsp> list = memberservice.getUsersWishList(dto);
 		
+		
+		log.info("list---------------------"+ list);
+		System.out.println(list);
+		
 		model.addAttribute("wishList",list);
 
 		return "member/wishList";
 	}
+	
+	// 위시리스트 변경
+	/*
+	@PostMapping("/updateWishList")
+	@ResponseBody
+	public String updateWishList(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+		log.info("위시리스트 변경 진입!");
+		
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
+		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
+		msVO.setPsize(request.getParameter("psize"));	// 바꿀 사이즈 name
+		msVO.setPcolor(request.getParameter("pcolor"));	// 바꿀 컬러 name
+		
+		int cnt = memberservice.updateShoppingBag(msVO);
+		if(cnt != 0) {
+			log.info("장바구니 변경 성공!");
+		}else {
+			log.info("장바구니 변경 실패!");
+		}
+		
+		return "member/wishList";
+	}
+	*/
 	
 	// 위시리스트 담기
 	@PostMapping("/insertWishList")
@@ -328,6 +356,7 @@ public class MemberController {
 		HttpSession session = request.getSession(); // 세션
 		
 		log.info("wsDTO 결과 값 : "+wsDTO);
+		log.info("pcolor 결과 값 : "+wsDTO.getPcolor());
 		log.info("session 결과 값 : "+session);
 		
 		int cnt = 0;

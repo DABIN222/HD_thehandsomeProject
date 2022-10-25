@@ -467,7 +467,7 @@
 						<li>
 							<a href="#"><span class="ico_sh">search</span></a></li>
 						<li>
-							<a href="#"><span class="ico wishlist">wish list</span> 
+							<a href="/member/wishList?mid=${member}"><span class="ico wishlist">wish list</span> 
 								<span class="count">
 									(<span id="wishlistCount">0</span>)
 								</span>
