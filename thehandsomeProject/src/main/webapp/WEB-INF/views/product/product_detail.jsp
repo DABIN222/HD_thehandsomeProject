@@ -3236,6 +3236,8 @@
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
 		console.log("${productVO.pid}");
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
 		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
 		const params = {
 			pid : "${productVO.pid}"
@@ -3244,13 +3246,10 @@
 		$.ajax({
 			url : '/review/reviewList',
 			type : 'POST',
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			data : params, //직렬화
 			success : function(result) {
-				console.log(JSON.stringify(result));
-				$.each(result, function(idx, val) {
-					console.log(idx + " " + val.rcontentMap.age);
-	
-				});
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.

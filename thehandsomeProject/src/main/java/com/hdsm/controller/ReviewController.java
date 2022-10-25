@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -76,6 +77,15 @@ public class ReviewController {
 			log.info("realWearSize3 : " + rcontent.get("realWearSize3")+"\n");
 			log.info("realProductColor : " + rcontent.get("rating")+"\n");
 			log.info("headline : " + rcontent.get("realWearSize1")+"\n");
+			
+			log.info("headline : " + rcontent.get("thumbnailImage")+"\n");
+			
+			ArrayList<String> asd = (ArrayList<String>) rcontent.get("imagesPath");
+			
+			for(String imagePath : asd) {
+				log.info("asdasd : " + imagePath+"\n");
+			}
+			
 			
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
