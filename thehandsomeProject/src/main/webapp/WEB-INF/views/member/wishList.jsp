@@ -159,8 +159,7 @@
 								<td class="al_middle">
 									<div class="btn_wrap">
 										<a href="javascript:void(0)" class="btn wt_ss add_bag parent_add_bag btn_option" product="8864770457601" index="0" productcode="SH2C9WJC201M">쇼핑백담기<!-- 쇼핑백담기 --></a>
-										<a href="javascript:void(0)" class="btn wt_ss wishDel" 
-										name="deleteOne" itemnum="${status.index}">삭제<!-- 삭제 --></a>
+										<a href="javascript:void(0)" class="btn wt_ss wishDel" name="deleteOne" itemnum="${status.index}">삭제<!-- 삭제 --></a>
 									</div>
 								</td>
 							</tr>
@@ -188,6 +187,7 @@
 													<dl class="cs_wrap" itemnum="${status.index}">
 														<!-- color -->
 														<dt>COLOR</dt>
+															<input type="hidden" name="colorName" id="colorName" value="">
 															<script>
 																let tempDic${status.index} = {};
 															</script>
@@ -195,7 +195,7 @@
 															<div class="cl_select">
 																<c:forEach items="${wishitem.colorList}" var="color">
 																	<a href="javascript:void(0)"
-																		value = "${color.cname}" 
+																		value = "${color.cname}"
 																		class="beige <c:if test="${wishitem.scolor eq color.cname}" >on</c:if>" 
 																		style="background: #000000 url('${color.ccolorimage}');">${color.cname}</a>
 																<script>
@@ -208,6 +208,7 @@
 														<!-- size -->
 														<dt>SIZE</dt>
 														<input type="hidden" name="curSelectSize" id="curSelectSize" value="">
+
 														<dd>
 															<div class="sz_select">
 																
@@ -252,7 +253,7 @@
 												</div>
 											</div>
 											<div class="btns">
-												<a href="javascript:void(0)" id="addToCartButton" class="btn wt_ss bag" id="addToCart_0"  name="changeBtn" itemnum="${status.index}" >쇼핑백담기<!-- 쇼핑백담기 --></a>
+												<a href="javascript:void(0)" class="btn wt_ss bag addToCartButton" name="changeBtn"  itemnum="${status.index}" >쇼핑백담기<!-- 쇼핑백담기 --></a>
 												<a href="javascript:void(0)" name="closeclose" class="btn wt_ss mt10 bag" id="cancle_0">취소<!-- 취소 --></a> 
 												<a href="javascript:void(0)" name="closeclose" class="btn_close bag" id="close_0">닫기<!-- 닫기 --></a>
 											</div>
@@ -309,30 +310,18 @@
 		<a href="javascript:void(0);" class="btn_close" id="clsBtn">
 		<img src="/resources/images/ico_close.png" alt="닫기"></a>
 	</div>
+	<!-- 사이즈 선택 여부 창 -->
 	<div class="popwrap w_type_1 " id="Order_confirm" style="z-index: 150; margin-top: 753px; display:none;"
 		tabindex="-1">
 		<div class="pop_cnt">
-			<h3 class="pop_tlt copy">사이즈를 선택해 주세요.</h3>
+			<h3 class="pop_tlt copy">옵션을 선택해 주세요.</h3>
 			<div class="btnwrap">
 				<input type="button" class="btn gray_s mr0" id="clsBtn2" value="확인">
 			</div>
 		</div>
 	</div>
-	<!-- 로그인 물어보는 창 -->
-	<div id = "AskLogin" class="popwrap w_type_1"
-		style="z-index: 150; display:none; margin-top: 337.5px" tabindex="-1" >
-		<div class="pop_cnt">
-			<h3 class="pop_tlt copy">로그인 하시겠습니까?</h3>
-			<div class="btnwrap">
-				<input type="button" id="clsBtn" class="btn wt_s mr5" value="취소" />
-				<input type="button" id="cfBtn" class="btn gray_s mr0" value="확인" onclick="location.href='/member/loginForm'" />
-			</div>
-		</div>
-		<a href="javascript:void(0);" class="btn_close" >
-		<img src="/resources/images/ico_close.png" alt="닫기"  /></a>
-	</div>
-	<div id = "alreadyInsert" class="popwrap w_type_1"
-	  style="z-index: 150; margin-top: 1072px" tabindex="-1">
+	<div id="alreadyInsert" class="popwrap w_type_1"
+	  style="z-index: 150; margin-top: 1072px; display:none;" tabindex="-1">
 		<div class="pop_cnt">
 			<h3 class="pop_tlt copy">
 				이미 쇼핑백에 담겨있습니다.<br />
@@ -341,17 +330,88 @@
 				</p>
 			</h3>
 			<div class="btnwrap">
-				<input type="button" class="btn gray_s mr0" onclick="sizeConfirm();" value="확인" />
+				<input type="button" class="btn gray_s mr0" id="clsBtn3" value="확인" />
 			</div>
 		</div>
-		<a href="javascript:void(0);" class="btn_close" >
-		<img src="/resources/images/ico_close.png" alt="닫기"/></a>
 	</div>
 </div>
 
 <script>
+//좋아요 지우는 ajax처리
+	function deleteajaxRequest(params){
+		//스프링 보안 설정 CSRF 토큰값
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
+		$.ajax({
+			type : "POST",
+			url : "/member/deleteWishList",
+			beforeSend: function(xhr) {
+		          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : params,// json 형태의 데이터
+			contentType: "application/json; charset=utf-8",
+			success : function(data) {
+				console.log(data);
+				isWishList=data;
+				location.reload(true);
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+	        	console.log(jqXHR);  //응답 메시지
+	        	console.log(textStatus); //"error"로 고정인듯함
+	        	console.log(errorThrown);
+	        }
+		});
+	}
 	$(document).ready(
 		function() {
+			
+			//삭제
+			//장바구니버튼 눌렀을때
+			$(".wishDel").on("click", function(e){
+				
+				const itemIndex = parseInt($(this).attr('itemnum'));
+				const productId = pids[itemIndex];
+
+				console.log("itemIndex : " + itemIndex);
+				console.log("productId : " + productId);
+
+				const params = {
+					mid: "${member}",
+					pid: productId,
+				}
+				
+				let isWishList = "${wishList}";
+				
+				let itemMap = new Map();
+				itemMap.set('member_mid',"${member}");
+				itemMap.set('pid', productId);
+				
+				if(isWishList != "0") {
+					const deleteList = [];
+					deleteList.push(Object.fromEntries(itemMap));
+					deleteajaxRequest(JSON.stringify(deleteList));
+				}
+				const deleteList = [];
+				
+				
+				/* //ajax 호출!
+				$.ajax({
+					type : "POST",            // HTTP method type(GET, POST) 형식
+					url : "/member/deleteWishList",      // 컨트롤러에서 대기중인 URL 주소
+					data : params,            // Json 형식의 데이터
+				    beforeSend: function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
+						console.log(data);
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옴
+						alert("삭제 실패.");
+					}
+				}); */
+			});
+			
+			
 			//옵션변경 버튼누를때!
 			$(".btn_option").click(function(){
 				let checkElement = $(this).closest('tr').next();
@@ -405,8 +465,9 @@
 				//그리고 사진도 바뀌게 해줘야징
 				const itemIndex = parseInt($(this).closest('dl').attr("itemnum"));
 				const colorName = $(this).attr('value');
-				
-				console.log("colorName --------------------- "+colorName);
+				// input hidden에 넣어준 값
+				$("#colorName").val(colorName);
+				console.log($("#colorName").val());
 				const colorCode = colorinfos[itemIndex][colorName][0];
 				const colorThumbUrl = colorinfos[itemIndex][colorName][1];
 				const productId = pids[itemIndex];
@@ -422,128 +483,70 @@
 			//let selectSize = "88";	
 			
 			//장바구니버튼 눌렀을때
-			$("#addToCartButton").on("click", function(e){
+			$(".addToCartButton").on("click", function(e){
 				
 				const itemIndex = parseInt($(this).attr('itemnum'));
 				const productId = pids[itemIndex];
-				const pColor = pcolors[itemIndex];
-				const selectSize = parseInt($("#curSelectSize").val());
+				const pColor = $("#colorName").val();  
+				const selectSize = $("#curSelectSize").val();
+				
 				console.log("itemIndex : " + itemIndex);
 				console.log("productId : " + productId);
 				console.log("selectSize : " + selectSize);
+				console.log("pColor : " + pColor);
 				
-				//우선 싸이즈 선택 했는지 물어봐
-				if(selectSize != parseInt($("#curSelectSize").val())){
+				//우선 색상 선택 했는지 물어봐
+				if(pColor == "" || selectSize == "") {
 					$(".layerArea").show();
 					$("#Order_confirm").show();
-				} else {
-					//로그인 안했으면 로그인 했는지 물어보고
-					<%
-					if ((String)session.getAttribute("member") == null) { //세션에 값이 없으면 로그인 링크를 출력
-					%>
-						$(".layerArea").show();
-						$("#AskLogin").show();
-					<%
-					} else {
-					%>
-						const params = {
-								mid: "${member}",
-								pid: productId,
-								psize: selectSize,
-								pcolor: pColor,
-								pamount: $("#quantity0").val()
-						}
-						console.log(params);
-						//ajax 호출!
-						$.ajax({
-							type : "POST",            // HTTP method type(GET, POST) 형식
-							url : "/member/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소
-							data : params,            // Json 형식의 데이터
-							success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
-								// 응답코드 > 0000
-								console.log(data);
-								const isfail = data.split(':')[0];
-								const count = parseInt(data.split(':')[1]);
-				                    
-								//만약 세션의 장바구니 갯수와 반환받은 data와 다르면 성공 ! 같으면 안된거니까 실패 !
-								if(isfail === 'success' ){
-									$(".layerArea").show();
-									$("#putCart").show();	
-								}else{
-									$(".layerArea").show();
-									$("#alreadyInsert").show();
-								}
-							},
-							error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옴
-								alert("통신 실패.");
-							}
-						});
-					<%
+				}
+				else {
+					
+					$("#Order_confirm").hide();
+					
+					let csrfHeaderName ="${_csrf.headerName}";
+					let csrfTokenValue="${_csrf.token}";
+
+					const params = {
+						mid: "${member}",
+						pid: productId,
+						psize: selectSize,
+						pcolor: pColor,
+						pamount: $("#quantity0").val()
 					}
-					%>
+					console.log(params);
+				
+					//ajax 호출!
+					$.ajax({
+						type : "POST",            // HTTP method type(GET, POST) 형식
+						url : "/member/insertShoppingbag",      // 컨트롤러에서 대기중인 URL 주소
+						data : params,            // Json 형식의 데이터
+					    beforeSend: function(xhr) {
+							xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+						},
+						success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옴 'data'는 응답받은 데이터
+						// 응답코드 > 0000
+							console.log(data);
+							const isfail = data.split(':')[0];
+							const count = parseInt(data.split(':')[1]);
+							console.log(isfail);
+							//만약 세션의 장바구니 갯수와 반환받은 data와 다르면 성공 ! 같으면 안된거니까 실패 !
+							if(isfail == "success"){
+								console.log("success왔냐시발?");
+								$(".layerArea").show();
+								$("#putCart").show();	
+							}else {
+								console.log("fail 왔냐시발?");
+								$(".layerArea").show();
+								$("#alreadyInsert").show();
+							}
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옴
+							alert("통신 실패.");
+						}
+					});
 				}     
 			});
-			
-			
-			//변경버튼 눌렸을때 처리!	item마다 2개씩 변경 버튼 있는데 전부 name=changeBtn 라는 속성으로 묶어서 처리가능
-			//그리고 그안에 itemnum이라는 index 번호로 알맞게 해당 item의 정보를 뺴와서 바꿀 수 있다
-			/* $("a[name=changeBtn]").click(function(){
-				const index = parseInt($(this).attr('itemnum'));
-				const amount = $("input[itemnum="+index+"]").val();
-				const color = $("dl[itemnum="+index+"]").find(".beige.on").attr('value');
-				const size = $("dl[itemnum="+index+"]").find(".sz_select").find(".on").attr('value');
-
-				//변경눌렀을때 기존거랑 하나라도 다르면 업데이트 시켜!
-				if(color!=pcolors[index] ||
-					size!=psizes[index] ||
-					amount!=pamounts[index]){
-					const params = {
-						member_mid: "${member}",
-						pid: pids[index],
-						psize: size,
-						pcolor: color,
-					}
-					//통쉰 하자 ~
-					$.ajax({
-						type: "POST", // HTTP method type(GET, POST) 형식이다.
-						url: "/member/updateWishList", // 컨트롤러에서 대기중인 URL 주소이다.
-						data: params, // Json 형식의 데이터이다.
-						success: function (data) {
-							//성공하면 그 수량대로 전체 합 바꾸고 요소들도 바꿔줘야지!
-							let total = 0;
-							let count = 0;
-							$("tr[name='entryProductInfo']").each(function(index, item){
-								if( $(this).find("input[name='wishlist']").is(":checked")){
-									//수량
-									const q = parseInt($(this).find("input[name='quantity']").val());
-									//합 더하기
-									total += p;
-									count++;
-								}	
-							});	
-						
-							$("#selectProductCount").text(count+'');
-							//컬러가 바뀌면 바뀐 colorcode로 img랑 a의 href 바꿔줘야지
-							const cc = colorinfos[index][color][0]
-							const thumburl = colorinfos[index][color][1]
-							$("a[itemnum=a"+index+"]").find("img").attr("src", thumburl);
-							$("a[itemnum=a"+index+"]").attr("href","/product/product_detail?pid="+pids[index]+"&colorcode="+cc);
-										
-							//요소 바꿔주고
-							$("td[itemnum="+index+"]").find(".color_op").html(
-								'color : '+ color +'<span class="and_line">/</span> size : '+ size);
-							//배열값들도 바꿔줘야지
-							pcolors[index]=color;
-							psizes[index]=size;
-										
-						},
-						error: function (XMLHttpRequest, textStatus, errorThrown) {
-							// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-							alert("통신 실패.");
-						},
-					});
-				}
-			}); */
 			
 			//상품 수량 변경하는거 
 			$(".left").on("click", function(){
@@ -576,25 +579,36 @@
 				$.deleteFunction(JSON.stringify(deleteList));
 			}); */
 			
-			//계속 쇼핑하기 버튼을 눌렀을 경우
+			
+			//쇼핑백 담기 - 닫기 버튼
 			$("#clsBtn").on("click", function() {
 				//밖에 있는 layerArea 태그를 숨긴다.
 				$(".layerArea").hide();
 				//그중 Cart 모달을 나타내는 태그를 숨긴다
 				$("#putCart").hide();
+				location.reload(true);
 			});
 			
-			//쇼핑백으로 바로가기를 눌렀을 경우
+			//쇼핑백으로 바로가기
 			$("#cfBtn").on("click", function() {
 				location.href = "/member/shoppingbag?mid=${member}";
-			});
+			}); 
 			
-			//계속 쇼핑하기 버튼을 눌렀을 경우
+			//옵션 선택 - 닫기(확인) 버튼
 			$("#clsBtn2").on("click", function() {
 				//밖에 있는 layerArea 태그를 숨긴다.
 				$(".layerArea").hide();
 				//그중 Cart 모달을 나타내는 태그를 숨긴다
 				$("#putCart").hide();
+			});
+			
+			// 이미 쇼핑백에 담김 - 닫기(확인) 버튼
+			$("#clsBtn3").on("click", function() {
+				//밖에 있는 layerArea 태그를 숨긴다.
+				$(".layerArea").hide();
+				//그중 Cart 모달을 나타내는 태그를 숨긴다
+				$("#putCart").hide();
+				location.reload(true);
 			});
 			
 		}

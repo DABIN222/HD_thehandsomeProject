@@ -285,10 +285,16 @@
  			var data = {memberId : id}				//memberId=컨트롤러에 넘길 데이터 이름, 데이터 값
  			console.log(data);
  			
+ 			let csrfHeaderName ="${_csrf.headerName}";
+            let csrfTokenValue="${_csrf.token}";
+            
 			$.ajax({
 				url: '/member/midCheck',			//controller URL
 				type: 'post',						//post 타입
 				data: data,
+				beforeSend: function(xhr) {
+                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                },
 				success: function(result){			//result는 controller에서 넘어 온 결과 값
 					if(result != 'fail'){
 						$('#idCheckSpan').text("사용가능한 아이디입니다");
@@ -318,10 +324,16 @@
  			var data = {memberTel : tel}			// memberTel=컨트롤러에 넘길 데이터 이름, 데이터 값
  			console.log(data);
  			
+ 			let csrfHeaderName ="${_csrf.headerName}";
+            let csrfTokenValue="${_csrf.token}";
+ 			
 			$.ajax({
 				url: '/member/mtelCheck',			// controller URL
 				type: 'post',						// post 타입
 				data: data,
+				beforeSend: function(xhr) {
+                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                },
 				success: function(result){			// result는 controller에서 넘어 온 결과 값
 					if(result != 'fail'){
 						$('#telCheckSpan').text("사용가능한 연락처입니다");

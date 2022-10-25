@@ -3584,6 +3584,7 @@
 
 						//장바구니버튼 눌렀을때
 						$("#addToCartButton").on("click", function(e){
+							console.log("selectColor" + selectColor);
 							//우선 싸이즈 선택 했는지 물어봐
 							if(selectSize === ""){
 								$(".layerArea").show();
