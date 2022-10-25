@@ -1147,16 +1147,89 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul></ul>
+				<ul>
+					
+					<c:forEach items="${reviewList}" var="review">
+						<div class="clearfix review_tab1_1807">
+						<ul>
+							<li class="evaluation_view on" id="evaluation_view0"><div
+									class="member_info_top">
+									<ul>
+										<li class="name">${review.mid}</li>
+										<li class="grade">${review.mgrade}</li>
+										<li class="date">${review.rdate}</li>
+										<li class="stars">
+											<div class="star_score1807">
+												<span class="cmt_star"> <span class="cmt_per star${review.rcontentMap.rating}">별점</span>
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="member_info_bottom">
+									<ul>
+										<li class="choice">• <span>${review.rcontentMap.age}</span> / <span>${review.rcontentMap.height}</span>
+											/ <span>${review.rcontentMap.bodyType}</span> / 평소 사이즈 : <span>${review.rcontentMap.enjoySize}</span>
+										</li>
+										<li class="must">• 구매 정보 : <span>${review.pcolor}</span> / <span>${review.psize}</span>
+											/ <span>더한섬닷컴</span>
+										</li>
+									</ul>
+								</div>
+								<div class="review_txt_wrap">
+									<p class="review_txt">${review.rcontentMap.headline}</p>
+								</div>
+								<div class="sizecolor clearfix">
+									<div class="real_fit_size1905">
+										<strong>• 실 착용 사이즈</strong>
+										<div class="evaluation_wrap1905">
+											<p>허리둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>엉덩이둘레 :</p>
+											<div class="clearfix">
+												<span class="">타이트함</span> <span class=" on">적당함</span> <span
+													class="">여유있음</span>
+											</div>
+										</div>
+										<div class="evaluation_wrap1905">
+											<p>총길이 :</p>
+											<div class="clearfix">
+												<span class="">짧은 편</span> <span class=" on">적당함</span> <span
+													class="">긴 편</span>
+											</div>
+										</div>
+									</div>
+									<div class="real_color1905">
+										<strong>• 실 제품 색상</strong>
+										<div class="clearfix">
+											<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
+												class="">밝아요</span>
+										</div>
+									</div>
+								</div>
+								<div class="review_more_1807">
+									<a href="#;">리뷰 더보기</a>
+								</div>
+							</li>
+						</c:forEach>
+						</ul>
+					</div>
+				</ul>
 			</div>
 			<!-- paging -->
 			<div class="paging mt30" id="reviewPagingDiv"></div>
 			<!-- //paging -->
-		</div>
-		<!--// pop_cnt-->
+			<!--// pop_cnt-->
 		<a href="javascript:void(0);" class="btn_close"><img
 			src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png"
 			alt="닫기"></a>
+		</div>
+		
 	</div>
 	<!--//상품평 리스트 팝업 -->
 
@@ -3235,29 +3308,7 @@
 	
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
-		console.log("${productVO.pid}");
-		let csrfHeaderName = "${_csrf.headerName}";
-		let csrfTokenValue = "${_csrf.token}";
-		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
-		const params = {
-			pid : "${productVO.pid}"
-		};
-		//let serializedMap = JSON.stringify(Object.fromEntries(params));
-		$.ajax({
-			url : '/review/reviewList',
-			type : 'POST',
-			beforeSend : function(xhr) {
-				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-			data : params, //직렬화
-			success : function(result) {
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-				alert("통신 실패.");
-			},
-		});
 		viewPopup("#customerReviewDiv");
-	
 	}
 	
 	//x 버튼을 누르면 상품평 리스트 닫기
