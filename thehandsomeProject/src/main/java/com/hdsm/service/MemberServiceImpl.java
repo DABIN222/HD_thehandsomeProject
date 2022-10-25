@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
-import com.hdsm.domain.OrderPageItemVO;
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
 import com.hdsm.domain.ProductVO;

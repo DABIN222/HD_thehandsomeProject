@@ -187,8 +187,9 @@
 						//박진수 수정
 						document.getElementById("regPostNo").value = data.address; // 주소 넣기
 						// console.log(document.getElementById("regPostNo").value);
+						//박진수 수정
 						document.querySelector("input[name='partner.addr1']").focus(); //상세입력 포커싱
-						
+						//박진수 수정
 					}
 				}).open();
 			});

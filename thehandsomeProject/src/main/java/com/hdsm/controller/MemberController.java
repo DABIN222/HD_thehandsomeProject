@@ -32,16 +32,19 @@ import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
+import com.hdsm.domain.OrderItemVO;
+import com.hdsm.domain.OrderUserVO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/member2/*")
+@RequestMapping("/member/*")
 public class MemberController {
 	
 	@Autowired
@@ -49,6 +52,9 @@ public class MemberController {
 	
 	@Autowired
 	ProductService productservice;
+	
+	@Autowired
+	OrderService orderservice;
 	
 	// 로그인 페이지 진입
 	@GetMapping("/loginForm")
@@ -287,7 +293,20 @@ public class MemberController {
 	
 	// 마이 페이지 진입
 	@GetMapping("/mypage")
-	public String mypageForm() {
+	public String mypageForm(Model model,HttpServletRequest request) {
+		
+		  HttpSession session=request.getSession(); 
+		  List<OrderUserVO> ouvl=orderservice.getOrderUserVO((String)session.getAttribute("member"));
+		 
+		  model.addAttribute("ouvl", ouvl);
+		  List<OrderItemVO> oiv=new ArrayList<OrderItemVO>();
+		  
+		  for(int i=0;i<ouvl.size();i++) {
+			 for(int j=0;j<ouvl.get(i).getOrders().size();j++) {
+			  oiv.add(ouvl.get(i).getOrders().get(i));
+			 }
+		  }
+		  model.addAttribute("oiv", oiv);
 		log.info("마이 페이지 왔다");
 		return "member/mypage";
 	}

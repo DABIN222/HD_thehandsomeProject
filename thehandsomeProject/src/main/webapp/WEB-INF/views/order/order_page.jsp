@@ -13,19 +13,150 @@
 	</h3>
 	<div class="layerArea" style="z-index: 1110; display: none;" id="layerDiv">
 		<div class="layerBg"></div> 
-			<div class="popwrap w_type_1 "  style="z-index: 150; margin-top: 1071.93px;" tabindex="-1"> 
+		<div class="popwrap w_type_1" id="popup" style="z-index: 150; margin-top: 1071.93px; display: none;" tabindex="-1"> 
 				<div class="pop_cnt">
 					<h3 class="pop_tlt copy" id="alertPopuptxt">결제를 진행 하실 카드를 선택해 주세요.</h3>
 						<div class="btnwrap">
-							<input type="button" class="btn gray_s mr0" onclick="AlertClose();" value="확인">
+						<input type="button" class="btn gray_s mr0" onclick="AlertClose();" value="확인">
 						</div>
 				</div>
 				<a href="javascript:AlertClose();" class="btn_close">
 				<img src="/resources/images/ico_close.png" alt="닫기">
 				</a>
 				</div>
+	<div class="popwrap w_type_2" id="confirmOrder"
+		style="z-index: 150; margin-top: 853px; display: none;" tabindex="-1">
+		<div class="pop_cnt">
+			<h3 class="pop_tlt copy">
+				주문이 완료되었습니다.<br>확인하시겠습니까?
+			</h3>
+			<div class="btnwrap">
+				<input type="button" id="clsBtn" class="btn wt_s mr5"
+					value="계속 쇼핑하기"> <input type="button" id="cfBtn"
+					class="btn gray_s mr0" value="주문리스트 바로가기">
+			</div>
+		</div>
 	</div>
-	<form id="orderForm" action="/member/order" method="post">
+		<!--layer pop-->
+	<div class="popwrap w_type_3" id="addresspopup"  style="top: 659px; position: absolute; z-index: 101; display: none;">
+		<!-- Title1 -->
+		<div class="pop_tltwrap">
+			<h3>배송지관리</h3>
+		</div>
+		<!-- //Title1 -->
+		<div class="pop_cnt">
+			<div class="tab_a m2" id="del_tab">
+				<ul>
+					<li><a href="javascript:void(0);" class="active" >나의 배송지 목록</a></li>
+				</ul>
+			</div>
+			<div class="del_tab_container">
+				<!-- tab 1 -->
+				<div>
+					<p class="com_txt mb20 ml10">
+						고객님이 저장하신 배송지 목록입니다.<span class="com_txt_p">(마이페이지에서 등록 및
+							수정 하실 수 있습니다.)</span>
+					</p>
+					<!-- table -->
+					<div>
+						<table class="pop_dtable my">
+							<caption>배송지관리</caption>
+							<thead>
+								<tr>
+									<th scope="col">선택</th>
+									<th scope="col">수령인</th>
+									<th scope="col">배송지 주소</th>
+									<th scope="col">연락처/휴대폰</th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${ addressList}" var="address">
+							<tr>
+							<td>
+								<input name="sel_address" id="sel_address" type="radio"
+								value="${address.ano }">
+								<form id="addressListApply" action="/order/orderpage" 
+								method="post">
+								<input type="hidden" name="aname" value="${address.aname }">
+								<input type="hidden" name="addr1" value="${address.addr1 }" >
+								<input type="hidden" name="addr2" value="${address.addr2 }" >
+								<input type="hidden" name="addr3" value="${address.addr3 }">
+								<input type="hidden" name="toname" value="${address.toname }">
+								<input type="hidden" name="tophone" value="${address.tophone }">
+
+								</form>
+							</td>
+							<td>
+							${address.aname }
+							</td>
+							<td>
+								<div>
+								<span>${address.addr1 }</span>
+								<%-- <c:if test="${address.isdefault.equals('1') }">
+									<span class="sum_add">기본배송지</span>
+								</c:if> --%>
+									<p>${address.addr2 }&nbsp; ${address.addr3 }</p>
+								</div>
+							</td>
+							<td>
+								${address.toname }
+								<br>
+								${address.tophone }
+							</td>
+							</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<!-- //table -->
+					<div class="btnwrap">
+						<input class="btn wt_s" value="취소" type="button"
+							onclick="javascript:AddressListClose();"> <input
+							class="btn gray_s mr0" value="확인" type="button"
+							onclick="javascript:selectAddress();">
+					</div>
+				</div>
+				<!--// tab 1 -->
+
+				<!-- tab 2 -->
+				<div style="display: none;">
+					<p class="com_txt mb20 ml10">고객님께서 최근 주문 시 사용하셨던 10개의 배송지 목록
+						입니다.</p>
+					<!-- table -->
+					<table class="pop_dtable lately">
+						<caption>배송지관리</caption>
+						<thead>
+							<tr>
+								<th scope="col">선택</th>
+								<th scope="col">수령인</th>
+								<th scope="col">배송지 주소</th>
+								<th scope="col">연락처/휴대폰</th>
+								<th scope="col">수정/삭제</th>
+							</tr>
+						</thead>
+						<tbody id="shippingDeliveryAddressList">
+						</tbody>
+					</table>
+					<!-- //table -->
+					<div class="btnwrap">
+						<input class="btn wt_s" value="취소" type="button"
+							onclick="$('.btn_close').click();"> <input
+							class="btn gray_s mr0" value="배송지로 선택" type="button"
+							onclick="javascript:selectDeliveryAddress();">
+					</div>
+				</div>
+				<!--// tab 2 -->
+
+			</div>
+		</div>
+		<!-- btn_close -->
+		<a href="javascript:void(0);" class="btn_close" onclick="AddressListClose();"> <img
+			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기">
+		</a>
+		<!-- //btn_close -->
+	</div>
+	</div>
+	<form id="orderForm" action="/member/orderexec" method="post">
 	<input type="hidden" name="mid" value="${member.mid }">
 	<input type="hidden" name="ozipcode" value="" >
 	<input type="hidden" name="oaddress1" value="">
@@ -57,6 +188,15 @@
 								<col style="width: 66px">
 								<col style="width: 158px">
 							</colgroup>
+							<script language ="javascript" type="text/javascript">
+								let pids=[];
+								let ccolorcodes=[];
+								let ssizes=[];
+								let oamounts=[];
+								let totalprice=[];
+								let oprice=[];
+								let num=0;
+							</script>
 							<thead>
 								<tr>
 									<th scope="col">상품정보</th>
@@ -67,7 +207,7 @@
 							</thead>
 							<tbody>
 							<c:forEach items="${orderList }" var="orderitem" >
-								<tr class="al_middle">
+								<tr name="entryOrderPageProductInfo"class="al_middle">
 									<td class="frt">
 										<!-- pt_list_all -->
 										<div class="pt_list_all">
@@ -92,6 +232,7 @@
 									</td>
 									<td>${orderitem.oamount }</td>
 									<td>
+									<input type="hidden" id="oprice" value="${orderitem.oprice }">
 										<!-- price_wrap -->
 										<div class="price_wrap ">
 											<span id="sum_price"> ₩ ${orderitem.totalprice }</span><input
@@ -99,6 +240,15 @@
 										</div> <!-- //price_wrap -->
 									</td>
 								</tr>
+								<script language="javascript" type="text/javascript">
+									pids[num]="${orderitem.pid}";
+									ccolorcodes[num]="${orderitem.ccolorcode}";
+									ssizes[num]="${orderitem.ssize}";
+									oamounts[num]="${orderitem.oamount}";
+									oprice[num]="${orderitem.oprice}";
+									totalprice[num]="${orderitem.totalprice}";
+									num++;
+								</script>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -148,7 +298,7 @@
 						<div class="btn_wrap">
 							<a href="#;" class="btn wt_ss" onclick="f_customerAddress();">주문고객과
 								동일</a> <a href="#;" class="btn wt_ss"
-								onclick="viewPopup('#popwrap');">배송지 선택</a> <a href="#;"
+								onclick="showaddresslist();">배송지 선택</a> <a href="#;"
 								class="btn wt_ss mr0" onclick="resetAddress();">새로작성하기</a>
 						</div>
 					</div>
@@ -311,26 +461,26 @@
 									<th scope="row" class="th_space">쿠폰 및 혜택<br>선택
 									</th>
 									<td>
+										
 										<div class="vvip_td_wrap" id="select_voucher">
 											<div class="coupon_select_wrap" style="margin-top: 15px">
-												<input name="voucherCode" id="voucherCode" value=""
+												<input name="voucherCode" id="couponCode" value=""
 													title="쿠폰코드 직접입력" placeholder="쿠폰코드 직접입력" type="text"
 													class="input">
 												<p>또는</p>
 												<select title="쿠폰을 선택해 주세요." id="selectVoucher"
 													style="width: 190px;">
 													<option value="">쿠폰을 선택해 주세요.</option>
-													<option value="FW2-022-100-6HK-E8M-F4D">[1만원]
-														FRIEND 등급 축하 바우처 / ₩ 10,000</option>
-													<option value="FX2-022-100-6HJ-AG6-24F">[10%]
-														FRIEND 등급 축하 바우처 / 10%</option>
+													<c:forEach items="${couponList }" var="coupon">
+													<option value="${coupon.ccode }">${ coupon.cname}</option>
+													</c:forEach>
 												</select>
 												<div class="btnwrap">
-													<a href="#;" id="btnRedeemVoucher"
-														class="btn add_s min_auto" onclick="redeemVoucher(this);">
+													<a href="#;" id="btnApply"
+														class="btn add_s min_auto" onclick="couponApply();">
 														적용</a> <a href="#;" style="display: none"
-														id="btnReleaseVoucher" class="btn dis_s min_auto"
-														onclick="releaseVoucher(this);"> 적용취소</a>
+														id="btnCancel" class="btn dis_s min_auto"
+														onclick="couponCancel();"> 적용취소</a>
 												</div>
 											</div>
 										</div>
@@ -363,31 +513,31 @@
 										<div class="rd_wrap payment_way1907">
 											<ul>
 												<li><input type="radio" name="paymode" id="sel_rd0"
-													checked="checked" value="1"
+													checked="checked" value="원클릭결제"
 													> <label for="sel_rd0"
 													class="mr20 one_click_pay">원클릭결제</label></li>
 												<li><input type="radio" name="paymode" id="sel_rd1"
-													value="2"> <label
+													value="신용카드"> <label
 													for="sel_rd1" class="mr20">신용카드</label></li>
 												<li><input type="radio" name="paymode" id="sel_rd2"
-													value="3"> <label
+													value="실시간 계좌이체"> <label
 													for="sel_rd2" class="mr20">실시간 계좌이체</label></li>
 												<!-- #2610 [주문] 가상계좌 결제수단 제외 및 중복 구매 제한 처리 요청 건 (가상계좌 선택 삭제) 51013 -->
 												<span id="paymentSmilePay">
 													<li><input type="radio" name="paymode" id="sel_rd5"
-														value="4" > <label
+														value="스마일 페이" > <label
 														for="sel_rd5" class="mr20">스마일 페이</label><br></li>
 												</span>
 												<span id="paymentRedVoucher" style="display: block;">
 													<li><input type="radio" name="mode" id="sel_rd4"
-														value="5" > <label
+														value="현대카드 레드 쇼핑바우처" > <label
 														for="sel_rd4" class="mr20">현대카드 레드 쇼핑바우처</label></li>
 												</span>
 												<li><input type="radio" name="mode" id="sel_rd6"
-													value="6" > <label
+													value="토스" > <label
 													for="sel_rd6" class="mr20">토스</label></li>
 												<li><input type="radio" name="mode" id="sel_rd7"
-													value="7" > <label
+													value="페이코" > <label
 													for="sel_rd7" class="mr20">페이코</label></li>
 											</ul>
 										</div> <!-- ckout_wrap -->
@@ -433,6 +583,8 @@
 									₩${realTotalPrice } <input type="hidden" id="subsumprice"
 										value="${realTotalPrice}" />
 								</dd>
+								<dt id="totalDiscount" style="display:none;">프로모션/쿠폰 할인 금액</dt>
+								<dd id="totalDiscountval" style="display:none;">- ₩</dd>
 								<dt class="delch_wrap190816">
 									<p class="tlt_ship190816">배송비</p>
 									<!--delivery charge layer popup-->
@@ -509,91 +661,6 @@
 				value="77b0e71f-1c68-403d-8ba3-1c8b76071cce">
 		</div>
 
-	<!--layer pop-->
-	<div class="popwrap w_type_3" id="popwrap" style="display: none">
-		<!-- Title1 -->
-		<div class="pop_tltwrap">
-			<h3>배송지관리</h3>
-		</div>
-		<!-- //Title1 -->
-		<div class="pop_cnt">
-			<div class="tab_a m2" id="del_tab">
-				<ul>
-					<li><a href="#;" class="active">나의 배송지 목록</a></li>
-					<li><a href="#;">최근 배송지 목록</a></li>
-				</ul>
-			</div>
-			<div class="del_tab_container">
-				<!-- tab 1 -->
-				<div>
-					<p class="com_txt mb20 ml10">
-						고객님이 저장하신 배송지 목록입니다.<span class="com_txt_p">(마이페이지에서 등록 및
-							수정 하실 수 있습니다.)</span>
-					</p>
-					<!-- table -->
-					<div>
-						<table class="pop_dtable my">
-							<caption>배송지관리</caption>
-							<thead>
-								<tr>
-									<th scope="col">선택</th>
-									<th scope="col">수령인</th>
-									<th scope="col">배송지 주소</th>
-									<th scope="col">연락처/휴대폰</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-					<!-- //table -->
-					<div class="btnwrap">
-						<input class="btn wt_s" value="취소" type="button"
-							onclick="$('.btn_close').click();"> <input
-							class="btn gray_s mr0" value="확인" type="button"
-							onclick="javascript:selectAddress();">
-					</div>
-				</div>
-				<!--// tab 1 -->
-
-				<!-- tab 2 -->
-				<div style="display: none;">
-					<p class="com_txt mb20 ml10">고객님께서 최근 주문 시 사용하셨던 10개의 배송지 목록
-						입니다.</p>
-					<!-- table -->
-					<table class="pop_dtable lately">
-						<caption>배송지관리</caption>
-						<thead>
-							<tr>
-								<th scope="col">선택</th>
-								<th scope="col">수령인</th>
-								<th scope="col">배송지 주소</th>
-								<th scope="col">연락처/휴대폰</th>
-								<th scope="col">수정/삭제</th>
-							</tr>
-						</thead>
-						<tbody id="shippingDeliveryAddressList">
-						</tbody>
-					</table>
-					<!-- //table -->
-					<div class="btnwrap">
-						<input class="btn wt_s" value="취소" type="button"
-							onclick="$('.btn_close').click();"> <input
-							class="btn gray_s mr0" value="배송지로 선택" type="button"
-							onclick="javascript:selectDeliveryAddress();">
-					</div>
-				</div>
-				<!--// tab 2 -->
-
-			</div>
-		</div>
-		<!-- btn_close -->
-		<a href="#;" class="btn_close"> <img
-			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기">
-		</a>
-		<!-- //btn_close -->
-	</div>
-	<!--//layer pop-->
 
 	<!--layer pop : password -->
 	<div class="popwrap w_type_4" id="popwrap2" style="display: none;">
@@ -698,19 +765,27 @@
 			src="/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
 		<!-- //btn_close -->
 	</div>
-	<!--//layer pop-->
-	<!--layer pop : 관세확인 -->
-	<!--//layer pop-->
-	<form id="doOrderForm" action="/member/order" method="post">
-	</form>
 
+</div>
 	<div id="payinfo">
 		<form id="PAY_FORM" method="post"></form>
 	</div>
-	
+		<form id="orderUserInfo" action="/order/ordersuccess" method="POST">
+	<input type="hidden" name="oid" value="">
+	<!-- <input type="hidden" name="mid" value="">
+	<input type="hidden" name="oaddress1" value="">
+	<input type="hidden" name="oaddress2" value="">
+	<input type="hidden" name="oreceiver" value="">
+	<input type="hidden" name="otel" value="">
+	<input type="hidden" name="ocal" value="">
+	<input type="hidden" name="omessage" value="">
+ 	<input type="hidden" name="ousedcoupondetail"value="">
+ 	<input type="hidden" name="strpayment" value=""> -->
+	</form>
 
 </div>
-</div>
+
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
@@ -748,111 +823,168 @@ function resetAddress(){
 //입력한 값들을 전송
 function doOrder(){
 	//입력 요소에 대해 값들을 저장한다.
-	let zipcode=$("#zipcode").val();
-	let address1=$("#address1").val();
-	let address2=$("#address2").val();
-	let receiver=$("#receiver").val();
-	let hp_num1=$("select[id='hp']").val();
-	let hp_num2=$("#hp_num2").val();
-	let hp_num3=$("#hp_num3").val();
-	let ph_num1=$("select[id='ph']").val();
-	let ph_num2=$("#ph_num2").val();
-	let ph_num3=$("#ph_num3").val();
-	let message=$("#omessage").val();
-	let payment=parseInt($("input[name='mode']:checked").val());
-	let omilege="${realMilege}";
+	var date = new Date();
+        var year = date.getFullYear().toString();
+        var month = date.getMonth() + 1;
+        month = month < 10 ? '0' + month.toString() : month.toString();
+        var day = date.getDate();
+        day = day < 10 ? '0' + day.toString() : day.toString();
+        var hour = date.getHours();
+        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+        var minites = date.getMinutes();
+        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+        var seconds = date.getSeconds();
+        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+    
+        let oid="${member.mid}"+"_"+year + month + day + hour + minites + seconds;
+		let ozipcode=parseInt($("#zipcode").val());
+		let oaddress1=$("#address1").val();
+		let oaddress2=$("#address2").val();
+		let oreceiver=$("#receiver").val();
+		let hp_num1=$("select[id='hp']").val();
+		let hp_num2=$("#hp_num2").val();
+		let hp_num3=$("#hp_num3").val();
+		let ph_num1=$("select[id='ph']").val();
+		let ph_num2=$("#ph_num2").val();
+		let ph_num3=$("#ph_num3").val();
+		let omessage=$("#omessage").val();
+		let omilege=parseInt("${realMilege}");
+		let strpayment=$("input[name='paymode']:checked").val();
+		let odiscounted=0;
+		let ousedcoupondetail="";
 	
 	//해당하는 값들에 대한 공백여부를 확인한다.
-	if(address1=="" || address2==""){
+	if(oaddress1=="" || oaddress2==""){
+		console.log("주소");
 		$('.layerArea').show();
+		$('#popup').show();
 		$("#alertPopuptxt").text("주소를 입력해주세요!");
 		return;
-	}else if(receiver==""){
+	}else if(oreceiver==""){
 		$('.layerArea').show();
+		$('#popup').show();
 		$("#alertPopuptxt").text("수령인을 입력해주세요!");
 		return;
 	}else if(hp_num2=="" || hp_num3==""){
 		$('.layerArea').show();
+		$('#popup').show();
 		$("#alertPopuptxt").text("휴대폰 번호를 입력해주세요!");
 		return;
-	}else if(omessage==""){
+	}else if(!($('#agree').is(":checked"))){
 		$('.layerArea').show();
-		$("#alertPopuptxt").text("배송 메세지를 입력해주세요!");
-		return;
+		$('#popup').show();
+        $('#alertPopuptxt').text("구매자 동의 항목을 체크하여 주세요.");
+        return;
 	}
-	var handphone=hp_num1+"-"+hp_num2+"-"+hp_num3;
-	var telephone="";
+	
+	//coupon 값이 빈값이 아니라면 값을 넣는다.
+	if($("#couponCode").val()==""){
+		odiscounted="";
+	} else{
+		ousedcoupondetail=$("#couponCode").val();
+		let discount=parseInt($("#selectVoucher option:checked").text().substring(1,3));
+		console.log(discount);
+		let realTotalPrice="${realTotalPrice}";
+		let parseIntTotalPrice=parseInt(realTotalPrice);
+		odiscounted=parseIntTotalPrice*(discount/100);
+	}
+	
+	var otel=hp_num1+"-"+hp_num2+"-"+hp_num3;
+	var ocal="";
 	
 	if(ph_num2==""|| ph_num3=="" ){
-		telephone=""
+		ocal=""
 	}else{
-		telephone=ph_num1+ph_num2+ph_num3;
+		ocal=ph_num1+"-"+ph_num2+"-"+ph_num3;
 	}
+	 //map 객체 생성
+    let ordermember = new Map();
+    ordermember.set('oid',oid);
+    ordermember.set('mid','${member.mid}');
+    ordermember.set('ozipcode',ozipcode);
+    ordermember.set('oaddress1',oaddress1);
+    ordermember.set('oaddress2',oaddress2);
+    ordermember.set('otel',otel);
+    ordermember.set('ocal',ocal);
+    ordermember.set('oreceiver',oreceiver);
+    ordermember.set('omessage',omessage);
+    ordermember.set('ousermilege',omilege);
+    ordermember.set('ousedcoupondetail',ousedcoupondetail);
+    ordermember.set('strpayment',strpayment);
+    ordermember.set('odiscounted',odiscounted);
+    
+  //주문한 상품들의 리스트를 담을 리스트 객체 생성
+    let orderproductlist=[];
+    
+    //주문 상품의 상세 정보를 담기 위한 index 값
+    let checknum=0;
+    
+    
+    //상품에 대한 정보가 있는 태그를 반복하고 각각 상품에 대한 정보를 map으로 담는다.
+    $("tr[name='entryOrderPageProductInfo']").each(function(index,item){
+    	let orderproduct=new Map();
+    	orderproduct.set("pid",pids[index]);
+    	orderproduct.set("ccolorcode",ccolorcodes[index]);
+    	orderproduct.set("ssize",ssizes[index]);
+    	orderproduct.set("oamount",oamounts[index])
+    	orderproduct.set("oprice",oprice[index]);
+    	orderproduct.set("totalprice",totalprice[index]);
+    	
+    	//map으로 담은 정보들을 상품들의 리스트에 추가한다.
+    	orderproductlist.push(Object.fromEntries(orderproduct));
+    	//index 값 증가
+    	checknum++;
+    });
+    
+    //상품 리스트를 객체의 속성 이름과 같은 이름으로 지정하고 저장한다. 
+    ordermember.set("orders",orderproductlist);
+    
+    //map 직렬화
+    let serializedMap = JSON.stringify(Object.fromEntries(ordermember));
 	
-	/* var userdata={
-			mid : "${member.mid}",
-			oaddress1: address1,
-			oaddress2: address2,
-			ozipcode : zipcode,
-			oreceiver : receiver,
-			otel : handphone,
-			ocal : telephone,
-			ousermilege : omilege,
-			omessage : message,
-			opayment : payment
-	};
-	
-	var orderproduct =JSON.parse("${orderList}"); */
-	
-	
-	/* $.ajax({
-		type:'post',
-		url: /member/order,
-		dataType: 'application/json',
-		data:orderproduct,userdata,
-		success: function(json){
-			alert('주문성공');
-		},
-		error: function(error){
-			alert("전송실패");
-		}
-	}); */
-	
-	/* $("input[name='mid']").val("${member.mid}");
-	$("input[name='ozipcode']").val(ozipcode);
-	$("input[name='oaddress1']").val(oaddress1);
-	$("input[name='oaddress2']").val(oaddress2);
-	$("input[name='oreceiver']").val(oreceiver);
-	$("input[name='otel']").val(otel);
-	$("input[name='ocal']").val(ocal);
-	$("input[name='omessage']").val(omessage);
-	$("input[name='omilege']").val(omilege);
-	$("input[name='opayment']").val(opayment);
-	$("input[name='ostatus']").val("배송중"); */
-	
-	let form_content='';
-	for(var i=0;i<"${orderlist.size()}";i++){
-		let pid="${orderlist.get(i).pid}";
-		let colorcode="${orderlist.get(i).ccolorcode}";
-		let ssize="${ordetlist.get(i).ssize}";
-		let oamount="${orderlist.get(i).oamount}";
-		let pid_input="<input name='orders["+i+"].pid' type='hidden' value='"+ pid + "'>";
-		form_content+=pid_input;
-		let ccolorcode_input="<input name='orders["+i+"].ccolorcode' type='hidden' value='"+ ccolorcode + "'>";
-		form_content+=ccolorcode_input;
-		let ssize_input="<input name='orders["+i+"].ssize' type='hidden' value='"+ ssize + "'>";
-		form_content+=ssize_input;
-		let oamount_input="<input name='orders["+i+"].pid' type='hidden' value='"+ oamount + "'>";
-		form_content+=oamount_input;
-	}
-	$("#order_form").append(form_content);
-	
-	$("#order_form").submit();
+    //주문상품을 등록한다.
+    $.ajax({
+    url: '/order/orderexec',
+    type: 'POST',
+    data: serializedMap,
+    //dataType: 'json',
+    contentType : 'application/json; charset=utf-8',
+    success: function(data){
+      	console.log(data);
+      	alert("주문 완료");
+      	$("input[name=oid]").val(oid);
+      	/*
+      	$("input[name=mid]").val("${member.mid}"); 
+	    	$("input[name=oaddress1]").val(oaddress1);    
+	    	$("input[name=oaddress2]").val(oaddress2);    
+	    	$("input[name=oreceiver]").val(oreceiver);    
+	    	$("input[name=otel]").val(otel);    
+	    	$("input[name=ocal]").val(ocal);    
+	   	 	$("input[name=omessage]").val(omessage);    
+	    	$("input[name=ousedcoupondetail]").val(ousedcoupondetail);    
+	    	$("input[name=strpayment]").val(strpayment);   */
+	    	$("#orderUserInfo").submit(); 
+    },
+    error: function(xhr,status,error){
+    	alert("통신에러")
+    }
+   });
 }
 
 //값을 입력하라는 팝업창을 닫는 함수
 function AlertClose(){
+	$("#popup").hide();
 	$(".layerArea").hide();
+}
+
+function showaddresslist(){
+	$("#addresspopup").show();
+	$(".layerArea").show();
+	
+}
+function AddressListClose(){
+	$("#addresspopup").hide();
+	$('.layerArea').hide();
 }
 
 function chkword(targetID,lengthID,maxLength){
@@ -873,16 +1005,78 @@ function chkword(targetID,lengthID,maxLength){
     $('#'+lengthID).text(strLen);
 }
 
+//쿠폰 적용
+function couponApply(){
+	$("#couponCode").val($("#selectVoucher option:checked").val());
+	$("#totalDiscount").show();
+	$("#totalDiscountval").show();
+	let discount=parseInt($("#selectVoucher option:checked").text().substring(1,3));
+	let realTotalPrice="${realTotalPrice}";
+	let parseIntTotalPrice=parseInt(realTotalPrice);
+	console.log(parseIntTotalPrice+10);
+	console.log();
+	let StringTotalPrice=(parseIntTotalPrice*(discount/100)).toString();
+	$("#totalDiscountval").text("-₩"+priceComma(StringTotalPrice));
+	let StringrealTotalPrice=(parseIntTotalPrice-parseIntTotalPrice*(discount/100)).toString()
+	$("#totalPrice").val(parseInt(StringrealTotalPrice));
+	$("#totalPrice").text("₩"+priceComma(StringrealTotalPrice)); 
+	$("#btnApply").hide();
+	$("#btnApply").attr("class","btn dis_s min_auto")
+	$("#btnCancel").show();
+	$("#btnCancel").attr("class","btn add_s min_auto");
+}
+//쿠폰 적용 취소
+function couponCancel(){
+	$("#totalDiscount").hide();
+	$("#totalDiscountval").hide();
+	$("#totalPrice").text(priceComma("${realTotalPrice}"));
+	$("#btnApply").show();
+	$("#btnApply").attr("class","btn add_s min_auto")
+	$("#btnCancel").hide();
+	$("#btnCancel").attr("class","btn dis_s min_auto");
+}
+//가격에 ,를 적용
+function priceComma(price) {
+	return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+//배송관리 적용
+function selectAddress(){
+	if($("input:radio[name='sel_address']").is(":checked")){
+		$("#zipcode").val($("input[name='addr1']").val());
+		$("#address1").val($("input[name='addr2']").val());
+		$("#address2").val($("input[name='addr3']").val());
+		$("#receiver").val($("input[name='aname']").val());
+		let tel=$("input[name='toname']").val();
+		
+		let arr=tel.split("-");
+		$('#hp').val(arr[0]);
+		$('#hp_num2').val(arr[1]);
+		$('#hp_num3').val(arr[2]);
+		
+		if($("input[name='tophone']").val()==""){
+			$("#ph").val("");
+			$("#ph_num2").val("");
+			$("#ph_num3").val("");
+		}else{
+			let cal=$("input[name='tophone']").val();
+			let arr1=cal.split("-");
+			$("#ph").val(arr1[0]);
+			$("#ph_num2").val(arr1[1]);
+			$("#ph_num3").val(arr1[2]);
+		}
+	}
+	$("#addresspopup").hide();
+	$(".layerArea").hide();
+} 
+
 
 $(document).ready(
 			function() {
 				
 				console.log("function");
 				//sumprice랑 subprice totalPrice 값을 세자리 수마다 ,를 찍고 출력시킨다.
-				const sum_price = $("#sumprice").val().replace(
-						/\B(?=(\d{3})+(?!\d))/g, ',');
-				const sub_sumprice= $("#subsumprice").val().replace(
-						/\B(?=(\d{3})+(?!\d))/g, ',');
+				const sum_price = priceComma($("#sumprice").val());
+				const sub_sumprice= priceComma($("#subsumprice").val());
 				//콤마찍은 숫자를 가격, 총합계 태그에 뿌림
 				$("#sum_price").text("₩" + sum_price);
 				$("#sub_sumprice").text("₩" + sub_sumprice);

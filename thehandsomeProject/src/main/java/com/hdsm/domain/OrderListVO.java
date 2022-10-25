@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class OrderPageListVO {
-	private List<OrderPageItemVO> orders;
+public class OrderListVO {
+	private List<OrderItemVO> orders;
 	
 }

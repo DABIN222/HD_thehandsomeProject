@@ -7,19 +7,24 @@ import lombok.Data;
 @Data
 public class OrderItemVO {
 	private String oid;
-	private String mid;
-	private int ozipcode;
-	private String oaddress1;
-	private String oaddress2;
-	private Date odate;
-	private String oreceiver;
-	private String otel;
-	private String ocal;
-	private String omessage;
-	private String ousermilege;
-	//private String ousedcoupon;
-	private int opayment;
-	private int ostatus;
-	private Date oaccountdeadline;
-	private int odiscounted;
+	private String pid;
+	private String ccolorcode;
+	private String ssize;
+	private int oamount;
+	private int oprice;
+	private int point;
+	private int milege;
+	private int totalprice;
+	private int totalpoint;
+	private ProductVO productVO;
+	private ThumbnailColorVO thumbnail;
+
+	//totalprice,point,totalpoint 값은 다른 값들을 통해서 만들어 냄
+	public void initSaleTotal() {
+		this.point=(int)(this.oprice*0.001);
+		this.milege=(int)(this.oprice*0.05);
+		this.totalprice= this.oprice*this.oamount;
+		this.totalpoint=this.point*this.oamount;
+
+	}
 }

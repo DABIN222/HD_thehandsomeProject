@@ -27,8 +27,7 @@ import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.OrderItemVO;
-import com.hdsm.domain.OrderPageItemVO;
-import com.hdsm.domain.OrderPageListVO;
+import com.hdsm.domain.OrderListVO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.persistence.MemberMapper;
@@ -40,7 +39,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/member/*")
+@RequestMapping("/member1/*")
 public class MemberController2 {
 	
 	@Autowired
@@ -227,11 +226,11 @@ public class MemberController2 {
 	}
 	
 	@PostMapping("/order_page")
-	public void order_page(OrderPageListVO olv, Model model,HttpServletRequest request) {
+	public void order_page(OrderListVO olv, Model model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		System.out.println("colorcode:"+olv.getOrders().get(0).getCcolorcode());
 		model.addAttribute("member", memberservice.getMember((String)session.getAttribute("member")));
-		model.addAttribute("orderList",memberservice.getOrderPageInfo(olv.getOrders()));
+		//model.addAttribute("orderList",memberservice.getOrderPageInfo(olv.getOrders()));
 		int realTotalPoint=0;
 		int realTotalPrice=0;
 		int realMilege=0;
@@ -246,13 +245,7 @@ public class MemberController2 {
 		model.addAttribute("realMilege", realMilege);
 	
 	}
-	
-	@PostMapping("/order")
-	public void order(OrderItemVO oiv,List<OrderPageItemVO> orp) {
-		System.out.println(oiv.getMid());
-		System.out.println(orp.get(0).getPid());
-		
-	}
+
 	
 	
 }

@@ -5,8 +5,7 @@ import java.util.List;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
-import com.hdsm.domain.OrderPageItemVO;
-import com.hdsm.domain.OrderPageListVO;
+import com.hdsm.domain.OrderListVO;
 
 public interface MemberService2 {
 	
@@ -30,6 +29,5 @@ public interface MemberService2 {
 	// 장바구니 담기
 	public void insertShoppingBags(MemberSbagDTO msVO);
 	
-	//주문 페이지 가져오기
-	public List<OrderPageItemVO> getOrderPageInfo(List<OrderPageItemVO> olist);
+	
 }

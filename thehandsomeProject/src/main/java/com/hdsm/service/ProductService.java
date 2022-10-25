@@ -28,4 +28,6 @@ public interface ProductService {
 	
 	public List<ProductColorVO> getProductColor(String pid);
 	
+	
+	
 }

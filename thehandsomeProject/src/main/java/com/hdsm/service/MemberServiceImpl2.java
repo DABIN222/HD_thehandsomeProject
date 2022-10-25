@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
-import com.hdsm.domain.OrderPageItemVO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
@@ -113,25 +112,6 @@ public class MemberServiceImpl2 implements MemberService2 {
 		mapper.insertShoppingBags(msVO);
 	}
 	
-	@Override
-	public List<OrderPageItemVO> getOrderPageInfo(List<OrderPageItemVO> olist){
-		for(int i=0;i<olist.size();i++) {
-			olist.get(i).setProductVO(productmapper.getProduct(olist.get(i).getPid())); 
-			ProductVO product=olist.get(i).getProductVO();
-			List<ThumbnailColorVO> thumbnailcolorvolist=mapper.getProductsColor(olist.get(i).getPid());
-			for(int j=0;j<thumbnailcolorvolist.size();j++) {
-				if(thumbnailcolorvolist.get(j).getCcolorcode().equals(olist.get(i).getCcolorcode())) {
-					olist.get(i).setThumbnail(thumbnailcolorvolist.get(j));
-					System.out.println("thumbnail:"+olist.get(i).getThumbnail().getC_thumbnail1());
-				}
-			}
-			olist.get(i).setOprice(product.getPprice());
-			olist.get(i).initSaleTotal();
-		}
-		
-		return olist;
-		
-	}
 
 
 

@@ -438,9 +438,55 @@
 							</tr>
 						</thead>
 						<tbody id="listBody">
+						<c:choose>
+						<c:when test="${ouvl eq null }">
 							<tr>
 								<td colspan="6" class="no_data">주문내역이 없습니다.<!-- 주문내역이 없습니다. --></td>
 							</tr>
+							</c:when>
+							<c:otherwise>
+							<c:forEach items="${ ouvl}" var="ouv">
+							<tr class="al_middle">
+								<td rowspan="2" class="frt">
+								<p class="num">${ouv.oid }</p>
+								<span class="sum_date">
+								${ouv.odate }
+								</span>
+								</td>
+								<c:forEach items="${ ouv.orders}" var="order" varStatus="st">
+								<tr class="al_middle">
+								<td>
+								<div class="pt_list_all">
+								<img src="${order.thumbnail.c_thumbnail1 }"> 
+								<div class="tlt_wrap">
+								<span class="tlt">
+								${order.productVO.bname }
+								</span>
+								<br/>  
+								<span class="sb_tlt">
+								${order.productVO.pname }
+								</span>
+								<p class="color_op">
+								color : ${order.thumbnail.cname }
+								<span class="and_line">
+								/</span>  
+								size : ${order.ssize }
+								</p>
+								</div>
+								</div>
+								</td>
+								<td>${order.oamount }</td>
+								<td class="totalprice">${order.totalprice }
+								<input type="hidden" class="totalprice" value="${order.totalprice }">
+								</td>
+								<td>배송중</td>
+								<td></td>
+								</tr>
+								</c:forEach> 
+								 </tr>                                                                                                                                                                                                                                                                                     						
+						</c:forEach>
+						</c:otherwise>
+						</c:choose>
 						</tbody>
 					</table>
 				</div>
@@ -537,4 +583,7 @@
 		</div>
 	</div>
 </body>
+<script>
+$('.totalprice').text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+</script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

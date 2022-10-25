@@ -33,7 +33,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/product1/*")
+@RequestMapping("/product/*")
 @AllArgsConstructor
 public class ProductController {
 
