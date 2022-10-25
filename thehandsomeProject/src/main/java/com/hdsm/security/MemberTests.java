@@ -27,17 +27,17 @@ public class MemberTests {
   @Autowired
   private MemberMapper mapper;
   
-  //@Test
+  @Test
   public void testInsertMember() {
 
 	MemberVO mvo = new MemberVO();
 	MemberAuthVO mavo = new MemberAuthVO();
 	
-	mvo.setMid("asd");
-	mvo.setMpassword(pwencoder.encode("asd"));
-	mvo.setMname("여명");
-	mvo.setMemail("tldldh1212@naver.com");
-	mvo.setMtel("01040818409");
+	mvo.setMid("admin");
+	mvo.setMpassword(pwencoder.encode("1234"));
+	mvo.setMname("관리자");
+	mvo.setMemail("admin@naver.com");
+	mvo.setMtel("01012341234");
 	mvo.setMzipcode(01234);
 	mvo.setBuysum(0);
 	mvo.setMaddress1("서울 노원구");
@@ -46,7 +46,7 @@ public class MemberTests {
 	mvo.setMpoint(0);
 	mvo.setMenabled(0);
 	
-	mavo.setUsername("asd");
+	mavo.setUsername("admin");
 	mavo.setAuthority("ROLE_USER");
     mapper.insertMember(mvo);
     mapper.insertMemberAutority(mavo);
@@ -55,7 +55,7 @@ public class MemberTests {
 
   }//void testInsertMember()  
   
-  	@Test
+  	//@Test
 	public void testRead() {
 		MemberVO vo = mapper.read("asd");	
 		log.info(vo);		
