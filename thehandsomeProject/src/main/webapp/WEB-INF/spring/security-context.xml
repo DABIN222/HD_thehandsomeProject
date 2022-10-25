@@ -11,7 +11,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="customUserDetailsService"
 		class="com.hdsm.security.CustomUserDetailsService">
 	</bean>
-	
+
+	<bean id="customLoginSuccess"
+		class="com.hdsm.security.CustomLoginSuccessHandler">
+	</bean>
+
+
 	<security:http>
 		<security:intercept-url pattern="/home"
 			access="permitAll" />
@@ -30,17 +35,17 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 
 		<security:form-login
-			login-page="/member/loginForm" />
+			login-page="/member/loginForm"
+			authentication-success-handler-ref="customLoginSuccess" />
 
 		<security:logout logout-url="/member/customLogout"
-			invalidate-session="true" delete-cookies="JSESSION_ID"/>
-
-
+			invalidate-session="true" delete-cookies="JSESSION_ID" />
 
 	</security:http>
 
 	<security:authentication-manager>
-		<security:authentication-provider user-service-ref="customUserDetailsService">
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
 			<security:password-encoder
 				ref="bcryptPasswordEncoder" />
 		</security:authentication-provider>

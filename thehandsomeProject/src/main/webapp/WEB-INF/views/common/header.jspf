@@ -478,7 +478,7 @@
 										(<span id="wishlistCount">0</span>)
 									</sec:authorize>
 									<sec:authorize access="isAuthenticated()">
-										(<span id="wishlistCount"><sec:authentication property="principal.usersWishCount"/></span>)
+										(<span id="wishlistCount"><%= (int)session.getAttribute("wsCount") %></span>)
 									</sec:authorize>
 								</span>
 							</a>
@@ -499,7 +499,7 @@
 								<a href="/member/shoppingbag?mid=<sec:authentication property="principal.username"/>">
 										<span class="ico cart">장바구니</span> 
 										<span class="count">
-											(<span id="cartCount"><sec:authentication property="principal.usersShoppingBagCount"/></span>)
+											(<span id="cartCount"><%= (int)session.getAttribute("sbCount") %></span>)
 										</span>
 									</a>
 							</sec:authorize>
