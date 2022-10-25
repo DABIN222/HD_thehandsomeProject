@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import lombok.Data;
 
+//쿠폰 관리 VO
 @Data
 public class CouponVO {
 	private String ccode;

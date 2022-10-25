@@ -10,6 +10,7 @@ import com.hdsm.domain.MileageVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 
+//박진수
 public interface OrderMapper {
 
 	//주문한 회원의  정보 등록
@@ -35,10 +36,11 @@ public interface OrderMapper {
 
 	//주문한 회원의 정보를 조회
 	public OrderUserVO getOrderUserItem(String oid);
-
+	
+	//주문 번호에 대한 주문 상품들을 조회
 	public List<OrderItemVO> getOrderItem(String oid);
 	
+	//회원 아이디에 대한 주문한 사용자 정보를 조회
 	public List<OrderUserVO> getOrderUserVO(String mid);
 
-	public List<OrderUserVO> getOrderUserVOinOneMonth(String mid);
 }

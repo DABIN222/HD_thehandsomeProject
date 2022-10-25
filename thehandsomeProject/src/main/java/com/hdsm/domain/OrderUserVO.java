@@ -5,6 +5,7 @@ import java.util.List;
 
 import lombok.Data;
 
+//주문한 사용자의 정보 VO(박진수)
 @Data
 public class OrderUserVO {
 	private String oid;
@@ -25,5 +26,6 @@ public class OrderUserVO {
 	private String oaccountdeadline;
 	private int odiscounted;
 	private String strpayment;
+	private String tocart;
 	List<OrderItemVO> orders;
 }
