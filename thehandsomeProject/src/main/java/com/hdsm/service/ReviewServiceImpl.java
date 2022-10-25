@@ -22,7 +22,6 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
-
 	@Autowired
 	private ReviewMapper mapper;
 
@@ -50,10 +49,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.reviewDelete(rno);
 	}
 	
-	// 총 상품평 수
+	// 상품평 작성 여부 확인
 	@Override
-	public int getReviewCount(@Param("pid") String pid) {
-		return mapper.getReviewCount(pid);
+	public int getReviewCount(@Param("pid") String pid, @Param("mid") String mid, @Param("pcolor") String pcolor,@Param("psize") String psize) {
+		return mapper.getReviewCount(pid, mid, pcolor, psize);
 	}
 	
 }

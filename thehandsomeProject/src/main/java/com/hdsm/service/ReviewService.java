@@ -27,7 +27,7 @@ public interface ReviewService {
 	// 상품평 삭제
 	public int reviewDelete(@Param("rno") int rno);
 	
-	// 총 상품평 수
-	public int getReviewCount(@Param("pid") String pid);
-	
+	// 상품평 작성 여부 확인
+	public int getReviewCount(@Param("pid") String pid, @Param("mid") String mid, @Param("pcolor") String pcolor,@Param("psize") String psize);
+		
 }
