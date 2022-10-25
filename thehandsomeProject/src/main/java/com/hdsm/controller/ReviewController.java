@@ -2,6 +2,7 @@ package com.hdsm.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -139,15 +140,14 @@ public class ReviewController {
 	
 	//uploadFile 이름 버그 주의
 		@PostMapping("/uploadAjaxAction")
-		public ResponseEntity<List<ReviewAttachFileDTO>> uploadAjaxPost(
-				MultipartFile[] uploadFile) {
+		public ResponseEntity<ReviewAttachFileDTO> uploadAjaxPost(
+				String pid,
+				MultipartFile[] uploadFile) throws IOException {
 
-			List<ReviewAttachFileDTO> list = new ArrayList<>();
-			String uploadFolder = "C:\\Users\\tldld\\Desktop\\HyeonDai\\2nd_project\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
 			log.info(uploadFile);
 			log.info(uploadFile.length);
-			
-			String pid = "TM2CAWOT762W"; //임시로 일단 만들어놓자
+			//String pid = "TM2CAWOT762W"; //임시로 일단 만들어놓자
 			//제품ID로 폴더 생성
 			File uploadPath = new File(uploadFolder,pid);
 			log.info("uploadPath" + uploadPath);
@@ -155,47 +155,51 @@ public class ReviewController {
 				uploadPath.mkdirs();
 			}//end if
 			
-
+			//정보저장 객체 생성
+			ReviewAttachFileDTO attachDTO = new ReviewAttachFileDTO();
+			List<String> list = new ArrayList<String>();
+			
+			int index = 0;
 			for (MultipartFile multipartFile : uploadFile) {
 				log.info("-------------------------------------");
 				log.info("Upload File Name: " + multipartFile.getOriginalFilename());
 				log.info("Upload File Size: " + multipartFile.getSize());
 
-				//정보저장 객체 생성
-				ReviewAttachFileDTO attachDTO = new ReviewAttachFileDTO();
-
 				String uploadFileName = multipartFile.getOriginalFilename();
 			
-				attachDTO.setFileName(uploadFileName); //정보저장 객체 생성
+				//attachDTO.setFileName(uploadFileName); //정보저장 객체 생성
 				
 				UUID uuid = UUID.randomUUID();// java.util의 이름중복을 알아서 피하게해주는 라이브러리 사용
 				uploadFileName = pid + "_" + uuid.toString()+ "_" + uploadFileName;	
 				String uploadFileThubmNailName = "s_"+uploadFileName;//썸네일 이미지
 				
 				attachDTO.setUuid(uuid.toString()); //정보저장 객체 생성
-				attachDTO.setUploadPath(uploadFolder); //정보저장 객체 생성
-
+				
+				list.add("/resources/review_images/"+pid+"/"+uploadFileName);//그냥 이미지들 경로 추가
 				//파일 저장 위치 변경
 				File saveFile = new File(uploadPath, uploadFileName);
 				
 				try {
-					multipartFile.transferTo(saveFile);
+					multipartFile.transferTo(saveFile);// 파일저장
 					//이미지 파일이면 썸네일 생성 추가
-					if( ReviewUtil.builder().build().checkImageType(saveFile)) {
+					if( ReviewUtil.builder().build().checkImageType(saveFile) && index < 1 ) {
 						FileOutputStream thumnail =  //파일생성
 							new FileOutputStream(new File(uploadPath, uploadFileThubmNailName));
 						Thumbnailator.createThumbnail( //썸내일 생성
 								multipartFile.getInputStream(),thumnail, 60, 60);
 						thumnail.close(); //파일 닫기					
 					}//end if
-
-					list.add(attachDTO); //리스트에 정보 저장
+					attachDTO.setThumbPath("/resources/review_images/"+pid+"/"+uploadFileThubmNailName);//썸네일 이미지 경로
 				} catch (Exception e) {
 					log.error(e.getMessage());
 				} // end catch
+				
+				index++;
+				
 			} // end for
+			attachDTO.setImagesPath(list);
 			
-			return new ResponseEntity<>(list, HttpStatus.OK);
+			return new ResponseEntity<>(attachDTO, HttpStatus.OK);
 
 		}//end uploadAJXpost...
 
