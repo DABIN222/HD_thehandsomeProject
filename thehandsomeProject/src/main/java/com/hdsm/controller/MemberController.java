@@ -565,6 +565,8 @@ public class MemberController {
 		
 		if(cnt>0) {//성공
 			result = ResponseEntity.status(HttpStatus.OK).body("0"); //객체로 받았기 때문에 똑같이 객체로 돌려줘야하고 거기에 값을 ""넣어줘서 다시 삭제가 안되도록
+			session.setAttribute("wsCount", //위시리스트 잘 삭제헸으면 갯수 세서 리턴
+					memberservice.getWishListCount((String)session.getAttribute("member")));
 			log.info("삭제 성공!");
 		}
 		
