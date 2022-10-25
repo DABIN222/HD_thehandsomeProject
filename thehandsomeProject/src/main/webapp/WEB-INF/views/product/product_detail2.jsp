@@ -1025,8 +1025,7 @@
 						</dd>
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
-							<a href="#;" onclick="GA_Event('상품_상세','정보','상품평');">상품평(<span
-								id="customerReviewCnt">0</span>)
+							<a href="javascript:fn_popupCustomerReview();">상품평(<span id="customerReviewCnt">0</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
@@ -1036,13 +1035,12 @@
 							</a>
 						</div>
 						<!--//상품평 btn-->
-
 					</dl>
 				</div>
 
 				<div class="clearfix mt30">
 					<div class="btnwrap float_left">
-						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0" r>Q&amp;A(<span
+						<a href="javascript:fn_popupProductQnA();" class="btn arrow mr0">Q&amp;A(<span
 							class="data" id="productQnACnt">0</span>)
 						</a>
 					</div>
@@ -1164,8 +1162,7 @@
 					<span class="cmt_per" id="totalStarScore">별점</span>
 				</span>
 			</div>
-			<a href="#;" class="btn_evaluation1905" id="customerReviewWrite"
-				onclick="GA_Event('상품평','상품평 작성하기','클릭');">상품평 작성하기</a>
+			<a href="javascript:fn_popupCustomerReviewWrite();" class="btn_evaluation1905" id="customerReviewWrite">상품평 작성하기</a>
 		</div>
 		<!-- pop_cnt-->
 		<div class="pop_cnt evaluation_list1807 options">
@@ -1195,8 +1192,7 @@
 	<!--//상품평 리스트 팝업 -->
 
 	<!--상품평 쓰기 팝업 -->
-	<div class="popwrap w_type_4" id="customerReviewWriteDiv"
-		style="display: none;">
+	<div class="popwrap w_type_4" id="customerReviewWriteDiv" style="display: none;">
 		<div class="pop_tltwrap2 customerreviewwritediv1807">
 			<h3 id="review_title">상품평 작성하기</h3>
 			<p class="reqd_txt float_right">
@@ -1204,44 +1200,9 @@
 			</p>
 		</div>
 		<div class="pop_cnt evaluation_write1905 options1811">
-			<form id="reviewForm" name="reviewForm"
-				action="/ko/HANDSOME/MEN/PANTS/%EC%A1%B0%EA%B1%B0-%ED%8A%B8%EB%9E%99/%5BSET%5D-%EC%9A%B8-%EC%A1%B0%EA%B1%B0-%ED%8C%AC%EC%B8%A0/p/TH2CBKPC033M_BK"
-				method="post" enctype="multipart/form-data">
-				<input type="hidden" name="productCode"> <input
-					type="hidden" name="productCodeType"> <input type="hidden"
-					name="orderNumber" id="orderNumber" value=""> <input
-					type="hidden" name="purchaseColor" id="purchaseColor" value="">
-				<input type="hidden" name="purchaseColorName" id="purchaseColorName"
-					value=""> <input type="hidden" name="purchaseSize"
-					id="purchaseSize" value=""> <input type="hidden"
-					name="purchaseProdYN" id="purchaseProdYN" value=""> <input
-					type="hidden" name="orderWriteChk" id="orderWriteChk" value="">
-				<input type="hidden" name="closeWriteChk" id="closeWriteChk"
-					value=""> <input type="hidden" name="productId"
-					id="productId" value=""> <input type="hidden"
-					name="fileDeleteYN" id="fileDeleteYN">
-
-				<!-- 상품평활성화 -->
-				<input type="hidden" name="categoryCode" id="categoryCode"
-					value="SZ11"> <input type="hidden" name="shoulderWidth"
-					id="shoulderWidth" value=""> <input type="hidden"
-					name="chestSize" id="chestSize" value=""> <input
-					type="hidden" name="waistSize" id="waistSize" value=""> <input
-					type="hidden" name="buttSize" id="buttSize" value=""> <input
-					type="hidden" name="totalSize" id="totalSize" value=""> <input
-					type="hidden" name="photoAccumulationRightYn"
-					id="photoAccumulationRightYn" value=""> <input
-					type="hidden" name="offlineOrdDt" id="offlineOrdDt" value="">
-				<input type="hidden" name="offlineShpCd" id="offlineShpCd" value="">
-				<input type="hidden" name="offlineShpNm" id="offlineShpNm" value="">
-				<input type="hidden" name="tempProductId" id="tempProductId"
-					value=""> <input type="hidden" name="reviewFileCd"
-					id="reviewFileCd" value=""> <input type="hidden"
-					name="reviewFileCd1" id="reviewFileCd1" value=""> <input
-					type="hidden" name="reviewFileCd2" id="reviewFileCd2" value="">
-				<input type="hidden" name="reviewFileCd3" id="reviewFileCd3"
-					value=""> <input type="hidden" name="reviewFileCd4"
-					id="reviewFileCd4" value="">
+			<form id="reviewForm" name="reviewForm" action="" method="post" enctype="multipart/form-data">
+				<!-- 상품 아이디와 제품정보 담기 -->
+				<input type="hidden" name="orderNumber" id="orderNumber" value="">
 				<fieldset>
 					<legend>상품평쓰기</legend>
 					<div class="tblwrap">
@@ -1259,16 +1220,20 @@
 									<td colspan="3" style="padding: 15px;">
 										<div class="item_box" id="reviewProductDiv">
 											<div class="pt_list_all">
-												<a href="#;"><img
-													src="http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg"
-													id="reviewProducImg" alt="상품 이미지"
-													onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"></a>
+												<c:forEach items="${colorVOList}" var="colorVO">
+													<a href="#;">
+													
+														<c:if test="${not empty colorVO.cimage1}">
+															<img src="${colorVO.cimage1}" id="reviewProducImg" 
+															alt="상품 이미지" onerror="this.src='http://cdn.thehandsome.com/_ui/desktop/common/images/products/no_img1.jpg'"style="object-fit : cover">
+														</c:if>
+													</c:forEach>
+													</a>
 												<div class="tlt_wrap review_header_wrapper">
 													<!-- <div class="tlt_wrap review_header_wrapper nodata"> -->
-													<a href="#;" class="basket_tlt"> <span class="tlt"
-														id="reviewProductBrandName"></span> <span class="sb_tlt"
-														id="reviewProductProductName"></span> / <span
-														id="reviewProducPrice"></span>
+													<a href="#;" class="basket_tlt"> 
+														<span class="tlt" id="reviewProductBrandName">${productVO.bname}</span> 
+														<span class="sb_tlt" id="reviewProductProductName">${productVO.pname}</span> / <spanid="reviewProducPrice">${productVO.pprice}</span>
 													</a>
 													<!-- 주문조회에서 넘어올시 이거 보여줌<p class="color_op" id="purchased_color_size" style="display:none;">COLOR : <span id="review_color_name"></span>   <span class="and_line">/</span>  SIZE : <span id="review_size"></span></p> -->
 													<div class="select_options_wrap" style="display: none;">
@@ -1280,24 +1245,28 @@
 																</p>
 																<ul class="color_chip clearfix">
 																	<input type="hidden" id="colorName" value="BLACK">
-																	<li id="TH2CBKPC033M_BK"><input type="hidden"
-																		class="colorNameVal" value="BLACK"> <a
-																		href="#;" class="beige" data-color="BLACK"
-																		style="background: #000000 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_C01.jpg/dims/resize/24x24');"
-																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_BK', 'BLACK');"
-																		onmouseover="setColorName('BLACK');"
-																		onmouseout="setColorName('');"></a></li>
+																	<li id="TH2CBKPC033M_BK">
+																	<input type="hidden" class="colorNameVal" value="BLACK"> 
+																		<a href="#;" class="beige" data-color="BLACK"
+																			style="background: #000000 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_BK_C01.jpg/dims/resize/24x24');"
+																			onclick="javascript:fn_clickColorCode('TH2CBKPC033M_BK', 'BLACK');"
+																			onmouseover="setColorName('BLACK');"
+																			onmouseout="setColorName('');"></a>
+																	</li>
 																	<li id="TH2CBKPC033M_TG"><input type="hidden"
-																		class="colorNameVal" value="Taupe Grey"> <a
-																		class="beige" data-color="Taupe Grey"
+																		class="colorNameVal" value="Taupe Grey"> 
+																		<a class="beige" data-color="Taupe Grey"
 																		style="background: #9b9595 url('http://newmedia.thehandsome.com/TH/2C/FW/TH2CBKPC033M_TG_C01.jpg/dims/resize/24x24');"
 																		onclick="javascript:fn_clickColorCode('TH2CBKPC033M_TG', 'Taupe Grey');"
 																		onmouseover="setColorName('Taupe Grey');"
-																		onmouseout="setColorName('');"></a></li>
-																	<li><span class="cl_name" id="colorNameContent"></span>
+																		onmouseout="setColorName('');"></a>
+																	</li>
+																	<li>
+																		<span class="cl_name" id="colorNameContent"></span>
 																	</li>
 																</ul>
 															</li>
+															
 															<li class="select_size">
 																<p>
 																	<span class="compulsory">*</span> 사이즈
@@ -1345,35 +1314,47 @@
 								</tr>
 								<tr class="radio_btn_1905 bk">
 									<th scope="row" class="th_space">연 령</th>
-									<td colspan="3"><input id="ageG1" type="radio" name="age"
-										value="18세 이하"> <label for="ageG1">18세 이하</label> <input
-										id="ageG2" type="radio" name="age" value="20대"> <label
-										for="ageG2">20대</label> <input id="ageG3" type="radio"
-										name="age" value="30대"> <label for="ageG3">30대</label>
-										<input id="ageG4" type="radio" name="age" value="40대">
-										<label for="ageG4">40대</label> <input id="ageG5" type="radio"
-										name="age" value="50대"> <label for="ageG5">50대</label>
-										<input id="ageG6" type="radio" name="age" value="60대 이상">
-										<label for="ageG6">60대 이상</label></td>
+									<td colspan="3">
+										<input id="ageG1" type="radio" name="age" value="18세 이하">
+											<label for="ageG1">18세 이하</label> 
+										<input id="ageG2" type="radio" name="age" value="20대"> 
+											<label for="ageG2">20대</label> 
+										<input id="ageG3" type="radio" name="age" value="30대"> 
+											<label for="ageG3">30대</label>
+										<input id="ageG4" type="radio" name="age" value="40대"> 
+											<label for="ageG4">40대</label> 
+										<input id="ageG5" type="radio" name="age" value="50대"> 
+											<label for="ageG5">50대</label>
+										<input id="ageG6" type="radio" name="age" value="60대 이상"> 
+											<label for="ageG6">60대 이상</label></td>
 								</tr>
 								<tr class="input_txt_1905">
-									<th scope="row" class="th_space" id="thHeight"><strong
-										class="reqd">*</strong> 키</th>
-									<td><input type="text" name="height" id="height"
-										style="width: 75%; margin-right: 10px">cm</td>
-									<th scope="row" class="th_space" id="thEnjoySize"><strong
-										class="reqd">*</strong> 평소 사이즈</th>
-									<td><input type="text" name="enjoySize" id="enjoySize"></td>
+									<th scope="row" class="th_space" id="thHeight">
+										<strong class="reqd">*</strong> 키
+									</th>
+									<td>
+										<input type="text" name="height" id="height" style="width: 75%; margin-right: 10px">cm
+									</td>
+									<th scope="row" class="th_space" id="thEnjoySize">
+										<strong class="reqd">*</strong> 평소 사이즈
+									</th>
+									<td>
+										<input type="text" name="enjoySize" id="enjoySize">
+										
+									</td>
 								</tr>
 								<tr class="radio_btn_1905">
-									<th scope="row" class="th_space" id="thBodyType"><strong
-										class="reqd">*</strong> 체 형</th>
-									<td colspan="3"><input id="dark1" type="radio"
-										name="bodyType" value="마른 체형"> <label for="dark1">마른
-											체형</label> <input id="dark2" type="radio" name="bodyType" value="보통">
-										<label for="dark2">보통</label> <input id="dark3" type="radio"
-										name="bodyType" value="통통한 체형"> <label for="dark3">통통한
-											체형</label></td>
+									<th scope="row" class="th_space" id="thBodyType">
+										<strong class="reqd">*</strong> 체 형
+									</th>
+									<td colspan="3">
+										<input id="dark1" type="radio" name="bodyType" value="마른 체형"> 
+											<label for="dark1">마른 체형</label> 
+										<input id="dark2" type="radio" name="bodyType" value="보통">
+											<label for="dark2">보통</label> 
+										<input id="dark3" type="radio" name="bodyType" value="통통한 체형"> 
+											<label for="dark3">통통한 체형</label>
+									</td>
 								</tr>
 								<tr class="tbl_blank1807">
 									<td colspan="4">&nbsp;</td>
@@ -1381,7 +1362,8 @@
 								<tr class="write_star_wrap">
 									<th colspan="4">
 										<div class="write_star_score1807">
-											<span class="cmt_star"> <span class="cmt_per star5">별점</span>
+											<span class="cmt_star"> 
+												<span class="cmt_per star5">별점</span>
 											</span>
 											<ul class="btn_star_score">
 												<li><a href="#;" value="1">1점</a></li>
@@ -1396,75 +1378,87 @@
 									</th>
 								</tr>
 								<tr>
-									<th scope="row" class="th_space"><strong class="reqd">*</strong>실
-										착용 사이즈</th>
+									<th scope="row" class="th_space">
+										<strong class="reqd">*</strong>실 착용 사이즈
+									</th>
 									<td colspan="3">
 										<!--20190529_상품평활성화-->
 										<div class="cont_detail">
 											<p class="left_txt">허리둘레 :</p>
 											<ul class="rd_box_radio_list">
-												<li><input id="realWearSize1_01" type="radio"
-													name="realWearSize1" value="1"> <label
-													for="realWearSize1_01">타이트함</label></li>
-												<li><input id="realWearSize1_02" type="radio"
-													name="realWearSize1" value="2"> <label
-													for="realWearSize1_02">적당함</label></li>
-												<li><input id="realWearSize1_03" type="radio"
-													name="realWearSize1" value="3"> <label
-													for="realWearSize1_03">여유있음</label></li>
+												<li>
+													<input id="realWearSize1_01" type="radio" name="realWearSize1" value="1"> 
+														<label for="realWearSize1_01">타이트함</label>
+												</li>
+												<li>
+													<input id="realWearSize1_02" type="radio" name="realWearSize1" value="2"> 
+													<label for="realWearSize1_02">적당함</label>
+												</li>
+												<li>
+													<input id="realWearSize1_03" type="radio" name="realWearSize1" value="3"> 
+													<label for="realWearSize1_03">여유있음</label>
+												</li>
 											</ul>
 										</div>
 										<div class="cont_detail">
 											<p class="left_txt">엉덩이둘레 :</p>
 											<ul class="rd_box_radio_list">
-												<li><input id="realWearSize2_01" type="radio"
-													name="realWearSize2" value="1"> <label
-													for="realWearSize2_01">타이트함</label></li>
-												<li><input id="realWearSize2_02" type="radio"
-													name="realWearSize2" value="2"> <label
-													for="realWearSize2_02">적당함</label></li>
-												<li><input id="realWearSize2_03" type="radio"
-													name="realWearSize2" value="3"> <label
-													for="realWearSize2_03">여유있음</label></li>
+												<li>
+													<input id="realWearSize2_01" type="radio" name="realWearSize2" value="1"> 
+														<label for="realWearSize2_01">타이트함</label>
+												</li>
+												<li>
+													<input id="realWearSize2_02" type="radio" name="realWearSize2" value="2"> 
+													<label for="realWearSize2_02">적당함</label>
+												</li>
+												<li>
+													<input id="realWearSize2_03" type="radio" name="realWearSize2" value="3"> 
+													<label for="realWearSize2_03">여유있음</label>
+												</li>
 											</ul>
 										</div>
 										<div class="cont_detail">
 											<p class="left_txt">총길이 :</p>
 											<ul class="rd_box_radio_list">
-												<li><input id="realWearSize3_01" type="radio"
-													name="realWearSize3" value="1"> <label
-													for="realWearSize3_01">짧은 편</label></li>
-												<li><input id="realWearSize3_02" type="radio"
-													name="realWearSize3" value="2"> <label
-													for="realWearSize3_02">적당함</label></li>
-												<li><input id="realWearSize3_03" type="radio"
-													name="realWearSize3" value="3"> <label
-													for="realWearSize3_03">긴 편</label></li>
+												<li>
+													<input id="realWearSize3_01" type="radio" name="realWearSize3" value="1"> 
+													<label for="realWearSize3_01">짧은 편</label>
+												</li>
+												<li>
+													<input id="realWearSize3_02" type="radio" name="realWearSize3" value="2"> 
+													<label for="realWearSize3_02">적당함</label>
+												</li>
+												<li>
+													<input id="realWearSize3_03" type="radio" name="realWearSize3" value="3"> 
+													<label for="realWearSize3_03">긴 편</label>
+												</li>
 											</ul>
 										</div> <!--//20190529_상품평활성화-->
 									</td>
 								</tr>
 								<tr>
-									<th scope="row" class="th_space"><strong class="reqd">*</strong>실
-										제품 색상</th>
-									<td colspan="3"><input id="dark" type="radio"
-										name="realProductColor" value="1"> <label for="dark">어두워요</label>
-										<input id="same" type="radio" name="realProductColor"
-										class="ml20" value="2"> <label for="same">화면과
-											같아요</label> <input id="light" type="radio" name="realProductColor"
-										class="ml20" value="3"> <label for="light">밝아요</label>
+									<th scope="row" class="th_space">
+										<strong class="reqd">*</strong>실 제품 색상
+									</th>
+									<td colspan="3">
+										<input id="dark" type="radio" name="realProductColor" value="1"> 
+											<label for="dark">어두워요</label>
+										<input id="same" type="radio" name="realProductColor" class="ml20" value="2"> 
+										<label for="same">화면과 같아요</label> 
+										<input id="light" type="radio" name="realProductColor" class="ml20" value="3"> 
+										<label for="light">밝아요</label>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row"><strong class="reqd"
-										style="margin-top: 6px;">*</strong> <label for="lb1"
-										style="margin-top: 6px;">상품평<br> <span
-											class="subtxt_1905"> (20자 이상<br>&nbsp;200자 이하)
-										</span>
-									</label></th>
-									<td colspan="3"><textarea id="reviewHeadline"
-											name="headline" cols="30" rows="5"
-											style="width: 98%; height: 78px" maxlength="200"></textarea>
+									<th scope="row">
+										<strong class="reqd" style="margin-top: 6px;">*</strong> 
+										<label for="lb1" style="margin-top: 6px;">상품평<br> 
+											<span class="subtxt_1905"> (20자 이상<br>&nbsp;200자 이하)
+											</span>
+										</label>
+									</th>
+									<td colspan="3">
+										<textarea id="reviewHeadline" name="headline" cols="30" rows="5" style="width: 98%; height: 78px" maxlength="200"></textarea>
 									</td>
 								</tr>
 								<tr>
@@ -1486,10 +1480,11 @@
 												</div>
 											</div>
 											<ul class="file_image_wrap2003">
-
+												
 											</ul>
-											<p class="txt_guide">10MB 미만의 jpg,gif,png 파일만 첨부하실 수
-												있습니다.</p>
+											<p class="txt_guide">
+												10MB 미만의 jpg,gif,png 파일만 첨부하실 수 있습니다.
+											</p>
 											<!-- //File upload -->
 										</div>
 									</td>
@@ -1508,8 +1503,7 @@
 					</div>
 					<div class="btnwrap mt40">
 						<input type="button" id="reviewCancle" value="취소하기" class="btn wt">
-						<input type="button" id="reviewWriteSend" value="등록하기"
-							class="btn gray mr0">
+						<input type="button" id="reviewWriteSend" value="등록하기" class="btn gray mr0">
 					</div>
 
 				</fieldset>
@@ -3131,6 +3125,262 @@
 <iframe style="display: none" id="fileFrame" title="fileFrame" scr=""></iframe>
 
 <!-- footerWrap -->
+<!-- 상품평 스크립트 -->
+<script>
+	function fn_reviewWriteSend(){
+		 if(!confirm("작성 하시겠습니까?"))
+			 return false;
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		let rcontent = new Map();
+		rcontent.set('age',  $("input[type=radio][name=age]:checked").val());	// 연령대
+		rcontent.set('height',  $('#height').val());	// 키
+		rcontent.set('enjoySize',   $('#enjoySize').val()); //실 착용 사이즈
+		rcontent.set('bodyType',  $("input[type=radio][name=bodyType]:checked").val()); //체형
+		rcontent.set('rating',  $('#rating').val());	//평점
+		rcontent.set('realWearSize1',  $("input[type=radio][name=realWearSize1]:checked").val()); //리뷰 옵션
+		rcontent.set('realWearSize2',  $("input[type=radio][name=realWearSize2]:checked").val());	//리뷰옵션
+		rcontent.set('realWearSize3',  $("input[type=radio][name=realWearSize3]:checked").val());	//리뷰옵션
+		rcontent.set('realProductColor', $("input[type=radio][name=realProductColor]:checked").val());	//색감
+		rcontent.set('headline', $("#reviewHeadline").val());	//내용
+		rcontent.set('fileText',  $('#fileText').val());	//파일이름
+		
+		//console.log("rcontent : " + rcontent);
+		
+		//map 직렬화
+		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
+
+		//console.log(serializedMap);
+
+		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		const params = {
+				pid:"${productVO.pid}",
+				mid:"${member}",
+				rcontent: serializedMap,
+		};
+		
+		
+		console.log("params :" + JSON.stringify(params));	
+		
+		//let serializedMap = JSON.stringify(Object.fromEntries(params));
+		
+		$.ajax({
+			url: '/review/reviewWrite',
+			type: 'POST',
+			data: JSON.stringify(params), //직렬화
+			dataType: 'text',
+		    contentType : 'application/json; charset=utf-8',
+			success: function(result){
+				//작성 성공시 작성창 닫기
+				if(result == "Success"){
+					alert("리뷰가 작성되었습니다.");
+					console.log("리뷰가 작성되었습니다.");
+					reviewReset();
+					$("#customerReviewWriteDiv").hide();
+					viewPopup("#customerReviewDiv");
+				} /* else if(result == "fail"){
+					alert("리뷰를 이미 작성하셨습니다.");
+					console.log("리뷰를 이미 작성하셨습니다.");
+					$("#customerReviewWriteDiv").hide();
+					viewPopup("#customerReviewDiv");
+				} */
+				
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+		        // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+		        alert("통신 실패.");
+		      },
+		});  
+		
+	};
+	
+
+	// 상품평 등록하기 버튼 눌렀을 때
+	$('#reviewWriteSend').on("click", function(){
+		fn_reviewWriteSend();
+		
+	});
+
+
+//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
+function fn_popupCustomerReview() {
+	console.log("${productVO.pid}");
+	// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+	const params = {
+			pid:"${productVO.pid}"
+	};
+	//let serializedMap = JSON.stringify(Object.fromEntries(params));
+	$.ajax({
+		url: '/review/reviewList',
+		type: 'POST',
+		data: params, //직렬화
+		success: function(result){
+			console.log(JSON.stringify(result));
+			$.each(result, function(idx, val) {
+				console.log(idx + " " + val.rcontentMap.age);
+				
+				
+				
+			});
+		},
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+	        // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+	        alert("통신 실패.");
+	      },
+	});  
+	viewPopup("#customerReviewDiv");
+	
+	
+	
+}
+
+//x 버튼을 누르면 상품평 리스트 닫기
+function fn_closeProductReview() {
+	console.log("fn");
+	//.btn_close 버튼의 click 동작 이벤트를 강제로 실행시킴
+	$(".btn_close").trigger("click");
+}
+
+function fn_reviewWriteCheck(){
+	// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+	const params = {
+			pid:"${productVO.pid}",
+			mid:"${member}",
+	};
+	
+	console.log("params :" + JSON.stringify(params));	
+
+	$.ajax({
+		url: '/review/reviewWriteCheck',
+		type: 'POST',
+		data: JSON.stringify(params), //직렬화
+		dataType: 'text',
+	    contentType : 'application/json; charset=utf-8',
+		success: function(result){
+			//리뷰 작성 가능 여부 확인
+			if(result == "pass"){
+				console.log("리뷰 작성 가능");
+				//상품평 리스트를 숨긴다.
+				$("#customerReviewDiv").hide();
+				//상품평 작성란을 띄운다.
+				viewPopup("#customerReviewWriteDiv");
+			}  else if(result == "exist"){	// 이미 작성했을 때
+				alert("리뷰를 이미 작성하셨습니다.");
+				console.log("리뷰를 이미 작성하셨습니다.");
+			} else if(result == "empty"){ // 구매내역이 없을 때
+				alert("구매내역이 없습니다.");
+				console.log("구매내역이 없습니다.");
+			}
+		},
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+	        // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+	        alert("통신 실패.");
+	      },
+	});  
+}
+
+
+//후기 작성란 띄우기
+function fn_popupCustomerReviewWrite() {
+	<%
+	if ((String)session.getAttribute("member") == null) { 
+	%>
+		//세션에 값이 없으면 로그인 폼으로 이동
+		location.href='/member/loginForm';
+	<%
+	} else {
+	%>
+	 	fn_reviewWriteCheck();
+	<%
+	}
+	%>
+}
+
+
+//x버튼을 눌렀을때 상품평 작성 취소하기
+$("#reviewCancle").on('click', function() {
+
+	//취소를 원하면 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+	if (confirm("취소하시겠습니까?")) {
+		reviewReset();
+		$("#customerReviewWriteDiv").hide();
+		viewPopup("#customerReviewDiv");
+	}
+
+});
+
+//상품평 작성 취소하기
+$("#reviewCloseBtn").on('click', function() {
+
+	//취소를 상품평 작성란을 숨기고 상품평 리스트를 보여줌
+	if (confirm("취소하시겠습니까?")) {
+		reviewReset();
+		$("#customerReviewWriteDiv").hide();
+		viewPopup("#customerReviewDiv");
+	}
+	
+});
+
+
+// 상품평 평점 선택
+$(".btn_star_score li a").on("click", function(){
+	var idx=$(this).parent('li').index()+1;
+	for(var i=1;i<6;i++){
+	    $('.write_star_score1807 .cmt_star .cmt_per').removeClass('star'+i);
+	}
+	// 선택한 별의 css 수정
+	$('.write_star_score1807 .cmt_star .cmt_per').addClass('star'+idx);
+    // 선택한 요소의 value 값 가져오기
+	$("#rating").val($(this).attr('value'));
+});
+
+// 상품평 내용 초기화
+function reviewReset(){
+	//연령
+    $("#customerReviewWriteDiv input[name=age]").prop("checked",false);
+    //키
+    $("#customerReviewWriteDiv #height").val("");
+    //체형
+    $("#customerReviewWriteDiv input[name=bodyType]").prop("checked",false);
+  	//평소 사이즈
+    $("#customerReviewWriteDiv #enjoySize").val("");
+  	
+  	//실 착용 사이즈
+    $("#realWearSize1_01").prop("checked",false);
+    $("#realWearSize1_02").prop("checked",false);
+    $("#realWearSize1_03").prop("checked",false);
+    
+    $("#realWearSize2_01").prop("checked",false);
+    $("#realWearSize2_02").prop("checked",false);
+    $("#realWearSize2_03").prop("checked",false);
+    
+    $("#realWearSize3_01").prop("checked",false);
+    $("#realWearSize3_02").prop("checked",false);
+    $("#realWearSize3_03").prop("checked",false);
+    
+  	//실착용
+    $("#customerReviewWriteDiv input[name=realWearSize]").prop("checked",false);
+  	//실 제품 색상
+    $("#customerReviewWriteDiv input[name=realProductColor]").prop("checked",false);
+ 	//상품평
+    $("#customerReviewWriteDiv #reviewHeadline").val("");
+  	//평점
+    var idx=$("#customerReviewWriteDiv .btn_star_score li:eq(4) > a").parent('li').index()+1;
+	for(var i=1;i<6;i++){
+	    $('.write_star_score1807 .cmt_star .cmt_per').removeClass('star'+i);
+	}
+	// 선택한 별의 css 수정
+	$('.write_star_score1807 .cmt_star .cmt_per').addClass('star'+idx);
+    // 선택한 요소의 value 값 가져오기
+	$("#rating").val($(this).attr('value'));
+  	
+  	
+    //사진등록
+    //$("#customerReviewWriteDiv #textReviewFile").val("");
+}
+
+
+</script>
+
 <script>
 	//가격에 3자리마다 컴마
 	function priceComma(price) {

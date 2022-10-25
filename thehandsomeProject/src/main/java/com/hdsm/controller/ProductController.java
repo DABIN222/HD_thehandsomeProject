@@ -318,4 +318,22 @@ public class ProductController {
 			model.addAttribute("order_count", Integer.parseInt(order_count));
 			
 	}
+	
+	//상품 상세 정보 보기
+	@GetMapping("/product_detail2")
+	public String product_detail2(
+			@RequestParam("pid") String pid,
+			@RequestParam("colorcode") String colorcode
+			,Model model) {
+		ProductVO product=service.getProduct(pid);
+		System.out.println(product.getP_size());
+		String[] sizelist=product.getP_size().split(",");
+		model.addAttribute("sizelist",sizelist);
+		model.addAttribute("productVO", service.getProduct(pid));
+		model.addAttribute("colorVOList", service.getProductColor(pid));
+		model.addAttribute("curColorCode",colorcode);
+		return "/product/product_detail2";
+	}
+	
+	
 }
