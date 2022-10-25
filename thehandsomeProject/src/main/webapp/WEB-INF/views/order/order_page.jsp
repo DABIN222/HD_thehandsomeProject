@@ -853,7 +853,7 @@ function doOrder(){
 		let strpayment=$("input[name='paymode']:checked").val();
 		let odiscounted=0;
 		let ousedcoupondetail="";
-	
+		
 	//해당하는 값들에 대한 공백여부를 확인한다.
 	if(oaddress1=="" || oaddress2==""){
 		console.log("주소");
@@ -913,6 +913,8 @@ function doOrder(){
     ordermember.set('ousedcoupondetail',ousedcoupondetail);
     ordermember.set('strpayment',strpayment);
     ordermember.set('odiscounted',odiscounted);
+  	//장바구니 선택으로 인해서 주문이 됬는지 확인
+    ordermember.set('tocart','${tocart}');
     
   //주문한 상품들의 리스트를 담을 리스트 객체 생성
     let orderproductlist=[];

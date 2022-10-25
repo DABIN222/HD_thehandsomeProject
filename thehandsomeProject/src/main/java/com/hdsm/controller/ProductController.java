@@ -265,11 +265,6 @@ public class ProductController {
 		return "/product/product_detail";
 	}
 	
-	//상품 바로 주문
-	@PostMapping("/order")
-	public void prodOrder(ProductVO product) {
-		
-	}
 	
 	//상품 쇼핑백 담기
 	@PostMapping("/putshoppingbag")

@@ -390,17 +390,12 @@ public class MemberController {
 		public String mypageForm(HttpServletRequest request,Model model) {
 			
 			  HttpSession session=request.getSession(); 
+			  //회원이 주문한 주문번호를 가져온다.(박진수)
 			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO((String)session.getAttribute("member"));
 			 
+			  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
 			  model.addAttribute("ouvl", ouvl);
-			  List<OrderItemVO> oiv=new ArrayList<OrderItemVO>();
-			  
-			  for(int i=0;i<ouvl.size();i++) {
-				 for(int j=0;j<ouvl.get(i).getOrders().size();j++) {
-				  oiv.add(ouvl.get(i).getOrders().get(i));
-				 }
-			  }
-			  model.addAttribute("oiv", oiv);
+
 			log.info("마이 페이지 왔다");
 			
 			String memberID = (String)request.getSession().getAttribute("member");
