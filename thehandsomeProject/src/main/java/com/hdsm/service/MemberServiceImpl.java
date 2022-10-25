@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hdsm.controller.MemberController;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -195,6 +196,23 @@ public class MemberServiceImpl implements MemberService {
 			for(String size : pvo.getP_size().split(",")) {
 				slist.add(size.trim());
 			}
+			
+			String thumbnailImg = "";
+			String colorcode = "";
+
+			for (ThumbnailColorVO j : cvo) {
+				if (j.getCname().equals(dto.getPcolor())) {
+					thumbnailImg = j.getC_thumbnail1();
+					colorcode = j.getCcolorcode();
+					break;
+				}
+			}
+
+			wsDTOforJsp.setPid(pid);
+			wsDTOforJsp.setColorcode(colorcode);
+			wsDTOforJsp.setThumbnail(thumbnailImg);
+			wsDTOforJsp.setScolor(dto.getPcolor());
+			wsDTOforJsp.setSsize(dto.getPsize());
 			wsDTOforJsp.setPvo(pvo);
 			wsDTOforJsp.setColorList(cvo);
 			wsDTOforJsp.setSizeList(slist);

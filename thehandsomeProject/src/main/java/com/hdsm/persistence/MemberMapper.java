@@ -69,6 +69,9 @@ public interface MemberMapper {
 	//해당 유저가 담아놓은 위시리스트목록들 가져오기
 	public List<MemberWishListDTO> getUsersWishList(MemberWishListDTO wsDTO);
 	
+	//장바구니에 있는 물건들의 정보들 가져오기
+	public ProductVO getWishListProduct(@Param("pid") String pid);
+	
 	//유저가 위시리스트 아이템 지울때
 	public int deleteWishListItem(@Param("wsList")List<MemberWishListDTO> wsList);
 	

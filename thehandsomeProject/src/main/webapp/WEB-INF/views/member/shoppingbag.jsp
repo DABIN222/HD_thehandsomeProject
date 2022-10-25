@@ -92,10 +92,8 @@
 									<!-- pt_list_all -->
 									<div class="pt_list_all">
 										<a itemnum="a${status.index}" href="/product/product_detail?pid=${shoppingbag.pid}&colorcode=${shoppingbag.colorcode}">
-											<img
-											src="${shoppingbag.thumbnail}"
-											style = "object-fit : cover"
-											alt="" />
+											<img src="${shoppingbag.thumbnail}"
+											style = "object-fit : cover" alt="" />
 										</a>
 										<div class="tlt_wrap">
 											<a
@@ -613,8 +611,9 @@
 			  //그리고 사진도 바뀌게 해줘야징
 			  const itemIndex = parseInt($(this).closest('dl').attr("itemnum"));
 			  const colorName = $(this).attr('value');
-
+			  
 			  const colorCode = colorinfos[itemIndex][colorName][0];
+			 
 			  const colorThumbUrl = colorinfos[itemIndex][colorName][1];
 			  const productId = pids[itemIndex];
 			  //사진과 href 다 바꿔버려 !
