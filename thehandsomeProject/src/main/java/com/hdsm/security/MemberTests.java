@@ -40,12 +40,11 @@ public class MemberTests {
 	mvo.setMtel("01040818409");
 	mvo.setMzipcode(01234);
 	mvo.setBuysum(0);
-	mvo.setMaddress1("서울 노원구");
-	mvo.setMaddress2("3층");
+	mvo.setMaddress1("서울시 종로구 창경궁로 31길");
+	mvo.setMaddress2("308호");
 	mvo.setMgrade("silver");
 	mvo.setMpoint(0);
 	mvo.setMenabled(0);
-	
 	mavo.setUsername("admin");
 	mavo.setAuthority("ROLE_USER");
     mapper.insertMember(mvo);
@@ -55,7 +54,7 @@ public class MemberTests {
 
   }//void testInsertMember()  
   
-  	@Test
+  	//@Test
 	public void testRead() {
 		MemberVO vo = mapper.read("asd");	
 		log.info(vo);		
