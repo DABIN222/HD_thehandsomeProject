@@ -171,7 +171,7 @@
 										<div class="info">
 											<div class="pt_list" id="pt_list_0">
 												
-													<a itemnum="a${status.index}"  href="/product/product_detail?pid=${wishitem.pvo.pid}&colorcode=${wishitem.colorcode}" >
+													<a itemnum="a${status.index}"  href="/product/product_detail?pid=${wishitem.pid}&colorcode=${wishitem.colorcode}" >
 													<img src="${wishitem.thumbnail}" alt="상품 이미지" style="object-fit : cover"/></a>
 													<div class="tlt_wrap wish">
 														<a class="basket_tlt" href="/product/product_detail?pid=${wishitem.pvo.pid}&colorcode=${wishitem.colorcode}" >
