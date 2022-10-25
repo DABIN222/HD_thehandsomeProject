@@ -582,11 +582,11 @@ public class MemberController {
 		//좋아요 눌르거나 위시리스트 등록버튼 눌렀을때 위시리스트에 넣어버려 !!
 		log.info("위시리스트 삭제 진입!");
 		HttpSession session = request.getSession(); // 세션
-		
+		log.info("deleteList ---------------" + deleteList.toString());
 		ResponseEntity<String> result = null;
 	
 		for(MemberWishListDTO d : deleteList) {
-			log.info(d);
+			log.info("d --------------" + d);
 		}
 		int cnt = memberservice.deleteWishListItem(deleteList);
 		

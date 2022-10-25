@@ -284,7 +284,7 @@
 			<!--  <p class="mt10 ml10">* 세일/가격인하/아울렛 일부 할인 상품은 한섬마일리지 적립이 불가합니다. 정확한 적립율은 쇼핑백과 상품상세페이지에서 확인하세요.</p>-->
 			<p class="mt10 ml10">* 정확한 적립율은 상품상세페이지에서 확인하세요.</p>
 			<div class="btn_btwrap">
-				<a href="javascript:void(0);" class="btn wt_ss chooseDel">선택삭제<!-- 선택삭제 --></a>
+				<a href="javascript:void(0);" class="btn wt_ss selectDel">선택삭제<!-- 선택삭제 --></a>
 			</div>
 			<!-- paging -->
 			<div class="paging"></div>
@@ -365,6 +365,34 @@
 	$(document).ready(
 		function() {
 			
+			// 선택 삭제
+			//선택된 놈들만 지우기
+			$.selectRemove = function(){
+				const deleteList = [];
+				let checkCount = 0;
+				let itemMap = new Map();
+				
+				$("tr[name=entryProductInfo]").each(function(index, item){
+					if( $(this).find("input[name='wishlist']").is(":checked")){
+						
+						itemMap.set('member_mid', "${member}");
+						itemMap.set('pid', pids[index]);
+						
+						//직렬화 해서 넘겨주자!
+						deleteList.push(Object.fromEntries(itemMap));
+						deleteajaxRequest(JSON.stringify(deleteList));
+						checkCount++;
+					}
+				});	
+				console.log("checkCount : "+checkCount);
+				console.log(deleteList);
+				
+			}
+			$(".selectDel").click(function(){
+				$.selectRemove();
+			});
+				
+			
 			//삭제
 			//장바구니버튼 눌렀을때
 			$(".wishDel").on("click", function(e){
@@ -391,7 +419,7 @@
 					deleteList.push(Object.fromEntries(itemMap));
 					deleteajaxRequest(JSON.stringify(deleteList));
 				}
-				const deleteList = [];
+				//const deleteList = [];
 				
 				
 				/* //ajax 호출!
