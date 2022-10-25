@@ -1371,7 +1371,7 @@
 												<li><a href="#;" value="3">3점</a></li>
 												<li><a href="#;" value="4">4점</a></li>
 												<li><a href="#;" value="5">5점</a></li>
-												<input type="hidden" id="rating" name="rating" value="5">
+												<input type="hidden" id="rating" name="rating" value="5"> <!-- 평점 담을 곳 -->
 											</ul>
 											<p>평점을 선택해 주세요.</p>
 										</div>
@@ -3152,6 +3152,8 @@
 		//console.log(serializedMap);
 
 		// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
 		const params = {
 				pid:"${productVO.pid}",
 				mid:"${member}",
@@ -3168,6 +3170,8 @@
 			type: 'POST',
 			data: JSON.stringify(params), //직렬화
 			dataType: 'text',
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 		    contentType : 'application/json; charset=utf-8',
 			success: function(result){
 				//작성 성공시 작성창 닫기
@@ -3204,6 +3208,10 @@
 //상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 function fn_popupCustomerReview() {
 	console.log("${productVO.pid}");
+	
+	let csrfHeaderName ="${_csrf.headerName}";
+	let csrfTokenValue="${_csrf.token}";
+	
 	// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
 	const params = {
 			pid:"${productVO.pid}"
@@ -3213,14 +3221,14 @@ function fn_popupCustomerReview() {
 		url: '/review/reviewList',
 		type: 'POST',
 		data: params, //직렬화
+		beforeSend: function(xhr) {
+	    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 		success: function(result){
-			console.log(JSON.stringify(result));
-			$.each(result, function(idx, val) {
+			console.log("리스트 출력 : " + JSON.stringify(result));
+			
+			/* $.each(result, function(idx, val) {
 				console.log(idx + " " + val.rcontentMap.age);
-				
-				
-				
-			});
+			}); */
 		},
 		error: function (XMLHttpRequest, textStatus, errorThrown) {
 	        // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
@@ -3241,6 +3249,8 @@ function fn_closeProductReview() {
 }
 
 function fn_reviewWriteCheck(){
+	let csrfHeaderName ="${_csrf.headerName}";
+	let csrfTokenValue="${_csrf.token}";
 	// ajax에 삽입 위해서 pid,mid,rcontent 컬럼 삽입
 	const params = {
 			pid:"${productVO.pid}",
@@ -3255,6 +3265,8 @@ function fn_reviewWriteCheck(){
 		data: JSON.stringify(params), //직렬화
 		dataType: 'text',
 	    contentType : 'application/json; charset=utf-8',
+	    beforeSend: function(xhr) {
+	    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 		success: function(result){
 			//리뷰 작성 가능 여부 확인
 			if(result == "pass"){

@@ -60,6 +60,7 @@ public class ReviewController {
 		System.out.println("pid : " + pid);
 		List<ReviewDTO> list = reviewService.getReviewList(pid);
 		log.info("------------------ list ----------------\n"+list.toString());
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		for(ReviewDTO dto : list) {
@@ -78,8 +79,8 @@ public class ReviewController {
 			
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
-			
 		}
+		
 		log.info("리스트에 값 넣었다-------------------\n"+reviewList.toString());
 		//model.addAttribute("reviewList",reviewList);
 		
