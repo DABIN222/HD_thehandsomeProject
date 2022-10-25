@@ -232,9 +232,9 @@
 														<dt>수량<!-- 수량 --></dt>
 														<dd>
 															<span class="qty_sel num"> 
-																<a href="javascript:leftClick(0)" class="left">이전 버튼</a> 
+																<a href="javascript:void(0)" class="left">이전 버튼</a> 
 																<input type="text" name="quantity" title="수량" value="1" id="quantity0" class="mr0" readonly="readonly" />
-																<a href="javascript:rightClick(0)" class="right">다음 버튼</a>
+																<a href="javascript:void(0)" class="right">다음 버튼</a>
 															</span>
 														</dd>
 													</dl>
@@ -583,6 +583,7 @@
 					volumn--;
 				}
 				$(this).closest("span").find("input[name='quantity']").val(volumn);
+				console.log(volumn);
 			});
 			$(".right").on("click", function(){
 				let volumn = parseInt($(this).closest("span").find("input[name='quantity']").val());
@@ -590,6 +591,7 @@
 					volumn++;
 				}
 				$(this).closest("span").find("input[name='quantity']").val(volumn);
+				console.log(volumn);
 			});
 			
 /* 			//아이템 삭제 (1개만)
