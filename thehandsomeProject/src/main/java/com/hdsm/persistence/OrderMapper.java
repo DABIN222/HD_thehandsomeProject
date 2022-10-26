@@ -51,4 +51,7 @@ public interface OrderMapper {
 	
 	//회원의 마일리지 정보도 삭제
 	public void deleteMilege(String oid);
+	
+	//회원이 최근 주문한 상품을 조회
+	public OrderUserVO getRecentOrderUserVO(String mid);
 }

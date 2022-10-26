@@ -391,12 +391,16 @@ public class MemberController {
 			
 			String username = principal.getName();
 			  //회원이 주문한 주문번호를 가져온다.(박진수)
-			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
-			 
+			  OrderUserVO ouv=orderservice.getRecentOrderUserVO(username);
+			  
+			  //ouvl이 비어있다는 것을 알리기 위함
+			  if(ouv==null) {
+				  model.addAttribute("recentouv", null);
+			  }else {
 			  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
-			  model.addAttribute("ouvl", ouvl);
-
-			log.info("마이 페이지 왔다");
+			  model.addAttribute("recentouv", ouv);
+			  }
+			  log.info("마이 페이지 왔다");
 			
 			String memberID = username;
 			if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄

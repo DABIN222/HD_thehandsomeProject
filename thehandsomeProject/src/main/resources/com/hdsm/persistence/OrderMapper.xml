@@ -66,7 +66,7 @@
 		where oid=#{oid}
 
 	</select>
-
+	
 	<select id="getOrderItem" resultType="com.hdsm.domain.OrderItemVO">
 		select *
 		from orderItem
@@ -79,6 +79,16 @@
 	where mid=#{mid}
 	</select>
 	
+	<select id="getRecentOrderUserVO" resultType="com.hdsm.domain.OrderUserVO">
+ 	select *
+ 	from
+ 	(select * 
+ 	from orderlist 
+ 	where mid=#{mid} 
+ 	order by odate desc)
+ 	where rownum=1
+	
+	</select>
 	<select id="getOrderUserVOinOneMonth" resultType="com.hdsm.domain.OrderUserVO">
 	select * 
 	from orderList

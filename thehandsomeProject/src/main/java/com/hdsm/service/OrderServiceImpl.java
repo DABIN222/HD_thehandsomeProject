@@ -349,6 +349,44 @@ public class OrderServiceImpl implements OrderService {
 		ordermapper.deleteMilege(oid);
 		}
 	}
+
+	//사용자의 id를 통해 사용자가 최근에 주문한 상품을 가져온다.
+	@Override
+	public OrderUserVO getRecentOrderUserVO(String mid) {
+		// TODO Auto-generated method stub
+		
+		//최근 주문한 사용자 정보를 가져온다.
+		OrderUserVO ouv= ordermapper.getRecentOrderUserVO(mid);
+		//oid를 통해 톻해 상품들의 리스트를 조회 
+		ouv.setOrders(ordermapper.getOrderItem(ouv.getOid()));
+		//주문한 사용자가 주문한 상품들의 리스트를 가져온다.
+		List<OrderItemVO> olv=ouv.getOrders();
+		for(int i=0;i<olv.size();i++) {
+		//ProductVO를 pid를 통해 가져와 지정
+		olv.get(i).setProductVO(productmapper.getProduct(olv.get(i).getPid()));
+		//주문한 상품의 가격을 지정한다.
+		olv.get(i).setOprice(olv.get(i).getProductVO().getPprice());
+					
+		//상품들의 총합이나 총 마일리지, 총 포인트를 계산
+		olv.get(i).initSaleTotal();
+				
+		//상품에 대한 pid를 가져와 색깔과 이미지를 가져온다.
+		List<ThumbnailColorVO> thumbnailcolorvolist=membermapper.getProductsColor(olv.get(i).getPid());
+					
+		//color를 크기만큼 반복하는데 객체의 ccolorcode가 같으면 해당하는 객체를 thumbnail에 저장한다.
+		for(int j=0;j<thumbnailcolorvolist.size();j++) {
+			if(thumbnailcolorvolist.get(j).getCcolorcode().equals(olv.get(i).getCcolorcode())) {
+					olv.get(i).setThumbnail(thumbnailcolorvolist.get(j));
+			}
+			}
+
+		}
+
+				return ouv;
+	}
+	
+
+	
 	
 
 	}

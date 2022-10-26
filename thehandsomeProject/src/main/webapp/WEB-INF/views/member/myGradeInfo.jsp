@@ -305,12 +305,6 @@
 				<h4><a href="/member/mypage">마이페이지<!-- 마이페이지 --></a></h4>
 				<div class="lnb">
 					<dl>
-						<dt>주문조회</dt>
-						<dd>
-							<a href="/ko/mypage/order/myorders" onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
-						</dd>
-					</dl>
-					<dl>
 						<dt>혜택관리</dt>
 						<dd>
 							<a href="/member/myGradeInfo" onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>

@@ -46,4 +46,7 @@ public interface OrderService {
 	
 	//주문한 사용자의 정보와 상품 그리고 마일리지 포인트를 제거
 	public void deleteOrderUser(String oid);
+	
+	//사용자가 주문한  최근 상품을 조회 
+	public OrderUserVO getRecentOrderUserVO(String mid);
 }

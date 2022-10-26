@@ -169,9 +169,90 @@
                 </tr>
             </thead>
             <tbody id="listBody">
-                <tr>
-                    <td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
-                </tr>
+            <c:choose>
+						<c:when test="${recentouv eq null }">
+							<tr>
+                    			<td colspan="6" class="no_data">최근 한 달간 주문내역이 없습니다.<!-- 최근 한 달간 주문내역이 없습니다. --></td>
+                			</tr>	
+							</c:when>
+			<c:otherwise>
+								<tr class="al_middle">
+								<td rowspan="${fn:length(recentouv.orders)+1 }" class="frt">
+               		 				<p class="num">${recentouv.oid }</p>
+                					<span class="sum_date">
+                					(${recentouv.odate })
+                					</span>
+                					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn" onclick="orderCancel();">주문취소</a>
+                					<form id="orderCancel" action="/order/ordercancel" method="post">
+									<input type="hidden" name="oid" value="${ recentouv.oid}">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</form>
+                				</td>
+                				<c:forEach items="${recentouv.orders }" var="order" varStatus="st">
+                				<c:choose>
+								<c:when test="${st.current=='0' }">
+								<td>
+								<div class="pt_list_all">
+								<img src="${order.thumbnail.c_thumbnail1 }" 
+									style = "object-fit : cover" > 
+								<div class="tlt_wrap">
+								<span class="tlt">
+								${order.productVO.bname }
+								</span>
+								<br/>  
+								<span class="sb_tlt">
+								${order.productVO.pname }
+								</span>
+								<p class="color_op">
+								color : ${order.thumbnail.cname }
+								<span class="and_line">
+								/</span>  
+								size : ${order.ssize }
+								</p>
+								</div>
+								</div>
+								</td>
+								<td>${order.oamount }</td>
+								<td class="totalprice">${order.totalprice }
+								<input type="hidden" class="totalprice" value="${order.totalprice }">
+								</td>
+								<td>배송준비중</td>
+								<td></td>  
+								</c:when>
+								<c:otherwise>
+								<tr class="al_middle">
+								<td>
+								<div class="pt_list_all">
+								<img src="${order.thumbnail.c_thumbnail1 }" style = "object-fit : cover" > 
+								<div class="tlt_wrap">
+								<span class="tlt">
+								${order.productVO.bname }
+								</span>
+								<br/>  
+								<span class="sb_tlt">
+								${order.productVO.pname }
+								</span>
+								<p class="color_op">
+								color : ${order.thumbnail.cname }
+								<span class="and_line">
+								/</span>  
+								size : ${order.ssize }
+								</p>
+								</div>
+								</div>
+								</td>
+								<td>${order.oamount }</td>
+								<td class="totalprice">${order.totalprice }
+								<input type="hidden" class="totalprice" value="${order.totalprice }">
+								</td>
+								<td>배송준비중</td>
+								<td></td>
+								</tr>
+								</c:otherwise>
+								</c:choose>
+								</c:forEach>
+			</c:otherwise>
+            </c:choose>
             </tbody>
         </table>
     </div> 
@@ -236,7 +317,7 @@
                 					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn" onclick="orderCancel();">주문취소</a>
                 					<form id="orderCancel" action="/order/ordercancel" method="post">
 									<input type="hidden" name="oid" value="${ ouv.oid}">
-									<input type="hidden" name="CSRFToken" value="77b0e71f-1c68-403d-8ba3-1c8b76071cce">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 									</form>
                 				</td>
 								<c:forEach items="${ ouv.orders}" var="order" varStatus="st">
@@ -421,11 +502,5 @@ function orderCancel(){
 	} 
 }
 
-
-
-
-
-=======
->>>>>>> 7f7ded731a5852473a4a47a9f2e2c11f38b390a5
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
