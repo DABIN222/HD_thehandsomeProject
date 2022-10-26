@@ -3805,3 +3805,89 @@
 	//인자값을 문자열로 변환한 뒤, 정규식을 활용하여 3자리마다 콤마를 삽입해준다.
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
+	<li class="evaluation_view" id="evaluation_view0">
+		<div class="member_info_top">
+			<ul>
+				<li class="name"></li>
+				<li class="grade"></li>
+				<li class="date"></li>
+				<li class="stars">
+					<div class="star_score1807">
+						<span class="cmt_star"> <span class="cmt_per">별점</span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="member_info_bottom">
+			<ul>
+				<li class="choice">• <span></span> / <span></span>
+					/ <span></span> / 평소 사이즈 : <span></span>
+				</li>
+				<li class="must">• 구매 정보 : <span></span> / <span></span>
+					/ <span>더한섬닷컴</span>
+				</li>
+			</ul>
+		</div>
+			<div class="review_represent_img1912">
+			  <img
+			    src=""
+			    alt=""
+			  />
+			</div>
+		<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
+		  <ul class="slides">
+		  
+		    <li>
+		      <div class="review_img_cont_inner191216">
+		        <div class="img_wrap">
+		          <img
+		            src=""
+		            alt="리뷰 이미지"
+		          />
+		        </div>
+		      </div>
+		    </li>
+		    
+		  </ul>
+		</div>
+		<div class="review_txt_wrap">
+			<p class="review_txt"></p>
+		</div>
+		<div class="sizecolor clearfix">
+			<div class="real_fit_size1905">
+				<strong>• 실 착용 사이즈</strong>
+				<div class="evaluation_wrap1905">
+					<p>허리둘레 :</p>
+					<div class="clearfix">
+						<span class="">타이트함</span> <span class=" on">적당함</span> <span
+							class="">여유있음</span>
+					</div>
+				</div>
+				<div class="evaluation_wrap1905">
+					<p>엉덩이둘레 :</p>
+					<div class="clearfix">
+						<span class="">타이트함</span> <span class=" on">적당함</span> <span
+							class="">여유있음</span>
+					</div>
+				</div>
+				<div class="evaluation_wrap1905">
+					<p>총길이 :</p>
+					<div class="clearfix">
+						<span class="">짧은 편</span> <span class=" on">적당함</span> <span
+							class="">긴 편</span>
+					</div>
+				</div>
+			</div>
+			<div class="real_color1905">
+				<strong>• 실 제품 색상</strong>
+				<div class="clearfix">
+					<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
+						class="">밝아요</span>
+				</div>
+			</div>
+		</div>
+		<div class="review_more_1807">
+			<a class="review_plus" href="javascript:void(0);" >리뷰 더보기</a>
+		</div>
+	</li>

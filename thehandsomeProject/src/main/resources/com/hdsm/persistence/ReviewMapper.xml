@@ -56,4 +56,7 @@
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid} AND psize=#{psize} AND pcolor=#{pcolor}
 	</select>
+	
+	<!-- 상품평 갯수랑 평점 가져오기 -->
+	
 </mapper> 
