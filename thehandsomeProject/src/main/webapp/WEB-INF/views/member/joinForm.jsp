@@ -9,172 +9,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>join</title>
 <link rel="stylesheet" href="/resources/css/join.css" />
+<link rel="stylesheet" href="/resources/css/common.css" />
+<link rel="stylesheet" href="/resources/css/layout.css" />
+<link rel="stylesheet" href="/resources/css/content.css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
+
+<%@include file="/WEB-INF/views/common/header.jspf"%>
 <body>
-	<div class="pageTitle">
-		<div class="layout1">
-			<h2 class="tit">H.Point 회원가입</h2>
-			<p class="desc"></p>
-		</div>
-	</div>
-	<div class="input_infomation" style="margin-left: 80px; margin-right: 80px; margin-bottom: 80px;">
-		<h3 class="t_tit1"> 개인정보입력 <em class="nec">(* 필수입력)</em> </h3>
+<% request.setCharacterEncoding("UTF-8"); %>
+
+	<div id="bodyWrap" class="input_infomation" style="margin-left: 80px; margin-right: 80px; margin-bottom: 80px;">
+		<h3 class="cnts_title"><span>회원가입</span></h3>
 		
-		<!-- 회원가입 제출 form -->
-		<form method="post" action="/member/join" id="mFrm" onsubmit="return joinCheck();">	
-			<!-- 아이디  비밀번호 -->
-			<fieldset class="divider">
-				<legend>개인정보입력</legend>
-
-				<!-- 아이디 -->
-				<div class="wrap_inp">
-					<label for="id" class="inp_tit">아이디<span class="nec">*</span></label>
-					<!-- input에 값을 잘 못 입력하면 .inp_bundle에 클래스 "error" 추가해주세요. (포커스되고 값이 입력되면 "focus" 클래스가 붙음) -->
-					<div class="inp_bundle registerCustId">
-						<input type="text" title="아이디 입력" id="registerCustId" name="custId" maxlength="20" class="inp flex" placeholder="아이디">
-						<button type="button" class="btn_right btn_typeC2" id="id_check_btn">
-							<span>중복 확인</span>
-						</button>
-					</div>
-					<!--   승인 메시지 : t_success 에러 메시지 : t_error -->
-					<p class="t_success" id="idCheckSpan"></p>
-					<ul class="bullet_type1 mark1 inp_mt">
-						<li>4~13자 사이로 입력 바랍니다.</li>
-						<li>영어와 숫자만 사용 가능합니다.</li>
-					</ul>
-				</div>
-				<!--// 아이디 -->
-	
-				<!-- 비밀번호 -->
-				<div class="wrap_inp">
-					<label for="password" class="inp_tit">비밀번호<span class="nec">*</span></label>
-					<div class="inp_bundle registerPwd1">
-						<input type="password" title="비밀번호 입력" id="registerPwd1"
-							name="custPwd" maxlength="30" class="inp flex" placeholder="비밀번호">
-					</div>
-	
-					<p class="cmt_guide1 mark1 inp_mt">비밀번호는 4자리 이상으로 입력 바랍니다.</p>
-				</div>
-				<!--// 비밀번호 -->
-	
-				<!-- 비밀번호 확인 -->
-				<div class="wrap_inp">
-					<label for="passwordCheck" class="inp_tit">비밀번호 확인
-						<span class="nec">*</span>
-					</label>
-					<div class="inp_bundle pwdCheckMsg2">
-						<input type="password" title="비밀번호 확인 입력" id="registerPwd2"
-							name="custPwdConfirm" maxlength="30" class="inp flex" placeholder="비밀번호 확인">
-						<!-- 비밀 번호 확인 버튼 누르면 pw_check_btn 실행 -->
-						<button type="button" class="btn_right btn_typeC2" id="pw_check_btn">
-							<span>비밀번호 확인</span>
-						</button>
-					</div>
-				</div><br>
-				<!--// 비밀번호 확인 -->
-
-				<font id="check_pw" style="margin-left: 157px;"> </font>				
-			</fieldset>		
-			<!--// 아이디, 비밀번호 -->
+		<div class="sub_container2">
+			<div id="handsomeCust" class="login_wrap box_type_1 renewal1904">
+				<h3 class="t_tit1"> 개인정보입력 <em class="nec">(* 필수입력)</em> </h3>
+				<!-- 회원가입 제출 form -->
+				<form method="post" action="/member/join" id="mFrm" onsubmit="return joinCheck();">	
+					<!-- 아이디  비밀번호 -->
+					<fieldset class="divider">
+						<legend>개인정보입력</legend>
+		
+						<!-- 아이디 -->
+						<div class="wrap_inp">
+							<label for="id" class="inp_tit">아이디<span class="nec">*</span></label>
+							<!-- input에 값을 잘 못 입력하면 .inp_bundle에 클래스 "error" 추가해주세요. (포커스되고 값이 입력되면 "focus" 클래스가 붙음) -->
+							<div class="inp_bundle registerCustId">
+								<input type="text" title="아이디 입력" id="registerCustId" name="custId" maxlength="20" class="inp flex" placeholder="아이디">
+								<button type="button" class="btn_right btn_typeC2" id="id_check_btn">
+									<span>중복 확인</span>
+								</button>
+							</div>
+							<!--   승인 메시지 : t_success 에러 메시지 : t_error -->
+							<p class="t_success" id="idCheckSpan"></p>
+							<ul class="bullet_type1 mark1 inp_mt">
+								<li>4~13자 사이로 입력 바랍니다.</li>
+								<li>영어와 숫자만 사용 가능합니다.</li>
+							</ul>
+						</div>
+						<!--// 아이디 -->
 			
-			<!-- 이름, 이메일, 연락처  -->
-			<div class="group divider">
-				<!-- 이름 -->
-				<div class="wrap_inp">
-					<label for="name" class="inp_tit">이름<span class="nec">*</span></label>
-					<div class="inp_bundle registerPwd1">
-						<input type="text" title="이름 입력" id="registerName" name="custName" maxlength="30" class="inp flex" placeholder="이름">
-					</div>
-				</div>
-				<!--// 이름 -->	
-				
-				<!-- 이메일 -->
-				<div class="wrap_inp">
-					<label for="email" class="inp_tit">이메일<span class="nec">*</span></label>
-					<div class="inp_bundle email_bundle emailCheckMsg">
-						<input type="text" title="이메일 아이디 입력" id="registerEmail" name="registerEmail" value="" maxlength="80" class="inp flex" placeholder="이메일"> 
-						<span id="middle">@</span>
+						<!-- 비밀번호 -->
+						<div class="wrap_inp">
+							<label for="password" class="inp_tit">비밀번호<span class="nec">*</span></label>
+							<div class="inp_bundle registerPwd1">
+								<input type="password" title="비밀번호 입력" id="registerPwd1"
+									name="custPwd" maxlength="30" class="inp flex" placeholder="비밀번호">
+							</div>
+			
+							<p class="cmt_guide1 mark1 inp_mt">비밀번호는 4자리 이상으로 입력 바랍니다.</p>
+						</div>
+						<!--// 비밀번호 -->
+			
+						<!-- 비밀번호 확인 -->
+						<div class="wrap_inp">
+							<label for="passwordCheck" class="inp_tit">비밀번호 확인
+								<span class="nec">*</span>
+							</label>
+							<div class="inp_bundle pwdCheckMsg2">
+								<input type="password" title="비밀번호 확인 입력" id="registerPwd2"
+									name="custPwdConfirm" maxlength="30" class="inp flex" placeholder="비밀번호 확인">
+								<!-- 비밀 번호 확인 버튼 누르면 pw_check_btn 실행 -->
+								<button type="button" class="btn_right btn_typeC2" id="pw_check_btn">
+									<span>비밀번호 확인</span>
+								</button>
+							</div>
+						</div>		
+						<font id="check_pw" style="margin-left: 157px; font-size:14px;"> </font>				
+						<!--// 비밀번호 확인 --><br><br>
+					</fieldset>		
+					<!--// 아이디, 비밀번호 -->
+					
+					<!-- 이름, 이메일, 연락처  -->
+					<div class="group divider">
+						<!-- 이름 -->
+						<div class="wrap_inp">
+							<label for="name" class="inp_tit">이름<span class="nec">*</span></label>
+							<div class="inp_bundle registerPwd1">
+								<input type="text" title="이름 입력" id="registerName" name="custName" maxlength="30" class="inp flex" placeholder="이름">
+							</div>
+						</div>
+						<!--// 이름 -->	
 						
-						<!-- 이메일 직접 입력 칸 -->
-						<input type="text" id="directEmail" name="directEmail" value="">
-						<!-- 이메일 주소 선택 select -->
-						<select class="select flex" id="registerWrite3_3" title="이메일 도메인 선택" style="color:gray;" required>
-							<option value="00" disabled selected>이메일 주소 선택</option>
-							<option value="naver.com">naver.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="daum.net">daum.net</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="nate.com">nate.com</option>
-							<option value="06">직접입력</option>
-						</select>	
-						<!-- 이메일 값 합치기 -->
-						<input type="hidden" id="emailtotal" name="emailtotal" value="">
-					</div>
-				</div>
-				<!--// 이메일 -->
-				
-				<!-- 연락처 -->
-				<div class="wrap_inp">
-					<label for="tel" class="inp_tit">연락처<span class="nec">*</span></label>
-					<!-- input에 값을 잘 못 입력하면 .inp_bundle에 클래스 "error" 추가해주세요. (포커스되고 값이 입력되면 "focus" 클래스가 붙음) -->
-					<div class="inp_bundle registerCustTel">
-						<input type="text" title="연락처 입력" id="registerCustTel" name="custTel" maxlength="20" class="inp flex" placeholder="연락처">
-						<button type="button" class="btn_right btn_typeC2" id="tel_check_btn">
-							<span>중복 확인</span>
-						</button>
-					</div>
-					<!--   승인 메시지 : t_success 에러 메시지 : t_error -->
-					<p class="t_success" id="telCheckSpan"></p>
-					<ul class="bullet_type1 mark1 inp_mt">
-						<li>연락처는 8~13자리 숫자로만 입력 바랍니다.</li>
-						<li>ex) 01012341234</li>
-					</ul>
-				</div>
-				<!--// 연락처 -->
-			</div>
-			<!--//이름, 이메일, 연락처 -->
-	
-			<!-- 주소 -->
-			<div class="group divider">
-				<!-- 주소 -->
-				<div class="wrap_inp">
-					<label for="userAddress" class="inp_tit">주소</label>
-					<div class="addr_bundle">
-						<div class="inp_bundle">
-							<input type="hidden" id="addressType" name="partner.addrType" value="01"> 
-								<input type="text" title="주소 입력" id="regPostNo" name="partner.postNo" class="inp flex" placeholder="주소입력" readonly="" value="">
-							<button type="button" class="btn_typeC2 numSrchBt" id="adress_btn">
-								<span>주소검색</span>
-							</button>
+						<!-- 이메일 -->
+						<div class="wrap_inp">
+							<label for="email" class="inp_tit">이메일<span class="nec">*</span></label>
+							<div class="inp_bundle email_bundle emailCheckMsg">
+								<input type="text" title="이메일 아이디 입력" id="registerEmail" name="registerEmail" value="" maxlength="80" class="inp flex" placeholder="이메일"> 
+								<span id="middle">@</span>
+								
+								<!-- 이메일 직접 입력 칸 -->
+								<input type="text" id="directEmail" name="directEmail" value="" style="height: 40px !important; width:180px; font-size:14px;">
+								<!-- 이메일 주소 선택 select -->
+								<select class="select flex" id="registerWrite3_3" title="이메일 도메인 선택" style="color:gray; height: 40px !important; font-size:14px; margin:0px !important" required>
+									<option value="01">직접입력</option>
+									<option value="naver.com">naver.com</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="daum.net">daum.net</option>
+									<option value="google.com">google.com</option>
+									<option value="nate.com">nate.com</option>
+								</select>	
+								<!-- 이메일 값 합치기 -->
+								<input type="hidden" id="emailtotal" name="emailtotal" value="">
+							</div>
 						</div>
-						<div class="inp_bundle">
-							<!-- 박진수 수정 -->
-							<input type="hidden" id="zonecode" name="zonecode" value="">
-							<!-- 박진수 수정 -->
-							<input type="text" title="주소 입력" name="partner.addr1"
-								id="regAddr1" class="inp flex" placeholder="상세주소">
+						<!--// 이메일 -->
+						
+						<!-- 연락처 -->
+						<div class="wrap_inp">
+							<label for="tel" class="inp_tit">연락처<span class="nec">*</span></label>
+							<!-- input에 값을 잘 못 입력하면 .inp_bundle에 클래스 "error" 추가해주세요. (포커스되고 값이 입력되면 "focus" 클래스가 붙음) -->
+							<div class="inp_bundle registerCustTel">
+								<input type="text" title="연락처 입력" id="registerCustTel" name="custTel" maxlength="20" class="inp flex" placeholder="연락처">
+								<button type="button" class="btn_right btn_typeC2" id="tel_check_btn">
+									<span>중복 확인</span>
+								</button>
+							</div>
+							<!--   승인 메시지 : t_success 에러 메시지 : t_error -->
+							<p class="t_success" id="telCheckSpan"></p>
+							<ul class="bullet_type1 mark1 inp_mt">
+								<li>연락처는 8~13자리 숫자로만 입력 바랍니다.</li>
+								<li>ex) 01012341234</li>
+							</ul><br><br>
 						</div>
+						<!--// 연락처 -->
 					</div>
-				</div>
-			</div>
-			<!--// 주소 -->
+					<!--//이름, 이메일, 연락처 -->
 			
-			<!-- 확인, 취소 -->
-			<div class="btn_area btn_ac" style="margin-bottom: 60px;">
-				<a class="btn_typeB1" href="http://www.thehandsome.com/ko/"><span>취소</span></a>
-				<button type="submit" class="btn_typeB2">확인</button>
-				<!--<a class="btn_typeB2" href="javascript:" id="joinSubmit"><span>확인</span></a> -->
+					<!-- 주소 -->
+					<div class="group divider">
+						<!-- 주소 -->
+						<div class="wrap_inp">
+							<label for="userAddress" class="inp_tit">주소<span class="nec">*</span></label>
+							<div class="addr_bundle">
+								<div class="inp_bundle">
+									<input type="hidden" id="addressType" name="partner.addrType" value="01"> 
+										<input type="text" title="주소 입력" id="regPostNo" name="partner.postNo" class="inp flex" placeholder="주소입력" readonly="" value="">
+									<button type="button" class="btn_typeC2 numSrchBt" id="adress_btn">
+										<span>주소검색</span>
+									</button>
+								</div>
+								<div class="inp_bundle">
+									<!-- 박진수 수정 -->
+									<input type="hidden" id="zonecode" name="zonecode" value="">
+									<!-- 박진수 수정 -->
+									<input type="text" title="주소 입력" name="partner.addr1"
+										id="regAddr1" class="inp flex" placeholder="상세주소">
+								</div>
+							</div>
+						</div><br><br>
+					</div>
+					<!--// 주소 -->
+					
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					
+					<!-- 확인, 취소 -->
+					<div class="btn_area btn_ac" style="margin-bottom: 60px;">
+						<a class="btn_typeB1" href="/member/loginForm"><span>취소</span></a>
+						<button type="submit" class="btn_typeB2">확인</button>
+						<!--<a class="btn_typeB2" href="javascript:" id="joinSubmit"><span>확인</span></a> -->
+					</div>
+					<!--// 확인, 취소 -->
+				</form>
 			</div>
-			<!--// 확인, 취소 -->
-		</form>
-	</div>
-	<!--//--------------------------------- 회원가입 끝 -------------------------------------->
-		
+			<!--//--------------------------------- 회원가입 끝 -------------------------------------->
+		</div>
+	</div>	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- 
+		작성자 : 김다빈
+		내용 : 회원가입 js (중복검사, 유효성 검사, insert)	
+	-->
 	<script>		
 		// 주소 api
 		window.onload = function() {
@@ -190,6 +200,7 @@
 						//박진수 수정
 						document.querySelector("input[name='partner.addr1']").focus(); //상세입력 포커싱
 						//박진수 수정
+						self.close();
 					}
 				}).open();
 			});
@@ -215,6 +226,8 @@
 			var email_check = /^[a-zA-z0-9]{4,13}$/;		//이메일 유효성 검사
 			var member_tel = $('#registerCustTel').val();	//연락처 입력값
 			var tel_check = /^[0-9]{8,13}$/;				//연락처 유효성 검사
+			var address1 = $('#regPostNo').val();			//주소 입력값
+			var address2 = $('#regAddr1').val();			//주소 입력값
 		
 			/* console.log($("#registerWrite3_3").val()); */
 			// 아이디 확인
@@ -226,14 +239,23 @@
 				alert("아이디는 영어와 숫자만 사용 가능하며, 4~13자 사이로 입력해주세요");
 				return false;
 			}
+			if(idPass == false) {
+				alert("아이디 중복을 확인 해주세요");
+				return false;
+			}
 			
 			// 비밀번호 확인
 			else if(pass1 == '' || pass1 == null || pass2 == '' || pass2 == null) {
 				alert("비밀번호를 입력하세요");
 				return false;
 			}// 비밀번호 유호성 (비밀번호는 자리만)
-			else if(pass1.length<3 || pass2.length<3){
+			else if(pass1.length<4 || pass2.length<4){
 				alert("비밀번호는 3자리 이상으로 입력해주세요");
+				return false;
+			}
+			// 비밀번호 중복 확인
+			if(pwPass == false) {
+				alert("비밀번호를 확인하세요");
 				return false;
 			}
 			
@@ -246,8 +268,8 @@
 				alert("이메일을 입력하세요");
 				return false;
 			}// 이메일 주소 확인
-			else if($("#registerWrite3_3").val()=="00" || $("#registerWrite3_3").val()==null){
-				alert("이메일 주소를 선택해주세요");
+			else if($("#directEmail").val()=="" || $("#directEmail").val()==null){
+				alert("이메일 주소를 입력해주세요");
 				return false;
 			}
 			// 이메일 유효성
@@ -256,6 +278,7 @@
 				return false;
 			}
 			
+			
 			// 연락처 확인
 			else if(member_tel == '' || member_tel == null) {
 				alert("연락처를 입력하세요");
@@ -263,17 +286,6 @@
 			}// 연락처 유효성
 			else if (!tel_check.test(member_tel)){
 				alert("연락처는 4~13자리만 가능하며 숫자로만 입력해주세요");
-			}
-			
-			console.log("idPass result 값 : " + idPass);
-			// 아이디 중복 확인
-			if(idPass == false) {
-				alert("아이디 중복을 확인 해주세요");
-				return false;
-			}
-			// 비밀번호 중복 확인
-			if(pwPass == false) {
-				alert("비밀번호를 확인하세요");
 				return false;
 			}
 			// 전화번호 중복 확인
@@ -281,6 +293,20 @@
 				alert("전화번호 중복을 확인해 해주세요");
 				return false;
 			}
+			
+			// 주소 확인
+			if(address1 == '' || address1 == null) {
+				alert("주소를 확인해주세요");
+				return false;
+			}// 주소 확인
+			
+			// 상세 주소 확인
+			if(address2 == '' || address2 == null) {
+				alert("상세 주소를 확인해주세요");
+				return false;
+			}//상세  주소 확인
+			
+			console.log("idPass result 값 : " + idPass);
 			
 			// 모든 조건 통과 시, 통과!
 			return true;
@@ -292,6 +318,7 @@
  			var id = $('#registerCustId').val();	//jsp의 값 id에 넣기
  			var data = {memberId : id}				//memberId=컨트롤러에 넘길 데이터 이름, 데이터 값
  			console.log(data);
+ 			console.log("name : " + $('#registerName').val());
  			
  			let csrfHeaderName ="${_csrf.headerName}";
             let csrfTokenValue="${_csrf.token}";
@@ -362,7 +389,7 @@
  		});
 		//-- 연락처 중복 확인 끝
 		
-		// 이메일 합치기
+/* 		// 이메일 합치기
 		$("#registerEmail").blur(function(){		// blur() : focus out 되었을 때 발생하는 함수
 			email();								// email 입력란에서 마우스 커서가 벗어나는 순간 eamil()함수 실행
 		});
@@ -379,19 +406,38 @@
 			}//-- 이메일 직접 입력 끝
 			
 			email();
+		}); */
+		
+		$("#registerEmail").blur(function(){	
+			email();								
+		});
+		
+		$("#registerWrite3_3").change(function(){	// change() : value 값에 변화가 생길 경우 이를 감지하여 callback함수 동작
+			//직접 입력 누를 때 나타남
+			if($("#registerWrite3_3").val() == "01") {
+				$("#directEmail").attr("readonly", false);
+				$("#directEmail").val("");			// select=06 직접 입력인 경우, 입력란 보이기
+			}else {
+				$("#directEmail").attr("readonly", true);
+				$("#directEmail").val($(this).val());
+			}//-- 이메일 직접 입력 
+			email();
+		});
+		
+		$("#directEmail").blur(function(){	
+			email();								
 		});
 		
 		// email() 함수 동작
 		function email() {							
 			var email = $("#registerEmail").val();		// email 입력 값
 			var middle = $("#middle").text(); 			// @
-			var address = null;							// eamil 주소(도메인) 값
+			var address = $("#directEmail").val();							// eamil 주소(도메인) 값
 			
- 			if($("#registerWrite3_3").val()=="06"){
-				address = $("#directEmail").val();		// 직접 입력인 경우, 입력한 값을 address에 저장
-			}else {
-				address = $("#registerWrite3_3").val();	// 아닌 경우 select에 저장된 값을 address에 저장
-			} 
+			console.log("eamil : " + email);
+			console.log("middle : " + middle);
+			console.log("address : " + address);
+			
 			// email과 middle에 값이 있다면 합쳐주기
 			if(email != "" && middle != ""){			
 				console.log(address);

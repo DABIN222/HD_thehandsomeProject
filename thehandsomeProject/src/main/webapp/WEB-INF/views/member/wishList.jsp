@@ -598,21 +598,6 @@
 				console.log(volumn);
 			});
 			
-/* 			//아이템 삭제 (1개만)
-			$("a[name=deleteOne]").click(function(){
-				const itemIndex = parseInt($(this).attr('itemnum'));
-				const deleteList = [];
-				let itemMap = new Map();
-				itemMap.set('member_mid',"${member}");
-				itemMap.set('pid', pids[itemIndex]);
-				itemMap.set('psize', psizes[itemIndex]);
-				itemMap.set('pcolor', pcolors[itemIndex]);
-			  
-				deleteList.push(Object.fromEntries(itemMap));
-				//직렬화 해서 넘겨주자!
-				$.deleteFunction(JSON.stringify(deleteList));
-			}); */
-			
 			
 			//쇼핑백 담기 - 닫기 버튼
 			$("#clsBtn").on("click", function() {
