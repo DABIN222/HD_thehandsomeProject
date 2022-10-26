@@ -83,8 +83,6 @@ public class MemberController {
 	public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info("회원가입 진입!");
 		
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		// jsp에서 name에 입력된 값 vo에 저장
 		member.setMid(request.getParameter("custId"));
 		member.setMpassword(request.getParameter("custPwd"));
