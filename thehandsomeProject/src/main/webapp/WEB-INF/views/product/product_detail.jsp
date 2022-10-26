@@ -2073,6 +2073,11 @@
 				$("#rating").val($(this).attr('value'));
 			});
 	
+	
+	
+	
+	
+	
 	// 상품평 내용 초기화
 	function reviewReset() {
 		//연령

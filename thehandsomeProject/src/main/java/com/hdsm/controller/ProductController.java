@@ -268,23 +268,22 @@ public class ProductController {
 		ProductVO product=service.getProduct(pid);
 		System.out.println(product.getP_size());
 		String[] sizelist=product.getP_size().split(",");
-		
-		// 상품평 리스트 받기
+		// 상품평 리스트 받기 (정구현)
 		List<ReviewDTO> getReview = reviewService.getReviewList(pid);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		
-		// rcontent map으로 변환하기
+		
 		for(ReviewDTO dto : getReview) {
-			// 문자열 rcontent를 map으로 변환
+			// 문자열 타입 rcontent를 map으로 변환한다. (정구현)
 			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
 			/*
 			 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
 			 * rcontent.get("age")+"\n"); log.info("height : " +
 			 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
 			 */
-			//reviewDTO에 변환한 값 넣기
+			//reviewDTO에 변환한 값을 넣는다.
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
 		}

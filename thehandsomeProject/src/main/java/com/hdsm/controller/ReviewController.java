@@ -54,47 +54,30 @@ public class ReviewController {
 	@Autowired
 	ProductService productService;
 	
-	//상품평 리스트
+	//상품평 리스트 (정구현)
 	@ResponseBody
 	@RequestMapping(value="/reviewList", method=RequestMethod.POST)
 	public List<ReviewDTO> reviewList(@RequestParam("pid") String pid,HttpServletRequest request, Model model) throws Exception {
-		log.info("------------------ pid ----------------\n"+pid);
-		System.out.println("pid : " + pid);
+
 		List<ReviewDTO> list = reviewService.getReviewList(pid);
-		log.info("------------------ list ----------------\n"+list.toString());
-		
+	
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		for(ReviewDTO dto : list) {
 			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
-			log.info("rcontent에 값 넣었다-------------------\n");
-			log.info("age : " + rcontent.get("age")+"\n");
-			log.info("height : " + rcontent.get("height")+"\n");
-			log.info("enjoySize : " + rcontent.get("enjoySize")+"\n");
-			log.info("bodyType : " + rcontent.get("bodyType")+"\n");
-			log.info("rating : " + rcontent.get("rating")+"\n");
-			log.info("realWearSize1 : " + rcontent.get("realWearSize1")+"\n");
-			log.info("realWearSize2" + rcontent.get("realWearSize2")+"\n");
-			log.info("realWearSize3 : " + rcontent.get("realWearSize3")+"\n");
-			log.info("realProductColor : " + rcontent.get("rating")+"\n");
-			log.info("headline : " + rcontent.get("realWearSize1")+"\n");
-			
-			log.info("headline : " + rcontent.get("thumbnailImage")+"\n");
-			
+
 			ArrayList<String> asd = (ArrayList<String>) rcontent.get("imagesPath");
 			
 			for(String imagePath : asd) {
 				log.info("asdasd : " + imagePath+"\n");
 			}
-			
-			
+
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
 		}
 		
 		log.info("리스트에 값 넣었다-------------------\n"+reviewList.toString());
-		//model.addAttribute("reviewList",reviewList);
-		
+
 		return reviewList;
 	}
 	
