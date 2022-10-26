@@ -1,22 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>더한섬닷컴 | THE HANDSOME.COM</title>
-
-<link rel="stylesheet" href="/resources/css/layout.css" />
-<link rel="stylesheet" href="/resources/css/common.css" />
-<link rel="stylesheet" href="/resources/css/contents.css" />
-
-<!-- 제이쿼리 cdn -->	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- ui 공통 스크립트 -->
-<script type="text/javascript" src="/resources/js/ui.js"></script>
 <%@include file="/WEB-INF/views/common/header.jspf"%>
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
@@ -424,7 +408,6 @@
 $('.totalprice').each(function(idx){
 	$(this).text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 })
-<<<<<<< HEAD
 
 //주문을 취소할 때 실행되는 함수
 function orderCancel(){
