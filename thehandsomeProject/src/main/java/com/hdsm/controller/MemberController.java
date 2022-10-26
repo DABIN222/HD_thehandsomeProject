@@ -184,7 +184,7 @@ public class MemberController {
 
 	/*로그아웃 */
 	@RequestMapping(value="/customLogout", method=RequestMethod.GET)//받는 형태는 일단 GET으로
-   public void logoutMainGET(HttpServletRequest request) throws Exception{
+	public void logoutMainGET(HttpServletRequest request) throws Exception{
        
        log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
        
