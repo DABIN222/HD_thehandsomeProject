@@ -236,5 +236,23 @@ public class ReviewController {
 			} // end for
 
 		}//end uploadpost...
+		
+		//@RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
+		
+		@RequestMapping(value = "/reviewCancle", produces = "application/json")
+		public ResponseEntity<Void> reviewCancle(
+				@RequestBody ReviewAttachFileDTO attachDTO){
+			
+			String deletePath = "C:/Users/kosa/Desktop/HANDSOME/HD_thehandsomeProject/thehandsomeProject/src/main/webapp";
+			
+			ReviewUtil.builder().build().deleteCancleImage(deletePath+attachDTO.getThumbPath());
+			
+			for(String imgpath : attachDTO.getImagesPath()) {
+				ReviewUtil.builder().build().deleteCancleImage(deletePath+imgpath);
+			}
+			
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		
 	
 }
