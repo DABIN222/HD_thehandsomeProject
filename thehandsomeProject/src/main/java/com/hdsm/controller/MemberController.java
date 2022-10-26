@@ -80,13 +80,16 @@ public class MemberController {
 	
 	// 회원가입
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public String join(MemberVO member, HttpServletRequest request) throws Exception {
+	public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info("회원가입 진입!");
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		// jsp에서 name에 입력된 값 vo에 저장
 		member.setMid(request.getParameter("custId"));
 		member.setMpassword(request.getParameter("custPwd"));
 		member.setMname(request.getParameter("custName"));
+		log.info(request.getParameter("custName"));
 		member.setMemail(request.getParameter("emailtotal"));
 		member.setMtel(request.getParameter("custTel"));
 		member.setMaddress1(request.getParameter("partner.postNo"));
