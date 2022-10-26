@@ -80,4 +80,7 @@ public interface MemberMapper {
 		
 	//유저 비밀번호 변경 
 	public void updateuser(MemberVO mid);
+	
+	//유저의 포인트 수정
+	public void updateHSpoint(MemberVO member);
 }

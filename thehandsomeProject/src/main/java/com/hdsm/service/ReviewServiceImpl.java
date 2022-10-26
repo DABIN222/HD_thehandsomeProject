@@ -54,5 +54,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public int getReviewCount(@Param("pid") String pid, @Param("mid") String mid, @Param("pcolor") String pcolor,@Param("psize") String psize) {
 		return mapper.getReviewCount(pid, mid, pcolor, psize);
 	}
+
+	@Override
+	public int UserReviewCount(String mid) {
+		// TODO Auto-generated method stub
+		return mapper.UserReviewCount(mid);
+	}
 	
 }

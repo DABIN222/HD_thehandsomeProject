@@ -49,4 +49,6 @@ public interface OrderService {
 	
 	//사용자가 주문한  최근 상품을 조회 
 	public OrderUserVO getRecentOrderUserVO(String mid);
+	
+	public int SumMilege(String mid);
 }

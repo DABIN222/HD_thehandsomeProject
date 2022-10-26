@@ -48,7 +48,7 @@ public class OrderController {
 		
 		//세션을  선언
 		HttpSession session=request.getSession();
-		
+		System.out.println((String)session.getAttribute("member"));
 		//해당하는 주문 상품들을 모아둠
 		List<OrderItemVO> orders = olvo.getOrders();
 		
@@ -89,7 +89,7 @@ public class OrderController {
 		@PostMapping("/orderexec")
 		public ResponseEntity<Void> orderexec(@RequestBody OrderUserVO ouv,HttpServletRequest request) {
 
-		
+			System.out.println(ouv);
 			//주문한 회원정보를 등록
 			orderservice.insertOrderUser(ouv);
 			
@@ -106,7 +106,9 @@ public class OrderController {
 			if(ouv.getStrpayment().equals("신용카드")|| ouv.getStrpayment().equals("현대카드 레드 쇼핑바우쳐")) {
 			orderservice.insertMileage(ouv);
 			}
-
+			
+			
+			System.out.println(ouv.getMid());
 			//hsPoint 값을 업데이트
 			orderservice.updateHspoint(ouv);
 
@@ -196,5 +198,7 @@ public class OrderController {
 			//삭제를 했기 때문에 redirect를 통해 페이지를 갱신한다.
 			return "redirect:/member/mypage";
 		}
+		
+	
 
 	}

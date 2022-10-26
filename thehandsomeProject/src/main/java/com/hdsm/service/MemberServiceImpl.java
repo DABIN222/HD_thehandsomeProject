@@ -224,6 +224,8 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteWishListItem(List<MemberWishListDTO> wsList) {
 		return mapper.deleteWishListItem(wsList);
 	}
+	
+
 
 
 }

@@ -232,13 +232,16 @@ public class OrderServiceImpl implements OrderService {
 		
 		//주문한 사용자의 mid를 통해 member 객체를 가져온다.
 		MemberVO member=membermapper.getMember(ouv.getMid());
-		
 		//상품들의 목록을 list로 가져온다.
 		List<OrderItemVO> orders=ouv.getOrders();
 		
 		//회원의 한섬 포인트를 주문한 사용자의 상품들의 총 포인트를 더하면 된다.
 		int HSpoint=member.getMpoint();
 		for(int i=0;i<orders.size();i++) {
+			//해당 상품에 대해 포인트 계산을 한다.
+			orders.get(i).initSaleTotal();
+			
+			//계산한 총 포인트를 더한다.
 			HSpoint+=orders.get(i).getTotalpoint();
 		}
 		
@@ -246,6 +249,7 @@ public class OrderServiceImpl implements OrderService {
 		member.setMid(ouv.getMid());
 		//한섬 포인트를 지정한다.
 		member.setMpoint(HSpoint);
+		System.out.println(member.getMpoint());
 
 		ordermapper.updateHspoint(member);
 
@@ -338,6 +342,9 @@ public class OrderServiceImpl implements OrderService {
 		//주문번호를 통해 주문한 사용자의 정보를 가져온다.
 		OrderUserVO ouv= ordermapper.getOrderUserItem(oid);
 		
+		//
+		MemberVO member= membermapper.getMember(ouv.getMid());
+		
 		//주문한 사용자의 정보를 삭제한다.
 		ordermapper.deleteOrderUser(oid);
 		
@@ -348,6 +355,17 @@ public class OrderServiceImpl implements OrderService {
 		if(ouv.getOpayment()==2 || ouv.getOpayment()==5) {
 		ordermapper.deleteMilege(oid);
 		}
+		
+		//
+		List<OrderItemVO> oivl= ordermapper.getOrderItem(oid);
+		int mpoint=member.getMpoint();
+		for(int i=0;i<oivl.size();i++) {
+			oivl.get(i).initSaleTotal();
+			mpoint-=oivl.get(i).getTotalpoint();
+		}
+		
+		member.setMpoint(mpoint);
+		membermapper.updateHSpoint(member);
 	}
 
 	//사용자의 id를 통해 사용자가 최근에 주문한 상품을 가져온다.
@@ -357,6 +375,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		//최근 주문한 사용자 정보를 가져온다.
 		OrderUserVO ouv= ordermapper.getRecentOrderUserVO(mid);
+		if(ouv!=null) {
 		//oid를 통해 톻해 상품들의 리스트를 조회 
 		ouv.setOrders(ordermapper.getOrderItem(ouv.getOid()));
 		//주문한 사용자가 주문한 상품들의 리스트를 가져온다.
@@ -383,10 +402,14 @@ public class OrderServiceImpl implements OrderService {
 		}
 
 				return ouv;
+		}
+		return null;
 	}
 	
-
-	
-	
-
+	//마일리지의 총합을 가져온다.
+	@Override
+	public int SumMilege(String mid) {
+		
+		return ordermapper.SumMilege(mid);
+	}
 	}

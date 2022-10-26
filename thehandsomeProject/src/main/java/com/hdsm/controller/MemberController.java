@@ -43,6 +43,7 @@ import com.hdsm.security.CustomUserDetailsService;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
+import com.hdsm.service.ReviewService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -60,7 +61,10 @@ public class MemberController {
 	@Autowired
 
 	OrderService orderservice;
-
+	
+	@Autowired
+	ReviewService reviewservice;
+	
 	CustomUserDetailsService customdetailsservice;
 	
 	PasswordEncoder pwencoder;
@@ -393,13 +397,23 @@ public class MemberController {
 			  //회원이 주문한 주문번호를 가져온다.(박진수)
 			  OrderUserVO ouv=orderservice.getRecentOrderUserVO(username);
 			  
-			  //ouvl이 비어있다는 것을 알리기 위함
+			  
+			  //ouvl이 비어있다는 것을 알리기 위함(박진수)
 			  if(ouv==null) {
 				  model.addAttribute("recentouv", null);
 			  }else {
 			  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
 			  model.addAttribute("recentouv", ouv);
 			  }
+					  
+			  //회원의 마일리지를 담는다.(박진수)
+			  model.addAttribute("totalMilege", orderservice.SumMilege(username));
+			  
+			  model.addAttribute("memberinfo", memberservice.getMember(username));
+			  
+			  //회원의 리뷰 개수를 가져오게 설정(박진수)
+			  model.addAttribute("reviewCount", reviewservice.UserReviewCount(username));
+			  
 			  log.info("마이 페이지 왔다");
 			
 			String memberID = username;
@@ -610,4 +624,19 @@ public class MemberController {
 		return "member/myGradeInfo";
 	}
 
+	//주문조회로 이동
+	@PostMapping("/orderlist")
+	public void orderlist(Principal principal,Model model) {
+		String username = principal.getName();
+		  //회원이 주문한 주문번호를 가져온다.(박진수)
+		  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
+		  
+		  //ouvl이 비어있다는 것을 알리기 위함
+		  if(ouvl.isEmpty()) {
+			  model.addAttribute("ouvl", null);
+		  }else {
+		  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
+		  model.addAttribute("ouvl", ouvl);
+		  }
+	}
 }

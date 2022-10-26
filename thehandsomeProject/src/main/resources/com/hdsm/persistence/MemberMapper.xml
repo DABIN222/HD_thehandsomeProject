@@ -209,5 +209,9 @@
 	<update id="updateuser">
 		update member set mpassword =#{mpassword},memail=#{memail},mname=#{mname},mtel=#{mtel} where mid =#{mid}
 	</update>
-
+	
+	<!-- 유저의 포인트를 수정 (박진수)-->
+	<update id="updateHSpoint">
+		update member set mpoint=#{mpoint} where mid=#{mid}
+	</update>
 </mapper> 

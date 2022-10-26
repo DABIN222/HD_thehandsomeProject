@@ -373,6 +373,16 @@
 					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
 				<div class="lnb">
+				<dl>
+						<dt>주문조회</dt>
+						<dd>
+							<a href="javascript:void(0)"
+								onclick="Goorderlist();">주문/배송/반품/취소</a>
+							<form id="orderlist" action="/member/orderlist" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form>
+						</dd>
+					</dl>
 					<dl>
 						<dt>혜택관리</dt>
 						<dd>
@@ -964,7 +974,10 @@
 
 	}
 	
-	
+	//주문 목록으로 이동한다.(박진수)
+	function Goorderlist(){
+		$("#orderlist").submit();
+	}
 	
 
     </script>

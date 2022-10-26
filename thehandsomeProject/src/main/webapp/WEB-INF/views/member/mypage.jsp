@@ -11,44 +11,29 @@
 			<!-- lnb -->
 			<div class="lnb_wrap">
 				<h4>
-					<a href="/ko/mypage">마이페이지<!-- 마이페이지 --></a>
+					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
 				<div class="lnb">
 					<dl>
 						<dt>주문조회</dt>
 						<dd>
-							<a href="/ko/mypage/order/myorders"
-								onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
+							<a href="javascript:void(0)"
+								onclick="Goorderlist();">주문/배송/반품/취소</a>
+							<form id="orderlist" action="/member/orderlist" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form>
 						</dd>
 					</dl>
 					<dl>
-						<dt>혜택관리</dt>
-						<dd>
-							<a href="/ko/mypage/myGradeInfo"
-								onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/voucher"
-								onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mypoint"
-								onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/myEGiftCard"
-								onclick="GA_Event('마이페이지','LNB','E-GIFT CARD');">e-Gift Card</a>
-						</dd>
+							<dt>혜택관리</dt>
+							<dd><a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a></dd>
+							<dd><a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a></dd>
 					</dl>
 					<dl>
 						<dt>나의 상품관리</dt>
 						<dd>
 							<a href="/ko/mypage/myWish"
 								onclick="GA_Event('마이페이지','LNB','위시리스트');">위시리스트<!-- 위시리스트 --></a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/rsalarm"
-								onclick="GA_Event('마이페이지','LNB','재입고 알림');">재입고 알림<!-- 재입고알림 --></a>
 						</dd>
 					</dl>
 					<dl>
@@ -59,14 +44,6 @@
 						<dd>
 							<a href="/ko/mypage/shoppingAddressPWCheck"
 								onclick="GA_Event('마이페이지','LNB','배송지 관리');">배송지 관리</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/oneClick"
-								onclick="GA_Event('마이페이지','LNB','원클릭 결제 관리');">원클릭 결제 관리</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mergeCustomerInfo"
-								onclick="GA_Event('마이페이지','LNB','한섬 멤버십 통합');">한섬 멤버십 통합</a>
 						</dd>
 					</dl>
 					<dl>
@@ -120,13 +97,23 @@
     </form>
     <!-- 회원정보 -->
     <div class="profile_info1 clearfix review_betterment1905">
-            <div class="name type2">
+            <div class="name">
                     <span class="ico_grade"> <%=session.getAttribute("member")%>   <span>님</span></span>
                     <span class="grade_txt"></span>
-                </div>              
-                <div class="point" style="border:0; padding-left:0; width:95px">
+                </div>
+                <div class="pointbox_cover">
+                <div class="point_wrap">    
+                <div class="point">
+	                        <p class="title">한섬마일리지</p>
+	                       <a class="count" href="javascript:void(0);">${totalMilege }&nbsp;<span>M</span></a>
+	            </div> 
+	            <div class="point">
+	                                <p class="title">H.POINT</p>
+	                                <a class="count" href="javascript:void(0);">${memberinfo.mpoint }&nbsp;<span>P</span></a>
+	           </div>        
+                <div class="point">
                     <p class="title">COUPON</p>
-                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">0&nbsp;<span>장</span></a>
+                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">${reviewCount }&nbsp;<span>장</span></a>
                 </div>
                 <div class="point review">
                     <p class="title">상품평</p>
@@ -136,15 +123,13 @@
                    <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
                    <a href="javascript:void(0);" id="hpoinJoin" class="btn" onclick="GA_Event('마이페이지','회원정보','H.POINT 회원가입');">H.Point 회원가입</a>
                </div>
+               </div>
+            </div>
             </div>
     <!-- 회원정보 -->
     <!-- 최근주문 -->
     <div class="title_wrap">
         <h4 class="float_left">최근주문<!-- 최근주문 --></h4>
-        <p class="txt_line">최근 1개월 내 주문하신 내역입니다.<!-- 최근 1개월 내 주문하신 내역 입니다. --></p>
-        <div class="btn_wrap">
-            <a href="/ko/mypage/order/myorders" class="btn add_ss" onclick="GA_Event('마이페이지','최근주문','전체보기');">전체보기<!-- 전체보기 --></a>
-        </div>
     </div>
     <!-- table -->
     <div class="tblwrap lncl1812"><!-- 클래스추가 181204 -->
@@ -271,128 +256,7 @@
         </ul>
 
 
-				<div class="title_wrap mt50">
-					<h4>상품 주문 목록<!-- 상품 주문목록 --></h4>
-				</div>
-				<!-- table -->
-				<div class="tblwrap lncl1812">
-					<!-- 클래스추가 181204 -->
-					<table class="tbl_ltype review_betterment1905">
-						<caption>상품 주문 목록</caption>
-						<colgroup class="interval1812">
-							<!-- 수정 181204 -->
-							<col style="width: 120px">
-							<col>
-							<col style="width: 43px">
-							<col style="width: 112px">
-							<col style="width: 89px">
-							<col style="width: 111px">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">주문번호<!-- 주문번호 --></th>
-								<th scope="col">상품정보<!-- 상품정보 --></th>
-								<th scope="col" style="padding: 15px 0">수량<!-- 수량 --></th>
-								<!-- 스타일추가 181204 -->
-								<th scope="col">판매가<!-- 판매가 --></th>
-								<th scope="col">주문상태<!-- 주문상태 --></th>
-								<th scope="col">구분<!-- 구분 --></th>
-							</tr>
-						</thead>
-						<tbody id="listBody">
-						<c:choose>
-						<c:when test="${ouvl eq null }">
-							<tr>
-								<td colspan="6" class="no_data">주문내역이 없습니다.<!-- 주문내역이 없습니다. --></td>
-							</tr>
-							</c:when>
-						<c:otherwise>
-								<c:forEach items="${ouvl }" var="ouv">
-								<tr class="al_middle">
-								<td rowspan="${fn:length(ouv.orders)+1 }" class="frt">
-               		 				<p class="num">${ouv.oid }</p>
-                					<span class="sum_date">
-                					(${ouv.odate })
-                					</span>
-                					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn" onclick="orderCancel();">주문취소</a>
-                					<form id="orderCancel" action="/order/ordercancel" method="post">
-									<input type="hidden" name="oid" value="${ ouv.oid}">
-									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-									</form>
-                				</td>
-								<c:forEach items="${ ouv.orders}" var="order" varStatus="st">
-								<c:choose>
-								<c:when test="${st.current=='0' }">
-								<td>
-								<div class="pt_list_all">
-								<img src="${order.thumbnail.c_thumbnail1 }" 
-									style = "object-fit : cover" > 
-								<div class="tlt_wrap">
-								<span class="tlt">
-								${order.productVO.bname }
-								</span>
-								<br/>  
-								<span class="sb_tlt">
-								${order.productVO.pname }
-								</span>
-								<p class="color_op">
-								color : ${order.thumbnail.cname }
-								<span class="and_line">
-								/</span>  
-								size : ${order.ssize }
-								</p>
-								</div>
-								</div>
-								</td>
-								<td>${order.oamount }</td>
-								<td class="totalprice">${order.totalprice }
-								<input type="hidden" class="totalprice" value="${order.totalprice }">
-								</td>
-								<td>배송준비중</td>
-								<td></td>  
-								</c:when>
-								<c:otherwise>
-								<tr>
-								<td>
-								<div class="pt_list_all">
-								<img src="${order.thumbnail.c_thumbnail1 }" style = "object-fit : cover" > 
-								<div class="tlt_wrap">
-								<span class="tlt">
-								${order.productVO.bname }
-								</span>
-								<br/>  
-								<span class="sb_tlt">
-								${order.productVO.pname }
-								</span>
-								<p class="color_op">
-								color : ${order.thumbnail.cname }
-								<span class="and_line">
-								/</span>  
-								size : ${order.ssize }
-								</p>
-								</div>
-								</div>
-								</td>
-								<td>${order.oamount }</td>
-								<td class="totalprice">${order.totalprice }
-								<input type="hidden" class="totalprice" value="${order.totalprice }">
-								</td>
-								<td>배송준비중</td>
-								<td></td>
-								</tr>
-								</c:otherwise>
-								</c:choose>
-								</c:forEach>                                                                                                                                                                                                                                                                        						
-								</tr>
-								</c:forEach>  
-						<%-- </c:forEach> --%>
-						</c:otherwise>
-						</c:choose>
-						</tbody>
-					</table>
-				</div>
-				<!-- //table -->
-				<!-- paging -->
+				
 				<div class="paging"></div>
 				<!-- //paging -->
 
@@ -502,5 +366,9 @@ function orderCancel(){
 	} 
 }
 
+//주문 목록으로 이동한다.(박진수)
+function Goorderlist(){
+	$("#orderlist").submit();
+}
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

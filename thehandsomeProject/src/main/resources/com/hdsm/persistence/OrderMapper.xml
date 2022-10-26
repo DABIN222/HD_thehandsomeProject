@@ -44,6 +44,12 @@
 		values(mino_seq.NEXTVAL,#{member_mid},
 		#{micategory},#{micontent},sysdate,#{mipoint})
 	</insert>
+	
+	<select id="SumMilege" resultType="int">
+		select nvl(sum(mipoint),0)
+		from mileage
+		where member_mid=#{mid}
+	</select>
 
 	<update id="updateHspoint">
 	update member 

@@ -24,6 +24,9 @@ public interface OrderMapper {
 
 	//마일리지를 등록
 	public void insertMilege(MileageVO miv);
+	
+	//마일리지의 합을 조회
+	public int SumMilege(String mid);
 
 	//회원의 hspoint 업데이트
 	public void updateHspoint(MemberVO member);

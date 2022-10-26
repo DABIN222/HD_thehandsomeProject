@@ -69,8 +69,8 @@
                                     <td>
                                         <!-- price_wrap -->
                                         <div class="price_wrap">
-                                            <span id="price">₩ ${order.totalprice }</span>
-                                            <input type="hidden" id="price_num" value="${order.totalprice }">
+                                            <span class="price">₩ ${order.totalprice }</span>
+                                            <input type="hidden" class="price_num" value="${order.totalprice }">
                                         </div>
                                         <!-- //price_wrap -->
                                     </td>
@@ -389,17 +389,21 @@
 function priceComma(price) {
 return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }	
-                                
-$(document).ready(function(){
- 									console.log($("#price_num").val());
-									let sumPrice=priceComma($("#price_num").val());
-                                	$("#price").text("₩"+sumPrice);
+
+
+
+$(document).ready(function(){			
+									$(".price_wrap").each(function(index, item){
+										const price = priceComma($(this).find("input").val());
+										$(this).find("span").text('₩'+price);
+									});
                                 	let TotalPrice=priceComma("${realTotalPrice }");
                                 	$("#realTotalPrice").text("₩"+TotalPrice);
                                 	let realTotalsum=priceComma("${realTotalsum}");
                                 	$("#realPriceSum").text("₩"+realTotalsum);
                                 	let realBuy=realTotalsum;
                                 	$("#realBuy").text("₩"+realBuy);
+                                	
                                 	if("${orderuserlist.odiscounted}"!=0){
                                 		$("#totalDiscount").show();
                                 		$("#totalDiscountval").show();
