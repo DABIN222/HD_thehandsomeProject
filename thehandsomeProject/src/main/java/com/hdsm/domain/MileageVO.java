@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import lombok.Data;
 
+//마일리지 VO(박진수)
 @Data
 public class MileageVO {
 	private int mino;

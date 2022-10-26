@@ -2041,6 +2041,24 @@
 			reviewReset();
 			$("#customerReviewWriteDiv").hide();
 			viewPopup("#customerReviewDiv");
+			if(Object.keys(fileObject).length > 0){
+				let csrfHeaderName = "${_csrf.headerName}";
+				let csrfTokenValue = "${_csrf.token}";
+
+				$.ajax({
+					url : "/review/reviewCancle",
+					data :  JSON.stringify(fileObject),
+					type : "post",
+					contentType: "application/json; charset=utf-8",
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					success : function(result) {
+						console.log(fileObject);
+						console.log("올린 이미지 잘 삭제 됨");
+					}//end suce..			
+				});//end ajax	
+			}
 		}
 	
 	});
@@ -2288,6 +2306,7 @@
 
 				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
 				$('.toast_popup').stop().removeClass('on');
+				$('.wishlist1803').stop().toggleClass('on');
 				$("#wishlistCount").text((parseInt($("#wishlistCount").text())-1)+'')
 
 			},

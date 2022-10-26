@@ -470,7 +470,7 @@
 		});
 		
 		$('#itemsOrderForm').append('<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>');
-		
+		$('#itemsOrderForm').append('<input type="hidden" name="tocart" value="true" />');
 		$("#itemsOrderForm").attr("action","/order/order_page");
 		$("#itemsOrderForm").submit();
 		

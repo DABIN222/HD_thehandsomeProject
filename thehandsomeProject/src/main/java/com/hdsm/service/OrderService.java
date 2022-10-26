@@ -8,12 +8,13 @@ import com.hdsm.domain.CouponVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 
+//박진수
 public interface OrderService {
 
-	//주문 페이지 가져오기
+	//주문 페이지 조회한다.
 	public List<OrderItemVO> getOrderPageInfo(List<OrderItemVO> orders);
 
-	//주문한 사용자 정보를 입력
+	//주문한 사용자 정보를 입력한다.
 	public void insertOrderUser(OrderUserVO ouv);
 
 	//주문한 상품목록을 입력
@@ -30,15 +31,17 @@ public interface OrderService {
 
 	//HSpoint를 업데이트한다.
 	public void updateHspoint(OrderUserVO ouv);
-
+	
+	//해당 주문 사용자의 쿠폰을 지운다.
 	public void deleteCoupon(OrderUserVO ouv);
 
+	//회원 아이디를 통해 배송지 관리 리스트를 가져온다.
 	public List<AddressVO> getAddress(String mid);
-
+	
+	//주문번호에 대한 주문 사용자의 정보를 가져온다.
 	public OrderUserVO getOrderUserItem(String oid); 
 	
+	//회원 아이디를 통해 주문 사용자들에 대한 정보를 가져온다.
 	public List<OrderUserVO> getOrderUserVO(String mid);
-	
-	public List<OrderUserVO> getOrderUserVOinOneMonth(String mid);
 
 }
