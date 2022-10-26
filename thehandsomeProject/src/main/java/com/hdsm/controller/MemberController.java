@@ -2,7 +2,7 @@ package com.hdsm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -387,18 +387,18 @@ public class MemberController {
 
 	 // 마이 페이지 진입 (승준)
 		@GetMapping("/mypage")
-		public String mypageForm(HttpServletRequest request,Model model) {
+		public String mypageForm(HttpServletRequest request,Model model, Principal principal) {
 			
-			  HttpSession session=request.getSession(); 
+			String username = principal.getName();
 			  //회원이 주문한 주문번호를 가져온다.(박진수)
-			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO((String)session.getAttribute("member"));
+			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
 			 
 			  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
 			  model.addAttribute("ouvl", ouvl);
 
 			log.info("마이 페이지 왔다");
 			
-			String memberID = (String)request.getSession().getAttribute("member");
+			String memberID = username;
 			if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄
 			
 				request.setAttribute("url", "home");

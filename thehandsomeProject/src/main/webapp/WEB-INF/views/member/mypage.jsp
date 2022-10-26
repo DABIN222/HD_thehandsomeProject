@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,32 +18,6 @@
 <!-- ui 공통 스크립트 -->
 <script type="text/javascript" src="/resources/js/ui.js"></script>
 <%@include file="/WEB-INF/views/common/header.jspf"%>
-<body>
-
-
-			<div class="gnbwarp new201608 clearfix">
-				<h1 class="logo logo1903">
-					<a href="/">thehandsome.com</a>
-				</h1>
-				<!-- 첫번째 c:if -->
-
-				<div id="transparent_mask"></div>
-				<!-- 201803 util menu -->
-				<div class="util_menu util_menu1803">
-					<ul class="clearfix">
-						<li><a href="javascript:void(0);"><span class="ico_sh">search</span></a></li>
-						<li><a href="/ko/mypage/myWish" onclick="GA_Event('공통','유틸_메뉴','위시리스트');">
-							<span class="ico wishlist">wish list</span> <span class="count">(<span id="wishlistCount">0</span>)</span></a></li>
-						<li><a href="/ko/shoppingbag" onclick="GA_Event('공통','유틸_메뉴','쇼핑백');">
-							<span class="ico cart">장바구니</span> <span class="count">(<span id="cartCount">1</span>)</span></a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- //201803 util menu -->
-		</div>
-	</div>
-	<!-- //headerWrap -->
-
 	<!-- bodyWrap -->
 	<div id="bodyWrap">
 		<h3 class="cnts_title">
@@ -288,7 +260,8 @@
 								<c:when test="${st.current=='0' }">
 								<td>
 								<div class="pt_list_all">
-								<img src="${order.thumbnail.c_thumbnail1 }"> 
+								<img src="${order.thumbnail.c_thumbnail1 }" 
+									style = "object-fit : cover" > 
 								<div class="tlt_wrap">
 								<span class="tlt">
 								${order.productVO.bname }
@@ -317,7 +290,7 @@
 								<tr>
 								<td>
 								<div class="pt_list_all">
-								<img src="${order.thumbnail.c_thumbnail1 }"> 
+								<img src="${order.thumbnail.c_thumbnail1 }" style = "object-fit : cover" > 
 								<div class="tlt_wrap">
 								<span class="tlt">
 								${order.productVO.bname }
@@ -451,6 +424,7 @@
 $('.totalprice').each(function(idx){
 	$(this).text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 })
+<<<<<<< HEAD
 
 //주문을 취소할 때 실행되는 함수
 function orderCancel(){
@@ -468,5 +442,7 @@ function orderCancel(){
 
 
 
+=======
+>>>>>>> 7f7ded731a5852473a4a47a9f2e2c11f38b390a5
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
