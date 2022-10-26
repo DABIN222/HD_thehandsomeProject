@@ -350,12 +350,12 @@ public class ProductController {
 	
 	//상품 상세 정보 보기
 		@GetMapping("/product_detail2")
-		public String product_detail2 (
+		public String product_detail2(
 				HttpServletRequest request,
 				@RequestParam("pid") String pid,
 				@RequestParam("colorcode") String colorcode,
 				//Principal principal,
-				Model model) throws Exception {
+				Model model)  throws Exception {
 			String mid;
 			HttpSession session = request.getSession(); // 세션
 			
@@ -388,42 +388,34 @@ public class ProductController {
 			ProductVO product=service.getProduct(pid);
 			System.out.println(product.getP_size());
 			String[] sizelist=product.getP_size().split(",");
-			
-			// 상품평 리스트 받기
+			// 상품평 리스트 받기 (정구현)
 			List<ReviewDTO> getReview = reviewService.getReviewList(pid);
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 			
-			// 상품평 속 rcontent map 받아오기
+			
 			for(ReviewDTO dto : getReview) {
+				// 문자열 타입 rcontent를 map으로 변환한다. (정구현)
 				Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
-			/*
-			 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
-			 * rcontent.get("age")+"\n"); log.info("height : " +
-			 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
-			 * rcontent.get("enjoySize")+"\n"); log.info("bodyType : " +
-			 * rcontent.get("bodyType")+"\n"); log.info("rating : " +
-			 * rcontent.get("rating")+"\n"); log.info("realWearSize1 : " +
-			 * rcontent.get("realWearSize1")+"\n"); log.info("realWearSize2" +
-			 * rcontent.get("realWearSize2")+"\n"); log.info("realWearSize3 : " +
-			 * rcontent.get("realWearSize3")+"\n"); log.info("realProductColor : " +
-			 * rcontent.get("rating")+"\n"); log.info("headline : " +
-			 * rcontent.get("realWearSize1")+"\n");
-			 */
+				/*
+				 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
+				 * rcontent.get("age")+"\n"); log.info("height : " +
+				 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
+				 */
+				//reviewDTO에 변환한 값을 넣는다.
 				dto.setRcontentMap(rcontent);
 				reviewList.add(dto);
 			}
 			
-			log.info("------------------ list ----------------\n"+reviewList.toString());
+			//log.info("------------------ list ----------------\n"+reviewList.toString());
 			
 			model.addAttribute("sizelist",sizelist);
 			model.addAttribute("productVO", service.getProduct(pid));
 			model.addAttribute("colorVOList", service.getProductColor(pid));
 			model.addAttribute("curColorCode",colorcode);
 			model.addAttribute("reviewList",reviewList);
-			
-			
+
 			return "/product/product_detail2";
 		}
 		

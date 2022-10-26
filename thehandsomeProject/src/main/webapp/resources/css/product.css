@@ -801,7 +801,7 @@
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span{display:block; width:25%; float:left; font-size:11px; color:#999; padding-top:18px;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span+span{width:50%; text-align:center;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span+span+span{width:25%; text-align:right;}
-.popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span.on{color:#c69c6c; background:url("/_ui/desktop/common/images/products/evaluation_on.gif") left top no-repeat;}
+.popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span.on{color:#c69c6c; background:url("/resources/images/evaluation_on.gif") left top no-repeat;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span+span.on{background-position:center top;}
 .popwrap .evaluation_view .sizecolor > div.real_fit_size1905 > .evaluation_wrap1905 > div.clearfix > span+span+span.on{background-position:right top;}
 /*상품평쓰기 1905*/
