@@ -162,6 +162,8 @@
 			</div>
 			<!--// 주소 -->
 			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			
 			<!-- 확인, 취소 -->
 			<div class="btn_area btn_ac" style="margin-bottom: 60px;">
 				<a class="btn_typeB1" href="http://www.thehandsome.com/ko/"><span>취소</span></a>
@@ -175,6 +177,11 @@
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- 
+		작성자 : 김다빈
+		내용 : 회원가입 js (중복검사, 유효성 검사, insert)	
+	-->
 	<script>		
 		// 주소 api
 		window.onload = function() {
@@ -190,6 +197,7 @@
 						//박진수 수정
 						document.querySelector("input[name='partner.addr1']").focus(); //상세입력 포커싱
 						//박진수 수정
+						self.close();
 					}
 				}).open();
 			});
@@ -232,7 +240,7 @@
 				alert("비밀번호를 입력하세요");
 				return false;
 			}// 비밀번호 유호성 (비밀번호는 자리만)
-			else if(pass1.length<3 || pass2.length<3){
+			else if(pass1.length<4 || pass2.length<4){
 				alert("비밀번호는 3자리 이상으로 입력해주세요");
 				return false;
 			}
