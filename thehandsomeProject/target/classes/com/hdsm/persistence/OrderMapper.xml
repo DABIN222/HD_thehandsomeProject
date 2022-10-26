@@ -89,5 +89,22 @@
 	and mid=#{mid}
 	</select>
 	
+	<!-- 주문한 사용자의 정보를 삭제 -->
+	<delete id="deleteOrderUser">
+	delete from orderlist 
+	where oid=#{oid}
+	</delete>
+	
+	<!-- 주문한 사용자의 상품들을 삭제 -->
+	<delete id="deleteOrderItem">
+	delete from orderitem
+	where oid=#{oid}
+	</delete>
+	
+	<!-- 주문한 사용자의 마일리지 포인트를 제거 -->
+	<delete id="deleteMilege">
+	delete from mileage
+	where micontent like #{oid}||'%' 
+	</delete>
 	
 </mapper>

@@ -198,19 +198,22 @@ public class OrderServiceImpl implements OrderService {
 		
 		//받은 마일리지에 대한 정보를 저장
 		String content="";
-		
+		//content에 주문번호(제품이름:가격/....)이런식으로 등록되게 설정
+		content+=ouv.getOid();
+		content+="(";
 		for(int i=0;i<olv.size();i++) {
 			//주문한 사용자의 상품들의 pid를 가져와 상품 자체를 가져온다.
 			ProductVO product=productmapper.getProduct(olv.get(i).getPid());
 			
-			//content에 제품이름:가격/....이런식으로 등록되게 설정
+			
 			content+=product.getPname();
 			content+=(":"+ product.getPprice());
 			if(i!=olv.size()-1) {
 				content+="/";
 			}
 		}
-		
+		content+=")";
+		content+=ouv.getStrpayment();
 		//마일리지 vo의 content를 content로 바꾼다.
 		miv.setMicontent(content);
 		
@@ -325,6 +328,26 @@ public class OrderServiceImpl implements OrderService {
 			rouvl.add(ouv);
 		}
 		return rouvl;
+	}
+	
+	
+	//주문한 사용자의 정보를 삭제(박진수)
+	@Override
+	public void deleteOrderUser(String oid) {
+		
+		//주문번호를 통해 주문한 사용자의 정보를 가져온다.
+		OrderUserVO ouv= ordermapper.getOrderUserItem(oid);
+		
+		//주문한 사용자의 정보를 삭제한다.
+		ordermapper.deleteOrderUser(oid);
+		
+		//주문한 사용자의 상품리스트를 삭제한다.
+		ordermapper.deleteOrderItem(oid);
+		
+		//지불방식이 신용카드(2) 또는 현대카드 레드 바우쳐(5)일 경우 마일리지를 삭제한다.
+		if(ouv.getOpayment()==2 || ouv.getOpayment()==5) {
+		ordermapper.deleteMilege(oid);
+		}
 	}
 	
 

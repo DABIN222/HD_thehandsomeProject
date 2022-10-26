@@ -43,5 +43,7 @@ public interface OrderService {
 	
 	//회원 아이디를 통해 주문 사용자들에 대한 정보를 가져온다.
 	public List<OrderUserVO> getOrderUserVO(String mid);
-
+	
+	//주문한 사용자의 정보와 상품 그리고 마일리지 포인트를 제거
+	public void deleteOrderUser(String oid);
 }

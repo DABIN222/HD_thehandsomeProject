@@ -42,5 +42,13 @@ public interface OrderMapper {
 	
 	//회원 아이디에 대한 주문한 사용자 정보를 조회
 	public List<OrderUserVO> getOrderUserVO(String mid);
-
+	
+	//회원 주문 정보를 삭제
+	public void deleteOrderUser(String oid);
+	
+	//회원의 주문 상품들을 삭제
+	public void deleteOrderItem(String oid);
+	
+	//회원의 마일리지 정보도 삭제
+	public void deleteMilege(String oid);
 }

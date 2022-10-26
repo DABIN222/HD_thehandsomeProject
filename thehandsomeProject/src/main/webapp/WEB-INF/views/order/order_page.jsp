@@ -529,14 +529,14 @@
 														for="sel_rd5" class="mr20">스마일 페이</label><br></li>
 												</span>
 												<span id="paymentRedVoucher" style="display: block;">
-													<li><input type="radio" name="mode" id="sel_rd4"
+													<li><input type="radio" name="paymode" id="sel_rd4"
 														value="현대카드 레드 쇼핑바우처" > <label
 														for="sel_rd4" class="mr20">현대카드 레드 쇼핑바우처</label></li>
 												</span>
-												<li><input type="radio" name="mode" id="sel_rd6"
+												<li><input type="radio" name="paymode" id="sel_rd6"
 													value="토스" > <label
 													for="sel_rd6" class="mr20">토스</label></li>
-												<li><input type="radio" name="mode" id="sel_rd7"
+												<li><input type="radio" name="paymode" id="sel_rd7"
 													value="페이코" > <label
 													for="sel_rd7" class="mr20">페이코</label></li>
 											</ul>

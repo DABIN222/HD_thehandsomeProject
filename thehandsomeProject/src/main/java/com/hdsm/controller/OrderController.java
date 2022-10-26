@@ -23,7 +23,6 @@ import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderListVO;
 import com.hdsm.domain.OrderUserVO;
 import com.hdsm.service.MemberService;
-import com.hdsm.service.MemberService2;
 import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
 
@@ -35,7 +34,7 @@ import lombok.extern.log4j.Log4j;
 public class OrderController {
 
 	@Autowired
-	MemberService2 memberservice;
+	MemberService memberservice;
 
 	@Autowired
 	ProductService productservice;
@@ -103,8 +102,10 @@ public class OrderController {
 			orderservice.deleteShoppingbag(ouv);
 			}
 			
-			//마일리지를 업데이트
+			//지불 방식이 신용카드이거나 현대카드 레드 바우쳐일 겨우 마일리지를 갱신한다.
+			if(ouv.getStrpayment().equals("신용카드")|| ouv.getStrpayment().equals("현대카드 레드 쇼핑바우쳐")) {
 			orderservice.insertMileage(ouv);
+			}
 
 			//hsPoint 값을 업데이트
 			orderservice.updateHspoint(ouv);
@@ -175,6 +176,25 @@ public class OrderController {
 			model.addAttribute("addressList",orderservice.getAddress((String)session.getAttribute("member")));
 
 
+		}
+		
+		//주문을 취소
+		@PostMapping("/ordercancel")
+		public String orderCancel(String oid,HttpServletRequest request) {
+			
+			
+			HttpSession session= request.getSession();
+			
+			//주문한 사용자의 정보를 제거하는 서비스 실행
+			orderservice.deleteOrderUser(oid);
+			
+		    //바뀐 장바구니 갯수 !
+		    int count = memberservice.getShoppingBagCount((String)session.getAttribute("member"));
+		      
+		    session.setAttribute("sbCount", count);// 바뀐 장바구니 갯수 다시 세서 가져오기
+			
+			//삭제를 했기 때문에 redirect를 통해 페이지를 갱신한다.
+			return "redirect:/member/mypage";
 		}
 
 	}
