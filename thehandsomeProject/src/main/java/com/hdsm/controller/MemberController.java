@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -59,15 +61,20 @@ public class MemberController {
 	ProductService productservice;
 	
 	@Autowired
-
 	OrderService orderservice;
 	
 	@Autowired
 	ReviewService reviewservice;
 	
+	@Autowired
+	MemberMapper mapper;
+	 
+	@Autowired
 	CustomUserDetailsService customdetailsservice;
 	
+	@Autowired
 	PasswordEncoder pwencoder;
+	
 	// 로그인 페이지 진입
 //	@GetMapping("/loginForm")
 //	public void loginForm() {
@@ -87,6 +94,9 @@ public class MemberController {
 	public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info("회원가입 진입!");
 		
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
+		MemberAuthVO mavo = new MemberAuthVO();
+		
 		// jsp에서 name에 입력된 값 vo에 저장
 		member.setMid(request.getParameter("custId"));
 		member.setMpassword(request.getParameter("custPwd"));
@@ -100,9 +110,20 @@ public class MemberController {
 		member.setMzipcode(Integer.parseInt(request.getParameter("zonecode")));
 		//박진수 수정
 		
-		member.setMpassword(member.encode(member.getMpassword()));
 		// 회원가입 실시
+		
+		
+		// 암호화할 패스워드를 암호화 처리하여 password에 저장하고 
+		String password = scpwd.encode(member.getMpassword()); // 암호화 된 password를 다시 vo에 저장
+		member.setMpassword(password);
+		
+		
+		mavo.setUsername(request.getParameter("custId"));
+		mavo.setAuthority("ROLE_USER");
+
+		// 회원 가입 실행
 		memberservice.insertMember(member);
+		mapper.insertMemberAutority(mavo);
 		
 		log.info("회원가입 성공!");
 		
