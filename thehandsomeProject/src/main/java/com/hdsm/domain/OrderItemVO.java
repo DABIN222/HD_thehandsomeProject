@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import lombok.Data;
 
+//주문한 사용자가 주문한 상품 VO(박진수)
 @Data
 public class OrderItemVO {
 	private String oid;
@@ -19,7 +20,7 @@ public class OrderItemVO {
 	private ProductVO productVO;
 	private ThumbnailColorVO thumbnail;
 
-	//totalprice,point,totalpoint 값은 다른 값들을 통해서 만들어 냄
+	//totalprice,point,totalpoint을 계산하는 함수
 	public void initSaleTotal() {
 		this.point=(int)(this.oprice*0.001);
 		this.milege=(int)(this.oprice*0.05);

@@ -2,6 +2,7 @@ package com.hdsm.domain;
 
 import lombok.Data;
 
+//배송지 관리 VO(박진수)
 @Data
 public class AddressVO {
 	private int ano;
