@@ -29,5 +29,21 @@ public class ReviewUtil {
 		}//end try		
 		return false;		
 	}//
+	
+	//파일 삭제
+	public void deleteCancleImage(String path) {
+	File file = new File(path);
+        
+    	if( file.exists() ){
+    		if(file.delete()){
+    			System.out.println("파일삭제 성공");
+    		}else{
+    			System.out.println("파일삭제 실패");
+    		}
+    	}else{
+    		System.out.println("파일이 존재하지 않습니다.");
+    	}
+        	
+	}
 
 }
