@@ -2288,6 +2288,7 @@
 
 				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
 				$('.toast_popup').stop().removeClass('on');
+				$('.wishlist1803').stop().toggleClass('on');
 				$("#wishlistCount").text((parseInt($("#wishlistCount").text())-1)+'')
 
 			},
