@@ -14,6 +14,7 @@
 
 </head>
 <body>
+<% request.setCharacterEncoding("UTF-8"); %>
 	<div class="pageTitle">
 		<div class="layout1">
 			<h2 class="tit">H.Point 회원가입</h2>
@@ -102,13 +103,12 @@
 						<input type="text" id="directEmail" name="directEmail" value="">
 						<!-- 이메일 주소 선택 select -->
 						<select class="select flex" id="registerWrite3_3" title="이메일 도메인 선택" style="color:gray;" required>
-							<option value="00" disabled selected>이메일 주소 선택</option>
+							<option value="01">직접입력</option>
 							<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="daum.net">daum.net</option>
-							<option value="gmail.com">gmail.com</option>
+							<option value="google.com">google.com</option>
 							<option value="nate.com">nate.com</option>
-							<option value="06">직접입력</option>
 						</select>	
 						<!-- 이메일 값 합치기 -->
 						<input type="hidden" id="emailtotal" name="emailtotal" value="">
@@ -141,7 +141,7 @@
 			<div class="group divider">
 				<!-- 주소 -->
 				<div class="wrap_inp">
-					<label for="userAddress" class="inp_tit">주소</label>
+					<label for="userAddress" class="inp_tit">주소<span class="nec">*</span></label>
 					<div class="addr_bundle">
 						<div class="inp_bundle">
 							<input type="hidden" id="addressType" name="partner.addrType" value="01"> 
@@ -223,6 +223,8 @@
 			var email_check = /^[a-zA-z0-9]{4,13}$/;		//이메일 유효성 검사
 			var member_tel = $('#registerCustTel').val();	//연락처 입력값
 			var tel_check = /^[0-9]{8,13}$/;				//연락처 유효성 검사
+			var address1 = $('#regPostNo').val();			//주소 입력값
+			var address2 = $('#regAddr1').val();			//주소 입력값
 		
 			/* console.log($("#registerWrite3_3").val()); */
 			// 아이디 확인
@@ -232,6 +234,10 @@
 			}// 아이디 유효성 
 			else if(!idRegExp.test(member_id)){								// 유효성 변수를 만들어두고 .test (검사할 변수)를 넣어주면 유효성 검사 완료!
 				alert("아이디는 영어와 숫자만 사용 가능하며, 4~13자 사이로 입력해주세요");
+				return false;
+			}
+			if(idPass == false) {
+				alert("아이디 중복을 확인 해주세요");
 				return false;
 			}
 			
@@ -244,6 +250,11 @@
 				alert("비밀번호는 3자리 이상으로 입력해주세요");
 				return false;
 			}
+			// 비밀번호 중복 확인
+			if(pwPass == false) {
+				alert("비밀번호를 확인하세요");
+				return false;
+			}
 			
 			// 이름 확인
 			else if(member_name == '' || member_name == null) {
@@ -254,8 +265,8 @@
 				alert("이메일을 입력하세요");
 				return false;
 			}// 이메일 주소 확인
-			else if($("#registerWrite3_3").val()=="00" || $("#registerWrite3_3").val()==null){
-				alert("이메일 주소를 선택해주세요");
+			else if($("#directEmail").val()=="" || $("#directEmail").val()==null){
+				alert("이메일 주소를 입력해주세요");
 				return false;
 			}
 			// 이메일 유효성
@@ -264,6 +275,7 @@
 				return false;
 			}
 			
+			
 			// 연락처 확인
 			else if(member_tel == '' || member_tel == null) {
 				alert("연락처를 입력하세요");
@@ -271,17 +283,6 @@
 			}// 연락처 유효성
 			else if (!tel_check.test(member_tel)){
 				alert("연락처는 4~13자리만 가능하며 숫자로만 입력해주세요");
-			}
-			
-			console.log("idPass result 값 : " + idPass);
-			// 아이디 중복 확인
-			if(idPass == false) {
-				alert("아이디 중복을 확인 해주세요");
-				return false;
-			}
-			// 비밀번호 중복 확인
-			if(pwPass == false) {
-				alert("비밀번호를 확인하세요");
 				return false;
 			}
 			// 전화번호 중복 확인
@@ -289,6 +290,20 @@
 				alert("전화번호 중복을 확인해 해주세요");
 				return false;
 			}
+			
+			// 주소 확인
+			if(address1 == '' || address1 == null) {
+				alert("주소를 확인해주세요");
+				return false;
+			}// 주소 확인
+			
+			// 상세 주소 확인
+			if(address2 == '' || address2 == null) {
+				alert("상세 주소를 확인해주세요");
+				return false;
+			}//상세  주소 확인
+			
+			console.log("idPass result 값 : " + idPass);
 			
 			// 모든 조건 통과 시, 통과!
 			return true;
@@ -300,6 +315,7 @@
  			var id = $('#registerCustId').val();	//jsp의 값 id에 넣기
  			var data = {memberId : id}				//memberId=컨트롤러에 넘길 데이터 이름, 데이터 값
  			console.log(data);
+ 			console.log("name : " + $('#registerName').val());
  			
  			let csrfHeaderName ="${_csrf.headerName}";
             let csrfTokenValue="${_csrf.token}";
@@ -370,7 +386,7 @@
  		});
 		//-- 연락처 중복 확인 끝
 		
-		// 이메일 합치기
+/* 		// 이메일 합치기
 		$("#registerEmail").blur(function(){		// blur() : focus out 되었을 때 발생하는 함수
 			email();								// email 입력란에서 마우스 커서가 벗어나는 순간 eamil()함수 실행
 		});
@@ -387,19 +403,38 @@
 			}//-- 이메일 직접 입력 끝
 			
 			email();
+		}); */
+		
+		$("#registerEmail").blur(function(){	
+			email();								
+		});
+		
+		$("#registerWrite3_3").change(function(){	// change() : value 값에 변화가 생길 경우 이를 감지하여 callback함수 동작
+			//직접 입력 누를 때 나타남
+			if($("#registerWrite3_3").val() == "01") {
+				$("#directEmail").attr("readonly", false);
+				$("#directEmail").val("");			// select=06 직접 입력인 경우, 입력란 보이기
+			}else {
+				$("#directEmail").attr("readonly", true);
+				$("#directEmail").val($(this).val());
+			}//-- 이메일 직접 입력 
+			email();
+		});
+		
+		$("#directEmail").blur(function(){	
+			email();								
 		});
 		
 		// email() 함수 동작
 		function email() {							
 			var email = $("#registerEmail").val();		// email 입력 값
 			var middle = $("#middle").text(); 			// @
-			var address = null;							// eamil 주소(도메인) 값
+			var address = $("#directEmail").val();							// eamil 주소(도메인) 값
 			
- 			if($("#registerWrite3_3").val()=="06"){
-				address = $("#directEmail").val();		// 직접 입력인 경우, 입력한 값을 address에 저장
-			}else {
-				address = $("#registerWrite3_3").val();	// 아닌 경우 select에 저장된 값을 address에 저장
-			} 
+			console.log("eamil : " + email);
+			console.log("middle : " + middle);
+			console.log("address : " + address);
+			
 			// email과 middle에 값이 있다면 합쳐주기
 			if(email != "" && middle != ""){			
 				console.log(address);
