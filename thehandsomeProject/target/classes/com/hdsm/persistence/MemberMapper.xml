@@ -71,6 +71,11 @@
 		where mid=#{mid} and mpassword = #{mpassword}
 	</select>
 
+	<select id="pwcheck" resultType="com.hdsm.domain.MemberVO">
+		select mid, mpassword from member
+		where mid=#{mid}
+	</select>
+
 	<!-- 유저의 장바구니목록들 가져오기 -->
 	<select id="getMembersShoppingBag"
 		resultType="com.hdsm.domain.MemberSbagDTO">
@@ -203,9 +208,19 @@
 		</foreach>
 	</delete>
 	
+	<!-- 회원 정보 삭제 -->
 	<delete id="deleteuser">
-	delete from member where mid=#{mid}
+		delete from member where mid=#{mid}
 	</delete>
+	<!-- 회원 권한 삭제 -->
+	<delete id="deleteuserAuth">
+		delete from member_authorities where username=#{username}
+	</delete>
+	<!-- 회원 권한 조회 -->
+	<select id="getMemberAuth" resultType="String">
+		select username from member_authorities where username=#{username}
+	</select>
+	
 	<update id="updateuser">
 		update member set mpassword =#{mpassword},memail=#{memail},mname=#{mname},mtel=#{mtel} where mid =#{mid}
 	</update>

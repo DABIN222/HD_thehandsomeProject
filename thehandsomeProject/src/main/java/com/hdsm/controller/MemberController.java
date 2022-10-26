@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -30,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
@@ -452,57 +455,81 @@ public class MemberController {
 			return "member/deleteuser"; //회원 탈퇴페이지로 이동
 		}
 		
-		
-		//비밀번호 체크 (승준)
-		
-		  @GetMapping("/pwcheck") 
-		  public String pwcheck(HttpServletRequest request,Model model) {
-		  log.info("회원 탈퇴 비밀번호체크");
-		  String memberID = (String)request.getSession().getAttribute("member"); //session값을 가져와서 id에 저장 
-		  model.addAttribute("member",memberservice.getMember(memberID)); //member다 가져오기
-		  
+	// 비밀번호 체크 (승준)
 
-		  return "/member/pwcheck"; 
-		  }
-		  
-		  //비밀번호 체크 로직(승준)
-		  @RequestMapping(value ="/pwcheckpro", method = RequestMethod.GET)
-		  public String pwcheckpro(MemberVO member, HttpServletRequest request)throws Exception{
-			  
-			  log.info("비밀번호 진행중..?!");
-			  HttpSession session = request.getSession(); //세션정의 
-			  
-		 
-			  member.setMid(request.getParameter("j_username")); //member객체에 값 넣어주기
-			  member.setMpassword(request.getParameter("j_password"));
-			  System.out.println(member);
-			  MemberVO vo  = memberservice.login(member); //로그인 사용 
-			  
-			  if(vo!=null) {
-				  return "redirect:/member/updateuser";
-			  }else {
-				  
-				 System.out.println("비밀번호가 틀림");
-				  
-				  return "redirect:/member/pwcheck";
-			  }
-			  
-			  
-		  }
-		  
-			
-			//회원 탈퇴 로직 (승준)
-			@RequestMapping(value ="/deleteruserpro", method = RequestMethod.GET)
-			public String deleteuser(MemberVO member, HttpServletRequest request) throws Exception {
+	@GetMapping("/pwcheck")
+	public String pwcheck(HttpServletRequest request, Model model) {
+		log.info("비밀번호체크");
+		String memberID = (String) request.getSession().getAttribute("member"); // session값을 가져와서 id에 저장
+		model.addAttribute("member", memberservice.getMember(memberID)); // member다 가져오기
 
-				log.info("탈퇴진행중..?!");
-				HttpSession session = request.getSession(); // 세션
-				String memberID = (String) request.getSession().getAttribute("member"); //세션 id가져오기
-				System.out.println(memberID);
-				memberservice.deleteuser(memberID); //회원정보 지우기
-				return "redirect:/member/logout";
-			}
+		return "/member/pwcheck";
+	}
+
+	// 비밀번호 체크 로직(승준)
+	@RequestMapping(value ="/pwcheckpro", method = RequestMethod.GET)
+		public String pwcheckpro(MemberVO member, HttpServletRequest request)throws Exception{
+			  
+		log.info("비밀번호 진행중..?!");
+		HttpSession session = request.getSession(); //세션정의 
+	
+		String username = request.getParameter("j_username");
+		System.out.println(username);
+		
+		MemberVO vo  = memberservice.pwcheck(username);  
 			
+		String inputpw = request.getParameter("j_password");
+		String dbpw = vo.getMpassword();
+		System.out.println(inputpw); 
+		System.out.println(dbpw);
+		System.out.println("여기까지는 옴?");
+			  
+		//값비교하는 로직
+		boolean a =pwencoder.matches(inputpw, dbpw);
+		System.out.println(a);
+			
+		if(a==true) {
+			return "redirect:/member/updateuser";
+		}else {
+			return "redirect:/member/pwcheck";
+		}
+	}
+		  
+	// 회원 탈퇴 로직 (승준)
+	@RequestMapping(value = "/deleteuserpro", method = RequestMethod.POST)
+	public String deleteuserpro(HttpServletRequest request, RedirectAttributes redirectAttr, 
+            SessionStatus sessionStatus) throws Exception {
+		log.info("탈퇴진행중..?!");
+		HttpSession session = request.getSession(); // 세션
+		String memberID = (String) request.getSession().getAttribute("member"); // 세션 id가져오기
+		System.out.println("memberID : "+memberID);
+		
+		String UserName = memberservice.getMemberAuth(memberID);
+		log.info("UserName 반환 값 : " + UserName);
+		if(UserName != "" || UserName != null) {
+			memberservice.deleteuserAuth(UserName);
+			memberservice.deleteuser(memberID); 
+			redirectAttr.addFlashAttribute("msg", "성공적으로 회원정보를 삭제했습니다.");
+			SecurityContextHolder.clearContext();
+			
+			
+			log.info("탈퇴성공");
+			
+			return "redirect:/member/loginForm";
+		} 
+		else {
+			log.info("탈퇴 실패");
+			return "redirect:/";
+		}
+		
+		
+//		memberservice.deletemember_authorities(memberID);
+//		memberservice.deleteuser(memberID); 
+		/* session.invalidate(); */
+	}
+			
+	
+	
 			//개인정보 업데이트(승준)
 			@RequestMapping(value ="/updateuser", method = RequestMethod.POST)
 			public String updatepassword(MemberVO member, HttpServletRequest request) throws Exception {
