@@ -75,5 +75,5 @@ public interface OrderMapper {
 	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
 	public List<OrderItemVO> getOrderItemProductInfo(@Param("oid") String oid);
 
-	public void insertCoupon(String mid);
+
 }
