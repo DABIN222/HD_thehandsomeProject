@@ -3837,7 +3837,6 @@
 			</div>
 		<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
 		  <ul class="slides">
-		  
 		    <li>
 		      <div class="review_img_cont_inner191216">
 		        <div class="img_wrap">
@@ -3848,7 +3847,6 @@
 		        </div>
 		      </div>
 		    </li>
-		    
 		  </ul>
 		</div>
 		<div class="review_txt_wrap">

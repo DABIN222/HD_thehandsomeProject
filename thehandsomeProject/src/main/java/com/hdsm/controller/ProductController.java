@@ -99,7 +99,8 @@ public class ProductController {
 		product.setCmedium(ctgName[1]);
 		product.setCsmall(ctgName[2]);	
 		
-		int ctgProductCount = service.productCount(product );
+		int ctgProductCount = service.productCount(product);
+		
 		
 		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}

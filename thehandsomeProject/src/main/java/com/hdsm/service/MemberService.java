@@ -27,6 +27,8 @@ public interface MemberService {
 	
 	// 로그인
 	public MemberVO login(MemberVO member); 
+	
+	public MemberVO pwcheck(String member); 
 
 	public MemberVO getMember(String memberId);
 
@@ -66,7 +68,13 @@ public interface MemberService {
 	
 	//회원 탈퇴
 	public void deleteuser(String mid);
-		
+	
+	//유저 권한 삭제
+	public void deleteuserAuth(String username);
+	
+	//유저 권한 조회
+	public String getMemberAuth(String username);
+	
 	//비밀번호 변경
 	public void updateuser(MemberVO member);
 }

@@ -1921,7 +1921,7 @@
 			    alt=""
 			  />
 			</div>
-		<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
+		<div class="review_img_wrap review_img_cont191216 wlength" id="myreviewImg">
 		  <ul class="slides">
 		  
 		    <li>
@@ -1984,18 +1984,25 @@
 	let fileObject = new Object();
 
 	function reviewRowInsert(reviewList){
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
 		param={
 				pid : "${productVO.pid}"
 				};
 		$.ajax({
 			url : '/review/getlistList',
-			type : 'GET',
-			data : JSON.stringify(encodeURIComponent(param)), //직렬화
-			dataType : 'json',
+			type : 'POST',
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : JSON.stringify(param), //직렬화
+			dataType : 'text',
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
+				result = JSON.parse(result);
+				console.log(typeof(result));
 				//작성 성공시 작성창 닫기
-				result.forEach((value, index, array)=>{
+				result.forEach((value, index, array) => {
 					console.log(value);
 					$("#reviewRow").find(".name").text(value.mid);
 					$("#reviewRow").find(".grade").text(value.mname);
@@ -2013,13 +2020,23 @@
 					$("#reviewRow").find(".review_txt").text(value.rcontentMap.headline);
 					
 					//썸네일 이미지 있으면 추가해주자
-					
 					$("#reviewRow").find(".review_represent_img1912").css("width",'0');
 					$("#reviewRow").find(".review_represent_img1912>img").attr("src", "");
 					if(value.rcontentMap.thumbnailImage !== "undefined"){
 						$("#reviewRow").find(".review_represent_img1912").css("width",'60px');
 						$("#reviewRow").find(".review_represent_img1912>img").attr("src", value.rcontentMap.thumbnailImage);
 					}
+					
+					//일단 이미지 div 아래 전부 죽이고
+					$("#reviewRow").find("#myreviewImg>ul").empty();
+					console.log(value.rcontentMap.imagesPath);
+					//이미지 등록한것도 있으면 태그들 넣어주자
+					if(typeof value.rcontentMap.imagesPath != "undefined"){
+						value.rcontentMap.imagesPath.forEach((value, index, array) => {
+							$("#reviewRow").find("#myreviewImg>ul").append('<li> <div class="review_img_cont_inner191216"> <div class="img_wrap"> <img src="'+ value +'" alt="리뷰 이미지"/> </div> </div> </li>');
+						});
+					}
+					$("#reviewRow").find("#myreviewImg>ul")
 					
 					$("#reviewRow>li").clone(true).appendTo("#liparent");
 				});
