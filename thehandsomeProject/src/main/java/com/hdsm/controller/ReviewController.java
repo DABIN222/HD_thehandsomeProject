@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -146,10 +147,46 @@ public class ReviewController {
 		  return "fail";
 	}
 	
-	//상품평 작성하기	
-	@ResponseBody
-	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST)
-	public String reviewWrite(@RequestBody ReviewDTO review, HttpServletRequest request) throws Exception {
+
+	@RequestMapping(value="/getlistList", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ReviewDTO>> getlistList(
+			@RequestBody ReviewDTO rd,
+			HttpServletRequest request) throws Exception{
+		
+		// 상품평 리스트 받기
+		List<ReviewDTO> getReview = reviewService.getReviewList(rd.getPid());
+		
+		log.info("--------"+rd.getPid());
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		int reviewCount = 0;
+		int avgRating = 0;
+		// rcontent map으로 변환하기
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			//reviewDTO에 변환한 값 넣기
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+			
+			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
+		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();
+		
+		reviewinfo.add(reviewCount);
+		reviewinfo.add(avgRating);
+		return new ResponseEntity<List<ReviewDTO>>(reviewList, HttpStatus.OK);
+	}
+
+	//상품평 작성하기
+	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ReviewDTO>> reviewWrite(@RequestBody ReviewDTO review, HttpServletRequest request) throws Exception{
 		HttpSession session = request.getSession(); // 세션
 		
 		// mname, mgrade를 받아올 vo
@@ -176,9 +213,38 @@ public class ReviewController {
 		review.setPsize(orderItem.getSsize());
 		
 		System.out.println(review.toString());
-				
+		
 		reviewService.reviewInsert(review);
-		return "Success";
+		//넣고 다시 리스트 반환
+		// 상품평 리스트 받기
+		List<ReviewDTO> getReview = reviewService.getReviewList(review.getPid());
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		int reviewCount = 0;
+		int avgRating = 0;
+		// rcontent map으로 변환하기
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			//reviewDTO에 변환한 값 넣기
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+			
+			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
+		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();
+		
+		reviewinfo.add(reviewCount);
+		reviewinfo.add(avgRating);
+		
+		return new ResponseEntity<List<ReviewDTO>>(reviewList, HttpStatus.OK);
 	}
 	
 	//uploadFile 이름 버그 주의

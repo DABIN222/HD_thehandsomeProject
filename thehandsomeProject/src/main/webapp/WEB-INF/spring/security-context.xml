@@ -39,7 +39,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<security:intercept-url
 			pattern="/order/order_page" access="hasRole('ROLE_USER')" />
 
-
+		<security:intercept-url
+			pattern="/review/getlistList" access="permitAll" />
 
 		<security:form-login
 			login-page="/member/loginForm"

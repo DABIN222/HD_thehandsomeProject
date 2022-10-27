@@ -1565,7 +1565,7 @@ table.e-gift .tlt_wrap p{padding-top:10px;color:#c69c6c;font-size:11px;letter-sp
 .howToWash ul li.dry_flat:hover{background-position:-437px -402px}
 .howToWash ul li.wring_no:hover{background-position:-546px -402px}
 /* 로그인 - 회원, OTP (FKB-001.html) 190415 */
-.box_type_1.renewal1904{border:none;padding:0}
+.box_type_1.renewal1904{border:none;padding:0;}
 .box_type_1.renewal1904 .inner_box.step2{padding:0}
 .login_wrap.renewal1904 .inner_box .title_wrap h4{float:left;padding:40px 20px 15px}
 .login_wrap.renewal1904 .inner_box .title_wrap h4 a.otp{background:url("/resources/images/ico_txt_line.gif") right center no-repeat; padding-right:20px; margin-right:20px}

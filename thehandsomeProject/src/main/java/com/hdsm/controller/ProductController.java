@@ -106,6 +106,7 @@ public class ProductController {
 		
 		int ctgProductCount = service.productCount(product);
 		
+		
 		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
@@ -279,7 +280,10 @@ public class ProductController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		
-		
+
+		int reviewCount = 0;
+		int avgRating = 0;
+		// rcontent map으로 변환하기
 		for(ReviewDTO dto : getReview) {
 			// 문자열 타입 rcontent를 map으로 변환한다. (정구현)
 			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
@@ -291,7 +295,18 @@ public class ProductController {
 			//reviewDTO에 변환한 값을 넣는다.
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
+			
+			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
 		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();
+		
+		reviewinfo.add(reviewCount);
+		reviewinfo.add(avgRating);
 		
 		//log.info("------------------ list ----------------\n"+reviewList.toString());
 		
@@ -300,7 +315,8 @@ public class ProductController {
 		model.addAttribute("colorVOList", service.getProductColor(pid));
 		model.addAttribute("curColorCode",colorcode);
 		model.addAttribute("reviewList",reviewList);
-
+		model.addAttribute("reviewinfo", reviewinfo);
+		
 		return "/product/product_detail";
 	}
 	

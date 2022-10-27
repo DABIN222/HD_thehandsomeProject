@@ -2629,7 +2629,7 @@ input[type=radio] + label {
 .t_tit1 {
   font-family: "HGGGothicssi";
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   color: #111;
 }
 
@@ -2646,7 +2646,7 @@ input[type=radio] + label {
   position: relative;
   font-family: "Noto Sans KR";
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   color: #999;
   line-height: 1.4;
   letter-spacing: -0.5px;
@@ -2660,7 +2660,7 @@ input[type=radio] + label {
   content: "";
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 7px;
   width: 4px;
   height: 4px;
   background: #999;
@@ -2774,7 +2774,7 @@ input[type=radio] + label {
   position: relative;
   font-family: "Noto Sans KR";
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   color: #999;
   line-height: 1.5;
   letter-spacing: -0.5px;
@@ -2797,7 +2797,7 @@ input[type=radio] + label {
   content: "";
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 7px;
   width: 4px;
   height: 4px;
   background: #999;
@@ -3128,16 +3128,15 @@ input[type=radio] + label {
 .btn_typeB1 {
   display: inline-block;
   width: auto;
-  min-width: 220px;
-  height: 70px;
+  min-width: 170px;
+  height: 50px;
   font-family: "HGGGothicssi";
   font-weight: 600;
-  font-size: 24px;
-  color: #4e2bf4;
+  font-size: 16px;
+  color: #4a4a4a;
   text-align: center;
-  line-height: 68px;
-  border: 1px solid #4e2bf4;
-  border-radius: 8px;
+  line-height: 50px;
+  border: 1px solid #4a4a4a;
   padding: 0 30px;
 }
 
@@ -3153,16 +3152,15 @@ input[type=radio] + label {
 .btn_typeB2 {
   display: inline-block;
   width: auto;
-  min-width: 220px;
-  height: 70px;
+  min-width: 170px;
+  height: 50px;
   font-family: "HGGGothicssi";
   font-weight: 600;
-  font-size: 24px;
+  font-size: 16px;
   color: #fff;
   text-align: center;
-  line-height: 70px;
-  background-color: #4e2bf4;
-  border-radius: 8px;
+  line-height: 50px;
+  background-color: #4a4a4a;
   padding: 0 30px;
 }
 
@@ -3200,7 +3198,7 @@ input[type=radio] + label {
 
 .btn_typeC2 {
   display: inline-block;
-  width: 125px;
+  width: 160px;
   height: 40px;
   font-family: "HGGGothicssi";
   font-weight: 600;
@@ -3208,8 +3206,8 @@ input[type=radio] + label {
   color: #fff;
   text-align: center;
   line-height: 40px;
-  background: #4e2bf4;
-  border-radius: 8px;
+  background: #4a4a4a;
+  margin-left: 10px;
 }
 
 .btn_typeC2 span {
@@ -3219,6 +3217,7 @@ input[type=radio] + label {
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
+  font-size: 14px;
 }
 
 .btn_small1 {
@@ -3517,23 +3516,18 @@ input[type=radio] + label {
 }
 
 .divider {
-  padding-bottom: 60px;
   border-bottom: 1px solid #eee;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
-.inp_mt {
-  margin-top: 15px;
-}
 
 .t_success,
 .t_error {
   font-family: "Noto Sans KR";
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: #4e2bf4;
   letter-spacing: -0.5px;
-  margin-top: 15px;
 }
 
 .t_success + .t_success,
@@ -3559,7 +3553,7 @@ input[type=radio] + label {
 .inp_tit {
   font-family: "Noto Sans KR";
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   color: #111;
   letter-spacing: -0.8px;
 }
@@ -3578,7 +3572,7 @@ input[type=radio] + label {
   position: absolute;
   left: 0;
   top: 0;
-  height: 70px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3617,11 +3611,11 @@ input[type=radio] + label {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  background: #f5f5f5;
+  /*background: #f5f5f5;
   border: 1px solid #f5f5f5;
-  border-radius: 8px;
-  height: 70px;
-  padding: 0 30px;
+  border-radius: 8px;*/
+  height: 50px;
+  padding: 0px;
 }
 
 .inp_bundle.focus {
@@ -3665,12 +3659,13 @@ input[type=radio] + label {
 .inp_bundle .inp {
   display: inline-block;
   width: 100%;
-  height: 100%;
+  height: 40px;
   font-family: "Noto Sans KR";
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   color: #111;
   background: transparent;
+  paddding: 20px;
 }
 
 .inp_bundle .inp:-webkit-autofill,
@@ -28538,5 +28533,34 @@ input[type=radio] + label {
   }
 }
 
-  
+
+/* 다빈 추가 */
+.t_tit1 {
+	margin: 50px 0px 40px 0px;
+}
+#directEmail {
+	margin-left: 10px;
+	font-weight: bold;
+}
+#middle {
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.sub_container2 {
+	margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    width: 800px;
+}
+
+.registerCustId input, 
+.registerPwd1 input, 
+.pwdCheckMsg2 input, 
+.emailCheckMsg input, 
+.registerCustTel input, 
+.inp_bundle input {
+	padding-left: 15px;
+}
+ 
 /*# sourceMappingURL=../../../sourcemaps/assets/app/css/screen.ui.css.map */
