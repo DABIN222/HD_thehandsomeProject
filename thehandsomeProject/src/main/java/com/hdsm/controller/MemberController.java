@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
@@ -691,5 +692,11 @@ public class MemberController {
 		  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
 		  model.addAttribute("ouvl", ouvl);
 		  }
+	}
+	
+	@GetMapping("/deliveryManage")
+	public void deliveryManage(String mid,Model model) {
+		List<AddressVO> addrlist=memberservice.getAddressList(mid);
+		model.addAttribute("addrlist", addrlist);
 	}
 }

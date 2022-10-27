@@ -47,11 +47,11 @@
                                     <td class="frt">
                                         <!-- pt_list_all -->
                                         <div class="pt_list_all">
-                                            <a href="/ko/HANDSOME/LIFESTYLE/DESK/OTHER-ACCESSORIES/%5BTROLLS-PAPER%5D-%EC%83%9D%EC%9D%BC-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%B9%B4%EB%93%9C/p/FL2D1HSY005LTL_GN_FR">
+                                            <a href="/product/product_detail?pid=${order.productVO.pid}&colorcode=${order.ccolorcode}">
 	                                                <img src="${order.thumbnail.c_thumbnail1 }" alt="" />
 	                                                        </a>
                                             <div class="tlt_wrap">
-                                                <a href="/ko/HANDSOME/LIFESTYLE/DESK/OTHER-ACCESSORIES/%5BTROLLS-PAPER%5D-%EC%83%9D%EC%9D%BC-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%B9%B4%EB%93%9C/p/FL2D1HSY005LTL_GN_FR" class="basket_tlt">
+                                                <a href="/product/product_detail?pid=${order.productVO.pid}&colorcode=${order.ccolorcode}" class="basket_tlt">
                                                     <span class="tlt">${order.productVO.bname }</span>
                                                     <span class="sb_tlt">${order.productVO.pname }</span>                                                            
                                                     </a>

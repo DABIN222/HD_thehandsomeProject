@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hdsm.controller.MemberController;
+import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -22,6 +23,7 @@ import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.persistence.MemberMapper2;
+import com.hdsm.persistence.OrderMapper;
 import com.hdsm.persistence.ProductMapper;
 
 import lombok.AllArgsConstructor;
@@ -33,6 +35,8 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
+	@Autowired
+	private OrderMapper ordermapper;
 
 	@Autowired
 	private ProductMapper productmapper;
@@ -241,6 +245,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int deleteWishListItem(List<MemberWishListDTO> wsList) {
 		return mapper.deleteWishListItem(wsList);
+	}
+
+	@Override
+	public List<AddressVO> getAddressList(String mid) {
+		
+		return ordermapper.getAddress(mid);
+		
 	}
 	
 

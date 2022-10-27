@@ -29,7 +29,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			pattern="/member/wishList" access="hasRole('ROLE_USER')" />
 		<security:intercept-url
 			pattern="/member/shoppingbag" access="hasRole('ROLE_USER')" />
-
+		<security:intercept-url
+			pattern="/member/deliveryManage" access="hasRole('ROLE_USER')"/>
 
 		<security:intercept-url pattern="/product/list"
 			access="permitAll" />

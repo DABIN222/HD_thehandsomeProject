@@ -25,11 +25,6 @@
 						</dd>
 					</dl>
 					<dl>
-							<dt>혜택관리</dt>
-							<dd><a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a></dd>
-							<dd><a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a></dd>
-					</dl>
-					<dl>
 						<dt>나의 상품관리</dt>
 						<dd>
 							<a href="/ko/mypage/myWish"
@@ -40,10 +35,6 @@
 						<dt>나의 정보관리</dt>
 						<dd>
 							<a href="/member/pwcheck">개인정보 변경/탈퇴</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/shoppingAddressPWCheck"
-								onclick="GA_Event('마이페이지','LNB','배송지 관리');">배송지 관리</a>
 						</dd>
 					</dl>
 					<dl>
@@ -178,8 +169,10 @@
 								<c:when test="${st.current=='0' }">
 								<td>
 								<div class="pt_list_all">
+								<a href="/product/product_detail?pid=${order.productVO.pid}&colorcode=${order.ccolorcode}">
 								<img src="${order.thumbnail.c_thumbnail1 }" 
 									style = "object-fit : cover" > 
+								</a>
 								<div class="tlt_wrap">
 								<span class="tlt">
 								${order.productVO.bname }

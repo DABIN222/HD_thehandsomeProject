@@ -315,18 +315,6 @@
 						</dd>
 					</dl>
 					<dl>
-						<dt>혜택관리</dt>
-						<dd>
-							<a href="/member/myGradeInfo" onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
-						</dd>
-					</dl>
-					<dl>
 						<dt>나의 상품관리</dt>
 						<dd>
 							<a href="/member/wishList" onclick="GA_Event('마이페이지','LNB','위시리스트');">위시리스트<!-- 위시리스트 --></a>

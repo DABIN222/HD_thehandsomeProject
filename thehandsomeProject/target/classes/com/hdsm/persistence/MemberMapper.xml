@@ -229,4 +229,9 @@
 	<update id="updateHSpoint">
 		update member set mpoint=#{mpoint} where mid=#{mid}
 	</update>
+	
+	<!-- 쿠폰을 등록해준다.(박진수) -->
+	<insert id="insertCoupon">
+		insert into coupon values('FFFF-dd-ee-aa',1,#{mid},'[10%할인]',sysdate,sysdate+7)
+	</insert>
 </mapper> 

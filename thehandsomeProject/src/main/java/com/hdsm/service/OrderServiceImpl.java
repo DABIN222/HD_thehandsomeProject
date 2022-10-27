@@ -77,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
 	public void insertOrderUser(OrderUserVO ouv) {
 		Date date=new Date();
 
-		//결제수단에 따라 opayment를 지정
+		//결제수단명에 따라 opayment를 지정
 		if(ouv.getStrpayment().equals("원클릭결제")) {
 			ouv.setOpayment(1);
 		}else if(ouv.getStrpayment().equals("신용카드")) {
@@ -303,7 +303,7 @@ public class OrderServiceImpl implements OrderService {
 		
 			//상품에 대한 pid를 가져와 색깔과 이미지를 가져온다.
 			List<ThumbnailColorVO> thumbnailcolorvolist=membermapper.getProductsColor(olv.get(i).getPid());
-			
+			System.out.println(olv.get(i).getCcolorcode());
 			//color를 크기만큼 반복하는데 객체의 ccolorcode가 같으면 해당하는 객체를 thumbnail에 저장한다.
 			for(int j=0;j<thumbnailcolorvolist.size();j++) {
 				if(thumbnailcolorvolist.get(j).getCcolorcode().equals(olv.get(i).getCcolorcode())) {
