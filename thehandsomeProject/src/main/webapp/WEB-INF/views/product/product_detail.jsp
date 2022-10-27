@@ -992,7 +992,7 @@
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
 							<a href="javascript:fn_popupCustomerReview();">상품평(<span
-								id="customerReviewCnt">0</span>)
+								id="customerReviewCnt">${reviewinfo[0]}</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
@@ -1123,11 +1123,11 @@
 		<div class="pop_tltwrap2 pb0 customerreviewdiv1905">
 
 			<h3>
-				상품평(<span id="review_cnt" class="review_cnt">0</span>)
+				상품평(<span id="review_cnt" class="review_cnt ">${reviewinfo[0]}</span>)
 			</h3>
-			<div class="star_score1807" id="totalStarScoreWrapper">
+			<div class="star_score1807 " id="totalStarScoreWrapper">
 				<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
-					<span class="cmt_per" id="totalStarScore">별점</span>
+					<span class="cmt_per star${reviewinfo[1]}" id="totalStarScore">별점</span>
 				</span>
 			</div>
 			<a href="javascript:fn_popupCustomerReviewWrite();"
@@ -1139,7 +1139,7 @@
 				<input type="hidden" id="review_tab_active" value="ALL">
 				<ul id="review_tab">
 					<li id="ALL"><a href="#;" class="active"
-						onclick="GA_Event('상품평','탭','전체');">전체 (0)</a></li>
+						onclick="GA_Event('상품평','탭','전체');">전체 (${reviewinfo[0]})</a></li>
 					<li id="PHOTO"><a href="#;" class=""
 						onclick="GA_Event('상품평','탭','포토상품평');">포토 상품평 (0)</a></li>
 					<li id="TEXT"><a href="#;"
@@ -1147,10 +1147,10 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul>
+				<ul id="liparent">
 					<c:forEach items="${reviewList}" var="review">
-							<li class="evaluation_view" id="evaluation_view0"><div
-									class="member_info_top">
+							<li class="evaluation_view" id="evaluation_view0">
+								<div class="member_info_top">
 									<ul>
 										<li class="name">${review.mid}</li>
 										<li class="grade">${review.mgrade}</li>
@@ -1173,12 +1173,14 @@
 										</li>
 									</ul>
 								</div>
-								<div class="review_represent_img1912">
-								  <img
-								    src="${review.rcontentMap.thumbnailImage}"
-								    alt="리뷰 이미지"
-								  />
-								</div>
+								<c:if test="${not empty review.rcontentMap.thumbnailImage}">
+									<div class="review_represent_img1912">
+									  <img
+									    src="${review.rcontentMap.thumbnailImage}"
+									    alt="리뷰 이미지"
+									  />
+									</div>
+								</c:if>
 								<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
 								  <ul class="slides">
 								  	<c:forEach items="${review.rcontentMap.imagesPath}" var="image">
@@ -1239,7 +1241,16 @@
 				</ul>
 			</div>
 			<!-- paging -->
-			<div class="paging mt30" id="reviewPagingDiv"></div>
+			<div class="paging mt30" id="reviewPagingDiv">
+			  <a class="prev2" href="javascript:void(0);">처음 페이지로 이동</a>
+			  <a href="javascript:void(0);" class="prev">이전 페이지로 이동</a>
+			  <span class="num">
+			  	<a href="javascript:void(0);" class="pageBtn" pagenum="1">1</a>
+			    </span>
+			    <a href="javascript:void(0);" class="next">다음 페이지로 이동</a
+			  ><a href="javascript:void(0);" class="next2">마지막 페이지로 이동</a>
+			</div>
+			
 			<!-- //paging -->
 			<!--// pop_cnt-->
 
@@ -1879,11 +1890,168 @@
 <!--beshow conversion ends-->
 <iframe style="display: none" id="fileFrame" title="fileFrame" scr=""></iframe>
 
+<div id="reviewRow" style="display:none;">
+	<li class="evaluation_view" id="evaluation_view0">
+		<div class="member_info_top">
+			<ul>
+				<li class="name"></li>
+				<li class="grade"></li>
+				<li class="date"></li>
+				<li class="stars">
+					<div class="star_score1807">
+						<span class="cmt_star"> <span class="cmt_per">별점</span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="member_info_bottom">
+			<ul>
+				<li class="choice">• <span  id="row11"></span> / <span id="row12"></span>
+					/ <span id="row13"></span> / 평소 사이즈 : <span id="row14"></span>
+				</li>
+				<li class="must">• 구매 정보 : <span id="row21"></span> / <span id="row22"></span>
+					/ <span></span>
+				</li>
+			</ul>
+		</div>
+			<div class="review_represent_img1912">
+			  <img
+			    src=""
+			    alt=""
+			  />
+			</div>
+		<div class="review_img_wrap review_img_cont191216 wlength" id="myreviewImg">
+		  <ul class="slides">
+		  
+		    <li>
+		      <div class="review_img_cont_inner191216">
+		        <div class="img_wrap">
+		          <img
+		            src=""
+		            alt="리뷰 이미지"
+		          />
+		        </div>
+		      </div>
+		    </li>
+		    
+		  </ul>
+		</div>
+		<div class="review_txt_wrap">
+			<p class="review_txt"></p>
+		</div>
+		<div class="sizecolor clearfix">
+			<div class="real_fit_size1905">
+				<strong>• 실 착용 사이즈</strong>
+				<div class="evaluation_wrap1905">
+					<p>허리둘레 :</p>
+					<div class="clearfix">
+						<span class="">타이트함</span> <span class=" on">적당함</span> <span
+							class="">여유있음</span>
+					</div>
+				</div>
+				<div class="evaluation_wrap1905">
+					<p>엉덩이둘레 :</p>
+					<div class="clearfix">
+						<span class="">타이트함</span> <span class=" on">적당함</span> <span
+							class="">여유있음</span>
+					</div>
+				</div>
+				<div class="evaluation_wrap1905">
+					<p>총길이 :</p>
+					<div class="clearfix">
+						<span class="">짧은 편</span> <span class=" on">적당함</span> <span
+							class="">긴 편</span>
+					</div>
+				</div>
+			</div>
+			<div class="real_color1905">
+				<strong>• 실 제품 색상</strong>
+				<div class="clearfix">
+					<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
+						class="">밝아요</span>
+				</div>
+			</div>
+		</div>
+		<div class="review_more_1807">
+			<a class="review_plus" href="javascript:void(0);" >리뷰 더보기</a>
+		</div>
+	</li>
+</div>
 <!-- footerWrap -->
 <script>
 	//리------------------------------------------------------------------뷰
 	let fileObject = new Object();
 
+	function reviewRowInsert(reviewList){
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
+		param={
+				pid : "${productVO.pid}"
+				};
+		$.ajax({
+			url : '/review/getlistList',
+			type : 'POST',
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : JSON.stringify(param), //직렬화
+			dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				result = JSON.parse(result);
+				console.log(typeof(result));
+				//작성 성공시 작성창 닫기
+				result.forEach((value, index, array) => {
+					console.log(value);
+					$("#reviewRow").find(".name").text(value.mid);
+					$("#reviewRow").find(".grade").text(value.mname);
+					$("#reviewRow").find(".date").text(value.rdate);
+					$("#reviewRow").find(".cmt_per").addClass("star"+value.rcontentMap.rating)
+					
+					$("#reviewRow").find("#row11").text(value.rcontentMap.age);
+					$("#reviewRow").find("#row12").text(value.rcontentMap.height);
+					$("#reviewRow").find("#row13").text(value.rcontentMap.bodyType);
+					$("#reviewRow").find("#row14").text(value.rcontentMap.enjoySize);
+					
+					$("#reviewRow").find("#row21").text(value.pcolor);
+					$("#reviewRow").find("#row22").text(value.psize);
+
+					$("#reviewRow").find(".review_txt").text(value.rcontentMap.headline);
+					
+					//썸네일 이미지 있으면 추가해주자
+					$("#reviewRow").find(".review_represent_img1912").css("width",'0');
+					$("#reviewRow").find(".review_represent_img1912>img").attr("src", "");
+					if(value.rcontentMap.thumbnailImage !== "undefined"){
+						$("#reviewRow").find(".review_represent_img1912").css("width",'60px');
+						$("#reviewRow").find(".review_represent_img1912>img").attr("src", value.rcontentMap.thumbnailImage);
+					}
+					
+					//일단 이미지 div 아래 전부 죽이고
+					$("#reviewRow").find("#myreviewImg>ul").empty();
+					console.log(value.rcontentMap.imagesPath);
+					//이미지 등록한것도 있으면 태그들 넣어주자
+					if(typeof value.rcontentMap.imagesPath != "undefined"){
+						value.rcontentMap.imagesPath.forEach((value, index, array) => {
+							$("#reviewRow").find("#myreviewImg>ul").append('<li> <div class="review_img_cont_inner191216"> <div class="img_wrap"> <img src="'+ value +'" alt="리뷰 이미지"/> </div> </div> </li>');
+						});
+					}
+					$("#reviewRow").find("#myreviewImg>ul")
+					
+					$("#reviewRow>li").clone(true).appendTo("#liparent");
+				});
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+		//$("#liparent").empty();
+		let temp = $("#reviewRow").clone(true);
+		//$("#liparent").append(temp.show());		
+	}
+	
+	//reviewRowInsert('asd');
 	function fn_reviewWriteSend() {
 		if (!confirm("작성 하시겠습니까?"))
 			return false;
@@ -1939,13 +2107,14 @@
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
 				//작성 성공시 작성창 닫기
-				if (result == "Success") {
+				
 					alert("리뷰가 작성되었습니다.");
 					console.log("리뷰가 작성되었습니다.");
 					reviewReset();
 					$("#customerReviewWriteDiv").hide();
+					console.log(result.rcontent);
 					viewPopup("#customerReviewDiv");
-				} /* else if(result == "fail"){
+				 /* else if(result == "fail"){
 								alert("리뷰를 이미 작성하셨습니다.");
 								console.log("리뷰를 이미 작성하셨습니다.");
 								$("#customerReviewWriteDiv").hide();
@@ -1970,6 +2139,7 @@
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
 		viewPopup("#customerReviewDiv");
+		reviewRowInsert('asd');
 	}
 	
 	//x 버튼을 누르면 상품평 리스트 닫기

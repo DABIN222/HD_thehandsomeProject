@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +54,8 @@ public class ReviewController {
 	
 	@Autowired
 	ProductService productService;
+	
+	ObjectMapper objectMapper = new ObjectMapper();
 	
 	//상품평 리스트
 	@ResponseBody
@@ -119,10 +122,45 @@ public class ReviewController {
 		return "pass";
 	}
 	
-	//상품평 작성하기	
-	@ResponseBody
-	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST)
-	public String reviewWrite(@RequestBody ReviewDTO review, HttpServletRequest request) {
+	@RequestMapping(value="/getlistList", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ReviewDTO>> getlistList(
+			@RequestBody ReviewDTO rd,
+			HttpServletRequest request) throws Exception{
+		
+		// 상품평 리스트 받기
+		List<ReviewDTO> getReview = reviewService.getReviewList(rd.getPid());
+		
+		log.info("--------"+rd.getPid());
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		int reviewCount = 0;
+		int avgRating = 0;
+		// rcontent map으로 변환하기
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			//reviewDTO에 변환한 값 넣기
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+			
+			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
+		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();
+		
+		reviewinfo.add(reviewCount);
+		reviewinfo.add(avgRating);
+		return new ResponseEntity<List<ReviewDTO>>(reviewList, HttpStatus.OK);
+	}
+	
+	//상품평 작성하기
+	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ReviewDTO>> reviewWrite(@RequestBody ReviewDTO review, HttpServletRequest request) throws Exception{
 		HttpSession session = request.getSession(); // 세션
 		
 		// mname, mgrade를 받아올 vo
@@ -143,9 +181,38 @@ public class ReviewController {
 		review.setPcolor("BK");
 		review.setPsize("88");
 		System.out.println(review.toString());
-				
+		
 		reviewService.reviewInsert(review);
-		return "Success";
+		//넣고 다시 리스트 반환
+		// 상품평 리스트 받기
+		List<ReviewDTO> getReview = reviewService.getReviewList(review.getPid());
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		int reviewCount = 0;
+		int avgRating = 0;
+		// rcontent map으로 변환하기
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			//reviewDTO에 변환한 값 넣기
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+			
+			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
+		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();
+		
+		reviewinfo.add(reviewCount);
+		reviewinfo.add(avgRating);
+		
+		return new ResponseEntity<List<ReviewDTO>>(reviewList, HttpStatus.OK);
 	}
 	
 	//uploadFile 이름 버그 주의
@@ -154,7 +221,7 @@ public class ReviewController {
 				String pid,
 				MultipartFile[] uploadFile) throws IOException {
 
-			String uploadFolder = "D:\\sts3\\ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64\\sts-bundle\\workspace_springProject\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
 			log.info(uploadFile);
 			log.info(uploadFile.length);
 			//String pid = "TM2CAWOT762W"; //임시로 일단 만들어놓자
@@ -231,7 +298,7 @@ public class ReviewController {
 		public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
 
 			//컴퓨터마다 환경이다르므로 바꿔줘야해 !
-			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images\\temp";
+			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
 			
 			log.info(uploadFile);
 			log.info(uploadFile.length);
