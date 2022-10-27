@@ -63,7 +63,12 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("cnt : "+cnt);
 		return cnt;
 	}
-
+	
+	@Override
+	public MemberVO pwcheck(String member) {
+		return mapper.pwcheck(member);
+	}
+	
 	// 로그인 
 	@Override
 	public MemberVO login(MemberVO member) {
@@ -73,7 +78,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteuser(String mid) {
 		mapper.deleteuser(mid);
-		}
+	}
+	
+	//유저 권한 삭제
+	public void deleteuserAuth(String username) {
+		mapper.deleteuserAuth(username);
+	}
+	
+	//유저 권한 조회
+	public String getMemberAuth(String username) {
+		String UserName = mapper.getMemberAuth(username);
+		System.out.println("String : "+UserName);
+		return UserName;
+	}
+	
 	// 유저업 데이트
 	@Override
 	public void updateuser(MemberVO mid) {

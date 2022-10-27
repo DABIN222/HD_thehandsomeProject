@@ -470,14 +470,14 @@
 	</div>
     
 
-	
+
 	<!-- btn_btwrap -->
-	<a href="/member/deleteruserpro"> <!-- 이걸로 매핑해서 sql가져와서 알지? 굿 -->
 	<div class="btnwrap">
-	
+		
 		<input type="button" class="btn gray" id="memberSecessionBtn" value="회원탈퇴 " > <!-- 회원탈퇴 --> <!-- 여기부터 밥먹고 와서 하자 로그인 하는거랑 비슷하게 함  -->
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	
 	</div>
-	</a>
 	<!-- //btn_btwrap -->
 </div>
 			<!-- //cnts -->
@@ -487,14 +487,42 @@
 	</div>
 	
 	<script>
-	//탈퇴하면 알림(승준)
-	$("#memberSecessionBtn").click(function(){
-		alert("탈퇴되었습니다 생각나면 다시와주세요");
-	})
 //주문 목록으로 이동한다.(박진수)
 function Goorderlist(){
 	$("#orderlist").submit();
 }
+
+ 	$("#memberSecessionBtn").click(function(){
+ 		
+		const mid = "${member}";
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
+		$.ajax({
+			type : "POST",
+			url : "/member/deleteuserpro",
+			beforeSend: function(xhr) {
+		          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : mid,// json 형태의 데이터
+			contentType: "application/json; charset=utf-8",
+			success : function(username) {
+				console.log(username);
+				if(username != "" || username != null){
+					console.log("ajax data 값 : " + username);
+					location.href="/";
+				}
+				//location.reload(true);
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+	        	console.log(jqXHR);  //응답 메시지
+	        	console.log(textStatus); //"error"로 고정인듯함
+	        	console.log(errorThrown);
+	        }
+		});
+		
+		
+ 	})
+	
 	</script>
 </body>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
