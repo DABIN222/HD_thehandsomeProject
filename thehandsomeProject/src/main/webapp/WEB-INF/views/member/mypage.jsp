@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="/WEB-INF/views/common/header.jspf"%>
+
    <!-- bodyWrap -->
    <div id="bodyWrap">
       <h3 class="cnts_title">
@@ -27,6 +28,7 @@
 					<dt>혜택 관리</dt>
 						<dd>
 							<a href="/member/myGradeInfo">나의 회원 등급<!-- 나의 회원 등급 --></a>
+
 						</dd>
 					</dl>
  				<dl>
