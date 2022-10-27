@@ -137,7 +137,9 @@ public class ProductController {
 			) throws UnsupportedEncodingException {
 		Criteria cri= new Criteria();
 		ProductVO product = new ProductVO();
-
+		
+		log.info(info);
+		
 		info = ProductUtil.builder().build().getURLDecode(info);
 		
 		//대분류 > 중분류 > 소분류 나타내기 위한 카테고리 배열 만들기
