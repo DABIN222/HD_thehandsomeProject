@@ -21,53 +21,79 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
-	@Autowired
-	private MemberMapper membermapper;
-	
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
-			throws IOException, ServletException {
-		
-		String username = auth.getName();
-		log.warn(username+"님 Login Success");
+   @Autowired
+   private MemberMapper membermapper;
+   
+   @Override
+   public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
+         throws IOException, ServletException {
+      String url = request.getParameter("referer");
+      System.out.println(url);
+      int check = 0;
+      String arr[] = new String[1000];
+      String urlsp[] = url.split("/"); //url 자르기
+      for(int i=0;i<urlsp.length;i++) { // 예외처리
+         System.out.println(urlsp[i]);
+         if(urlsp[i].equals("logout")) {
+            check=1;
+         }else if(urlsp[i].equals("login")||urlsp[i].equals("loginForm")) {
+            check =2 ;
+         }else if(urlsp[i].equals("loginForm?error")||urlsp[i].equals("loginForm?logout")||urlsp[i].equals("join")) {
+            check=3;
+         }
+      }
+      System.out.println(check);
+      
+      String username = auth.getName();
+      log.warn(username+"님 Login Success");
 
-		List<String> roleNames = new ArrayList<>();
+      List<String> roleNames = new ArrayList<>();
 
-		auth.getAuthorities().forEach(authority -> {
+      auth.getAuthorities().forEach(authority -> {
 
-			roleNames.add(authority.getAuthority());
+         roleNames.add(authority.getAuthority());
 
-		});//end auth.getAuthorities
+      });//end auth.getAuthorities
 
-		log.warn("ROLE NAMES: " + roleNames);
+      log.warn("ROLE NAMES: " + roleNames);
 
-		HttpSession session = request.getSession(); // 세션
-		session.setAttribute("member", username);
-		
-		MemberVO vo = membermapper.read(username);
-		
-		if(vo != null) {
-			int wscount = membermapper.getWishListCount(username);
-			int sbcount = membermapper.getShoppingBagCount(username);
-			
-			session.setAttribute("wsCount", wscount);
-			session.setAttribute("sbCount", sbcount);
-			log.warn("--------------------"+sbcount);
-		}
-		
-		if (roleNames.contains("ROLE_ADMIN")) {
-			response.sendRedirect("/");
-			return;
-		}//end if
+      HttpSession session = request.getSession(); // 세션
+      session.setAttribute("member", username);
+      
+      MemberVO vo = membermapper.read(username);
+      
+      if(vo != null) {
+         int wscount = membermapper.getWishListCount(username);
+         int sbcount = membermapper.getShoppingBagCount(username);
+         
+         session.setAttribute("wsCount", wscount);
+         session.setAttribute("sbCount", sbcount);
+         log.warn("--------------------"+sbcount);
+      }
+      
+      if (roleNames.contains("ROLE_ADMIN")) {
+         response.sendRedirect("/");
+         return;
+      }//end if
 
-		if (roleNames.contains("ROLE_MEMBER")) {
-			response.sendRedirect("/");
-			return;
-		}//end if
-		
-		
+      if (roleNames.contains("ROLE_MEMBER")) {
+         response.sendRedirect("/");
+         return;
+      }//end if
+      
+      if(check==1) {
+         response.sendRedirect("/");
+      }else if(check==2) {
+         response.sendRedirect("/");
+      }else if(check==3) {
+         response.sendRedirect("/");
+      }
+      else {
+         response.sendRedirect(url);
+      }
+      
 
-		
-		response.sendRedirect("/");
-	}//endonAuthenticationSuccess
+      
+      
+   }//endonAuthenticationSuccess
 }//end class

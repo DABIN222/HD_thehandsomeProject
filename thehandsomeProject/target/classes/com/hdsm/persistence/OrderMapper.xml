@@ -160,5 +160,4 @@
 		ON a.ccolorcode = b.ccolorcode
 		WHERE a.oid = #{oid}
 	</select>
-	
 </mapper>

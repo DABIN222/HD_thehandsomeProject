@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file ="/WEB-INF/views/common/header.jspf" %>
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
-
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
             <!-- bodyWrap -->
         <div id="bodyWrap" style="padding-bottom:0;">
                 <!-- layer pop-->
@@ -14,31 +15,27 @@
                 <div id="nightEventPopup"></div>
                 <div id="membershipInfoMainWrap"></div>
                 <!-- //layer pop -->
-                <!-- main_container-->
                 <div class="big_banner1903">
                     <div class="swiper-container big_banner_inner swiper-container-horizontal swiper-container-wp8-horizontal" id="mainSlider1903_0">
                         <div class="big_banner_frame"></div>
                         <ul class="slides swiper-wrapper" style="transform: translate3d(-24456px, 0px, 0px); transition-duration: 0ms;"><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
                     <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(24456px, 0px, 0px); transition: all 0ms ease 0s;"></div>
-                    <a href="/ko/magazine/editorials/8806775543880" onclick="GA_main('banner',$(this));">
-                <div class="a_txt_wrap left">
-                    <p class="title">
-                    	<span class="bar-in">
-                            <font color="#000000">머리부터 발끝까지</font>
-                                <span class="ab-bar left" style="background-color:#000000;"></span>
-                                <span class="ab-bar right" style="background-color:#000000;"></span>
-                            </span>
-                    </p>
-                    <p class="s_title">
-                    	<font color="#000000">포근한 촉감을 선사해줄<br>멋스러운 모자와 롱 부츠</font>
-                    </p>
-                    <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
-                    </div>
-                <div class="v_img">
-                    <img  class="swiper-lazy" src="/medias/221020-A-selection.jpg?" alt="" class="entity-img">
-                </div>
-            </a>
-                        </li><li class="swiper-slide" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
                     <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(23437px, 0px, 0px); transition: all 0ms ease 0s;"></div>
                     <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
                         <div class="a_txt_wrap left">
@@ -55,10 +52,10 @@
                             <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
                             </div>
                         <div class="v_img">
-                            <img class="swiper-lazy" src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
                         </div>
                     </a>
-                        </li><li class="swiper-slide" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
                     <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(22418px, 0px, 0px); transition: all 0ms ease 0s;"></div>
                     <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
                         <div class="a_txt_wrap left">
@@ -72,10 +69,10 @@
                             <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
                             </div>
                         <div class="v_img">
-                            <img class="swiper-lazy" src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
                         </div>
                     </a>
-                        </li><li class="swiper-slide" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
                     <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(21399px, 0px, 0px); transition: all 0ms ease 0s;"></div>
                     <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
                         <div class="a_txt_wrap left">
@@ -95,14 +92,2402 @@
                             <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
                         </div>
                     </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(20380px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(19361px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(18342px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(17323px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(16304px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(15285px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(14266px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
                         </li>
+                           <li class="swiper-slide" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(0px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(-1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(-2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(-3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(-4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(-5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(-6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(-7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(-8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(-9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(-10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(-11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(-12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(-13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(-14266px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap ">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li></ul>
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                    </div>
+                    <div class="swiper-container big_banner_inner swiper-container-horizontal swiper-container-wp8-horizontal" id="mainSlider1903_1" style="margin-top: -480px; left: 1035px; cursor: grab;">
+                        <div class="big_banner_frame"></div>
+                        <ul class="slides swiper-wrapper" style="transform: translate3d(-25475px, 0px, 0px); transition-duration: 0ms;"><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(25475px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(24456px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(23437px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(22418px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(21399px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(20380px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(19361px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(18342px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(17323px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(16304px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(15285px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(14266px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+                           <li class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(0px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(-1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(-2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(-3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(-4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(-5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(-6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(-7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(-8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(-9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(-10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(-11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(-12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(-13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li></ul>                
+                    </div>
+                    <div class="swiper-container big_banner_inner swiper-container-horizontal swiper-container-wp8-horizontal" id="mainSlider1903_2" style="margin-top: -480px; left: -1035px; cursor: grab;">
+                        <div class="big_banner_frame"></div>
+                        <ul class="slides swiper-wrapper" style="transform: translate3d(-23437px, 0px, 0px); transition-duration: 0ms;"><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(23437px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(22418px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(21399px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(20380px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(19361px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(18342px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(17323px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(16304px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(15285px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(14266px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+                           <li class="swiper-slide" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(0px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(-1019px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(-2038px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li>
+        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx&quot;); transform: translate3d(-3057px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514486144" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">배우 김고은의 섬세한 순간<br>광고 감상평 남기고 쿠폰 받기!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">영상 보러가기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-SomeMoments-01-center-01.jpg?context=bWFzdGVyfGltYWdlc3wyNTg0MzZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hlYS85MzM2MjgzODU2OTI2LmpwZ3w0NGJiMTc1YTVmNDVhMDY3YmFlZDJlZTcwNTVlOWMzMWZjM2EzOWViODMxZDk2OGY4M2E5NjFlZjIwMjhmODkx" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI&quot;); transform: translate3d(-4076px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263738552" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">GIFT FOR YOU</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">더한섬닷컴의 특별한 선물<br>브랜드 별 구매 GIFT를 만나보세요</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">자세히 보기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-gift-03-sj.jpg?context=bWFzdGVyfGltYWdlc3w0NTM5N3xpbWFnZS9qcGVnfGltYWdlcy9oMjgvaDI4LzkzMzc4OTcxNTY2MzguanBnfGVkMmYxOGVhNDdkNmVhZjI3YTUzY2JjZmRlNTExMzVhMDhkNjBkYmEyZmI1ODUxYjQ1ZjhkOTczMTQzMzg4YWI" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ&quot;); transform: translate3d(-5095px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/events/8804514551680" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">10월의 신규 회원을 위한<br>4주간의 릴레이 래플 라인업</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">이벤트 응모하기</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221004-A-7th-raffle-final.jpg?context=bWFzdGVyfGltYWdlc3w0MzYyMnxpbWFnZS9qcGVnfGltYWdlcy9oMGUvaDkyLzkzMzcxODYxODkzNDIuanBnfGEwNTg2NjJmNjUxNmY2NTRiYTQ1OGIwMTZjZTFkMTdmNDdiMDQyNzIyYzZiNDQwYjk4NTZiNmJkODM1ZTk4YTQ" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA&quot;); transform: translate3d(-6114px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813361845944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">BARE INSTINCTS</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">SJSJ가 선보이는 뉴 시즌 캠페인<br>무스탕 퍼 베스트 GIFT까지!</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-sjsj-01.jpg?context=bWFzdGVyfGltYWdlc3w0NDgxM3xpbWFnZS9qcGVnfGltYWdlcy9oNGIvaDdjLzkzMzc2NDEzMzY4NjIuanBnfGI0Mzg2OGVlYjkxYjNmNTY5N2JlMzZmMTM1MzRmOTYwOTA2ZDhkYjYxYTVkYmNlN2I4MGU4NmZhM2YyMTQ3YzA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj&quot;); transform: translate3d(-7133px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742710344" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">WINTER GETAWAY</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">이번 시즌을 책임져 줄<br>폼스튜디오의 옷장 에센셜 </font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221005-A-fourm-02.jpg?context=bWFzdGVyfGltYWdlc3wxNDc1NTV8aW1hZ2UvanBlZ3xpbWFnZXMvaDhjL2hjYi85MzM3ODYxNzk5OTY2LmpwZ3xiZTQwYmI2NDE5ZGEyMzc5MTE5OWU4YjU1ZTM1Y2VjYmMwYzUzNWM3ZmMxM2IyZjY5YjEzYzk2MDZlODgwOGRj" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5&quot;); transform: translate3d(-8152px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263509176" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">피어오브갓 에센셜 2차 발매<br>공식 단독 런칭 at MUE</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/A-essential-08.jpg?context=bWFzdGVyfGltYWdlc3wxMDY1Mzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDJkL2gxNy85MzM2Mjg5NzU1MTY2LmpwZ3wzODU4NmRmN2VkOTYwZDBiNTI2MzNiOTE4ZTFjYmU4MDIyZmFhMjliMTEyNmY1MzFlYmU3YjE4ZTc0MTc0YTY5" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz&quot;); transform: translate3d(-9171px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806644373576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">우리가 만나는 곳, 쌤쌤쌤</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">샌프란시스코의 여유가 담긴<br>글라스컵 &amp; 플레이트 SET 증정</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220928-sam-PC.jpg?context=bWFzdGVyfGltYWdlc3wyNjkyNjJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0My85MzM1MTkyMTU4MjM4LmpwZ3wyYzM3NTJmZGIxOTYzMzg4YTI1MDdlZWE1MDQzNTYzYTQxOTk4NWQ3OGQ5MWVkOGUyZGJiYjY2NTQ1ODMyZmMz" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y&quot;); transform: translate3d(-10190px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329307320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">MINE BEAUTY</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">빛나는 매일을 위한 마인 뷰티<br>배우 박규영의 우아한 가을 화보</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-mine-01.jpg?context=bWFzdGVyfGltYWdlc3w2NTMzOXxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGVmLzkzMzYyODM2NjAzMTguanBnfGYzMzZhMDg1ZTM2OTExY2QxMWIwMGJjODk0ZmU2NzU1NGY2NGMxMWJjZDcxZDIxMWIzMzJmNzcyYmRlOWY4Y2Y" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU&quot;); transform: translate3d(-11209px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806709909576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">두 여행자, 커플의 소리</font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">여행과 일상을 잇는 김모아 &amp; 허남훈<br>그들의 옷장 속 이야기</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-somecloset-pc-.jpg?context=bWFzdGVyfGltYWdlc3w5OTk0NnxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGQxLzkzMzY4MDEwOTk4MDYuanBnfDU2OGM3MWQyZTk3M2MwNGE5ZjA5ZTZjNWVjOTVhYjhlNjdhMDVhOTkzYWYzNDg2NzJlMzY1OWJkNzBkMDI2MTU" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="9" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM&quot;); transform: translate3d(-12228px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263541944" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">가을 날의 우디 퍼퓸</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">리퀴드 퍼퓸바 우디 향수 추천<br>최대 15% 할인 &amp; 에코백 선물</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-liquidesbar-01.jpg?context=bWFzdGVyfGltYWdlc3w1OTExN3xpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDNhLzkzMzYyOTAwODI4NDYuanBnfDA2Njg1MWJiZDE3NTk3NWVhZjYzOTkxMzA0MjE1Y2UxOTI3MjRkYmM4ZDI1YjQ4MDdlNTUxNmY1M2I3ZjliNmM" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="10" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg&quot;); transform: translate3d(-13247px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813329143480" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#FFFFFF">WINTER OUTER</font>
+                                        <span class="ab-bar left" style="background-color:#FFFFFF;"></span>
+                                        <span class="ab-bar right" style="background-color:#FFFFFF;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">타임옴므가 제안하는<br>22 FW 아우터 스타일링 팁</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220929-A-timehomme.jpg?context=bWFzdGVyfGltYWdlc3w5NTU4MXxpbWFnZS9qcGVnfGltYWdlcy9oYTEvaDY4LzkzMzYyNjUzNDMwMDYuanBnfDNiOTQzZWQ4ZTQ0MmYwOTNkNGRmNzk5M2E2MjRkMDYwZmZiZGE2ZjgwYTdjMTUzMTI3NzcxOGYwM2M2YzJhMTg" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="11" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY&quot;); transform: translate3d(-14266px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/exhibitions/8813263771320" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap left" style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#FFFFFF">오에라 F/W 안티에이징 루틴<br>10월의 스페셜 GIFT 혜택</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#FFFFFF;color:#FFFFFF">Shop Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/221001-A-oera-03.jpg?context=bWFzdGVyfGltYWdlc3w2ODE3NnxpbWFnZS9qcGVnfGltYWdlcy9oNjEvaDIzLzkzMzYyODQwMjA3NjYuanBnfGNiN2EwNjFkNjIxZmU2ODA1NTc0YjY5YTk4ZDI4MTcyNWE2ODBhZDdhMWQwNGNmNzExNzAxNjcyODQxN2NjYmY" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li><li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="12" style="transition: all 0ms ease 0s;">
+                    <div class="slide-bgimg" style="background-image: url(&quot;http://www.thehandsome.com/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA&quot;); transform: translate3d(-15285px, 0px, 0px); transition: all 0ms ease 0s;"></div>
+                    <a href="/ko/magazine/editorials/8806742677576" onclick="GA_main('banner',$(this));">
+                        <div class="a_txt_wrap " style="display: none;">
+                            <p class="title">
+                                <span class="bar-in">
+                                    <font color="#000000">LEATHER &amp; DENIM  </font>
+                                        <span class="ab-bar left" style="background-color:#000000;"></span>
+                                        <span class="ab-bar right" style="background-color:#000000;"></span>
+                                    </span>
+                            </p>
+                            <p class="s_title">
+                                <font color="#000000">지금 필요한 아우터<br>더한섬닷컴 PICK 레더 &amp; 데님 재킷</font>
+                            </p>
+                            <div class="shop_now_btn" style="border-color:#000000;color:#000000">Check Out Now</div>
+                            </div>
+                        <div class="v_img">
+                            <img src="/medias/220930-A-weeklypick-01.jpg?context=bWFzdGVyfGltYWdlc3w4MDY1MXxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDA3LzkzMzY4MDM4MTk1NTAuanBnfDM5YTRmNDYzYTE0Y2Y1NWY0Yzk0ZDc2Y2YzODc0MWViMjdmOTQ3NjAzYzA2NGFlODkyYTE2Yjk5NTM4ZWFkNTA" alt="" class="entity-img">
+                        </div>
+                    </a>
+                        </li></ul>                
+                    </div>
+                    <div class="swiper-button-prev bigb"></div>
+                    <div class="swiper-button-next bigb"></div>
+                </div>
+                
+                 
+        <script>
+        
+	        function mainSlider1903() {
+	            $('.big_banner_inner').each(function(){
+	                if($(this).hasClass('init')){
+	                    $(this).removeClass('init');
+	                }
+	            });
+	            
+	            /* 슬라이드 갯수에 따른 loop추가 및 제거(20210222) */
+	            var bannerIndex1 = $('#mainSlider1903_0 .swiper-slide').length;
+	            var bannerIndex2 = $('#mainSlider1903_1 .swiper-slide').length;
+	            var bannerIndex3 = $('#mainSlider1903_2 .swiper-slide').length;
+	            
+	            var interleaveOffset = 1;
+	            var swiperOptions0 = {
+	                initialSlide:0,
+	                loop: bannerIndex1 === 1 ? false:true,
+	                autoplay: {
+	                    delay: 4000,
+	                    autoplayDisableOnInteraction: true,// 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
+	                    disableOnInteraction: false,//180911 스와이핑 후에도 자동 롤링 되도록 추가
+	                },
+	                loopAdditionalSlides: 6,
+	                speed: 1000,
+	                pagination: {
+	                    el: '.swiper-pagination',
+	                    clickable: true,
+	                 	// 20200914 페이징 퍼이를 위한 주석처리
+	                    /* type: 'progressbar', */
+	                },
+	                navigation: {
+	                    nextEl: '.swiper-button-next.bigb',
+	                    prevEl: '.swiper-button-prev.bigb',
+	                },
+	                simulateTouch:false,
+	                parallax: true,
+	                grabCursor: true,
+	                watchSlidesProgress: true,
+	                slidesPerView: 'auto',
+	                centeredSlides:true,
+	                on: {
+	                    progress: function(){
+	                        var swiper = this;
+	                        for (var i = 0; i < swiper.slides.length; i++) {
+	                            var slideProgress = swiper.slides[i].progress,
+	                                    innerOffset = swiper.width * interleaveOffset,
+	                                    innerTranslate = slideProgress * innerOffset;
+	                            swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+	                                "translate3d(" + innerTranslate + "px, 0, 0)";
+	                        }
+	                    },
+	                    touchStart: function() {
+	                        var swiper = this;
+	                        for (var i = 0; i < swiper.slides.length; i++) {
+	                            swiper.slides[i].style.transition = "";
+	                        }
+	                    },
+	                    setTransition: function(speed) {
+	                        var swiper = this;
+	                        for (var i = 0; i < swiper.slides.length; i++) {
+	                            swiper.slides[i].style.transition = speed + "ms";
+	                            swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+	                                speed + "ms";
+	                        }
+	                    }
+	                }
+	            }
+	                var swiperOptions1 = {
+	                    initialSlide:1,
+	                    loop: bannerIndex2 === 1 ? false:true,
+	                    autoplay: {
+	                        delay: 4000,
+	                        autoplayDisableOnInteraction: true,// 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
+	                        disableOnInteraction: false,//180911 스와이핑 후에도 자동 롤링 되도록 추가
+	                    },
+	                    loopAdditionalSlides: 6,
+	                    speed: 1000,
+	                    navigation: {
+	                        nextEl: '.swiper-button-next.bigb',
+	                        prevEl: '.swiper-button-prev.bigb',
+	                    },
+	                    parallax: true,
+	                    grabCursor: true,
+	                    watchSlidesProgress: true,
+	                    slidesPerView: 'auto',
+	                    centeredSlides:true,
+	                    on: {
+	                        progress: function(){
+	                            var swiper = this;
+	                            for (var i = 0; i < swiper.slides.length; i++) {
+	                                var slideProgress = swiper.slides[i].progress,
+	                                        innerOffset = swiper.width * interleaveOffset,
+	                                        innerTranslate = slideProgress * innerOffset;
+	                                swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+	                                    "translate3d(" + innerTranslate + "px, 0, 0)";
+	                            }
+	                        },
+	                        touchStart: function() {
+	                            var swiper = this;
+	                            for (var i = 0; i < swiper.slides.length; i++) {
+	                                swiper.slides[i].style.transition = "";
+	                            }
+	                        },
+	                        setTransition: function(speed) {
+	                            var swiper = this;
+	                            for (var i = 0; i < swiper.slides.length; i++) {
+	                                swiper.slides[i].style.transition = speed + "ms";
+	                                swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+	                                    speed + "ms";
+	                            }
+	                        }
+	                    }
+	                }
+	            var swiper2length = $("#mainSlider1903_2 > ul > li").length;
+	            if(swiper2length > 0){
+	                swiper2length -= 1;
+	            }
+	                    var swiperOptions2 = {
+	                        initialSlide: swiper2length ,
+	                        loop: bannerIndex3 === 1 ? false:true,
+	                        autoplay: {
+	                            delay: 4000,
+	                            autoplayDisableOnInteraction: true,// 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
+	                            disableOnInteraction: false,//180911 스와이핑 후에도 자동 롤링 되도록 추가
+	                        },
+	                        loopAdditionalSlides: 6,
+	                        speed: 1000,
+	                        navigation: {
+	                            nextEl: '.swiper-button-next.bigb',
+	                            prevEl: '.swiper-button-prev.bigb',
+	                        },
+	                        parallax: true,
+	                        grabCursor: true,
+	                        watchSlidesProgress: true,
+	                        slidesPerView: 'auto',
+	                        centeredSlides:true,
+	                        on: {
+	                            progress: function(){
+	                                var swiper = this;
+	                                for (var i = 0; i < swiper.slides.length; i++) {
+	                                    var slideProgress = swiper.slides[i].progress,
+	                                            innerOffset = swiper.width * interleaveOffset,
+	                                            innerTranslate = slideProgress * innerOffset;
+	                                    swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+	                                        "translate3d(" + innerTranslate + "px, 0, 0)";
+	                                }
+	                            },
+	                            touchStart: function() {
+	                                var swiper = this;
+	                                for (var i = 0; i < swiper.slides.length; i++) {
+	                                    swiper.slides[i].style.transition = "";
+	                                }
+	                            },
+	                            setTransition: function(speed) {
+	                                var swiper = this;
+	                                for (var i = 0; i < swiper.slides.length; i++) {
+	                                    swiper.slides[i].style.transition = speed + "ms";
+	                                    swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+	                                        speed + "ms";
+	                                }
+	                            }
+	                        }
+	            };
+	            
+	            $("#mainSlider1903_1").find("div.a_txt_wrap").hide();
+	            $("#mainSlider1903_2").find("div.a_txt_wrap").hide();
+	            var swiper01 = new Swiper("#mainSlider1903_0", swiperOptions0);
+	            var swiper02 = new Swiper("#mainSlider1903_1", swiperOptions1);
+	            var swiper03 = new Swiper("#mainSlider1903_2", swiperOptions2);
+	        }
+	        (function($){
+	        $(document).ready(function(){
+	        	mainSlider1903();
+	        });})(jQuery);
 
-       		</ul>
-       		</div>
-       		</div>
-       		
-       
-   
+        </script>
+                
+                
+                <!-- main_container-->
                 <div class="main_container">
                     <div class="mid_banner" style="">
                         <div class="banner1 banner1_N" style="">

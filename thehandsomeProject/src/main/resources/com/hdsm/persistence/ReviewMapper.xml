@@ -89,4 +89,6 @@
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid}
 	</select>
+
 </mapper> 
+

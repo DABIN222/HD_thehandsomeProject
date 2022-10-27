@@ -11,26 +11,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>더한섬닷컴 | THE HANDSOME.COM</title>
+
 <link rel="shortcut icon"
-	href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
+   href="http://cdn.thehandsome.com/_ui/desktop/common/images/common/thehandsome_ic_16x16.ico">
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/footer.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/layout.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/contents.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/popup.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mbtiEvent.css">
 
-
-<!-- 제이쿼리 cdn -->	
+<!-- 제이쿼리 cdn -->   
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- ui 공통 스크립트 -->
 <script type="text/javascript" src="/resources/js/ui.js"></script>
 
-<script type="text/javascript" src="/resources/js/swiper.min.js"></script>
-
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> -->
-<!-- <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> -->
-  
 
 </head>
 <body oncontextmenu="return false">
@@ -72,25 +68,16 @@
 								<div class="list" style="display: none; height: 164px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 									<ul>
 										<li><!-- 주문조회 -->
-											<a href="#">주문조회</a>
+											<a href="/member/orderlist">주문조회</a>
 										</li>
 										<li><!-- 온라인등급 -->
-											<a href="#">나의회원등급</a>
+											<a href="/member/myGradeInfo">회원 등급</a>
 										</li>
-										<li><!-- 쿠폰조회 -->
-											<a href="#">쿠폰조회</a>
-										</li>
-										<li><!-- 포인트조회 -->
-											<a href="#">마일리지조회</a>
-										</li>
-									    <li><!-- e-Gfit Card -->
-									    	<a href="#">e-Gift Card</a>
-								    	</li>
 									    <li><!-- 회원정보변경 -->
-									    	<a href="#">회원정보변경</a>
+									    	<a href="/member/pwcheck">회원정보변경</a>
 								    	</li>
-										<li><!-- 온라인 상담 -->
-											<a href="#">온라인상담</a>
+										<li><!-- 위시리스트 -->
+											<a href="/member/wishList">위시리스트</a>
 										</li>
 									</ul>
 								</div>
@@ -469,7 +456,9 @@
 									<div class="gnb_banner float_right"></div>
 								</div>
 							</div>
-							</li><!-- //대분류_잡화 -->	
+						</li><!-- //대분류_잡화 -->	
+						<!-- 대분류_잡화 -->	
+						<li><a href="/product/mbtiEvent/" class="timeSaleText" style="color: red;">MBTI 궁금하다면 들어와<span class="arr">arrow</span></a></li><!-- //대분류_타임세일 -->	
 					</ul>
 				</div>
 
