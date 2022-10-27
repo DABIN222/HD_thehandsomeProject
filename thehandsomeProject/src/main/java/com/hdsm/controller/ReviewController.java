@@ -13,6 +13,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,10 +32,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.OrderCheckVO;
+import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ReviewAttachFileDTO;
 import com.hdsm.domain.ReviewDTO;
+import com.hdsm.persistence.OrderMapper;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
 import com.hdsm.service.ReviewService;
 import com.hdsm.util.ReviewUtil;
@@ -56,73 +61,94 @@ public class ReviewController {
 	@Autowired
 	ProductService productService;
 	
-	ObjectMapper objectMapper = new ObjectMapper();
+	@Autowired
+	OrderService orderService;
 	
-	//상품평 리스트
+	//상품평 리스트 (정구현)
 	@ResponseBody
 	@RequestMapping(value="/reviewList", method=RequestMethod.POST)
 	public List<ReviewDTO> reviewList(@RequestParam("pid") String pid,HttpServletRequest request, Model model) throws Exception {
-		log.info("------------------ pid ----------------\n"+pid);
-		System.out.println("pid : " + pid);
+
 		List<ReviewDTO> list = reviewService.getReviewList(pid);
-		log.info("------------------ list ----------------\n"+list.toString());
-		
+	
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		for(ReviewDTO dto : list) {
 			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
-			log.info("rcontent에 값 넣었다-------------------\n");
-			log.info("age : " + rcontent.get("age")+"\n");
-			log.info("height : " + rcontent.get("height")+"\n");
-			log.info("enjoySize : " + rcontent.get("enjoySize")+"\n");
-			log.info("bodyType : " + rcontent.get("bodyType")+"\n");
-			log.info("rating : " + rcontent.get("rating")+"\n");
-			log.info("realWearSize1 : " + rcontent.get("realWearSize1")+"\n");
-			log.info("realWearSize2" + rcontent.get("realWearSize2")+"\n");
-			log.info("realWearSize3 : " + rcontent.get("realWearSize3")+"\n");
-			log.info("realProductColor : " + rcontent.get("rating")+"\n");
-			log.info("headline : " + rcontent.get("realWearSize1")+"\n");
-			
-			log.info("headline : " + rcontent.get("thumbnailImage")+"\n");
-			
+
 			ArrayList<String> asd = (ArrayList<String>) rcontent.get("imagesPath");
 			
 			for(String imagePath : asd) {
 				log.info("asdasd : " + imagePath+"\n");
 			}
-			
-			
+
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
 		}
-		
-		log.info("리스트에 값 넣었다-------------------\n"+reviewList.toString());
-		//model.addAttribute("reviewList",reviewList);
-		
 		return reviewList;
 	}
 	
-	//상품평 작성 여부 확인
+	//상품평 작성 가능 여부 검사 (정구현)
 	@ResponseBody
 	@RequestMapping(value="/reviewWriteCheck", method=RequestMethod.POST)
-	public String reviewWriteCheck(@RequestBody ReviewDTO review, HttpServletRequest request) {
-		/*
-		 * HttpSession session = request.getSession(); // 세션
-		 * 
-		 * //오더에서 받아올 값 하드코딩 review.setPcolor("BK"); review.setPsize("88");
-		 * 
-		 * System.out.println(review.toString());
-		 * 
-		 * // 작성한 게시글 여부 확인 int checkReview =
-		 * reviewService.getReviewCount(review.getPid(), review.getMid(),
-		 * review.getPcolor(), review.getPsize());
-		 * 
-		 * //작성한 리뷰가 있을 때 if(checkReview>0) { log.info("이미 작성하였습니다." + checkReview);
-		 * return "exist"; }
-		 */
-		return "pass";
+	public String reviewWriteCheck(@RequestBody ReviewDTO dto, HttpServletRequest request) throws Exception {
+		
+		  HttpSession session = request.getSession(); // 세션
+
+		  // mid와 pid일치하는 상품평 목록 조회
+		  List<ReviewDTO> reviewList = reviewService.getReviewMemberList(dto.getPid(), dto.getMid());
+		  
+		  // mid와 pid 일치하는 주문 목록 조회
+		  List<OrderCheckVO> orderList = orderService.getOrderCheckVO(dto.getPid(), dto.getMid());
+		  
+		  boolean reviewCheck = false; //리뷰 작성 여부 확인
+		  boolean orderCheck = false; //주문 여부 확인
+		  
+		  String orderId = ""; // 리뷰 작성시 넣어줄 orderid
+		  
+		  // 사용자가 해당 제품을 구매했는지 여부 확인
+		  if(orderList.size()>0) {
+			  for(OrderCheckVO order : orderList) {
+				  // 해당 제품 구매했고, 해당 제품 리뷰 작성 했을 경우
+				  if(reviewList.size()>0) {
+					  ObjectMapper objectMapper = new ObjectMapper();
+					  for(ReviewDTO review : reviewList) {
+						  // rcontent Map으로 변환
+						  Map<String, Object> rcontent = objectMapper.readValue(review.getRcontent(),new TypeReference<Map<String,Object>>(){});
+
+						  // 작성했던 상품평의 주문 번호와 주문내역에 있는 주문번호가 일치할 때
+						  if(order.getOid().equals(rcontent.get("oid"))) {
+							  orderCheck = true;
+							  reviewCheck = false;
+						  }else {
+							  //작성했던 주문 내역과 리뷰 주문내역 서로 다를때
+							  orderId = order.getOid();
+							  reviewCheck = true;
+							  orderCheck = true;
+						  }	 
+					  }
+				  } else {
+					  // 주문 내역 있고 작성한 리뷰 없을 때
+					  orderId = order.getOid();
+					  reviewCheck = true;
+					  orderCheck = true;
+				  }
+			  }
+		  }else {
+			  orderCheck = false;
+		  }
+		  
+		  if(orderCheck == true && reviewCheck == true){
+			 return "pass"+ "," + orderId;	// 작성 가능 , 주문번호 넘겨주기(구분자로 받을예정)
+		  } else if(orderCheck == false) {
+		     return "empty";	// 주문내역 없을때
+		  } else if(reviewCheck == false) {
+			 return "exist"; 	// 이미 리뷰 작성 했을 때 
+		 } 
+		  return "fail";
 	}
 	
+
 	@RequestMapping(value="/getlistList", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	//public ResponseEntity<List<ReviewDTO>> getlistList(
 	@ResponseBody
@@ -167,7 +193,7 @@ public class ReviewController {
 		
 		return result;
 	}
-	
+
 	//상품평 작성하기
 	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ReviewDTO>> reviewWrite(@RequestBody ReviewDTO review, HttpServletRequest request) throws Exception{
@@ -179,7 +205,12 @@ public class ReviewController {
 		// pname, bname, rprice를 받아올 vo
 		ProductVO product = productService.getProduct(review.getPid());
 		
-		
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    Map<String, Object> rcontent = objectMapper.readValue(review.getRcontent(),new TypeReference<Map<String,Object>>(){});
+		OrderItemVO orderItem = orderService.getOrderItemProductInfo((String)rcontent.get("oid"));
+		log.info("orderItem : " + orderItem.toString()) ;
+	    
+	    
 		// DTO에 값 삽입
 		review.setMname(member.getMname());
 		review.setMgrade(member.getMgrade());
@@ -187,9 +218,10 @@ public class ReviewController {
 		review.setBname(product.getBname());
 		review.setRprice(product.getPprice());
 		
-		//오더에서 받아올 값 하드코딩
-		review.setPcolor("BK");
-		review.setPsize("88");
+		//오더에서 받아올 값
+		review.setPcolor(orderItem.getCname());
+		review.setPsize(orderItem.getSsize());
+		
 		System.out.println(review.toString());
 		
 		reviewService.reviewInsert(review);
@@ -197,7 +229,6 @@ public class ReviewController {
 		// 상품평 리스트 받기
 		List<ReviewDTO> getReview = reviewService.getReviewList(review.getPid());
 		
-		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		
 		int reviewCount = 0;
@@ -205,9 +236,9 @@ public class ReviewController {
 		// rcontent map으로 변환하기
 		for(ReviewDTO dto : getReview) {
 			// 문자열 rcontent를 map으로 변환
-			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			Map<String, Object> DTOrcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
 			//reviewDTO에 변환한 값 넣기
-			dto.setRcontentMap(rcontent);
+			dto.setRcontentMap(DTOrcontent);
 			reviewList.add(dto);
 			
 			
@@ -231,7 +262,8 @@ public class ReviewController {
 				String pid,
 				MultipartFile[] uploadFile) throws IOException {
 
-			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+
 			log.info(uploadFile);
 			log.info(uploadFile.length);
 			//String pid = "TM2CAWOT762W"; //임시로 일단 만들어놓자
@@ -308,7 +340,7 @@ public class ReviewController {
 		public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
 
 			//컴퓨터마다 환경이다르므로 바꿔줘야해 !
-			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
+			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
 			
 			log.info(uploadFile);
 			log.info(uploadFile.length);

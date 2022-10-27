@@ -56,4 +56,11 @@
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid} AND psize=#{psize} AND pcolor=#{pcolor}
 	</select>
+	
+	<!-- 회원별 상품평 리스트 -->
+	<select id="getReviewMemberList"  parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
+		SELECT *
+		FROM review
+		WHERE pid=#{pid} AND mid=#{mid}
+	</select>
 </mapper> 
