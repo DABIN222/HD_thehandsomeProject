@@ -329,7 +329,7 @@ public class ReviewController {
 				String pid,
 				MultipartFile[] uploadFile) throws IOException {
 
-			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+			String uploadFolder = "D:\\sts3\\ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64\\sts-bundle\\workspace_springProject\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
 
 			log.info(uploadFile);
 			log.info(uploadFile.length);
@@ -407,7 +407,7 @@ public class ReviewController {
 		public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
 
 			//컴퓨터마다 환경이다르므로 바꿔줘야해 !
-			String uploadFolder = "D:\\Backup\\Guhyeon\\Hyundai\\SecondProject\\Workspace_new\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
+			String uploadFolder = "D:\\sts3\\ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64\\sts-bundle\\workspace_springProject\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
 			
 			log.info(uploadFile);
 			log.info(uploadFile.length);
@@ -436,7 +436,7 @@ public class ReviewController {
 		public ResponseEntity<Void> reviewCancle(
 				@RequestBody ReviewAttachFileDTO attachDTO){
 			
-			String deletePath = "C:/Users/kosa/Desktop/HANDSOME/HD_thehandsomeProject/thehandsomeProject/src/main/webapp";
+			String deletePath = "D:/sts3/ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64/sts-bundle/workspace_springProject/HD_thehandsomeProject/thehandsomeProject/src/main/webapp";
 			
 			ReviewUtil.builder().build().deleteCancleImage(deletePath+attachDTO.getThumbPath());
 			

@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- parameterType="com.hdsm.domain.MemberVO" -->
+
+<!-- 코드 작성자 : 공동 작업  / 내용 : member에 관한 Mapper.xml -->
 <mapper namespace="com.hdsm.persistence.MemberMapper">
 
 	<!-- List<MemberAuthVO>를 포함한 여러 속성을 가진 MemberVo를 뱉기 위한 result Map -->
@@ -25,13 +27,6 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertMember">
-	
-		<!-- 박진수 수정 
-		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
-		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
-		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, #{mzipcode}, 
-		#{maddress1}, #{maddress2}, 0, 'silver', sysdate, 0, 0) 
-		-->
 		INSERT INTO member (mid, mpassword, mname, memail, mtel, mzipcode, 
 		maddress1, maddress2, buysum ,mgrade, mdate, mpoint, menabled)
 		VALUES (#{mid}, #{mpassword}, #{mname}, #{memail}, #{mtel}, #{mzipcode}, 

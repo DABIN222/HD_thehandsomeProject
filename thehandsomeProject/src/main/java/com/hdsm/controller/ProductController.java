@@ -62,8 +62,8 @@ public class ProductController {
 	@Autowired
 	private OrderService orderService;
 	
-	
-	// 타임세일 페이지
+	/* 코드 작성자 : 김다빈  / 내용 : mbti 폼 */
+	// mbti 이벤트 페이지
 	@GetMapping("/mbtiEvent")
 	public String mbtiEventForm() {
 		log.info("mbtiEvent 페이지 왔다");

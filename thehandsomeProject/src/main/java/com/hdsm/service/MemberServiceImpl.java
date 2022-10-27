@@ -28,6 +28,8 @@ import com.hdsm.persistence.ProductMapper;
 
 import lombok.AllArgsConstructor;
 
+/* 코드 작성자 : 공동 작업  / 내용 : member에 관한 ServiceImpl */
+
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
@@ -169,15 +171,7 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteShoppingBag(List<MemberSbagDTO> msList) {
 		int cnt = mapper.deleteShoppingBag(msList);
 		return cnt;
-	}
-
-	/*
-	public int deleteShoppingBag(List<MemberSbagDTO> msBagDtoList) {
-		int cnt = mapper.deleteShoppingBag(msBagDtoList);
-		return cnt;
-	};
-	*/
-	
+	}	
 
 	@Override
 	public int selectShoppingBag(MemberSbagDTO msVO) {

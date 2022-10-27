@@ -14,7 +14,7 @@ import com.hdsm.domain.OrderListVO;
 import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.MemberWishListDTOforJsp;
 
-
+/* 코드 작성자 : 공동 작업  / 내용 : member에 관한 Service */
 public interface MemberService {
 	
 	// 회원가 입
@@ -38,7 +38,6 @@ public interface MemberService {
 	
 	// 장바구니 담기
 	public void insertShoppingBags(MemberSbagDTO msVO);
-	
 
 	// 장바구니 변경
 	public int updateShoppingBag(MemberSbagDTO msVO);
