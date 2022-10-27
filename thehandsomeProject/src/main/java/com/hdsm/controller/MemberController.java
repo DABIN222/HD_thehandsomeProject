@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
@@ -48,6 +49,7 @@ import com.hdsm.security.CustomUserDetailsService;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
+import com.hdsm.service.ReviewService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -55,70 +57,73 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/member/*")
 public class MemberController {
-   
-   @Autowired
-   MemberService memberservice;
-   
-   @Autowired
-   ProductService productservice;
-   
-   @Autowired
-   OrderService orderservice;
-
-   @Autowired
-   MemberMapper mapper;
-    
-   @Autowired
-   CustomUserDetailsService customdetailsservice;
-   
-   @Autowired
-   PasswordEncoder pwencoder;
-   
-   // 로그인 페이지 진입
-//   @GetMapping("/loginForm")
-//   public void loginForm() {
-//      log.info("로그인 페이지 왔다");
-////      return "member/loginForm";
-//   }
-   
-   // 회원가입 페이지 진입
-   @GetMapping("/joinForm")
-   public String joinForm() {
-      log.info("회원가입 페이지 왔다");
-      return "member/joinForm";
-   }
-   
-   // 회원가입
-   @RequestMapping(value="/join", method = RequestMethod.POST)
-   public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
-      log.info("회원가입 진입!");
-      
-      BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
-      MemberAuthVO mavo = new MemberAuthVO();
-      
-      // jsp에서 name에 입력된 값 vo에 저장
-      member.setMid(request.getParameter("custId"));
-      member.setMpassword(request.getParameter("custPwd"));
-      member.setMname(request.getParameter("custName"));
-      log.info(request.getParameter("custName"));
-      member.setMemail(request.getParameter("emailtotal"));
-      member.setMtel(request.getParameter("custTel"));
-      member.setMaddress1(request.getParameter("partner.postNo"));
-      member.setMaddress2(request.getParameter("partner.addr1"));
-      //박진수 수정
-      member.setMzipcode(Integer.parseInt(request.getParameter("zonecode")));
-      //박진수 수정
-      
-      // 회원가입 실시
-      
-      
-      // 암호화할 패스워드를 암호화 처리하여 password에 저장하고 
-      String password = scpwd.encode(member.getMpassword()); // 암호화 된 password를 다시 vo에 저장
-      member.setMpassword(password);
-      
-      
-      mavo.setUsername(request.getParameter("custId"));
-      mavo.setAuthority("ROLE_USER");
+	
+	@Autowired
+	MemberService memberservice;
+	
+	@Autowired
+	ProductService productservice;
+	
+	@Autowired
+	OrderService orderservice;
+	
+	@Autowired
+	ReviewService reviewservice;
+	
+	@Autowired
+	MemberMapper mapper;
+	 
+	@Autowired
+	CustomUserDetailsService customdetailsservice;
+	
+	@Autowired
+	PasswordEncoder pwencoder;
+	
+	// 로그인 페이지 진입
+//	@GetMapping("/loginForm")
+//	public void loginForm() {
+//		log.info("로그인 페이지 왔다");
+////		return "member/loginForm";
+//	}
+	
+	// 회원가입 페이지 진입
+	@GetMapping("/joinForm")
+	public String joinForm() {
+		log.info("회원가입 페이지 왔다");
+		return "member/joinForm";
+	}
+	
+	// 회원가입
+	@RequestMapping(value="/join", method = RequestMethod.POST)
+	public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		log.info("회원가입 진입!");
+		
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
+		MemberAuthVO mavo = new MemberAuthVO();
+		
+		// jsp에서 name에 입력된 값 vo에 저장
+		member.setMid(request.getParameter("custId"));
+		member.setMpassword(request.getParameter("custPwd"));
+		member.setMname(request.getParameter("custName"));
+		log.info(request.getParameter("custName"));
+		member.setMemail(request.getParameter("emailtotal"));
+		member.setMtel(request.getParameter("custTel"));
+		member.setMaddress1(request.getParameter("partner.postNo"));
+		member.setMaddress2(request.getParameter("partner.addr1"));
+		//박진수 수정
+		member.setMzipcode(Integer.parseInt(request.getParameter("zonecode")));
+		//박진수 수정
+		
+		// 회원가입 실시
+		
+		
+		// 암호화할 패스워드를 암호화 처리하여 password에 저장하고 
+		String password = scpwd.encode(member.getMpassword()); // 암호화 된 password를 다시 vo에 저장
+		member.setMpassword(password);
+		
+		
+		mavo.setUsername(request.getParameter("custId"));
+		mavo.setAuthority("ROLE_USER");
 
       // 회원 가입 실행
       memberservice.insertMember(member);
@@ -410,31 +415,49 @@ public class MemberController {
    }
    
 
-    // 마이 페이지 진입 (승준)
-      @GetMapping("/mypage")
-      public String mypageForm(HttpServletRequest request,Model model, Principal principal) {
-         
-         String username = principal.getName();
-           //회원이 주문한 주문번호를 가져온다.(박진수)
-           List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
-          
-           //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
-           model.addAttribute("ouvl", ouvl);
-
-         log.info("마이 페이지 왔다");
-         
-         String memberID = username;
-         if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄
-         
-            request.setAttribute("url", "home");
-            return "home";
-         }
-         else { //로그인 상태이기에 마이페이지로 보냄 
-         log.info("마이페이지");      
+// 마이 페이지 진입 (승준)
+   @GetMapping("/mypage")
+   public String mypageForm(HttpServletRequest request,Model model, Principal principal) {
       
-         return "member/mypage";
-         }
+      String username = principal.getName();
+        //회원이 주문한 주문번호를 가져온다.(박진수)
+        OrderUserVO ouv=orderservice.getRecentOrderUserVO(username);
+        
+        
+        //ouvl이 비어있다는 것을 알리기 위함(박진수)
+        if(ouv==null) {
+           model.addAttribute("recentouv", null);
+        }else {
+        //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
+        model.addAttribute("recentouv", ouv);
+        }
+              
+        //회원의 마일리지를 담는다.(박진수)
+        model.addAttribute("totalMilege", orderservice.SumMilege(username));
+        
+        //회원의 정보를 가져온다.(박진수)
+        model.addAttribute("memberinfo", memberservice.getMember(username));
+        
+        //회원의 쿠폰 개수를 가져온다(박진수)
+        model.addAttribute("couponCount", orderservice.getCouponCount(username));
+        
+        //회원의 리뷰 개수를 가져오게 설정(박진수)
+        model.addAttribute("reviewCount", reviewservice.UserReviewCount(username));
+        
+        log.info("마이 페이지 왔다");
+      
+      String memberID = username;
+      if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄
+      
+         request.setAttribute("url", "home");
+         return "home";
       }
+      else { //로그인 상태이기에 마이페이지로 보냄 
+      log.info("마이페이지");      
+   
+      return "member/mypage";
+      }
+   }
       
       //기존 정보가져오기(승준)
       @GetMapping("/updateuser")
@@ -454,9 +477,8 @@ public class MemberController {
          
          return "member/deleteuser"; //회원 탈퇴페이지로 이동
       }
-      
-   // 비밀번호 체크 (승준)
-
+		
+	// 비밀번호 체크 (승준)
    @GetMapping("/pwcheck")
    public String pwcheck(HttpServletRequest request, Model model) {
       log.info("비밀번호체크");
@@ -671,4 +693,27 @@ public class MemberController {
       return "member/myGradeInfo";
    }
 
+
+	//주문조회로 이동
+	@PostMapping("/orderlist")
+	public void orderlist(Principal principal,Model model) {
+		String username = principal.getName();
+		  //회원이 주문한 주문번호를 가져온다.(박진수)
+		  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
+		  
+		  //ouvl이 비어있다는 것을 알리기 위함
+		  if(ouvl.isEmpty()) {
+			  model.addAttribute("ouvl", null);
+		  }else {
+		  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
+		  model.addAttribute("ouvl", ouvl);
+		  }
+	}
+	
+	@GetMapping("/deliveryManage")
+	public void deliveryManage(String mid,Model model) {
+		List<AddressVO> addrlist=memberservice.getAddressList(mid);
+		model.addAttribute("addrlist", addrlist);
+	}
 }
+

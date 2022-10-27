@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="/WEB-INF/views/common/header.jspf"%>
 <!-- 광고 유입 끝 -->
+
 <!-- Loading -->
 <div class="loading_bar" id="loadingBarDiv" style="display: none;">
 	<img src="/_ui/desktop/common/images/common/loading.gif" alt="loading">
@@ -992,7 +993,7 @@
 						<!--상품평 btn-->
 						<div class="popup_customer_review1807" id="customerReview">
 							<a href="javascript:fn_popupCustomerReview();">상품평(<span
-								id="customerReviewCnt">0</span>)
+								id="customerReviewCnt">${reviewinfo[0]}</span>)
 								<div class="star_score1807" id="prodTotalStarScoreWrapper"
 									style="display: none;">
 									<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
@@ -1123,11 +1124,11 @@
 		<div class="pop_tltwrap2 pb0 customerreviewdiv1905">
 
 			<h3>
-				상품평(<span id="review_cnt" class="review_cnt">0</span>)
+				상품평(<span id="review_cnt" class="review_cnt ">${reviewinfo[0]}</span>)
 			</h3>
-			<div class="star_score1807" id="totalStarScoreWrapper">
+			<div class="star_score1807 " id="totalStarScoreWrapper">
 				<span class="cmt_star"> <!-- 별점에 따라 class명 변경 (star1, star2 ,star3, star4, star5) -->
-					<span class="cmt_per" id="totalStarScore">별점</span>
+					<span class="cmt_per star${reviewinfo[1]}" id="totalStarScore">별점</span>
 				</span>
 			</div>
 			<a href="javascript:fn_popupCustomerReviewWrite();"
@@ -1139,7 +1140,7 @@
 				<input type="hidden" id="review_tab_active" value="ALL">
 				<ul id="review_tab">
 					<li id="ALL"><a href="#;" class="active"
-						onclick="GA_Event('상품평','탭','전체');">전체 (0)</a></li>
+						onclick="GA_Event('상품평','탭','전체');">전체 (${reviewinfo[0]})</a></li>
 					<li id="PHOTO"><a href="#;" class=""
 						onclick="GA_Event('상품평','탭','포토상품평');">포토 상품평 (0)</a></li>
 					<li id="TEXT"><a href="#;"
@@ -1147,10 +1148,11 @@
 				</ul>
 			</div>
 			<div class="clearfix review_tab1_1807">
-				<ul>
-					<c:forEach items="${reviewList}" var="review">
-							<li class="evaluation_view" id="evaluation_view0"><div
-									class="member_info_top">
+				<ul id="liparent">
+					<c:forEach items="${reviewList}" var="review" varStatus="reviewStatus">
+					<input type="hidden" name="reviewIndex" class="reviewIndex">
+							<li class="evaluation_view" id="evaluation_view${reviewStatus.index}}">
+								<div class="member_info_top">
 									<ul>
 										<li class="name">${review.mid}</li>
 										<li class="grade">${review.mgrade}</li>
@@ -1173,73 +1175,133 @@
 										</li>
 									</ul>
 								</div>
-								<div class="review_represent_img1912">
-								  <img
-								    src="${review.rcontentMap.thumbnailImage}"
-								    alt="리뷰 이미지"
-								  />
-								</div>
-								<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_2">
+								<c:if test="${not empty review.rcontentMap.thumbnailImage}">
+									<div class="review_represent_img1912">
+									  <img
+									    src="${review.rcontentMap.thumbnailImage}"
+									    alt="리뷰 이미지"
+									  />
+									</div>
+								</c:if>
+								<%-- 상품평 사진 슬라이더 --%>
+								<div class="review_img_wrap review_img_cont191216 wlength" id="reviewImg_${reviewStatus.index}">
 								  <ul class="slides">
 								  	<c:forEach items="${review.rcontentMap.imagesPath}" var="image">
-								    <li>
-								      <div class="review_img_cont_inner191216">
-								        <div class="img_wrap">
-								          <img
-								            src="${image}"
-								            alt="리뷰 이미지"
-								          />
-								        </div>
-								      </div>
-								    </li>
-								    </c:forEach>
+										<li>											
+											<img src="${image}" alt="리뷰 이미지"  />
+										</li>
+									</c:forEach>
 								  </ul>
 								</div>
 								<div class="review_txt_wrap">
 									<p class="review_txt">${review.rcontentMap.headline}</p>
 								</div>
-								<div class="sizecolor clearfix">
-									<div class="real_fit_size1905">
-										<strong>• 실 착용 사이즈</strong>
-										<div class="evaluation_wrap1905">
-											<p>허리둘레 :</p>
-											<div class="clearfix">
-												<span class="">타이트함</span> <span class=" on">적당함</span> <span
-													class="">여유있음</span>
+								<%-- 카테고리별 사이즈, 컬러 평가 다르게 출력 (정구현)  --%>
+								<%-- 아우터, 탑, 수트-드레스셔츠, 수트재킷 --%>
+								<c:choose>
+									<c:when test="${productVO.cmedium == '아우터' || productVO.cmedium == '탑' || productVO.csmall == '드레스셔츠' || productVO.csmall == '수트재킷'}">
+										<div class="sizecolor clearfix">
+											<div class="real_fit_size1905">
+												<strong>• 실 착용 사이즈</strong>
+												<div class="evaluation_wrap1905">
+													<p>어깨너비 :</p>
+													<div class="clearfix">
+														
+														<span class="${review.rcontentMap.realWearSize1 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize1 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize1 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+												
+												<div class="evaluation_wrap1905">
+													<p>가슴둘레 :</p>
+													<div class="clearfix">
+														<span class="${review.rcontentMap.realWearSize2 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize2 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize2 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+												<div class="evaluation_wrap1905">
+													<p>총길이 :</p>
+													<div class="clearfix">
+														<span class="${review.rcontentMap.realWearSize3 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize3 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize3 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+											</div> 
+											<div class="real_color1905">
+												<strong>• 실 제품 색상</strong>
+												<div class="clearfix">
+													<span class="${review.rcontentMap.realProductColor eq '1' ? 'on' : '' }">어두워요</span>
+													<span class="${review.rcontentMap.realProductColor eq '2' ? 'on' : '' }">화면과 같아요</span>
+													<span class="${review.rcontentMap.realProductColor eq '3' ? 'on' : '' }">밝아요</span>
+												</div>
 											</div>
 										</div>
-										<div class="evaluation_wrap1905">
-											<p>엉덩이둘레 :</p>
-											<div class="clearfix">
-												<span class="">타이트함</span> <span class=" on">적당함</span> <span
-													class="">여유있음</span>
+									</c:when>
+									
+									<%-- 드레스, 팬츠, 스커트 --%>
+									<c:when test="${productVO.cmedium == '드레스' || productVO.cmedium == '팬츠' || productVO.cmedium == '스커트'}">
+										 <div class="sizecolor clearfix">
+											<div class="real_fit_size1905">
+												<strong>• 실 착용 사이즈</strong>
+												<div class="evaluation_wrap1905">
+													<p>허리둘레 :</p>
+													<div class="clearfix">
+													
+														<span class="${review.rcontentMap.realWearSize1 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize1 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize1 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+												
+												<div class="evaluation_wrap1905">
+													<p>엉덩이둘레 :</p>
+													<div class="clearfix">
+														<span class="${review.rcontentMap.realWearSize2 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize2 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize2 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+												<div class="evaluation_wrap1905">
+													<p>총길이 :</p>
+													<div class="clearfix">
+														<span class="${review.rcontentMap.realWearSize3 eq '1' ? 'on' : '' }">타이트함</span> 
+														<span class="${review.rcontentMap.realWearSize3 eq '2' ? 'on' : '' }">적당함</span> 
+														<span class="${review.rcontentMap.realWearSize3 eq '3' ? 'on' : '' }">여유있음</span>
+													</div>
+												</div>
+											</div>
+											<div class="real_color1905">
+												<strong>• 실 제품 색상</strong>
+												<div class="clearfix">
+													<span class="${review.rcontentMap.realProductColor eq '1' ? 'on' : '' }">어두워요</span>
+													<span class="${review.rcontentMap.realProductColor eq '2' ? 'on' : '' }">화면과 같아요</span>
+													<span class="${review.rcontentMap.realProductColor eq '3' ? 'on' : '' }">밝아요</span>
+												</div>
 											</div>
 										</div>
-										<div class="evaluation_wrap1905">
-											<p>총길이 :</p>
-											<div class="clearfix">
-												<span class="">짧은 편</span> <span class=" on">적당함</span> <span
-													class="">긴 편</span>
-											</div>
-										</div>
-									</div>
-									<div class="real_color1905">
-										<strong>• 실 제품 색상</strong>
-										<div class="clearfix">
-											<span class="">어두워요</span> <span class=" on">화면과 같아요</span> <span
-												class="">밝아요</span>
-										</div>
-									</div>
-								</div>
+										</c:when>		
+								</c:choose>	
 								<div class="review_more_1807">
-									<a class="review_plus" href="javascript:void(0);" >리뷰 더보기</a>
+									<a class="review_plus" href="javascript:void(0);" itemnum="${reviewStatus.index}">리뷰 더보기</a>
 								</div>
 							</li>
 						</c:forEach>
 				</ul>
 			</div>
 			<!-- paging -->
-			<div class="paging mt30" id="reviewPagingDiv"></div>
+			<div class="paging mt30" id="reviewPagingDiv">
+				<a class="prev2" href="javascript:void(0);">처음 페이지로 이동</a>
+				<a href="javascript:void(0);" class="prev">이전 페이지로 이동</a>
+				  <span class="num">
+				  	<!-- <a href="javascript:void(0);" class="pageBtn" pagenum="1">1</a> -->
+				   </span>
+			    <a href="javascript:void(0);" class="next">다음 페이지로 이동</a>
+			    <a href="javascript:void(0);" class="next2">마지막 페이지로 이동</a>
+			</div>
+			
 			<!-- //paging -->
 			<!--// pop_cnt-->
 
@@ -1263,6 +1325,7 @@
 			<form id="reviewForm" name="reviewForm"
 				action="/ko/HANDSOME/MEN/PANTS/%EC%A1%B0%EA%B1%B0-%ED%8A%B8%EB%9E%99/%5BSET%5D-%EC%9A%B8-%EC%A1%B0%EA%B1%B0-%ED%8C%AC%EC%B8%A0/p/TH2CBKPC033M_BK"
 				method="post" enctype="multipart/form-data">
+				<input type="hidden" name="reviewOrderId" value="">
 				<input type="hidden" name="productCode"> <input
 					type="hidden" name="productCodeType"> <input type="hidden"
 					name="orderNumber" id="orderNumber" value=""> <input
@@ -1850,7 +1913,7 @@
   <div
   		id = "alreadyInsert"
 	  class="popwrap w_type_1"
-	  style="z-index: 150; margin-top: 1072px"
+	  style="display:none; z-index: 150; margin-top: 1072px"
 	  tabindex="-1">
 	  <div class="pop_cnt">
 	    <h3 class="pop_tlt copy">
@@ -1879,15 +1942,312 @@
 <!--beshow conversion ends-->
 <iframe style="display: none" id="fileFrame" title="fileFrame" scr=""></iframe>
 
-<!-- footerWrap -->
+<div id="reviewRow" style="display:none;">
+	<li class="evaluation_view" id="evaluation_view0">
+		<div class="member_info_top">
+			<ul>
+				<li class="name"></li>
+				<li class="grade"></li>
+				<li class="date"></li>
+				<li class="stars">
+					<div class="star_score1807">
+						<span class="cmt_star"> <span class="cmt_per" id="countingStar">별점</span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="member_info_bottom">
+			<ul>
+				<li class="choice">• <span  id="row11"></span> / <span id="row12"></span>
+					/ <span id="row13"></span> / 평소 사이즈 : <span id="row14"></span>
+				</li>
+				<li class="must">• 구매 정보 : <span id="row21"></span> / <span id="row22"></span>
+					/ <span></span>
+				</li>
+			</ul>
+		</div>
+		<div class="review_represent_img1912">
+		  <img
+		    src=""
+		    alt=""
+		  />
+		</div>
+		<div class="review_img_wrap review_img_cont191216 wlength" id="myreviewImg">
+		  <ul class="slides">
+		    <li>
+		          <img
+		            src=""
+		            alt="리뷰 이미지"
+		          />
+		    </li>
+		    
+		  </ul>
+		</div>
+		<div class="review_txt_wrap">
+			<p class="review_txt"></p>
+		</div>
+		<%-- 카테고리별 사이즈, 컬러 평가 다르게 출력 (정구현)  --%>
+		<%-- 아우터, 탑, 수트-드레스셔츠, 수트재킷 --%>
+		<c:choose>
+			<c:when test="${productVO.cmedium == '아우터' || productVO.cmedium == '탑' || productVO.csmall == '드레스셔츠' || productVO.csmall == '수트재킷'}">
+			<div class="sizecolor clearfix">
+				<div class="real_fit_size1905">
+					<strong>• 실 착용 사이즈</strong>
+					<div class="evaluation_wrap1905" id="realSize1">
+						<p>어깨너비 :</p>
+						<div class="clearfix">
+							
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+					
+					<div class="evaluation_wrap1905" id="realSize2">
+						<p>가슴둘레 :</p>
+						<div class="clearfix">
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+					<div class="evaluation_wrap1905" id="realSize3">
+						<p>총길이 :</p>
+						<div class="clearfix">
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+				</div> 
+				<div class="real_color1905" id="realSize4">
+					<strong>• 실 제품 색상</strong>
+					<div class="clearfix">
+						<span class="">어두워요</span>
+						<span class="">화면과 같아요</span>
+						<span class="">밝아요</span>
+					</div>
+				</div>
+			</div>
+		</c:when>
+		
+		<%-- 드레스, 팬츠, 스커트 --%>
+		<c:when test="${productVO.cmedium == '드레스' || productVO.cmedium == '팬츠' || productVO.cmedium == '스커트'}">
+			 <div class="sizecolor clearfix">
+				<div class="real_fit_size1905">
+					<strong>• 실 착용 사이즈</strong>
+					<div class="evaluation_wrap1905" id="realSize1">
+						<p>허리둘레 :</p>
+						<div class="clearfix">
+						
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+					
+					<div class="evaluation_wrap1905" id="realSize2">
+						<p>엉덩이둘레 :</p>
+						<div class="clearfix">
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+					<div class="evaluation_wrap1905" id="realSize3">
+						<p>총길이 :</p>
+						<div class="clearfix">
+							<span class="">타이트함</span> 
+							<span class="">적당함</span> 
+							<span class="">여유있음</span>
+						</div>
+					</div>
+				</div>
+				<div class="real_color1905" id="realSize4">
+					<strong>• 실 제품 색상</strong>
+					<div class="clearfix">
+						<span class="">어두워요</span>
+						<span class="">화면과 같아요</span>
+						<span class="">밝아요</span>
+					</div>
+				</div>
+			</div>
+			</c:when>		
+		</c:choose>	
+		<div class="review_more_1807">
+			<a class="review_plus" href="javascript:void(0);" >리뷰 더보기</a>
+		</div>
+	</li>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script>
 	//리------------------------------------------------------------------뷰
 	let fileObject = new Object();
 
+	function pageBtnClick(pnum) {
+		//페이지 번호 눌렸을 때 ajax 처리하라는 명령 줘!
+		const pageNum = parseInt(pnum);
+		reviewRowInsert(pageNum);
+	}
+	
+	//yyyy-mm-dd 날짜 변환하는 함수(정구현)
+	function leftPad(value) {
+	    if (value >= 10) {
+	        return value;
+	    }
+
+	    return `0${value}`;
+	}
+	
+	//yyyy-mm-dd 날짜 변환하는 함수(정구현)
+	function toStringByFormatting(source, delimiter = '-') {
+	    const year = source.getFullYear();
+	    const month = leftPad(source.getMonth() + 1);
+	    const day = leftPad(source.getDate());
+
+	    return [year, month, day].join(delimiter);
+	}
+	
+	function reviewRowInsert(p){
+		//일단 ul에 li들을 다 지워주장
+		$("#liparent").empty();
+		
+		// 아들아~! 토큰을 가져가야지 ~~!
+		let csrfHeaderName ="${_csrf.headerName}";
+		let csrfTokenValue="${_csrf.token}";
+		
+		param={
+				pid : "${productVO.pid}",
+				amount : 4,
+				pageNum : p
+				};
+		$.ajax({
+			url : '/review/getlistListWithPaging',
+			type : 'POST',
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+			data : JSON.stringify(param), //직렬화
+			//dataType : 'text',
+			contentType : 'application/json; charset=utf-8',
+			success : function(result) {
+				//result = JSON.parse(result);
+				
+				let list = result.reviewlist;
+				let reviewinfo = result.reviewinfo;
+				
+				$("customerReviewCnt").text(reviewinfo[1]);//detail페이지에서 상품평 변경 해버리기
+				
+				$("#review_cnt").text(result.pageDTO.total)//갯수
+				$("#totalStarScore").removeClass("star1","star2","star3","star4","star5")//별점일단 다 지우고
+				$("#totalStarScore").addClass("star"+reviewinfo[1]);
+				
+				
+				//작성 성공시 작성창 닫기
+				list.forEach((value, index, array) => {
+					console.log(value);
+					let writeDate = new Date(value.rdate);
+					
+					//yyyy-mm-dd 날짜 변환(정구현)
+					let dateFormatted = toStringByFormatting(writeDate);
+					$("#reviewRow").find(".name").text(value.mid);
+					$("#reviewRow").find(".grade").text(value.mname);
+					$("#reviewRow").find(".date").text(dateFormatted);
+					//$("#reviewRow").find("#countingStar").removeClass("star1","star2","star3","star4","star5")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").removeClass("star1")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").removeClass("star2")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").removeClass("star3")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").removeClass("star4")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").removeClass("star5")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").addClass("star"+value.rcontentMap.rating)//별점추가 ~
+					
+					$("#reviewRow").find("#row11").text(value.rcontentMap.age);
+					$("#reviewRow").find("#row12").text(value.rcontentMap.height);
+					$("#reviewRow").find("#row13").text(value.rcontentMap.bodyType);
+					$("#reviewRow").find("#row14").text(value.rcontentMap.enjoySize);
+					
+					$("#reviewRow").find("#row21").text(value.pcolor);
+					$("#reviewRow").find("#row22").text(value.psize);
+
+					$("#reviewRow").find(".review_txt").text(value.rcontentMap.headline);
+					
+					//실착용사이즈 값 넣기
+					const wearSize = parseInt(value.rcontentMap.realWearSize1)-1;
+					$("#reviewRow").find("#realSize1>div>span").each(function(index, item){
+						$(this).removeClass("on");
+						if(index == wearSize) $(this).addClass("on"); });
+					const wearSize2 = parseInt(value.rcontentMap.realWearSize2)-1;
+					$("#reviewRow").find("#realSize2>div>span").each(function(index, item){
+						$(this).removeClass("on");
+						if(index == wearSize2) $(this).addClass("on"); });
+					const wearSize3 = parseInt(value.rcontentMap.realWearSize3)-1;
+					$("#reviewRow").find("#realSize3>div>span").each(function(index, item){
+						$(this).removeClass("on");
+						if(index == wearSize3) $(this).addClass("on"); });
+					const wearSize4 = parseInt(value.rcontentMap.realProductColor)-1;
+					$("#reviewRow").find("#realSize4>div>span").each(function(index, item){
+						$(this).removeClass("on");
+						if(index == wearSize4) $(this).addClass("on"); });
+					
+					//썸네일 이미지 있으면 추가해주자
+					$("#reviewRow").find(".review_represent_img1912").css("display",'none');
+					$("#reviewRow").find(".review_represent_img1912>img").attr("src", "");
+					if(typeof value.rcontentMap.thumbnailImage !== "undefined"){
+						$("#reviewRow").find(".review_represent_img1912").css("display",'block');
+						$("#reviewRow").find(".review_represent_img1912>img").attr("src", value.rcontentMap.thumbnailImage);
+					}
+					
+					
+					
+					//일단 이미지 div 아래 전부 죽이고
+					$("#reviewRow").find("#myreviewImg>ul").empty();
+					//이미지 등록한것도 있으면 태그들 넣어주자
+					if(typeof value.rcontentMap.imagesPath != "undefined"){
+						value.rcontentMap.imagesPath.forEach((value, index, array) => {
+							$("#reviewRow").find("#myreviewImg>ul").append('<li> <img src="'+ value +'" alt="리뷰 이미지"/> </li>');
+						});
+					}
+					$("#reviewRow").find("#myreviewImg>ul")
+					
+					$("#reviewRow>li").clone(true).appendTo("#liparent");
+				});
+				
+				//페이지 번호 생성전에 일단 다 지워야지
+				$("#reviewPagingDiv>span").empty();
+				//페이지 숫자랑 눌리게 조절 하는곳
+				for(i=result.pageDTO.startPage; i<=result.pageDTO.endPage; i++){
+					$("#reviewPagingDiv>span").append('<a href="javascript:pageBtnClick('+i+');" class="pageBtn" pagenum="'+i+'">'+i+'</a>');
+				}
+				//다음,이전 버튼들 기모찌하게 활성화 비활성화
+				console.log(result.pageDTO.next);
+				if(result.pageDTO.prev){
+					$(".prev").attr("href", "javascript:reviewRowInsert("+(p-1)+");");
+				}
+				if(result.pageDTO.next){
+					$(".next").attr("href", "javascript:reviewRowInsert("+(p+1)+");");
+				}
+				$(".prev2").attr("href", "javascript:reviewRowInsert("+1+");");
+				$(".next2").attr("href", "javascript:reviewRowInsert("+result.pageDTO.endPage+");");
+				//<a href="javascript:void(0);" class="pageBtn" pagenum="1">1</a>
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+				alert("통신 실패.");
+			},
+		});
+		//$("#liparent").empty();
+		let temp = $("#reviewRow").clone(true);
+		//$("#liparent").append(temp.show());		
+	}
+	
+	//reviewRowInsert('asd');
+	// 상품평 작성 처리 (정구현)
 	function fn_reviewWriteSend() {
 		if (!confirm("작성 하시겠습니까?"))
 			return false;
-		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기(정구현)
 		let rcontent = new Map();
 		rcontent.set('age', $("input[type=radio][name=age]:checked").val()); // 연령대
 		rcontent.set('height', $('#height').val()); // 키
@@ -1908,9 +2268,10 @@
 	
 		rcontent.set('thumbnailImage',fileObject.thumbPath);
 		rcontent.set('imagesPath',fileObject.imagesPath);
+		rcontent.set('oid', $('input[name=reviewOrderId]').val());
 		//console.log("rcontent : " + rcontent);
 	
-		//map 직렬화
+		//map 직렬화(정구현)
 		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
 	
 		//console.log(serializedMap);
@@ -1939,19 +2300,14 @@
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
 				//작성 성공시 작성창 닫기
-				if (result == "Success") {
 					alert("리뷰가 작성되었습니다.");
 					console.log("리뷰가 작성되었습니다.");
 					reviewReset();
 					$("#customerReviewWriteDiv").hide();
+					console.log(result.rcontent);
+					reviewRowInsert(1);
+					
 					viewPopup("#customerReviewDiv");
-				} /* else if(result == "fail"){
-								alert("리뷰를 이미 작성하셨습니다.");
-								console.log("리뷰를 이미 작성하셨습니다.");
-								$("#customerReviewWriteDiv").hide();
-								viewPopup("#customerReviewDiv");
-							} */
-	
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				// 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
@@ -1963,13 +2319,14 @@
 	
 	// 상품평 등록하기 버튼 눌렀을 때
 	$('#reviewWriteSend').on("click", function() {
+		
 		fn_reviewWriteSend();
-	
 	});
 	
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
 		viewPopup("#customerReviewDiv");
+		reviewRowInsert(1);
 	}
 	
 	//x 버튼을 누르면 상품평 리스트 닫기
@@ -2001,19 +2358,29 @@
 			dataType : 'text',
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
-				//리뷰 작성 가능 여부 확인
-				if (result == "pass") {
+				console.log("result : " + result);
+				let resultMsg = result.split(',');
+				console.log("resultMsg[1] : " + resultMsg[1]);
+				
+				$('input[name=reviewOrderId]').val(resultMsg[1]);
+				console.log("$('input[name=reviewOrderId]').val : " + $('input[name=reviewOrderId]').val());
+				
+				// 리뷰 작성 가능 여부 확인(정구현)
+				if (resultMsg[0] == "pass") {
 					console.log("리뷰 작성 가능");
 					//상품평 리스트를 숨긴다.
 					$("#customerReviewDiv").hide();
 					//상품평 작성란을 띄운다.
 					viewPopup("#customerReviewWriteDiv");
-				} else if (result == "exist") { // 이미 작성했을 때
+				} else if (resultMsg[0] == "exist") { // 이미 작성했을 때
 					alert("리뷰를 이미 작성하셨습니다.");
 					console.log("리뷰를 이미 작성하셨습니다.");
-				} else if (result == "empty") { // 구매내역이 없을 때
+				} else if (resultMsg[0] == "empty") { // 구매내역이 없을 때
 					alert("구매내역이 없습니다.");
 					console.log("구매내역이 없습니다.");
+				} else if (resultMsg[0] == "fail") { // 작성 실패시
+					alert("작성에 실패했습니다.");
+					console.log("작성이 불가능합니다.");
 				}
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -2041,24 +2408,6 @@
 			reviewReset();
 			$("#customerReviewWriteDiv").hide();
 			viewPopup("#customerReviewDiv");
-			if(Object.keys(fileObject).length > 0){
-				let csrfHeaderName = "${_csrf.headerName}";
-				let csrfTokenValue = "${_csrf.token}";
-
-				$.ajax({
-					url : "/review/reviewCancle",
-					data :  JSON.stringify(fileObject),
-					type : "post",
-					contentType: "application/json; charset=utf-8",
-					beforeSend : function(xhr) {
-						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-					},
-					success : function(result) {
-						console.log(fileObject);
-						console.log("올린 이미지 잘 삭제 됨");
-					}//end suce..			
-				});//end ajax	
-			}
 		}
 	
 	});
@@ -2139,6 +2488,22 @@
 		//사진등록
 	
 	}
+	
+	// 마일리지 설명란 펼치기 버튼 (정구현)
+	function mileageInfoView(){
+	    $('.mileage_info_wrap1906 .btn_noti_box > span').on('click',function(){
+	        if($(this).parents('.mileage_info_wrap1906').find('.noti_box').css("display") == "none"){
+	            $(this).parents('.mileage_info_wrap1906').find('.noti_box').stop().slideDown('fast');
+	            $(this).closest('.btn_noti_box').addClass('on');
+	            $(this).text('닫기');
+	        }else{
+	            $(this).parents('.mileage_info_wrap1906').find('.noti_box').stop().slideUp('fast');
+	            $(this).closest('.btn_noti_box').removeClass('on');
+	            $(this).text('자세히 보기');
+	        }
+	    });
+	};
+	
 	//리------------------------------------------------------------------뷰
 	//가격에 3자리마다 컴마
 	function priceComma(price) {
@@ -2306,7 +2671,7 @@
 
 				$('.toast_popup p').text('위시리스트에서 삭제했습니다.');
 				$('.toast_popup').stop().removeClass('on');
-				$('.wishlist1803').stop().toggleClass('on');
+				$('.wishlist1803').stop().removeClass('on');
 				$("#wishlistCount").text((parseInt($("#wishlistCount").text())-1)+'')
 
 			},
@@ -2415,6 +2780,8 @@
 	
 	$(document).ready(
 					function() {
+						//$('.slides').bxSlider();
+					
 						//사진등록						
 						var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
 
@@ -2458,7 +2825,7 @@
 									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 								},
 								success : function(result) {
-									alert("Upload");
+									//alert("Upload");
 									fileObject = result;
 								}//end suce..			
 							});//end ajax	
@@ -2752,9 +3119,51 @@
 						console.log("asd");
 						$(this).closest(".evaluation_view").toggleClass("on");
 						//$(this).toggleClass("evaluation_view");
+						
+						const reviewIndex = $(this).attr('itemnum');
+						//리뷰 사진 슬라이더(정구현)
+						/* if($('#'+'reviewImg_'+reviewIndex).length >0){
+							$('#'+'reviewImg_'+reviewIndex+' .slides').bxSlider({
+								mode:"horizontal",
+								speed:500,
+								pager:true,
+								moveSlides:1,
+								minSlides:1,
+								maxSlides:1,
+								slideMargin:5,
+								auto:false,
+								autoHover:false,
+								infiniteLoop:true,
+							});
+						}  */
+						
 					});
-
-
-					});
+					mileageInfoView();
+				});
+	
+/* 	(function($){
+		$(document).ready(function() {
+			//리뷰 더보기 버튼
+			$(".review_plus").click(function(){
+				//리뷰 사진 슬라이더(정구현)
+					$(this).closest('.slides').bxSlider({
+						mode:"horizontal",
+						speed:500,
+						pager:true,
+						moveSlides:1,
+						minSlides:1,
+						maxSlides:1,
+						slideMargin:5,
+						auto:false,
+						autoHover:false,
+						infiniteLoop:true,
+					});	
+			});
+			
+		});
+		
+		})(jQuery); */
+	
 </script>
+
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

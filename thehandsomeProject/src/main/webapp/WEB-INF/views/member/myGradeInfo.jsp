@@ -303,55 +303,35 @@
 			<!-- lnb -->
 			<div class="lnb_wrap">
 				<h4><a href="/member/mypage">마이페이지<!-- 마이페이지 --></a></h4>
-				<div class="lnb">
-					<dl>
-						<dt>주문조회</dt>
+				 <div class="lnb">
+				<dl>
+					<dt>주문조회</dt>
+					<dd>
+						<a href="javascript:void(0)" onclick="Goorderlist();">주문/배송/반품/취소</a>
+						<form id="orderlist" action="/member/orderlist" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						</form>
+                  </dd>
+               </dl>
+				<dl>
+					<dt>혜택 관리</dt>
 						<dd>
-							<a href="/ko/mypage/order/myorders" onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
+							<a href="/member/myGradeInfo">나의 회원 등급<!-- 나의 회원 등급 --></a>
 						</dd>
 					</dl>
-					<dl>
-						<dt>혜택관리</dt>
-						<dd>
-							<a href="/member/myGradeInfo" onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>나의 상품관리</dt>
-						<dd>
-							<a href="/member/wishList" onclick="GA_Event('마이페이지','LNB','위시리스트');">위시리스트<!-- 위시리스트 --></a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>나의 정보관리</dt>
-						<dd>
-							<a href="/ko/mypage/personInfomationChangePWCheck" onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/shoppingAddressPWCheck" onclick="GA_Event('마이페이지','LNB','배송지 관리');">배송지 관리</a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>나의 활동관리</dt>
-						<!-- <dd><a href="#">회원등급</a></dd> -->
-						<dd>
-							<a href="/ko/mypage/myreview" onclick="GA_Event('마이페이지','LNB','내 상품평');">내 상품평</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/myqna" onclick="GA_Event('마이페이지','LNB','상품 Q&A');">상품 Q&A</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mymantomaninquiry" onclick="GA_Event('마이페이지','LNB','1:1 문의');">1:1 문의</a>
-						</dd>
-						<!-- <dd><a href="#">이벤트 참여현황</a></dd> -->
-					</dl>
-				</div>
+ 				<dl>
+                  <dt>나의 상품관리</dt>
+                  <dd>
+                     <a href="/member/wishList">위시리스트<!-- 위시리스트 --></a>
+                  </dd>
+               </dl>
+               <dl>
+                  <dt>나의 정보관리</dt>
+                  <dd>
+                     <a href="/member/pwcheck">개인정보 변경/탈퇴</a>
+                  </dd>
+               </dl>
+            </div>
 				<!-- ph_guide -->
 				<div class="ph_guide">
 					<p class="tlt">고객센터 운영 안내</p>
@@ -369,84 +349,6 @@
 			<!-- //lnb -->
 			<!-- cnts -->
 			<div class="sub_cnts">
-
-				<!-- 콘텐츠 탭 -->
-				<div class="memberLevel_tabs member-level" style="display: none;">
-					<ul>
-						<li class="online on"><a href="#;">온라인 등급</a></li>
-						<li class="vvip"><a href="#;">한섬 VVIP 등급</a></li>
-					</ul>
-				</div>
-				<!-- // 콘텐츠 탭 -->
-
-				<!-- 콘텐츠 1 - VVIP -->
-				<div class="sub_cnts_inner1901 vvip_level" style="display: none;">
-					<!-- 추가 190207 -->
-					<div class="title_wrap mt30">
-						<h4 style="float: left;">한섬 VVIP 등급 
-							<span class="grd_subtxt" id="grd_subtxt_vvip">2021년
-								1월 ~ 2021년 12월 한섬 온라인/오프라인 합산 구매실적을 기준으로<br>등급별 혜택을 제공합니다.
-							</span>
-						</h4>
-						<a class="btn add_s" href="/svcenter/memberbenefitguide" style="float: right; font-size: 11px; font-weight: normal;">
-							한섬 VVIP 등급별 혜택 보기</a>
-					</div>
-					<div class="oln_grade_top vvip">
-						<p class="my_grade">
-							<strong class="name">김다빈</strong>님의 현재 등급은 <strong class="grd"></strong>입니다.
-						</p>
-						<div class="grd_step">
-							<ul>
-								<li><span class="clc"></span>
-									<p class="grd">SILVER</p></li>
-								<li><span class="clc"></span>
-									<p class="grd">GOLD</p></li>
-								<li><span class="clc"></span>
-									<p class="grd">PLATINUM</p></li>
-								<li><span class="clc"></span>
-									<p class="grd">THE FIRST</p></li>
-							</ul>
-						</div>
-					</div>
-					<div class="oln_grade_mid">
-						<div class="benef_tlt">
-							<span class="grd"></span> 등급 혜택<span class="dd">2022년 3월 1일 ~ 2023년 2월 28일까지 유효</span>
-						</div>
-						<dl class="toggle_type1"></dl>
-					</div>
-				</div>
-				<!-- // 콘텐츠 1 - VVIP -->
-
-				<!-- 콘텐츠 2 - 온라인등급 -->
-				<!-- 신규 -->
-				<div class="online-mem-tt-ban">
-					<div class="tt">
-						<strong><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/member/online-member-level-title.png" alt="한섬 온라인 등급"></strong>
-
-						<!-- 220801 THE클럽페이지 S -->
-						<p id="grd_subtxt_online"></p>
-						<!--  2021년 7월 1일 ~ 2022년 6월 30일 온라인(더한섬닷컴) 구매실적을 기준으로 등급별 혜택을 제공합니다.-->
-						<a href="/svcenter/theClubInfo" id="goClubInfo">온라인 등급별 혜택 보기</a>
-						<!-- 220801 THE클럽페이지 E -->
-
-					</div>
-					<div class="my-level-guide">
-						<strong class="tt"> <!-- 220801 THE클럽페이지 S (뒤에 날짜 추가) -->
-							<span class="name">김다빈</span>님의 현재 등급은 
-							<span class="level">FRIEND
-							<span id="showMyGrade"></span> 입니다. 
-							<span class="date">(~2023.1.31일까지 유효)</span> <!-- 220801 THE클럽페이지 E (뒤에 날짜 추가) --></strong>
-						<!-- # 아래 level영역 해당 등급 li에 on클래스 추가 -->
-						<ul class="level-part">
-							<li class="on"><i class="level-icon"></i> <span>FRIEND</span></li>
-							<li><i class="level-icon"></i> <span>CREW</span></li>
-							<li><i class="level-icon"></i> <span>MANIA</span></li>
-							<li><i class="level-icon"></i> <span>STAR</span></li>
-							<li><i class="level-icon"></i> <span>THE STAR</span></li>
-						</ul>
-					</div>
-				</div>
-
 				<div class="online-mem-table online-mem-rat-detail">
 					<!-- THE STAR 등급 -->
 					<!-- STAR 등급 -->
@@ -1161,5 +1063,11 @@
 			<!-- //cnts -->
 		</div>
 	</div>
+	<script>
+	//주문 목록으로 이동한다.(박진수)
+	function Goorderlist(){
+		$("#orderlist").submit();
+	}
+	</script>
 </body>
 </html>

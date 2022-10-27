@@ -38,7 +38,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             check=1;
          }else if(urlsp[i].equals("login")||urlsp[i].equals("loginForm")) {
             check =2 ;
-         }else if(urlsp[i].equals("loginForm?error")||urlsp[i].equals("loginForm?logout")) {
+         }else if(urlsp[i].equals("loginForm?error")||urlsp[i].equals("loginForm?logout")||urlsp[i].equals("join")) {
             check=3;
          }
       }

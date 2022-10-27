@@ -1,5 +1,6 @@
 package com.hdsm.controller;
 
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 
 import lombok.extern.log4j.Log4j;
 
@@ -52,8 +55,28 @@ public class OrderControllerTest {
 				  .getModelAndView()
 				  .getModelMap()
 		   ); 
-
-
+	}
+	
+	@Test
+	public void TestOrderexec()throws Exception{
+		
+		JSONObject actual = new JSONObject();
+		actual.put("oid", "jinsu_20221027");
+		actual.put("mid", "jinsu");
+		
+		 log.info( mockMvc.perform( 
+				   MockMvcRequestBuilders.post("/order/orderexec")
+				  .session(session)
+				  .param("orders[0].pid", "TH2C1KRN009M") 
+				  .param("orders[0].oamount","2")
+				  .param("orders[0].ccolorcode","TH2C1KRN002M_AD")
+				  .param("orders[0].ssize","100")
+				  )
+						  .andReturn()
+						  .getModelAndView()
+						  .getModelMap()
+				   ); 
+		
 	}
 
 }

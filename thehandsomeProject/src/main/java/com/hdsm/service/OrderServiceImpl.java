@@ -11,14 +11,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.CouponVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MileageVO;
+import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 import com.hdsm.domain.ProductColorVO;
@@ -77,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
 	public void insertOrderUser(OrderUserVO ouv) {
 		Date date=new Date();
 
-		//결제수단에 따라 opayment를 지정
+		//결제수단명에 따라 opayment를 지정
 		if(ouv.getStrpayment().equals("원클릭결제")) {
 			ouv.setOpayment(1);
 		}else if(ouv.getStrpayment().equals("신용카드")) {
@@ -198,19 +201,22 @@ public class OrderServiceImpl implements OrderService {
 		
 		//받은 마일리지에 대한 정보를 저장
 		String content="";
-		
+		//content에 주문번호(제품이름:가격/....)이런식으로 등록되게 설정
+		content+=ouv.getOid();
+		content+="(";
 		for(int i=0;i<olv.size();i++) {
 			//주문한 사용자의 상품들의 pid를 가져와 상품 자체를 가져온다.
 			ProductVO product=productmapper.getProduct(olv.get(i).getPid());
 			
-			//content에 제품이름:가격/....이런식으로 등록되게 설정
+			
 			content+=product.getPname();
 			content+=(":"+ product.getPprice());
 			if(i!=olv.size()-1) {
 				content+="/";
 			}
 		}
-		
+		content+=")";
+		content+=ouv.getStrpayment();
 		//마일리지 vo의 content를 content로 바꾼다.
 		miv.setMicontent(content);
 		
@@ -229,13 +235,16 @@ public class OrderServiceImpl implements OrderService {
 		
 		//주문한 사용자의 mid를 통해 member 객체를 가져온다.
 		MemberVO member=membermapper.getMember(ouv.getMid());
-		
 		//상품들의 목록을 list로 가져온다.
 		List<OrderItemVO> orders=ouv.getOrders();
 		
 		//회원의 한섬 포인트를 주문한 사용자의 상품들의 총 포인트를 더하면 된다.
 		int HSpoint=member.getMpoint();
 		for(int i=0;i<orders.size();i++) {
+			//해당 상품에 대해 포인트 계산을 한다.
+			orders.get(i).initSaleTotal();
+			
+			//계산한 총 포인트를 더한다.
 			HSpoint+=orders.get(i).getTotalpoint();
 		}
 		
@@ -243,6 +252,7 @@ public class OrderServiceImpl implements OrderService {
 		member.setMid(ouv.getMid());
 		//한섬 포인트를 지정한다.
 		member.setMpoint(HSpoint);
+		System.out.println(member.getMpoint());
 
 		ordermapper.updateHspoint(member);
 
@@ -296,7 +306,7 @@ public class OrderServiceImpl implements OrderService {
 		
 			//상품에 대한 pid를 가져와 색깔과 이미지를 가져온다.
 			List<ThumbnailColorVO> thumbnailcolorvolist=membermapper.getProductsColor(olv.get(i).getPid());
-			
+			System.out.println(olv.get(i).getCcolorcode());
 			//color를 크기만큼 반복하는데 객체의 ccolorcode가 같으면 해당하는 객체를 thumbnail에 저장한다.
 			for(int j=0;j<thumbnailcolorvolist.size();j++) {
 				if(thumbnailcolorvolist.get(j).getCcolorcode().equals(olv.get(i).getCcolorcode())) {
@@ -328,4 +338,117 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 
+	
+	//주문한 사용자의 정보를 삭제(박진수)
+	@Override
+	public void deleteOrderUser(String oid) {
+		
+		//주문번호를 통해 주문한 사용자의 정보를 가져온다.
+		OrderUserVO ouv= ordermapper.getOrderUserItem(oid);
+		
+		//
+		MemberVO member= membermapper.getMember(ouv.getMid());
+		
+		//주문한 사용자의 정보를 삭제한다.
+		ordermapper.deleteOrderUser(oid);
+		
+		//주문한 사용자의 상품리스트를 삭제한다.
+		ordermapper.deleteOrderItem(oid);
+		
+		//지불방식이 신용카드(2) 또는 현대카드 레드 바우쳐(5)일 경우 마일리지를 삭제한다.
+		if(ouv.getOpayment()==2 || ouv.getOpayment()==5) {
+		ordermapper.deleteMilege(oid);
+		}
+		
+		//oid를 통해 주문한 상품의 개수를 가져온다.
+		List<OrderItemVO> oivl= ordermapper.getOrderItem(oid);
+		int mpoint=member.getMpoint();
+		for(int i=0;i<oivl.size();i++) {
+			oivl.get(i).initSaleTotal();
+			mpoint-=oivl.get(i).getTotalpoint();
+		}
+		
+		member.setMpoint(mpoint);
+		membermapper.updateHSpoint(member);
 	}
+
+	//사용자의 id를 통해 사용자가 최근에 주문한 상품을 가져온다.
+	@Override
+	public OrderUserVO getRecentOrderUserVO(String mid) {
+		// TODO Auto-generated method stub
+		
+		//최근 주문한 사용자 정보를 가져온다.
+		OrderUserVO ouv= ordermapper.getRecentOrderUserVO(mid);
+		if(ouv!=null) {
+		//oid를 통해 톻해 상품들의 리스트를 조회 
+		ouv.setOrders(ordermapper.getOrderItem(ouv.getOid()));
+		//주문한 사용자가 주문한 상품들의 리스트를 가져온다.
+		List<OrderItemVO> olv=ouv.getOrders();
+		for(int i=0;i<olv.size();i++) {
+		//ProductVO를 pid를 통해 가져와 지정
+		olv.get(i).setProductVO(productmapper.getProduct(olv.get(i).getPid()));
+		//주문한 상품의 가격을 지정한다.
+		olv.get(i).setOprice(olv.get(i).getProductVO().getPprice());
+					
+		//상품들의 총합이나 총 마일리지, 총 포인트를 계산
+		olv.get(i).initSaleTotal();
+				
+		//상품에 대한 pid를 가져와 색깔과 이미지를 가져온다.
+		List<ThumbnailColorVO> thumbnailcolorvolist=membermapper.getProductsColor(olv.get(i).getPid());
+					
+		//color를 크기만큼 반복하는데 객체의 ccolorcode가 같으면 해당하는 객체를 thumbnail에 저장한다.
+		for(int j=0;j<thumbnailcolorvolist.size();j++) {
+			if(thumbnailcolorvolist.get(j).getCcolorcode().equals(olv.get(i).getCcolorcode())) {
+					olv.get(i).setThumbnail(thumbnailcolorvolist.get(j));
+			}
+			}
+
+		}
+
+				return ouv;
+		}
+		return null;
+	}
+	
+	//마일리지의 총합을 가져온다.
+	@Override
+	public int SumMilege(String mid) {
+		
+		return ordermapper.SumMilege(mid);
+	}
+	
+	//회원의 쿠폰  개수를 가져온다
+	@Override
+	public int getCouponCount(String mid) {
+		// TODO Auto-generated method stub
+		return ordermapper.getCouponCount(mid);
+	}
+	
+	
+
+
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	@Override
+	public int getOrderCheck(String pid, String mid) {
+		int result = ordermapper.getOrderCheck(pid, mid);
+		return result;
+	}
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	@Override
+	public List<OrderCheckVO> getOrderCheckVO(String pid, String mid) {
+		List<OrderCheckVO> result = ordermapper.getOrderCheckVO(pid, mid);
+		return result;
+	}
+	
+	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
+	@Override
+	public OrderItemVO getOrderItemProductInfo(String oid){
+		
+		List<OrderItemVO> orderItemList = ordermapper.getOrderItemProductInfo(oid);
+
+		return orderItemList.get(0);
+	}
+	
+}

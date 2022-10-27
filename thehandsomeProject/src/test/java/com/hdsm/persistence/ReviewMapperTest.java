@@ -61,10 +61,6 @@ public class ReviewMapperTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String rcontent = objectMapper.writeValueAsString(map);
 		
-	    //json을 map으로 변환
-		//Map<String, Object> stringTomap = objectMapper.readValue(rcontent,new TypeReference<Map<String,Object>>(){});
-		//System.out.println(stringTomap.toString());
-
 		dto.setRcontent(rcontent);
 		dto.setMid("admin");
 		dto.setMname("관리자");
@@ -83,28 +79,11 @@ public class ReviewMapperTest {
 	@Test
 	public void getReviewList() throws Exception{
 		String pid = "MM2C9LOT212M";
-
 		List<ReviewDTO> list = mapper.getReviewList(pid);
 		ObjectMapper objectMapper = new ObjectMapper();
-		log.info("------------list 객체 테스트------------\n" + list.toString()+"------------\n");
-		
 		for(ReviewDTO dto : list) {
-			log.info("------------dto 객체 테스트------------\n" + dto+"------------\n");
-			log.info("------------dto rcontent ------------\n" + dto.getRcontent()+"------------\n");
 			Map<String, Object> stringTomap = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
-			
-			log.info("------------map rcontent ------------\n" +stringTomap.toString()+"------------\n");
-			log.info("------------ rcontent headline ------------\n" +stringTomap.get("headline")+"------------\n");
 		}
-		
-		
-		/*
-		 * List<ReviewDTO> list = mapper.getReviewList(pid);
-		 * 
-		 * for(ReviewDTO dto : list) { String rcontent = dto.getRcontent();
-		 * log.info("--------rcontent----------\n " + rcontent); }
-		 */
-	
 	}
 	
 	

@@ -85,11 +85,11 @@
 .popwrap .evaluation_view .sizecolor > div{width:250px; float:left;}
 .popwrap .evaluation_view .sizecolor > div+div{float:right;}
 .popwrap .evaluation_view .sizecolor > div > strong{color:#363636;}
-.popwrap .evaluation_view .sizecolor > div > div{margin-top:10px; background:url("/_ui/desktop/common/images/products/evaluation_line.gif") no-repeat;}
+.popwrap .evaluation_view .sizecolor > div > div{margin-top:10px; background:url("/resources/images/evaluation_line.gif") no-repeat;}
 .popwrap .evaluation_view .sizecolor > div > div > span{display:block; width:25%; float:left; font-size:11px; color:#999; padding-top:18px;}
 .popwrap .evaluation_view .sizecolor > div > div > span+span{width:50%; text-align:center;}
 .popwrap .evaluation_view .sizecolor > div > div > span+span+span{width:25%; text-align:right;}
-.popwrap .evaluation_view .sizecolor > div > div > span.on{color:#c69c6c; background:url("/_ui/desktop/common/images/products/evaluation_on.gif") left top no-repeat;}
+.popwrap .evaluation_view .sizecolor > div > div > span.on{color:#c69c6c; background:url("/resources/images/evaluation_on.gif") left top no-repeat;}
 .popwrap .evaluation_view .sizecolor > div > div > span+span.on{background-position:center top;}
 .popwrap .evaluation_view .sizecolor > div > div > span+span+span.on{background-position:right top;}
 .popwrap .evaluation_view .deledit_wrap{text-align:right; margin-right:8px;}

@@ -3,10 +3,13 @@ package com.hdsm.persistence;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.CouponVO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MileageVO;
+import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 
@@ -24,6 +27,9 @@ public interface OrderMapper {
 
 	//마일리지를 등록
 	public void insertMilege(MileageVO miv);
+	
+	//마일리지의 합을 조회
+	public int SumMilege(String mid);
 
 	//회원의 hspoint 업데이트
 	public void updateHspoint(MemberVO member);
@@ -42,5 +48,31 @@ public interface OrderMapper {
 	
 	//회원 아이디에 대한 주문한 사용자 정보를 조회
 	public List<OrderUserVO> getOrderUserVO(String mid);
+
+	
+	//회원 주문 정보를 삭제
+	public void deleteOrderUser(String oid);
+	
+	//회원의 주문 상품들을 삭제
+	public void deleteOrderItem(String oid);
+	
+	//회원의 마일리지 정보도 삭제
+	public void deleteMilege(String oid);
+	
+	//회원이 최근 주문한 상품을 조회
+	public OrderUserVO getRecentOrderUserVO(String mid);
+	
+	//회원의 쿠폰 개수를 조회
+	public int getCouponCount(String mid);
+
+
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	public int getOrderCheck(String pid, String mid);
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	public List<OrderCheckVO> getOrderCheckVO(@Param("pid") String pid, @Param("mid") String mid);
+	
+	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
+	public List<OrderItemVO> getOrderItemProductInfo(@Param("oid") String oid);
 
 }
