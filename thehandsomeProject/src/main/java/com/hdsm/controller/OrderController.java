@@ -197,7 +197,7 @@ public class OrderController {
 		    session.setAttribute("sbCount", count);// 바뀐 장바구니 갯수 다시 세서 가져오기
 			
 			//삭제를 했기 때문에 redirect를 통해 페이지를 갱신한다.
-			return "redirect:/member/mypage";
+			return "redirect:/member/orderlist";
 		}
 		
 	

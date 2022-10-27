@@ -17,11 +17,10 @@
 					<dl>
 						<dt>주문조회</dt>
 						<dd>
-							<a href="javascript:void(0)"
-								onclick="Goorderlist();">주문/배송/반품/취소</a>
-							<form id="orderlist" action="/member/orderlist" method="post">
+							<a href="/member/orderlist" >주문/배송/반품/취소</a>
+							<%-- <form id="orderlist" action="/member/orderlist" method="post">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-							</form>
+							</form> --%>
 						</dd>
 					</dl>
 					<dl>

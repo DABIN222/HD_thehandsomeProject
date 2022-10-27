@@ -11,7 +11,7 @@ import com.hdsm.domain.OrderUserVO;
 
 //박진수
 public interface OrderService {
-
+ 
 	//주문 페이지 조회한다.
 	public List<OrderItemVO> getOrderPageInfo(List<OrderItemVO> orders);
 
@@ -66,5 +66,4 @@ public interface OrderService {
 	
 	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
 	public OrderItemVO getOrderItemProductInfo(String oid);
->>>>>>> aa8df6b569f5a3800e102a1bfb95a354f6219175
 }

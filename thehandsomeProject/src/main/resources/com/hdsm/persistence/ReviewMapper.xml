@@ -82,7 +82,7 @@
 		SELECT COUNT(*)
 		FROM review
 		WHERE mid=#{mid}
-
+	</select>
 	<!-- 회원별 상품평 리스트 -->
 	<select id="getReviewMemberList"  parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
 		SELECT *
