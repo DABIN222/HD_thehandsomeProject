@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -149,7 +150,9 @@ public class ReviewController {
 	
 
 	@RequestMapping(value="/getlistList", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ReviewDTO>> getlistList(
+	//public ResponseEntity<List<ReviewDTO>> getlistList(
+	@ResponseBody
+	public Map getlistList(
 			@RequestBody ReviewDTO rd,
 			HttpServletRequest request) throws Exception{
 		
@@ -170,8 +173,8 @@ public class ReviewController {
 			dto.setRcontentMap(rcontent);
 			reviewList.add(dto);
 			
-			
 			reviewCount++;//리뷰 갯수 카운트
+			
 			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
 		}
 		
@@ -179,9 +182,16 @@ public class ReviewController {
 		
 		List<Integer> reviewinfo = new ArrayList<Integer>();
 		
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		result.put("reviewinfo", reviewinfo);
+
+		result.put("reviewlist", reviewList);
+		
 		reviewinfo.add(reviewCount);
 		reviewinfo.add(avgRating);
-		return new ResponseEntity<List<ReviewDTO>>(reviewList, HttpStatus.OK);
+		
+		return result;
 	}
 
 	//상품평 작성하기
