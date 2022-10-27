@@ -1974,16 +1974,11 @@
 		</div>
 		<div class="review_img_wrap review_img_cont191216 wlength" id="myreviewImg">
 		  <ul class="slides">
-		  
 		    <li>
-		      <div class="review_img_cont_inner191216">
-		        <div class="img_wrap">
 		          <img
 		            src=""
 		            alt="리뷰 이미지"
 		          />
-		        </div>
-		      </div>
 		    </li>
 		    
 		  </ul>
@@ -2097,7 +2092,7 @@
 					//이미지 등록한것도 있으면 태그들 넣어주자
 					if(typeof value.rcontentMap.imagesPath != "undefined"){
 						value.rcontentMap.imagesPath.forEach((value, index, array) => {
-							$("#reviewRow").find("#myreviewImg>ul").append('<li> <div class="review_img_cont_inner191216"> <div class="img_wrap"> <img src="'+ value +'" alt="리뷰 이미지"/> </div> </div> </li>');
+							$("#reviewRow").find("#myreviewImg>ul").append('<li> <img src="'+ value +'" alt="리뷰 이미지"/> </li>');
 						});
 					}
 					$("#reviewRow").find("#myreviewImg>ul")
@@ -2116,10 +2111,11 @@
 	}
 	
 	//reviewRowInsert('asd');
+	// 상품평 작성 처리 (정구현)
 	function fn_reviewWriteSend() {
 		if (!confirm("작성 하시겠습니까?"))
 			return false;
-		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기
+		//입력 값 rcontent 컬럼에 삽입 위해 map에 넣기(정구현)
 		let rcontent = new Map();
 		rcontent.set('age', $("input[type=radio][name=age]:checked").val()); // 연령대
 		rcontent.set('height', $('#height').val()); // 키
@@ -2143,7 +2139,7 @@
 		rcontent.set('oid', $('input[name=reviewOrderId]').val());
 		//console.log("rcontent : " + rcontent);
 	
-		//map 직렬화
+		//map 직렬화(정구현)
 		let serializedMap = JSON.stringify(Object.fromEntries(rcontent));
 	
 		//console.log(serializedMap);
@@ -2649,7 +2645,7 @@
 		%>
 	}
 	
-	(function($){$(document).ready(
+	$(document).ready(
 					function() {
 						//사진등록						
 						var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
@@ -2985,11 +2981,11 @@
 								});
 					//리뷰 더보기 버튼
 					$(".review_plus").click(function(){
-						const reviewIndex = $(this).attr('itemnum');
 						console.log("asd");
 						$(this).closest(".evaluation_view").toggleClass("on");
 						//$(this).toggleClass("evaluation_view");
 						
+						const reviewIndex = $(this).attr('itemnum');
 						//리뷰 사진 슬라이더(정구현)
 						if($('#'+'reviewImg_'+reviewIndex).length >0){
 							$('#'+'reviewImg_'+reviewIndex+' .slides').bxSlider({
@@ -3004,13 +3000,33 @@
 								autoHover:false,
 								infiniteLoop:true,
 							});
-						}
+						} 
 						
 					});
-
-
-					});
-	mileageInfoView();
-	})(jQuery);
+					mileageInfoView();
+				});
+	(function($){
+		$(document).ready(function() {
+			//리뷰 더보기 버튼
+			$(".review_plus").click(function(){
+				//리뷰 사진 슬라이더(정구현)
+					$(this).closest('.slides').bxSlider({
+						mode:"horizontal",
+						speed:500,
+						pager:true,
+						moveSlides:1,
+						minSlides:1,
+						maxSlides:1,
+						slideMargin:5,
+						auto:false,
+						autoHover:false,
+						infiniteLoop:true,
+					});	
+			});
+			
+		});
+		
+		})(jQuery);
+	
 </script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>
