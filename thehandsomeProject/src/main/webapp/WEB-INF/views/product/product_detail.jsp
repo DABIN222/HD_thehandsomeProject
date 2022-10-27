@@ -1913,7 +1913,7 @@
   <div
   		id = "alreadyInsert"
 	  class="popwrap w_type_1"
-	  style="z-index: 150; margin-top: 1072px"
+	  style="display:none; z-index: 150; margin-top: 1072px"
 	  tabindex="-1">
 	  <div class="pop_cnt">
 	    <h3 class="pop_tlt copy">
@@ -2094,6 +2094,24 @@
 		reviewRowInsert(pageNum);
 	}
 	
+	//yyyy-mm-dd 날짜 변환하는 함수(정구현)
+	function leftPad(value) {
+	    if (value >= 10) {
+	        return value;
+	    }
+
+	    return `0${value}`;
+	}
+	
+	//yyyy-mm-dd 날짜 변환하는 함수(정구현)
+	function toStringByFormatting(source, delimiter = '-') {
+	    const year = source.getFullYear();
+	    const month = leftPad(source.getMonth() + 1);
+	    const day = leftPad(source.getDate());
+
+	    return [year, month, day].join(delimiter);
+	}
+	
 	function reviewRowInsert(p){
 		//일단 ul에 li들을 다 지워주장
 		$("#liparent").empty();
@@ -2131,9 +2149,12 @@
 				list.forEach((value, index, array) => {
 					console.log(value);
 					let writeDate = new Date(value.rdate);
+					
+					//yyyy-mm-dd 날짜 변환(정구현)
+					let dateFormatted = toStringByFormatting(writeDate);
 					$("#reviewRow").find(".name").text(value.mid);
 					$("#reviewRow").find(".grade").text(value.mname);
-					$("#reviewRow").find(".date").text(writeDate);
+					$("#reviewRow").find(".date").text(dateFormatted);
 					//$("#reviewRow").find("#countingStar").removeClass("star1","star2","star3","star4","star5")//별점일단 다 지우고
 					$("#reviewRow").find("#countingStar").removeClass("star1")//별점일단 다 지우고
 					$("#reviewRow").find("#countingStar").removeClass("star2")//별점일단 다 지우고
