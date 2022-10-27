@@ -307,19 +307,11 @@
 					<dl>
 						<dt>주문조회</dt>
 						<dd>
-							<a href="/ko/mypage/order/myorders" onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>혜택관리</dt>
-						<dd>
-							<a href="/member/myGradeInfo" onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
+							<a href="javascript:void(0)"
+								onclick="Goorderlist();">주문/배송/반품/취소</a>
+							<form id="orderlist" action="/member/orderlist" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form>
 						</dd>
 					</dl>
 					<dl>
@@ -1161,5 +1153,11 @@
 			<!-- //cnts -->
 		</div>
 	</div>
+	<script>
+	//주문 목록으로 이동한다.(박진수)
+	function Goorderlist(){
+		$("#orderlist").submit();
+	}
+	</script>
 </body>
 </html>

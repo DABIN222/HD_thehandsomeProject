@@ -529,14 +529,14 @@
 														for="sel_rd5" class="mr20">스마일 페이</label><br></li>
 												</span>
 												<span id="paymentRedVoucher" style="display: block;">
-													<li><input type="radio" name="mode" id="sel_rd4"
+													<li><input type="radio" name="paymode" id="sel_rd4"
 														value="현대카드 레드 쇼핑바우처" > <label
 														for="sel_rd4" class="mr20">현대카드 레드 쇼핑바우처</label></li>
 												</span>
-												<li><input type="radio" name="mode" id="sel_rd6"
+												<li><input type="radio" name="paymode" id="sel_rd6"
 													value="토스" > <label
 													for="sel_rd6" class="mr20">토스</label></li>
-												<li><input type="radio" name="mode" id="sel_rd7"
+												<li><input type="radio" name="paymode" id="sel_rd7"
 													value="페이코" > <label
 													for="sel_rd7" class="mr20">페이코</label></li>
 											</ul>
@@ -796,7 +796,11 @@ function f_customerAddress(){
 	$("#address1").val("${member.maddress1}");
 	$("#address2").val("${member.maddress2}");
 	$("#receiver").val("${member.mname}");
-	let arr="${member.mtel}".split("-");
+	let arr=new Array();
+	arr[0]="${member.mtel}".substring(0,3);
+	arr[1]="${member.mtel}".substring(3,7);
+	arr[2]="${member.mtel}".substring(7,11);
+	console.log(arr[0]);
 	$("select[id='hp']").val(arr[0]);
 	$("#hp_num2").val(arr[1]);
 	$("#hp_num3").val(arr[2]);

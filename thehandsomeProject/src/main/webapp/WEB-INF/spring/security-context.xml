@@ -29,7 +29,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			pattern="/member/wishList" access="hasRole('ROLE_USER')" />
 		<security:intercept-url
 			pattern="/member/shoppingbag" access="hasRole('ROLE_USER')" />
-
+		<security:intercept-url
+			pattern="/member/deliveryManage" access="hasRole('ROLE_USER')"/>
 
 		<security:intercept-url pattern="/product/list"
 			access="permitAll" />
@@ -40,7 +41,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			pattern="/order/order_page" access="hasRole('ROLE_USER')" />
 
 		<security:intercept-url
+			pattern="/order/ordercancel" access="hasRole('ROLE_USER')" />
+		
+		<security:intercept-url
 			pattern="/review/getlistList" access="permitAll" />
+
 
 		<security:form-login
 			login-page="/member/loginForm"

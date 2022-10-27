@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- ordermapper (작성자 :박진수) -->
 <mapper namespace="com.hdsm.persistence.OrderMapper">
 
 	<!-- 사용자의 주문 정보를 등록하는 sql -->
@@ -35,38 +36,47 @@
 		select * from coupon where
 		member_mid=#{mid}
 	</select>
-
+	
+	<!-- 마일리지 정보를 등록하는 sql -->
 	<insert id="insertMilege">
-		<!-- <selectKey keyProperty="mino"   resultClass="int" order="BEFORE">      
-			SELECT mino_seq.NEXTVAL AS mino FROM DUAL   
-		</selectKey> -->
 		insert into mileage
 		values(mino_seq.NEXTVAL,#{member_mid},
 		#{micategory},#{micontent},sysdate,#{mipoint})
 	</insert>
+	
+	<!-- 마일리지의 합을 가져오는 sql -->
+	<select id="SumMilege" resultType="int">
+		select nvl(sum(mipoint),0)
+		from mileage
+		where member_mid=#{mid}
+	</select>
 
+	<!--HS포인트를 바꾸는 sql문  -->
 	<update id="updateHspoint">
 	update member 
 	set mpoint=#{mpoint} where mid=#{mid}
 	</update>
-
+	
+	<!-- 쿠폰을 삭제하는 sql문 -->
 	<delete id="deleteCoupon">
 		delete from coupon 
 		where ccode=#{ccode} and member_mid=#{member_mid}
 	</delete>
-
+	
+	<!-- 배송지 관리에 저장된 주소를 가져오는 sql문 -->
 	<select id="getAddress" resultType="com.hdsm.domain.AddressVO">
 		select * 
 		from address where member_mid=#{mid}
 	</select>
-
+	
+	<!-- 주문번호를 통해 주문한 사용자의 정보를 조회 -->
 	<select id="getOrderUserItem" resultType="com.hdsm.domain.OrderUserVO">
 		select * 
 		from orderList
 		where oid=#{oid}
 
 	</select>
-
+	
 	<select id="getOrderItem" resultType="com.hdsm.domain.OrderItemVO">
 		select *
 		from orderItem
@@ -77,8 +87,19 @@
 	select * 
 	from orderList
 	where mid=#{mid}
+	order by odate desc
 	</select>
 	
+	<select id="getRecentOrderUserVO" resultType="com.hdsm.domain.OrderUserVO">
+ 	select *
+ 	from
+ 	(select * 
+ 	from orderlist 
+ 	where mid=#{mid} 
+ 	order by odate desc)
+ 	where rownum=1
+	
+	</select>
 	<select id="getOrderUserVOinOneMonth" resultType="com.hdsm.domain.OrderUserVO">
 	select * 
 	from orderList
@@ -89,6 +110,32 @@
 	and mid=#{mid}
 	</select>
 	
+
+	<!-- 쿠폰의 개수를 가져온다 -->
+	<select id="getCouponCount" resultType="int">
+	select count(*)
+	from coupon
+	where member_mid=#{mid}
+	</select>
+	
+	<!-- 주문한 사용자의 정보를 삭제 -->
+	<delete id="deleteOrderUser">
+	delete from orderlist 
+	where oid=#{oid}
+	</delete>
+	
+	<!-- 주문한 사용자의 상품들을 삭제 -->
+	<delete id="deleteOrderItem">
+	delete from orderitem
+	where oid=#{oid}
+	</delete>
+	
+	<!-- 주문한 사용자의 마일리지 포인트를 제거 -->
+	<delete id="deleteMilege">
+	delete from mileage
+	where micontent like #{oid}||'%' 
+	</delete>
+
 	<!-- 사용자가 해당 상품 주문한 내역 가져오는 sql (정구현) -->
 	<select id="getOrderCheck" resultType="_int">
 	SELECT COUNT(*)
@@ -115,5 +162,6 @@
 	</select>
 	
 	
+>>>>>>> aa8df6b569f5a3800e102a1bfb95a354f6219175
 	
 </mapper>

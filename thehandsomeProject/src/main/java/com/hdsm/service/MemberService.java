@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
 import com.hdsm.domain.MemberVO;
@@ -77,4 +78,7 @@ public interface MemberService {
 	
 	//비밀번호 변경
 	public void updateuser(MemberVO member);
+	
+	public List<AddressVO> getAddressList(String mid);
+
 }

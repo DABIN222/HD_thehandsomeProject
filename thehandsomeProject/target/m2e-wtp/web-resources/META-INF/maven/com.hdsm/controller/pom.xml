@@ -177,14 +177,19 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
+		
 		<!-- 통신을위한 추가 Spring에서는 Json 객체 넘겨주는게 없나봐 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.6</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>jsonassert</artifactId>
+			<version>1.5.0</version>
+		</dependency>
 		<!-- 스프링 시큐리티 동일한 버젼으로 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>

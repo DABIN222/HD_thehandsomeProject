@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberSbagDTOForJsp;
@@ -48,6 +49,7 @@ import com.hdsm.security.CustomUserDetailsService;
 import com.hdsm.service.MemberService;
 import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
+import com.hdsm.service.ReviewService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -64,7 +66,10 @@ public class MemberController {
 	
 	@Autowired
 	OrderService orderservice;
-
+	
+	@Autowired
+	ReviewService reviewservice;
+	
 	@Autowired
 	MemberMapper mapper;
 	 
@@ -416,12 +421,30 @@ public class MemberController {
 			
 			String username = principal.getName();
 			  //회원이 주문한 주문번호를 가져온다.(박진수)
-			  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
-			 
+			  OrderUserVO ouv=orderservice.getRecentOrderUserVO(username);
+			  
+			  
+			  //ouvl이 비어있다는 것을 알리기 위함(박진수)
+			  if(ouv==null) {
+				  model.addAttribute("recentouv", null);
+			  }else {
 			  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
-			  model.addAttribute("ouvl", ouvl);
-
-			log.info("마이 페이지 왔다");
+			  model.addAttribute("recentouv", ouv);
+			  }
+					  
+			  //회원의 마일리지를 담는다.(박진수)
+			  model.addAttribute("totalMilege", orderservice.SumMilege(username));
+			  
+			  //회원의 정보를 가져온다.(박진수)
+			  model.addAttribute("memberinfo", memberservice.getMember(username));
+			  
+			  //회원의 쿠폰 개수를 가져온다(박진수)
+			  model.addAttribute("couponCount", orderservice.getCouponCount(username));
+			  
+			  //회원의 리뷰 개수를 가져오게 설정(박진수)
+			  model.addAttribute("reviewCount", reviewservice.UserReviewCount(username));
+			  
+			  log.info("마이 페이지 왔다");
 			
 			String memberID = username;
 			if(memberID==null) { //세션에 id가 없으면 로그인이 안되었기에 홈으로 보냄
@@ -655,4 +678,25 @@ public class MemberController {
 		return "member/myGradeInfo";
 	}
 
+	//주문조회로 이동
+	@PostMapping("/orderlist")
+	public void orderlist(Principal principal,Model model) {
+		String username = principal.getName();
+		  //회원이 주문한 주문번호를 가져온다.(박진수)
+		  List<OrderUserVO> ouvl=orderservice.getOrderUserVO(username);
+		  
+		  //ouvl이 비어있다는 것을 알리기 위함
+		  if(ouvl.isEmpty()) {
+			  model.addAttribute("ouvl", null);
+		  }else {
+		  //해당하는 주문번호리스트를 model을 통해 넘겨준다. (박진수)
+		  model.addAttribute("ouvl", ouvl);
+		  }
+	}
+	
+	@GetMapping("/deliveryManage")
+	public void deliveryManage(String mid,Model model) {
+		List<AddressVO> addrlist=memberservice.getAddressList(mid);
+		model.addAttribute("addrlist", addrlist);
+	}
 }

@@ -33,6 +33,11 @@ public interface ReviewService {
 	
 	// 상품평 작성 여부 확인
 	public int getReviewCount(@Param("pid") String pid, @Param("mid") String mid, @Param("pcolor") String pcolor,@Param("psize") String psize);
+
+	
+	//상품평의 개수를 확인(박진수)
+	public int UserReviewCount(String mid);
+
 		
 	// 상품평 멤버 조회
 	public List<ReviewDTO> getReviewMemberList(@Param("pid") String pid, @Param("mid") String mid);

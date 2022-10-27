@@ -17,24 +17,16 @@
 		<div class="lnb_wrap">
 			<h4><a href="/member/mypage">마이페이지<!-- 마이페이지 --></a></h4>
 			<div class="lnb">
-				<dl>
-					<dt>주문조회</dt>
-					<dd>
-						<a href="/ko/mypage/order/myorders" onclick="GA_Event('마이페이지','LNB','주문/배송/반품/취소');">주문/배송/반품/취소</a>
-					</dd>
-				</dl>
-				<dl>
-					<dt>혜택관리</dt>
-					<dd>
-						<a href="/ko/mypage/myGradeInfo" onclick="GA_Event('마이페이지','LNB','나의 회원 등급');">나의 회원 등급</a>
-					</dd>
-					<dd>
-						<a href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','LNB','나의 쿠폰');">나의 쿠폰<!-- 쿠폰함 --></a>
-					</dd>
-					<dd>
-						<a href="/ko/mypage/mypoint" onclick="GA_Event('마이페이지','LNB','나의 한섬마일리지');">나의 한섬마일리지</a>
-					</dd>
-				</dl>
+			<dl>
+						<dt>주문조회</dt>
+						<dd>
+							<a href="javascript:void(0)"
+								onclick="Goorderlist();">주문/배송/반품/취소</a>
+							<form id="orderlist" action="/member/orderlist" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form>
+						</dd>
+					</dl>
 				<dl>
 					<dt>나의 상품관리</dt>
 					<dd>
@@ -45,9 +37,6 @@
 					<dt>나의 정보관리</dt>
 					<dd>
 						<a href="/ko/mypage/personInfomationChangePWCheck" onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
-					</dd>
-					<dd>
-						<a href="/ko/mypage/shoppingAddressPWCheck" onclick="GA_Event('마이페이지','LNB','배송지 관리');">배송지 관리</a>
 					</dd>
 				</dl>
 				<dl>
@@ -627,6 +616,12 @@
 			});
 			
 		}
+		
+		//주문 목록으로 이동한다.(박진수)
+		function Goorderlist(){
+			$("#orderlist").submit();
+		}
+		</script>
 	);
 	</script>
 <%@include file="/WEB-INF/views/common/footer.jspf"%>

@@ -76,7 +76,13 @@
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid} AND psize=#{psize} AND pcolor=#{pcolor}
 	</select>
-	
+
+	<!-- 한 회원이 작성한 리뷰의 갯수를 가져온다 (작성자 :박진수) -->
+	<select id="UserReviewCount" resultType="int">
+		SELECT COUNT(*)
+		FROM review
+		WHERE mid=#{mid}
+
 	<!-- 회원별 상품평 리스트 -->
 	<select id="getReviewMemberList"  parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
 		SELECT *

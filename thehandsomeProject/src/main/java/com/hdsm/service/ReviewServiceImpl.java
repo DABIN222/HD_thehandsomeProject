@@ -64,6 +64,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 
+	@Override
+	public int UserReviewCount(String mid) {
+		// TODO Auto-generated method stub
+		return mapper.UserReviewCount(mid);
+	}
 	
 	// 상품평 멤버 조회
 	@Override
