@@ -80,13 +80,14 @@ public class MemberController {
 	
 	// 회원가입
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public String join(MemberVO member, HttpServletRequest request) throws Exception {
+	public String join(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info("회원가입 진입!");
 		
 		// jsp에서 name에 입력된 값 vo에 저장
 		member.setMid(request.getParameter("custId"));
 		member.setMpassword(request.getParameter("custPwd"));
 		member.setMname(request.getParameter("custName"));
+		log.info(request.getParameter("custName"));
 		member.setMemail(request.getParameter("emailtotal"));
 		member.setMtel(request.getParameter("custTel"));
 		member.setMaddress1(request.getParameter("partner.postNo"));
@@ -184,7 +185,7 @@ public class MemberController {
 
 	/*로그아웃 */
 	@RequestMapping(value="/customLogout", method=RequestMethod.GET)//받는 형태는 일단 GET으로
-   public void logoutMainGET(HttpServletRequest request) throws Exception{
+	public void logoutMainGET(HttpServletRequest request) throws Exception{
        
        log.info("로그아웃 메소드 진입"); //안에 들어왔는지 확인 
        

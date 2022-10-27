@@ -27,7 +27,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
         <multipart-config>   
-         <location>C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images\\temp</location>
+         <location>D:\\sts3\\ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64\\sts-bundle\\workspace_springProject\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images\\temp</location>
          <max-file-size>20971520</max-file-size> <!--1MB * 20 -->
          <max-request-size>41943040</max-request-size><!-- 40MB -->
          <file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->
@@ -37,10 +37,29 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<filter>
+	
+	<!-- encoding Filter -->
+	<filter>      
+		<filter-name>encodingFilter</filter-name>        
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
+		<init-param>		            
+			<param-name>encoding</param-name>		            
+			<param-value>UTF-8</param-value>		        
+		</init-param>	        
+		<init-param>		             
+			<param-name>forceEncoding</param-name>		             
+			<param-value>true</param-value>		          
+		</init-param>	     
+	</filter>
+		        
+	<filter-mapping>       
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+<!-- 	<filter>
 		<filter-name>encoding</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
@@ -49,7 +68,11 @@
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
 		<servlet-name>appServlet</servlet-name>
-	</filter-mapping>
+	</filter-mapping> -->
+	
+	
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

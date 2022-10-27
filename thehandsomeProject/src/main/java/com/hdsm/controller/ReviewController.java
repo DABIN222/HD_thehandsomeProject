@@ -220,7 +220,7 @@ public class ReviewController {
 				String pid,
 				MultipartFile[] uploadFile) throws IOException {
 
-			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
+			String uploadFolder = "D:\\sts3\\ok_spring-tool-suite-3.9.11.RELEASE-e4.12.0-win32-x86_64\\sts-bundle\\workspace_springProject\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";			
 			log.info(uploadFile);
 			log.info(uploadFile.length);
 			//String pid = "TM2CAWOT762W"; //임시로 일단 만들어놓자

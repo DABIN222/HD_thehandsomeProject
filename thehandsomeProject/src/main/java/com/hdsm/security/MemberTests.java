@@ -45,6 +45,7 @@ public class MemberTests {
 	mvo.setMgrade("silver");
 	mvo.setMpoint(0);
 	mvo.setMenabled(0);
+	
 	mavo.setUsername("admin");
 	mavo.setAuthority("ROLE_USER");
     mapper.insertMember(mvo);
