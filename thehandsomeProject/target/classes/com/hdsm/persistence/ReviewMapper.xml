@@ -26,9 +26,9 @@
 	
 	<!-- 상품평 리스트 페이징 된걸로 가져오기 -->
 	<select id="getReviewListWithPaging" parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
-		select * 
+		select RNO, RDATE, RCONTENT, MID, MNAME, MGRADE, PID, PNAME, PCOLOR, PSIZE, BNAME, RTITLE, RCOMFORTABLE, RPRICE 
 		from
-		    (select * 
+		    (select rownum rn, RNO, RDATE, RCONTENT, MID, MNAME, MGRADE, PID, PNAME, PCOLOR, PSIZE, BNAME, RTITLE, RCOMFORTABLE, RPRICE
 		    from 
 		        (SELECT *
 		        FROM review
@@ -42,7 +42,7 @@
 			</trim>
 		    )
 		where
-		<![CDATA[rownum >  (#{cri.pageNum} - 1) * #{cri.amount}]]>
+		<![CDATA[rn >  (#{cri.pageNum} - 1) * #{cri.amount}]]>
 	</select>
 	
 	<!-- 상품평 작성 -->
@@ -75,5 +75,12 @@
 		SELECT COUNT(*)
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid} AND psize=#{psize} AND pcolor=#{pcolor}
+	</select>
+	
+	<!-- 회원별 상품평 리스트 -->
+	<select id="getReviewMemberList"  parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
+		SELECT *
+		FROM review
+		WHERE pid=#{pid} AND mid=#{mid}
 	</select>
 </mapper> 

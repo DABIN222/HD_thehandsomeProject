@@ -498,8 +498,12 @@
 		          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			data : mid,// json 형태의 데이터
 			contentType: "application/json; charset=utf-8",
-			success : function(cnt) {
-				console.log(cnt);
+			success : function(username) {
+				console.log(username);
+				if(username != "" || username != null){
+					console.log("ajax data 값 : " + username);
+					location.href="/";
+				}
 				//location.reload(true);
 			},
 			error : function(jqXHR, textStatus, errorThrown){

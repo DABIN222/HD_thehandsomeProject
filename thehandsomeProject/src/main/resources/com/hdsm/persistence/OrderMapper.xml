@@ -89,5 +89,31 @@
 	and mid=#{mid}
 	</select>
 	
+	<!-- 사용자가 해당 상품 주문한 내역 가져오는 sql (정구현) -->
+	<select id="getOrderCheck" resultType="_int">
+	SELECT COUNT(*)
+	FROM orderitem a
+	INNER JOIN orderlist b
+	ON a.oid = b.oid
+	WHERE a.pid=#{pid} AND b.mid=#{mid}
+	</select>
+	
+	<select id="getOrderCheckVO" resultType="com.hdsm.domain.OrderCheckVO">
+		SELECT a.oid, a.pid, b.mid, a.ccolorcode, a.ssize
+		FROM orderitem a
+		INNER JOIN orderlist b
+		ON a.oid = b.oid
+		WHERE a.pid=#{pid} AND b.mid=#{mid}
+	</select>
+	
+	<select id="getOrderItemProductInfo" resultType="com.hdsm.domain.OrderItemVO">
+		SELECT a.oid, a.pid, a.ccolorcode, a.ssize, b.cname
+		FROM orderitem a
+		INNER JOIN color b
+		ON a.ccolorcode = b.ccolorcode
+		WHERE a.oid = #{oid}
+	</select>
+	
+	
 	
 </mapper>
