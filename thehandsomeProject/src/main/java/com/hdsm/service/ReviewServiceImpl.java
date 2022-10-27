@@ -14,6 +14,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hdsm.domain.Criteria;
 import com.hdsm.domain.ReviewDTO;
 import com.hdsm.persistence.ReviewMapper;
 
@@ -37,6 +38,13 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.getReviewList(pid);
 	}
 	
+	// 상품평 리스트 페이징처리 우오오오오~~	
+	@Override
+	public List<ReviewDTO> getReviewListWithPaging(String pid, Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getReviewListWithPaging(pid, cri);
+	}
+	
 	// 상품평 수정
 	@Override
 	public int reviewUpdate(ReviewDTO dto) {
@@ -54,5 +62,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public int getReviewCount(@Param("pid") String pid, @Param("mid") String mid, @Param("pcolor") String pcolor,@Param("psize") String psize) {
 		return mapper.getReviewCount(pid, mid, pcolor, psize);
 	}
+
+
 	
 }

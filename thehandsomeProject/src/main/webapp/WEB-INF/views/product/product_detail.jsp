@@ -1992,17 +1992,19 @@
 		let csrfTokenValue="${_csrf.token}";
 		
 		param={
-				pid : "${productVO.pid}"
+				pid : "${productVO.pid}",
+				amount : 4,
+				pageNum : 1
 				};
 		$.ajax({
-			url : '/review/getlistList',
+			url : '/review/getlistListWithPaging',
 			type : 'POST',
 			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			data : JSON.stringify(param), //직렬화
-			dataType : 'text',
+			//dataType : 'text',
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
-				result = JSON.parse(result);
+				//result = JSON.parse(result);
 				
 				let list = result.reviewlist;
 				let reviewinfo = result.reviewinfo;

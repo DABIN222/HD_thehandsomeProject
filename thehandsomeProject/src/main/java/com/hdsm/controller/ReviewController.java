@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hdsm.domain.Criteria;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ReviewAttachFileDTO;
@@ -123,6 +124,7 @@ public class ReviewController {
 		return "pass";
 	}
 	
+	//상품 리스트 깔쌈하게 보여주게 만든거야
 	@RequestMapping(value="/getlistList", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	//public ResponseEntity<List<ReviewDTO>> getlistList(
 	@ResponseBody
@@ -165,6 +167,66 @@ public class ReviewController {
 		reviewinfo.add(reviewCount);
 		reviewinfo.add(avgRating);
 		
+		return result;
+	}
+	
+	//상품 리스트 깔쌈하게 페이징처리까지 해서 주는거야
+	@RequestMapping(value="/getlistListWithPaging", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	//public ResponseEntity<List<ReviewDTO>> getlistList(
+	@ResponseBody
+	public Map getlistListWithPaging(
+//			@RequestBody ReviewDTO rd,
+//			@RequestParam("amount") int amount,
+//			@RequestParam("pageNum") int pageNum,
+			@RequestBody HashMap<String, String> map,
+			//@RequestBody Criteria cri,
+			HttpServletRequest request) throws Exception{
+		String pid = map.get("pid");
+		int amount = Integer.parseInt(map.get("amount")) ;
+		int pageNum = Integer.parseInt(map.get("pageNum"));
+		
+		Criteria cri = new Criteria(pageNum, amount);
+		// 상품평 리스트페이징처리된거
+		List<ReviewDTO> getReview = reviewService.getReviewListWithPaging(pid,cri);
+
+		// 상품평 리스트 받기 -> 이거는 리뷰 갯수와 평점계산을 위해 가져옴... 비효율적이지만 테이블이 구조때문에 어쩔수 없이 이렇게...
+		List<ReviewDTO> getReviewForRating = reviewService.getReviewListWithPaging(pid,cri);
+		
+		log.info("--------"+pid);
+		log.info("--------"+cri.getAmount());
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		
+		for(ReviewDTO dto : getReview) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			//reviewDTO에 변환한 값 넣기
+			log.info(dto.getRdate());
+			dto.setRcontentMap(rcontent);
+			reviewList.add(dto);
+		}
+		
+		//여기는 단순 상품평의 갯수와 평균 평점을 구하기 위한 for문~~
+		int reviewCount = 0;
+		int avgRating = 0;
+		for(ReviewDTO dto : getReviewForRating) {
+			// 문자열 rcontent를 map으로 변환
+			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});			
+			reviewCount++;//리뷰 갯수 카운트
+			avgRating += Integer.parseInt((String)rcontent.get("rating")) ;
+		}
+		
+		avgRating = (int)Math.ceil((avgRating*1.0)/reviewCount);
+		
+		List<Integer> reviewinfo = new ArrayList<Integer>();//상품평갯수, 평균평점 담을 List
+		Map<String, Object> result = new HashMap<String, Object>();//상품평을 객체로 답을 Map객체
+
+		reviewinfo.add(reviewCount);//List에 상품평 갯수 넣기
+		reviewinfo.add(avgRating);//List에 평균평점 넣기
+		
+		result.put("reviewinfo", reviewinfo);
+		result.put("reviewlist", reviewList);
+
 		return result;
 	}
 	
