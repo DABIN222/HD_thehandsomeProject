@@ -219,7 +219,6 @@ public class ReviewController {
 		// 상품평 리스트 받기
 		List<ReviewDTO> getReview = reviewService.getReviewList(review.getPid());
 		
-		ObjectMapper objectMapper = new ObjectMapper();
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		
 		int reviewCount = 0;
@@ -227,9 +226,9 @@ public class ReviewController {
 		// rcontent map으로 변환하기
 		for(ReviewDTO dto : getReview) {
 			// 문자열 rcontent를 map으로 변환
-			Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+			Map<String, Object> DTOrcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
 			//reviewDTO에 변환한 값 넣기
-			dto.setRcontentMap(rcontent);
+			dto.setRcontentMap(DTOrcontent);
 			reviewList.add(dto);
 			
 			
