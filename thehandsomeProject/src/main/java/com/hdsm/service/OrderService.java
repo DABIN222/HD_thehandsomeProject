@@ -50,6 +50,7 @@ public interface OrderService {
 	//사용자가 주문한  최근 상품을 조회 
 	public OrderUserVO getRecentOrderUserVO(String mid);
 	
+	//회원의 총 마일리지 합을 조회
 	public int SumMilege(String mid);
 	
 	//회원의 쿠폰 개수를 가져온다.

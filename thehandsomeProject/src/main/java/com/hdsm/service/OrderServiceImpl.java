@@ -356,7 +356,7 @@ public class OrderServiceImpl implements OrderService {
 		ordermapper.deleteMilege(oid);
 		}
 		
-		//
+		//oid를 통해 주문한 상품의 개수를 가져온다.
 		List<OrderItemVO> oivl= ordermapper.getOrderItem(oid);
 		int mpoint=member.getMpoint();
 		for(int i=0;i<oivl.size();i++) {

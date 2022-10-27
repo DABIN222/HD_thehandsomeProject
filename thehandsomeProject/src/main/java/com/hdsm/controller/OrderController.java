@@ -77,7 +77,8 @@ public class OrderController {
 			realTotalPrice+=orders.get(i).getTotalprice();
 			realMilege+=orders.get(i).getMilege();
 		}
-
+		
+		//포인트의 총합이나 가격을 실제 마일리지를 model로 보낸다.
 		model.addAttribute("realTotalPoint",realTotalPoint);
 		model.addAttribute("realTotalPrice",realTotalPrice);
 		model.addAttribute("realMilege", realMilege);

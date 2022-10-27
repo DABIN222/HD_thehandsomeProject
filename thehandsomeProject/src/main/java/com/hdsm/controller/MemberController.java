@@ -431,10 +431,10 @@ public class MemberController {
 			  //회원의 마일리지를 담는다.(박진수)
 			  model.addAttribute("totalMilege", orderservice.SumMilege(username));
 			  
-			  //회원의 정보를 가져온다.
+			  //회원의 정보를 가져온다.(박진수)
 			  model.addAttribute("memberinfo", memberservice.getMember(username));
 			  
-			  //회원의 쿠폰 개수를 가져온다
+			  //회원의 쿠폰 개수를 가져온다(박진수)
 			  model.addAttribute("couponCount", orderservice.getCouponCount(username));
 			  
 			  //회원의 리뷰 개수를 가져오게 설정(박진수)
