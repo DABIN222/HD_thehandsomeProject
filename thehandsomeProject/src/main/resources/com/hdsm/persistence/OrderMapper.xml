@@ -105,6 +105,13 @@
 	and mid=#{mid}
 	</select>
 	
+	<!-- 쿠폰의 개수를 가져온다 -->
+	<select id="getCouponCount" resultType="int">
+	select count(*)
+	from coupon
+	where member_mid=#{mid}
+	</select>
+	
 	<!-- 주문한 사용자의 정보를 삭제 -->
 	<delete id="deleteOrderUser">
 	delete from orderlist 

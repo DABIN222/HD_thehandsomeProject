@@ -57,4 +57,7 @@ public interface OrderMapper {
 	
 	//회원이 최근 주문한 상품을 조회
 	public OrderUserVO getRecentOrderUserVO(String mid);
+	
+	//회원의 쿠폰 개수를 조회
+	public int getCouponCount(String mid);
 }

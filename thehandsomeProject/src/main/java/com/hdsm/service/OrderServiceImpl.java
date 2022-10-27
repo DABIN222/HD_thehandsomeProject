@@ -412,4 +412,13 @@ public class OrderServiceImpl implements OrderService {
 		
 		return ordermapper.SumMilege(mid);
 	}
+	
+	//회원의 쿠폰  개수를 가져온다
+	@Override
+	public int getCouponCount(String mid) {
+		// TODO Auto-generated method stub
+		return ordermapper.getCouponCount(mid);
+	}
+	
+	
 	}

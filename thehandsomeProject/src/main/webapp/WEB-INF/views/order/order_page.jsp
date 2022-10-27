@@ -796,7 +796,10 @@ function f_customerAddress(){
 	$("#address1").val("${member.maddress1}");
 	$("#address2").val("${member.maddress2}");
 	$("#receiver").val("${member.mname}");
-	let arr="${member.mtel}".split("-");
+	let arr=new Array();
+	arr[0]="${member.mtel}".substring(0,3);
+	arr[1]="${member.mtel}".substring(3,7);
+	arr[2]="${member.mtel}".substring(7,11);
 	console.log(arr[0]);
 	$("select[id='hp']").val(arr[0]);
 	$("#hp_num2").val(arr[1]);

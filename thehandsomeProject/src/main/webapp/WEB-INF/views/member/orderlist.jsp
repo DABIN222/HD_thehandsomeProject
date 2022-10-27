@@ -1314,7 +1314,7 @@ function getExchangePrice(price) {
                 					<span class="sum_date">
                 					(${ouv.odate })
                 					</span>
-                					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn" onclick="orderCancel();">주문취소</a>
+                					<a href="javascript:void(0)" class="btn wt_ss orderCancelBtn" id="orderCancelBtn" onclick="orderCancel(this.id);">주문취소</a>
                 					<form id="orderCancel" action="/order/ordercancel" method="post">
 									<input type="hidden" name="oid" value="${ ouv.oid}">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -2741,27 +2741,33 @@ function getReviewExchangePrice(price) {
 	
 	return exchangePrice;
 }
-
-$('.totalprice').each(function(idx){
+$('td[class="totalprice"]').each(function(idx){
 	$(this).text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 })
 
 //주문 목록으로 이동한다.(박진수)
-/* function Goorderlist(){
+ function Goorderlist(){
 	$("#orderlist").submit();
-} */
+} 
 
-$("#orderCancelBtn").click(function(){
-	$(this).next().submit();
-})
-
-//주문을 취소할 때 실행되는 함수
-function orderCancel(){
-	
+$(".btn wt_ss.orderCancelBtn").on("click",function(){
+	console.log("orderCancelBtn")
 	//주문 취소할지 다시 한번 확인 후 취소 실행
 	 if(confirm("주문을 취소하시겠습니까?")){
 		 alert("주문이 취소되었습니다.")
-		$("#orderCancel").submit();
+		$(this).colsest('form').submit();
+	}else{
+		return;
+	} 
+}) 
+
+//주문을 취소할 때 실행되는 함수
+function orderCancel(id){
+	console.log(id);
+	//주문 취소할지 다시 한번 확인 후 취소 실행
+	 if(confirm("주문을 취소하시겠습니까?")){
+		 alert("주문이 취소되었습니다.")
+		$("#"+id).closest("form").submit();
 	}else{
 		return;
 	} 

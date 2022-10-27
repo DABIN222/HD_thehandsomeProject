@@ -105,19 +105,19 @@
                 <div class="point_wrap">    
                 <div class="point">
 	                        <p class="title">한섬마일리지</p>
-	                       <a class="count" href="javascript:void(0);">${totalMilege }&nbsp;<span>M</span></a>
+	                       <p class="count">${totalMilege }&nbsp;<span>M</span>
 	            </div> 
 	            <div class="point">
 	                                <p class="title">H.POINT</p>
-	                                <a class="count" href="javascript:void(0);">${memberinfo.mpoint }&nbsp;<span>P</span></a>
+	                                <p class="count">${memberinfo.mpoint }&nbsp;<span>P</span>
 	           </div>        
                 <div class="point">
                     <p class="title">COUPON</p>
-                    <a class="count" href="/ko/mypage/voucher" onclick="GA_Event('마이페이지','회원정보','COUPON');">${reviewCount }&nbsp;<span>장</span></a>
+                    <p class="count">${couponCount }&nbsp;<span>장</span>
                 </div>
                 <div class="point review">
                     <p class="title">상품평</p>
-                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">0&nbsp;<span>개</span></a>
+                    <a href="/mypage/myreview" class="count" onclick="GA_Event('마이페이지','회원정보','상품평');">${reviewCount }&nbsp;<span>개</span></a>
                 </div>
                 <div class="point type2">
                    <p class="title2">간편회원은 H.Point / 한섬마일리지 적립과 사용이 불가합니다. <br>혜택을 받으시려면, H.Point 통합회원으로 가입해주세요.</p>
@@ -167,7 +167,7 @@
                 					<span class="sum_date">
                 					(${recentouv.odate })
                 					</span>
-                					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn" onclick="orderCancel();">주문취소</a>
+                					<a href="javascript:void(0)" class="btn wt_ss shippingInfoBtn" id="orderCancelBtn">주문취소</a>
                 					<form id="orderCancel" action="/order/ordercancel" method="post">
 									<input type="hidden" name="oid" value="${ recentouv.oid}">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -353,6 +353,16 @@
 $('.totalprice').each(function(idx){
 	$(this).text("₩"+$("input[class='totalprice']").val().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 })
+
+$('.orderCancelBtn').click(function(){
+	//주문 취소할지 다시 한번 확인 후 취소 실행
+	 if(confirm("주문을 취소하시겠습니까?")){
+		 alert("주문이 취소되었습니다.")
+		$(this).next().submit();
+	}else{
+		return;
+	} 
+});
 
 //주문을 취소할 때 실행되는 함수
 function orderCancel(){

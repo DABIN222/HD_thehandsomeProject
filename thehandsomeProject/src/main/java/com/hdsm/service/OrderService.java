@@ -51,4 +51,7 @@ public interface OrderService {
 	public OrderUserVO getRecentOrderUserVO(String mid);
 	
 	public int SumMilege(String mid);
+	
+	//회원의 쿠폰 개수를 가져온다.
+	public int getCouponCount(String mid);
 }
