@@ -773,15 +773,6 @@
 		<form id="orderUserInfo" action="/order/ordersuccess" method="POST">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<input type="hidden" name="oid" value="">
-	<!-- <input type="hidden" name="mid" value="">
-	<input type="hidden" name="oaddress1" value="">
-	<input type="hidden" name="oaddress2" value="">
-	<input type="hidden" name="oreceiver" value="">
-	<input type="hidden" name="otel" value="">
-	<input type="hidden" name="ocal" value="">
-	<input type="hidden" name="omessage" value="">
- 	<input type="hidden" name="ousedcoupondetail"value="">
- 	<input type="hidden" name="strpayment" value=""> -->
 	</form>
 
 </div>
