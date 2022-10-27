@@ -164,7 +164,10 @@
 		ON a.ccolorcode = b.ccolorcode
 		WHERE a.oid = #{oid}
 	</select>
+<<<<<<< HEAD
 
 	
 	
+=======
+>>>>>>> 8319028cb78031771e4c3b40c33add79de095eec
 </mapper>

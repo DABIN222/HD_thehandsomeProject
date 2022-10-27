@@ -1432,6 +1432,9 @@ $(document).ready(function(){
 	});
 });
 	
+
+
+
 function getReviewExchangeRate() {
 	$.ajax({
 		type : "get",
