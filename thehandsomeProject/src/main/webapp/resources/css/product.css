@@ -607,7 +607,7 @@
 .evaluation_list1807 .evaluation_view.on .review_txt_wrap{border-bottom:2px dotted #ebebeb;margin-bottom:25px;height:auto;}
 .evaluation_list1807 .evaluation_view.on .review_txt_wrap .review_txt{padding:5px 18px 0 18px;color:#363636;}
 .evaluation_list1807 .evaluation_view.on .review_img_wrap{padding:10px 18px 20px 18px;margin:0;width:auto;height:auto;float:none;}
-.evaluation_list1807 .evaluation_view.on .review_img_wrap img{margin:0 auto;width:auto;height:auto;max-width:640px;max-height:390px;}
+.evaluation_list1807 .evaluation_view.on .review_img_wrap img{margin:0 auto;width:auto;height:100%;max-width:640px;max-height:390px;}
 .evaluation_list1807 .evaluation_view.on .review_img_wrap.wlength img,.evaluation_list1807 .evaluation_view.on .review_img_wrap.hlength img{margin:0 auto;width:auto;height:auto;max-width:640px;max-height:390px;}
 .popwrap .evaluation_list1807 .evaluation_view .sizecolor{width:564px;display:none;}
 .popwrap .evaluation_list1807 .evaluation_view.on .sizecolor{display:block;}

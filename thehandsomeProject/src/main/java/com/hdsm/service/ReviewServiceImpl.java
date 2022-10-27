@@ -55,4 +55,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.getReviewCount(pid, mid, pcolor, psize);
 	}
 	
+	// 상품평 멤버 조회
+	@Override
+	public List<ReviewDTO> getReviewMemberList(@Param("pid") String pid, @Param("mid") String mid) {
+		return mapper.getReviewMemberList(pid, mid);
+	}
 }

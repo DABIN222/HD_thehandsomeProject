@@ -11,14 +11,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.CouponVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
 import com.hdsm.domain.MileageVO;
+import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 import com.hdsm.domain.ProductColorVO;
@@ -328,4 +331,28 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	@Override
+	public int getOrderCheck(String pid, String mid) {
+		int result = ordermapper.getOrderCheck(pid, mid);
+		return result;
 	}
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	@Override
+	public List<OrderCheckVO> getOrderCheckVO(String pid, String mid) {
+		List<OrderCheckVO> result = ordermapper.getOrderCheckVO(pid, mid);
+		return result;
+	}
+	
+	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
+	@Override
+	public OrderItemVO getOrderItemProductInfo(String oid){
+		
+		List<OrderItemVO> orderItemList = ordermapper.getOrderItemProductInfo(oid);
+
+		return orderItemList.get(0);
+	}
+	
+}

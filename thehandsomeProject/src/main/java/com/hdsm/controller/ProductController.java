@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdsm.domain.Criteria;
 import com.hdsm.domain.FilterDTO;
 import com.hdsm.domain.MemberWishListDTO;
+import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.PageDTO;
 import com.hdsm.domain.ProductColorVO;
 import com.hdsm.domain.ProductVO;
@@ -35,6 +36,7 @@ import com.hdsm.domain.ReviewDTO;
 import com.hdsm.domain.ThumbnailVO;
 import com.hdsm.security.domain.CustomUser;
 import com.hdsm.service.MemberService;
+import com.hdsm.service.OrderService;
 import com.hdsm.service.ProductService;
 import com.hdsm.service.ReviewService;
 import com.hdsm.util.ProductUtil;
@@ -55,7 +57,10 @@ public class ProductController {
 	private MemberService mservice;
 	
 	@Autowired
-	ReviewService reviewService;
+	private ReviewService reviewService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
@@ -376,6 +381,8 @@ public class ProductController {
 //			}
 			if((String)session.getAttribute("member") != null) {
 				mid = (String)session.getAttribute("member");
+				log.info("------------mid -------------" + mid);
+				log.info("------------pid -------------" + pid);
 				MemberWishListDTO wsDTO = new MemberWishListDTO(); 
 				wsDTO.setMember_mid(mid);
 				wsDTO.setPid(pid);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
@@ -383,30 +390,36 @@ public class ProductController {
 				if(cnt>0) {
 					model.addAttribute("isWishList",cnt);
 				}
+				// 상품평 리스트 받기 (정구현)
+				List<ReviewDTO> getReview = reviewService.getReviewList(pid);
+				List<OrderCheckVO> orderList = orderService.getOrderCheckVO(pid, mid);
+				
+				ObjectMapper objectMapper = new ObjectMapper();
+				List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+				
+				
+				for(ReviewDTO dto : getReview) {
+					// 문자열 타입 rcontent를 map으로 변환한다. (정구현)
+					
+					Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
+					/*
+					 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
+					 * rcontent.get("age")+"\n"); log.info("height : " +
+					 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
+					 */
+					//reviewDTO에 변환한 값을 넣는다.
+					dto.setRcontentMap(rcontent);
+					reviewList.add(dto);
+				}
+				model.addAttribute("reviewList",reviewList);
+				model.addAttribute("orderList",orderList);
 			}
 			
 			ProductVO product=service.getProduct(pid);
 			System.out.println(product.getP_size());
 			String[] sizelist=product.getP_size().split(",");
-			// 상품평 리스트 받기 (정구현)
-			List<ReviewDTO> getReview = reviewService.getReviewList(pid);
-			
-			ObjectMapper objectMapper = new ObjectMapper();
-			List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 			
 			
-			for(ReviewDTO dto : getReview) {
-				// 문자열 타입 rcontent를 map으로 변환한다. (정구현)
-				Map<String, Object> rcontent = objectMapper.readValue(dto.getRcontent(),new TypeReference<Map<String,Object>>(){});
-				/*
-				 * log.info("rcontent에 값 넣었다-------------------\n"); log.info("age : " +
-				 * rcontent.get("age")+"\n"); log.info("height : " +
-				 * rcontent.get("height")+"\n"); log.info("enjoySize : " +
-				 */
-				//reviewDTO에 변환한 값을 넣는다.
-				dto.setRcontentMap(rcontent);
-				reviewList.add(dto);
-			}
 			
 			//log.info("------------------ list ----------------\n"+reviewList.toString());
 			
@@ -414,7 +427,8 @@ public class ProductController {
 			model.addAttribute("productVO", service.getProduct(pid));
 			model.addAttribute("colorVOList", service.getProductColor(pid));
 			model.addAttribute("curColorCode",colorcode);
-			model.addAttribute("reviewList",reviewList);
+			
+			
 
 			return "/product/product_detail2";
 		}

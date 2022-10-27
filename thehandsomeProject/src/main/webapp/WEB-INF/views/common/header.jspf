@@ -19,12 +19,13 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/contents.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/popup.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
 <!-- 제이쿼리 cdn -->	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- ui 공통 스크립트 -->
 <script type="text/javascript" src="/resources/js/ui.js"></script>
-
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 </head>
 <body oncontextmenu="return false">
 	<div id="headerWrap">

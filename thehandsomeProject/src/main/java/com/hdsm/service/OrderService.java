@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.hdsm.domain.AddressVO;
 import com.hdsm.domain.CouponVO;
+import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 
@@ -43,5 +44,13 @@ public interface OrderService {
 	
 	//회원 아이디를 통해 주문 사용자들에 대한 정보를 가져온다.
 	public List<OrderUserVO> getOrderUserVO(String mid);
-
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	public int getOrderCheck(String pid, String mid);
+	
+	//회원 아이디와 상품 id에 대한 주문 내역 확인(정구현)
+	public List<OrderCheckVO> getOrderCheckVO(String pid, String mid);
+	
+	//주문번호와 일치하는 제품의 제품정보 반환(사이즈, 컬러이름)(정구현)
+	public OrderItemVO getOrderItemProductInfo(String oid);
 }
