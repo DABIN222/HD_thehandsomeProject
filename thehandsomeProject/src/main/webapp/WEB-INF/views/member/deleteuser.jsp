@@ -332,49 +332,35 @@
 				<h4>
 					<a href="/member/mypage">마이페이지<!-- 마이페이지 --></a>
 				</h4>
-				<div class="lnb">
-					<dl>
-						<dt>주문조회</dt>
-						<dd>
-							<a href="javascript:void(0)"
-								onclick="Goorderlist();">주문/배송/반품/취소</a>
-							<form id="orderlist" action="/member/orderlist" method="post">
+				 <div class="lnb">
+				<dl>
+					<dt>주문조회</dt>
+					<dd>
+						<a href="javascript:void(0)" onclick="Goorderlist();">주문/배송/반품/취소</a>
+						<form id="orderlist" action="/member/orderlist" method="post">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-							</form>
+						</form>
+                  </dd>
+               </dl>
+				<dl>
+					<dt>혜택 관리</dt>
+						<dd>
+							<a href="/member/myGradeInfo">나의 회원 등급<!-- 나의 회원 등급 --></a>
 						</dd>
 					</dl>
-					<dl>
-						<dt>나의 상품관리</dt>
-						<dd>
-							<a href="/ko/mypage/myWish"
-								onclick="GA_Event('마이페이지','LNB','위시리스트');">위시리스트<!-- 위시리스트 --></a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>나의 정보관리</dt>
-						<dd>
-							<a href="/ko/mypage/personInfomationChangePWCheck"
-								onclick="GA_Event('마이페이지','LNB','개인정보 변경/탈퇴');">개인정보 변경/탈퇴</a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>나의 활동관리</dt>
-						<!-- <dd><a href="#">회원등급</a></dd> -->
-						<dd>
-							<a href="/ko/mypage/myreview"
-								onclick="GA_Event('마이페이지','LNB','내 상품평');">내 상품평</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/myqna"
-								onclick="GA_Event('마이페이지','LNB','상품 Q&A');">상품 Q&A</a>
-						</dd>
-						<dd>
-							<a href="/ko/mypage/mymantomaninquiry"
-								onclick="GA_Event('마이페이지','LNB','1:1 문의');">1:1 문의</a>
-						</dd>
-						<!-- <dd><a href="#">이벤트 참여현황</a></dd> -->
-					</dl>
-				</div>
+ 				<dl>
+                  <dt>나의 상품관리</dt>
+                  <dd>
+                     <a href="/member/wishList">위시리스트<!-- 위시리스트 --></a>
+                  </dd>
+               </dl>
+               <dl>
+                  <dt>나의 정보관리</dt>
+                  <dd>
+                     <a href="/member/pwcheck">개인정보 변경/탈퇴</a>
+                  </dd>
+               </dl>
+            </div>
 				<!-- ph_guide -->
 				<div class="ph_guide">
 					<p class="tlt">고객센터 운영 안내</p>
@@ -474,6 +460,7 @@ function Goorderlist(){
 				console.log(username);
 				if(username != "" || username != null){
 					console.log("ajax data 값 : " + username);
+					alert("회원 탈퇴가 되었습니다. \n 다음에 또 이용해주세요");
 					location.href="/";
 				}
 				//location.reload(true);
