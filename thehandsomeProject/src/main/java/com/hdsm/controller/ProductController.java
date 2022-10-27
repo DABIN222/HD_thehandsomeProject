@@ -57,6 +57,14 @@ public class ProductController {
 	@Autowired
 	ReviewService reviewService;
 	
+	
+	// 타임세일 페이지
+	@GetMapping("/mbtiEvent")
+	public String mbtiEventForm() {
+		log.info("mbtiEvent 페이지 왔다");
+		return "product/mbtiEvent" ;
+	}
+	
 	//전체 상품 목록 이동
 //	@GetMapping("/list")
 //	public void productList(Criteria cri,Model model) {

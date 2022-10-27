@@ -502,6 +502,7 @@
 				console.log(username);
 				if(username != "" || username != null){
 					console.log("ajax data 값 : " + username);
+					alert("회원 탈퇴가 되었습니다. \n 다음에 또 이용해주세요");
 					location.href="/";
 				}
 				//location.reload(true);

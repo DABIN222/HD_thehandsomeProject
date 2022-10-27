@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/contents.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/popup.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mbtiEvent.css">
 
 <!-- 제이쿼리 cdn -->	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -462,7 +463,9 @@
 									<div class="gnb_banner float_right"></div>
 								</div>
 							</div>
-							</li><!-- //대분류_잡화 -->	
+						</li><!-- //대분류_잡화 -->	
+						<!-- 대분류_잡화 -->	
+						<li><a href="/product/mbtiEvent/" class="timeSaleText" style="color: red;">MBTI 궁금하다면 들어와<span class="arr">arrow</span></a></li><!-- //대분류_타임세일 -->	
 					</ul>
 				</div>
 
