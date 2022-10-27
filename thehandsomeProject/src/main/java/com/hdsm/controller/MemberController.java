@@ -343,54 +343,31 @@ public class MemberController {
 
       return "success:"+count;
 
-   }
-
-   /*
-    * // 장바구니 담기
-    * 
-    * @PostMapping("/insertShoppingbag") public String
-    * insertShoppingbag(@Param("mid") String mid, @Param("pid") String pid,
-    * 
-    * @Param("psize") String psize, @Param("pcolor") String pcolor,
-    * 
-    * @Param("pamount") int pamount, MemberSbagDTO msVO) throws Exception {
-    * 
-    * log.info("장바구니 담기 진입!");
-    * 
-    * // jsp에서 name에 입력된 값 vo에 저장 msVO.setMid(mid); msVO.setPid(pid);
-    * msVO.setPsize(psize); msVO.setPcolor(pcolor); msVO.setPamount(pamount);
-    * 
-    * // 장바구니 담기 실시 memberservice.insertShoppingBags(msVO);
-    * log.info("당바구니 담기 성공!");
-    * 
-    * return "member/shoppingbag"; }
-    */
-   
-   // 장바구니 변경
-   @PostMapping("/updateShoppingBag")
-   @ResponseBody
-   public String updateShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
-      log.info("장바구니 변경 진입!");
-      
-      // jsp에서 name에 입력된 값 vo에 저장      
-      msVO.setMid(request.getParameter("mid"));   // 접속한 유저 id
-      msVO.setPid(request.getParameter("pid"));   // 선택된 프로덕트 id
-      msVO.setPsize(request.getParameter("psize"));   // 바꿀 사이즈 name
-      msVO.setPcolor(request.getParameter("pcolor"));   // 바꿀 컬러 name
-      msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));   // 바꿀 수량 name
-      
-      int cnt = memberservice.updateShoppingBag(msVO);
-      if(cnt != 0) {
-         log.info("장바구니 변경 성공!");
-      }else {
-         log.info("장바구니 변경 실패!");
-      }
-      
-      return "member/shoppingbag";
-   }
-   
-   
-   // 장바구니 삭제
+	}
+	
+	// 장바구니 변경
+	@PostMapping("/updateShoppingBag")
+	@ResponseBody
+	public String updateShoppingBag(HttpServletRequest request, MemberSbagDTO msVO) throws Exception {
+		log.info("장바구니 변경 진입!");
+		
+		// jsp에서 name에 입력된 값 vo에 저장		
+		msVO.setMid(request.getParameter("mid"));	// 접속한 유저 id
+		msVO.setPid(request.getParameter("pid"));	// 선택된 프로덕트 id
+		msVO.setPsize(request.getParameter("psize"));	// 바꿀 사이즈 name
+		msVO.setPcolor(request.getParameter("pcolor"));	// 바꿀 컬러 name
+		msVO.setPamount(Integer.parseInt(request.getParameter("pamount")));	// 바꿀 수량 name
+		
+		int cnt = memberservice.updateShoppingBag(msVO);
+		if(cnt != 0) {
+			log.info("장바구니 변경 성공!");
+		}else {
+			log.info("장바구니 변경 실패!");
+		}
+		
+		return "member/shoppingbag";
+	}
+	
 
 //   @PostMapping("/deleteShoppingBag")
    @RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
@@ -695,7 +672,7 @@ public class MemberController {
 
 
 	//주문조회로 이동
-	@PostMapping("/orderlist")
+	@GetMapping("/orderlist")
 	public void orderlist(Principal principal,Model model) {
 		String username = principal.getName();
 		  //회원이 주문한 주문번호를 가져온다.(박진수)

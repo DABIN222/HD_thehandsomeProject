@@ -156,7 +156,7 @@ public class ProductUtil {
 
 		if(!bf.equals("0")){
 			filterList = new ArrayList<String>();
-			String[] wantBrand = bf.split("[.]");
+			String[] wantBrand = bf.split("-");
 			
 			for(int i = 0; i < wantBrand.length ; i++) {
 				switch(wantBrand[i]) {
@@ -337,7 +337,7 @@ public class ProductUtil {
 	public List<Integer> getPriceFilter(String pf){
 		List<Integer> filterList = new ArrayList<Integer>();
 		
-	    String[] arr = pf.split("[.]");
+	    String[] arr = pf.split("-");
 	    
 	    //구분자로 나눈 배열에서 처음과 끝만 가져옴
 	    int s = Integer.parseInt(arr[0]);
