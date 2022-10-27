@@ -110,6 +110,7 @@
 	and mid=#{mid}
 	</select>
 	
+
 	<!-- 쿠폰의 개수를 가져온다 -->
 	<select id="getCouponCount" resultType="int">
 	select count(*)
@@ -134,5 +135,33 @@
 	delete from mileage
 	where micontent like #{oid}||'%' 
 	</delete>
+
+	<!-- 사용자가 해당 상품 주문한 내역 가져오는 sql (정구현) -->
+	<select id="getOrderCheck" resultType="_int">
+	SELECT COUNT(*)
+	FROM orderitem a
+	INNER JOIN orderlist b
+	ON a.oid = b.oid
+	WHERE a.pid=#{pid} AND b.mid=#{mid}
+	</select>
+	
+	<select id="getOrderCheckVO" resultType="com.hdsm.domain.OrderCheckVO">
+		SELECT a.oid, a.pid, b.mid, a.ccolorcode, a.ssize
+		FROM orderitem a
+		INNER JOIN orderlist b
+		ON a.oid = b.oid
+		WHERE a.pid=#{pid} AND b.mid=#{mid}
+	</select>
+	
+	<select id="getOrderItemProductInfo" resultType="com.hdsm.domain.OrderItemVO">
+		SELECT a.oid, a.pid, a.ccolorcode, a.ssize, b.cname
+		FROM orderitem a
+		INNER JOIN color b
+		ON a.ccolorcode = b.ccolorcode
+		WHERE a.oid = #{oid}
+	</select>
+	
+	
+>>>>>>> aa8df6b569f5a3800e102a1bfb95a354f6219175
 	
 </mapper>

@@ -24,6 +24,26 @@
 		ORDER BY rno DESC
 	</select>
 	
+	<!-- 상품평 리스트 페이징 된걸로 가져오기 -->
+	<select id="getReviewListWithPaging" parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
+		select RNO, RDATE, RCONTENT, MID, MNAME, MGRADE, PID, PNAME, PCOLOR, PSIZE, BNAME, RTITLE, RCOMFORTABLE, RPRICE 
+		from
+		    (select rownum rn, RNO, RDATE, RCONTENT, MID, MNAME, MGRADE, PID, PNAME, PCOLOR, PSIZE, BNAME, RTITLE, RCOMFORTABLE, RPRICE
+		    from 
+		        (SELECT *
+		        FROM review
+		        ORDER BY rno DESC)
+		    <trim prefix="WHERE" prefixOverrides="AND |OR">
+				<if test="pid != null and pid !='' ">
+					pid = #{pid} 
+					AND 
+					<![CDATA[rownum <= #{cri.pageNum} * #{cri.amount}]]> 
+				</if>
+			</trim>
+		    )
+		where
+		<![CDATA[rn >  (#{cri.pageNum} - 1) * #{cri.amount}]]>
+	</select>
 	
 	<!-- 상품평 작성 -->
 	<insert id="reviewInsert">
@@ -56,11 +76,17 @@
 		FROM review
 		WHERE pid=#{pid} AND mid=#{mid} AND psize=#{psize} AND pcolor=#{pcolor}
 	</select>
-	
+
 	<!-- 한 회원이 작성한 리뷰의 갯수를 가져온다 (작성자 :박진수) -->
 	<select id="UserReviewCount" resultType="int">
 		SELECT COUNT(*)
 		FROM review
 		WHERE mid=#{mid}
+
+	<!-- 회원별 상품평 리스트 -->
+	<select id="getReviewMemberList"  parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
+		SELECT *
+		FROM review
+		WHERE pid=#{pid} AND mid=#{mid}
 	</select>
 </mapper> 

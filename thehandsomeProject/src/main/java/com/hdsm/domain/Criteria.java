@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class Criteria {
-	private int amount;
 	private int pageNum;
+	private int amount;
 	
 	public Criteria() {
 		this(1,12);

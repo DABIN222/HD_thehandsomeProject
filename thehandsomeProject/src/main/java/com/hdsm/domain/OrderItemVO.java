@@ -20,6 +20,9 @@ public class OrderItemVO {
 	private ProductVO productVO;
 	private ThumbnailColorVO thumbnail;
 
+	//제품의 컬러이름 받아오기(정구현)
+	private String cname;
+	
 	//totalprice,point,totalpoint을 계산하는 함수
 	public void initSaleTotal() {
 		this.point=(int)(this.oprice*0.001);
