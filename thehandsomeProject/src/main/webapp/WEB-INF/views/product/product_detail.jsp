@@ -1899,7 +1899,7 @@
 				<li class="date"></li>
 				<li class="stars">
 					<div class="star_score1807">
-						<span class="cmt_star"> <span class="cmt_per">별점</span>
+						<span class="cmt_star"> <span class="cmt_per" id="countingStar">별점</span>
 						</span>
 					</div>
 				</li>
@@ -1915,12 +1915,12 @@
 				</li>
 			</ul>
 		</div>
-			<div class="review_represent_img1912">
-			  <img
-			    src=""
-			    alt=""
-			  />
-			</div>
+		<div class="review_represent_img1912">
+		  <img
+		    src=""
+		    alt=""
+		  />
+		</div>
 		<div class="review_img_wrap review_img_cont191216 wlength" id="myreviewImg">
 		  <ul class="slides">
 		  
@@ -1983,7 +1983,10 @@
 	//리------------------------------------------------------------------뷰
 	let fileObject = new Object();
 
-	function reviewRowInsert(reviewList){
+	function reviewRowInsert(){
+		//일단 ul에 li들을 다 지워주장
+		$("#liparent").empty();
+		
 		// 아들아~! 토큰을 가져가야지 ~~!
 		let csrfHeaderName ="${_csrf.headerName}";
 		let csrfTokenValue="${_csrf.token}";
@@ -2000,14 +2003,25 @@
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
 				result = JSON.parse(result);
-				console.log(typeof(result));
+				
+				let list = result.reviewlist;
+				let reviewinfo = result.reviewinfo;
+				
+				$("customerReviewCnt").text(reviewinfo[1]);//detail페이지에서 상품평 변경 해버리기
+				
+				$("#review_cnt").text(reviewinfo[0])//갯수
+				$("#totalStarScore").removeClass("star1","star2","star3","star4","star5")//별점일단 다 지우고
+				$("#totalStarScore").addClass("star"+reviewinfo[1]);
+				
+				
 				//작성 성공시 작성창 닫기
-				result.forEach((value, index, array) => {
+				list.forEach((value, index, array) => {
 					console.log(value);
 					$("#reviewRow").find(".name").text(value.mid);
 					$("#reviewRow").find(".grade").text(value.mname);
 					$("#reviewRow").find(".date").text(value.rdate);
-					$("#reviewRow").find(".cmt_per").addClass("star"+value.rcontentMap.rating)
+					$("#reviewRow").find("#countingStar").removeClass("star1","star2","star3","star4","star5")//별점일단 다 지우고
+					$("#reviewRow").find("#countingStar").addClass("star"+value.rcontentMap.rating)//별점추가 ~
 					
 					$("#reviewRow").find("#row11").text(value.rcontentMap.age);
 					$("#reviewRow").find("#row12").text(value.rcontentMap.height);
@@ -2020,16 +2034,15 @@
 					$("#reviewRow").find(".review_txt").text(value.rcontentMap.headline);
 					
 					//썸네일 이미지 있으면 추가해주자
-					$("#reviewRow").find(".review_represent_img1912").css("width",'0');
+					$("#reviewRow").find(".review_represent_img1912").css("display",'none');
 					$("#reviewRow").find(".review_represent_img1912>img").attr("src", "");
-					if(value.rcontentMap.thumbnailImage !== "undefined"){
-						$("#reviewRow").find(".review_represent_img1912").css("width",'60px');
+					if(typeof value.rcontentMap.thumbnailImage !== "undefined"){
+						$("#reviewRow").find(".review_represent_img1912").css("display",'block');
 						$("#reviewRow").find(".review_represent_img1912>img").attr("src", value.rcontentMap.thumbnailImage);
 					}
 					
 					//일단 이미지 div 아래 전부 죽이고
 					$("#reviewRow").find("#myreviewImg>ul").empty();
-					console.log(value.rcontentMap.imagesPath);
 					//이미지 등록한것도 있으면 태그들 넣어주자
 					if(typeof value.rcontentMap.imagesPath != "undefined"){
 						value.rcontentMap.imagesPath.forEach((value, index, array) => {
@@ -2107,13 +2120,17 @@
 			contentType : 'application/json; charset=utf-8',
 			success : function(result) {
 				//작성 성공시 작성창 닫기
-				
 					alert("리뷰가 작성되었습니다.");
 					console.log("리뷰가 작성되었습니다.");
 					reviewReset();
 					$("#customerReviewWriteDiv").hide();
 					console.log(result.rcontent);
+					reviewRowInsert();
+					
 					viewPopup("#customerReviewDiv");
+					
+					
+					
 				 /* else if(result == "fail"){
 								alert("리뷰를 이미 작성하셨습니다.");
 								console.log("리뷰를 이미 작성하셨습니다.");
@@ -2132,6 +2149,7 @@
 	
 	// 상품평 등록하기 버튼 눌렀을 때
 	$('#reviewWriteSend').on("click", function() {
+		
 		fn_reviewWriteSend();
 	
 	});
@@ -2139,7 +2157,7 @@
 	//상품평 버튼 클릭시 상품평 리스트 띄워지게 하기
 	function fn_popupCustomerReview() {
 		viewPopup("#customerReviewDiv");
-		reviewRowInsert('asd');
+		reviewRowInsert();
 	}
 	
 	//x 버튼을 누르면 상품평 리스트 닫기
@@ -2628,7 +2646,7 @@
 									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 								},
 								success : function(result) {
-									alert("Upload");
+									//alert("Upload");
 									fileObject = result;
 								}//end suce..			
 							});//end ajax	
