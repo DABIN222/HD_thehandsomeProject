@@ -50,6 +50,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void insertMember(MemberVO member) {
 		mapper.insertMember(member);
+		System.out.println(member.getMid());
+		ordermapper.insertCoupon(member.getMid());
 	}
 
 	// 아이디 중복 확인
