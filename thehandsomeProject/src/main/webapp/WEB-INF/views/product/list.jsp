@@ -460,12 +460,12 @@
 			    	            let price_filter = "";
 			    	            //brand가져오기
 			    	            $("input:checkbox[id='brand_ck']:checked").each(function(){
-			    	                brand_filter += $(this).val()+'.'
+			    	                brand_filter += $(this).val()+'-'
 			    	            })
 			    	            brand_filter = brand_filter.slice(0,-1);
 			    	            //price 가져로기
 			    	            $("input:checkbox[id='price_ck']:checked").each(function(){
-			    	                price_filter += $(this).val()+'.'
+			    	                price_filter += $(this).val()+'-'
 			    	            })
 			    	            price_filter = price_filter.slice(0,-1);
 			    	            
