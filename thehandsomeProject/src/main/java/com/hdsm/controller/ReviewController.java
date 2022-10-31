@@ -49,6 +49,16 @@ import com.hdsm.util.ReviewUtil;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
 
+/**
+*
+* <pre>
+* 수정일                수정자                수정내용
+* ----------  --------    ---------------------------
+* 2022.10.27 정구현, 박여명           최초작성
+* </pre>
+*/
+
+
 @Controller
 @Log4j
 @RequestMapping("/review/*")

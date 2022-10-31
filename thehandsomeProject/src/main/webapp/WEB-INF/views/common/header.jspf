@@ -68,7 +68,7 @@
 								<div class="list" style="display: none; height: 164px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 									<ul>
 										<li><!-- 주문조회 -->
-											<a href="/member/orderlist">주문조회</a>
+											<a href="/member/orderlist" onclick="Goorderlist();">주문 조회</a>
 										</li>
 										<li><!-- 온라인등급 -->
 											<a href="/member/myGradeInfo">회원 등급</a>

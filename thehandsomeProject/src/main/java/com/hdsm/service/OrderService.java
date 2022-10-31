@@ -9,7 +9,19 @@ import com.hdsm.domain.OrderCheckVO;
 import com.hdsm.domain.OrderItemVO;
 import com.hdsm.domain.OrderUserVO;
 
-//박진수
+/**
+ * 
+ * ExcelHandler
+ * @author SCH
+ * @since 2022.10.27
+ * @version 1.0
+ *
+ * <pre>
+ * 수정일                수정자                수정내용
+ * ----------  --------    ---------------------------
+ * 2022.02.16  박진수           최초작성
+ * </pre>
+ */
 public interface OrderService {
  
 	//주문 페이지 조회한다.

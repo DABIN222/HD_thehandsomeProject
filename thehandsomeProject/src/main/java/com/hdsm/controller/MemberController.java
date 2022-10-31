@@ -53,6 +53,21 @@ import com.hdsm.service.ReviewService;
 
 import lombok.extern.log4j.Log4j;
 
+
+/**
+ * 
+ * ExcelHandler
+ * @author SCH
+ * @since 2022.10.27
+ * @version 1.0
+ *
+ * <pre>
+ * 수정일                수정자                수정내용
+ * ----------  --------    ---------------------------
+ * 2022.02.16  박여명,박승준,김다빈,박진수           최초작성
+ * </pre>
+ */
+
 @Controller
 @Log4j
 @RequestMapping("/member/*")
@@ -186,6 +201,7 @@ public class MemberController {
    }
 
 
+   /* 코드 작성자 : 박여명 / 내용 : 쇼핑백 페이지 로드*/
    // 유저 쇼핑백 페이지 로드
    @GetMapping("/shoppingbag")
    public String userShoppingBag(
@@ -197,6 +213,8 @@ public class MemberController {
       return "member/shoppingbag";
    }
    
+
+   /* 코드 작성자 : 박여명 / 내용 : 장바구니*/
    // 장바구니 담기
    @PostMapping("/insertShoppingbag")
    @PreAuthorize("isAuthenticated()")
@@ -234,6 +252,7 @@ public class MemberController {
 
 	}
 	
+   /* 코드 작성자 : 박여명 / 내용 :  장바구니 변경*/
 	// 장바구니 변경
 	@PostMapping("/updateShoppingBag")
 	@ResponseBody
@@ -258,7 +277,8 @@ public class MemberController {
 	}
 	
 
-//   @PostMapping("/deleteShoppingBag")
+	
+	/* 코드 작성자 : 박여명 / 내용 :  장바구니 삭제*/
    @RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
    public ResponseEntity<Void> deleteShoppingBag(HttpServletRequest request, 
          @RequestBody List<MemberSbagDTO> parameters) throws Exception {
@@ -545,6 +565,7 @@ public class MemberController {
 
 
 	//주문조회로 이동
+   /* 코드 작성자 : 박진수 / 내용 :  주문조회로 이동*/
 	@GetMapping("/orderlist")
 	public void orderlist(Principal principal,Model model) {
 		String username = principal.getName();
@@ -560,6 +581,7 @@ public class MemberController {
 		  }
 	}
 	
+	/* 코드 작성자 : 박진수 / 내용 :  */
 	@GetMapping("/deliveryManage")
 	public void deliveryManage(String mid,Model model) {
 		List<AddressVO> addrlist=memberservice.getAddressList(mid);

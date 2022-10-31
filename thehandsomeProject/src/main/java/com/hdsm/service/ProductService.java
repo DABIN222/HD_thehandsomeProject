@@ -11,6 +11,19 @@ import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 import com.hdsm.domain.ThumbnailVO;
 
+/**
+ * 
+ * ExcelHandler
+ * @author SCH
+ * @since 2022.10.27
+ * @version 1.0
+ *
+ * <pre>
+ * 수정일                수정자                수정내용
+ * ----------  --------    ---------------------------
+ * 2022.02.16  박여명            최초작성
+ * </pre>
+ */
 public interface ProductService {
 	
 	public List<ProductVO> getList(ProductVO product);

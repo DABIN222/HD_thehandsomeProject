@@ -1,5 +1,6 @@
 package com.hdsm.controller;
 
+
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -44,6 +45,15 @@ import com.hdsm.util.ProductUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+/**
+*
+* <pre>
+* 수정일                수정자                수정내용
+* ----------  --------    ---------------------------
+* 2022.10.27  박여명, 박진수           최초작성
+* </pre>
+*/
+
 @Controller
 @Log4j
 @RequestMapping("/product/*")
@@ -70,12 +80,6 @@ public class ProductController {
 		return "product/mbtiEvent" ;
 	}
 	
-	//전체 상품 목록 이동
-//	@GetMapping("/list")
-//	public void productList(Criteria cri,Model model) {
-//		//추가
-//		/* model.addAttribute("prodList", service.getList()); */
-//	}
 	
 	@GetMapping("/review_temp")
 	public String rivewPage() {
@@ -83,22 +87,7 @@ public class ProductController {
 		return "product/review_temp" ;
 	}
 
-//	//페이징 없는 테스트용 상품목록
-//	@GetMapping("/list")
-//	public void productList(Model model,
-//			@RequestParam(required = false, value = "clarge") String clarge,
-//			@RequestParam(required = false, value = "cmedium") String cmedium,
-//			@RequestParam(required = false, value = "csmall") String csmall
-//			) {
-//		ProductVO product = new ProductVO();
-//		
-//		product.setClarge(clarge);
-//		product.setCmedium(cmedium);
-//		product.setCsmall(csmall);
-//		
-//		model.addAttribute("prodList", service.getList(product));
-//	}
-	
+	/* 코드 작성자 : 박여명  / 내용 : 물품목록 */
 	//처음 카테고리 목록 할때 상품 개수를 세고 뒤에 pageNum_productCount_필터들 이런식으로 만들어서 redirect (1page부터 시작)
 	@GetMapping("/list/{ctg}/")
 	public String productList(
@@ -118,6 +107,7 @@ public class ProductController {
 		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
+	/* 코드 작성자 : 박여명  / 내용 : 물품목록 */
 	@PostMapping("/list/{ctg}")
 	public String productListFilter(
 			@PathVariable(required=false) String ctg
@@ -135,6 +125,7 @@ public class ProductController {
 		return "redirect:/product/list/"+ctg+"/1"+"_"+ctgProductCount+"_0_0_0_0_0";
 	}
 	
+	/* 코드 작성자 : 박여명  / 내용 : 페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기  */
 	//페이징된 특정 카테고리의 제품들 썸네일정보들 가져오기 
 	@GetMapping({ "/list/{ctg}/{info}"/* ,"/list/{ctg}" */})
 	public String productList(
@@ -244,6 +235,7 @@ public class ProductController {
 		return "product/list";
 	}
 	
+	/* 코드 작성자 : 박여명, 정구현 / 내용 : 상품디테일페이지 로드 */
 	//상품 상세 정보 보기
 	@GetMapping("/product_detail")
 	public String product_detail(
@@ -331,6 +323,7 @@ public class ProductController {
 	}
 	
 	
+	
 	//상품 쇼핑백 담기
 	@PostMapping("/putshoppingbag")
 	public String putShoppingbag(ProductVO product) {
@@ -338,6 +331,7 @@ public class ProductController {
 		return "/product/list";
 	}
 	
+	/* 코드 작성자 : 박진수  / 내용 : 주문 페이지 로드   */
 	@PostMapping("/order_page")
 	public void order_page(
 			@RequestParam("order_colorcode") String order_colorcode,

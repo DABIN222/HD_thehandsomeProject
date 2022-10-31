@@ -12,16 +12,23 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.Model;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.hdsm.domain.MemberAuthVO;
 import com.hdsm.domain.MemberSbagDTO;
 import com.hdsm.domain.MemberVO;
+import com.hdsm.domain.MemberWishListDTO;
+import com.hdsm.domain.MemberWishListDTOforJsp;
 import com.hdsm.persistence.MemberMapper;
 import com.hdsm.persistence.MemberMapper2;
 import com.hdsm.service.MemberService;
@@ -32,7 +39,8 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
 	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/root-context.xml"
+	"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+	"file:src/main/webapp/WEB-INF/spring/security-context.xml"
 	})
 @Log4j
 public class MemberControllerTests {
@@ -47,6 +55,9 @@ public class MemberControllerTests {
 	MemberService memberservice;
 	
 	@Autowired
+	private PasswordEncoder pwencoder;
+	
+	@Autowired
 	private WebApplicationContext ctx;
 		
 	private MockMvc mockMvc;
@@ -55,189 +66,321 @@ public class MemberControllerTests {
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();		
 	}//end setup
-	//회원가입 쿼리 테스트 메서드
-	//@Test
-	public void memberInsert() throws Exception {
-		MemberVO member = new MemberVO();
-		
-//		Date nowDate = new Date();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//		String sdfNow = sdf.format(nowDate);
-//		java.sql.Date d = java.sql.Date.valueOf("2022/10/12");
-		
-		member.setMid("req134679");
-		member.setMpassword("1234");
-		member.setMname("김다빈");
-		member.setMemail("req134679@naver.com");
-		member.setMtel("01011111116");
-		member.setMaddress1("경기도 성남시");
-		member.setMaddress2("신흥동 31");
-//		member.setMgrade("silver");
-//		member.setMdate(d);
-//		member.setMpoint(0);
-//		member.setMenabled(0);
-		
-		membermapper.insertMember(member);
-		
-	}
 	
-	//@Test
-	public void login() throws Exception{
-		MemberVO member = new MemberVO();
-		member.setMid("admin");
-		member.setMpassword("1234");
-		
-		membermapper.login(member);
-	}
-	
-	// 장바구니 담기
-	//@Test
-	public void insertShoppingbag() throws Exception {
-		log.info("장바구니 담기 진입!");
-		
-		MemberSbagDTO msVO = new MemberSbagDTO();
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid("admin");
-		msVO.setPid("CM2CAWOT470W");
-		msVO.setPsize("82, 76");
-		msVO.setPcolor("OT(OTMEAL)");
-		msVO.setPamount(2);		
-		
-		// 장바구니 담기 실시
-		membermapper.insertShoppingBags(msVO);
-		log.info("당바구니 담기 성공!");
-		
-	}
-	
-	/*
-	// 장바구니 변경
+
+	/* 코드 작성자 : 김다빈 / 내용 : 회원가입 컨트롤러 */
 	@Test
-	public void updateShoppingbag() throws Exception {
-		log.info("장바구니 변경 진입");
+	@WithMockUser(roles = "USER")
+	public void join() throws Exception {
 		
-		MemberSbagDTO msVO = new MemberSbagDTO();
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid("admin");
-		msVO.setPid("CM2CAWOT470B");
-		msVO.setPsize("01234");
-		msVO.setPcolor("OT(OTMEAL)");
-		msVO.setPamount(1);	
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
 		
-		membermapper.updateShoppingBag(msVO);
-		log.info("당바구니 변경 성공!");
-	} 
-	*/
+		MemberVO member = new MemberVO();
+		MemberAuthVO mavo = new MemberAuthVO();
+		
+		mavo.setUsername("admin5");
+		mavo.setAuthority("ROLE_USER");
+
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/join")		
+				.param("Mid", "admin5")
+				.param("Mpassword", pwencoder.encode("1234"))
+				.param("Mname", "관리자")
+				.param("Memail", "tldldh1212@naver.com")
+				.param("Mtel", "01089895656")
+				.param("Mzipcode", "01234")
+				.param("Buysum", "0")
+				.param("Maddress1", "서울시 종로구 창경궁로 31길")
+				.param("Maddress2", "308호")
+				.param("Mgrade", "silver")
+				.param("Mpoint", "0")
+				.param("Menabled", "0")
+				.param("username", "admin5")
+				.param("authority", "ROLE_USER")
+				
+			)
+			.andReturn()
+//			.getModelAndView()
+//			.getModelMap()
+		);
+	}
 	
-	// 장바구니 삭제
-	//@Test
-	public void deleteShoppingBag() throws Exception {
-		log.info("장바구니 삭제 진입");
-		
-		MemberSbagDTO msVO = new MemberSbagDTO();
-		List<MemberSbagDTO> msBagDtoList = new ArrayList<MemberSbagDTO>();
+	/* 코드 작성자 : 김다빈 / 내용 : 아이디 중복확인 컨트롤러 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void midCheck() throws Exception {
 
-		
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid("admin");
-		msVO.setPid("TH2C8TTO628M");
-		msVO.setPsize("95");
-		msVO.setPcolor("OTMEAL");
-		msVO.setPamount(2);	
-		
-		msBagDtoList.add(msVO);
-		
-		membermapper.deleteShoppingBag(msBagDtoList);
-		log.info("장바구니 삭제 성공!");
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/midCheck")		
+				.param("memberId", "asdasd")
+				
+			)
+			.andReturn()
 
-	} 
+		);
+	}
 	
-	// 장바구니 변경
-	//@Test
-	public void updateShoppingbag() throws Exception {
-		log.info("장바구니 변경 진입");
-		
-		MemberSbagDTO msVO = new MemberSbagDTO();
+	/* 코드 작성자 : 김다빈 / 내용 : 전화번호 중복확인 컨트롤러 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void mtelCheck() throws Exception {
 
-		// jsp에서 name에 입력된 값 vo에 저장		
-		msVO.setMid("admin");
-		msVO.setPid("TH2C8TTO628M");
-		msVO.setPsize("95");
-		msVO.setPcolor("OTMEAL");
-		msVO.setPamount(2);	
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/mtelCheck")		
+				.param("mtelCheck", "01012341234")
+				
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박승준 / 내용 : 로그인 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void loginForm() throws Exception {
 		
-		int select = membermapper.selectShoppingBag(msVO);
-		log.info("select 값 : "+select);
-		
-		if(select != 0) {
-			log.info("이미 장바구니에 존재함");
-		} else {
-			int cnt = membermapper.updateShoppingBag(msVO);
+		mockMvc.perform(
+			MockMvcRequestBuilders.post("/member/loginForm")
+		)
+		.andReturn();	
+	}
+	
+	/* 코드 작성자 : 박승준 / 내용 : 로그아웃 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void customLogout() throws Exception {
 			
-			if(cnt != 0) {
-				log.info("장바구니 변경 성공!");
-			} else {
-				log.info("장바구니 변경 실패.....!");
-			}
-		}
-		
-		log.info("당바구니 변경 성공!");
-	} 
-	//위시리스트 잘담기는지(위시리스트 몇개고, 이미 담았는지 확인하고 위시리스트 담기 까지 전부함)
-	//@Test
-	public void insertWishList() throws Exception {
-		log.info(
-				mockMvc.perform(
-				MockMvcRequestBuilders.post("/member/insertWishList")
-				.param("member_mid", "asd")
-				.param("pid","SH2C8LJM902M")
-				)
-				.andReturn()
-//				.getModelAndView()
-//				.getModelMap()
-				);
+		mockMvc.perform(
+			MockMvcRequestBuilders.post("/member/customLogout")
+		)
+		.andReturn();	
 	}
 	
-	//@Test
-	public void testGetUsersWishList() throws Exception {
+	/* 코드 작성자 : 박여명  / 내용 : 유저 쇼핑백 페이지 로드 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void userShoppingBag() throws Exception {
 		log.info(
-				mockMvc.perform(
-				MockMvcRequestBuilders.get("/member/wishList")
-				.param("member_mid", "asd")
-				)
-				.andReturn()
-				.getModelAndView()
-				.getModelMap()
-				);
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/shoppingbag")
+				.param("mid", "asdasd")
+			)
+			.andReturn()
+		);
 	}
-	//@Test
-	public void testdeleteWishList() throws Exception {
+	
+	/* 코드 작성자 : 박여명  / 내용 : 장바구니 담기 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void insertShoppingbag() throws Exception {
 		log.info(
-				mockMvc.perform(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/insertShoppingbag")
+				.param("mid", "asdasd")
+				.param("pid", "CM2CAWOT470W")
+				.param("psize", "OT(OTMEAL), DN(DARK NAVY), LK(LIGHT KHAKI)")
+				.param("pcolor", "82, 76")
+				.param("pamount", "3")
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박여명  / 내용 : 장바구니 변경 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void updateShoppingBag() throws Exception {
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/updateShoppingBag")
+				.param("mid", "asdasd")
+				.param("pid", "CM2CAWOT470W")
+				.param("psize", "OT(OTMEAL), DN(DARK NAVY), LK(LIGHT KHAKI)")
+				.param("pcolor", "82, 76")
+				.param("pamount", "3")
+			)
+			.andReturn()
+		);
+	}	
+	
+	/* 코드 작성자 : 박여명  / 내용 : 장바구니 삭제 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void deleteShoppingBag() throws Exception {
+		MemberSbagDTO msDTO = new MemberSbagDTO();
+		msDTO.setMid("asdasd");
+		msDTO.setPid("CM2CAWOT470W");
+		msDTO.setPcolor("OT(OTMEAL), DN(DARK NAVY), LK(LIGHT KHAKI)");
+		msDTO.setPsize("82, 76");
+		msDTO.setPamount(3);
+		
+		List<MemberSbagDTO> list = new ArrayList<MemberSbagDTO>();
+		list.add(msDTO);
+		
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/deleteShoppingBag")
+				.param("list", "list")
+			)
+			.andReturn()
+		);
+	}	
+	
+
+	/* 코드 작성자 : 박승준  / 내용 : 유저정보 가져오기 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void updateuser() throws Exception {
+		
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/updateuser")
+			)
+			.andReturn()
+		);
+	}	
+	
+	/* 코드 작성자 : 박승준  / 내용 : 회원 탈퇴 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void deleteuser() throws Exception {
+		
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/deleteuser")
+			)
+			.andReturn()
+		);
+	}	
+	
+	/* 코드 작성자 : 박승준  / 내용 : 비밀번호 확인 로직 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void pwcheckpro() throws Exception {
+		
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/pwcheckpro")
+				.param("Mid", "asdasd")
+				.param("Mpassword", pwencoder.encode("1234"))
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박승준  / 내용 : 유저정보 수정 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void updatepassword() throws Exception {
+		
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/updatepassword")
+				.param("Mid", "asdasd")
+				.param("Mpassword", pwencoder.encode("1234"))
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 김다빈 / 내용 : 위시리스트 컨트롤러 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void wishList() throws Exception {
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/wishList")		
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박여명 / 내용 : 위시리스트 담기 컨트롤러 (위시리스트 몇개고, 이미 담았는지 확인하고 위시리스트 담기 까지 전부함) */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void insertWishList() throws Exception {
+		mockMvc.perform(
+			MockMvcRequestBuilders.post("/member/insertWishList")
+			.param("Member_mid", "req134679")
+			.param("Pid", "CM2CAWOT470W")
+		)
+		.andReturn();	
+	}
+	
+	/* 코드 작성자 : 김다빈  / 내용 : 위시리스트 삭제 */
+	@Test
+	@WithMockUser(roles = "USER")
+	public void deleteWishList() throws Exception {
+		MemberWishListDTO wsDTO = new MemberWishListDTO();
+		wsDTO.setMember_mid("asdasd");
+		wsDTO.setPid("CM2CAWOT470W");
+		
+		List<MemberWishListDTO> list = new ArrayList<MemberWishListDTO>();
+		list.add(wsDTO);
+		
+		log.info(
+			mockMvc.perform(
 				MockMvcRequestBuilders.post("/member/deleteWishList")
-				.param("member_mid", "asd")
-				.param("pid", "SH2C8LJM902M")
-				)
-				.andReturn()
-				.getModelAndView()
-				.getModelMap()
-				);
+				.param("list", "list")
+			)
+			.andReturn()
+		);
 	}
+	
+	/* 코드 작성자 : 김다빈  / 내용 : 회원등급 페이지 */
+	@Test
+	public void myGradeInfo() throws Exception {
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/myGradeInfo")
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박진수  / 내용 : 주문조회 페이지 */
+	@Test
+	public void orderlist() throws Exception {
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/orderlist")
+			)
+			.andReturn()
+		);
+	}
+	
+	/* 코드 작성자 : 박진수  / 내용 : 배송 페이지 */
+	@Test
+	public void deliveryManage() throws Exception {
+		log.info(
+			mockMvc.perform(
+				MockMvcRequestBuilders.post("/member/deliveryManage")
+			)
+			.andReturn()
+		);
+	}
+	
+	//--------------김다빈
 	
 	//CustomUserDetailsService를 이용한 회원가입
 	@Test
 	public void testuseCustomUserDetailsServicejoin() throws Exception {
 		log.info(
-				mockMvc.perform(
+			mockMvc.perform(
 				MockMvcRequestBuilders.post("/member/join")
 				.param("custId", "qwe")
 				.param("custPwd", "qwe")
 				.param("custName", "qwe")
 				.param("emailtotal", "tlqkffusek@123.asd")
 				.param("custTel", "010123457")
-				)
-				.andReturn()
-				.getModelAndView()
-				.getModelMap()
-				);
+			)
+			.andReturn()
+			.getModelAndView()
+			.getModelMap()
+		);
 	}
+
 }
