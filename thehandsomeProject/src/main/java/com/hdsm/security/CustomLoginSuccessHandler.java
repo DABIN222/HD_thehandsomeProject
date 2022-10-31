@@ -30,7 +30,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
       String url = request.getParameter("referer");
       System.out.println(url);
       int check = 0;
-      String arr[] = new String[1000];
       String urlsp[] = url.split("/"); //url 자르기
       for(int i=0;i<urlsp.length;i++) { // 예외처리
          System.out.println(urlsp[i]);
@@ -72,26 +71,36 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
       }
       
       if (roleNames.contains("ROLE_ADMIN")) {
-         response.sendRedirect("/");
+    	  if(check==1) {
+    	         response.sendRedirect("/");
+    	      }else if(check==2) {
+    	         response.sendRedirect("/");
+    	      }else if(check==3) {
+    	         response.sendRedirect("/");
+    	      }
+    	      else {
+    	         response.sendRedirect(url);
+    	      }
+    	      
          return;
       }//end if
 
       if (roleNames.contains("ROLE_MEMBER")) {
-         response.sendRedirect("/");
+    	  if(check==1) {
+    	         response.sendRedirect("/");
+    	      }else if(check==2) {
+    	         response.sendRedirect("/");
+    	      }else if(check==3) {
+    	         response.sendRedirect("/");
+    	      }
+    	      else {
+    	         response.sendRedirect(url);
+    	      }
+    	      
          return;
       }//end if
       
-      if(check==1) {
-         response.sendRedirect("/");
-      }else if(check==2) {
-         response.sendRedirect("/");
-      }else if(check==3) {
-         response.sendRedirect("/");
-      }
-      else {
-         response.sendRedirect(url);
-      }
-      
+    
 
       
       
