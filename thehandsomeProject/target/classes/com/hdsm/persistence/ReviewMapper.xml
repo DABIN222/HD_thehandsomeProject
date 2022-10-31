@@ -9,9 +9,7 @@
 	작업내역:  2022-10-18 "reviewInsert 작성"
 			2022-10-19 "getReviewList, Update,Delete, Count 작성"
  -->  
-<mapper namespace="com.hdsm.persistence.ReviewMap
-.
-per">
+<mapper namespace="com.hdsm.persistence.ReviewMapper">
 
 	<!-- 상품평 리스트 가져오기 -->
 	<select id="getReviewList" parameterType="string" resultType="com.hdsm.domain.ReviewDTO">
