@@ -76,48 +76,7 @@
                                     </td>
                                 </tr>
                                 </c:forEach>
-                                <!-- AceCounter eCommerce (Cart_InOut) v7.5 Start -->
-                                <!-- Data Allocation (Cart_InOut) -->
-
-
-
-
-                                <script language='javascript' type="text/javascript">
-                                    _A_amt[_ace_countvar]='5000'; 
-                                    _A_nl[_ace_countvar]='1';   
-                                    _A_pl[_ace_countvar]='FL2D1HSY006LTL_YL_FR';       
-                                    _A_pn[_ace_countvar]='[TROLLS PAPER] 축하 메시지 카드';    
-                                    _A_ct[_ace_countvar]='the CASHMERE';  
-                                    _ace_countvar++;
-                                </script>
-                                <!-- AceCounter eCommerce (Cart_InOut) v7.5 End -->
-                                <!-- Beshow Loop Start-->
-                                <script type="text/javascript"> 
-                                // 더한섬 추가 부분
-                                var beshow_orderItemNumber_str = 'FL2D1HSY006LTL_YL_FR'; // 상품코드 입력 (관리자에서 테깅시에 상품코드 SJ1I1WPC662W 부문만 입력 해야 함)
-                                var beshow_orderItemNumber_arr = beshow_orderItemNumber_str.split('_');
-                                var beshow_orderItemNumber = '';
-                                if(beshow_orderItemNumber_arr.length > 0) { beshow_orderItemNumber = beshow_orderItemNumber_arr[0]; }
-                                // 더한섬 추가 부분
-                                
-                                strack.execute('setOrderItemNumber', beshow_orderItemNumber); 
-                                strack.execute('setOrderItemLink', '/ko/HANDSOME/LIFESTYLE/DESK/OTHER-ACCESSORIES/%5BTROLLS-PAPER%5D-%EC%B6%95%ED%95%98-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%B9%B4%EB%93%9C/p/FL2D1HSY006LTL_YL_FR'); 
-                                strack.execute('setOrderItemImage', 'http://newmedia.thehandsome.com/FL/2D/SS/FL2D1HSY006LTL_YL_S01.jpg'); 
-                                strack.execute('setOrderItemName', '[TROLLS PAPER] 축하 메시지 카드'); 
-                                strack.execute('setOrderItemPrice', '5000'); 
-                                strack.execute('setOrderItemQuantity', '1');   </script>
-                                <!-- Beshow Loop End -->
-                                <!-- adinsight 주문 상품별 아이디 받아옴. start-->
-								<script type="text/javascript"> 
-								 if(typeof TRS_PRODUCT == 'undefined') {
-								  	  TRS_PRODUCT = '' + 'FL2D1HSY006LTL_YL_FR'; // 상품아이디 변수(상품코드)
-								  	  TRS_ORDER_PRODUCT = '' + 'FL2D1HSY006LTL_YL_FR' + '@' + '[TROLLS PAPER] 축하 메시지 카드' + '@' + '5000' + '@' + '1';
-								 }else {
-								  TRS_PRODUCT = TRS_PRODUCT + ' $ '+ 'FL2D1HSY006LTL_YL_FR'; // 상품아이디 변수(상품코드)
-								  TRS_ORDER_PRODUCT += ' $ ' + 'FL2D1HSY006LTL_YL_FR' + '@' + '[TROLLS PAPER] 축하 메시지 카드' + '@' + '5000' + '@' + '1';
-								 }
-								</script>
-								<!-- adinsight 주문 상품별 아이디 받아옴. end-->
+       
                             </tbody>
                         </table>
                     </div>
@@ -326,50 +285,6 @@
 			</div>
 			<a href="javascript:void(0);" class="btn_close"><img src="http://cdn.thehandsome.com/_ui/desktop/common/images/popup/ico_close.png" alt="닫기"></a>
 		</div>		
-		<!-- // 210728 oera 신규 추가 -->
-
-        <!-- AceCounter eCommerce (Buy_Finish) v7.5 Start -->
-        <script language='javascript' type="text/javascript">
-        var _AEC_order_code='221023P15477947';        // 주문코드
-        var _amt = '11500';              // 총 구매액 
-        AEC_B_L();          // 구매완료 함수
-        </script>
-        <!-- AceCounter eCommerce (Buy_Finish) v7.5 End -->
-        <!--Beshow Script Start -->
-        <script type="text/javascript">
-        strack.execute('setStore', 'thehandsome');
-        strack.execute('setDomain', location.host);
-        strack.execute('setDevice', '1'); 
-        strack.execute('setUserId', '');  
-        strack.execute('setOrderId', '221023P15477947'); 
-        strack.execute('setOrderPrice', '11500'); 
-        strack.execute('setOrderPhoneNumber', ''); 
-        strack.trackOrder();
-        </script>
-        <!--Beshow Script End-->
-		<script type="text/javascript">
-        
-        if(typeof kakaoPixel !== 'undefined'){
-			var kakaoTrackId = '3482319208237780781'; //개발
-			if(location.href.indexOf("www.thehandsome.com") > -1) kakaoTrackId = '7855119525940511046'; //운영
-			kakaoPixel(kakaoTrackId).pageView();
-			kakaoPixel(kakaoTrackId).purchase({
-				total_quantity: "2", // 주문 내 상품 개수(optional)
-				total_price: "11500",  // 주문 총 가격(optional)
-				currency: "KRW",     // 주문 가격의 화폐 단위(optional, 기본 값은 KRW)
-				products: // 주문 내 상품 정보(optional)
-				    [          
-					    
-					    { name: '[TROLLS PAPER] 생일 메시지 카드', quantity: "1", price: '5000'},
-					    { name: '[TROLLS PAPER] 축하 메시지 카드', quantity: "1", price: '5000'}
-				    ]
-			});
-        }
-		</script>
-        <!-- 3주년 경품응모 이벤트 팝업 -->
-	    <div class="layerArea" id="productLayer" style="display: none;">
-	        <div class="layerBg"></div>
-	    </div>
 
 	    <div class="evt_wtgf_pop" style="display:none;position:absolute;top:50%;left:50%;z-index:200;margin-left:-222.5px;margin-top:-276px;">
             <div class="evt_wtgf_pop_inner" style="position:relative;">
@@ -379,11 +294,6 @@
             <a href="#;" class="btn_close" style="width:22px;height:22px;background:url('/_ui/desktop/common/images/products/close_btn_grey_1807.png') no-repeat;right:15px;top:15px;padding:0;">닫기</a>
         </div>
 
-        <!-- adinsight 주문 총금액 받아옴. start -->
-		<script language='javascript'> 
-		 var TRS_AMT= '11500';	// 구매금액합계 변수 
-		 var TRS_ORDER_ID='221023P15477947'; // 주문번호
-		</script>
 		<!-- adinsight 주문 총금액 받아옴. end -->
 <script language='javascript' type="text/javascript">
 function priceComma(price) {

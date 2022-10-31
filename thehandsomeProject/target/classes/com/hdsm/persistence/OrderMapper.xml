@@ -77,12 +77,14 @@
 
 	</select>
 	
+	<!-- 주문 번호에 대한 상품들을 조회 -->
 	<select id="getOrderItem" resultType="com.hdsm.domain.OrderItemVO">
 		select *
 		from orderItem
 		where oid=#{oid}
 	</select>
 	
+	<!-- 최근 순으로 회원의 주문 정보를 조회  -->
 	<select id="getOrderUserVO" resultType="com.hdsm.domain.OrderUserVO">
 	select * 
 	from orderList
@@ -90,6 +92,7 @@
 	order by odate desc
 	</select>
 	
+	<!-- 주문 정보들 중 최근 정보를 조회 -->
 	<select id="getRecentOrderUserVO" resultType="com.hdsm.domain.OrderUserVO">
  	select *
  	from
@@ -98,8 +101,9 @@
  	where mid=#{mid} 
  	order by odate desc)
  	where rownum=1
-	
+		
 	</select>
+	<!--  
 	<select id="getOrderUserVOinOneMonth" resultType="com.hdsm.domain.OrderUserVO">
 	select * 
 	from orderList
@@ -108,7 +112,7 @@
 	ADD_Month(sysdate,-1)<=odate
 	]]>
 	and mid=#{mid}
-	</select>
+	</select> -->
 	
 
 	<!-- 쿠폰의 개수를 가져온다 -->
@@ -160,4 +164,5 @@
 		ON a.ccolorcode = b.ccolorcode
 		WHERE a.oid = #{oid}
 	</select>
+
 </mapper>

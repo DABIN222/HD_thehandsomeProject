@@ -57,13 +57,13 @@ public class OrderControllerTest {
 		   ); 
 	}
 	
+	//주문을 수행하는 테스트
 	@Test
 	public void TestOrderexec()throws Exception{
 		
 		JSONObject actual = new JSONObject();
 		actual.put("oid", "jinsu_20221027");
 		actual.put("mid", "jinsu");
-		
 		 log.info( mockMvc.perform( 
 				   MockMvcRequestBuilders.post("/order/orderexec")
 				  .session(session)
