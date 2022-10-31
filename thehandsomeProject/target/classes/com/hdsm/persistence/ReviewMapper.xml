@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 
 	ReviewMapper.xml
-	작성자 : 정구현
+	작성자 : 정구현, 박여명
 	최초 생성일 : 2022-10-18
 	작업내역:  2022-10-18 "reviewInsert 작성"
 			2022-10-19 "getReviewList, Update,Delete, Count 작성"

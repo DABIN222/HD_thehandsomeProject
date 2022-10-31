@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 2022.02.16  박여명       최초작성 -->
 <mapper namespace="com.hdsm.persistence.ProductMapper">
 
 	<!-- <select id="getList" resultType="com.hdsm.domain.ProductVO"> <![CDATA[ 
