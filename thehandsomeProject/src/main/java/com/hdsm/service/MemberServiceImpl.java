@@ -28,6 +28,8 @@ import com.hdsm.persistence.ProductMapper;
 
 import lombok.AllArgsConstructor;
 
+/* 코드 작성자 : 공동 작업  / 내용 : member에 관한 ServiceImpl */
+
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
@@ -50,6 +52,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void insertMember(MemberVO member) {
 		mapper.insertMember(member);
+		System.out.println(member.getMid());
 	}
 
 	// 아이디 중복 확인
@@ -68,6 +71,7 @@ public class MemberServiceImpl implements MemberService {
 		return cnt;
 	}
 	
+	// 비밀번호 체크
 	@Override
 	public MemberVO pwcheck(String member) {
 		return mapper.pwcheck(member);
@@ -107,8 +111,9 @@ public class MemberServiceImpl implements MemberService {
 		
 	return mapper.getMember(memberId);
 	}
-	
-	//장바구니 리스트를 보여주기 위한 써비스
+
+	/* 코드 작성자 : 박여명  / 내용 : 장바구니 목록 리스트 가져오기  */
+
 	@Override
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
 		
@@ -172,15 +177,7 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteShoppingBag(List<MemberSbagDTO> msList) {
 		int cnt = mapper.deleteShoppingBag(msList);
 		return cnt;
-	}
-
-	/*
-	public int deleteShoppingBag(List<MemberSbagDTO> msBagDtoList) {
-		int cnt = mapper.deleteShoppingBag(msBagDtoList);
-		return cnt;
-	};
-	*/
-	
+	}	
 
 	//지금 이미 장바구니에 있는지 개수로 반환
 	@Override
@@ -209,6 +206,7 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.isinWishList(wsDTO);
 	}
 
+	/* 코드 작성자 : 김다빈, 정구현  / 내용 : 위시리스트 목록 리스트 가져오기  */
 	@Override
 	public List<MemberWishListDTOforJsp> getUsersWishList(MemberWishListDTO wsDTO) {
 		String mid = wsDTO.getMember_mid();//검색할 유저 아이디 가져오기		

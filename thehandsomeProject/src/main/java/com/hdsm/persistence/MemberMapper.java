@@ -11,6 +11,10 @@ import com.hdsm.domain.MemberWishListDTO;
 import com.hdsm.domain.ProductVO;
 import com.hdsm.domain.ThumbnailColorVO;
 
+/* 코드 작성자 : 공동 작업  / 내용 : member에 관한 Mapper.java */
+
+
+
 public interface MemberMapper {
 	
 	// 회원가입

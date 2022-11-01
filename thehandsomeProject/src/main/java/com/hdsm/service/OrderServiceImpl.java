@@ -31,7 +31,19 @@ import com.hdsm.persistence.MemberMapper;
 import com.hdsm.persistence.OrderMapper;
 import com.hdsm.persistence.ProductMapper;
 
-//박진수
+/**
+ * 
+ * ExcelHandler
+ * @author SCH
+ * @since 2022.10.27
+ * @version 1.0
+ *
+ * <pre>
+ * 수정일                수정자                수정내용
+ * ----------  --------    ---------------------------
+ * 2022.02.16  박진수           최초작성
+ * </pre>
+ */
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -44,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderMapper ordermapper;
 
+	/* 코드 작성자 : 박진수  / 내용 : 해당 상품들에 대한 제품 정보를 가져옴  */
 	//해당 상품들에 대한 제품 정보를 가져옴
 	@Override
 	public List<OrderItemVO> getOrderPageInfo(List<OrderItemVO> orders){
@@ -337,7 +350,6 @@ public class OrderServiceImpl implements OrderService {
 		return rouvl;
 	}
 	
-
 	
 	//주문한 사용자의 정보를 삭제(박진수)
 	@Override

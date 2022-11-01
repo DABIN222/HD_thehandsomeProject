@@ -22,6 +22,20 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * ExcelHandler
+ * @author SCH
+ * @since 2022.10.27
+ * @version 1.0
+ *
+ * <pre>
+ * 수정일                수정자                수정내용
+ * ----------  --------    ---------------------------
+ * 2022.02.16  박여명            최초작성
+ * </pre>
+ */
+
 @Log4j
 @Service
 @AllArgsConstructor
@@ -36,6 +50,7 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.getList(product);
 	}
 
+	/* 코드 작성자 : 박여명  / 내용 : 물품목록(썸네일정보)리스트 가져오기   */
 	@Override
 	public List<ThumbnailVO> getProductThumbnailListWithPaging(ProductVO vo, Criteria cri, FilterDTO fd) {
 		

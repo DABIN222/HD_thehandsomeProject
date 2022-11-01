@@ -33,7 +33,7 @@ public class MemberTests {
 	MemberVO mvo = new MemberVO();
 	MemberAuthVO mavo = new MemberAuthVO();
 	
-	mvo.setMid("admin");
+	mvo.setMid("admin3");
 	mvo.setMpassword(pwencoder.encode("1234"));
 	mvo.setMname("관리자");
 	mvo.setMemail("tldldh1212@naver.com");
@@ -46,7 +46,7 @@ public class MemberTests {
 	mvo.setMpoint(0);
 	mvo.setMenabled(0);
 	
-	mavo.setUsername("admin");
+	mavo.setUsername("admin3");
 	mavo.setAuthority("ROLE_USER");
     mapper.insertMember(mvo);
     mapper.insertMemberAutority(mavo);

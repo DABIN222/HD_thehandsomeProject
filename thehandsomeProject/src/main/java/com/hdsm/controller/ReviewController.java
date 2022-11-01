@@ -49,6 +49,16 @@ import com.hdsm.util.ReviewUtil;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
 
+/**
+*
+* <pre>
+* 수정일                수정자                수정내용
+* ----------  --------    ---------------------------
+* 2022.10.27 정구현, 박여명           최초작성
+* </pre>
+*/
+
+
 @Controller
 @Log4j
 @RequestMapping("/review/*")
@@ -198,14 +208,9 @@ public class ReviewController {
 
 	//상품 리스트 깔쌈하게 페이징처리까지 해서 주는거야
 	@RequestMapping(value="/getlistListWithPaging", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	//public ResponseEntity<List<ReviewDTO>> getlistList(
 	@ResponseBody
 	public Map getlistListWithPaging(
-//			@RequestBody ReviewDTO rd,
-//			@RequestParam("amount") int amount,
-//			@RequestParam("pageNum") int pageNum,
 			@RequestBody HashMap<String, String> map,
-			//@RequestBody Criteria cri,
 			HttpServletRequest request) throws Exception{
 		String pid = map.get("pid");
 		int amount = Integer.parseInt(map.get("amount")) ;
@@ -402,41 +407,11 @@ public class ReviewController {
 		}//end upload....
 
 		
-		//uploadFile 이름 버그 주의
-		@PostMapping("/uploadFormAction")
-		public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
-
-			//컴퓨터마다 환경이다르므로 바꿔줘야해 !
-			String uploadFolder = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
-			
-			log.info(uploadFile);
-			log.info(uploadFile.length);
-
-			//파일들로 인자를 받아서 for문을 돌면서 이름과, 사이즈를 log찍고 저장!
-			for (MultipartFile multipartFile : uploadFile) {
-
-				log.info("-------------------------------------");
-				log.info("Upload File Name: " + multipartFile.getOriginalFilename());
-				log.info("Upload File Size: " + multipartFile.getSize());
-
-				File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
-
-				try {
-					multipartFile.transferTo(saveFile);//MultipartFile의 내장 함수로 파일을 실제 하드에 저장!
-				} catch (Exception e) {
-					log.error(e.getMessage());
-				} // end catch
-			} // end for
-
-		}//end uploadpost...
-		
-		//@RequestMapping(value = "/deleteShoppingBag", produces = "application/json")
-		
 		@RequestMapping(value = "/reviewCancle", produces = "application/json")
 		public ResponseEntity<Void> reviewCancle(
 				@RequestBody ReviewAttachFileDTO attachDTO){
 			
-			String deletePath = "C:/Users/kosa/Desktop/HANDSOME/HD_thehandsomeProject/thehandsomeProject/src/main/webapp";
+			String deletePath = "C:\\Users\\kosa\\Desktop\\HANDSOME\\HD_thehandsomeProject\\thehandsomeProject\\src\\main\\webapp\\resources\\review_images";
 			
 			ReviewUtil.builder().build().deleteCancleImage(deletePath+attachDTO.getThumbPath());
 			
