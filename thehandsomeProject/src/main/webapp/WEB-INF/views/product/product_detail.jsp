@@ -2210,7 +2210,6 @@
 						});
 					}
 					$("#reviewRow").find("#myreviewImg>ul")
-					
 					$("#reviewRow>li").clone(true).appendTo("#liparent");
 				});
 				

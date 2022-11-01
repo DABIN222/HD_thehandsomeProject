@@ -111,8 +111,9 @@ public class MemberServiceImpl implements MemberService {
 		
 	return mapper.getMember(memberId);
 	}
-	
+
 	/* 코드 작성자 : 박여명  / 내용 : 장바구니 목록 리스트 가져오기  */
+
 	@Override
 	public List<MemberSbagDTOForJsp> getMemberShoppingBag(String mid) {
 		
@@ -157,31 +158,34 @@ public class MemberServiceImpl implements MemberService {
 		return list;
 	}
 	
+	//장바구니 삽입
 	@Override
 	public void insertShoppingBags(MemberSbagDTO msVO) {
 		mapper.insertShoppingBags(msVO);
 	}
 
 
+	// 장바구니 변경
 	@Override
 	public int updateShoppingBag(MemberSbagDTO msVO) {
 		int cnt = mapper.updateShoppingBag(msVO);
 		return cnt;
 	}
 	
-
+	//장바구니 삭제
 	@Override
 	public int deleteShoppingBag(List<MemberSbagDTO> msList) {
 		int cnt = mapper.deleteShoppingBag(msList);
 		return cnt;
 	}	
 
+	//지금 이미 장바구니에 있는지 개수로 반환
 	@Override
 	public int selectShoppingBag(MemberSbagDTO msVO) {
 		int select = mapper.selectShoppingBag(msVO);
 		return select;
 	}
-
+	//유저의 장바구니에 있는 물건 개수 가져오기
 	@Override
 	public int getShoppingBagCount(String mid) {
 		return mapper.getShoppingBagCount(mid);
